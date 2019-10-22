@@ -1,12 +1,13 @@
 {
   "repositories": {
             "type":"git",
-            "url":"https://github.com/pqr/superlogger"
+            "url":"https://github.com/irazasyed/telegram-bot-sdk"
    },
   
   "require" : {
     "silex/silex": "^2.0.4",
     "monolog/monolog": "^1.22",
-    "twig/twig": "^2.0"
+    "twig/twig": "^2.0",
+    "telegram-bot/api": "^2.3"
   }  
 }
