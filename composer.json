@@ -8,6 +8,6 @@
     "silex/silex": "^2.0.4",
     "monolog/monolog": "^1.22",
     "twig/twig": "^2.0",
-    "telegram-bot/api": "^2.3"
+    "irazasyed/telegram-bot-sdk": "dev-master"
   }  
 }
