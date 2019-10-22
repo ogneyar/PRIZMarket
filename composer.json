@@ -9,5 +9,9 @@
     "monolog/monolog": "^1.22",
     "twig/twig": "^2.0",
     "irazasyed/telegram-bot-sdk": "dev-master"
-  }  
+  },
+  
+  "require-dev": {
+    "heroku/heroku-buildpack-php": "*"
+  }
 }
