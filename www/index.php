@@ -9,7 +9,7 @@ $arr = json_decode($body, true); //Разбираем json запрос на м�
 
   
 //Сюда пишем токен, который нам выдал бот
-$tg = new \TelegramBot\Api\BotApi('983003157:AAFT2RsLpFdKLjb7qeo12t8EPDus6-TB6YI');
+$tg = new \TelegramBot\Api\BotApi('983003158:AAFT2RsLpFdKLjb7qeo12t8EPDus6-TB6YI');
 
 
 //Получаем текст сообщения, которое нам пришло.
@@ -23,13 +23,17 @@ $chat_id = $arr['message']['chat']['id'];
 //ИМЯ ОТ КОГО ПРИШЛО СООБЩЕНИЕ  
 $first_name = $arr['message']['from']['first_name'];
 
+
+//ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК KeybordMarkup
+$stroka1 = ["Кнопа1"];
+$stroka2 = ["Кнопа2а"],["Кнопа2б"];
+$stroka3 = ["Кнопа3"];
+	
+$stolb	= [$stroka1,$stroka2,$stroka3];
+
  
 //СОЗДАНИЕ КЛАВИАТУРЫ reply_markup
-$keyboard = [
-     ["Кнопа1"],
-	   ["Кнопа2"],
-	   ["Кнопа3"]
-];  
+$keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($stolb, true);  
 
 
 //$tg->sendMessage($chat_id, "Отправьте текстовое сообщение.");
@@ -40,11 +44,13 @@ if ($text<>'') {
         if ($text == "/start") {
 		 
             $reply = $first_name . " бедолага, здравствуй! \n Добро пожаловать!";
-			
+	    
+		$tg->sendMessage($chat_id, $reply, null, false, null, $keyboard);
+		
             //$reply_markup = $tg->ReplyKeyboardMarkup( 'keyboard' => $keyboard, 'resizeKeyboard' => true, 'oneTimeKeyboard' => false );
             //$tg->sendMessage( 'chat_id' => $chat_id, 'text' => $reply, 'replyMarkup' => $reply_markup );
 			
-			      $tg->sendMessage($chat_id, $reply);
+		//	      $tg->sendMessage($chat_id, $reply);
 			
         }elseif ($text == "/help")  {
 		
