@@ -38,24 +38,37 @@ $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($stolb, true);
 
 //$tg->sendMessage($chat_id, "Отправьте текстовое сообщение.");
   
-  
+if ($text=="/старт") $text="/start";
+if ($text=="/помощь") $text="/help";
   
 if ($text<>'') {
         if ($text == "/start") {
 		 
-            $reply = $first_name . " бедолага, здравствуй! \n Добро пожаловать!";
-	    
-		$tg->sendMessage($chat_id, $reply, null, false, null, $keyboard);
+                $reply = $first_name . "- золотце, здравствуй! \n Добро пожаловать! \n\n";
 		
-            //$reply_markup = $tg->ReplyKeyboardMarkup( 'keyboard' => $keyboard, 'resizeKeyboard' => true, 'oneTimeKeyboard' => false );
-            //$tg->sendMessage( 'chat_id' => $chat_id, 'text' => $reply, 'replyMarkup' => $reply_markup );
-			
-		//	      $tg->sendMessage($chat_id, $reply);
-			
+		$tg->sendMessage($chat_id, $reply);
+		
+	        $reply  = "Здесь можно много всего хорошего написать о боте о его работе, \n";
+		$reply .= "извиняюсь за тавтологию, но куда теперь без неё? \n";
+		$reply .= "Работает бот на работе работу рабскую но ему, роботу всё нипочём!  \n";
+		
+		$tg->sendMessage($chat_id, $reply);
+            			
         }elseif ($text == "/help")  {
 		
-            $reply = "Информация с помощью.";
-            $tg->sendMessage($chat_id, $reply);
+                $reply = "Информация с помощью.";
+                $tg->sendMessage($chat_id, $reply);
+		
+		$reply  = "Команда /старт - для старта бота \n";
+		$reply .= "извиняюсь за тавтологию, но куда теперь без неё? \n";
+		$reply .= "Работает бот на работе работу рабскую но ему, роботу всё нипочём!  \n";
+                $tg->sendMessage($chat_id, $reply);
+			
+        }elseif ($text == "/menu")  {
+		
+		$reply = "Меню";
+		
+                $tg->sendMessage($chat_id, $reply, null, false, null, $keyboard);
 			
         }elseif ($text == "Кнопа1") {
 		
