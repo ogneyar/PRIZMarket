@@ -26,10 +26,10 @@ $first_name = $arr['message']['from']['first_name'];
 
 //ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК KeybordMarkup
 $stroka1 = ["Кнопа1"];
-$stroka2 = ["Кнопа2а"],["Кнопа2б"];
+$stroka2 = ["Кнопа2а", "Кнопа2б"];
 $stroka3 = ["Кнопа3"];
 	
-$stolb	= [$stroka1,$stroka2,$stroka3];
+$stolb	= [$stroka1, $stroka2, $stroka3];
 
  
 //СОЗДАНИЕ КЛАВИАТУРЫ reply_markup
@@ -38,9 +38,9 @@ $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($stolb, true);
 
 //ПРИРАВНИВАНИЕ РУССКОЯЗЫЧНЫХ КОМАНД ИНОСТРАННЫМ
 if ($text=="/старт") $text="/start";
-if ($text=="/помощь") $text="/help";
-if ($text=="/меню") $text="/menu";
-if ($text=="/стоп") $text="/stop";
+elseif ($text=="/помощь") $text="/help";
+elseif ($text=="/меню") $text="/menu";
+elseif ($text=="/стоп") $text="/stop";
   
 
 //ОСНОВНАЯ РАБОТА БОТА, ВЫПОЛНЕНИЕ КОМАНД (РЕАКЦИЯ НА РЕПЛИКИ ПОЛЬЗОВАТЕЛЯ)
@@ -93,7 +93,13 @@ if ($text<>'') {
 		
                 $tg->sendMessage($chat_id, $reply);
 			
-        }elseif ($text == "Кнопа2") {
+        }elseif ($text == "Кнопа2а") {
+		
+                $reply = "Ещё не придумал зачем тут эта кнопа!";
+                
+		$tg->sendMessage($chat_id, $reply);
+			
+        }elseif ($text == "Кнопа2б") {
 		
                 $reply = "Ещё не придумал зачем тут эта кнопа!";
                 
