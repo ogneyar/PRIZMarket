@@ -36,12 +36,16 @@ $stolb	= [$stroka1,$stroka2,$stroka3];
 $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($stolb, true);  
 
 
-//$tg->sendMessage($chat_id, "Отправьте текстовое сообщение.");
-  
+//ПРИРАВНИВАНИЕ РУССКОЯЗЫЧНЫХ КОМАНД ИНОСТРАННЫМ
 if ($text=="/старт") $text="/start";
 if ($text=="/помощь") $text="/help";
+if ($text=="/меню") $text="/menu";
+if ($text=="/стоп") $text="/stop";
   
+
+//ОСНОВНАЯ РАБОТА БОТА, ВЫПОЛНЕНИЕ КОМАНД (РЕАКЦИЯ НА РЕПЛИКИ ПОЛЬЗОВАТЕЛЯ)
 if ($text<>'') {
+	
         if ($text == "/start") {
 		 
                 $reply = $first_name . "- золотце, здравствуй! \n Добро пожаловать! \n\n";
@@ -53,15 +57,22 @@ if ($text<>'') {
 		$reply .= "Работает бот на работе работу рабскую но ему, роботу всё нипочём!  \n";
 		
 		$tg->sendMessage($chat_id, $reply);
+		
+		$reply = "Меню";
+		
+		$tg->sendMessage($chat_id, $reply, null, false, null, $keyboard);
             			
         }elseif ($text == "/help")  {
 		
                 $reply = "Информация с помощью.";
+		
                 $tg->sendMessage($chat_id, $reply);
 		
-		$reply  = "Команда /старт - для старта бота \n";
-		$reply .= "извиняюсь за тавтологию, но куда теперь без неё? \n";
-		$reply .= "Работает бот на работе работу рабскую но ему, роботу всё нипочём!  \n";
+		$reply  = "Команды: \n /старт или /start - для старта бота. \n";
+		$reply .= "/помощь или /help - вывод информации с помощь \n";
+		$reply .= "/меню или /menu - возврат в меню \n";
+		$reply .= "/стоп или /stop - ничего не произойдёт.  \n";
+		
                 $tg->sendMessage($chat_id, $reply);
 			
         }elseif ($text == "/menu")  {
