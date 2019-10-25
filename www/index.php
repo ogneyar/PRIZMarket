@@ -2,16 +2,13 @@
 
 require('../vendor/autoload.php');
 
-use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Types\ReplyKeyboardMarkup;
-
 $body = file_get_contents('php://input'); //Получаем в $body json строку
 
 $arr = json_decode($body, true); //Разбираем json запрос на массив в переменную $arr
 
   
 //Сюда пишем токен, который нам выдал бот
-$tg = new \BotApi('999999999:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+$tg = new \TelegramBot\Api\BotApi('999999999:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 
 
 //Получаем текст сообщения, которое нам пришло.
@@ -35,7 +32,7 @@ $stolb	= [$stroka1, $stroka2, $stroka3];
 
  
 //СОЗДАНИЕ КЛАВИАТУРЫ reply_markup
-$keyboard = new \ReplyKeyboardMarkup($stolb, true);  
+$keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($stolb, true);  
 
 
 //ПРИРАВНИВАНИЕ РУССКОЯЗЫЧНЫХ КОМАНД ИНОСТРАННЫМ
