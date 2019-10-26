@@ -1,6 +1,0 @@
-{
-  "name": "Test Heroku: PHP",
-  "description": "Proverka zapuska",
-  "repository": "https://github.com/ogneyar/test",
-  "addons": []
-}
