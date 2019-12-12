@@ -1,0 +1,8 @@
+{
+  "require" : {
+     "telegram-bot/api": "^2.3"
+  },
+  "require-dev": {
+    "heroku/heroku-buildpack-php": "*"
+  }
+}
