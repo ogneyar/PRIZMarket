@@ -1,0 +1,1 @@
+mysql --host=us-cdbr-iron-east-05.cleardb.net --user=bdeec63a6faa2f --password=c1df1a24 --reconnect heroku_2c1ffd3166781bf < c:\testerbotoff.sql
