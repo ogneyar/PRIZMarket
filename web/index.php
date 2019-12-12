@@ -1,3 +1,5 @@
 <?php
-include_once 'bot.php';
+
+include_once 'NaHerokuBot/bot.php'; // Подключение бота
+
 ?>
