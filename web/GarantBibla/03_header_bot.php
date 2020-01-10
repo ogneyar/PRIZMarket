@@ -11,7 +11,7 @@
 if ($OtladkaBota == 'да') {
 	// Вывод на печать JSON файла пришедшего от бота, в группу тестирования
 	$reply=PrintArr($arr);
-	$tg->sendMessage($admin_group_test, $reply); 
+	$tg->sendMessage($test_group, $reply); 
 }
 
 // при вызове команды настроек ГарантБота подключается файл..
