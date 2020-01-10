@@ -44,7 +44,24 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	
 	_est_li_v_base();
 	
-	_proverka_zakaza($nomerZayavki);
+	$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
+	
+	if ($est_li_v_gruppe) {					
+			
+		$reply = "Появился потенциальный покупатель!\n".
+			"@".$user_name."\nна эту заявку \xF0\x9F\x91\x87\n\n";
+		
+		
+			
+		$inLineKey_menu = [[["text"=>"Принять заявку","callback_data"=>"prinyal_zayavku_admin"]]];
+		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
+			
+		$tg->sendMessage($est_li_v_gruppe, $reply, null, true, null, $keyInLine);
+			
+			
+		$tg->sendMessage($chat_id, "Ожидайте.."
+			
+	}
 	
 	
 	

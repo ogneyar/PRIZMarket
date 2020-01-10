@@ -316,6 +316,16 @@ if ($text){
 			$tg->sendMessage($arrayResult[0]['id_chat'], "Frfgekmrtj");	
 		}
 	}
+	
+		
+	}elseif ($text == "наися") {		
+		
+		$query = "ALTER TABLE `obrabotka_zayavok` ADD `id_chat` BIGINT( 20 ) NULL DEFAULT NULL ,
+ADD `id_admin_chat` BIGINT( 20 ) NULL DEFAULT NULL ,
+ADD `client_username` VARCHAR( 20 ) NULL DEFAULT NULL"; 
+	if ($result = $mysqli->query($query)) {					
+		$tg->sendMessage($arrayResult[0]['id_chat'], "Всё впорядке!");			
+	}
 		
 		
 	}elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&&$text!=="C"&&$text !== "Старт"&&$text !== "старт") {
