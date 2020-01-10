@@ -83,14 +83,14 @@ if ($callbackQuery=="otklon") {
 		$tg->editMessageText($chat_obmennik, $id_message_chat, $sms."\nЗАЯВКА ОТКЛОНЕНА");
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Не смог изменить сообщение...\n".
-			__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
+			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
 	}		
 	
 	try{
 		$tg->deleteMessage($id_client, $id_message);				
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
-			__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
+			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
 	}	
 
 		
@@ -121,7 +121,7 @@ if ($callbackQuery=="otklon") {
 		$tg->deleteMessage($id_client, $id_message);		
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
-			__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
+			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
 	}	
 		
 		
