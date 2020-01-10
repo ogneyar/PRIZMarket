@@ -16,6 +16,7 @@ $table4='obrabotka_zayavok';
 // Имя таблицы chat_garant в которой хранятся данные о группах Администраторов ГарантБота
 $table6='chat_garant';
 
+$except = __LINE__."\n".__FILE__."\n";
 
 
 $tehPodderjka = "\n\nВопросы в [тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88\n\n";

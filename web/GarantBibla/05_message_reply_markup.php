@@ -29,6 +29,8 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['callback_data'
 
 	$id_client = strstr($kod, '.', true);
 	
+	// перемещение заявки из третьей таблицы в четвёртую
+	// из "зая" в "обз"))
 	$query = "SELECT * FROM ".$table3." WHERE id_client=" . $id_client;
 	if ($result = $mysqli->query($query)) {			
 		if($result->num_rows>0){
@@ -49,7 +51,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['callback_data'
 
 
 
-/*
+
 // удаляется сообщение, переданное inline методом
 // и печатается на его месте новое
 	try{
@@ -74,17 +76,19 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['callback_data'
             'reply_markup' => is_null($keyInLine) ? $keyInLine : $keyInLine->toJson(),            
         ]);
 		
-		$message_id = $result['message']['message_id'];
+		$message_id = $result['message_id'];
+		
+		
 		
 		//$tg->sendMessage($chat_id, $reply, null, true, null, $keyInLine);
 		
 		
 	}catch (Exception $e){
-		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
-			$e->getCode()." ".$e->getMessage());	
+		$tg->sendMessage($master, "Не смог удалить сообщение... \nномер строки: ".
+			$except.$e->getCode()." ".$e->getMessage());	
 	}	
 	
-*/
+
 
 
 
