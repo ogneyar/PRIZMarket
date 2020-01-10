@@ -1,10 +1,6 @@
 ﻿<?php
-include_once '../vendor/autoload.php';
-	
-include_once 'a_conect.php';
-	
-// Мастер это Я
-$master='351009636';
+include_once '../vendor/autoload.php';	
+include_once 'a_conect.php';	
 
 $tg = new \TelegramBot\Api\BotApi($tokenMARKET);
 

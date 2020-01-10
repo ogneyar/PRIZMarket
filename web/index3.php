@@ -39,6 +39,6 @@ echo $m->get("foo");
 
 
 
-include_once 'NaHerokuBot.php';
-include_once 'TesterBotoffBot.php';
+include_once 'botMarket.php'; 
+include_once 'botGarant.php';
 ?>
