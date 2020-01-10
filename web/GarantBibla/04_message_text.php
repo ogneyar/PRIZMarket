@@ -62,7 +62,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 		$reply = "Появился потенциальный покупатель!\n".
 			"@".$user_name."\nна эту заявку \xF0\x9F\x91\x87\n\n".		
 			"\xF0\x9F\x97\xA3 #".$strZakaz[0]['vibor']."\n".
-			"\n\xF0\x9F\x92\xB0 " .$strZakaz[0]['kol_monet']. " ".$strZakaz[0]['monet']."\n".
+			"\xF0\x9F\x92\xB0 " .$strZakaz[0]['kol_monet']. " ".$strZakaz[0]['monet']."\n".
 "\xF0\x9F\x92\xB8 ".$strZakaz[0]['cena']." ".$strZakaz[0]['valut']." (".$strZakaz[0]['itog'].")\n".
 			"\xF0\x9F\x8F\xA6 ".$strZakaz[0]['bank']."\n".
 			"\xF0\x9F\x91\xA4 ".$strZakaz[0]['client_username']."\n\n".
@@ -74,7 +74,10 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 		$tg->sendMessage($est_li_v_gruppe, $reply, null, true, null, $keyInLine);
 			
 			
-		$tg->sendMessage($chat_id, "Ожидайте..");
+		$MenuStart	= [["Старт", "Настройки"]];	
+		$keyboardStartNastr = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($MenuStart, false, true);  	
+			
+		$tg->sendMessage($chat_id, "Ожидайте..", null, true, null, $keyboardStartNastr);
 			
 	}
 

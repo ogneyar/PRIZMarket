@@ -99,13 +99,10 @@ if ($callbackQuery=="otklon") {
 						
 	//	$query = "UPDATE ".$table." SET flag=0 WHERE id_client=" . $id_client;
 	//	$result = $mysqli->query($query);		
-		
-	
-	$knopaStart = "Старт";
-	$knopaNastr = "Настройки"; 
-	$stroka1 = [$knopaStart, $knopaNastr];
-	$stolb1	= [$stroka1];	
-	$keyboardStartNastr = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($stolb1, false, true);  
+
+
+	$MenuStart	= [["Старт", "Настройки"]];	
+	$keyboardStartNastr = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($MenuStart, false, true);  
 	
 	$tg->sendMessage($id_client, "И снова, Здравствуйте!", null, true, null, $keyboardStartNastr);
 	
