@@ -1,20 +1,15 @@
 ﻿<?php 
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
-
 //exit('ok');
+$token = $tokenGARANT;
+$tg = new \TelegramBot\Api\BotApi($token);
 
-$tg = new \TelegramBot\Api\BotApi($tokenGARANT);
+$id_bota = strstr($token, ':', true);	
 
-$id_bota = '1066944801';
 
 // Группа администрирования бота (Админка)
-$admin_group = '-1001306245472';
-// Группа для тестирования бота (Тестрование Ботов)
-$admin_group_test = '-362469306'; 
-
-$testerbotoff = '1038937592';
-$channel='-1001368618561';  // Канал ТестерБотофф
+$admin_group = $admin_group_garant;
 
 // ФЛАГ ДЛЯ ВКЛЮЧЕНИЯ РЕЖИМА ОТЛАДКИ БОТА
 $OtladkaBota = 'да';
@@ -29,7 +24,7 @@ if (mysqli_connect_errno()) {
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 	include 'GarantBibla/01_variables.php';
 	
-	$text = str_replace ("@TesterBotoffBot", "", $text);
+	//$text = str_replace ("@TesterBotoffBot", "", $text);
 
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ФУНКЦИЙ
 	include 'GarantBibla/02_functions.php';

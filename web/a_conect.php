@@ -16,7 +16,7 @@
 	
 	$master = getenv('MASTER');
 	$admin_group_market = getenv('ADMIN_GROUP_MARKET');
-	// Группа для тестирования бота (Тестрование Ботов)
+	$admin_group_garant = getenv('ADMIN_GROUP_GARANT');	
 	$test_group = getenv('TEST_GROUP');
 	$channel_market = getenv('CHANNEL_MARKET');
 	
