@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 16 2019 г., 20:18
+-- Время создания: Янв 05 2020 г., 16:00
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -23,23 +23,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `pzmarkt`
+-- Структура таблицы `garant_users`
 --
 
-CREATE TABLE IF NOT EXISTS `pzmarkt` (
-  `id` int(20) NOT NULL,
-  `otdel` varchar(100) DEFAULT NULL,
-  `format` varchar(20) DEFAULT NULL,
-  `file_id` varchar(100) DEFAULT NULL,
-  `url` varchar(100) DEFAULT NULL,
-  `caption1` varchar(100) DEFAULT NULL,
-  `caption2` varchar(255) DEFAULT NULL,
-  `caption3` varchar(100) DEFAULT NULL,
-  `caption4` varchar(100) DEFAULT NULL,
-  `caption5` varchar(100) DEFAULT NULL,
-  `doverie` varchar(100) NOT NULL,
-  `podrobno` varchar(100) DEFAULT NULL,
-  `flag` tinyint(1) NOT NULL DEFAULT '0'
+CREATE TABLE IF NOT EXISTS `garant_users` (
+  `id_client` int(20) NOT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `flag` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
