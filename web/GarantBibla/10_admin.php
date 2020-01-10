@@ -324,7 +324,7 @@ if ($text){
 ADD `id_admin_chat` BIGINT( 20 ) NULL DEFAULT NULL ,
 ADD `client_username` VARCHAR( 20 ) NULL DEFAULT NULL"; 
 	if ($result = $mysqli->query($query)) {					
-		$tg->sendMessage($arrayResult[0]['id_chat'], "Всё впорядке!");			
+		$tg->sendMessage($chat_id, "Всё впорядке!");			
 	}
 		
 		
