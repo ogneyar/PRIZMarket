@@ -48,7 +48,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	_est_li_v_base();
 	
 	$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
-	$tg->sendMessage($master, $nomerZayavki);
+	//$tg->sendMessage($master, $nomerZayavki);
 	
 	if ($est_li_v_gruppe) {					
 			
@@ -76,7 +76,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 			
 		$tg->sendMessage($chat_id, "Ожидайте..");
 			
-	}else $tg->sendMessage($master, "ебебебе");
+	}
 
 	
 	

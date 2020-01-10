@@ -575,14 +575,14 @@ function _est_li_v_gruppe() { // функция проверки есть ли �
 	
 function _proverka_zakaza($zakaz = null) { // функция проверки есть ли юзер в группе 
 
-	global $table6, $from_id, $first_name, $user_name, $mysqli,
+	global $table4, $from_id, $first_name, $user_name, $mysqli,
 			$tg, $chat_id, $master;
 
 	if ($zakaz==null) exit('ok');
 	
 	$est_li_v_gruppe = false;
 	
-	$query = "SELECT * FROM ".$table4; //." WHERE id_zakaz=".$zakaz
+	$query = "SELECT * FROM ".$table4." WHERE id_zakaz=".$zakaz;
 	if ($result = $mysqli->query($query)) {					
 		if($result->num_rows>0){
 			$strZakaz = $result->fetch_all(MYSQLI_ASSOC);		
