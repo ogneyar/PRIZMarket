@@ -319,13 +319,12 @@ if ($text){
 	
 		
 	}elseif ($text == "наися") {		
-		
-		$query = "DROP TABLE `obrabotka_zayavok`"; 
-		// ADD `id_chat` BIGINT( 20 ) NULL DEFAULT NULL , ADD `id_admin_chat` BIGINT( 20 ) NULL DEFAULT NULL , ADD `client_username` VARCHAR( 20 ) NULL DEFAULT NULL
+/*		
+		$query = "ALTER TABLE `obrabotka_zayavok` ADD `id_chat` BIGINT( 20 ) NULL DEFAULT NULL , ADD `id_admin_chat` BIGINT( 20 ) NULL DEFAULT NULL , ADD `client_username` VARCHAR( 20 ) NULL DEFAULT NULL"; 
 		if ($result = $mysqli->query($query)) {					
 			$tg->sendMessage($chat_id, "Всё впорядке!");			
 		}else $tg->sendMessage($chat_id, "НЕ всё впорядке!");	
-		
+	*/	
 		
 	}elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&&$text!=="C"&&$text !== "Старт"&&$text !== "старт") {
 		if ($arr['message']['reply_to_message']) {  // и если это ответ на сообщение
