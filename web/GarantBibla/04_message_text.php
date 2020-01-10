@@ -2,7 +2,7 @@
 
 //ОСНОВНАЯ РАБОТА БОТА, ВЫПОЛНЕНИЕ КОМАНД (РЕАКЦИЯ НА РЕПЛИКИ ПОЛЬЗОВАТЕЛЯ)
 
-if (strpos($text, "/start")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
+if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
 if ($nomerZayavki) $text = "ПоявилсяПокупатель";
 
 if ($text == "Курс чата"||$text == "курс чата") {  // Курс PRIZM
