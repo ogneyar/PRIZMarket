@@ -42,7 +42,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 			
 }elseif ($text == "ПоявилсяПокупатель") {  
 	
-/*	_est_li_v_base();
+	_est_li_v_base();
 	
 	$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
 	
@@ -62,7 +62,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 		$tg->sendMessage($chat_id, "Ожидайте..");
 			
 	}
-*/	
+
 	
 	
 }elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&&$text!=="C"&&$text !== "Старт"&&$text !== "старт") {
