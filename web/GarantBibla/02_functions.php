@@ -576,7 +576,7 @@ function _est_li_v_gruppe() { // функция проверки есть ли �
 function _proverka_zakaza($zakaz = null) { // функция проверки есть ли юзер в группе 
 
 	global $table6, $from_id, $first_name, $user_name, $mysqli,
-			$tg, $chat_id;
+			$tg, $chat_id, $master;
 
 	if ($zakaz==null) exit('ok');
 	
