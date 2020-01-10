@@ -59,7 +59,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 		$tg->sendMessage($est_li_v_gruppe, $reply, null, true, null, $keyInLine);
 			
 			
-		$tg->sendMessage($chat_id, "Ожидайте.."
+		$tg->sendMessage($chat_id, "Ожидайте..");
 			
 	}
 	
