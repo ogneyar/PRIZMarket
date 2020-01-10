@@ -603,7 +603,7 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 			}else $tg->call('sendMessage', ['chat_id' => $chat_id,'text' => "Вы не являетесь участником чата!"]);
 			
 		}else $tg->call('sendMessage', ['chat_id' => $chat_id,'text' => "Такого заказа в базе нет!"]);
-	}else $tg->sendMessage($master, "Чёт не получается");
+	}else $tg->sendMessage($master, "Чёт не получается. \nстрока - ".__LINE__."\nфайл - ".__FILE__);
 	
 	//если есть в группе, то возвращает айди группы АДМИНИСТРИРОВАНИЯ
 	//если нет, то false
