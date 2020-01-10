@@ -11,7 +11,8 @@ $obsujdaem_bot_group = '-1001413152703';
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_market;
 
-$channel='-1001368618561';  // Канал ТестерБотофф
+// Канал, где появляются новые лоты
+$channel = $channel_market;
 
 if ($_GET['privet']) {
 	$tg->sendMessage($obsujdaem_bot_group, $_GET['privet']);
