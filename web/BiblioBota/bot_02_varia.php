@@ -30,6 +30,9 @@ $table5='pzmarkt';
 $table6='chat_garant';
 
 
+$except = __LINE__."\n".__FILE__."\n";
+
+
 $PZMarket="\xF0\x9F\x91\x89 [Покупки на PRIZMarket](https://t.me/prizm_market) \xF0\x9F\x91\x88";
 $zakaz = "Заказать пост можно через [ЗаказБот](https://t.me/Zakaz_prizm_bot?start=) \xF0\x9F\x91\x88";
 $tehPodderjka = "\n\nВопросы в [тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88\n\n";
