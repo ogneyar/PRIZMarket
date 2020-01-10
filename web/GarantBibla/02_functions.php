@@ -571,7 +571,7 @@ function _est_li_v_gruppe() { // функция проверки есть ли �
 	return $est_li_v_gruppe; 
 }
 
-/*
+
 	
 function _proverka_zakaza($zakaz = null) { // функция проверки есть ли юзер в группе 
 
@@ -613,7 +613,7 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 	//если нет, то false
 	return $est_li_v_gruppe; 
 }
-*/
+
 	
 	
 ?>
