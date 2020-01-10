@@ -582,7 +582,7 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 	
 	$est_li_v_gruppe = false;
 	
-	$query = "SELECT id_chat, id_admin_chat FROM ". $table4 . " WHERE id_zakaz=".$zakaz; 
+	$query = "SELECT * FROM ".$table4; //." WHERE id_zakaz=".$zakaz
 	if ($result = $mysqli->query($query)) {					
 		if($result->num_rows>0){
 			$strZakaz = $result->fetch_all(MYSQLI_ASSOC);		
