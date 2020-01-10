@@ -124,8 +124,12 @@ if ($callbackQuery=="otklon") {
 			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
 	}	
 		
+	$user = $tg->getMe();
+	//$bot_username = $user->getUsername();
+	$bot_username = $user->username;
 		
-	$inLineKey_menu = [[["text"=>"КуплюПродам","callback_data"=>"kuplu_prodam"]]];
+	//$inLineKey_menu = [[["text"=>"КуплюПродам","callback_data"=>"kuplu_prodam"]]];
+	$inLineKey_menu = [[["text"=>"КуплюПродам","url"=>"t.me/".$bot_username."?start=".$id_message]]];
 	$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 		
 	$sms.= $id_message_chat.":".$id_client.".".$id_message;
