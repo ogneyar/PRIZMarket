@@ -1,16 +1,12 @@
 ﻿<?php	
-//include_once '../a_conect.php';
-
-$otrad = '298466355';
+include_once '../../vendor/autoload.php';
+include_once '../a_conect.php';
 // Группа администрирования бота (Админка)
-$admin_group = '-1001311775764';
-// Группа для тестирования бота (Тестрование Ботов)
-$admin_group_test = '-362469306'; 
-// Мастер это Я
-$master='351009636';
-	
+$admin_group = $admin_group_market;
+
+$token = $tokenMARKET;
 $tg = new \TelegramBot\Api\BotApi($tokenMARKET);
-	
+
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // проверка подключения 
@@ -74,7 +70,7 @@ while ($a<3){
 		$file_path = $file->getFilePath();
 		
 
-		$adress_file = "https://api.telegram.org/file/bot{$tokenMARKET}/{$file_path}";
+		$adress_file = "https://api.telegram.org/file/bot{$token}/{$file_path}";
 		
 		if ($format=='photo'){		
 			echo "<img src={$adress_file} alt='Изображение лота' align='middle'>". 

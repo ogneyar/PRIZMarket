@@ -2,23 +2,15 @@
 	include_once '../../vendor/autoload.php';
 	include_once '../a_conect.php';
 	
-	include_once 'site_01_head.php';
-	
+	include_once 'site_01_head.php';	
 	include_once 'site_03_url.html';	
-	
 	include_once 'site_07_prinyat.html';	
+	include_once 'site_09_footer.html';
 
-	include_once 'site_09_footer.html';	
-
-	$otrad = '298466355';
 	// Группа администрирования бота (Админка)
-	$admin_group = '-1001311775764';
-	// Группа для тестирования бота (Тестрование Ботов)
-	$admin_group_test = '-362469306'; 
-	// Мастер это Я
-	$master='351009636';
-
-	$tg = new \TelegramBot\Api\BotApi($tokenMARKET);
+	$admin_group = $admin_group_market;	
+	$token = $tokenMARKET;
+	$tg = new \TelegramBot\Api\BotApi($token);
 	
 	$url = $_SERVER['HTTP_HOST'].$_FILES["photo"]["tmp_name"];
 	
