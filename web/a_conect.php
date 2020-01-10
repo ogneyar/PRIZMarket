@@ -13,4 +13,7 @@
 
 	$tokenMARKET = getenv('TOKEN_MARKET');
 	$tokenGARANT = getenv('TOKEN_GARANT');
+	
+	$master = getenv('MASTER');
+	
 ?>
