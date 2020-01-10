@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 28 2019 г., 13:46
+-- Время создания: Янв 10 2020 г., 20:50
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -36,7 +36,10 @@ CREATE TABLE IF NOT EXISTS `obrabotka_zayavok` (
   `cena` double DEFAULT NULL,
   `itog` double DEFAULT NULL,
   `bank` text,
-  `flag_isp` tinyint(1) DEFAULT NULL
+  `flag_isp` tinyint(1) DEFAULT NULL,
+  `id_chat` bigint(20) DEFAULT NULL,
+  `id_admin_chat` bigint(20) DEFAULT NULL,
+  `client_username` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
