@@ -5,107 +5,16 @@ $hzz=strpos($text, "бан:");
 $lot=strpos($text, "удали лот:");
 $kat=strpos($text, "категория:");
 $new_id=strpos($text, "смени айди лота:");
-if (($hz!==false)||($hzz!==false)||($lot!==false)||($kat!==false)||($new_id!==false)){
+$ogr=strpos($text, "ограничь:");
+$sn_ogr=strpos($text, "снять ограничения:");
+$kl=strpos($text, "удали клиента:");
+$pokaj=strpos($text, "покажи лот:");
+$smeni=strpos($text, "смени время на 0 у лота:");
+if (($smeni!==false)||($pokaj!==false)||($kl!==false)||($hz!==false)||($hzz!==false)||($lot!==false)||($kat!==false)||($new_id!==false)||($ogr!==false)||($sn_ogr!==false)){
 	$komanda = strstr($text, ':', true);	
 	$id = substr(strrchr($text, ":"), 1);
 	$text=$komanda;
 }
-
-
-/*
-**
-**--------------------------------------------------
-** обработка callback_query <- ответных сообщений!
-**--------------------------------------------------
-**
-*/
-
-if (is_array($arr['callback_query'])) {	
-
-	$kod = substr(strrchr($callbackText, 10), 1);  // код с id клиента приславшего заказ и номером заказа
-
-	$simbol = substr($kod, -1);
-
-	$kol=strlen($kod);
-	$sms = substr($callbackText,0,-$kol);	
-
-	// текст сообщения после "." - номер заказа
-	$id_message =  substr(strrchr($kod, '.'), 1); // данные о номере заказа и/или номер id админа, взявшего заказ
-
-	$id_client = strstr($kod, '.', true);
-	
-	
-	if ($callbackQuery=="otklon") { 
-	
-		// ДЕВЯТАЯ клавиатура кнопка "отклонить"
-		
-		$query = "DELETE FROM ".$table3." WHERE id_client=" . $id_client;				
-		$mysqli->query($query);
-		
-		$query = "UPDATE ".$table." SET flag=0 WHERE id_client=" . $id_client;
-		$mysqli->query($query);		
-		
-		$str = $tehPodderjka."Заявка отклонена, читайте правила \xF0\x9F\x91\x87";
-		
-		$tg->sendMessage($id_client, $str, markdown, true, null, $keyInLine0);
-				
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms . $id_client . "\nЗАЯВКА ОТКЛОНЕНА");	
-		
-		$tg->deleteMessage($id_client, $id_message);
-		
-		
-		
-	}elseif ($callbackQuery=="prinyat") { 
-	
-		// ДЕВЯТАЯ клавиатура кнопка "принять"		
-		/*
-		$sms.= "\xE2\x9D\x97 Заказ принял: @" . $callback_user_name . " \xE2\x9D\x97\n";
-		$sms.= $kod . ":" . $callback_from_id . "!";
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms);
-		*/
-		
-		$query = "SELECT * FROM ".$table3." WHERE id_client=" . $id_client;
-		if ($result = $mysqli->query($query)) {			
-			if($result->num_rows>0){
-				$arrStrok = $result->fetch_all();		
-			
-				$query = "INSERT INTO ".$table4." VALUES ('". $arrStrok[0][0] ."', '". $arrStrok[0][1] ."', '" . $arrStrok[0][2] . "', '".$arrStrok[0][3]."', '".$arrStrok[0][4]."', '".$arrStrok[0][5]."', '".$arrStrok[0][6]."', '".$arrStrok[0][7]."', '".$arrStrok[0][8]."', '".$arrStrok[0][9]."')";
-				$mysqli->query($query);	
-
-				$query = "DELETE FROM ".$table3." WHERE id_client=" . $id_client;				
-				$mysqli->query($query);
-			}		
-		}
-		
-		
-		//ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК клавиатуры ДЕСЯТОГО уровня KeybordInLine10    АДМИНИСТРИРОВАНИЕ
-		$inLine10_but1=["text"=>"Репост","switch_inline_query"=>$id_message];
-		$inLine10_str1=[$inLine10_but1];
-		$inLine10_keyb=[$inLine10_str1];
-		$keyInLine10 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
-		
-	
-		$query = "UPDATE ".$table." SET flag=0 WHERE id_client=" . $id_client;
-		$result = $mysqli->query($query);		
-		
-		$str = $tehPodderjka."Заявка одобрена, можете сделать новый заказ \xF0\x9F\x91\x87";
-		
-		$tg->sendMessage($id_client, $str, markdown, true, null, $keyInLine1);		
-		
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms.$id_client.".".$id_message."\nЗАЯВКА ОДОБРЕНА", null, true, $keyInLine10);
-		
-		$tg->deleteMessage($id_client, $id_message);		
-
-		
-		
-	}elseif ($callbackQuery=="repost") { 
-		
-		$tg->answerCallbackQuery($callbackQueryId, "Ещё не работает эта кнопка!");
-		
-	}
-	
-}
-
 
 
 
@@ -116,7 +25,7 @@ if (is_array($arr['callback_query'])) {
 **--------------------------------------------------
 **
 */
-if (is_array($arr['inline_query'])) {	
+if ($arr['inline_query']) {	
 	
 	$query = "SELECT * FROM ".$table4." WHERE id_zakaz=".$inline_query;
 	if ($result = $mysqli->query($query)){	
@@ -150,7 +59,7 @@ if (is_array($arr['inline_query'])) {
 			
 	  }	
 	}	
-	
+	exit('ok');
 }
 
 
@@ -164,7 +73,7 @@ if (is_array($arr['inline_query'])) {
 */
 if ($text){
 
-	if ($text == "база") {		
+	if ($text == "База клиентов"||$text == "база") {		
 	
 		$query = "SELECT * FROM ".$table;
 		if ($result = $mysqli->query($query)) {		
@@ -183,23 +92,14 @@ if ($text){
 		
 		
 	}elseif ($text == "удали таблицу каль") {		
-	
+/*	
 		$query = "DROP TABLE ".$table2;
 		if ($result = $mysqli->query($query)) {		
 			$sms="Таблица удалена!";		
 			$tg->sendMessage($chat_id, $sms);				
 		}else $tg->sendMessage($chat_id, "Не могу удалить таблицу");		
-		
+*/		
 				
-	}elseif ($text == "удали таблицу зая") {		
-	
-		$query = "DROP TABLE ".$table3;
-		if ($result = $mysqli->query($query)) {		
-			$sms="Таблица удалена!";		
-			$tg->sendMessage($chat_id, $sms);				
-		}else $tg->sendMessage($chat_id, "Не могу удалить таблицу");		
-				
-		
 	}elseif ($text == "покажи таблицы") {		
 	
 		$query = "SHOW TABLES";
@@ -217,7 +117,7 @@ if ($text){
 		}else $tg->sendMessage($chat_id, "Не могу показать таблицы");		
 				
 		
-	}elseif ($text == "админы") {		
+	}elseif ($text == "Админы"||$text == "админы") {		
 		
 		$query = "SELECT id, id_client, name_client, status FROM ".$table." WHERE status='admin'";
 		if ($result = $mysqli->query($query)) {		
@@ -317,7 +217,7 @@ if ($text){
 		}else $tg->sendMessage($chat_id, "Не получается удалить строки!");	
 		
 		
-	}elseif ($text == "зая") {		
+	}elseif ($text == "Таблица заявок"||$text == "зая") {		
 	
 		$query = "SELECT * FROM ".$table3;
 		if ($result = $mysqli->query($query)) {		
@@ -338,12 +238,12 @@ if ($text){
 		
 	}elseif ($text == "еее") {		
 	
-		$tg->sendMessage($chat_id, "Так держать мастер!");		
+		$tg->sendMessage($chat_id, "Так держать, мастер!");		
 
 		
 	}elseif ($text == "эх") {		
 	
-		$tg->sendMessage($chat_id, "Всё у тебя получится мастер!");		
+		$tg->sendMessage($chat_id, "Всё у тебя получится, мастер!");		
 
 		
 	}elseif ($text == "очистить таблицу от заявок") {		
@@ -351,7 +251,7 @@ if ($text){
 		$tg->sendMessage($chat_id, "неее");		
 
 		
-	}elseif ($text == "обз") {		
+	}elseif ($text == "Обработка заявок"||$text == "обз") {		
 	
 		$query = "SELECT * FROM ".$table4;
 		if ($result = $mysqli->query($query)) {		
@@ -371,43 +271,6 @@ if ($text){
 
 		
 		
-	}elseif ($text == "курс") {			
-	
-		$arrayCMC_RUB=json_decode(_CoinMarketCap('2806'), true); 	//  RUB
-		$PriceRUB_in_USD=$arrayCMC_RUB['data']['2806']['quote']['USD']['price'];	
-		$PriceUSD_in_RUB=1/$PriceRUB_in_USD;	
-
-		$arrayCMC_PZM=json_decode(_CoinMarketCap('1681'), true); // PRIZM
-		$PricePZM_in_USD=$arrayCMC_PZM['data']['1681']['quote']['USD']['price'];
-		$PricePZM_in_RUB=$PriceUSD_in_RUB*$PricePZM_in_USD;
-	
-		$arrayCMC_ETH=json_decode(_CoinMarketCap('2'), true); // ETH
-		$PriceETH_in_USD=$arrayCMC_ETH['data']['2']['quote']['USD']['price'];
-		$PriceUSD_in_ETH=1/$PriceETH_in_USD;	
-		$PricePZM_in_ETH=$PricePZM_in_USD*$PriceUSD_in_ETH;
-	
-		$arrayCMC_BTC=json_decode(_CoinMarketCap('1'), true); // BTC
-		$PriceBTC_in_USD=$arrayCMC_BTC['data']['1']['quote']['USD']['price'];
-		$PriceUSD_in_BTC=1/$PriceBTC_in_USD;	
-		$PricePZM_in_BTC=$PricePZM_in_USD*$PriceUSD_in_BTC;
-
-		$Date_PricePZM=$arrayCMC_PZM['data']['1681']['quote']['USD']['last_updated'];
-	
-		$unixDate=strtotime($Date_PricePZM);
-		$Date_PricePZM = gmdate('d.m.Y H:i:s', $unixDate + 3*3600);
-	
-		$Round_PricePZM_in_USD=round($PricePZM_in_USD, 2);
-		$Round_PricePZM_in_RUB=round($PricePZM_in_RUB, 2);
-		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
-		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
-	
-		$reply="Курс PRIZM на CoinMarketCap:\n1PZM = ".$Round_PricePZM_in_USD." $\n1PZM = ".$Round_PricePZM_in_RUB.
-			" \xE2\x82\xBD\n1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC\n";
-		$reply.="Данные на ".$Date_PricePZM." МСК";
-	
-		$tg->sendMessage($chat_id, $reply); 			
-		
-
 	}elseif ($text == "ану") {		
 	
 		include 'bot_05_MTProto.php';
@@ -415,20 +278,13 @@ if ($text){
 		
 	}elseif ($text == "гет") {		
 	
-		$urlF=$tg->getFileUrl();  // ссылка типа "https://api.telegram.org/file/bot".$token
+		$urlF=$tg->getFileUrl();  // ссылка типа "https://api.telegram.org/file/bot".$token	
+		$file=$tg->getFile('AgADAgADPasxGy7QCEtmFvJhI4jeKSPqug8ABAEAAwIAA3kAAz72BQABFgQ');		
 	
-		$file=$tg->getFile('AgADAgADPasxGy7QCEtmFvJhI4jeKSPqug8ABAEAAwIAA3kAAz72BQABFgQ');
-	
-		//$file=$tg->getFile('a_conect.php');
-	
-		$file_path=$file->getFilePath();
-	
-		//$file_id=$file->getFileId();
-	
+		$file_path=$file->getFilePath();	
 		$urlF.="/".$file_path;
 	
-		//$tg->sendDocument($master, $file_id);
-	
+		//$tg->sendDocument($master, $file_id);	
 		//include 'trd/curl.php';
 	
 		$tg->sendMessage($master, $urlF); 
@@ -447,23 +303,16 @@ if ($text){
 	
 		//$tg->getFile('session.madeline');
 
-		$CRLF="\r\n";
-	
+		$CRLF="\r\n";	
 		$to  = "ya13th@mail.ru"; 	
-
-		$subject = "Заголовок письма"; 
-
+		$subject = "Заголовок письма";
 		$message = "Текст письма{$CRLF}";  //{$CRLF}1-ая строчка{$CRLF}2-ая строчка{$CRLF}
-
 		$headers = [
 			'From' => 'ya13th@mail.ru',
 			'Reply-To' => 'yaya13th@ya.ru'		
-		];	
-	
-		//$otp=mail($to, $subject, $message, $headers); 
-	
-		$otp=mail('mwyakovlew@gmail.com', 'VVV', 'gggg', $headers); 
-	
+		];		
+		//$otp=mail($to, $subject, $message, $headers); 	
+		$otp=mail('mwyakovlew@gmail.com', 'VVV', 'gggg', $headers); 	
 		if ($otp) {
 			$tg->sendMessage($chat_id, "Отрправка!"); 
 		}else $tg->sendMessage($chat_id, "Не выходит отправить почту"); 
@@ -483,7 +332,8 @@ if ($text){
 	
 		$tg->sendPhoto($chat_id, $photo_id, $caption, null, $keyInLine, false, markdown); 
 	
-	}elseif ($text == "пзм") {		
+	
+	}elseif ($text == "Полная таблица лотов"||$text == "пзм") {		
 	
 		$query = "SELECT * FROM ".$table5;
 		if ($result = $mysqli->query($query)) {		
@@ -491,11 +341,14 @@ if ($text){
 			if($result->num_rows>0){
 				$arrStrok = $result->fetch_all();				
 				foreach($arrStrok as $arrS){						
-					foreach($arrS as $stroka) $sms.= "| ".$stroka." ";				
+					foreach($arrS as $stroka) {
+						if ($stroka==null) $stroka=" ";
+						$sms.= "| ".$stroka." ";				
+					}	
 					$sms.="|\n\n";												
 				}									
 				
-				_pechat($sms, '3000');				
+				_pechat($sms, '4004');				
 				
 			}else $tg->sendMessage($chat_id, "пуста таблица \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
 			
@@ -503,7 +356,53 @@ if ($text){
 	
 		
 		
-	}elseif ($text == "лоты") {		
+	}elseif ($text == "пзм2") {		
+	
+		$query = "SELECT * FROM ".$table5;
+		if ($result = $mysqli->query($query)) {		
+			$sms="Таблица лотов:\n";
+			if($result->num_rows>0){
+				$arrStrok = $result->fetch_all();				
+				foreach($arrStrok as $arrS){						
+					foreach($arrS as $stroka) {
+						if ($stroka==null) $stroka=" ";
+						$sms.= "| ".$stroka." ";				
+					}	
+					$sms.="|\n\n";												
+				}									
+				
+				_pechat($sms, '4000');				
+				
+			}else $tg->sendMessage($chat_id, "пуста таблица \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
+			
+		}else throw new Exception("Не смог проверить таблицу ".$table5);
+	
+		
+		
+	}elseif ($text == "покажи лот") {		
+	
+		$query = "SELECT * FROM ".$table5." WHERE id=".$id;
+		if ($result = $mysqli->query($query)) {		
+			
+			if($result->num_rows>0){
+				$arrStrok = $result->fetch_all();				
+				foreach($arrStrok as $arrS){						
+					foreach($arrS as $stroka) {
+						if ($stroka==null) $stroka=" ";
+						$sms.= "| ".$stroka." ";				
+					}	
+					$sms.="|\n\n";												
+				}									
+				
+				_pechat($sms, '2000');				
+				
+			}else $tg->sendMessage($chat_id, "пуста таблица \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
+			
+		}else throw new Exception("Не смог проверить таблицу ".$table5);
+	
+	
+		
+	}elseif ($text == "База лотов"||$text == "лоты") {		
 	
 		$query = "SELECT id, otdel, caption2 FROM ".$table5;
 		if ($result = $mysqli->query($query)) {		
@@ -515,7 +414,27 @@ if ($text){
 					$sms.="|\n";												
 				}
 				
-				_pechat($sms);
+				_pechat($sms, '6500');
+				
+			}else $tg->sendMessage($chat_id, "пуста таблица \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
+			
+		}else throw new Exception("Не смог проверить таблицу ".$table5);
+	
+		
+		
+	}elseif ($text == "лоты2") {		
+	
+		$query = "SELECT id, otdel, caption2 FROM ".$table5;
+		if ($result = $mysqli->query($query)) {		
+			$sms="Таблица лотов:\n";
+			if($result->num_rows>0){
+				$arrStrok = $result->fetch_all();				
+				foreach($arrStrok as $arrS){						
+					foreach($arrS as $stroka) $sms.= "| ".$stroka." ";				
+					$sms.="|\n";												
+				}
+				
+				_pechat($sms, '6504');
 				
 			}else $tg->sendMessage($chat_id, "пуста таблица \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
 			
@@ -531,6 +450,7 @@ if ($text){
 		}else $tg->sendMessage($chat_id, "Не получается удалить строки!");	
 		
 		
+		
 	}elseif ($text == "удали таблицу пзм") {		
 	
 		$query = "DROP TABLE ".$table5;
@@ -542,16 +462,52 @@ if ($text){
 		
 		
 	}elseif ($text == "удали лот") {		
-	
+		
+		$query = "SELECT format FROM ".$table5." WHERE id=". $id;
+		$result = $mysqli->query($query);
+		$format = $result->fetch_array();
+		
+		if ($format['0']=='video'){
+			$key = $id . ".mp4";
+		}elseif ($format['0']=='photo'){
+			$key = $id . ".jpg";
+		}		
+		
 		$query = "DELETE FROM ".$table5." WHERE id=". $id;				
+		if ($result = $mysqli->query($query)) {					
+			$tg->sendMessage($chat_id, "Удаление из БД совершенно!");								
+		}else $tg->sendMessage($chat_id, "Не получается удалить строку из БД");	
+		
+		$result = $s3->deleteObjects([
+			'Bucket' => $aws_bucket,			
+			'Delete' => [
+				'Objects' => [
+					[
+						'Key' => $key,						
+					],            
+				],				
+			],
+		]);
+		
+		if ($result['@metadata']['statusCode']=='200'){
+			$tg->sendMessage($chat_id, "Удалил лот из Amazon");	
+		}else $tg->sendMessage($chat_id, 'Чего то не получается удалить лот из Amazon');	
+		
+		
+	}elseif ($text == "удали клиента") {		
+	
+		$query = "DELETE FROM ".$table." WHERE id=". $id;				
 		if ($result = $mysqli->query($query)) {					
 			$tg->sendMessage($chat_id, "Удаление совершенно!");								
 		}else $tg->sendMessage($chat_id, "Не получается удалить строки!");	
 		
 		
-	}elseif ($text == "категории") {		
+		
+	}elseif ($text == "Категории"||$text == "категории") {		
 		
 		$tg->sendMessage($chat_id, $spisok);	
+		
+		
 		
 	}elseif ($text == "категория") {		
 		
@@ -565,6 +521,7 @@ if ($text){
 		if ($result = $mysqli->query($query)) {		
 			$tg->sendMessage($chat_id, "Категория {$otdel} установлена");	
 		}else $tg->sendMessage($chat_id, 'Чего то не получается установить категорию');	
+	
 	
 		
 	}elseif ($text == "измени кэпшн") {		
@@ -589,30 +546,36 @@ if ($text){
 	
 		
 		
-	}elseif ($text == "список команд") {		
+	}elseif ($text == "Список команд"||$text == "список команд") {		
 		
 		$tg->sendMessage($chat_id, $spisok_komand);
 		
 		
-	}elseif ($text == "ДЛЯ АДМИНИСТРАЦИИ") {  
+		
+	}elseif ($text == "ДЛЯ АДМИНИСТРАЦИИ"||$text == "админка") {  
 		
 		$tg->sendMessage($chat_id, "Бдя Будь Бдительней", markdown, true, null, $keyboard_Admin);
 		
+		
 			
-	}elseif ($text == "уфь") {		
+	}elseif ($text == "прото") {		
 		
 		$MP->messages->sendMessage(['peer' => '@Ogneyar_ya', 'message' => 'Ваще круто']);	
 		
 		
+		
 	}elseif ($text == "стартМаркет") {			
 		_start_PZMarket_bota($this_admin);			
-	}elseif ($text == "стартГарант") {				
+		
+	}elseif ($text == "стартГарант") {					
 		_start_PZMgarant_bota($this_admin);			
-	}elseif ($text == "стоп") {			
+		
+	}elseif ($text == "Стоп"||$text == "стоп") {			
 		$tg->sendMessage($chat_id, "Хорошо, ты заходи, если шо)", null, true, null, $HideKeyboard);
 	
 	
-	}elseif ($text == "покажи группу медиа") {		
+	
+	}elseif ($text == "Покажи группу медиа") {		
 		
 		$media = new \TelegramBot\Api\Types\InputMedia\ArrayOfInputMedia();
 	
@@ -623,6 +586,8 @@ if ($text){
 			"/zMedia/anima.mp4"));
 
 		$tg->sendMediaGroup($chat_id, $media);
+
+		
 		
 	}elseif ($text == "покажи видео") {		
 		
@@ -630,11 +595,15 @@ if ($text){
 		
 		$tg->sendVideo($chat_id, $video, null, "ttt");
 		
+		
+		
 	}elseif ($text == "покажи стикер") {		
 		
 		$video = 'CAADAgADqgkAAnlc4glW1RzY9rJMLxYE';
 		
 		$tg->sendSticker($chat_id, $video);
+		
+		
 		
 	}elseif ($text == "покажися") {		
 		
@@ -648,12 +617,310 @@ if ($text){
     
 		$bot->run();
 		
-	}elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&$text!=="C") {
-		if ($chat_type=='private') {		
+	}elseif ($text == "кик") {		
+		
+		$tg->kickChatMember('-1001368618561', '1038937592');
+		
+		
+	}elseif ($text == "ограничь") {		
+		
+		
+		//$tg->restrictChatMember($admin_group, $testerbotoff, null, false, false, false, false);
+		
+		$tg->call('restrictChatMember', [
+			'chat_id' => $admin_group,
+            'user_id' => $id,
+            'until_date' => null,
+            'can_send_messages' => false,
+            'can_send_media_messages' => false,
+            'can_send_other_messages' => false,
+            'can_add_web_page_previews' => false
+		]);
+		
+		
+		
+	}elseif ($text == "снять ограничения") {		
+		
+		
+		//$tg->restrictChatMember($admin_group, $testerbotoff, null, true, true, true, true);
+		
+		$tg->call('restrictChatMember', [
+			'chat_id' => $admin_group,
+            'user_id' => $id,
+            'until_date' => null,
+            'can_send_messages' => true,
+            'can_send_media_messages' => true,
+            'can_send_other_messages' => true,
+            'can_add_web_page_previews' => true
+		]);
+		
+		
+		
+	}elseif ($text == "гетЧат") {				
+		
+		$eee=$tg->getChat($admin_group);
+		
+		$reply=Print_r($eee, true);
+		
+		_pechat($reply, '4000'); 		
+		
+		
+		
+	}elseif ($text == "гетЧатАдмин") {				
+		
+		$eee=$tg->getChatAdministrators($admin_group);
+		
+		$reply=Print_r($eee, true);
+		
+		_pechat($reply, '4000'); 				
+		
+		
+		
+	}elseif ($text == "замени все категории") {				
+			
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[0]}' WHERE otdel='Недвижимость'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[1]}' WHERE otdel='Работа'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[2]}' WHERE otdel='Транспорт'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[3]}' WHERE otdel='Услуги'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[4]}' WHERE otdel='Личные вещи'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[5]}' WHERE otdel='Для дома и дачи'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[6]}' WHERE otdel='Бытовая электроника'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[7]}' WHERE otdel='Животные'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[8]}' WHERE otdel='Хобби и отдых'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[9]}' WHERE otdel='Для бизнеса'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[10]}' WHERE otdel='Продукты питания'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");
+		
+		$query = "UPDATE ".$table5." SET otdel='{$DopKnopa[11]}' WHERE otdel='Красота и здоровье'";
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог заменить категорию..");		
+	
+		$tg->sendMessage($chat_id, "Все новые категории установленны");
+		exit('ok');
+		
+		
+	}elseif ($text == "удали лишние лоты") {		
+	
+		$query = "DELETE FROM ".$table5." WHERE id<'200'";				
+		if ($result = $mysqli->query($query)) {					
+			$tg->sendMessage($chat_id, "Удаление совершенно!");								
+		}else $tg->sendMessage($chat_id, "Не получается удалить строки!");	
+		
+		
+	}elseif ($text == "замени у лота дополнение") {				
+	
+		
+		$query = "UPDATE ".$table5." SET doverie='✅PRIZMarket доверяет❗️' WHERE doverie='1'";
+		if ($result = $mysqli->query($query)) {		
+			$tg->sendMessage($chat_id, "Новый номер присвоен");	
+		}else $tg->sendMessage($chat_id, 'Чего то не получается присвоить новый номер');	
+	
+		
+		
+	}elseif ($text == "изменись срочно") {				
+		
+		$query = "ALTER TABLE `pzmarkt` CHANGE `flag` `time` INT( 20 ) NULL DEFAULT NULL";
+		if ($result = $mysqli->query($query)) {		
+			$tg->sendMessage($chat_id, "Всё прекрасно");	
+		}else $tg->sendMessage($chat_id, 'Чего то не получается');	
+		
+				
+		
+	}elseif ($text == "смени время для всех лотов") {		
+				
+		$time = time();
+		$query = "UPDATE ".$table5." SET time='{$time}' WHERE time='0'";
+		if ($result = $mysqli->query($query)) {		
+			$tg->sendMessage($chat_id, "Время присвоено");	
+		}else $tg->sendMessage($chat_id, 'Чего то не получается присвоить новое время');	
+	
+		
+		
+	}elseif ($text == "смени время на 0 у лота") {		
+						
+		$query = "UPDATE ".$table5." SET time='0' WHERE id={$id}";
+		if ($result = $mysqli->query($query)) {		
+			$tg->sendMessage($chat_id, "Время обнулено");	
+		}else $tg->sendMessage($chat_id, 'Чего то не получается обнулить время');	
+	
+		
+		
+	}elseif ($text == "делетись ласт срочно") {				
+		
+		$query = "DELETE FROM ".$table5." WHERE id='805'";	
+		if ($result = $mysqli->query($query)) {		
+			$tg->sendMessage($chat_id, "Удалил лот из БД");	
+		}else $tg->sendMessage($chat_id, 'Чего то не получается удалить лот из БД');	
+		
+		$result = $s3->deleteObjects([
+			'Bucket' => $aws_bucket,			
+			'Delete' => [
+				'Objects' => [
+					[
+						'Key' => '805.jpg',						
+					],            
+				],				
+			],
+		]);
+		
+		if ($result['@metadata']['statusCode']=='200'){
+			$tg->sendMessage($chat_id, "Удалил лот из Amazon");	
+		}else $tg->sendMessage($chat_id, 'Чего то не получается удалить лот из Amazon');	
+			
+		
+		
+	}elseif ($text == "отправь оптом файлы на Амазон") {				
+		
+		
+		$query = "SELECT id, format, file_id FROM ".$table5;
+		if ($result = $mysqli->query($query)) {		
+			$kol = $result->num_rows;
+			if($kol>0){
+		
+				$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+				$schetchik = 0;
+				foreach($arrayResult as $stroka){
+				
+					if ($stroka['format']=='video'){
+						$key = $stroka['id'] . ".mp4";
+					}elseif ($stroka['format']=='photo'){
+						$key = $stroka['id'] . ".jpg";
+					}					
+					
+					$file_id = $stroka['file_id'];
+					
+					// отправка файла на Амазон		
+					$fileObject = $tg->getFile($file_id);		
+					$file_url = $tg->getFileUrl();	
+					$url = $file_url . "/" . $fileObject->getFilePath();
+					
+					$file = file_get_contents($url);
+				  
+					$upload = $s3->putObject([
+						'Bucket' => $aws_bucket,
+						'Key'    => $key, 
+						'Body'   => $file,	
+						'ACL'    => 'public-read'
+					]);			
+					// ---------------------------				
+					
+					if(!$upload) throw new Exception("Не смог отправить файл {$key} на Амазон");				
+					
+					$schetchik++;
+				}	
+				$tg->sendMessage($chat_id, "Отправил на Амазон {$schetchik} файлов!");	
+				exit('ok');
+			}
+		}else throw new Exception("Не смог проверить таблицу ".$table5);
+		//--------------------------------------------------------------	
+	
+	
+		
+		
+	}elseif ($text == "Таблица гарантЧатов"||$text == "чаты"||$text == "Чаты"||$text == "xfns"||$text == "Xfns") {		
+	
+		$query = "SELECT * FROM ".$table6;
+		if ($result = $mysqli->query($query)) {		
+			$sms="Таблица гарантЧатов:\n";
+			if($result->num_rows>0){
+				$arrStrok = $result->fetch_all();				
+				foreach($arrStrok as $arrS){						
+					foreach($arrS as $stroka) $sms.= "| ".$stroka." ";
+					$sms.="|\n";							
+				}				
+					
+				_pechat($sms);
+				
+			}else $tg->sendMessage($chat_id, "пуста таблица \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
+			
+		}else $tg->sendMessage($chat_id, "нема");		
+
+		
+		
+	}elseif ($text == "и1 клиента") {		
+	
+		$query = "ALTER TABLE `garant_users` CHANGE `name` `name` VARCHAR( 200 ) NULL DEFAULT NULL";				
+		if ($result = $mysqli->query($query)) {					
+			$tg->sendMessage($chat_id, "Cовершенно!");								
+		}else $tg->sendMessage($chat_id, "Не получается изменить!");	
+		
+		
+		
+	}elseif ($text == "и2 клиента") {		
+	
+		$query = "ALTER TABLE `garant_users` CHANGE `username` `username` VARCHAR( 100 ) NULL DEFAULT NULL";				
+		if ($result = $mysqli->query($query)) {					
+			$tg->sendMessage($chat_id, "Cовершенно!");								
+		}else $tg->sendMessage($chat_id, "Не получается изменить!");	
+		
+		
+		
+	}elseif ($text == "и3 клиента") {		
+	
+		$query = "ALTER TABLE `garant_users` CHANGE `status` `status` VARCHAR( 20 ) NULL DEFAULT NULL";				
+		if ($result = $mysqli->query($query)) {					
+			$tg->sendMessage($chat_id, "Cовершенно!");								
+		}else $tg->sendMessage($chat_id, "Не получается изменить!");	
+		
+		
+		
+	}elseif ($text == "пол") {		
+	
+		$data = ["aaa","bbb","ccc"];
+		$dataJSON = json_encode($data);
+	
+		$result = $tg->call('sendPoll', [
+			'chat_id' => $admin_group,
+			'question' => 'gghhnnnn',
+			'options' => $dataJSON
+		]);
+		//$tg->sendMessage($master, $data);
+		
+	}elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&&$text!=="C"&&$text !== "Старт"&&$text !== "старт") {
+		if ($arr['message']['reply_to_message']) {  // и если это ответ на сообщение
+
+			include_once 'bot_06_reply.php';					  // то подключается один файл
+
+		}
+		/*
+		elseif ($chat_type=='private') {		
 			$sms=" - БРО -  тыжадмин,".
 			" сделай ему рестарт - /start\n ..и почисть переписку))\n\n(чистить не обязательно)";		
 			$tg->sendMessage($chat_id, $sms);	
 		}
+		*/
+		
 	}
 	
 }

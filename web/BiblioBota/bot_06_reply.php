@@ -1,5 +1,4 @@
 ﻿<?php
-
 // текст сообщения до "."
 $sms = strstr($replyText, '.', true);
 $str = $sms;
@@ -7,7 +6,7 @@ $str = $sms;
 $simbol = substr($sms, -1);
 
 
-if ($simbol=='b') {
+if ($simbol=='b') {  // b - выбор БАНКА
 	$str = substr($sms,0,-1);	
 	
 	$spisok_bankov = substr(strrchr($str, 10), 1);
@@ -22,7 +21,7 @@ if ($simbol=='b') {
 	
 	
 	
-}elseif ($simbol=='g') {
+}elseif ($simbol=='g') {  // g - выбор ГАРАНТА
 	$str = substr($sms,0,-1);	
 	$str.= "\xF0\x9F\x91\xA8\xE2\x80\x8D\xE2\x9A\x96\xEF\xB8\x8F";
 	$str.= " Гарант: " . $text . "\n." . $tehPodderjka . "Чудесно! Всё, заявка готова!".
@@ -32,7 +31,7 @@ if ($simbol=='b') {
 	$tg->deleteMessage($chat_id, $reply_message_id);
 
 
-}elseif ($simbol=='o') {
+}elseif ($simbol=='o') { // o - выбор ОТДЕЛА категории
 	
 	$last = substr(strrchr($sms, 10), 1);	
 	
@@ -50,7 +49,41 @@ if ($simbol=='b') {
 		$tg->sendMessage($chat_id, "Не верный ввод, повтори (в ОТВЕТНОМ сообщении)\n{$id} o.", null, false, null, $forceRep); 
 	}
 	
-}
+}elseif ($simbol=='r') { // r - выбор РЕПЛИКИ отправляемой клиенту
+	
+	$last = substr(strrchr($sms, 10), 1);	
+	
+	$user_id_with_message_id = strstr($last, ' ', true);
+	
+	
+	$user_id = strstr($user_id_with_message_id, ':', true);	
+	$mess_id = substr(strrchr($user_id_with_message_id, ":"), 1);	
+	
+	//$tg->sendMessage($id, $text, null, true);		
+	
+	$tg->call('sendMessage', [
+            'chat_id' => $user_id,
+            'text' => $text,
+            'parse_mode' => null,
+            'disable_web_page_preview' => true,
+            'reply_to_message_id' => $mess_id,
+            'reply_markup' => null,
+            'disable_notification' => false,
+    ]);
+
+	//$tg->sendMessage($chat_id, "отправил", null, true);		
+
+	$tg->call('sendMessage', [
+            'chat_id' => $chat_id,
+            'text' => "отправил",
+            'parse_mode' => null,
+            'disable_web_page_preview' => true,
+            'reply_to_message_id' => null,
+            'reply_markup' => null,
+            'disable_notification' => false,
+    ]);
+	
+}else include_once 'bot_04_body.php';
 
 
 

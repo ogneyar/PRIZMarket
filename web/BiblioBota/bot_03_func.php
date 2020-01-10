@@ -75,8 +75,7 @@ function _CoinMarketCap($id){
 }
 
 function _PricePZM_in_Monet($symbol){
-	
-	
+		
 	if ($symbol=="\xE2\x82\xBD"){
 		$CMCid='2806';
 	}elseif ($symbol=="ETH"){
@@ -118,6 +117,55 @@ function _PricePZM_in_Monet($symbol){
 	
 }	
 
+
+function _kurs_PZM(){	
+
+		$arrayCMC_RUB=json_decode(_CoinMarketCap('2806'), true); 	//  RUB
+		$PriceRUB_in_USD=$arrayCMC_RUB['data']['2806']['quote']['USD']['price'];	
+		$PriceUSD_in_RUB=1/$PriceRUB_in_USD;	
+
+		$arrayCMC_PZM=json_decode(_CoinMarketCap('1681'), true); // PRIZM
+		$PricePZM_in_USD=$arrayCMC_PZM['data']['1681']['quote']['USD']['price'];
+		$PricePZM_in_RUB=$PriceUSD_in_RUB*$PricePZM_in_USD;
+	
+		$arrayCMC_ETH=json_decode(_CoinMarketCap('2'), true); // ETH
+		$PriceETH_in_USD=$arrayCMC_ETH['data']['2']['quote']['USD']['price'];
+		$PriceUSD_in_ETH=1/$PriceETH_in_USD;	
+		$PricePZM_in_ETH=$PricePZM_in_USD*$PriceUSD_in_ETH;
+	
+		$arrayCMC_BTC=json_decode(_CoinMarketCap('1'), true); // BTC
+		$PriceBTC_in_USD=$arrayCMC_BTC['data']['1']['quote']['USD']['price'];
+		$PriceUSD_in_BTC=1/$PriceBTC_in_USD;	
+		$PricePZM_in_BTC=$PricePZM_in_USD*$PriceUSD_in_BTC;
+
+		$Date_PricePZM=$arrayCMC_PZM['data']['1681']['quote']['USD']['last_updated'];
+	
+		$unixDate=strtotime($Date_PricePZM);
+		$Date_PricePZM = gmdate('d.m.Y H:i:s', $unixDate + 3*3600);
+	
+		$Round_PricePZM_in_USD=round($PricePZM_in_USD, 2);
+		$Round_PricePZM_in_RUB=round($PricePZM_in_RUB, 2);
+		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
+		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
+	
+		$reply="Курс PRIZM на [CoinMarketCap:](https://coinmarketcap.com/ru/currencies/prizm/)\n1PZM = ".
+			$Round_PricePZM_in_USD." $\n1PZM = ".$Round_PricePZM_in_RUB.
+			" \xE2\x82\xBD\n1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC\n";
+		$reply.="Данные на ".$Date_PricePZM." МСК";	
+		
+		return $reply;
+/*		
+		$tg->call('sendMessage', [
+            'chat_id' => $chatId,
+            'text' => $reply,
+            'parse_mode' => markdown,
+            'disable_web_page_preview' => true,
+            'reply_to_message_id' => null,
+            'reply_markup' => null,
+            'disable_notification' => false,
+        ]);
+*/
+}
 
 
 
@@ -377,13 +425,15 @@ function _start_PZMarket_bota($this_admin=false) { // функция старт�
 	
 	_est_li_v_base();
 	
-    $reply = "Здравствуйте *" . $first_name . "*! \nДобро пожаловать! \xE2\x9C\x8B\n";
+    $reply = "Здравствуйте " . $first_name . "! \nДобро пожаловать! \xE2\x9C\x8B\n";
 		
-	$tg->sendMessage($chat_id, $reply, markdown);
+	$tg->sendMessage($chat_id, $reply);
 	
 	$reply  = "✅ *PRIZMarket* ❗️ \n\n▪️*PRIZMarket* - место где можно увидеть ".
-		"товары и услуги за PRIZM. {$zakaz}\n\n▪️*Категории* - поиск нужного вам товара ".
-		"или услуги!\n\n▪️*ВЭС* - для тех кто понятия не имеет о PRIZM {$tehPodderjka}";		
+		"товары и услуги за PRIZM. {$zakaz}\n\n▪️*КАТЕГОРИИ товаров* - поиск нужного вам товара ".
+		"или услуги!\n\n▪️*Курс PRIZM* - актуальна инфа с [CoinMarketCap]".
+		"(https://coinmarketcap.com/ru/currencies/prizm/)\n\n▪️*ВЭС* - ".
+		"для тех кто понятия не имеет о PRIZM {$tehPodderjka}";		
 		
 	$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyB);	
 	
@@ -436,7 +486,7 @@ function _start_PZMgarant_bota($this_admin=false) {		// функция стар�
 
 function _est_li_v_base() { // функция проверки есть ли юзер в базе 
 
-	global $table, $chat_id, $first_name, $mysqli, $tg, $admin_group;
+	global $table, $from_id, $first_name, $mysqli, $tg, $admin_group;
 	
 	$est_li_v_base=false;
 	
@@ -445,14 +495,14 @@ function _est_li_v_base() { // функция проверки есть ли ю�
 		if($result->num_rows>0){
 			$arrStrok = $result->fetch_all();				
 			foreach($arrStrok as $arrS){						
-				foreach($arrS as $stroka) if ($stroka==$chat_id) $est_li_v_base=true;				
+				foreach($arrS as $stroka) if ($stroka==$from_id) $est_li_v_base=true;				
 			}												
 		}
 		$last_id = $result->num_rows;				
 	}				
 		
 	if ($est_li_v_base==false) {				
-		$query = "INSERT INTO ".$table." VALUES ('". ++$last_id ."', '". $chat_id ."' , '" . $first_name . "', 'client', '0')";
+		$query = "INSERT INTO ".$table." VALUES ('". ++$last_id ."', '". $from_id ."' , '" . $first_name . "', 'client', '0')";
 		if ($result = $mysqli->query($query)) {		
 			$tg->sendMessage($admin_group, 'Добавлен новый клиент');
 			$est_li_v_base=true;	
@@ -512,7 +562,7 @@ function _this_admin() { // функция проверки есть ли у ю�
 
 
 
-function _pechat($text=null, $max_kol_s = '6666') { // функция печати (разбивание сообщения на части)
+function _pechat($text=null, $max_kol_s = '6500') { // функция печати (разбивание сообщения на части)
 
 	global $chat_id, $tg;
 	
@@ -546,9 +596,12 @@ function _pechat($text=null, $max_kol_s = '6666') { // функция печат
 function _pechat_lotov($chatId, $arrS, $kol, $max) { // функция вывода лотов на экране
 
 	global $tg;
+	
+	$i = $max;
+	
+	for ($schetchik=$kol; $schetchik<=$max; $schetchik++){
 		
-	for ($i=$kol; $i<=$max; $i++){
-						
+		$otdel=$arrS[$i][1];
 		$format=$arrS[$i][2];
 		$file_id=$arrS[$i][3];
 		$url=$arrS[$i][4];
@@ -559,17 +612,19 @@ function _pechat_lotov($chatId, $arrS, $kol, $max) { // функция выво�
 		$caption5=$arrS[$i][9];
 		$doverie=$arrS[$i][10];
 		$podrobno_url=$arrS[$i][11];
-				
+		
+		$otdel = str_replace('_', '\_', $otdel);
 		$caption1 = str_replace('_', '\_', $caption1);
 		$caption2 = str_replace('_', '\_', $caption2);
 		$caption3 = str_replace('_', '\_', $caption3);
 		$caption4 = str_replace('_', '\_', $caption4);
 		$caption5 = str_replace('_', '\_', $caption5);
+		//$doverie = str_replace('_', '\_', $doverie);
 					
-		$caption="{$caption1}\n\n[{$caption2}]({$url})\n".
+		$caption="{$caption1}\n\n{$otdel}\n[{$caption2}]({$url})\n".
 			"{$caption3}\n️{$caption4}\n️{$caption5}";  					
 					
-		if ($doverie=='1') $caption.= "\n\n✅PRIZMarket доверяет❗️";
+		if ($doverie!=='0') $caption.= "\n\n{$doverie}";
 				
 		$inLineBut1=["text"=>"Подробнее","url"=>$podrobno_url];
 		$inLineStr1=[$inLineBut1];
@@ -581,7 +636,9 @@ function _pechat_lotov($chatId, $arrS, $kol, $max) { // функция выво�
 		}elseif ($format=='video') {
 			$tg->sendVideo($chatId, $file_id, null, $caption, null, $keyInLine, false, false, markdown); 
 		}
-				
+			
+		$i--;
+			
 	}	
 	
 }

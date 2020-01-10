@@ -10,8 +10,10 @@ if ($est!==false){
 
 	$reply = $first_name ." не надо сюда ссылки кидать, если я правильно понял, то ".
 		"Вам надо заявку подать, тогда ссыль кидать надо в [ЗаказБот]".
-		"(t.me/Zakaz_prizm_bot) \xF0\x9F\x91\x88 с пометкой 'В БОТ'";		
-	$tg->sendMessage($chat_id, $reply, markdown);
+		"(t.me/Zakaz_prizm_bot) \xF0\x9F\x91\x88 с пометкой 'В БОТ'";	
+	if ($chat_type=='private'||$callbackChat_type=='private'){
+		$tg->sendMessage($chat_id, $reply, markdown);
+	}
 	
 	
 }elseif ($text == $knopa01) {  
@@ -21,10 +23,34 @@ if ($est!==false){
         $tg->sendMessage($chat_id, $reply, markdown, false);	
 		
 			
-}elseif ($text == $knopa02) {		       
+}elseif ($text == $knopa03||($id_bota != '1066944801'&&$id_bota != '1037491432'&&($text == "курс"||$text == "Курс"||$text == "rehc"||$text == "Rehc"))) {  // Курс PRIZM
+			
+	$reply = _kurs_PZM();
+	
+	// КНОПКА Репост
+	$inLine10_but1=["text"=>"Репост","switch_inline_query"=>"курс"];
+	$inLine10_str1=[$inLine10_but1];
+	$inLine10_keyb=[$inLine10_str1];
+	$keyInLine10 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
+	
+	$tg->call('sendMessage', [
+        'chat_id' => $chat_id,
+        'text' => $reply,
+        'parse_mode' => markdown,
+        'disable_web_page_preview' => true,
+        'reply_to_message_id' => null,
+        'reply_markup' => $keyInLine10->toJson(),
+        'disable_notification' => false,
+    ]);
 			
 			
-}elseif ($text == $knopa03) {  //ВЭС
+}elseif ($text == $knopa04) {  // ВЫБОР КАТЕГОРИИ ТОВАРОВ
+		
+        $reply = "\xE2\x9C\x85 Выберите категорию!";         
+		$tg->sendMessage($chat_id, $reply, null, true, null, $keyboard_Kategorii);		
+		
+			
+}elseif ($text == $knopa06) {  //ВЭС
 		
 		$reply = "\xF0\x9F\x94\x97 [Ваша Экономическая Свобода!]".
 			"(http://t.me/PRIZM_world_bot?start=) \xF0\x9F\x91\x88 ".
@@ -39,19 +65,7 @@ if ($est!==false){
 		$tg->sendMessage($chat_id, $reply, markdown, true);
 		
 			
-}elseif ($text == $knopa04) {      
-			
-			
-}elseif ($text == $knopa05) {  // ВЫБОР КАТЕГОРИИ ТОВАРОВ
-		
-        $reply = "\xE2\x9C\x85 Выберите категорию!";         
-		$tg->sendMessage($chat_id, $reply, null, true, null, $keyboard_Kategorii);		
-		
-			
-}elseif ($text == $knopa06) {		       
-			
-			
-}elseif ($text == $knopa07) {
+}elseif ($text == $knopa07) {  //  Разместить объявление в *Категориях*
 
 		$reply = "По шаговая инструкция!";   // \xF0\x9F\x91\xA3       
 		$tg->sendMessage($chat_id, $reply);
@@ -63,50 +77,46 @@ if ($est!==false){
 		$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyboardStep1);
 		
 			
-}elseif ($text == $knopa08) {		        
-		
-		
-}elseif ($text == $knopa09) {	        		
-		
-		
+}elseif ($text == $knopaStep01) {  //Следующий шаг
+	        
+	$reply = "\x32\xE2\x83\xA3 После публикации Вашего поста на канале \n{$PZMarket}".
+			"\n\nОн автоматически окажется в одной из категорий, \xF0\x9F\x91\x87 проверьте.".
+			"\n{$tehPodderjka}";
+	$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyboard_Kategorii);					
+			
 }elseif ($text == $GlavnoeMenu) {  //ГЛАВНОЕ МЕНЮ
 
 	_start_PZMarket_bota($this_admin);   //PZMarketBot		
+	
+	
+	
+	
+/* -----------------------------
+** Пока что отключены эти кнопки
+** ----------------------------- */
 
-	/*		
-		$reply  = "✅ *PRIZMarket* ❗️ \n\n▪️*PRIZMarket* - место где можно увидеть ".
-		"товары и услуги за PRIZM. {$zakaz}\n\n▪️*Категории* - поиск нужного вам товара ".
-		"или услуги!\n\n▪️*ВЭС* - для тех кто понятия не имеет о PRIZM {$tehPodderjka}";		
-		
-		$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyboard);			
-	*/		
-			
-}elseif ($text == $knopaStep01) {  //Следующий шаг
+}elseif ($text == $knopaStep01) {  //Следующий шаг (кнопка старого образца)
 	        
 	$reply = "\x32\xE2\x83\xA3 Скопировать ссылку вашего поста с канала \n{$PZMarket}\n\nи отправить в \xF0\x9F\x91\x89 [ЗаказБот](https://t.me/Zakaz_prizm_bot?start=) \n\nс пометкой *в бот* указав  категорию (просто напишите название) где должен отображаться ваш пост.\n{$tehPodderjka}";
         		
-	$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyboardStep2);		
-			
+	$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyboardStep2);					
 			
 }elseif ($text == $knopaStep2_01) {  //подключение видео...	
-
-/*
-	$file_id="AAQCAAPfAwACanNQS3It-FiCpPZwYWnxDgAEAQAHbQADZjAAAhYE";
-	$reply = "Зырь)))({$tehPodderjka}";	
-	$tg->sendVideo($chat_id, $file_id); //, "71", $reply, null, $keyboardStep3, false, false, markdown
-*/
 
 	$media = new \TelegramBot\Api\Types\InputMedia\ArrayOfInputMedia();
 	
 	$media->addItem(new TelegramBot\Api\Types\InputMedia\InputMediaVideo($_SERVER['HTTP_HOST'].
 		"/zMedia/zayavka.mp4"));
 
-	$tg->sendMediaGroup($chat_id, $media);
-		
+	$tg->sendMediaGroup($chat_id, $media);		
 		
 	$tg->sendMessage($chat_id, $tehPodderjka, markdown, true, null, $keyboardStep3);
 
-
+/* ------------------------------
+**
+** ------------------------------ */
+	
+	
 	
 	
 }elseif (($text == $DopKnopa[0]) || ($text == $DopKnopa[1]) || ($text == $DopKnopa[2]) || ($text == $DopKnopa[3]) || ($text == $DopKnopa[4]) || ($text == $DopKnopa[5]) || ($text == $DopKnopa[6]) || ($text == $DopKnopa[7]) || ($text == $DopKnopa[8]) || ($text == $DopKnopa[9]) || ($text == $DopKnopa[10]) || ($text == $DopKnopa[11])) {
@@ -118,9 +128,9 @@ if ($est!==false){
 		
 			$arrStrok = $result->fetch_all();					
 			
-			if ($kol>$limit){
-							
-				//foreach($arrStrok as $arrS){	
+			$arrStrok = array_reverse($arrStrok);
+			
+			if ($kol>$limit){		
 				
 				_pechat_lotov($chat_id, $arrStrok, 0, --$limit);
 				
@@ -147,28 +157,46 @@ if ($est!==false){
 	}else throw new Exception("Не получилось подключиться к таблице {$table5}");		
 		
 			
-}elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&$text!=="C") {
+}elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&&$text!=="C"&&$text !== "Старт"&&$text !== "старт") {
 
-	if ($this_admin==true) {
+	if (($this_admin==true)||($from_id==$master)) {
 		include 'bot_10_admin.php';
 	}else{
-	
-		$reply = "Я *не пойму* эту команду. \xF0\x9F\x98\xB3\nВозможно из-за ОБНОВЛЕНИЯ меня (бота) произошло недопонимание. \n" . $first_name . ", попробуйте нажать /start";
+		if ($chat_type=='private'||$callbackChat_type=='private') { 
+			$reply = "Я не пойму эту команду. \xF0\x9F\x98\xB3\nВозможно из-за ОБНОВЛЕНИЯ меня ".
+				"(бота) произошло недопонимание. \n" . $first_name . ", попробуйте нажать /start";
 		
-		$tg->sendMessage($chat_id, $reply, markdown);		
+			$tg->sendMessage($chat_id, $reply);		
+		}
 		
 	}
 }
 
 
-if (($text)&&($this_admin==false)){
+if (($text)&&($this_admin==false)&&($chat_id!==$master)){
+
 	//ОТПРАВКА ИФОРМАЦИИ О СООБЩЕНИИ В ГРУППУ 
-	$reply = $first_name . "({$chat_id}) пишет:\n*" . $text . "*\n\xF0\x9F\x91\x89 @" . $user_name;
-	$tg->sendMessage($admin_group, $reply, markdown, true);
+
+	$reply = $first_name . " (@{$user_name}) пишет:\n" . $text . "\n". $chat_id . ":" . $message_id . " r.";
+	
+	$tg->call('sendMessage', [
+            'chat_id' => $admin_group,
+            'text' => $reply,
+            'parse_mode' => null,
+            'disable_web_page_preview' => true,
+            'reply_to_message_id' => null,
+            'reply_markup' => null,
+            'disable_notification' => false,
+    ]);
+	
 }
 
 
+
 //$tg->deleteMessage($chat_id, $message_id);
+
+
+
 
 	
 ?>
