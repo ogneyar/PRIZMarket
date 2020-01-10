@@ -1,14 +1,14 @@
 {  
   "require" : {	
 	"php": "^7.3.0",
-    "telegram-bot/api": "^2.3",		
-    "phpmailer/phpmailer": "dev-master",
-    "aws/aws-sdk-php": "~3.0",
+	"telegram-bot/api": "^2.3",		
+	"phpmailer/phpmailer": "dev-master",
+	"aws/aws-sdk-php": "~3.0",
 	"mobiledetect/mobiledetectlib" : "^2.8",
 	"memcachier/php-memcache-sasl": ">=1.0.1"
   },
   "require-dev": {
-    "heroku/heroku-buildpack-php": "*"
+    	"heroku/heroku-buildpack-php": "*"
   },
   "minimum-stability": "dev"
 }
