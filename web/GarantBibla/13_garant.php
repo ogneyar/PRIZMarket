@@ -17,14 +17,9 @@ $sms = substr($callbackText,0,-$kol);
 // текст сообщения после "." - номер заказа
 $id_message =  substr(strrchr($kod, '.'), 1); // данные о номере заказа
 
-$kod2 = strstr($kod, '.', true);
-	
-$id_client =  substr(strrchr($kod2, ':'), 1); // айди клиента
-	
+$kod2 = strstr($kod, '.', true);	
+$id_client =  substr(strrchr($kod2, ':'), 1); // айди клиента	
 $id_message_chat =  strstr($kod, ':', true);
-
-
-
 
 
 
@@ -59,12 +54,9 @@ if ($callbackQuery=="otklon"||$callbackQuery=="prinyat") {
 			$chat_obmennik = $arrayResult[0]['id_chat'];
 			
 		}else exit('ok');
-	}
-	
+	}	
 	
 }
-
-
 
 
 	
@@ -91,14 +83,14 @@ if ($callbackQuery=="otklon") {
 		$tg->editMessageText($chat_obmennik, $id_message_chat, $sms."\nЗАЯВКА ОТКЛОНЕНА");
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Не смог изменить сообщение...\n".
-			$e->getCode()." ".$e->getMessage());	
+			$except.$e->getCode()." ".$e->getMessage());	
 	}		
 	
 	try{
 		$tg->deleteMessage($id_client, $id_message);				
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
-			$e->getCode()." ".$e->getMessage());	
+			$except.$e->getCode()." ".$e->getMessage());	
 	}	
 
 		
@@ -129,7 +121,7 @@ if ($callbackQuery=="otklon") {
 		$tg->deleteMessage($id_client, $id_message);		
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
-			$e->getCode()." ".$e->getMessage());	
+			$except.$e->getCode()." ".$e->getMessage());	
 	}	
 		
 		

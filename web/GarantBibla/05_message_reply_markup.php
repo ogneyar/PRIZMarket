@@ -102,7 +102,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['callback_data'
 		$tg->editMessageText($id_client, $id_message, $str, markdown);		
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог изменить сообщение...\n".
-			$e->getCode()." ".$e->getMessage());
+			$except.$e->getCode()." ".$e->getMessage());
 		$tg->sendMessage($id_client, $str, markdown);
 		$tg->deleteMessage($id_client, $id_message);		
 	}
