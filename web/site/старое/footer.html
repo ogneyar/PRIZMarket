@@ -1,0 +1,52 @@
+﻿<center>
+
+<div>		
+	<h4>Размещение постов абсолютно БЕЗОПЛАТНО! Только 1 лот 1 раз в сутки безОплатно<br>
+		<br><font color="red"><b>!Поддержать проект!</b></font><br><br>
+		Кошелёк:	<br>
+
+	<input class="pub_key" type="text" value="PRIZM-UFSC-9S49-ESJX-79N7S" id="myInput1">	
+	<br>
+	</h4>
+</div>
+
+<div class="tooltip">
+	<button class="button" onclick="myFunction('myInput1', 'myTooltip1')" onmouseout="outFunc('myTooltip1')">
+		<span class="tooltiptext" id="myTooltip1">Копировать кошелёк в буфер</span>
+		Копировать
+	</button>
+</div>
+
+<div>		
+	<h4>	
+		Публичный ключ: <br>
+
+	<input class="pub_key" type="text" value="11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c" id="myInput2">
+	<br>	
+	</h4>	
+</div>
+
+<div class="tooltip">
+	<button class="button" onclick="myFunction('myInput2', 'myTooltip2')" onmouseout="outFunc('myTooltip2')">
+		<span class="tooltiptext" id="myTooltip2">Копировать ключ в буфер</span>
+		Копировать
+	</button>
+</div>
+
+</center><br>
+
+<script>
+function myFunction(myInput, myTooltip) {
+  var copyText = document.getElementById(myInput);
+  copyText.select();
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById(myTooltip);
+  tooltip.innerHTML = "Скопировал: " + copyText.value;
+}
+
+function outFunc(myTooltip) {
+  var tooltip = document.getElementById(myTooltip);
+  tooltip.innerHTML = "Копировать в буфер";
+}
+</script>			
