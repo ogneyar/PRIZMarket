@@ -148,15 +148,15 @@ if ($callbackQuery=="otklon") {
 
 		$est_li_v_gruppe = _est_li_v_gruppe();
 		
-		if ($est_li_v_gruppe) {		
+		if ($est_li_v_gruppe) {					
 			
-			$tg->sendMessage($est_li_v_gruppe, "Появился потенциальный покупатель!\n".
-				"@".$callback_user_name);
+			$reply = "Появился потенциальный покупатель!\n".
+				"@".$callback_user_name."\nна эту заявку \xF0\x9F\x91\x87\n\n";
 			
 			$inLineKey_menu = [[["text"=>"Принять заявку","callback_data"=>"prinyal_zayavku_admin"]]];
 			$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 			
-			$tg->sendMessage($est_li_v_gruppe, $callbackText, null, true, null, $keyInLine);
+			$tg->sendMessage($est_li_v_gruppe, $reply.$callbackText, null, true, null, $keyInLine);
 			
 			
 			$tg->answerCallbackQuery($callbackQueryId, "Информация отправленна администратору!");
