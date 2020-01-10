@@ -1,15 +1,8 @@
 ﻿<?php
-include_once '../vendor/autoload.php';
-	
+include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
-	
-// Мастер это Я
-$master='351009636';
-	
-//TOKEN NaHerokuBota
-$token='983003157:AAFT2RsLpFdKLjb7qeo12t8EPDus6-TB6YI';
 
-$tg = new \TelegramBot\Api\BotApi($token);
+$tg = new \TelegramBot\Api\BotApi($tokenMARKET);
 
 $credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
 	
