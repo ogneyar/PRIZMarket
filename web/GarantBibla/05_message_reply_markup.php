@@ -38,7 +38,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['callback_data'
 			
 			$valuta = $arrStrok[0][5];
 			
-			$query = "INSERT INTO ".$table4." VALUES ('". $arrStrok[0][0] ."', '". $arrStrok[0][1] ."', '" . $arrStrok[0][2] . "', '".$arrStrok[0][3]."', '".$arrStrok[0][4]."', '".$arrStrok[0][5]."', '".$arrStrok[0][6]."', '".$arrStrok[0][7]."', '".$arrStrok[0][8]."', '".$arrStrok[0][9]."')";
+			$query = "INSERT INTO ".$table4." VALUES ('". $arrStrok[0][0] ."', '". $arrStrok[0][1] ."', '" . $arrStrok[0][2] . "', '".$arrStrok[0][3]."', '".$arrStrok[0][4]."', '".$arrStrok[0][5]."', '".$arrStrok[0][6]."', '".$arrStrok[0][7]."', '".$arrStrok[0][8]."', '".$arrStrok[0][9]."', '".$chat_id."', '".$chat_garant."', '@".$user_name."')";
 			$mysqli->query($query);	
 
 			$query = "DELETE FROM ".$table3." WHERE id_client=" . $id_client;				
