@@ -447,7 +447,7 @@ function _est_li_v_base() { // функция проверки есть ли ю�
 	}				
 		
 	if ($est_li_v_base==false) {				
-		$query = "INSERT INTO ".$table." VALUES ('". $from_id ."', '" . $first_name . "', '". $user_name ."', 'client', '0')";
+		$query = "INSERT INTO ".$table." VALUES ('". $from_id ."', '" . $first_name . "', '@". $user_name ."', 'client', '0')";
 		if ($result = $mysqli->query($query)) {		
 			$tg->sendMessage($admin_group, 'Добавлен новый клиент '.$first_name);
 			$est_li_v_base=true;	
@@ -576,39 +576,35 @@ function _est_li_v_gruppe() { // функция проверки есть ли �
 function _proverka_zakaza($zakaz = null) { // функция проверки есть ли юзер в группе 
 
 	global $table6, $from_id, $first_name, $user_name, $mysqli,
-			$tg, $admin_group, $chat_id;
+			$tg, $chat_id;
 
 	if ($zakaz==null) exit('ok');
 	
-	$query = "SELECT id_admin_group FROM ". $table6 . " WHERE id_chat=".$chat_id; 
-	if ($result = $mysqli->query($query)) {					
-		if($result->num_rows>0){
-			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
-		}
-	}
+	$est_li_v_gruppe = false;
 	
-	$est_li_v_gruppe = false;	
-		
-	$query = "SELECT id_admin_group FROM ". $table6 . " WHERE id_chat=".$chat_id; 
+	$query = "SELECT id_chat, id_admin_chat FROM ". $table4 . " WHERE id_zakaz=".$zakaz; 
 	if ($result = $mysqli->query($query)) {					
 		if($result->num_rows>0){
-			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+			$strZakaz = $result->fetch_all(MYSQLI_ASSOC);		
+			
+			$chat_group = $strZakaz[0]['id_chat'];			
 			
 			$result = $tg->call('getChatMember',
 				[
-					'chat_id' => $chat_id,
+					'chat_id' => $chat_group,
 					'user_id' => $from_id
 				]
 			);
 			
 			if ($result['status']=="member"||$result['status']=="creator"||$result['status']=="administrator"){
 				if ($result['user']['username']) {
-					$est_li_v_gruppe = $arrayResult[0]['id_admin_group'];
-				}else $tg->answerCallbackQuery($callbackQueryId, "У Вас отсутствует username!");	
-			}else $tg->answerCallbackQuery($callbackQueryId, "Вы не являетесь участником чата!");
-					
-		}else $tg->answerCallbackQuery($callbackQueryId, "Такого чата в базе нет!");	
-	}				
+					$est_li_v_gruppe = $strZakaz[0]['id_admin_chat'];
+				}else $tg->call('sendMessage', ['chat_id' => $chat_id,'text' => "У Вас отсутствует username!"]);	
+			}else $tg->call('sendMessage', ['chat_id' => $chat_id,'text' => "Вы не являетесь участником чата!"]);
+			
+		}else $tg->call('sendMessage', ['chat_id' => $chat_id,'text' => "Такого заказа в базе нет!"]);
+	}
+	
 	//если есть в группе, то возвращает айди группы АДМИНИСТРИРОВАНИЯ
 	//если нет, то false
 	return $est_li_v_gruppe; 

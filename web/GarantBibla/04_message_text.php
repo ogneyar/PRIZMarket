@@ -47,14 +47,26 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	
 	_est_li_v_base();
 	
-	//$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
+	$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
 	
 	if ($est_li_v_gruppe) {					
 			
+		$query = "SELECT * FROM ". $table4 . " WHERE id_zakaz=".$nomerZayavki; 
+		if ($result = $mysqli->query($query)) {					
+			if($result->num_rows>0){
+				$strZakaz = $result->fetch_all(MYSQLI_ASSOC);			
+			}
+		}
+		
 		$reply = "Появился потенциальный покупатель!\n".
-			"@".$user_name."\nна эту заявку \xF0\x9F\x91\x87\n\n";
+			"@".$user_name."\nна эту заявку \xF0\x9F\x91\x87\n\n";				
 		
-		
+		$reply.= "\xF0\x9F\x97\xA3 #".$strZakaz[0]['vibor']."\n".
+			"\n\xF0\x9F\x92\xB0 " .$strZakaz[0]['kol_monet']. " ".$strZakaz[0]['monet']."\n".
+"\xF0\x9F\x92\xB8 ".$strZakaz[0]['cena']." ".$strZakaz[0]['valut']." (".$strZakaz[0]['itog'].")\n".
+			"\xF0\x9F\x8F\xA6 ".$strZakaz[0]['bank']."\n".
+			"\xF0\x9F\x91\xA4 ".$strZakaz[0]['client_username']."\n\n".
+			"Заказ номер: ".$nomerZayavki;		
 			
 		$inLineKey_menu = [[["text"=>"Принять заявку","callback_data"=>"prinyal_zayavku_admin"]]];
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
