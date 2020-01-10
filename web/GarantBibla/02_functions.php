@@ -584,7 +584,8 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 	if ($result = $mysqli->query($query)) {					
 		if($result->num_rows>0){
 			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
-	
+		}
+	}
 	
 	$est_li_v_gruppe = false;	
 		
