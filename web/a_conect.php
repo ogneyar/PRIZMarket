@@ -15,5 +15,8 @@
 	$tokenGARANT = getenv('TOKEN_GARANT');
 	
 	$master = getenv('MASTER');
+	$admin_group_market = getenv('ADMIN_GROUP_MARKET');
+	// Группа для тестирования бота (Тестрование Ботов)
+	$test_group = getenv('TEST_GROUP');
 	
 ?>

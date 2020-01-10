@@ -1,20 +1,16 @@
 ﻿<?php 
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
-
 //exit('ok');
+$token = $tokenMARKET;
+$tg = new \TelegramBot\Api\BotApi($token);
 
-$tg = new \TelegramBot\Api\BotApi($tokenMARKET);
-
-$id_bota = '983003157';
+$id_bota = strstr($token, ':', true);	
 $obsujdaem_bot_group = '-1001413152703';
 
 // Группа администрирования бота (Админка)
-$admin_group = '-1001311775764';
-// Группа для тестирования бота (Тестрование Ботов)
-$admin_group_test = '-362469306'; 
+$admin_group = $admin_group_market;
 
-$testerbotoff = '1038937592';
 $channel='-1001368618561';  // Канал ТестерБотофф
 
 if ($_GET['privet']) {
