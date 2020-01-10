@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
 
@@ -12,8 +12,7 @@ $id_bota = '1066944801';
 $admin_group = '-1001306245472';
 // Группа для тестирования бота (Тестрование Ботов)
 $admin_group_test = '-362469306'; 
-// Мастер это Я
-$master='351009636';
+
 $testerbotoff = '1038937592';
 $channel='-1001368618561';  // Канал ТестерБотофф
 
