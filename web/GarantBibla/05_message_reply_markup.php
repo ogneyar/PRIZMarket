@@ -85,7 +85,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['callback_data'
 		
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Не смог удалить сообщение... \nномер строки: ".
-			$except.$e->getCode()." ".$e->getMessage());	
+			__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
 	}	
 	
 
