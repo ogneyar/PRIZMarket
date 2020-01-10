@@ -5,7 +5,7 @@
 if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
 if ($nomerZayavki) {
 	$text = "ПоявилсяПокупатель";
-	$tg->call('sendMessage',['chat_id'=>$chat_id,'text'=>$nomerZayavki]);
+	//$tg->call('sendMessage',['chat_id'=>$chat_id,'text'=>$nomerZayavki]);
 }
 
 if ($text == "Курс чата"||$text == "курс чата") {  // Курс PRIZM
@@ -47,7 +47,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	
 	_est_li_v_base();
 	
-	$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
+	//$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
 	
 	if ($est_li_v_gruppe) {					
 			
