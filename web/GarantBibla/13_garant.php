@@ -125,8 +125,7 @@ if ($callbackQuery=="otklon") {
 	}	
 		
 	$user = $tg->getMe();
-	$bot_username = $user->getUsername();
-	//$bot_username = $user->username;
+	$bot_username = $user->getUsername();	
 		
 	//$inLineKey_menu = [[["text"=>"КуплюПродам","callback_data"=>"kuplu_prodam"]]];
 	$inLineKey_menu = [[["text"=>"КуплюПродам","url"=>"t.me/".$bot_username."?start=".$id_message]]];
