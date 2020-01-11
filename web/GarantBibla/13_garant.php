@@ -188,19 +188,15 @@ if ($callbackQuery=="otklon") {
 */
 }elseif ($callbackQuery=="prinyal_zayavku_admin") { 
 
-	$chat_garant = $callbackChatId;
-	
-	$chat_obmennik;
-	$id_pokupatelya;	
-	$id_zakaza;		
-	$id_posta;	
-	$id_client;
+	$chat_garant = $callbackChatId;	
 	
 	$query = "SELECT flag_isp FROM ". $table4 . " WHERE id_zakaz=".$id_zakaza; 
 	if ($result = $mysqli->query($query)) {					
 		if($result->num_rows>0){
 			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
-			if ($arrayResult[0]['flag_isp']!=='0') exit('ok');	
+			if ($arrayResult[0]['flag_isp']!=='0') {
+				$tg->answerCallbackQuery($callbackQueryId, "Заявка уже занята!");	
+			}
 		}else exit('ok');
 	}else exit('ok');
 	
@@ -209,8 +205,21 @@ if ($callbackQuery=="otklon") {
 		$tg->editMessageText($chat_garant, $callbackMessageId, $callbackText.
 			"\n\nЗаявка ЗАРЕЗЕРВИРОВАНА\nГарант: @".$callback_user_name);
 	}else exit('ok');
-
 	
+	$tg->sendMessage($id_pokupatelya, "Ваш гарант: @".$callback_user_name.
+		"\nнапишите ему в личку, нажав на эту ссылку, он ожидает Вас!");
+	
+	$tg->sendMessage($id_client, "Появился покупатель на Вашу заявку.\n\nВаш гарант: @".
+		$callback_user_name."\nнапишите ему в личку, нажав на эту ссылку, он ожидает Вас!");
+
+	$tg->answerCallbackQuery($callbackQueryId, "Ожидайте, клиенты уведомлены!", true);
+
+	try{
+		$tg->editMessageReplyMarkup($chat_obmennik, $id_posta);
+	}catch(Exception $e){
+		$tg->sendMessage($master, "Выброшен эксцепшн..\nна линии - ".__LINE__."\n".__FILE__);
+	}
+
 
 }
 	
