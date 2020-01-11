@@ -24,6 +24,10 @@ if ($text=='/setting'){
 if ($new_chat_part_id=='1037491432'||$new_chat_part_id=='1066944801') {
 	include_once '12_addInGroup.php';	
 }
+// при удалении ГарантБота из группы подключается файл..
+if ($left_chat_part_id=='1037491432'||$left_chat_part_id=='1066944801') {
+	include_once '14_delInGroup.php';	
+}
 
 // Обработчик исключений
 set_exception_handler('exception_handler');
