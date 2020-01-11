@@ -5,8 +5,8 @@
 if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
 if ($nomerZayavki) {
 	$text = "ПоявилсяПокупатель";
-	$id_message_chat =  strstr($nomerZayavki, ':', true);
-	$id_zakaza =  substr(strrchr($nomerZayavki, ':'), 1);
+//	$id_message_chat =  strstr($nomerZayavki, ':', true);
+//	$id_zakaza =  substr(strrchr($nomerZayavki, ':'), 1);
 }
 
 
@@ -67,7 +67,8 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 			"\xF0\x9F\x92\xB8 ".$strZakaz[0]['cena']." ".$strZakaz[0]['valut'].
 				" (".$strZakaz[0]['itog'].")\n".
 			"\xF0\x9F\x8F\xA6 ".$strZakaz[0]['bank']."\n".
-			"\xF0\x9F\x91\xA4 ".$strZakaz[0]['client_username']."\n\n".$nomerZayavki;		
+			"\xF0\x9F\x91\xA4 ".$strZakaz[0]['client_username']."\n\n".
+			$nomerZayavki."-".$from_id;		
 			
 		$inLineKey_menu = [[["text"=>"Принять заявку","callback_data"=>"prinyal_zayavku_admin"]]];
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
