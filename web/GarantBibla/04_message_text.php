@@ -5,8 +5,8 @@
 if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
 if ($nomerZayavki) {
 	$text = "ПоявилсяПокупатель";
-//	$id_message_chat =  strstr($nomerZayavki, ':', true);
-//	$id_zakaza =  substr(strrchr($nomerZayavki, ':'), 1);
+	$id_message_chat =  strstr($nomerZayavki, '-', true);
+	$id_zakaza =  substr(strrchr($nomerZayavki, '-'), 1);
 }
 
 
@@ -53,7 +53,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	
 	if ($est_li_v_gruppe) {					
 			
-		$query = "SELECT * FROM ". $table4 . " WHERE id_zakaz=".$nomerZayavki; 
+		$query = "SELECT * FROM ". $table4 . " WHERE id_zakaz=".$id_zakaza; 
 		if ($result = $mysqli->query($query)) {					
 			if($result->num_rows>0){
 				$strZakaz = $result->fetch_all(MYSQLI_ASSOC);			
@@ -68,7 +68,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 				" (".$strZakaz[0]['itog'].")\n".
 			"\xF0\x9F\x8F\xA6 ".$strZakaz[0]['bank']."\n".
 			"\xF0\x9F\x91\xA4 ".$strZakaz[0]['client_username']."\n\n".
-			$nomerZayavki."-".$from_id;		//
+			$from_id.":".$nomerZayavki.".".$strZakaz[0]['id_client'];	
 			
 		$inLineKey_menu = [[["text"=>"Принять заявку","callback_data"=>"prinyal_zayavku_admin"]]];
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
