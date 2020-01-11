@@ -20,7 +20,7 @@ if ($_GET['privet']) {
 }
 
 // ФЛАГ ДЛЯ ВКЛЮЧЕНИЯ РЕЖИМА ОТЛАДКИ БОТА
-$OtladkaBota = 'да';
+//$OtladkaBota = 'да';
 
 $credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
 	
