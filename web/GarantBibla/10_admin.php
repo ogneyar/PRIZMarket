@@ -17,52 +17,6 @@ if (($smeni!==false)||($pokaj!==false)||($kl!==false)||($hz!==false)||($hzz!==fa
 }
 
 
-
-/*
-**
-**--------------------------------------------------
-** обработка inline_query <- ответных сообщений!
-**--------------------------------------------------
-**
-*/
-if ($arr['inline_query']) {	// репост админом заявки клиента: "куплю/продам монету!"
-	
-	$query = "SELECT * FROM ".$table4." WHERE id_zakaz=".$inline_query;
-	if ($result = $mysqli->query($query)){	
-	  if($result->num_rows>0){		
-		$arrStrok = $result->fetch_all();				
-		
-		$zayavka="\xF0\x9F\x97\xA3 ".$arrStrok[0][2]."\n".
-			"\xF0\x9F\x92\xB0 ".$arrStrok[0][4]." ".$arrStrok[0][3]."\n".
-			"\xF0\x9F\x92\xB8 ".$arrStrok[0][6]." ".$arrStrok[0][5]." (".$arrStrok[0][7].")\n".
-			"\xF0\x9F\x8F\xA6 ".$arrStrok[0][8];		
-			
-		$title="Вставьте пост.";
-		$jmi="\xF0\x9F\x97\xA3 ".$arrStrok[0][2]."\n".
-			"\xF0\x9F\x92\xB0 ".$arrStrok[0][4]." ".$arrStrok[0][3];
-		
-		
-		
-		//ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК клавиатуры        АДМИНИСТРИРОВАНИЕ
-		$inLine11_but1=["text"=>"Ссыль","url"=>"https://t.me/Secure_deal_PZM/5"];
-		$inLine11_str1=[$inLine11_but1];
-		$inLine11_keyb=[$inLine11_str1];
-		$keyInLine11 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine11_keyb);
-		
-		$inputText = new \TelegramBot\Api\Types\Inline\InputMessageContent\Text($zayavka);		
-				
-		
-		$queryArticle = new \TelegramBot\Api\Types\Inline\QueryResult\Article($inline_query_from_id, $title, $jmi, null,null,null, $inputText, $keyInLine11);		
-		$res=[$queryArticle];				
-		$tg->answerInlineQuery($inline_query_id, $res);			
-			
-	  }	
-	}	
-	exit('ok');
-}
-
-
-
 /*
 **
 **      +------------------------------------+
@@ -168,7 +122,7 @@ if ($text){
 		
 	}elseif (($text == "бан")&&($id)) {		
 		
-		$query = "UPDATE ".$table." SET flag='1' WHERE id=".$id;
+		$query = "UPDATE ".$table." SET flag='1' WHERE id_client=".$id;
 		if ($result = $mysqli->query($query)) {		
 			$tg->sendMessage($chat_id, "Клиент добавлен в бан");	
 		}else $tg->sendMessage($chat_id, 'Чего то не получается добавить клиента в бан');	
@@ -176,7 +130,7 @@ if ($text){
 		
 	}elseif (($text == "унбан")&&($id)) {		
 		
-		$query = "UPDATE ".$table." SET flag='0' WHERE id=".$id;
+		$query = "UPDATE ".$table." SET flag='0' WHERE id_client=".$id;
 		if ($result = $mysqli->query($query)) {		
 			$tg->sendMessage($chat_id, "Клиент убран из бана");	
 		}else $tg->sendMessage($chat_id, 'Чего то не получается убрать клиента из бана');	
@@ -203,14 +157,6 @@ if ($text){
 	}elseif ($text == "удали строки в таблице обз") {		
 	
 		$query = "DELETE FROM ".$table4." WHERE id_zakaz>0";				
-		if ($result = $mysqli->query($query)) {					
-			$tg->sendMessage($chat_id, "Удаление совершенно!");								
-		}else $tg->sendMessage($chat_id, "Не получается удалить строки!");	
-		
-		
-	}elseif ($text == "удали первую строку в таблице чаты") {		
-	
-		$query = "DELETE FROM ".$table6." WHERE id_garant=".$master;				
 		if ($result = $mysqli->query($query)) {					
 			$tg->sendMessage($chat_id, "Удаление совершенно!");								
 		}else $tg->sendMessage($chat_id, "Не получается удалить строки!");	
@@ -306,33 +252,6 @@ if ($text){
 		}else $tg->sendMessage($chat_id, "нема");		
 
 		
-		
-	}elseif ($text == "изменися") {		
-		
-		$query = "ALTER TABLE `chat_garant` CHANGE `id_chat` `id_chat` INT( 50 ) NULL DEFAULT NULL";
-		if ($result = $mysqli->query($query)) {		
-			$tg->sendMessage($chat_id, "оке");	
-		}else $tg->sendMessage($chat_id, 'фукак');	
-		
-		
-	}elseif ($text == "напишисяися") {		
-		
-		$query = "SELECT id_chat FROM ". $table6 . " WHERE id_garant='351009636'"; 
-		if ($result = $mysqli->query($query)) {					
-			if($result->num_rows>0){
-				$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
-				$tg->sendMessage($arrayResult[0]['id_chat'], "Frfgekmrtj");	
-			}
-		}
-	
-		
-	}elseif ($text == "наися") {		
-	
-		$query = "ALTER TABLE `obrabotka_zayavok` ADD `id_chat` BIGINT( 20 ) NULL DEFAULT NULL , ADD `id_admin_chat` BIGINT( 20 ) NULL DEFAULT NULL , ADD `client_username` VARCHAR( 20 ) NULL DEFAULT NULL"; 
-		if ($result = $mysqli->query($query)) {					
-			$tg->sendMessage($chat_id, "Всё впорядке!");			
-		}else $tg->sendMessage($chat_id, "НЕ всё впорядке!");	
-	
 		
 	}elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&&$text!=="C"&&$text !== "Старт"&&$text !== "старт") {
 		if ($arr['message']['reply_to_message']) {  // и если это ответ на сообщение
