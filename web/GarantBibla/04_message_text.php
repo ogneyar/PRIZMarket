@@ -68,7 +68,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 				" (".$strZakaz[0]['itog'].")\n".
 			"\xF0\x9F\x8F\xA6 ".$strZakaz[0]['bank']."\n".
 			"\xF0\x9F\x91\xA4 ".$strZakaz[0]['client_username']."\n\n".
-			$nomerZayavki."-".$from_id;		
+			$from_id;		//$nomerZayavki."-".
 			
 		$inLineKey_menu = [[["text"=>"Принять заявку","callback_data"=>"prinyal_zayavku_admin"]]];
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
