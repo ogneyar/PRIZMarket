@@ -8,23 +8,45 @@
 **
 */
 
-
 $kod = substr(strrchr($callbackText, 10), 1);  // код с id клиента приславшего заказ и номером заказа
-	
+
 $kol=strlen($kod);
-$sms = substr($callbackText,0,-$kol);	
+$sms = substr($callbackText,0,-$kol);
 
-// текст сообщения после "." - номер заказа
-$id_message =  substr(strrchr($kod, '.'), 1); // данные о номере заказа
+if ($callbackQuery!=='prinyal_zayavku_admin'){			
 
-$kod2 = strstr($kod, '.', true);	
-$id_client =  substr(strrchr($kod2, ':'), 1); // айди клиента	
-$id_message_chat =  strstr($kod, ':', true);
+	// текст сообщения после "." - номер заказа
+	$id_message =  substr(strrchr($kod, '.'), 1); // данные о номере заказа
+
+	$kod2 = strstr($kod, '.', true);	
+	$id_client =  substr(strrchr($kod2, ':'), 1); // айди клиента	
+	$id_message_chat =  strstr($kod, ':', true);
+
+}else {				
+
+	// текст сообщения после "-" 
+	// номер заказа и айди покупателя
+	$id_zakaza_i_pokupatelya =  substr(strrchr($kod, '-'), 1); 
+	
+	// текст сообщения перед "-" 
+	// айди клиента и номер поста в чате
+	$id_clienta_i_posta = strstr($kod, '-', true);
+	
+	// текст после "." - айди покупателя
+	$id_pokupatelya =  substr(strrchr($id_zakaza_i_pokupatelya, '.'), 1);
+	// текст перед "." - номер заказа
+	$id_zakaza = strstr($id_zakaza_i_pokupatelya, '.', true);
+	
+	// текст после ":" - номер поста в чате
+	$id_posta=  substr(strrchr($id_clienta_i_posta, ':'), 1);
+	// текст перед ":" - айди клиента
+	$id_client  =  strstr($kod, ':', true);
+	
+}
 
 
 
-
-if ($callbackQuery=="otklon"||$callbackQuery=="prinyat") {	
+//if ($callbackQuery=="otklon"||$callbackQuery=="prinyat") {	
 		
 	
 //----------------------------------	
@@ -56,7 +78,7 @@ if ($callbackQuery=="otklon"||$callbackQuery=="prinyat") {
 		}else exit('ok');
 	}	
 	
-}
+//}
 
 
 	
@@ -146,7 +168,7 @@ if ($callbackQuery=="otklon") {
 		
 		
 }elseif ($callbackQuery=="kuplu_prodam") { 
-
+/*
 		$est_li_v_gruppe = _est_li_v_gruppe();
 		
 		if ($est_li_v_gruppe) {					
@@ -163,6 +185,33 @@ if ($callbackQuery=="otklon") {
 			$tg->answerCallbackQuery($callbackQueryId, "Информация отправленна администратору!");
 			
 		}
+*/
+}elseif ($callbackQuery=="prinyal_zayavku_admin") { 
+
+	$chat_garant = $callbackChatId;
+	
+	$chat_obmennik;
+	$id_pokupatelya;	
+	$id_zakaza;		
+	$id_posta;	
+	$id_client;
+	
+	$query = "SELECT flag_isp FROM ". $table4 . " WHERE id_zakaz=".$id_zakaza; 
+	if ($result = $mysqli->query($query)) {					
+		if($result->num_rows>0){
+			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+			if ($arrayResult[0]['flag_isp']!=='0') exit('ok');	
+		}else exit('ok');
+	}else exit('ok');
+	
+	$query = "UPDATE ".$table4." SET flag_isp='1' WHERE id_zakaz=".$id_zakaza;
+	if ($result = $mysqli->query($query)) {
+		$tg->editMessageText($chat_garant, $callbackMessageId, $callbackText.
+			"\n\nЗаявка ЗАРЕЗЕРВИРОВАНА\nГарант: @".$callback_user_name);
+	}else exit('ok');
+
+	
+
 }
 	
 

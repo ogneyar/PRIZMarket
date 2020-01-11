@@ -310,12 +310,12 @@ if ($text){
 	}elseif ($text == "напишисяися") {		
 		
 		$query = "SELECT id_chat FROM ". $table6 . " WHERE id_garant='351009636'"; 
-	if ($result = $mysqli->query($query)) {					
-		if($result->num_rows>0){
-			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
-			$tg->sendMessage($arrayResult[0]['id_chat'], "Frfgekmrtj");	
+		if ($result = $mysqli->query($query)) {					
+			if($result->num_rows>0){
+				$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+				$tg->sendMessage($arrayResult[0]['id_chat'], "Frfgekmrtj");	
+			}
 		}
-	}
 	
 		
 	}elseif ($text == "наися") {		
