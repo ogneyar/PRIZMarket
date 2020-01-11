@@ -64,7 +64,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 			"@".$user_name."\nна эту заявку \xF0\x9F\x91\x87\n\n".		
 			"\xF0\x9F\x97\xA3 #".$strZakaz[0]['vibor']."\n".
 			"\xF0\x9F\x92\xB0 " .$strZakaz[0]['kol_monet']. " ".$strZakaz[0]['monet']."\n".
-			"\xF0\x9F\x92\xB8 ".$strZakaz[0]['cena']." ".$strZakaz[0]['valut'].
+			"\xF0\x9F\x92\xB8 ".$strZakaz[0]['cena']." ".$strZakaz[0]['valuta'].
 				" (".$strZakaz[0]['itog'].")\n".
 			"\xF0\x9F\x8F\xA6 ".$strZakaz[0]['bank']."\n".
 			"\xF0\x9F\x91\xA4 ".$strZakaz[0]['client_username']."\n\n".
