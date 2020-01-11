@@ -42,7 +42,7 @@ if ($arr['inline_query']['query']=='курс'||$arr['inline_query']['query']=='�
 		
 		if($arrStrok[0][0]==$inline_query_from_id){
 		
-			$zayavka="\xF0\x9F\x97\xA3 ".$arrStrok[0][2]."\n".
+			$zayavka="\xF0\x9F\x97\xA3 #".$arrStrok[0][2]."\n".
 				"\xF0\x9F\x92\xB0 ".$arrStrok[0][4]." ".$arrStrok[0][3]."\n".
 				"\xF0\x9F\x92\xB8 ".$arrStrok[0][6]." ".$arrStrok[0][5]." (".$arrStrok[0][7].")\n".
 				"\xF0\x9F\x8F\xA6 ".$arrStrok[0][8]."\n\n".$arrStrok[0][0].".".$arrStrok[0][1];		
