@@ -49,7 +49,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	
 	_est_li_v_base();
 	
-	$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
+	$est_li_v_gruppe = _proverka_zakaza($id_zakaza);
 	
 	if ($est_li_v_gruppe) {					
 			
