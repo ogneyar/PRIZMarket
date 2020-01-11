@@ -125,7 +125,8 @@ if ($callbackQuery=="otklon") {
 	$bot_username = $user->getUsername();	
 		
 	//$inLineKey_menu = [[["text"=>"КуплюПродам","callback_data"=>"kuplu_prodam"]]];
-	$inLineKey_menu = [[["text"=>"КуплюПродам","url"=>"t.me/".$bot_username."?start=".$id_message]]];
+	$inLineKey_menu = [[["text"=>"КуплюПродам","url"=>"t.me/".$bot_username."?start=".
+		$id_message_chat.":".$id_message]]];
 	$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 		
 	$sms.= $id_message_chat.":".$id_client.".".$id_message;

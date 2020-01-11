@@ -5,8 +5,10 @@
 if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
 if ($nomerZayavki) {
 	$text = "ПоявилсяПокупатель";
-	//$tg->call('sendMessage',['chat_id'=>$chat_id,'text'=>$nomerZayavki]);
+	$id_message_chat =  strstr($nomerZayavki, ':', true);
+	$id_zakaza =  substr(strrchr($nomerZayavki, ':'), 1);
 }
+
 
 if ($text == "Курс чата"||$text == "курс чата") {  // Курс PRIZM
 			
@@ -48,7 +50,6 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	_est_li_v_base();
 	
 	$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
-	//$tg->sendMessage($master, $nomerZayavki);
 	
 	if ($est_li_v_gruppe) {					
 			
@@ -56,17 +57,17 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 		if ($result = $mysqli->query($query)) {					
 			if($result->num_rows>0){
 				$strZakaz = $result->fetch_all(MYSQLI_ASSOC);			
-			}
-		}
+			}else exit('ok');
+		}else exit('ok');
 		
 		$reply = "Появился потенциальный покупатель!\n".
 			"@".$user_name."\nна эту заявку \xF0\x9F\x91\x87\n\n".		
 			"\xF0\x9F\x97\xA3 #".$strZakaz[0]['vibor']."\n".
 			"\xF0\x9F\x92\xB0 " .$strZakaz[0]['kol_monet']. " ".$strZakaz[0]['monet']."\n".
-"\xF0\x9F\x92\xB8 ".$strZakaz[0]['cena']." ".$strZakaz[0]['valut']." (".$strZakaz[0]['itog'].")\n".
+			"\xF0\x9F\x92\xB8 ".$strZakaz[0]['cena']." ".$strZakaz[0]['valut'].
+				" (".$strZakaz[0]['itog'].")\n".
 			"\xF0\x9F\x8F\xA6 ".$strZakaz[0]['bank']."\n".
-			"\xF0\x9F\x91\xA4 ".$strZakaz[0]['client_username']."\n\n".
-			"Заказ номер: ".$nomerZayavki;		
+			"\xF0\x9F\x91\xA4 ".$strZakaz[0]['client_username']."\n\n".$nomerZayavki;		
 			
 		$inLineKey_menu = [[["text"=>"Принять заявку","callback_data"=>"prinyal_zayavku_admin"]]];
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
