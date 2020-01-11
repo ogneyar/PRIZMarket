@@ -208,6 +208,14 @@ if ($text){
 		}else $tg->sendMessage($chat_id, "Не получается удалить строки!");	
 		
 		
+	}elseif ($text == "удали первую строку в таблице чаты") {		
+	
+		$query = "DELETE FROM ".$table6." WHERE id_garant=".$master;				
+		if ($result = $mysqli->query($query)) {					
+			$tg->sendMessage($chat_id, "Удаление совершенно!");								
+		}else $tg->sendMessage($chat_id, "Не получается удалить строки!");	
+		
+		
 	}elseif ($text == "удали строки в таблице чаты") {		
 	
 		$query = "DELETE FROM ".$table6;				
