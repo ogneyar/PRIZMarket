@@ -196,6 +196,7 @@ if ($callbackQuery=="otklon") {
 			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
 			if ($arrayResult[0]['flag_isp']!=='0') {
 				$tg->answerCallbackQuery($callbackQueryId, "Заявка уже занята!");	
+				exit('ok');
 			}
 		}else exit('ok');
 	}else exit('ok');
