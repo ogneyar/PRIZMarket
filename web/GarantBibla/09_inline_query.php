@@ -48,7 +48,7 @@ if ($arr['inline_query']['query']=='курс'||$arr['inline_query']['query']=='�
 				"\xF0\x9F\x8F\xA6 ".$arrStrok[0][8]."\n\n".$arrStrok[0][0].".".$arrStrok[0][1];		
 				
 			$title="Вставьте пост.";
-			$jmi="\xF0\x9F\x97\xA3 ".$arrStrok[0][2]."\n".
+			$jmi="\xF0\x9F\x97\xA3 #".$arrStrok[0][2]."\n".
 				"\xF0\x9F\x92\xB0 ".$arrStrok[0][4]." ".$arrStrok[0][3];
 						
 			//ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК клавиатуры        			
