@@ -19,7 +19,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	}
 	
 	
-	$id_p2p_message_id = $id_p2p."-".$message_id;
+	
 	
 	
 	$kod = substr(strrchr($text, 10), 1);  // код с id клиента приславшего заказ и номером заказа
@@ -54,6 +54,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	$message_id = $result['message_id'];
 		
 	
+	$id_p2p_message_id = $id_p2p."-".$message_id;
 	
 	
 	$reply = $sms."\xF0\x9F\x91\xA4 @" . $user_name;
