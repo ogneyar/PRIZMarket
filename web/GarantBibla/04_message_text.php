@@ -19,7 +19,7 @@ if (($text)&&($this_admin==false)&&($chat_id!=$master)){
 if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
 if ($nomerZayavki) {
 	$text = "ПоявилсяПокупатель";
-	$nomerZayavki = str_replace ("-", ".", $nomerZayavki);
+	//$nomerZayavki = str_replace ("-", ".", $nomerZayavki);
 }
 
 
@@ -72,6 +72,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	$strZakaz = _proverka_zakaza($nomerZayavki);
 	
 	if ($strZakaz) {				
+		
 		
 		$reply = "Появился потенциальный покупатель!\n".
 			"@".$user_name."\nна эту заявку \xF0\x9F\x91\x87\n\n".		
