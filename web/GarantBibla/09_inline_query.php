@@ -54,7 +54,7 @@ if ($arr['inline_query']['query']=='курс'||$arr['inline_query']['query']=='�
 			
 			
 			//ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК клавиатуры        			
-			$inLine11_keyb=[[["text"=>"PZMarketBot","url"=>" http://t.me/".$username_bot]]];
+			$inLine11_keyb=[[["text"=>"PZMarketBot","url"=>"http://t.me/".$username_bot]]];
 			$keyInLine11 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine11_keyb);
 			
 			$inputText = new \TelegramBot\Api\Types\Inline\InputMessageContent\Text($zayavka);		
