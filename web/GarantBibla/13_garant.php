@@ -222,6 +222,11 @@ if ($callbackQuery=="otklon") {
 
 	$tg->answerCallbackQuery($callbackQueryId, "Ожидайте, клиенты уведомлены!", true);
 
+	
+	$inLineKey_menu = [[["text"=>"Сделка СОВЕРШЕНА!","callback_data"=>"sovershena"]]];
+	$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
+	
+	
 	try{
 		$tg->editMessageReplyMarkup($chat_obmennik, $id_posta);
 	}catch(Exception $e){

@@ -40,6 +40,12 @@ if ($callbackQuery=="nachalo") {
 	
 	
 
+}elseif ($callbackQuery=="sovershena") {
+
+	$tg->answerCallbackQuery($callbackQueryId, "Сделка уже СОВЕРШЕНА!!!");	
+	
+	
+
 }elseif ($callbackQuery=="menu") {
 	
 	udalenie_starih_zapisey($table2);
