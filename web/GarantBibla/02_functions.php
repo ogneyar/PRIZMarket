@@ -584,7 +584,7 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 	
 	//$tg->sendMessage($master, $zakaz);
 	
-	$zakaz = str_replace ("_", "\_", $zakaz);
+	$zakaz = str_replace ("-", ".", $zakaz);
 	
 	$query = "SELECT * FROM ".$table4." WHERE id_zakaz=".$zakaz;
 	if ($result = $mysqli->query($query)) {					
@@ -602,7 +602,7 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 			
 			if ($result['status']=="member"||$result['status']=="creator"||$result['status']=="administrator"){
 				if ($result['user']['username']) {
-					$est_li_v_gruppe = $strZakaz[0]['id_admin_chat'];
+					$est_li_v_gruppe = $strZakaz;
 				}else $tg->call('sendMessage', ['chat_id' => $chat_id,'text' => "У Вас отсутствует username!"]);	
 			}else $tg->call('sendMessage', ['chat_id' => $chat_id,'text' => "Вы не являетесь участником чата!"]);
 			

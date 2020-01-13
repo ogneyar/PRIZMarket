@@ -66,19 +66,9 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	
 	_est_li_v_base();
 	
-	$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
+	$strZakaz = _proverka_zakaza($nomerZayavki);
 	
-	if ($est_li_v_gruppe) {					
-			
-			
-	//	$tg->sendMessage($master, $nomerZayavki);
-		
-		$query = "SELECT * FROM ". $table4 . " WHERE id_zakaz=".$nomerZayavki; 
-		if ($result = $mysqli->query($query)) {					
-			if($result->num_rows>0){
-				$strZakaz = $result->fetch_all(MYSQLI_ASSOC);			
-			}else exit('ok');
-		}else exit('ok');
+	if ($strZakaz) {				
 		
 		$reply = "Появился потенциальный покупатель!\n".
 			"@".$user_name."\nна эту заявку \xF0\x9F\x91\x87\n\n".		
@@ -93,7 +83,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 		$inLineKey_menu = [[["text"=>"Принять заявку","callback_data"=>"prinyal_zayavku_admin"]]];
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 			
-		$tg->sendMessage($est_li_v_gruppe, $reply, null, true, null, $keyInLine);
+		$tg->sendMessage($strZakaz[0]['id_admin_chat'], $reply, null, true, null, $keyInLine);
 				
 			
 		$tg->sendMessage($chat_id, "Ожидайте..", null, true, null, $keyboardStartNastr);
