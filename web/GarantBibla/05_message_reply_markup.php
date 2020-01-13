@@ -96,8 +96,13 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	$sms.= "\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n".$message_id. ":" . $id_client . "." . $id_message;
 	$tg->sendMessage($chat_garant, $sms, null, true, null, $keyInLine9);
 
-	$str = "Ваша заказ отправлен Администратору, ожидайте ответа..." . $tehPodderjka ;	
+	$str = "Ваша заказ отправлен на рассмотрение Администрацией p2p-обменника, для отправки этой заявки в любой ".
+		"другой чат снова нажмите \xE2\x98\x9D отправить, для создания новой - нажмите /start" .
+		$tehPodderjka ;	
 	
+	$tg->sendMessage($id_client, $str, markdown);
+	
+/*	
 	try{
 		$tg->editMessageText($id_client, $id_message, $str, markdown);		
 	}catch (Exception $e){
@@ -106,7 +111,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 		$tg->sendMessage($id_client, $str, markdown);
 		$tg->deleteMessage($id_client, $id_message);		
 	}
-	
+*/
 
 }
 

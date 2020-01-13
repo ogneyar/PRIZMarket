@@ -67,13 +67,14 @@ if ($callbackQuery!=='prinyal_zayavku_admin'){
 	}
 //---------------------------------
 
-	$query = "SELECT id_chat FROM ".$table6." WHERE id_admin_group=".$callbackChatId;
+	$query = "SELECT id_chat, chat_url FROM ".$table6." WHERE id_admin_group=".$callbackChatId;
 	if ($result = $mysqli->query($query)){	
 		if($result->num_rows>0){		
 		
 			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);	
 			
 			$chat_obmennik = $arrayResult[0]['id_chat'];
+			$chat_url = $arrayResult[0]['chat_url'];
 			
 		}else exit('ok');
 	}	
@@ -129,25 +130,29 @@ if ($callbackQuery=="otklon") {
 	$tg->sendMessage($id_client, "И снова, Здравствуйте!", null, true, null, $keyboardStartNastr);
 	
 		
-	$str = $tehPodderjka."Заявка одобрена, можете сделать новый заказ \xF0\x9F\x91\x87";
+	$str = "Ваша заявка одобрена Администрацией p2p-обменника - @".$chat_url."\n\n".
+		"Как появится клиент на Вашу заявку - Я Вам сообщу! Будьде бдительны, если Вам кто либо напишиет ".
+		"в личку, знайте - это МОШЕННИКИ. Они могут представиться Администратором, Гарантом или ещё кем.. ".
+		"\n\n сообщите об этом в чат p2p-обменника!\n\nДля подачи новой заявки - нажмите /start".
+		$tehPodderjka;
 		
-	$tg->sendMessage($id_client, $str, markdown, true, null, $keyInLine0);		
+	$tg->sendMessage($id_client, $str, markdown);		//, true, null, $keyInLine0
 		
 	$tg->editMessageText($callbackChatId, $callbackMessageId, "Заявка №".$id_message.
 		"\n\n".$sms."\nЗАЯВКУ ОДОБРИЛ - @".$callback_user_name);
-		
+
+/*		
 	try{
 		$tg->deleteMessage($id_client, $id_message);		
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
 			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
 	}	
-		
-	$user = $tg->getMe();
-	$bot_username = $user->getUsername();	
+*/	
+	
 		
 	//$inLineKey_menu = [[["text"=>"КуплюПродам","callback_data"=>"kuplu_prodam"]]];
-	$inLineKey_menu = [[["text"=>"КуплюПродам","url"=>"t.me/".$bot_username."?start=".
+	$inLineKey_menu = [[["text"=>"КуплюПродам","url"=>"t.me/".$username_bot."?start=".
 		$id_message_chat."-".$id_message]]]; //":" и "." не подходят
 	$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 		
