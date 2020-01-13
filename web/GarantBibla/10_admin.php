@@ -235,8 +235,7 @@ if ($text){
 	
 	}elseif ($text == "Жеееесть") {			
 		
-		$query = "ALTER TABLE `chat_garant` ADD `id_p2p` BIGINT( 20 ) NULL DEFAULT NULL AUTO_INCREMENT FIRST ,
-ADD PRIMARY KEY ( `id_p2p` )";
+		$query = "ALTER TABLE `obrabotka_zayavok` CHANGE `id_zakaz` `id_zakaz` VARCHAR( 20 ) NULL DEFAULT NULL";
 
 		if ($result = $mysqli->query($query)) {					
 			$tg->sendMessage($chat_id, "Изменил!");								
