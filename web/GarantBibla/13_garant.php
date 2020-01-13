@@ -22,7 +22,7 @@ if ($callbackQuery!=='prinyal_zayavku_admin'){
 	$id_client =  substr(strrchr($kod2, ':'), 1); // айди клиента	
 	$id_p2p_id_zakaza =  strstr($kod, ':', true);
 	
-	$id_chata =  substr(strrchr($id_p2p_id_zakaza, '-'), 1);
+	$id_chata =  substr(strrchr($id_p2p_id_zakaza, '_'), 1);
 	
 
 }else {				
@@ -142,17 +142,9 @@ if ($callbackQuery=="otklon") {
 		
 	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms."\nЗАЯВКУ ОДОБРИЛ - @".$callback_user_name);
 
-/*		
-	try{
-		$tg->deleteMessage($id_client, $id_zakaza);		
-	}catch (Exception $e){
-		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
-			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
-	}	
-*/	
+
+
 	
-		
-	//$inLineKey_menu = [[["text"=>"КуплюПродам","callback_data"=>"kuplu_prodam"]]];
 	$inLineKey_menu = [[["text"=>"КуплюПродам","url"=>"t.me/".$username_bot."?start=".
 		$id_p2p_id_zakaza]]]; //":" и "." не подходят
 	$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);

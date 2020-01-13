@@ -582,7 +582,7 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 	
 	$est_li_v_gruppe = false;
 	
-	$tg->sendMessage($master, $zakaz);
+	//$tg->sendMessage($master, $zakaz);
 	
 	$query = "SELECT * FROM ".$table4." WHERE id_zakaz=".$zakaz;
 	if ($result = $mysqli->query($query)) {					

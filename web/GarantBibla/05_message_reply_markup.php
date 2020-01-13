@@ -19,6 +19,9 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	}
 	
 	
+	$id_p2p_message_id = $id_p2p."_".$message_id;
+	
+	
 	$kod = substr(strrchr($text, 10), 1);  // код с id клиента приславшего заказ и номером заказа
 
 	$kol=strlen($kod)+1;
@@ -80,7 +83,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 			$valuta = $arrStrok[0]['valuta'];
 			
 			$query = "INSERT INTO ".$table4." VALUES ('". $arrStrok[0]['id_client'] ."', '".
-				$id_p2p."-".$message_id ."', '" . $arrStrok[0]['vibor'] . "', '".$arrStrok[0]['monet']."', '".
+				$id_p2p_message_id ."', '" . $arrStrok[0]['vibor'] . "', '".$arrStrok[0]['monet']."', '".
 				$arrStrok[0]['kol_monet']."', '".$valuta."', '".$arrStrok[0]['cena']."', '".
 				$arrStrok[0]['itog']."', '".$arrStrok[0]['bank']."', '".$arrStrok[0]['flag_isp']."', '".
 				$chat_id."', '".$chat_garant."', '@".$user_name."')";
@@ -101,8 +104,8 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	
 
 
-	$reply = "Заявка №".$id_p2p."-".$message_id."\n\n". $sms .
-		"\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n".$id_p2p."-".$message_id. ":" . $id_client .
+	$reply = "Заявка №".$id_p2p_message_id."\n\n". $sms .
+		"\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n".$id_p2p_message_id. ":" . $id_client .
 			"." . $id_zakaza;
 	$tg->sendMessage($chat_garant, $reply, null, true, null, $keyInLine9);
 
