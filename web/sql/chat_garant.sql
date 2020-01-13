@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 07 2020 г., 22:33
+-- Время создания: Янв 13 2020 г., 18:26
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -27,12 +27,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `chat_garant` (
+  `id_p2p` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_garant` bigint(20) DEFAULT NULL,
   `garant_username` varchar(30) DEFAULT NULL,
   `id_chat` bigint(20) DEFAULT NULL,
   `chat_url` varchar(30) DEFAULT NULL,
-  `id_admin_group` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_admin_group` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_p2p`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 10 2020 г., 20:50
+-- Время создания: Янв 13 2020 г., 18:26
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `obrabotka_zayavok` (
   `id_client` int(20) DEFAULT NULL,
-  `id_zakaz` int(20) DEFAULT NULL,
+  `id_zakaz` varchar(20) DEFAULT NULL,
   `vibor` varchar(20) DEFAULT NULL,
   `monet` varchar(20) DEFAULT NULL,
   `kol_monet` double DEFAULT NULL,
