@@ -67,12 +67,13 @@ if ($callbackQuery!=='prinyal_zayavku_admin'){
 	}
 //---------------------------------
 
-	$query = "SELECT id_chat, chat_url FROM ".$table6." WHERE id_admin_group=".$callbackChatId;
+	$query = "SELECT id_p2p, id_chat, chat_url FROM ".$table6." WHERE id_admin_group=".$callbackChatId;
 	if ($result = $mysqli->query($query)){	
 		if($result->num_rows>0){		
 		
 			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);	
 			
+			$id_p2p = $arrayResult[0]['id_p2p'];
 			$chat_obmennik = $arrayResult[0]['id_chat'];
 			$chat_url = $arrayResult[0]['chat_url'];
 			
@@ -136,8 +137,7 @@ if ($callbackQuery=="otklon") {
 		
 	$tg->sendMessage($id_client, $str, markdown);		//, true, null, $keyInLine0
 		
-	$tg->editMessageText($callbackChatId, $callbackMessageId, "Заявка №".$id_zakaza.
-		"\n\n".$sms."\nЗАЯВКУ ОДОБРИЛ - @".$callback_user_name);
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms."\nЗАЯВКУ ОДОБРИЛ - @".$callback_user_name);
 
 /*		
 	try{
@@ -151,7 +151,7 @@ if ($callbackQuery=="otklon") {
 		
 	//$inLineKey_menu = [[["text"=>"КуплюПродам","callback_data"=>"kuplu_prodam"]]];
 	$inLineKey_menu = [[["text"=>"КуплюПродам","url"=>"t.me/".$username_bot."?start=".
-		$id_message_chat."-".$id_zakaza]]]; //":" и "." не подходят
+		$id_zakaza.".".$id_message_chat]]]; //":" и "." не подходят
 	$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 		
 	$sms.= $id_message_chat.":".$id_client.".".$id_zakaza;
