@@ -88,7 +88,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 		$inLineKey_menu = [[["text"=>"На рассмотрении..","callback_data"=>"rassmotrenie"]]];
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 		
-		$tg->editMessageText($chat_id, $message_id, $reply, markdown, true, $keyInLine);		
+		$tg->editMessageText($chat_id, $message_id, $reply, null, true, $keyInLine);		
 		
 		
 		
