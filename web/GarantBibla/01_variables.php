@@ -20,7 +20,7 @@ $table6='chat_garant';
 
 $userBot = $tg->getMe();
 $username_bot = $userBot->getUsername();
-$first_name_bot = $userBot = $tg->getFirstName();
+$first_name_bot = $userBot->getFirstName();
 
 
 $tehPodderjka = "\n\nВопросы в [тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88\n\n";
