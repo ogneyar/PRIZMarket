@@ -20,13 +20,16 @@ if ($text=='/setting'){
 	exit('ok');
 }
 
-// при добавлении ГарантБота в группу подключается файл..
-if ($new_chat_part_id=='1037491432'||$new_chat_part_id=='1066944801') {
-	include_once '12_addInGroup.php';	
-}
-// при удалении ГарантБота из группы подключается файл..
-if ($left_chat_part_id=='1037491432'||$left_chat_part_id=='1066944801') {
-	include_once '14_delInGroup.php';	
+
+if ($tokenGARANT){
+	// при добавлении ГарантБота в группу подключается файл..
+	if ($new_chat_part_id==$tokenGARANT) {
+		include_once '12_addInGroup.php';	
+	}
+	// при удалении ГарантБота из группы подключается файл..
+	if ($left_chat_part_id==$tokenGARANT) {
+		include_once '14_delInGroup.php';	
+	}
 }
 
 // Обработчик исключений
