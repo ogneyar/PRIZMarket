@@ -601,8 +601,9 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 			);
 			
 			if ($result['status']=="member"||$result['status']=="creator"||$result['status']=="administrator"){
-				if ($result['user']['username']) {
-					$est_li_v_gruppe = $strZakaz;
+				if ($result['user']['username']) {					
+					if ($strZakaz[0]['flag_isp']!='1') $est_li_v_gruppe = $strZakaz;
+					else $tg->sendMessage($chat_id, "В данный момент эта заявка уже кем-то занята!");	
 				}else $tg->call('sendMessage', ['chat_id' => $chat_id,'text' => "У Вас отсутствует username!"]);	
 			}else $tg->call('sendMessage', ['chat_id' => $chat_id,'text' => "Вы не являетесь участником чата!"]);
 			

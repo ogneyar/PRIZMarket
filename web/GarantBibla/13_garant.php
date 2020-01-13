@@ -220,7 +220,7 @@ if ($callbackQuery=="otklon") {
 	$tg->answerCallbackQuery($callbackQueryId, "Ожидайте, клиенты уведомлены!", true);
 
 	try{
-		$tg->editMessageReplyMarkup($chat_obmennik, $id_posta);
+		$tg->editMessageReplyMarkup($chat_obmennik, $id_posta, $keyInLine0);
 	}catch(Exception $e){
 		$tg->sendMessage($master, "Выброшен эксцепшн..\nна линии - ".__LINE__."\n".__FILE__);
 	}
