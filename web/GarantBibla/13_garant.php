@@ -94,7 +94,8 @@ if ($callbackQuery=="otklon") {
 	//	$query = "UPDATE ".$table." SET flag=0 WHERE id_client=" . $id_client;
 	//	$mysqli->query($query);		
 		
-	$str = $tehPodderjka."Заявка отклонена, читайте правила \xF0\x9F\x91\x87";
+	$str = "Ваша заявка отклонена Администрацией p2p-обменника - ".$chat_url."\n\n".
+		", читайте правила \xF0\x9F\x91\x87".$tehPodderjka;
 		
 	$tg->sendMessage($id_client, $str, markdown, true, null, $keyInLine0);
 				
@@ -109,13 +110,14 @@ if ($callbackQuery=="otklon") {
 			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
 	}		
 	
+/*	
 	try{
 		$tg->deleteMessage($id_client, $id_message);				
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
 			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
 	}	
-
+*/
 		
 		
 }elseif ($callbackQuery=="prinyat") { 
@@ -130,7 +132,7 @@ if ($callbackQuery=="otklon") {
 	$tg->sendMessage($id_client, "И снова, Здравствуйте!", null, true, null, $keyboardStartNastr);
 	
 		
-	$str = "Ваша заявка одобрена Администрацией p2p-обменника - @".$chat_url."\n\n".
+	$str = "Ваша заявка одобрена Администрацией p2p-обменника - ".$chat_url."\n\n".
 		"Как появится клиент на Вашу заявку - Я Вам сообщу! Будьде бдительны, если Вам кто либо напишиет ".
 		"в личку, знайте - это МОШЕННИКИ. Они могут представиться Администратором, Гарантом или ещё кем.. ".
 		"\n\n сообщите об этом в чат p2p-обменника!\n\nДля подачи новой заявки - нажмите /start".
