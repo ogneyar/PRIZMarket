@@ -3,14 +3,7 @@
 //ОСНОВНАЯ РАБОТА БОТА, ВЫПОЛНЕНИЕ КОМАНД (РЕАКЦИЯ НА РЕПЛИКИ ПОЛЬЗОВАТЕЛЯ)
 
 if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
-if ($nomerZayavki) {
-	$text = "ПоявилсяПокупатель";
-/*
-	$id_message_chat =  strstr($nomerZayavki, '-', true);
-	$id_zakaza =  substr(strrchr($nomerZayavki, '-'), 1);
-*/	
-	//$nomerZayavki = str_replace("-", ".", $nomerZayavki);
-}
+if ($nomerZayavki) $text = "ПоявилсяПокупатель";
 
 
 if ($text == "Курс чата"||$text == "курс чата") {  // Курс PRIZM

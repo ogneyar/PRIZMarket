@@ -584,6 +584,8 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 	
 	//$tg->sendMessage($master, $zakaz);
 	
+	$zakaz = str_replace ("_", "\_", $zakaz);
+	
 	$query = "SELECT * FROM ".$table4." WHERE id_zakaz=".$zakaz;
 	if ($result = $mysqli->query($query)) {					
 		if($result->num_rows>0){
