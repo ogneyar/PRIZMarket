@@ -161,6 +161,9 @@ if ($callbackQuery=="otklon") {
 	try{
 		$tg->editMessageText($chat_obmennik, $id_chata, $sms, null, true, $keyInLine);
 	}catch (Exception $e){	
+	
+		$tg->sendMessage($master, "Какая-то ошибка, это айди чата - ".$id_chata);
+	
 		$tg->sendMessage($chat_obmennik, $sms, null, true, null, $keyInLine);
 		$tg->deleteMessage($chat_obmennik, $id_chata);
 	}
