@@ -38,7 +38,7 @@ if ($result = $mysqli->query($query)) {
 		
 		}
 	}else{
-		$query = "INSERT INTO ".$table6." VALUES ('". $from_id ."', '@". $user_name ."', '" . $chat_id . "', '@".$chat_user_name."', '0')";
+		$query = "INSERT INTO ".$table6." VALUES ('0', '". $from_id ."', '@". $user_name ."', '" . $chat_id . "', '@".$chat_user_name."', '0')";
 		if ($result = $mysqli->query($query)) {		
 			$tg->sendMessage($from_id, 'Бот добавлен в чат-обменник. Бот должен быть администратором чата-обменника, сделайте его администратором! А после добавьте бота в отдельную группу, для АДМИНИСТРИРОВАНИЯ сделок, где будут находиться только ГАРАНТЫ.');
 
