@@ -80,7 +80,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 			$valuta = $arrStrok[0]['valuta'];
 			
 			$query = "INSERT INTO ".$table4." VALUES ('". $arrStrok[0]['id_client'] ."', '".
-				$id_p2p.".".$message_id ."', '" . $arrStrok[0]['vibor'] . "', '".$arrStrok[0]['monet']."', '".
+				$id_p2p."-".$message_id ."', '" . $arrStrok[0]['vibor'] . "', '".$arrStrok[0]['monet']."', '".
 				$arrStrok[0]['kol_monet']."', '".$valuta."', '".$arrStrok[0]['cena']."', '".
 				$arrStrok[0]['itog']."', '".$arrStrok[0]['bank']."', '".$arrStrok[0]['flag_isp']."', '".
 				$chat_id."', '".$chat_garant."', '@".$user_name."')";
