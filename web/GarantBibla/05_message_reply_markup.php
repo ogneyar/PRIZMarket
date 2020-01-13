@@ -101,8 +101,9 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	
 
 
-	$reply = "Заявка №".$id_zakaza.".".$message_id."\n\n". $sms .
-		"\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n".$message_id. ":" . $id_client . "." . $id_zakaza;
+	$reply = "Заявка №".$id_p2p."-".$message_id."\n\n". $sms .
+		"\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n".$id_p2p.$message_id. ":" . $id_client .
+			"." . $id_zakaza;
 	$tg->sendMessage($chat_garant, $reply, null, true, null, $keyInLine9);
 
 	$str = "Ваша заказ отправлен на рассмотрение Администрацией p2p-обменника - ".$chat_url.
