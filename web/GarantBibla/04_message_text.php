@@ -5,8 +5,11 @@
 if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
 if ($nomerZayavki) {
 	$text = "ПоявилсяПокупатель";
+/*
 	$id_message_chat =  strstr($nomerZayavki, '-', true);
 	$id_zakaza =  substr(strrchr($nomerZayavki, '-'), 1);
+*/	
+	$nomerZayavki = str_replace('-', ".", $nomerZayavki);
 }
 
 
@@ -54,11 +57,11 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	
 	_est_li_v_base();
 	
-	$est_li_v_gruppe = _proverka_zakaza($id_zakaza);
+	$est_li_v_gruppe = _proverka_zakaza($nomerZayavki);
 	
 	if ($est_li_v_gruppe) {					
 			
-		$query = "SELECT * FROM ". $table4 . " WHERE id_zakaz=".$id_zakaza; 
+		$query = "SELECT * FROM ". $table4 . " WHERE id_zakaz=".$nomerZayavki; 
 		if ($result = $mysqli->query($query)) {					
 			if($result->num_rows>0){
 				$strZakaz = $result->fetch_all(MYSQLI_ASSOC);			
@@ -79,10 +82,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 			
 		$tg->sendMessage($est_li_v_gruppe, $reply, null, true, null, $keyInLine);
-			
-			
-		$MenuStart	= [["Старт", "Настройки"]];	
-		$keyboardStartNastr = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($MenuStart, false, true);  	
+				
 			
 		$tg->sendMessage($chat_id, "Ожидайте..", null, true, null, $keyboardStartNastr);
 			
