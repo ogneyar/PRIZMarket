@@ -46,8 +46,8 @@ if ($arr['inline_query']['query']=='курс'||$arr['inline_query']['query']=='�
 				"\xF0\x9F\x92\xB0 ".$arrStrok[0]['kol_monet']." ".$arrStrok[0]['monet']."\n".
 				"\xF0\x9F\x92\xB8 ".$arrStrok[0]['cena']." ".$arrStrok[0]['valuta']." (".
 				$arrStrok[0]['itog'].")\n"."\xF0\x9F\x8F\xA6 ".$arrStrok[0]['bank'].
-				"\nxF0x9Fx91xA8xE2x80x8DxE2x9Ax96xEFxB8x8F Гарант xF0x9FxA4x9D".
-				"".
+				"\n\xF0\x9F\x91\xA8\xE2\x80\x8D\xE2\x9A\x96\xEF\xB8\x8F Гарант \xF0\x9F\xA4\x9D".
+	//			"".
 				"\n\n".$arrStrok[0]['id_client'].".".$arrStrok[0]['id_zakaz'];
 				
 			$title="Вставьте пост.";
