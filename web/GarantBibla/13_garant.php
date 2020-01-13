@@ -27,23 +27,27 @@ if ($callbackQuery!=='prinyal_zayavku_admin'){
 
 }else {				
 
-	// текст сообщения после "-" 
+	// текст сообщения после "." 
 	// номер заказа и айди покупателя
-	$id_zakaza_i_pokupatelya =  substr(strrchr($kod, '-'), 1); 
+	$id_client =  substr(strrchr($kod, '.'), 1); 
 	
-	// текст сообщения перед "-" 
+	// текст сообщения перед "." 
 	// айди клиента и номер поста в чате
-	$id_clienta_i_posta = strstr($kod, '-', true);
+	$id_pokupatelya_i_id_zakaza = strstr($kod, '.', true);
 	
-	// текст после "." - айди покупателя
-	$id_pokupatelya =  substr(strrchr($id_zakaza_i_pokupatelya, '.'), 1);
-	// текст перед "." - номер заказа
-	$id_zakaza = strstr($id_zakaza_i_pokupatelya, '.', true);
+	// текст после ":" - айди покупателя
+	$id_zakaza =  substr(strrchr($id_pokupatelya_i_id_zakaza, ':'), 1);
 	
-	// текст после ":" - номер поста в чате
-	$id_posta=  substr(strrchr($id_clienta_i_posta, ':'), 1);
-	// текст перед ":" - айди клиента
-	$id_client  =  strstr($kod, ':', true);
+	// текст перед ":" - номер заказа
+	$id_pokupatelya = strstr($id_pokupatelya_i_id_zakaza, ':', true);
+	
+	// текст после "-" - номер поста в чате
+	$id_posta=  substr(strrchr($id_zakaza, '-'), 1);
+	
+	// текст перед "-" - айди клиента
+	$id_p2p  =  strstr($id_zakaza, '-', true);
+	
+	$id_zakaza = str_replace ("-", ".", $id_zakaza);
 	
 }
 
@@ -188,7 +192,7 @@ if ($callbackQuery=="otklon") {
 */
 }elseif ($callbackQuery=="prinyal_zayavku_admin") { 
 
-	$chat_garant = $callbackChatId;	
+	$chat_garant = $callbackChatId;		
 	
 	$query = "SELECT flag_isp FROM ". $table4 . " WHERE id_zakaz=".$id_zakaza; 
 	if ($result = $mysqli->query($query)) {					
