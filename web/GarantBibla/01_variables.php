@@ -18,6 +18,9 @@ $table6='chat_garant';
 
 //$except = __LINE__."\n".__FILE__."\n";
 
+$userBot = $tg->getMe();
+$username_bot = $userBot->getUsername();
+
 
 $tehPodderjka = "\n\nВопросы в [тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88\n\n";
 

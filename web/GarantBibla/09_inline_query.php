@@ -51,11 +51,10 @@ if ($arr['inline_query']['query']=='курс'||$arr['inline_query']['query']=='�
 			$jmi="\xF0\x9F\x97\xA3 #".$arrStrok[0][2]."\n".
 				"\xF0\x9F\x92\xB0 ".$arrStrok[0][4]." ".$arrStrok[0][3];
 						
-			$userBot = $tg->getMe();
-			$username_bot = $userBot->getUsername();
+			
 			
 			//ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК клавиатуры        			
-			$inLine11_keyb=[[["text"=>"PZMarketBot","url"=>"t.me/".$username_bot,"callback_data"=>"returnZ"]]];
+			$inLine11_keyb=[[["text"=>"PZMarketBot","url"=>"@".$username_bot]]];
 			$keyInLine11 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine11_keyb);
 			
 			$inputText = new \TelegramBot\Api\Types\Inline\InputMessageContent\Text($zayavka);		

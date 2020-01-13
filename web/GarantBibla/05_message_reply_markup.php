@@ -3,7 +3,7 @@
 //   $chat_id  -  айди чата-обменника
 
 
-if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['callback_data']=="rassmotrenie"){
+if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="@".$username_bot){
 		
 	$query = "SELECT id_admin_group FROM ".$table6." WHERE id_chat=".$chat_id;
 	if ($result = $mysqli->query($query)){	
@@ -41,8 +41,8 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['callback_data'
 			$query = "INSERT INTO ".$table4." VALUES ('". $arrStrok[0][0] ."', '". $arrStrok[0][1] ."', '" . $arrStrok[0][2] . "', '".$arrStrok[0][3]."', '".$arrStrok[0][4]."', '".$arrStrok[0][5]."', '".$arrStrok[0][6]."', '".$arrStrok[0][7]."', '".$arrStrok[0][8]."', '".$arrStrok[0][9]."', '".$chat_id."', '".$chat_garant."', '@".$user_name."')";
 			$mysqli->query($query);	
 
-			$query = "DELETE FROM ".$table3." WHERE id_client=" . $id_client;				
-			$mysqli->query($query);
+//			$query = "DELETE FROM ".$table3." WHERE id_client=" . $id_client;				
+//			$mysqli->query($query);
 		}else exit('ok');	
 	}
 		
