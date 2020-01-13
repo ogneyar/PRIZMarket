@@ -9,7 +9,7 @@ if ($nomerZayavki) {
 	$id_message_chat =  strstr($nomerZayavki, '-', true);
 	$id_zakaza =  substr(strrchr($nomerZayavki, '-'), 1);
 */	
-	$nomerZayavki = str_replace('-', ".", $nomerZayavki);
+	$nomerZayavki = str_replace("-", ".", $nomerZayavki);
 }
 
 
@@ -61,6 +61,9 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 	
 	if ($est_li_v_gruppe) {					
 			
+			
+		$tg->sendMessage($master, $nomerZayavki);
+		
 		$query = "SELECT * FROM ". $table4 . " WHERE id_zakaz=".$nomerZayavki; 
 		if ($result = $mysqli->query($query)) {					
 			if($result->num_rows>0){
