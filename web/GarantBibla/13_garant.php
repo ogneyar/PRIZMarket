@@ -92,7 +92,7 @@ if ($callbackQuery=="otklon") {
 	
 	// ДЕВЯТАЯ клавиатура кнопка "отклонить"
 		
-	$query = "DELETE FROM ".$table4." WHERE id_client=" . $id_client;				
+	$query = "DELETE FROM ".$table4." WHERE id_zakaz=" . $id_p2p_id_zakaza;				
 	$mysqli->query($query);
 		
 	//	$query = "UPDATE ".$table." SET flag=0 WHERE id_client=" . $id_client;
