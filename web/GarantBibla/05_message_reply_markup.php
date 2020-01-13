@@ -3,7 +3,7 @@
 //   $chat_id  -  айди чата-обменника
 
 
-if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="@".$username_bot){
+if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']==" http://t.me/".$username_bot){
 		
 	$query = "SELECT id_admin_group FROM ".$table6." WHERE id_chat=".$chat_id;
 	if ($result = $mysqli->query($query)){	
