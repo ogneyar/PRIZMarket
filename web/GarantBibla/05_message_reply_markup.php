@@ -26,7 +26,7 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	$sms = substr($text,0,-$kol);	
 
 	// текст сообщения после "." - номер заказа
-	$id_message =  substr(strrchr($kod, '.'), 1); // данные о номере заказа и/или номер id админа, взявшего заказ
+	$id_zakaza =  substr(strrchr($kod, '.'), 1); // данные о номере заказа и/или номер id админа, взявшего заказ
 
 	$id_client = strstr($kod, '.', true);
 	
@@ -50,12 +50,11 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 //			$mysqli->query($query);
 		}else exit('ok');	
 	}
-		
+
 	
 	$price=_PricePZM_in_Monet($valuta);	
 
-
-
+	
 
 // удаляется сообщение, переданное inline методом
 // и печатается на его месте новое
@@ -63,12 +62,19 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 		$result = $tg->call('deleteMessage', [
 			'chat_id' => $chat_id, 
 			'message_id' => $message_id
-		]);	
+		]);			
 		
-		$result = $tg->call('sendMessage', [
-            'chat_id' => $chat_id,
-            'text' => "В процессе.."              
-        ]);
+	}catch (Exception $e){
+		$tg->sendMessage($master, "Не смог удалить сообщение... \nномер строки: ".
+			__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
+	}	
+	
+	
+	
+	$result = $tg->call('sendMessage', [
+           'chat_id' => $chat_id,
+           'text' => "В процессе.."              
+    ]);
 		
 /*	
 		$result = $tg->call('sendMessage', [
@@ -80,30 +86,26 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
             'reply_markup' => is_null($keyInLine) ? $keyInLine : $keyInLine->toJson(),            
         ]);
 */		
-		$message_id = $result['message_id'];
+	$message_id = $result['message_id'];
 		
-		$reply = $sms."\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n" .
-			$id_client . "." . $message_id;
+	$reply = $sms."\xF0\x9F\x91\xA4 @" . $user_name;
+//	. "\n\n{$price}\n" .
+//			$id_client . "." . $message_id;
 		
-		$inLineKey_menu = [[["text"=>"На рассмотрении..","callback_data"=>"rassmotrenie"]]];
-		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
-		
-		$tg->editMessageText($chat_id, $message_id, $reply, null, true, $keyInLine);		
-		
-		
-		
-		
+	$inLineKey_menu = [[["text"=>"На рассмотрении..","callback_data"=>"rassmotrenie"]]];
+	$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
+	
+	try{
+		$tg->editMessageText($chat_id, $message_id, $reply, null, true, $keyInLine);	
 	}catch (Exception $e){
+		$tg->sendMessage($chat_id, $reply);
 		$tg->sendMessage($master, "Не смог удалить сообщение... \nномер строки: ".
 			__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
 	}	
-	
 
 
-
-
-
-	$sms.= "\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n".$message_id. ":" . $id_client . "." . $id_message;
+	$reply = "Заявка №".$id_zakaza.".".$message_id."\n\n". $sms .
+		"\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n".$message_id. ":" . $id_client . "." . $id_zakaza;
 	$tg->sendMessage($chat_garant, $sms, null, true, null, $keyInLine9);
 
 	$str = "Ваша заказ отправлен на рассмотрение Администрацией p2p-обменника - ".$chat_url.
@@ -115,12 +117,12 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	
 /*	
 	try{
-		$tg->editMessageText($id_client, $id_message, $str, markdown);		
+		$tg->editMessageText($id_client, $id_zakaza, $str, markdown);		
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог изменить сообщение...\n".
 			$except.$e->getCode()." ".$e->getMessage());
 		$tg->sendMessage($id_client, $str, markdown);
-		$tg->deleteMessage($id_client, $id_message);		
+		$tg->deleteMessage($id_client, $id_zakaza);		
 	}
 */
 

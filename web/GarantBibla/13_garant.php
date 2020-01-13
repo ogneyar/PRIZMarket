@@ -1,6 +1,6 @@
 ﻿<?php
 
-/*
+/*id_message
 **
 **--------------------------------------------------
 ** обработка callback_query <- ответных сообщений!
@@ -16,7 +16,7 @@ $sms = substr($callbackText,0,-$kol);
 if ($callbackQuery!=='prinyal_zayavku_admin'){			
 
 	// текст сообщения после "." - номер заказа
-	$id_message =  substr(strrchr($kod, '.'), 1); // данные о номере заказа
+	$id_zakaza =  substr(strrchr($kod, '.'), 1); // данные о номере заказа
 
 	$kod2 = strstr($kod, '.', true);	
 	$id_client =  substr(strrchr($kod2, ':'), 1); // айди клиента	
@@ -99,8 +99,7 @@ if ($callbackQuery=="otklon") {
 		
 	$tg->sendMessage($id_client, $str, markdown, true, null, $keyInLine0);
 				
-	$tg->editMessageText($callbackChatId, $callbackMessageId, "Заявка №".$id_message.
-			"\n\n".$sms."\nЗАЯВКУ ОТКЛОНИЛ - @".$callback_user_name);	
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms."\nЗАЯВКУ ОТКЛОНИЛ - @".$callback_user_name);	
 	
 	
 	try{	
@@ -112,7 +111,7 @@ if ($callbackQuery=="otklon") {
 	
 /*	
 	try{
-		$tg->deleteMessage($id_client, $id_message);				
+		$tg->deleteMessage($id_client, $id_zakaza);				
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
 			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
@@ -137,12 +136,12 @@ if ($callbackQuery=="otklon") {
 		
 	$tg->sendMessage($id_client, $str, markdown);		//, true, null, $keyInLine0
 		
-	$tg->editMessageText($callbackChatId, $callbackMessageId, "Заявка №".$id_message.
+	$tg->editMessageText($callbackChatId, $callbackMessageId, "Заявка №".$id_zakaza.
 		"\n\n".$sms."\nЗАЯВКУ ОДОБРИЛ - @".$callback_user_name);
 
 /*		
 	try{
-		$tg->deleteMessage($id_client, $id_message);		
+		$tg->deleteMessage($id_client, $id_zakaza);		
 	}catch (Exception $e){
 		$tg->sendMessage($master, "Выброшено исключение, не смог удалить сообщение...\n".
 			"номер строки в файле - ".__LINE__."\n".__FILE__."\n".$e->getCode()." ".$e->getMessage());	
@@ -152,10 +151,10 @@ if ($callbackQuery=="otklon") {
 		
 	//$inLineKey_menu = [[["text"=>"КуплюПродам","callback_data"=>"kuplu_prodam"]]];
 	$inLineKey_menu = [[["text"=>"КуплюПродам","url"=>"t.me/".$username_bot."?start=".
-		$id_message_chat."-".$id_message]]]; //":" и "." не подходят
+		$id_message_chat."-".$id_zakaza]]]; //":" и "." не подходят
 	$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 		
-	$sms.= $id_message_chat.":".$id_client.".".$id_message;
+	$sms.= $id_message_chat.":".$id_client.".".$id_zakaza;
 	
 		
 	try{

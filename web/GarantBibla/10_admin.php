@@ -233,6 +233,17 @@ if ($text){
 	
 	
 	
+	}elseif ($text == "Жеееесть") {			
+		
+		$query = "ALTER TABLE `chat_garant` ADD `id_p2p` BIGINT( 20 ) NULL DEFAULT NULL AUTO_INCREMENT FIRST ,
+ADD PRIMARY KEY ( `id_p2p` )";
+
+		if ($result = $mysqli->query($query)) {					
+			$tg->sendMessage($chat_id, "Изменил!");								
+		}else $tg->sendMessage($chat_id, "Не смог!");	
+
+
+
 	}elseif ($text == "Таблица гарантЧатов"||$text == "чаты"||$text == "Чаты"||$text == "xfns"||$text == "Xfns") {		
 	
 		$query = "SELECT * FROM ".$table6;
