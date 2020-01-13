@@ -9,7 +9,7 @@ if ($nomerZayavki) {
 	$id_message_chat =  strstr($nomerZayavki, '-', true);
 	$id_zakaza =  substr(strrchr($nomerZayavki, '-'), 1);
 */	
-	$nomerZayavki = str_replace("-", ".", $nomerZayavki);
+	//$nomerZayavki = str_replace("-", ".", $nomerZayavki);
 }
 
 
