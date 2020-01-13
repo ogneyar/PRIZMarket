@@ -2,10 +2,26 @@
 
 //ОСНОВНАЯ РАБОТА БОТА, ВЫПОЛНЕНИЕ КОМАНД (РЕАКЦИЯ НА РЕПЛИКИ ПОЛЬЗОВАТЕЛЯ)
 
+if (($text)&&($this_admin==false)&&($chat_id!=$master)){
+	//ОТПРАВКА ИФОРМАЦИИ О СООБЩЕНИИ В ГРУППУ 
+	$reply = $first_name . " (@{$user_name}) пишет:\n" . $text . "\n". $chat_id . ":" . $message_id . " r.";	
+	$tg->call('sendMessage', [
+            'chat_id' => $admin_group,
+            'text' => $reply,
+            'parse_mode' => null,
+            'disable_web_page_preview' => true,
+            'reply_to_message_id' => null,
+            'reply_markup' => null,
+            'disable_notification' => false,
+    ]);	
+}
+
 if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
 if ($nomerZayavki) $text = "ПоявилсяПокупатель";
 
 
+
+//-------------------------------------------------------------------------
 if ($text == "Курс чата"||$text == "курс чата") {  // Курс PRIZM
 			
 	$reply = _kurs_PZM();
@@ -102,23 +118,7 @@ if ($text == "Курс чата"||$text == "курс чата") {  // Курс P
 }
 
 
-if (($text)&&($this_admin==false)&&($chat_id!==$master)){
 
-	//ОТПРАВКА ИФОРМАЦИИ О СООБЩЕНИИ В ГРУППУ 
-
-	$reply = $first_name . " (@{$user_name}) пишет:\n" . $text . "\n". $chat_id . ":" . $message_id . " r.";
-	
-	$tg->call('sendMessage', [
-            'chat_id' => $admin_group,
-            'text' => $reply,
-            'parse_mode' => null,
-            'disable_web_page_preview' => true,
-            'reply_to_message_id' => null,
-            'reply_markup' => null,
-            'disable_notification' => false,
-    ]);
-	
-}
 
 
 
