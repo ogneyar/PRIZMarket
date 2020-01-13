@@ -17,7 +17,10 @@ if (($text)&&($this_admin==false)&&($chat_id!=$master)){
 }
 
 if (strpos($text, "/start ")!==false) $nomerZayavki = str_replace ("/start ", "", $text);
-if ($nomerZayavki) $text = "ПоявилсяПокупатель";
+if ($nomerZayavki) {
+	$text = "ПоявилсяПокупатель";
+	$nomerZayavki = str_replace ("-", ".", $nomerZayavki);
+}
 
 
 
