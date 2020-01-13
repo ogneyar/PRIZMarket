@@ -95,7 +95,7 @@ if ($callbackQuery=="otklon") {
 	//	$mysqli->query($query);		
 		
 	$str = "Ваша заявка отклонена Администрацией p2p-обменника - ".$chat_url."\n\n".
-		", читайте правила \xF0\x9F\x91\x87".$tehPodderjka;
+		"читайте правила \xF0\x9F\x91\x87".$tehPodderjka;
 		
 	$tg->sendMessage($id_client, $str, markdown, true, null, $keyInLine0);
 				
@@ -125,9 +125,6 @@ if ($callbackQuery=="otklon") {
 	//	$query = "UPDATE ".$table." SET flag=0 WHERE id_client=" . $id_client;
 	//	$result = $mysqli->query($query);		
 
-
-	$MenuStart	= [["Старт", "Настройки"]];	
-	$keyboardStartNastr = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($MenuStart, false, true);  
 	
 	$tg->sendMessage($id_client, "И снова, Здравствуйте!", null, true, null, $keyboardStartNastr);
 	

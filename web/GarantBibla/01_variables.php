@@ -136,6 +136,13 @@ $inline_query_id = $arr['inline_query']['id'];
 
 
 
+$MenuStart	= [["Старт", "Настройки"]];	
+$keyboardStartNastr = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($MenuStart, false, true);  
+
+
+
+
+
 //ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК клавиатуры НУЛЕВОГО уровня KeybordInLine0    ссыль на ПРАВИЛА
 $inLine0_but1=["text"=>"Правила","url"=>"https://t.me/Secure_deal_PZM/5"];
 $inLine0_but2=["text"=>"Подать заявку","callback_data"=>"nachalo"];

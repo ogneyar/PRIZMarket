@@ -5,12 +5,13 @@
 
 if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http://t.me/".$username_bot){
 		
-	$query = "SELECT id_admin_group FROM ".$table6." WHERE id_chat=".$chat_id;
+	$query = "SELECT chat_url, id_admin_group FROM ".$table6." WHERE id_chat=".$chat_id;
 	if ($result = $mysqli->query($query)){	
 		if($result->num_rows>0){		
 		
 			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);	
 					
+			$chat_url = $arrayResult[0]['chat_url'];
 			$chat_garant = $arrayResult[0]['id_admin_group'];
 			
 		}else exit('ok');
@@ -34,11 +35,15 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	$query = "SELECT * FROM ".$table3." WHERE id_client=" . $id_client;
 	if ($result = $mysqli->query($query)) {			
 		if($result->num_rows>0){
-			$arrStrok = $result->fetch_all();		
+			$arrStrok = $result->fetch_all(MYSQLI_ASSOC);		
 			
-			$valuta = $arrStrok[0][5];
+			$valuta = $arrStrok[0]['valuta'];
 			
-			$query = "INSERT INTO ".$table4." VALUES ('". $arrStrok[0][0] ."', '". $arrStrok[0][1] ."', '" . $arrStrok[0][2] . "', '".$arrStrok[0][3]."', '".$arrStrok[0][4]."', '".$arrStrok[0][5]."', '".$arrStrok[0][6]."', '".$arrStrok[0][7]."', '".$arrStrok[0][8]."', '".$arrStrok[0][9]."', '".$chat_id."', '".$chat_garant."', '@".$user_name."')";
+			$query = "INSERT INTO ".$table4." VALUES ('". $arrStrok[0]['id_client'] ."', '".
+				$message_id ."', '" . $arrStrok[0]['vibor'] . "', '".$arrStrok[0]['monet']."', '".
+				$arrStrok[0]['kol_monet']."', '".$valuta."', '".$arrStrok[0]['cena']."', '".
+				$arrStrok[0]['itog']."', '".$arrStrok[0]['bank']."', '".$arrStrok[0]['flag_isp']."', '".
+				$chat_id."', '".$chat_garant."', '@".$user_name."')";
 			$mysqli->query($query);	
 
 //			$query = "DELETE FROM ".$table3." WHERE id_client=" . $id_client;				
@@ -60,13 +65,12 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 			'message_id' => $message_id
 		]);	
 		
-		$reply = $sms."\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n" .
-			$id_client . "." . $id_message;
+		$result = $tg->call('sendMessage', [
+            'chat_id' => $chat_id,
+            'text' => "В процессе.."              
+        ]);
 		
-		$inLineKey_menu = [[["text"=>"На рассмотрении..","callback_data"=>"rassmotrenie"]]];
-		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
-		
-		
+/*	
 		$result = $tg->call('sendMessage', [
             'chat_id' => $chat_id,
             'text' => $reply,
@@ -75,12 +79,18 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
             'reply_to_message_id' => null,
             'reply_markup' => is_null($keyInLine) ? $keyInLine : $keyInLine->toJson(),            
         ]);
-		
+*/		
 		$message_id = $result['message_id'];
 		
+		$reply = $sms."\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n" .
+			$id_client . "." . $message_id;
+		
+		$inLineKey_menu = [[["text"=>"На рассмотрении..","callback_data"=>"rassmotrenie"]]];
+		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
+		
+		$tg->editMessageText($chat_id, $message_id, $str, markdown, true, $keyInLine);		
 		
 		
-		//$tg->sendMessage($chat_id, $reply, null, true, null, $keyInLine);
 		
 		
 	}catch (Exception $e){
@@ -96,7 +106,8 @@ if ($arr['message']['reply_markup']['inline_keyboard']['0']['0']['url']=="http:/
 	$sms.= "\xF0\x9F\x91\xA4 @" . $user_name . "\n\n{$price}\n".$message_id. ":" . $id_client . "." . $id_message;
 	$tg->sendMessage($chat_garant, $sms, null, true, null, $keyInLine9);
 
-	$str = "Ваша заказ отправлен на рассмотрение Администрацией p2p-обменника, для отправки этой заявки в любой ".
+	$str = "Ваша заказ отправлен на рассмотрение Администрацией p2p-обменника - ".$chat_url.
+		", для отправки этой заявки в любой ".
 		"другой чат снова нажмите \xE2\x98\x9D отправить, для создания новой - нажмите /start" .
 		$tehPodderjka ;	
 	
