@@ -212,10 +212,10 @@ if ($callbackQuery=="otklon") {
 	}else exit('ok');
 	
 	$tg->sendMessage($id_pokupatelya, "Ваш гарант: @".$callback_user_name.
-		"\nнапишите ему в личку, нажав на эту ссылку, он ожидает Вас!");
+		"\nнапишите ему в личку нажав на эту ссылку, он ожидает Вас!");
 	
-	$tg->sendMessage($id_client, "Появился покупатель на Вашу заявку.\n\nВаш гарант: @".
-		$callback_user_name."\nнапишите ему в личку, нажав на эту ссылку, он ожидает Вас!");
+	$tg->sendMessage($id_client, "Появился клиент на Вашу заявку.\n\nВаш гарант: @".
+		$callback_user_name."\nнапишите ему в личку нажав на эту ссылку, он ожидает Вас!");
 
 	$tg->answerCallbackQuery($callbackQueryId, "Ожидайте, клиенты уведомлены!", true);
 
