@@ -220,15 +220,16 @@ if ($callbackQuery=="otklon") {
 	$tg->sendMessage($id_client, "Появился клиент на Вашу заявку.\n\nВаш гарант: @".
 		$callback_user_name."\nнапишите ему в личку нажав на эту ссылку, он ожидает Вас!");
 
-	$tg->answerCallbackQuery($callbackQueryId, "Ожидайте, клиенты уведомлены!", true);
+	$tg->answerCallbackQuery($callbackQueryId, "Ожидайте, клиенты уведомлены!");
 
+	$tg->sendMessage($callback_from_id, "Покупатель - "."\n"."Продавец - ");
 	
 	$inLineKey_menu = [[["text"=>"Сделка СОВЕРШЕНА!","callback_data"=>"sovershena"]]];
 	$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKey_menu);
 	
 	
 	try{
-		$tg->editMessageReplyMarkup($chat_obmennik, $id_posta);
+		$tg->editMessageReplyMarkup($chat_obmennik, $id_posta, $keyInLine);
 	}catch(Exception $e){
 		$tg->sendMessage($master, "Выброшен эксцепшн..\nна линии - ".__LINE__."\n".__FILE__);
 	}
