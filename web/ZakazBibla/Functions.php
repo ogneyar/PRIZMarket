@@ -88,7 +88,8 @@ function _info() {
 Публичный ключ:
 ```11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c```
 
-Мы рады быть полезными для Вас !";
+Мы рады быть полезными для Вас !
+                Команда @Prizm_market.";
 	
 
         $reply = str_replace('_', '\_', $reply);
