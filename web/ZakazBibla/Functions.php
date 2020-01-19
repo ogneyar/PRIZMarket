@@ -97,7 +97,7 @@ function _info() {
 Мы рады быть полезными для Вас !";
 	
 
-        $reply = str_repleace('_', '\_', $reply);
+        $reply = str_replace('_', '\_', $reply);
 
 	$bot->sendMessage($chat_id, $reply, markdown);
 
