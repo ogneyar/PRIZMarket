@@ -5,7 +5,9 @@ function _start_Zakaz_bota() {
 
 	global $bot, $chat_id, $from_first_name, $HideKeyboard;
 	
-	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown, $HideKeyboard);	
+	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown, $HideKeyboard);
+
+        _info();	
 	
 	exit('ok');
 	
