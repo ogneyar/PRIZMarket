@@ -72,7 +72,7 @@ if ($data['message']){
 
 	$forward_date = $data['message']['forward_date'];
 	
-/*	
+	
 	if ($data['message']['reply_to_message']){
 		
 		$reply_to_message = $data['message']['reply_to_message'];
@@ -118,7 +118,7 @@ if ($data['message']){
 		$reply_text = $reply_to_message['text'];
 		
 	}
-*/	
+	
 	
 	$text = $data['message']['text'];
 	
