@@ -10,7 +10,9 @@ if ($text) {
 		if ($reply_forward) {
 			
 			// надо будет в базе сохранить $reply_forward_id
-			$bot->sendMessage($reply_forward_id, $text, null, null, $reply_message_id);
+			$bot->sendMessage($reply_forward_id, $text);
+			
+			//, null, null, $reply_message_id
 			
 		}elseif ($reply_sender_name) {
 			
