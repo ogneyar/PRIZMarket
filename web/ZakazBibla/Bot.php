@@ -10,6 +10,8 @@
  *
  * sendMessage
  *
+ * forwardMessage
+ *
  * answerCallbackQuery
  *
  * getChat
@@ -80,7 +82,7 @@ class Bot
     
     
     /*
-	**  функция отправки текстового сообщения	
+	**  функция отправки сообщения 
 	**
 	**  @param int $chat_id
  	**  @param str $text
@@ -116,6 +118,36 @@ class Bot
 		
 		return $response;
 	}
+	
+	
+	/*
+	**  функция пересылки сообщения	
+	**
+	**  @param int $chat_id
+ 	**  @param int $from_chat_id
+	**  @param int $message_id  
+	**  @param bool $disable_notification
+	**
+	**  @return mixed
+	*/
+	public function forwardMessage(
+		$chat_id,
+		$from_chat_id,
+		$message_id,
+		$disable_notification = false
+	) {
+		$response = $this->call("sendMessage", [
+			'chat_id' => $chat_id,
+			'from_chat_id' => $from_chat_id,
+			'disable_notification' => $disable_notification,
+			'message_id' => $message_id
+		]);
+	
+		return $response;
+	}
+	
+	
+	
     
 	/*
 	** Ответное сообщение на нажатие кнопки callback_query

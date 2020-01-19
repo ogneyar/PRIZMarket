@@ -15,9 +15,9 @@ if ($text) {
 		
 	}else {
 
-		//$bot->forwardMessage();
+		$bot->forwardMessage($admin_group, $chat_id, $message_id);
 
-        }	
+    }	
        
 }elseif ($photo) {
 
