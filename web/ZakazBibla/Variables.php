@@ -97,6 +97,7 @@ if ($data['message']){
 		$reply_chat_title = $reply_chat['title'];
 		$reply_chat_type = $reply_chat['type'];
 
+                $reply_date = $reply_to_message['date'];
 		
                 $reply_forward = $reply_to_message['forward_from'];
 
@@ -107,11 +108,11 @@ if ($data['message']){
 		$reply_forward_username = $reply_forward['username'];
 		if ($reply_forward_username=="") $reply_forward_username = 'отсутствует';
 
+                $reply_forward_date;
+
+                $reply_sender_name;
 
 
-
-
-		
 	}
 	
 	
