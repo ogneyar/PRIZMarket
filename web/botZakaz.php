@@ -15,7 +15,7 @@ $id_bota = strstr($token, ':', true);
 $admin_group = $admin_group_Zakaz;
 
 // ФЛАГ ДЛЯ ВКЛЮЧЕНИЯ РЕЖИМА ОТЛАДКИ БОТА
-//$OtladkaBota = 'да';
+$OtladkaBota = 'да';
 
 // Подключение БД
 $mysqli = new mysqli($host, $username, $password, $dbname);
