@@ -95,7 +95,7 @@ PRIZM-UFSC-9S49-ESJX-79N7S
 
 Мы рады быть полезными для Вас !";
 	
-	$bot->sendMessage($chat_id, $reply);
+	$bot->sendMessage($chat_id, $reply, markdown);
 
 }
 
