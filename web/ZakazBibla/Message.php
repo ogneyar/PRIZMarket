@@ -14,7 +14,7 @@ if ($text) {
 			
 		}elseif ($reply_sender_name) {
 			
-			$bot->sendMessage(chat_id, "Профиль скрыт.");
+			$bot->sendMessage($chat_id, "Профиль скрыт.");
 			
 		}
 			
