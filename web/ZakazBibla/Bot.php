@@ -136,7 +136,7 @@ class Bot
 		$message_id,
 		$disable_notification = false
 	) {
-		$response = $this->call("sendMessage", [
+		$response = $this->call("forwardMessage", [
 			'chat_id' => $chat_id,
 			'from_chat_id' => $from_chat_id,
 			'disable_notification' => $disable_notification,
