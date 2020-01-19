@@ -9,11 +9,15 @@ if ($text) {
 	
 			
 			
-	}else{
+	}elseif ($text=='инфо') {
 		
+              _info();
+		
+	}else {
+
 		//$bot->forwardMessage();
-		
-	}		
+
+        }	
        
 }elseif ($photo) {
 
