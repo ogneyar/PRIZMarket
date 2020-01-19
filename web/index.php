@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 	include_once '../vendor/autoload.php';	
 	include_once 'a_conect.php';
 	
@@ -9,6 +9,8 @@
 	
 	include_once 'botMarket.php'; 
 	include_once 'botGarant.php';
+	include_once 'botZakaz.php';
+
 ?>
 </body>	
 </html>	
