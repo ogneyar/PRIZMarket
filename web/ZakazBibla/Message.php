@@ -9,10 +9,19 @@ if ($text) {
 
 		if ($reply_forward) {
 			
-			// надо будет в базе сохранить $reply_forward_id
-			$bot->sendMessage($reply_forward_id, $text);
+			// $reply_forward_id - это айди клиента написавшего сообщение боту,
+			// из базы надо будет достать message_id клиента по reply_forward_id
+			// осуществив поиск reply_message_id,  которое в базе записано как
+			// id_message_in_group
+			$result = $bot->sendMessage($reply_forward_id, $text);
 			
 			//, null, null, $reply_message_id
+			
+			
+			// а после надо сохранить айди сообщения админа клиенту
+			// для возможности его редактирования
+			
+			
 			
 		}elseif ($reply_sender_name) {
 			
@@ -25,8 +34,22 @@ if ($text) {
         _info();
 		
 	}else {
-
-		$bot->forwardMessage($admin_group, $chat_id, $message_id);
+		
+		// клиент написал, надо в базе сохранить его id, message_id, date 
+		// (и id_message_in_group, которое будет найдено ниже)
+		// что бы потом с базы доставать message_id по date зная id клиента)
+		$result = $bot->forwardMessage($admin_group, $chat_id, $message_id);
+		
+		$result = json_decode($result, true);
+		
+		if ($result['ok']) {
+			
+			// номер сообщения, которое бот отправил в админку
+			// по этому номеру будет находиться message_id клиента,
+			// когда админ ответит на сообщение (reply_to_message)
+			$id_message_in_group = $result['result']['message_id'];
+			
+		}
 
     }	
        
