@@ -130,6 +130,8 @@ class Bot
 	**
 	**  @return mixed
 	*/
+	
+/*
 	public function forwardMessage(
 		$chat_id,
 		$from_chat_id,
@@ -146,7 +148,7 @@ class Bot
 		return $response;
 	}
 	
-	
+*/
 	
     
 	/*
