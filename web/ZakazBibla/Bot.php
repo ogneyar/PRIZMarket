@@ -88,9 +88,9 @@ class Bot
  	**  @param str $text
 	**  @param str $parse_mode
 	**  @param array $reply_markup
+	**  @param int $reply_to_message_id	
 	**  @param bool $disable_web_page_preview
 	**  @param bool $disable_notification
-	**  @param str $reply_to_message_id
 	**  
 	**  @return mixed
 	*/
@@ -99,9 +99,9 @@ class Bot
 		$text,
 		$parse_mode = null,
 		$reply_markup = null,
+		$reply_to_message_id = null,
 		$disable_web_page_preview = false,
 		$disable_notification = false,
-		$reply_to_message_id = null
 	) {
 		
 		if ($reply_markup) $reply_markup = json_encode($reply_markup);
