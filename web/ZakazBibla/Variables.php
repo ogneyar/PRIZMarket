@@ -7,6 +7,7 @@ if ($OtladkaBota == 'да') $bot->sendMessage($test_group, PrintArr($data));
 
 $update_id = $data['update_id'];
 
+
 if ($data['callback_query']){	
 	
 	$callback_query_id = $data['callback_query']['id'];
@@ -24,6 +25,18 @@ if ($data['callback_query']){
 	$callback_data = $data['callback_query']['data'];
 	
 }
+
+
+if ($data['edited_message']){
+	
+	$edited_message = $data['edited_message'];
+	
+	$edit_date = $edited_message['edit_date'];
+	
+	$data['message'] = $edited_message;
+	
+}
+
 
 if ($data['message']){
 
@@ -122,7 +135,6 @@ if ($data['message']){
 	
 	$text = $data['message']['text'];
 	
-}elseif ($data['edited_message']){
 
 }elseif ($data['channel_post']) {
 
