@@ -6,7 +6,7 @@ if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text)
 if ($text) {
 
 	if ($reply_to_message) {	
-		
+/*		
 		if ($reply_forward) {
 			
 			// надо будет в базе сохранить $reply_forward_id
@@ -19,7 +19,7 @@ if ($text) {
 			$bot->sendMessage($chat_id, "Профиль скрыт.");
 			
 		}
-			
+*/			
 	}elseif ($text=='инфо') {
 		
         _info();
