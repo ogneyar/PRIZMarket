@@ -11,7 +11,7 @@ if ($text) {
 			
 	}else{
 		
-		
+		//$bot->forwardMessage();
 		
 	}		
        
