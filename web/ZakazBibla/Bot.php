@@ -101,7 +101,7 @@ class Bot
 		$reply_markup = null,
 		$reply_to_message_id = null,
 		$disable_web_page_preview = false,
-		$disable_notification = false,
+		$disable_notification = false
 	) {
 		
 		if ($reply_markup) $reply_markup = json_encode($reply_markup);
@@ -130,8 +130,6 @@ class Bot
 	**
 	**  @return mixed
 	*/
-	
-/*
 	public function forwardMessage(
 		$chat_id,
 		$from_chat_id,
@@ -148,7 +146,6 @@ class Bot
 		return $response;
 	}
 	
-*/
 	
     
 	/*
