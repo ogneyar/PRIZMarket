@@ -7,13 +7,10 @@ $tg = new \TelegramBot\Api\BotApi($token);
 
 $id_bota = strstr($token, ':', true);	
 
-
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_garant;
 
-// ФЛАГ ДЛЯ ВКЛЮЧЕНИЯ РЕЖИМА ОТЛАДКИ БОТА
-$OtladkaBota = 'да';
-
+// Подключение базы данных
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // проверка подключения 

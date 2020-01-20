@@ -19,9 +19,7 @@ if ($_GET['privet']) {
 	echo "Сообщение {$_GET['privet']} отправленно в группу!";
 }
 
-// ФЛАГ ДЛЯ ВКЛЮЧЕНИЯ РЕЖИМА ОТЛАДКИ БОТА
-//$OtladkaBota = 'да';
-
+// Подключение к Амазон
 $credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
 	
 $s3 = new Aws\S3\S3Client([

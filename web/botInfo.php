@@ -14,9 +14,6 @@ $id_bota = strstr($token, ':', true);
 // Группа администрирования бота (Админка)
 //$admin_group = $admin_group_Info;
 
-// ФЛАГ ДЛЯ ВКЛЮЧЕНИЯ РЕЖИМА ОТЛАДКИ БОТА
-$OtladkaBota = 'да';
-
 // Подключение БД
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
