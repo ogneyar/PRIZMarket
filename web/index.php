@@ -10,6 +10,7 @@
 	include_once 'botMarket.php'; 
 	include_once 'botGarant.php';
 	include_once 'botZakaz.php';
+	include_once 'botInfo.php';
 
 ?>
 </body>	
