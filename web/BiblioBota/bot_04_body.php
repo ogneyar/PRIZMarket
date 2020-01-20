@@ -62,7 +62,7 @@ if ($est!==false){
 		//$file_id='CgADAgAD2gMAArKrUEtmCqiq0qoR0hYE';		
 		//$tg->sendVideo($chat_id, $file_id, 1, $reply);
         
-		$tg->sendMessage($chat_id, $reply, markdown, true);
+		$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyInLine_VES);
 		
 			
 }elseif ($text == $knopa07) {  //  Разместить объявление в *Категориях*

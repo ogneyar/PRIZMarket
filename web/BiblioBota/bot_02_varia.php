@@ -30,6 +30,20 @@ $table5='pzmarkt';
 $table6='chat_garant';
 
 
+$InlineKeyboardMarkup = [
+	'inline_keyboard' => [
+		[
+			[
+				'text' => 'Перейти..',
+				'url' => 'http://t.me/PRIZM_world_bot?start='
+			]
+		]
+	]
+];
+
+$keyInLine_VES = json_encode($InlineKeyboardMarkup);
+
+
 $except = __LINE__."\n".__FILE__."\n";
 
 
