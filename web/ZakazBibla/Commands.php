@@ -19,6 +19,14 @@ if ($text == 'table message'||$text == 'таблица сообщений'||$tex
 				
 	}else throw new Exception("Не смог получить записи в таблице {$table_message}");
 		
+}elseif ($text == 'изи') {
+	
+	$query = "ALTER TABLE `zakaz_message` CHANGE `date` `date` BIGINT NULL DEFAULT NULL";
+	if (!$result = $mysqli->query($query)) throw new Exception("Не смог изменить таблицу {$table_message}");
+	
+	
 }
+
+
 
 ?>
