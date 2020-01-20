@@ -30,18 +30,8 @@ $table5='pzmarkt';
 $table6='chat_garant';
 
 
-$InlineKeyboardMarkup_VES = [
-	'inline_keyboard' => [
-		[
-			[
-				'text' => 'Перейти..',
-				'url' => 'http://t.me/PRIZM_world_bot?start='
-			]
-		]
-	]
-];
-
-$keyInLine_VES = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($InlineKeyboardMarkup_VES);
+$Key_VES = [[['text' => 'Перейти..', 'url' => 'http://t.me/PRIZM_world_bot?start=']]];
+$keyInLine_VES = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($Key_VES);
 
 
 $except = __LINE__."\n".__FILE__."\n";
