@@ -47,6 +47,11 @@ if (mysqli_connect_errno()) {
 	if ($data['callback_query']) {
 	
 		include_once 'BiblaZakaz/Callback_query.php';
+		
+	
+	}elseif ($data['edited_message']) {
+	
+		include_once 'BiblaZakaz/Edit_message.php';		
 	
 	// если пришло сообщение MESSAGE подключается необходимый файл
 	}elseif ($data['message']) {
