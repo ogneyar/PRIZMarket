@@ -9,6 +9,8 @@ $update_id = $data['update_id'];
 
 
 if ($data['callback_query']){	
+
+	$callback_query = $data['callback_query'];
 	
 	$callback_query_id = $data['callback_query']['id'];
 	
