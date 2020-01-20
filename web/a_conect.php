@@ -13,13 +13,13 @@
 
 	$tokenMARKET = getenv('TOKEN_MARKET');
 	$tokenGARANT = getenv('TOKEN_GARANT');
-	$tokenInfoUsers = getenv("TOKEN_INFO");
+	$tokenInfo = getenv("TOKEN_INFO");
     $tokenZakaz = getenv('TOKEN_ZAKAZ');
 	
 	$master = getenv('MASTER');
 	$admin_group_market = getenv('ADMIN_GROUP_MARKET');
 	$admin_group_garant = getenv('ADMIN_GROUP_GARANT');		
-	$admin_group_InfoUsers = getenv('ADMIN_GROUP_INFO');
+	$admin_group_Info = getenv('ADMIN_GROUP_INFO');
     $admin_group_Zakaz = getenv('ADMIN_GROUP_ZAKAZ');	
 	$test_group = getenv('TEST_GROUP');
 	$channel_market = getenv('CHANNEL_MARKET');
