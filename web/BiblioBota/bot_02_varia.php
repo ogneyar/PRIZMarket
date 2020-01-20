@@ -30,7 +30,7 @@ $table5='pzmarkt';
 $table6='chat_garant';
 
 
-$InlineKeyboardMarkup = [
+$InlineKeyboardMarkup_VES = [
 	'inline_keyboard' => [
 		[
 			[
@@ -41,7 +41,7 @@ $InlineKeyboardMarkup = [
 	]
 ];
 
-$keyInLine_VES = json_encode($InlineKeyboardMarkup);
+$keyInLine_VES = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($InlineKeyboardMarkup_VES);
 
 
 $except = __LINE__."\n".__FILE__."\n";
