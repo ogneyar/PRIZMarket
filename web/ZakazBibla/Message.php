@@ -42,21 +42,12 @@ if ($text) {
 			
 			$bot->sendMessage($chat_id, "Профиль скрыт.");
 			
-		}elseif ($chat_type == 'private') {
+		}elseif ($edited_message) {
 			
-			//chat_id, ?, reply_message_id, date
-/*			
-			$query = "SELECT message_id_in FROM {$table_message} WHERE message_id_out={$reply_message_id} AND client_id={$chat_id}";
-			if ($result = $mysqli->query($query)) {				
-				if($result->num_rows>0){
-					$arrayResult = $result->fetch_all(MYSQLI_ASSOC);				
-					$message_id_in = $arrayResult[0]['message_id_in'];
-				}				
-			}else throw new Exception("Не смог узнать message_id_in в таблице {$table_message}");
+			//$bot->editeMessageText($reply_forward_id, "Профиль скрыт.");
 			
-			$result = $bot->sendMessage($admin_group, $text, null, null, $message_id_in);	
-			
-*/
+		}elseif ($chat_type == 'private') {			
+
 			$result = $bot->forwardMessage($admin_group, $chat_id, $message_id);
 			
 			if ($result) {			
@@ -69,7 +60,7 @@ if ($text) {
 				
 			}			
 	
-		}
+		}else {}
 	
 	}elseif ($text=='инфо') {
 		
