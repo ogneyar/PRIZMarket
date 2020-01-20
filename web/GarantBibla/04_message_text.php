@@ -2,7 +2,7 @@
 
 //ОСНОВНАЯ РАБОТА БОТА, ВЫПОЛНЕНИЕ КОМАНД (РЕАКЦИЯ НА РЕПЛИКИ ПОЛЬЗОВАТЕЛЯ)
 
-if (($text)&&($this_admin==false)&&($chat_id!=$master)){
+if (($text)&&($this_admin==false)&&($chat_id!==$master)){
 	//ОТПРАВКА ИФОРМАЦИИ О СООБЩЕНИИ В ГРУППУ 
 	$reply = $first_name . " (@{$user_name}) пишет:\n" . $text . "\n". $chat_id . ":" . $message_id . " r.";	
 	$tg->call('sendMessage', [
