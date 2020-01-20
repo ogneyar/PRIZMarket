@@ -30,7 +30,7 @@ if ($text) {
 				// а после надо сохранить айди сообщения админа клиенту
 				// для возможности его редактирования
 			
-				$query = "INSERT INTO {$table_message} VALUES ('{$chat_id}',
+				$query = "INSERT INTO {$table_message} VALUES ('{$reply_forward_id}',
 						'{$message_id}', '{$result['message_id']}', '{$result['date']}')";
 				$mysql_result = $mysqli->query($query);
 					
@@ -41,6 +41,13 @@ if ($text) {
 		}elseif ($reply_sender_name) {
 			
 			$bot->sendMessage($chat_id, "Профиль скрыт.");
+			
+		}elseif ($chat_type == 'private') {
+			
+			//
+			//
+			
+			//$bot->sendMessage($admin_group, $text, null, null, $message_id_in);
 			
 		}
 	
