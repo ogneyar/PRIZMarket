@@ -40,30 +40,26 @@ if ($text) {
 		
 		$result = $bot->getChat($text);
 		
-		$result = json_decode($result, true);
-		
-		if ($result['ok']==false) {
+		if (!$result) {
 			
 			if ($chat_type=='private') _info(); 
 		
 		}else {
 			
-			$res = $result['result'];
+			if ($result['last_name']=='') $result['last_name'] = 'неизвестно';
 			
-			if ($res['last_name']=='') $res['last_name'] = 'неизвестно';
+			if ($result['username']=='') $result['username'] = 'неизвестно';
+			else $result['username'] = "@".$result['username'];
 			
-			if ($res['username']=='') $res['username'] = 'неизвестно';
-			else $res['username'] = "@".$res['username'];
-			
-			$res['first_name'] = str_replace ("_", "\_", $res['first_name']);
-			$res['last_name'] = str_replace ("_", "\_", $res['last_name']);
-			$res['username'] = str_replace ("_", "\_", $res['username']);
+			$result['first_name'] = str_replace ("_", "\_", $result['first_name']);
+			$result['last_name'] = str_replace ("_", "\_", $result['last_name']);
+			$result['username'] = str_replace ("_", "\_", $result['username']);
 			
 			$reply = "Информация о пользователе:\n".
-				"id: [".$res['id']."](tg://user?id=".$res['id'].")\n".
-				"first name: ".$res['first_name']."\n".
-				"last name: ".$res['last_name']."\n".
-				"username: ".$res['username'];
+				"id: [".$result['id']."](tg://user?id=".$result['id'].")\n".
+				"first name: ".$result['first_name']."\n".
+				"last name: ".$result['last_name']."\n".
+				"username: ".$result['username'];
 		
 			$bot->sendMessage($chat_id, $reply, markdown);		
 		
