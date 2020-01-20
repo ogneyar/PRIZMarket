@@ -101,13 +101,13 @@ function _info() {
 
 
 
-function _deleting_old_records($table) {
+function _deleting_old_records($table, $limit = 0) {
 	
-	global $mysqli, $day;
+	global $mysqli;
 	
 	$real_date = time();
 	
-	$required_date = $real_date - $day;
+	$required_date = $real_date - $limit;
 	
 	$query = "DELETE FROM {$table} WHERE date<{$required_date}";
 	

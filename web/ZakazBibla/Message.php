@@ -45,7 +45,7 @@ if ($text) {
 		}elseif ($chat_type == 'private') {
 			
 			//chat_id, ?, reply_message_id, date
-			
+/*			
 			$query = "SELECT message_id_in FROM {$table_message} WHERE message_id_out={$reply_message_id} AND client_id={$chat_id}";
 			if ($result = $mysqli->query($query)) {				
 				if($result->num_rows>0){
@@ -54,7 +54,10 @@ if ($text) {
 				}				
 			}else throw new Exception("Не смог узнать message_id_in в таблице {$table_message}");
 			
-			$result = $bot->sendMessage($admin_group, $text, null, null, $message_id_in);				
+			$result = $bot->sendMessage($admin_group, $text, null, null, $message_id_in);	
+			
+*/
+			$result = $bot->forwardMessage($admin_group, $chat_id, $message_id);
 			
 			if ($result) {			
 			
@@ -65,7 +68,7 @@ if ($text) {
 				if (!$mysql_result) throw new Exception("Не смог сделать записать в таблицу {$table_message}");
 				
 			}			
-			
+	
 		}
 	
 	}elseif ($text=='инфо') {
@@ -76,7 +79,7 @@ if ($text) {
 		
 		if ($chat_type == 'private') {
 			
-			_deleting_old_records($table_message);
+			_deleting_old_records($table_message, $day);
 			
 			// клиент написал, надо в базе сохранить его id, message_id_in, date 
 			// (и id_message_out, которое будет найдено ниже)

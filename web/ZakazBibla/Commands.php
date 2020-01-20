@@ -25,6 +25,10 @@ if ($text == 'table message'||$text == 'таблица сообщений'||$tex
 	if (!$result = $mysqli->query($query)) throw new Exception("Не смог изменить таблицу {$table_message}");
 	
 	
+}elseif ($text == 'дел') {
+	
+	_deleting_old_records($table_message);	
+	
 }
 
 
