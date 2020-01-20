@@ -1,6 +1,6 @@
 ﻿<?
 // Подключаем библиотеку с классом Bot
-include_once 'ZakazBibla/Bot.php';
+include_once 'BiblaZakaz/Bot.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
 //exit('ok');
@@ -29,10 +29,10 @@ if (mysqli_connect_errno()) {
 }else { 	
 
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ФУНКЦИЙ
-	include 'ZakazBibla/Functions.php';	
+	include 'BiblaZakaz/Functions.php';	
 	
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-	include 'ZakazBibla/Variables.php';
+	include 'BiblaZakaz/Variables.php';
 	
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
@@ -49,7 +49,7 @@ if (mysqli_connect_errno()) {
 	
 	if ($data['callback_query']) {
 	
-		include_once 'ZakazBibla/Callback_query.php';
+		include_once 'BiblaZakaz/Callback_query.php';
 	
 	// если пришло сообщение MESSAGE подключается необходимый файл
 	}elseif ($data['message']) {
@@ -61,14 +61,14 @@ if (mysqli_connect_errno()) {
 			if ($number!==false&&$number == '0') {
 				if ($chat_id==$master) {
 					$text = substr($text, 1);
-					include_once 'ZakazBibla/Commands.php';
+					include_once 'BiblaZakaz/Commands.php';
 					exit('ok');
 				}
 			}
 		}
 		//-----------------------------
 				
-		include_once 'ZakazBibla/Message.php';		
+		include_once 'BiblaZakaz/Message.php';		
 		
 	}
 }
