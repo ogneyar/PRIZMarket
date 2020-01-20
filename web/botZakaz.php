@@ -52,7 +52,25 @@ if (mysqli_connect_errno()) {
 		include_once 'ZakazBibla/Callback_query.php';
 	
 	// если пришло сообщение MESSAGE подключается необходимый файл
-	}elseif ($data['message']) include_once 'ZakazBibla/Message.php';		
+	}elseif ($data['message']) {
+		
+		//-----------------------------
+		// это команды бота для мастера
+		if ($text){
+			$number = stripos($text, '%');
+			if ($number!==false&&$number == '0') {
+				if ($chat_id==$master) {
+					$text = substr($text, 1);
+					include_once 'ZakazBibla/Commands.php';
+					exit('ok');
+				}
+			}
+		}
+		//-----------------------------
+				
+		include_once 'ZakazBibla/Message.php';		
+		
+	}
 }
 
 // закрываем подключение 
