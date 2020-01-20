@@ -44,10 +44,27 @@ if ($text) {
 			
 		}elseif ($chat_type == 'private') {
 			
-			//
-			//
+			//chat_id, ?, reply_message_id, date
 			
-			//$bot->sendMessage($admin_group, $text, null, null, $message_id_in);
+			$query = "SELECT message_id_in FROM {$table_message} WHERE message_id_out={$reply_message_id} AND client_id={$chat_id}";
+			if ($result = $mysqli->query($query)) {				
+				if($result->num_rows>0){
+					$arrayResult = $result->fetch_all(MYSQLI_ASSOC);				
+					$message_id_in = $arrayResult[0]['message_id_in'];
+				}				
+			}else throw new Exception("Не смог узнать message_id_in в таблице {$table_message}");
+			
+			$result = $bot->sendMessage($admin_group, $text, null, null, $message_id_in);				
+			
+			if ($result) {			
+			
+				$query = "INSERT INTO {$table_message} VALUES ('{$chat_id}',
+						'{$message_id}', '{$result['message_id']}', '{$result['date']}')";
+				$mysql_result = $mysqli->query($query);
+					
+				if (!$mysql_result) throw new Exception("Не смог сделать записать в таблицу {$table_message}");
+				
+			}			
 			
 		}
 	
