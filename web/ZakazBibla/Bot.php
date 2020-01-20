@@ -115,6 +115,12 @@ class Bot
 			'reply_to_message_id' => $reply_to_message_id,
 			'reply_markup' => $reply_markup
 		]);	
+				
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
 		
 		return $response;
 	}
@@ -142,6 +148,12 @@ class Bot
 			'disable_notification' => $disable_notification,
 			'message_id' => $message_id
 		]);
+		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
 	
 		return $response;
 	}
@@ -174,6 +186,12 @@ class Bot
 			'cache_time' => $cache_time
 		]);
 		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+		
 		return $response;
 	}
 	
@@ -187,6 +205,12 @@ class Bot
 	public function getChat($chat_id){
 		
 		$response = $this->call("getChat", ['chat_id' => $chat_id]);
+		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
 		
 		return $response;
 	}

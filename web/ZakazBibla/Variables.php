@@ -217,7 +217,7 @@ $InlineKeyboardMarkup = [
 
 
 
-
+$day = 86400;
 
 
 ?>

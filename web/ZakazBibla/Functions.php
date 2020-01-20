@@ -99,4 +99,32 @@ function _info() {
 
 }
 
+
+
+function _deleting_old_records($table) {
+	
+	global $mysqli, $day;
+	
+	$real_date = date();
+	
+	$required_date = $real_date - $day;
+	
+	$query = "DELETE FROM {$table} WHERE date<{$required_date}";
+	
+	$result = $mysqli->query($query);
+	
+	if (!$result) throw new Exception("Не смог удалить записи в таблице {$table}");
+
+}
+
+
+
+
+
+
+
+
+
+
+
 ?>
