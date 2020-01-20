@@ -18,7 +18,7 @@ if ($reply_to_message) {
 			
 	$result = $bot->editMessageText($reply_forward_id, $message_id_out, $text);			
 
-	if (!$result) throw new Exception("Не смог изменить сообщение");
+	if (!$result) throw new Exception("Не смог изменить сообщение {$message_id_out} от клиента {$reply_forward_id}");
 	
 			
 }elseif ($chat_type == 'private') {
@@ -39,7 +39,7 @@ if ($reply_to_message) {
 			
 	$result = $bot->editMessageText($admin_group, $message_id_out, $text);			
 
-	if (!$result) throw new Exception("Не смог изменить сообщение");
+	if (!$result) throw new Exception("Не смог изменить сообщение {$message_id_out} от клиента {$chat_id}");
 
 }
 
