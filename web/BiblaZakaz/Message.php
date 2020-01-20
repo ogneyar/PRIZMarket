@@ -7,11 +7,7 @@ if ($text) {
 
 	if ($reply_to_message) {	
 
-		if ($edited_message) {
-			
-			//$bot->editeMessageText($reply_forward_id, "Профиль скрыт.");
-			
-		}elseif ($reply_forward) {
+		if ($reply_forward) {
 			
 			// $reply_forward_id - это айди клиента написавшего сообщение боту,
 			// из базы надо будет достать message_id клиента по reply_forward_id (id клиента)
@@ -60,7 +56,7 @@ if ($text) {
 				
 			}			
 	
-		}else {}
+		}
 	
 	}elseif ($text=='инфо') {
 		
