@@ -1,6 +1,6 @@
 ﻿<?
 // Подключаем библиотеку с классом Bot
-include_once 'BiblaInfo/Bot.php';
+include_once 'myBotApi/Bot.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
 //exit('ok');
@@ -27,7 +27,7 @@ if (mysqli_connect_errno()) {
 	include 'BiblaInfo/Functions.php';	
 	
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-	include 'BiblaInfo/Variables.php';
+	include 'myBotApi/Variables.php';
 	
 	// Обработчик исключений
 	set_exception_handler('exception_handler');

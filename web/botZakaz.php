@@ -1,6 +1,6 @@
 ﻿<?
 // Подключаем библиотеку с классом Bot
-include_once 'BiblaZakaz/Bot.php';
+include_once 'myBotApi/Bot.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
 //exit('ok');
@@ -29,7 +29,7 @@ if (mysqli_connect_errno()) {
 	include 'BiblaZakaz/Functions.php';	
 	
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-	include 'BiblaZakaz/Variables.php';
+	include 'myBotApi/Variables.php';
 	
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
