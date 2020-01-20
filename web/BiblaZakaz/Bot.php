@@ -12,6 +12,8 @@
  *
  * forwardMessage
  *
+ * editMessageText
+ *
  * answerCallbackQuery
  *
  * getChat
@@ -92,7 +94,7 @@ class Bot
 	**  @param bool $disable_web_page_preview
 	**  @param bool $disable_notification
 	**  
-	**  @return mixed
+	**  @return array
 	*/
     public function sendMessage(
 		$chat_id, 
@@ -134,7 +136,7 @@ class Bot
 	**  @param int $message_id  
 	**  @param bool $disable_notification
 	**
-	**  @return mixed
+	**  @return array
 	*/
 	public function forwardMessage(
 		$chat_id,
@@ -159,6 +161,49 @@ class Bot
 	}
 	
 	
+	/*
+	**  функция редактирования сообщения	
+	**
+	**  @param int $chat_id
+	**  @param int $message_id  
+	**  @param str $text  
+	**  @param int $inline_message_id  
+	**  @param str $parse_mode
+	**  @param bool $disable_web_page_preview
+	**  @param array $reply_markup
+	**
+	**  @return array
+	*/
+	public function editMessageText(		
+		$chat_id = null,		
+		$message_id = null,
+		$text,
+		$inline_message_id = null,
+		$parse_mode = null,
+		$disable_web_page_preview = false,
+		$reply_markup = null
+	) {
+	
+		if ($reply_markup) $reply_markup = json_encode($reply_markup);
+		
+		$response = $this->call("editMessageText", [
+			'chat_id' => $chat_id,						
+			'message_id' => $message_id,
+			'text' => $text,
+			'inline_message_id' => $inline_message_id,
+			'parse_mode' => $parse_mode,
+			'disable_web_page_preview' => $disable_web_page_preview,
+			'reply_markup' => $reply_markup			
+		]);
+		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+	
+		return $response;
+	}
     
 	/*
 	** Ответное сообщение на нажатие кнопки callback_query
@@ -169,7 +214,7 @@ class Bot
 	** @param str $url
 	** @param date $cache_time
 	** 
-	** @return mixed
+	** @return array
 	*/
 	public function answerCallbackQuery(
 		$callback_query_id,
@@ -200,7 +245,7 @@ class Bot
 	**
 	** @param int $chat_id
 	**
-	** @return mixed
+	** @return array
 	*/
 	public function getChat($chat_id){
 		
