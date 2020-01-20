@@ -105,7 +105,7 @@ function _deleting_old_records($table) {
 	
 	global $mysqli, $day;
 	
-	$real_date = date();
+	$real_date = time();
 	
 	$required_date = $real_date - $day;
 	
