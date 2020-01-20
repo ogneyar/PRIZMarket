@@ -1,5 +1,7 @@
 ﻿<?php
 
+	$OtladkaBota = getenv('OTLADKA');
+
 	$aws_key_id = getenv('AWS_ACCESS_KEY_ID');
 	$aws_secret_key = getenv('AWS_SECRET_ACCESS_KEY');
 	$aws_region = getenv('AWS_REGION');
