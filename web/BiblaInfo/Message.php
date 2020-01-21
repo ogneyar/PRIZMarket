@@ -3,7 +3,7 @@
 if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);
 
 // проверяем если пришло сообщение
-if ($text) {
+//if ($text) {
 
 	if ($message_forward) {	
 
@@ -36,7 +36,7 @@ if ($text) {
 		$bot->sendMessage($chat_id, $reply, null, $HideKeyboard);
 			
 			
-	}else{
+	}elseif ($text){
 		
 		$result = $bot->getChat($text);
 		
@@ -66,13 +66,13 @@ if ($text) {
 		}
 		
 	}	
-       
+/*       
 }elseif ($chat_type=='private') {
 
     // если пришло что-то другое
     $bot->call('sendMessage', ['chat_id' => $chat_id, 'text' => "Чего это такое?"]);
 }
-
+*/
 
 
 
