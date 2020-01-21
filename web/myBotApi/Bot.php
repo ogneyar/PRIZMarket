@@ -398,25 +398,20 @@ class Bot
 
 		global $from_id, $from_first_name, $from_last_name, $from_username, $mysqli, $admin_group;
 		
-		$est_li_v_base=false;
+		$est_li_v_base = false;
 		
-		$query = "SELECT id_client FROM ". $table; 
+		$query = "SELECT * FROM ". $table . " WHERE id_client=".$from_id; 
 		
 		if ($result = $mysqli->query($query)) {			
 		
 			if($result->num_rows>0){
 			
-				$arrayResult = $result->fetch_all(MYSQLI_ASSOC);	
-				
-				foreach($arrayResult as $row){						
-				
-					if ($row['id_client']==$from_id) $est_li_v_base=true;		
-					
-				}												
+				$est_li_v_base = true;							
+
 			}			
 		}				
 			
-		if ($est_li_v_base==false) {				
+		if ($est_li_v_base == false) {				
 		
 			$query = "INSERT INTO ".$table." (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES ('".
 				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '" . $from_username .
