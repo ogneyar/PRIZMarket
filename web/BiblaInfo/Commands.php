@@ -1,5 +1,5 @@
 ﻿<?
-if (strpos($text, "удали:")!==false) {
+if (strpos($text, "удали:")!==false||strpos($text, "база:")!==false) {
 
 	$komanda = strstr($text, ':', true);	
 	
@@ -12,8 +12,15 @@ if (strpos($text, "удали:")!==false) {
 
 if ($text == 'база') {
 
-	$bot->output_table($table_users, '200');
+	if ($id) {
 	
+		$bot->output_table($table_users, $id);
+	
+	}else {
+		
+		$bot->output_table($table_users);
+		
+	}	
 
 
 }elseif ($text == 'изи') {
