@@ -547,7 +547,7 @@ class Bot
 			if ($kol<=$max_kol_s){
 							
 				$this->sendMessage($chat_id, $text, null, null, null, true);				
-$this->sendMessage($master, $kol);
+$this->sendMessage($master, $kol.$text);
 			}else{					
 			
 				$len_str=strlen($text);				
