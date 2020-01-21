@@ -21,9 +21,7 @@ if ($reply_to_message) {
 			
 			$result = $bot->sendMessage($reply_forward_id, $text, null, null, $message_id_in);
 				
-		}elseif ($photo) {
-			
-			$bot->sendMessage($master, "trqwvbZ");
+		}elseif ($photo) {			
 			
 			$result = $bot->sendPhoto($reply_forward_id, $file_id, null, null, null, $message_id_in);
 			
