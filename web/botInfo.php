@@ -11,8 +11,10 @@ $bot = new Bot($token);
 
 $id_bota = strstr($token, ':', true);	
 
+$table_users = 'info_users';
+
 // Группа администрирования бота (Админка)
-//$admin_group = $admin_group_Info;
+$admin_group = $admin_group_Info;
 
 // Подключение БД
 $mysqli = new mysqli($host, $username, $password, $dbname);
