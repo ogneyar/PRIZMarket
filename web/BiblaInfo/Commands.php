@@ -12,7 +12,7 @@ if (strpos($text, "удали:")!==false) {
 
 if ($text == 'база') {
 
-	$bot->output_table($table_users, '260');
+	$bot->output_table($table_users, '200');
 	
 
 
