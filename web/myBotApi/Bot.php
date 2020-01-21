@@ -548,7 +548,7 @@ class Bot
 				
 				$text = str_replace ("_", "\_", $text);
 				
-				$this->sendMessage($chat_id, $text, null, null, null, true);				
+				$this->sendMessage($chat_id, $text, markdown, null, null, true);				
 
 			}else{					
 			
