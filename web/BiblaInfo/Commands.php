@@ -2,7 +2,7 @@
 
 if ($text == 'база') {
 
-	$bot->output_table($table_users);
+	$bot->output_table($table_users, '1000');
 	
 
 
