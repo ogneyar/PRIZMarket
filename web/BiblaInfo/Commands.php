@@ -50,7 +50,7 @@ CHANGE `user_name` `user_name` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_ge
 	
 }elseif (($text == "админ")&&($id)) {		
 		
-	$query = "UPDATE ".$table_users." SET status='admin' WHERE id=".$id;
+	$query = "UPDATE ".$table_users." SET status='admin' WHERE id_client=".$id;
 	
 	if ($result = $mysqli->query($query)) {
 	
@@ -61,7 +61,7 @@ CHANGE `user_name` `user_name` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_ge
 		
 }elseif (($text == "-админ")&&($id)) {		
 		
-	$query = "UPDATE ".$table_users." SET status='client' WHERE id=".$id;
+	$query = "UPDATE ".$table_users." SET status='client' WHERE id_client=".$id;
 	
 	if ($result = $mysqli->query($query)) {
 	
