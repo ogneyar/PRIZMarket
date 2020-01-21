@@ -3,7 +3,9 @@
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
 function _start_Zakaz_bota() {		
 
-	global $bot, $chat_id, $from_first_name, $HideKeyboard;
+	global $bot, $chat_id, $from_first_name, $HideKeyboard, $table_users;
+	
+	$bot->add_to_database($table_users);
 	
 	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown, $HideKeyboard);
 
