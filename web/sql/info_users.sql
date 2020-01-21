@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 21 2020 г., 11:38
+-- Время создания: Янв 21 2020 г., 23:21
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -26,12 +26,12 @@ SET time_zone = "+00:00";
 -- Структура таблицы `info_users`
 --
 
-CREATE TABLE IF NOT EXISTS `info_users` ( 
+CREATE TABLE IF NOT EXISTS `info_users` (
   `id_client` bigint(20) DEFAULT NULL,
-  `first_name` varchar(20) DEFAULT NULL,
-  `last_name` varchar(20) DEFAULT NULL,
-  `user_name` varchar(20) DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL 
+  `first_name` varchar(500) DEFAULT NULL,
+  `last_name` varchar(500) DEFAULT NULL,
+  `user_name` varchar(200) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
