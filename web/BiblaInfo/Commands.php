@@ -1,5 +1,5 @@
 ﻿<?
-if (strpos($text, "удали:")!==false||strpos($text, "база:")!==false) {
+if (strpos($text, ":")!==false) {
 
 	$komanda = strstr($text, ':', true);	
 	
@@ -25,7 +25,9 @@ if ($text == 'база') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "UPDATE `{$table_users}` SET `first_name` = 'Огънеяръ', `last_name` = '', `user_name` = '@Ogneyar_ya' WHERE `id_client` =351009636";
+	$query = "ALTER TABLE `info_users` CHANGE `first_name` `first_name` VARCHAR( 500 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+CHANGE `last_name` `last_name` VARCHAR( 500 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+CHANGE `user_name` `user_name` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
 	
 	if ($result = $mysqli->query($query)) {
 	
