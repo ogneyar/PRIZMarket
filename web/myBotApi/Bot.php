@@ -512,7 +512,7 @@ class Bot
 					$reply.="|\n";							
 				}					
 		
-				$this->output($reply, '400');
+				$this->output($reply, '200');
 					
 			}else $this->sendMessage($chat_id, "пуста таблица ".
 					" \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
@@ -547,6 +547,8 @@ class Bot
 			if ($kol<=$max_kol_s){
 				
 				//$text = str_replace ("_", "\_", $text);
+				
+				$text = urlencode($text);
 				
 				$this->sendMessage($chat_id, $text, null, null, null, true);				
 
