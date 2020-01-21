@@ -77,9 +77,9 @@ if ($data['message']){
 		$forward_id = $message_forward['id'];
 		$forward_first_name = $message_forward['first_name'];
 		$forward_last_name = $message_forward['last_name'];
-		if ($forward_last_name=="") $forward_last_name = 'отсутствует';
+		//if ($forward_last_name=="") $forward_last_name = 'отсутствует';
 		$forward_username = $message_forward['username'];
-		if ($forward_username=="") $forward_username = 'отсутствует';
+		//if ($forward_username=="") $forward_username = 'отсутствует';
 
 	}
 	
@@ -99,9 +99,9 @@ if ($data['message']){
 		$reply_from_id = $reply_from['id'];
 		$reply_from_first_name = $reply_from['first_name'];
 		$reply_from_last_name = $reply_from['last_name'];
-		if ($reply_from_last_name=="") $reply_from_last_name = 'отсутствует';
+		//if ($reply_from_last_name=="") $reply_from_last_name = 'отсутствует';
 		$reply_from_username = $reply_from['username'];
-		if ($reply_from_username=="") $reply_from_username = 'отсутствует';
+		//if ($reply_from_username=="") $reply_from_username = 'отсутствует';
 		$reply_from_language = $reply_from['language_code'];	
 
         $reply_chat = $reply_to_message['chat'];
@@ -109,9 +109,9 @@ if ($data['message']){
 		$reply_chat_id = $reply_chat['id'];
 		$reply_chat_first_name = $reply_chat['first_name'];
 		$reply_chat_last_name = $reply_chat['last_name'];
-		if ($reply_chat_last_name=="") $reply_chat_last_name = 'отсутствует';
+		//if ($reply_chat_last_name=="") $reply_chat_last_name = 'отсутствует';
 		$reply_chat_username = $reply_chat['username'];
-		if ($reply_chat_username=="") $reply_chat_username = 'отсутствует';
+		//if ($reply_chat_username=="") $reply_chat_username = 'отсутствует';
 		$reply_chat_title = $reply_chat['title'];
 		$reply_chat_type = $reply_chat['type'];
 
@@ -122,9 +122,9 @@ if ($data['message']){
 		$reply_forward_id = $reply_forward['id'];
 		$reply_forward_first_name = $reply_forward['first_name'];
 		$reply_forward_last_name = $reply_forward['last_name'];
-		if ($reply_forward_last_name=="") $reply_forward_last_name = 'отсутствует';
+		//if ($reply_forward_last_name=="") $reply_forward_last_name = 'отсутствует';
 		$reply_forward_username = $reply_forward['username'];
-		if ($reply_forward_username=="") $reply_forward_username = 'отсутствует';
+		//if ($reply_forward_username=="") $reply_forward_username = 'отсутствует';
 
         $reply_forward_date = $reply_to_message['forward_date'];
 
