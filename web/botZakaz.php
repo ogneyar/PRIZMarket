@@ -39,6 +39,9 @@ if (mysqli_connect_errno()) {
 	
 	//$this_admin = _this_admin();
 	
+	// Если пришла ссылка типа t.me//..?start=123456789
+	if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);
+	
 	if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {
 		if ($chat_type=='private') {
 			_start_Zakaz_bota();  			
