@@ -48,8 +48,8 @@ function _info() {
 	global $bot, $chat_id, $RKeyMarkup;
 	
 	$reply = "Перешлите мне чьё либо сообщение, я выдам Вам информацию о лице,".
-		" его написавшем.\n\nЛибо, пришлите его номер id.";
-	
+		" его написавшем.";
+//\n\nЛибо, пришлите его номер id.
 	$bot->sendMessage($chat_id, $reply, null, $RKeyMarkup);
 
 }
