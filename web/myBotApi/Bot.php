@@ -493,7 +493,7 @@ class Bot
 	*/
 	public function output_table($table) { 
 
-		global $chat_id, $mysqli;
+		global $chat_id, $mysqli, $master;
 	
 		$query = "SELECT * FROM ".$table;
 		
@@ -536,7 +536,7 @@ $this->sendMessage($master, "4\n");
 	*/
 	public function output($text, $max_kol_s = '6500') { 
 
-		global $chat_id;
+		global $chat_id, $master;
 		
 		$str=null;	
 			
