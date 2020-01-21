@@ -491,7 +491,7 @@ class Bot
 	**
 	** @return boolean
 	*/
-	public function output_table($table) { 
+	public function output_table($table, $max_kol_s = '4000') { 
 
 		global $chat_id, $mysqli, $master;
 	
@@ -512,7 +512,7 @@ class Bot
 					$reply.="|\n";							
 				}					
 		
-				$this->output($reply, '200');
+				$this->output($reply, $max_kol_s);
 					
 			}else $this->sendMessage($chat_id, "пуста таблица ".
 					" \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
@@ -545,11 +545,7 @@ class Bot
 		if ($kol>'0'){
 		
 			if ($kol<=$max_kol_s){
-				
-				//$text = str_replace ("_", "\_", $text);
-				
-				$text = urlencode($text);
-				
+								
 				$this->sendMessage($chat_id, $text, null, null, null, true);				
 
 			}else{					
