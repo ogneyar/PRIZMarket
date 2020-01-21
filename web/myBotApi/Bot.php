@@ -16,6 +16,8 @@
  *
  * sendPhoto
  *
+ * sendVideo
+ *
  * answerCallbackQuery
  *
  * getChat
