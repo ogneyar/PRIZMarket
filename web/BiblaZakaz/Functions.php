@@ -117,38 +117,6 @@ function _deleting_old_records($table, $limit = 0) {
 
 }
 
-function _output($text, $max_kol_s = '6500') { // функция печати (разбивание сообщения на части)
-
-	global $chat_id, $bot;
-	
-	$str=null;	
-		
-	$kol = strlen ($text) ;
-	if ($kol>'0'){
-		if ($kol<=$max_kol_s){
-						
-			$bot->sendMessage($chat_id, $text, null, null, null, true);				
-			
-		}else{					
-			$len_str=strlen($text);				
-			$kolich=$len_str-$max_kol_s;
-			$str = substr($text, 0, -$kolich);
-			$kol=strlen($str);	
-			
-			$bot->sendMessage($chat_id, $str, null, null, null, true);		
-						
-			$str = substr($text, $kol);		
-			
-			_pechat($str, $max_kol_s);
-		}		
-	}	
-	
-}
-
-
-
-
-
 
 
 

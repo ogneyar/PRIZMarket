@@ -66,6 +66,8 @@ if ($text) {
 		
 		if ($chat_type == 'private') {
 			
+			$bot->add_to_database($table_users);
+			
 			_deleting_old_records($table_message, $day);
 			
 			// клиент написал, надо в базе сохранить его id, message_id_in, date 
