@@ -23,7 +23,11 @@ if ($reply_to_message) {
 				
 		}elseif ($photo) {
 			
-			$result = $bot->sendPhoto($chat_id, file_id, null, null, $message_id_in);
+			$result = $bot->sendPhoto($reply_forward_id, $file_id, null, null, null, $message_id_in);
+			
+		}elseif ($video) {
+			
+			$result = $bot->sendVideo($reply_forward_id, $file_id, null, null, null, $message_id_in);
 			
 		}
 				
