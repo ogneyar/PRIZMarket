@@ -134,6 +134,34 @@ if ($data['message']){
 		
 	}
 	
+	if ($data['message']['photo']) {
+	
+		$photo = $data['message']['photo'];
+		
+		if ($photo[2]){
+		
+			$file_id = $photo[2]['file_id'];
+			
+		}elseif ($photo[1]){
+		
+			$file_id = $photo[1]['file_id'];	
+			
+		}else {
+		
+			$file_id = $photo[0]['file_id'];	
+			
+		}
+		
+	}
+	
+	if ($data['message']['video']) {
+	
+		$video = $data['message']['video'];
+		
+		$file_id = $video['file_id'];			
+		
+	}
+	
 	
 	$text = $data['message']['text'];
 	
