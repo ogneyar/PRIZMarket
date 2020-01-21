@@ -4,7 +4,6 @@ if ($text == 'база') {
 
 	$bot->output_table($table_users);
 	
-	$bot->sendMessage($master, "X`n yt zcyj!");
 
 
 }elseif ($text == 'изи') {
