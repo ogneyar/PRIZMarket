@@ -3,7 +3,7 @@
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
 function _start_InfoUsers_bota() {		
 
-	global $bot, $chat_id, $from_first_name, $InlineKeyboardMarkup;
+	global $bot, $chat_id, $from_first_name, $InlineKeyboardMarkup, $table_users;
 	
 	$bot->add_to_database($table_users);
 	
