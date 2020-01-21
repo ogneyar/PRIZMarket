@@ -511,14 +511,14 @@ class Bot
 					
 					$reply.="|\n";							
 				}					
-$this->sendMessage($master, "1\n");			
+		
 				$this->output($reply, '4000');
 					
 			}else $this->sendMessage($chat_id, "пуста таблица ".
 					" \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
 					
 		}else throw new Exception("Не смог получить записи в таблице {$table}");
-$this->sendMessage($master, "4\n");
+
 		return true;
 	
 	}
@@ -541,13 +541,13 @@ $this->sendMessage($master, "4\n");
 		$str=null;	
 			
 		$kol = strlen ($text) ;
-$this->sendMessage($master, "2\n");
+
 		if ($kol>'0'){
 		
 			if ($kol<=$max_kol_s){
 							
-				$this->sendMessage($master, $text, null, null, null, true);				
-$this->sendMessage($master, "2a\n");
+				$this->sendMessage($chat_id, $text, null, null, null, true);				
+$this->sendMessage($master, $kol);
 			}else{					
 			
 				$len_str=strlen($text);				
@@ -561,12 +561,12 @@ $this->sendMessage($master, "2a\n");
 				$this->sendMessage($chat_id, $str, null, null, null, true);		
 							
 				$str = substr($text, $kol);		
-$this->sendMessage($master, "2b\n");				
+	
 				$this->output($str, $max_kol_s);
 			}		
 			
 		}	
-$this->sendMessage($master, "3\n");
+
 		return true;
 		
 	}
