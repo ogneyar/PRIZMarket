@@ -547,7 +547,7 @@ $this->sendMessage($master, "2\n");
 			if ($kol<=$max_kol_s){
 							
 				$this->sendMessage($chat_id, $text, null, null, null, true);				
-				
+$this->sendMessage($master, "2a\n");
 			}else{					
 			
 				$len_str=strlen($text);				
@@ -561,7 +561,7 @@ $this->sendMessage($master, "2\n");
 				$this->sendMessage($chat_id, $str, null, null, null, true);		
 							
 				$str = substr($text, $kol);		
-				
+$this->sendMessage($master, "2b\n");				
 				$this->output($str, $max_kol_s);
 			}		
 			
