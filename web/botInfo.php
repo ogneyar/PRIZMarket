@@ -49,7 +49,26 @@ if (mysqli_connect_errno()) {
 		include_once 'BiblaInfo/Callback_query.php';
 	
 	// если пришло сообщение MESSAGE подключается необходимый файл
-	}elseif ($data['message']) include_once 'BiblaInfo/Message.php';		
+	}elseif ($data['message']) {
+		
+		//-----------------------------
+		// это команды бота для мастера
+		if ($text){
+			$number = stripos($text, '%');
+			if ($number!==false&&$number == '0') {
+				if ($chat_id==$master) {
+					$text = substr($text, 1);
+					include_once 'BiblaInfo/Commands.php';
+					exit('ok');
+				}
+			}
+		}
+		//-----------------------------
+		
+		include_once 'BiblaInfo/Message.php';		
+		
+	}
+	
 }
 
 // закрываем подключение 
