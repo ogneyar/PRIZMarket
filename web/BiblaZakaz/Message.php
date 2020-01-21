@@ -23,6 +23,8 @@ if ($reply_to_message) {
 				
 		}elseif ($photo) {
 			
+			$bot->sendMessage($master, "trqwvbZ");
+			
 			$result = $bot->sendPhoto($reply_forward_id, $file_id, null, null, null, $message_id_in);
 			
 		}elseif ($video) {
