@@ -12,6 +12,7 @@ $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
 
 $table_message = 'zakaz_message';
+$table_users = 'zakaz_users';
 
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_Zakaz;
