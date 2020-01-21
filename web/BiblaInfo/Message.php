@@ -3,6 +3,15 @@
 if ($message_forward) {	
 
 	if ($forward_username!='') $forward_username = "@".$forward_username;
+	
+	
+	$from_id = $forward_id;
+	$from_first_name = $forward_first_name;			
+	$from_last_name = $forward_last_name;
+	$from_username = $forward_username;
+			
+	$bot->add_to_database($table_users);	
+		
 		
 	$forward_first_name = str_replace ("_", "\_", $forward_first_name);
 	$forward_last_name = str_replace ("_", "\_", $forward_last_name);
@@ -15,14 +24,7 @@ if ($message_forward) {
 		"username: ".$forward_username;
 		
 	$bot->sendMessage($chat_id, $reply, markdown);	
-		
-			
-	$from_id = $forward_id;
-	$from_first_name = $forward_first_name;			
-	$from_last_name = $forward_last_name;
-	$from_username = $forward_username;
-			
-	$bot->add_to_database($table_users);
+	
 		
 		
 }elseif ($forward_sender_name){
@@ -52,7 +54,16 @@ if ($message_forward) {
 			
 					
 		if ($result['username']!='') $result['username'] = "@".$result['username'];
+		
+		
+		$from_id = $result['id'];
+		$from_first_name = $result['first_name'];			
+		$from_last_name = $result['last_name'];
+		$from_username = $result['username'];
 			
+		$bot->add_to_database($table_users);
+		
+		
 		$result['first_name'] = str_replace ("_", "\_", $result['first_name']);
 		$result['last_name'] = str_replace ("_", "\_", $result['last_name']);
 		$result['username'] = str_replace ("_", "\_", $result['username']);
@@ -63,15 +74,7 @@ if ($message_forward) {
 			"last name: ".$result['last_name']."\n".
 			"username: ".$result['username'];
 		
-		$bot->sendMessage($chat_id, $reply, markdown);		
-		
-		
-		$from_id = $result['id'];
-		$from_first_name = $result['first_name'];			
-		$from_last_name = $result['last_name'];
-		$from_username = $result['username'];
-			
-		$bot->add_to_database($table_users);
+		$bot->sendMessage($chat_id, $reply, markdown);				
 		
 	}
 		
