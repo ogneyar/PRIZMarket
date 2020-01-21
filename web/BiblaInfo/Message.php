@@ -2,7 +2,7 @@
 
 if ($message_forward) {	
 
-	if ($forward_username!='отсутствует') $forward_username = "@".$forward_username;
+	if ($forward_username!='') $forward_username = "@".$forward_username;
 		
 	$forward_first_name = str_replace ("_", "\_", $forward_first_name);
 	$forward_last_name = str_replace ("_", "\_", $forward_last_name);
@@ -16,10 +16,7 @@ if ($message_forward) {
 		
 	$bot->sendMessage($chat_id, $reply, markdown);	
 		
-		
-	if ($forward_last_name=='неизвестно') $forward_last_name = '';			
-	if ($forward_username=='неизвестно') $forward_username = '';
-		
+			
 	$from_id = $forward_id;
 	$from_first_name = $forward_first_name;			
 	$from_last_name = $forward_last_name;
@@ -53,10 +50,8 @@ if ($message_forward) {
 		
 	}else {
 			
-		if ($result['last_name']=='') $result['last_name'] = 'неизвестно';
-			
-		if ($result['username']=='') $result['username'] = 'неизвестно';
-		else $result['username'] = "@".$result['username'];
+					
+		if ($result['username']!='') $result['username'] = "@".$result['username'];
 			
 		$result['first_name'] = str_replace ("_", "\_", $result['first_name']);
 		$result['last_name'] = str_replace ("_", "\_", $result['last_name']);
@@ -69,10 +64,8 @@ if ($message_forward) {
 			"username: ".$result['username'];
 		
 		$bot->sendMessage($chat_id, $reply, markdown);		
-			
-		if ($result['last_name']=='неизвестно') $result['last_name'] = '';			
-		if ($result['username']=='неизвестно') $result['username'] = '';
-			
+		
+		
 		$from_id = $result['id'];
 		$from_first_name = $result['first_name'];			
 		$from_last_name = $result['last_name'];
