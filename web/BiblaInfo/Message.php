@@ -2,8 +2,6 @@
 // Если пришла ссылка типа t.me//..?start=123456789
 if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);
 
-// проверяем если пришло сообщение
-//if ($text) {
 
 	if ($message_forward) {	
 
@@ -21,6 +19,18 @@ if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text)
 		
 		$bot->sendMessage($chat_id, $reply, markdown);	
 		
+		
+		if $forward_last_name=='неизвестно') $forward_last_name = '';			
+		if ($forward_username=='неизвестно') $forward_username = '';
+		
+		$from_id = $forward_id;
+		$from_first_name = $forward_first_name;			
+		$from_last_name = $forward_last_name;
+		$from_username = $forward_username;
+			
+		$bot->add_to_database($table_users);
+		
+		
 	}elseif ($forward_sender_name){
 		
 		$bot->sendMessage($chat_id, $forward_sender_name."\n\nПрофиль скрыт.");
@@ -36,8 +46,8 @@ if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text)
 		$bot->sendMessage($chat_id, $reply, null, $HideKeyboard);
 			
 			
-	}elseif ($text){
-		
+	}elseif ($text){		
+				
 		$result = $bot->getChat($text);
 		
 		if (!$result) {
@@ -62,17 +72,21 @@ if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text)
 				"username: ".$result['username'];
 		
 			$bot->sendMessage($chat_id, $reply, markdown);		
+			
+			if ($result['last_name']=='неизвестно') $result['last_name'] = '';			
+			if ($result['username']=='неизвестно') $result['username'] = '';
+			
+			$from_id = $result['id'];
+			$from_first_name = $result['first_name'];			
+			$from_last_name = $result['last_name'];
+			$from_username = $result['username'];
+			
+			$bot->add_to_database($table_users);
 		
 		}
 		
 	}	
-/*       
-}elseif ($chat_type=='private') {
 
-    // если пришло что-то другое
-    $bot->call('sendMessage', ['chat_id' => $chat_id, 'text' => "Чего это такое?"]);
-}
-*/
 
 
 
