@@ -20,7 +20,7 @@ if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text)
 		$bot->sendMessage($chat_id, $reply, markdown);	
 		
 		
-		if $forward_last_name=='неизвестно') $forward_last_name = '';			
+		if ($forward_last_name=='неизвестно') $forward_last_name = '';			
 		if ($forward_username=='неизвестно') $forward_username = '';
 		
 		$from_id = $forward_id;
