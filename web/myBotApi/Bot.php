@@ -262,6 +262,196 @@ class Bot
 
     
     
+	
+	
+	
+		
+//------------------------------------------
+// функции работы с базой данных
+
+
+		
+	/*
+	** Добавление пользователя в базу
+	**
+	** @param str $table
+	**
+	** @return boolean
+	*/		
+	public function add_to_database($table) { // функция проверки есть ли юзер в базе 
+
+		global $from_id, $from_first_name, $from_last_name, $from_username, $mysqli, $admin_group;
+		
+		$est_li_v_base=false;
+		
+		$query = "SELECT id_client FROM ". $table; 
+		
+		if ($result = $mysqli->query($query)) {			
+		
+			if($result->num_rows>0){
+			
+				$arrayResult = $result->fetch_all(MYSQLI_ASSOC);	
+				
+				foreach($arrayResult as $row){						
+				
+					if ($row['id_client']==$from_id) $est_li_v_base=true;		
+					
+				}												
+			}			
+		}				
+			
+		if ($est_li_v_base==false) {				
+		
+			$query = "INSERT INTO ".$table." (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES ('".
+				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '" . $from_username .
+				"', 'client')";
+			
+			if ($result = $mysqli->query($query)) {		
+			
+				$this->sendMessage($admin_group, 'Добавлен новый клиент');
+				
+				$est_li_v_base=true;	
+				
+			}else $this->sendMessage($admin_group, 'Не смог добавить нового клиента');
+		}				
+
+		return $est_li_v_base;
+	}
+
+	
+	
+	
+	
+	/*
+	** Узнаю кто пишет, админ или клиент
+	**
+	** @param str $table
+	**
+	** @return boolean
+	*/
+	public function this_admin($table) { 
+
+		global $admin_group, $mysqli, $from_id, $callback_from_id;
+		
+		$this_admin = false;		
+		
+		$query = "SELECT id_client FROM ".$table." WHERE status='admin'";
+		
+		if ($result = $mysqli->query($query)) {		
+		
+			$kolS=$result->num_rows;
+			
+			if($kolS>0){
+			
+				$arrStrok = $result->fetch_all(MYSQLI_ASSOC);	
+				
+				for ($i=0; $i<$kolS; $i++) {		
+									
+					if ($from_id==$arrStrok[$i]['id_client']||$callback_from_id==$arrStrok[$i]['id_client']) $this_admin = true;
+				}						
+				
+			}	
+			
+		}else $this->sendMessage($admin_group, 'Чего то не получается узнать администраторов бота');			
+		
+		return $this_admin;
+		
+	}
+	
+	
+	
+	/*
+	** Вывод заданной таблицы на экран
+	**
+	** @param str $table
+	**
+	** @return boolean
+	*/
+	public function output_table($table) { 
+
+		global $chat_id, $mysqli;
+	
+		$query = "SELECT * FROM ".$table;
+		
+		if ($result = $mysqli->query($query)) {		
+		
+			$reply="Таблица {$table}:\n";
+			
+			if($result->num_rows>0){
+			
+				$arrayResult = $result->fetch_all();		
+				
+				foreach($arrayResult as $row){					
+				
+					foreach($row as $stroka) $reply.= "| ".$stroka." ";
+					
+					$reply.="|\n";							
+				}					
+						
+				$this->output($reply, '4000');
+					
+			}else $this->sendMessage($chat_id, "пуста таблица ".
+					" \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
+					
+		}else throw new Exception("Не смог получить записи в таблице {$table}");
+		
+		return true;
+	
+	}
+	
+	
+	
+	
+	/*
+	** функция печати (разбивание сообщения на части)
+	**
+	** @param str $text
+	** @param int $max_kol_s
+	**
+	** @return boolean
+	*/
+	public function output($text, $max_kol_s = '6500') { 
+
+		global $chat_id;
+		
+		$str=null;	
+			
+		$kol = strlen ($text) ;
+		
+		if ($kol>'0'){
+		
+			if ($kol<=$max_kol_s){
+							
+				$this->sendMessage($chat_id, $text, null, null, null, true);				
+				
+			}else{					
+			
+				$len_str=strlen($text);				
+				
+				$kolich=$len_str-$max_kol_s;
+				
+				$str = substr($text, 0, -$kolich);
+				
+				$kol=strlen($str);	
+				
+				$this->sendMessage($chat_id, $str, null, null, null, true);		
+							
+				$str = substr($text, $kol);		
+				
+				$this->output($str, $max_kol_s);
+			}		
+			
+		}	
+		
+		return true;
+		
+	}
+	
+	
+	
+	
+	
+	
 }
 
 ?>
