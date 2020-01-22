@@ -6,7 +6,6 @@ $token = $tokenMARKET;
 $tg = new \TelegramBot\Api\BotApi($token);
 
 $id_bota = strstr($token, ':', true);	
-$obsujdaem_bot_group = '-1001413152703';
 
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_market;
