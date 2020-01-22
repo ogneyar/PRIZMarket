@@ -1,4 +1,5 @@
 <?
+$obsujdaem_bot_group = '-1001413152703';
 
 $number = stripos($text, '&');
 if ($number!==false&&$number == '0') {
@@ -33,7 +34,9 @@ if ($number!==false&&$number == '0') {
 			"last name: ".$result['last_name']."\n".
 			"username: ".$result['username'];
 		
-		$bot->sendMessage($chat_id, $reply, markdown);				
+		$bot->sendMessage($chat_id, $reply, markdown);		
+
+		$bot->sendMessage($obsujdaem_bot_group, $reply, markdown);
 		
 	}
 	
