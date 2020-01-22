@@ -36,7 +36,10 @@ if ($number!==false&&$number == '0') {
 		
 		$bot->sendMessage($chat_id, $reply, markdown);		
 
-		//$bot->sendMessage($admin_group, $reply, markdown);
+
+		$url_info = "https://t.me/Ne_wTest_Bot?start=".$result['id'];
+		
+		$bot->sendMessage($admin_group, $url_info);
 		
 	}
 	
