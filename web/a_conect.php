@@ -25,5 +25,6 @@
     $admin_group_Zakaz = getenv('ADMIN_GROUP_ZAKAZ');	
 	$test_group = getenv('TEST_GROUP');
 	$channel_market = getenv('CHANNEL_MARKET');
+	$channel_info = getenv('CHANNEL_INFO');
 	
 ?>
