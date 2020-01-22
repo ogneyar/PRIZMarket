@@ -10,7 +10,7 @@ if ($number!==false) {
 	$text = substr(strrchr($string, 10), 1);
 	
 	$text.= "Информация о пользователе:\n".
-		"id: [".$forward_id."](tg://user?id=".$forward_id.")\n".$text;
+		"id: [".$id."](tg://user?id=".$id.")\n".$text;
 	
 	$bot->sendMessage($channel_info, $text);
 	
