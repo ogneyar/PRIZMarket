@@ -69,6 +69,30 @@ if ($reply_to_message) {
 		
        _info_Zakaz_bota();
 		
+}elseif ($text=='пост') {
+		
+		if ($from_username == '') {
+		   
+			$bot->sendMessage($chat_id, "Так, чел сдрысни отседа!\n\nВозвращайся когда поставишь себе @username..");
+		   
+		}else {
+		   
+			$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
+		   
+			if ($result) {
+			   
+				$result = $bot->sendMessage($channel_info, $from_username);
+			   
+				if ($result) {
+					
+					$result = $bot->sendMessage($channel_info, "&".$from_id);
+					
+				}
+			   
+			}
+		   
+		}
+		
 }else { // если просто текст, фото или видео, безовсяких ответов и пересылок
 		
 	if ($chat_type == 'private') {  // если в личку боту
