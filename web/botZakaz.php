@@ -76,6 +76,10 @@ if (mysqli_connect_errno()) {
 				
 		include_once 'BiblaZakaz/Message.php';		
 		
+	}elseif ($data['channel_post']) {
+		
+		include_once 'BiblaZakaz/Channel_post.php';
+		
 	}
 }
 
