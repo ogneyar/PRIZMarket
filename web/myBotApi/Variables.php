@@ -167,7 +167,23 @@ if ($data['message']){
 	
 
 }elseif ($data['channel_post']) {
-
+	
+	$message_id = $data['channel_post']['message_id'];
+	
+	$author_signature = $data['channel_post']['author_signature'];
+	
+	$chat_id = $data['channel_post']['chat']['id'];
+	
+	$chat_title = $data['channel_post']['chat']['title'];
+	
+	$chat_type = $data['channel_post']['chat']['type'];
+	
+	$date = $data['channel_post']['date'];
+	
+	$text = $data['channel_post']['text'];
+	
+	
+	
 }elseif ($data['edited_channel_post']) {
 
 }elseif ($data['inline_query']) {
