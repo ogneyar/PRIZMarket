@@ -7,7 +7,7 @@ if ($number!==false) {
 	
 	//$string = strrchr($text, ":");
 	
-	$string = (strrchr($text, "id: ");
+	$string = strrchr($text, "id: ");
 	
 	//$string = substr(strstr($text, "id: "), 4);
 	
