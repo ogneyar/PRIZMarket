@@ -36,7 +36,7 @@ if ($number!==false&&$number == '0') {
 		
 		$bot->sendMessage($chat_id, $reply, markdown);		
 
-		$bot->sendMessage($obsujdaem_bot_group, $reply, markdown);
+		//$bot->sendMessage($admin_group, $reply, markdown);
 		
 	}
 	
