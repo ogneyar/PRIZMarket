@@ -70,6 +70,10 @@ if (mysqli_connect_errno()) {
 		
 		include_once 'BiblaInfo/Message.php';		
 		
+	}elseif ($data['channel_post']) {
+		
+		include_once 'BiblaInfo/Channel_post.php';
+		
 	}
 	
 }
