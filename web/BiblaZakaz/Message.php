@@ -81,7 +81,7 @@ if ($reply_to_message) {
 		   
 			if ($result) {
 			   
-				$result = $bot->sendMessage($channel_info, $from_username);
+				$result = $bot->sendMessage($channel_info, "@".$from_username);
 			   
 				if ($result) {
 					
