@@ -1,7 +1,7 @@
 ﻿<?
 
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
-function _start_Info_bota() {		
+function _start_InfoBota() {		
 
 	global $bot, $chat_id, $from_first_name, $HideKeyboard, $table_users;
 	
@@ -10,13 +10,13 @@ function _start_Info_bota() {
 	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!",
 		markdown, $HideKeyboard);	
 	
-	_info_Info_bota();
+	_info_InfoBota();
 	
 	exit('ok');
 	
 }
 
-function _info_Info_bota() {
+function _info_InfoBota() {
 
 	global $bot, $chat_id, $RKeyMarkup;
 	

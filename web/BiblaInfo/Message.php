@@ -47,7 +47,7 @@ if ($message_forward) {
 		
 	if (!$result) {
 			
-		if ($chat_type=='private') _info(); 
+		if ($chat_type=='private') _info_InfoBota(); 
 		
 	}else {
 						
