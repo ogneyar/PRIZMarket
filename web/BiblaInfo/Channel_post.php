@@ -1,20 +1,17 @@
 <?
 
+$number = stripos($text, '&');
+if ($number!==false&&$number == '0') {
+				
+	$text = substr($text, 1);
+
 	$result = $bot->getChat($text);
 		
 	if (!$result) {
 			
-		if ($chat_type=='private') {
-			
-			_info_InfoBota(); 
-			
-		}elseif ($chat_type=='channel') {
-			
-			//$bot->sendMessage($chat_id, "Нужен только айди");
-			
-		}
+		//$bot->sendMessage($chat_id, "Нужен только айди");	
 		
-	}elseif ($channel_market == $chat_id) {
+	}elseif ($channel_info == $chat_id) {
 						
 		$from_id = $result['id'];
 		$from_first_name = $result['first_name'];			
@@ -39,5 +36,12 @@
 		$bot->sendMessage($chat_id, $reply, markdown);				
 		
 	}
+	
+}
+
+
+
+
+
 
 ?>
