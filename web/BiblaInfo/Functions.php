@@ -1,7 +1,7 @@
 ﻿<?
 
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
-function _start_InfoUsers_bota() {		
+function _start_Info_bota() {		
 
 	global $bot, $chat_id, $from_first_name, $HideKeyboard, $table_users;
 	
@@ -10,10 +10,21 @@ function _start_InfoUsers_bota() {
 	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!",
 		markdown, $HideKeyboard);	
 	
-	_info();
+	_info_Info_bota();
 	
 	exit('ok');
 	
+}
+
+function _info_Info_bota() {
+
+	global $bot, $chat_id, $RKeyMarkup;
+	
+	$reply = "Перешлите мне чьё либо сообщение, я выдам Вам информацию о лице,".
+		" его написавшем.";
+//\n\nЛибо, пришлите его номер id.
+	$bot->sendMessage($chat_id, $reply);
+
 }
 
 // функция вывода на печать массива
@@ -46,15 +57,6 @@ function exception_handler($exception) {
 	
 }
 
-function _info() {
 
-	global $bot, $chat_id, $RKeyMarkup;
-	
-	$reply = "Перешлите мне чьё либо сообщение, я выдам Вам информацию о лице,".
-		" его написавшем.";
-//\n\nЛибо, пришлите его номер id.
-	$bot->sendMessage($chat_id, $reply);
-
-}
 
 ?>
