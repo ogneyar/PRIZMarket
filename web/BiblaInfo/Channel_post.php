@@ -39,7 +39,7 @@ if ($number!==false&&$number == '0') {
 
 		$url_info = "https://t.me/Ne_wTest_Bot?start=".$result['id'];
 		
-		$bot->sendMessage($admin_group, $url_info);
+		$bot->sendMessage($admin_group, $url_info, null, null, null, true);
 		
 	}
 	
