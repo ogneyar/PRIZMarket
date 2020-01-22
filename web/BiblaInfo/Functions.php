@@ -7,7 +7,9 @@ function _start_InfoUsers_bota() {
 	
 	$bot->add_to_database($table_users);
 	
-	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown, $InlineKeyboardMarkup);	
+	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown);	
+	
+	_info();
 	
 	exit('ok');
 	
