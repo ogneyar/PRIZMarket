@@ -10,7 +10,7 @@ if ($user) {
 	
 	$url_info = "https://t.me/Ne_wTest_Bot?start=".$user['id'];
 
-	$bot->sendMessage($chat_id, $url_info);
+	$bot->sendMessage($chat_id, $url_info, null, null, null, true);
 
 }
 
