@@ -3,7 +3,7 @@
 $number = stripos($text, 'Информация о пользователе:');
 if ($number!==false) {
 	
-	$string = substr(strrchr($text, "id: "), 4);
+	$string = substr(strrchr($text, "id: "), 1);
 	
 	$id = strstr($string, 10, true);	
 	
