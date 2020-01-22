@@ -18,7 +18,7 @@ if ($number!==false) {
 	$textA.= "Информация о пользователе:\n".
 		"id: [".$id."](tg://user?id=".$id.")\n".$text;
 	
-	$bot->sendMessage($channel_info, $text);
+	$bot->sendMessage($channel_info, $textA);
 	
 }
 
