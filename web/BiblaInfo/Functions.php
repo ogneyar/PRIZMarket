@@ -53,7 +53,7 @@ function _info() {
 	$reply = "Перешлите мне чьё либо сообщение, я выдам Вам информацию о лице,".
 		" его написавшем.";
 //\n\nЛибо, пришлите его номер id.
-	$bot->sendMessage($chat_id, $reply, null, $RKeyMarkup);
+	$bot->sendMessage($chat_id, $reply);
 
 }
 
