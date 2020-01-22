@@ -17,12 +17,22 @@ function _start_Zakaz_bota() {
 
 function _info_Zakaz_bota() {
 
-	global $bot, $chat_id, $RKeyMarkup;
+	global $bot, $chat_id;
 	
-	$reply = "Перешлите мне чьё либо сообщение, я выдам Вам информацию о лице,".
-		" его написавшем.";
+	$inLineInfo_ZakazBota = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => 'Ознакомиться',
+					'callback_data' => 'ознакомьтесь'
+				]
+			]
+		]
+	];
+	
+	$reply = "Это Бот для подачи заявки на публикацию вашего лота на канале [Покупки на PRIZMarket](https://t.me/prizm_market)\n\nПеред тем как начать писать сообщения внимательно ознакомьтесь с тем, как и в какой последовательности, это необходимо сделать, и с какими условиями. Внимательно ознакомьтесть нажав на кнопку ниже.";
 
-	$bot->sendMessage($chat_id, $reply);
+	$bot->sendMessage($chat_id, $reply, markdown, $inLineInfo_ZakazBota);
 
 }
 
@@ -58,7 +68,7 @@ function exception_handler($exception) {
 
 function _info_oznakomlenie() {
 
-	global $bot, $chat_id, $RKeyMarkup;
+	global $bot, $chat_id;
 	
 	$reply = "Для подачи заявки необходимо отправить 2⃣(2)два сообщения:
 
@@ -116,6 +126,8 @@ function _info_oznakomlenie() {
 
 
 Function _info_otvetnoe() {
+	
+	global $bot, $chat_id;
 	
 	$reply = "⭕️Ежели Ваше объявление требует повтора, достаточно скопировать ссылку (https://t.me/podrobno_s_PZP/573)  на это обьявление и отправить сюда с просьбой повторить.⭕️
 
