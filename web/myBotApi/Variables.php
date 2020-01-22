@@ -182,6 +182,7 @@ if ($data['message']){
 	
 	$text = $data['channel_post']['text'];
 	
+	$entities = $data['channel_post']['entities'];
 	
 	
 }elseif ($data['edited_channel_post']) {
