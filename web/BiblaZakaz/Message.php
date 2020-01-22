@@ -67,7 +67,7 @@ if ($reply_to_message) {
 	
 }elseif ($text=='инфо') {
 		
-       _info();
+       _info_Zakaz_bota();
 		
 }else { // если просто текст, фото или видео, безовсяких ответов и пересылок
 		
