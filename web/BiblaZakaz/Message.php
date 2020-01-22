@@ -69,7 +69,7 @@ if ($reply_to_message) {
 		
        _info_Zakaz_bota();
 		
-}elseif ($text=='пост') {
+}elseif ($text=='пост'||$text == 'post') {
 		
 		if ($from_username == '') {
 		   
