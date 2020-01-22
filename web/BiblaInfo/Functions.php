@@ -3,11 +3,12 @@
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
 function _start_InfoUsers_bota() {		
 
-	global $bot, $chat_id, $from_first_name, $InlineKeyboardMarkup, $table_users;
+	global $bot, $chat_id, $from_first_name, $HideKeyboard, $table_users;
 	
 	$bot->add_to_database($table_users);
 	
-	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown);	
+	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!",
+		markdown, $HideKeyboard);	
 	
 	_info();
 	
