@@ -69,9 +69,9 @@ if ($reply_to_message) {
 		
        _info();
 		
-}else {
+}else { // если просто текст, фото или видео, безовсяких ответов и пересылок
 		
-	if ($chat_type == 'private') {
+	if ($chat_type == 'private') {  // если в личку боту
 			
 		$bot->add_to_database($table_users);
 			
