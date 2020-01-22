@@ -424,15 +424,17 @@ class Bot
 			}			
 		}				
 			
-		if ($est_li_v_base == false) {				
+		if ($est_li_v_base == false) {		
+
+			if ($from_username!='') $from_username = "@".$from_username;
 		
 			$query = "INSERT INTO ".$table." (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES ('".
-				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '" . $from_username .
+				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '@" . $from_username .
 				"', 'client')";
 			
 			if ($result = $mysqli->query($query)) {		
 			
-				$this->sendMessage($admin_group, 'Добавлен новый клиент');
+				$this->sendMessage($admin_group, 'Добавлен новый клиент '.$from_username);
 				
 				$est_li_v_base=true;	
 				
