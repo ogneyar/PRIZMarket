@@ -43,7 +43,7 @@ if (mysqli_connect_errno()) {
 	
 	if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {
 		if ($chat_type=='private') {
-			_start_Info_bota();  			
+			_start_InfoBota();  			
 		}	
 	}
 	
