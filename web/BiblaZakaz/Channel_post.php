@@ -1,15 +1,12 @@
 <?
 
 $number = stripos($text, 'Информация о пользователе:');
-if ($number!==false) {
-	
-	//$text = 
+
+if ($number!==false) {	
 	
 	//$string = strrchr($text, ":");
 	
-	$string = strrchr($text, "id: ");
-	
-	//$string = substr(strstr($text, "id: "), 4);
+	$string = substr(strstr($text, "id: "), 4);
 	
 	$id = strstr($string, 10, true);	
 	
