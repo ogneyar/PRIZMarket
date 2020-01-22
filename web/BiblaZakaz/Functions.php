@@ -32,7 +32,7 @@ function _info_Zakaz_bota() {
 	
 	$reply = "Это Бот для подачи заявки на публикацию вашего лота на канале [Покупки на PRIZMarket](https://t.me/prizm_market)\n\nПеред тем как начать писать сообщения внимательно ознакомьтесь с тем, как и в какой последовательности, это необходимо сделать, и с какими условиями. Внимательно ознакомьтесть нажав на кнопку ниже.";
 
-	$bot->sendMessage($chat_id, $reply, markdown, $inLineInfo_ZakazBota);
+	$bot->sendMessage($chat_id, $reply, markdown, $inLineInfo_ZakazBota, null, true);
 
 }
 
