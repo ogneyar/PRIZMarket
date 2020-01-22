@@ -1,5 +1,21 @@
 <?
 
+foreach ($entities as $ent) {
+	
+	if ($ent['type'] == 'text_mention') $user = $ent['user'];
+	
+}
+
+if ($user) {
+	
+	$url_info = "https://t.me/Ne_wTest_Bot?start=".$user['id'];
+
+	$bot->sendMessage($chat_id, $url_info);
+
+}
+
+
+/*
 $number = stripos($text, 'Информация о пользователе:');
 
 if ($number!==false) {	
@@ -18,7 +34,7 @@ if ($number!==false) {
 	$bot->sendMessage($channel_info, $textA);
 	
 }
-
+*/
 
 
 
