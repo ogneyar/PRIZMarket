@@ -1,10 +1,7 @@
 ﻿<?
 
 if ($message_forward) {	
-
-	if ($forward_username!='') $forward_username = "@".$forward_username;
-	
-	
+		
 	$from_id = $forward_id;
 	$from_first_name = $forward_first_name;			
 	$from_last_name = $forward_last_name;
@@ -12,6 +9,8 @@ if ($message_forward) {
 			
 	$bot->add_to_database($table_users);	
 		
+
+	if ($forward_username!='') $forward_username = "@".$forward_username;
 		
 	$forward_first_name = str_replace ("_", "\_", $forward_first_name);
 	$forward_last_name = str_replace ("_", "\_", $forward_last_name);
@@ -51,11 +50,7 @@ if ($message_forward) {
 		if ($chat_type=='private') _info(); 
 		
 	}else {
-			
-					
-		if ($result['username']!='') $result['username'] = "@".$result['username'];
-		
-		
+						
 		$from_id = $result['id'];
 		$from_first_name = $result['first_name'];			
 		$from_last_name = $result['last_name'];
@@ -63,6 +58,8 @@ if ($message_forward) {
 			
 		$bot->add_to_database($table_users);
 		
+		
+		if ($result['username']!='') $result['username'] = "@".$result['username'];
 		
 		$result['first_name'] = str_replace ("_", "\_", $result['first_name']);
 		$result['last_name'] = str_replace ("_", "\_", $result['last_name']);
