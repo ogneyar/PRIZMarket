@@ -3,13 +3,19 @@
 $number = stripos($text, 'Информация о пользователе:');
 if ($number!==false) {
 	
-	$string = substr(strrchr($text, "id: "), 1);
+	//$text = 
+	
+	//$string = strrchr($text, ":");
+	
+	$string = (strrchr($text, "id: ");
+	
+	//$string = substr(strstr($text, "id: "), 4);
 	
 	$id = strstr($string, 10, true);	
 	
 	$text = substr(strrchr($string, 10), 1);
 	
-	$text.= "Информация о пользователе:\n".
+	$textA.= "Информация о пользователе:\n".
 		"id: [".$id."](tg://user?id=".$id.")\n".$text;
 	
 	$bot->sendMessage($channel_info, $text);
