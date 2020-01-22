@@ -9,10 +9,21 @@ function _start_Zakaz_bota() {
 	
 	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown, $HideKeyboard);
 
-        _info();	
+    _info_Zakaz_bota();	
 	
 	exit('ok');
 	
+}
+
+function _info_Zakaz_bota() {
+
+	global $bot, $chat_id, $RKeyMarkup;
+	
+	$reply = "Перешлите мне чьё либо сообщение, я выдам Вам информацию о лице,".
+		" его написавшем.";
+//\n\nЛибо, пришлите его номер id.
+	$bot->sendMessage($chat_id, $reply);
+
 }
 
 // функция вывода на печать массива
@@ -45,7 +56,7 @@ function exception_handler($exception) {
 	
 }
 
-function _info() {
+function _info_oznakomlenie() {
 
 	global $bot, $chat_id, $RKeyMarkup;
 	
@@ -101,6 +112,42 @@ function _info() {
 	$bot->sendMessage($chat_id, $reply, markdown);
 
 }
+
+
+
+Function _info_otvetnoe() {
+	
+	$reply = "⭕️Ежели Ваше объявление требует повтора, достаточно скопировать ссылку (https://t.me/podrobno_s_PZP/573)  на это обьявление и отправить сюда с просьбой повторить.⭕️
+
+Благодарим вас за ваше участие!
+
+            ⚠️НАПОМНИМ⚠️
+/start - перезагрузка бота
+
+Правила размещения поста на канале (https://t.me/podrobno_s_PZP/562) 👈
+
+Как получить ссылку на пост (https://t.me/podrobno_s_PZP/573) 👈
+
+Вопросы можно решать через Support (http://t.me/Prizm_market_supportbot/)
+
+
+
+Помощь развития сервиса!!!
+
+Абсолютно по доброй воле❗️
+
+Кошелёк:
+PRIZM-UFSC-9S49-ESJX-79N7S
+Открытый ключ:
+11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c";
+
+	
+	$reply = str_replace('_', '\_', $reply);
+
+	$bot->sendMessage($chat_id, $reply, markdown);
+	
+}
+
 
 
 
