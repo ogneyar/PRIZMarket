@@ -429,7 +429,7 @@ class Bot
 			if ($from_username!='') $from_username = "@".$from_username;
 		
 			$query = "INSERT INTO ".$table." (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES ('".
-				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '@" . $from_username .
+				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '" . $from_username .
 				"', 'client')";
 			
 			if ($result = $mysqli->query($query)) {		
