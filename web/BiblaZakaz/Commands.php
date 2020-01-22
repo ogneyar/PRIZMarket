@@ -77,6 +77,13 @@ CHANGE `user_name` `user_name` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_ge
 	}else throw new Exception("Не смог изменить таблицу {$table_users}");	
 		
 		
+}elseif ($text == "пост"&&($id)) {		
+		
+	$result = $bot->sendMessage($channel_market, $id);
+	
+	if (!$result) throw new Exception("Не смог выложить пост..");	
+		
+		
 }
 
 
