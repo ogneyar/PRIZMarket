@@ -31,9 +31,7 @@ if ($text == 'соо') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `zakaz_users` CHANGE `first_name` `first_name` VARCHAR( 500 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
-CHANGE `last_name` `last_name` VARCHAR( 500 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
-CHANGE `user_name` `user_name` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
+	$query = "ALTER TABLE `zakaz_message` ADD `flag` BOOLEAN NULL DEFAULT NULL";
 	if ($result = $mysqli->query($query)) {
 		$bot->sendMessage($master, "Всё отлично!");
 	}else throw new Exception("Не смог изменить таблицу {$table_message}");
