@@ -73,7 +73,7 @@ if ($reply_to_message) {
 		
 		if ($from_username == '') {
 		   
-			$bot->sendMessage($chat_id, "Так, чел сдрысни отседа!\n\nВозвращайся когда поставишь себе @username..");
+			$bot->sendMessage($chat_id, "Мы не принимаем заявки от клиентов без @username!\n\nВозвращайтесь когда поставите себе @username..");
 		   
 		}else {
 		   
