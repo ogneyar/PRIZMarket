@@ -192,7 +192,7 @@ function _entry_flag($table) {
 
 	global $mysqli, $from_id;
 	
-	$query = "SELECT flag FROM {$table} WHERE id_client={$from_id} AND flag='1'";
+	$query = "SELECT flag FROM {$table} WHERE client_id={$from_id} AND flag='1'";
 	
 	$result = $mysqli->query($query);
 	
