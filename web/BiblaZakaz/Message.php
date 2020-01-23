@@ -38,7 +38,7 @@ if ($reply_to_message) {
 			// для возможности его редактирования
 			
 			$query = "INSERT INTO {$table_message} VALUES ('{$reply_forward_id}',
-				'{$message_id}', '{$result['message_id']}', '{$result['date']}', '{$entry_flag}')";
+				'{$message_id}', '{$result['message_id']}', '{$result['date']}', '0')";
 			$mysql_result = $mysqli->query($query);
 					
 			if (!$mysql_result) throw new Exception("Не смог сделать записать в таблицу {$table_message}");
@@ -54,6 +54,20 @@ if ($reply_to_message) {
 		$result = $bot->forwardMessage($admin_group, $chat_id, $message_id);
 			
 		if ($result) {			
+			
+			$entry_flag = _entry_flag($table_message);
+			
+			if ($entry_flag) {
+				
+				$entry_flag = '0';
+			
+			}else {
+				
+				$entry_flag = '1';
+				
+				_info_otvetnoe();		
+				
+			}
 			
 			$query = "INSERT INTO {$table_message} VALUES ('{$chat_id}',
 				'{$message_id}', '{$result['message_id']}', '{$result['date']}', '{$entry_flag}')";
