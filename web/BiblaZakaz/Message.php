@@ -99,7 +99,9 @@ if ($reply_to_message) {
 			
 		$bot->add_to_database($table_users);
 			
-		_deleting_old_records($table_message, $day);
+		_deleting_old_records($table_message, $day/2);
+		
+		$entry_flag = _entry_flag($table_message);
 			
 		// клиент написал, надо в базе сохранить его id, message_id_in, date 
 		// (и id_message_out, которое будет найдено ниже)
@@ -107,13 +109,28 @@ if ($reply_to_message) {
 		$result = $bot->forwardMessage($admin_group, $chat_id, $message_id);
 					
 		if ($result) {
+			
+			// флаг проверки отправленного ответного сообщения
+			if ($entry_flag) {
 				
+				$entry_flag = '0';
+			
+			}else {
+				
+				$entry_flag = '1';
+				
+				_info_otvetnoe();
+				
+				_format_links();
+				
+			}
+			
 			// номер сообщения, которое бот отправил в админку
 			// по этому номеру будет находиться message_id клиента,
 			// когда админ ответит на сообщение (reply_to_message)
-				
+			
 			$query = "INSERT INTO {$table_message} VALUES ('{$chat_id}',
-				'{$message_id}', '{$result['message_id']}', '{$result['date']}')";
+				'{$message_id}', '{$result['message_id']}', '{$result['date']}'), '{$entry_flag}'";
 			$mysql_result = $mysqli->query($query);
 				
 			if (!$mysql_result) throw new Exception("Не смог сделать записать в таблицу {$table_message}");

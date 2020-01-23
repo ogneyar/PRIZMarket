@@ -127,7 +127,7 @@ function _info_oznakomlenie() {
 
 Function _info_otvetnoe() {
 	
-	global $bot, $chat_id;
+	global $bot, $chat_id, $message_id;
 	
 	$reply = "⭕️Ежели Ваше объявление требует повтора, достаточно скопировать ссылку (https://t.me/podrobno_s_PZP/573)  на это обьявление и отправить сюда с просьбой повторить.⭕️
 
@@ -156,7 +156,7 @@ PRIZM-UFSC-9S49-ESJX-79N7S
 	
 	$reply = str_replace('_', '\_', $reply);
 
-	$bot->sendMessage($chat_id, $reply, markdown);
+	$bot->sendMessage($chat_id, $reply, markdown, null, $message_id);
 	
 }
 
@@ -180,6 +180,111 @@ function _deleting_old_records($table, $limit = 0) {
 }
 
 
+function _entry_flag($table) {
+
+	global $mysqli;
+	
+	$query = "SELECT flag FROM {$table} WHERE id_client={$from_id} AND flag=1";
+	
+	$result = $mysqli->query($query);
+	
+	if ($result) {
+	
+		if ($result->num_rows>0) return true;
+		
+		else return false;
+	
+	}else throw new Exception("Не смог удалить записи в таблице {$table}");
+
+
+}
+
+
+
+function _existence($table) {
+	
+	global $mysqli, $from_id;
+	
+	$query = "SELECT id_client FROM {$table} WHERE id_client={$from_id}";
+	
+	$result = $mysqli->query($query);
+	
+	if ($result) {
+	
+		if ($result->num_rows>0) return true;
+		
+		else return false;
+	
+	}else throw new Exception("Не смог удалить записи в таблице {$table}");
+	
+}
+
+
+
+function _format_links() {
+	
+	global $bot, $mysqli, $chat_id, $admin_group, $from_username, $channel_info, $message_id, $from_id;
+	
+	$existence = _existence('info_users');	
+	
+	if ($existence) {
+		
+		if ($id_bota == '475440299') {
+		
+			$url_info = "https://t.me/check_user_infobot?start=".$from_id;
+		
+		}elseif ($id_bota == '1052297281') {
+		
+			$url_info = "https://t.me/Ne_wTest_Bot?start=".$from_id;
+			
+		}
+
+		$bot->sendMessage($admin_group, $url_info, null, null, null, true);
+	
+	}else {
+	
+		if ($from_username == '') {
+			   
+			$bot->sendMessage($chat_id, "Мы не принимаем заявки от клиентов без @username!\n\n".
+				"Возвращайтесь когда поставите себе @username..");
+			   
+		}else {
+			   
+			$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
+			   
+			if ($result) {
+				   
+				$result = $bot->sendMessage($channel_info, "@".$from_username);
+				   
+				if ($result) {
+						
+					$result = $bot->sendMessage($channel_info, "&".$from_id);
+					
+					if ($result) {
+					
+						if ($id_bota == '475440299') {
+		
+							$url_info = "https://t.me/check_user_infobot?start=".$from_id;
+						
+						}elseif ($id_bota == '1052297281') {
+						
+							$url_info = "https://t.me/Ne_wTest_Bot?start=".$from_id;
+							
+						}
+
+						$bot->sendMessage($admin_group, $url_info, null, null, null, true);
+	
+					}
+						
+				}
+				   
+			}
+			   
+		}
+		
+	}
+	
+}
 
 
 
