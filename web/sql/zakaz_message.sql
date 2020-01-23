@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 20 2020 г., 12:07
+-- Время создания: Янв 24 2020 г., 00:25
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS `zakaz_message` (
   `client_id` bigint(20) DEFAULT NULL,
   `message_id_in` bigint(20) DEFAULT NULL,
   `message_id_out` bigint(20) DEFAULT NULL,
-  `date` date DEFAULT NULL
+  `date` bigint(20) DEFAULT NULL,
+  `flag` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
