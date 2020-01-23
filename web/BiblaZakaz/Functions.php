@@ -202,7 +202,7 @@ function _entry_flag($table) {
 		
 		else return false;
 	
-	}else throw new Exception("Не смог удалить записи в таблице {$table}");
+	}else throw new Exception("Не смог узнать наличие флажка в таблице {$table}");
 
 
 }
@@ -223,7 +223,7 @@ function _existence($table) {
 		
 		else return false;
 	
-	}else throw new Exception("Не смог удалить записи в таблице {$table}");
+	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");
 	
 }
 

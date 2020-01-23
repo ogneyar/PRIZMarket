@@ -99,7 +99,7 @@ if ($reply_to_message) {
 			
 		$bot->add_to_database($table_users);
 			
-		_deleting_old_records($table_message, $day);
+		_deleting_old_records($table_message, $day/2);
 		
 		$entry_flag = _entry_flag($table_message);
 			
