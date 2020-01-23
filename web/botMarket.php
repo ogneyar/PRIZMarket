@@ -35,12 +35,12 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }else { 	
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-	include 'BiblioBota/bot_02_varia.php';
+	include 'BiblaMarket/bot_02_varia.php';
 	
 	$text = str_replace ("@NaHerokuBot", "", $text);
 
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ФУНКЦИЙ
-	include 'BiblioBota/bot_03_func.php';
+	include 'BiblaMarket/bot_03_func.php';
 	
 	if ($_GET['kurs']=='pzm'||$_GET['kurs']=='PZM'||$_GET['kurs']=='Prizm'||$_GET['kurs']=='PRIZM'||$_GET['kurs']=='Pzm'||$_GET['kurs']=='пзм'||$_GET['kurs']=='Пзм'||$_GET['kurs']=='ПЗМ'||$_GET['kurs']=='призм'||$_GET['kurs']=='Призм'||$_GET['kurs']=='ПРИЗМ') $_GET['kurs']='prizm';
 	
@@ -58,7 +58,7 @@ if (mysqli_connect_errno()) {
 	}
 	
 	// ПОДКЛЮЧЕНИЕ ОСНОВНОГО МОДУЛЯ
-	include_once 'BiblioBota/bot_01_head.php';		
+	include_once 'BiblaMarket/bot_01_head.php';		
 }
 
 // закрываем подключение 
