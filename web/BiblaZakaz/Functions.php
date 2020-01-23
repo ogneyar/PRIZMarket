@@ -167,6 +167,8 @@ function _deleting_old_records($table, $limit = 0) {
 	
 	global $mysqli;
 	
+	$response = false;
+	
 	$real_date = time();
 	
 	$required_date = $real_date - $limit;
@@ -175,7 +177,13 @@ function _deleting_old_records($table, $limit = 0) {
 	
 	$result = $mysqli->query($query);
 	
-	if (!$result) throw new Exception("Не смог удалить записи в таблице {$table}");
+	if ($result) {
+	
+		$response = true;
+		
+	}else throw new Exception("Не смог удалить записи в таблице {$table}");
+	
+	return $response;
 
 }
 

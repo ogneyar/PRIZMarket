@@ -39,7 +39,7 @@ if ($text == 'соо') {
 	
 }elseif ($text == 'дел') {
 	
-	_deleting_old_records($table_message);	
+	if(_deleting_old_records($table_message)) $bot->sendMessage($master, "Всё отлично!");
 	
 	
 }elseif ($text == 'удали') {
