@@ -19,12 +19,12 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }else { 	
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-	include 'GarantBibla/01_variables.php';
+	include 'BiblaGarant/01_variables.php';
 	
 	//$text = str_replace ("@TesterBotoffBot", "", $text);
 
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ФУНКЦИЙ
-	include 'GarantBibla/02_functions.php';
+	include 'BiblaGarant/02_functions.php';
 	
 	$this_admin = _this_admin();
 	
@@ -35,7 +35,7 @@ if (mysqli_connect_errno()) {
 	}
 	
 	// ПОДКЛЮЧЕНИЕ ОСНОВНОГО МОДУЛЯ
-	include_once 'GarantBibla/03_header_bot.php';		
+	include_once 'BiblaGarant/03_header_bot.php';		
 }
 
 // закрываем подключение 

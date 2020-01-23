@@ -11,6 +11,7 @@
 	include_once 'botGarant.php';
 	include_once 'botZakaz.php';
 	include_once 'botInfo.php';
+	include_once 'botPublic.php';
 
 ?>
 </body>	
