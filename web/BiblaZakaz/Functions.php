@@ -190,7 +190,7 @@ function _deleting_old_records($table, $limit = 0) {
 
 function _entry_flag($table) {
 
-	global $mysqli;
+	global $mysqli, $from_id;
 	
 	$query = "SELECT flag FROM {$table} WHERE id_client={$from_id} AND flag=1";
 	
