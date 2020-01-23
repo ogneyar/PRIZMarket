@@ -38,7 +38,7 @@ if ($reply_to_message) {
 			// для возможности его редактирования
 			
 			$query = "INSERT INTO {$table_message} VALUES ('{$reply_forward_id}',
-				'{$message_id}', '{$result['message_id']}', '{$result['date']}')";
+				'{$message_id}', '{$result['message_id']}', '{$result['date']}', '{$entry_flag}')";
 			$mysql_result = $mysqli->query($query);
 					
 			if (!$mysql_result) throw new Exception("Не смог сделать записать в таблицу {$table_message}");
@@ -56,7 +56,7 @@ if ($reply_to_message) {
 		if ($result) {			
 			
 			$query = "INSERT INTO {$table_message} VALUES ('{$chat_id}',
-				'{$message_id}', '{$result['message_id']}', '{$result['date']}')";
+				'{$message_id}', '{$result['message_id']}', '{$result['date']}', '{$entry_flag}')";
 			$mysql_result = $mysqli->query($query);
 					
 			if (!$mysql_result) throw new Exception("Не смог сделать записать в таблицу {$table_message}");
@@ -130,7 +130,7 @@ if ($reply_to_message) {
 			// когда админ ответит на сообщение (reply_to_message)
 			
 			$query = "INSERT INTO {$table_message} VALUES ('{$chat_id}',
-				'{$message_id}', '{$result['message_id']}', '{$result['date']}'), '{$entry_flag}'";
+				'{$message_id}', '{$result['message_id']}', '{$result['date']}', '{$entry_flag}')";
 			$mysql_result = $mysqli->query($query);
 				
 			if (!$mysql_result) throw new Exception("Не смог сделать записать в таблицу {$table_message}");
