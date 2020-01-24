@@ -1,7 +1,7 @@
 <?
-$obsujdaem_bot_group = '-1001413152703';
 
 $number = stripos($text, '&');
+
 if ($number!==false&&$number == '0') {
 				
 	$text = substr($text, 1);
@@ -39,7 +39,7 @@ if ($number!==false&&$number == '0') {
 
 		$url_info = "https://t.me/Ne_wTest_Bot?start=".$result['id'];
 		
-		$bot->sendMessage($admin_group, $url_info, null, null, null, true);
+		//$bot->sendMessage($admin_group, $url_info, null, null, null, true);
 		
 	}
 	
