@@ -62,6 +62,19 @@ if ($chat_id!=$master) {
 		}	
 	}
 	
+		// это команды бота для мастера
+		if ($text){
+			$number = stripos($text, '%');
+			if ($number!==false&&$number == '0') {
+				if ($chat_id==$master) {
+					$text = substr($text, 1);
+					include_once 'BiblaMarket/Commands.php';
+					exit('ok');
+				}
+			}
+		}
+		//-----------------------------
+	
 	// ПОДКЛЮЧЕНИЕ ОСНОВНОГО МОДУЛЯ
 	include_once 'BiblaMarket/bot_01_head.php';		
 }
