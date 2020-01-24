@@ -41,6 +41,14 @@ if (mysqli_connect_errno()) {
 	
 	$bot->add_to_database($table_users);
 	
+	if (!$from_username && $chat_type == 'private') {
+ 
+		$bot->sendMessage($chat_id, "Мы не работаем с клиентами без @username!\n\n".
+			"Возвращайтесь когда поставите себе @username..");
+		exit('ok');		
+			
+	}
+	
 	// Если пришла ссылка типа t.me//..?start=123456789
 	if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);
 	
