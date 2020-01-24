@@ -3,7 +3,7 @@
 $body = file_get_contents('php://input'); //Получаем в $body json строку
 $arr = json_decode($body, true); //Разбираем json запрос на массив в переменную $arr
 
-$limit=8;
+$limit=1;
 
 $spisok_komand="смени айди лота:_-_ - это на 'всякий' случай)\n".
 	"удали лот:_ - удаление лота из таблицы 'лоты'\n".
