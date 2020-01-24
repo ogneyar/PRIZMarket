@@ -232,7 +232,7 @@ function _existence($table) {
 
 function _format_links() {
 	
-	global $bot, $mysqli, $chat_id, $admin_group, $from_username, $channel_info, $message_id, $from_id;
+	global $bot, $mysqli, $chat_id, $admin_group, $from_username, $channel_info, $message_id, $from_id, $id_bota;
 	
 	$existence = _existence('info_users');	
 	
@@ -248,9 +248,9 @@ function _format_links() {
 			
 		}
 
-		//$bot->sendMessage($admin_group, $url_info, null, null, null, true);
+		$bot->sendMessage($admin_group, $url_info, null, null, null, true);
 	         
-                $bot->sendMessage($admin_group, $id_bota);
+                //$bot->sendMessage($admin_group, $id_bota);
 
 	}else {
 	
