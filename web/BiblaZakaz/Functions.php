@@ -254,13 +254,7 @@ function _format_links() {
 
 	}else {
 	
-		if ($from_username == '') {
-			   
-			$bot->sendMessage($chat_id, "Мы не принимаем заявки от клиентов без @username!\n\n".
-				"Возвращайтесь когда поставите себе @username..");
-			   
-		}else {
-			   
+		
 			$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
 			   
 			if ($result) {
@@ -291,7 +285,7 @@ function _format_links() {
 				   
 			}
 			   
-		}
+		
 		
 	}
 	
