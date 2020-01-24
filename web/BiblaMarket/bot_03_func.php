@@ -595,7 +595,7 @@ function _pechat($text=null, $max_kol_s = '6500') { // функция печат
 
 function _pechat_lotov($chatId, $arrS, $kol, $max) { // функция вывода лотов на экране
 
-	global $tg;
+	global $tg, $master;
 	
 	$i = $max;
 	
