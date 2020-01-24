@@ -446,15 +446,7 @@ class Bot
 				
 				$est_li_v_base=true;	
 				
-			}else $this->sendMessage($admin_group, 'Не смог добавить нового клиента');
-			
-			if (!$from_Uname) {
- 
-				$this->sendMessage($from_id, "Мы не работаем с клиентами без @username!\n\n".
-					"Возвращайтесь когда поставите себе @username..");
-				exit('ok');		
-			
-			}
+			}else $this->sendMessage($admin_group, 'Не смог добавить нового клиента');			
 			
 		}				
 
