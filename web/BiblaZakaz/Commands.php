@@ -20,7 +20,7 @@ if ($text == 'соо') {
 
 	if ($id) {
 	
-		$bot->output_table($table_users, null, $id);
+		$bot->output_table($table_users, $id);
 	
 	}else {
 		
