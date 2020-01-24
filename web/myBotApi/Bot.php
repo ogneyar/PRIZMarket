@@ -418,30 +418,46 @@ class Bot
 		if ($result = $mysqli->query($query)) {			
 		
 			if($result->num_rows>0){
-			
-				$est_li_v_base = true;							
+				
+				$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+				
+				foreach ($arrayResult as $row){
+				
+					if ($row['user_name'] == $from_username) $est_li_v_base = true;	
+				
+				}									
 
 			}			
+			
 		}				
 			
-		if ($est_li_v_base == false) {
-
-                        
-
-			if ($from_username!='') {
-		
-			   $query = "INSERT INTO ".$table." (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES ('".
-				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '@" . $from_username .
-				"', 'client')";
+		if ($est_li_v_base == false) {                        
 			
-			   if ($result = $mysqli->query($query)) {		
+			//$from_Uname = $from_username;
+			
+			if ($from_username!='') $from_Uname = "@".$from_username;
+					
+			$query = "INSERT INTO ".$table." (`id_client`, `first_name`, `last_name`, 
+				`user_name`, `status`) VALUES ('".
+				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '" . 
+				$from_Uname. "', 'client')";
+			
+			if ($result = $mysqli->query($query)) {		
 			
 				$this->sendMessage($admin_group, 'Добавлен новый клиент '.$from_username);
 				
 				$est_li_v_base=true;	
 				
-			   }else $this->sendMessage($admin_group, 'Не смог добавить нового клиента');
-                        }
+			}else $this->sendMessage($admin_group, 'Не смог добавить нового клиента');
+			
+			if (!$from_Uname) {
+ 
+				$bot->sendMessage($from_id, "Мы не работаем с клиентами без @username!\n\n".
+					"Возвращайтесь когда поставите себе @username..");
+				exit('ok');		
+			
+			}
+			
 		}				
 
 		return $est_li_v_base;
