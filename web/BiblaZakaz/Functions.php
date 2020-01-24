@@ -136,11 +136,11 @@ Function _info_otvetnoe() {
             ⚠️НАПОМНИМ⚠️
 /start - перезагрузка бота
 
-Правила размещения поста на канале (https://t.me/podrobno_s_PZP/562) 👈
+[Правила размещения поста на канале](https://t.me/podrobno_s_PZP/562) 👈
 
-Как получить ссылку на пост (https://t.me/podrobno_s_PZP/573) 👈
+[Как получить ссылку на пост](https://t.me/podrobno_s_PZP/573) 👈
 
-Вопросы можно решать через Support (http://t.me/Prizm_market_supportbot/)
+Вопросы можно решать через [Support](http://t.me/Prizm_market_supportbot/)
 
 
 
@@ -149,14 +149,15 @@ Function _info_otvetnoe() {
 Абсолютно по доброй воле❗️
 
 Кошелёк:
-PRIZM-UFSC-9S49-ESJX-79N7S
+```PRIZM-UFSC-9S49-ESJX-79N7S```
+
 Открытый ключ:
-11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c";
+```11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c```";
 
 	
 	$reply = str_replace('_', '\_', $reply);
 
-	$bot->sendMessage($chat_id, $reply, markdown, null, $message_id);
+	$bot->sendMessage($chat_id, $reply, markdown, null, $message_id, true);
 	
 }
 
@@ -248,7 +249,9 @@ function _format_links() {
 		}
 
 		$bot->sendMessage($admin_group, $url_info, null, null, null, true);
-	
+	         
+                $bot->sendMessage($admin_group, $id_bota);
+
 	}else {
 	
 		if ($from_username == '') {
