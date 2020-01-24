@@ -216,6 +216,8 @@ function _existence($table) {
 
         $resonse = false;
 	
+        if ($from_username != '') $from_Uname = "@".$from_username;
+
 	$query = "SELECT * FROM {$table} WHERE id_client={$from_id}";
 	
 	$result = $mysqli->query($query);
@@ -228,7 +230,7 @@ function _existence($table) {
 
                     foreach ($arrayResult as $row) {
 
-                         if ($row['first_name']==$from_fist_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_username) $response = true;
+                         if ($row['first_name']==$from_fist_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_Uname) $response = true;
 
                     }
                      
