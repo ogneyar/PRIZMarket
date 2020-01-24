@@ -212,20 +212,32 @@ function _entry_flag($table) {
 
 function _existence($table) {
 	
-	global $mysqli, $from_id;
+	global $mysqli, $from_id, $from_first_name, $from_last_name, $from_username;
+
+        $resonse = false;
 	
-	$query = "SELECT id_client FROM {$table} WHERE id_client={$from_id}";
+	$query = "SELECT * FROM {$table} WHERE id_client={$from_id}";
 	
 	$result = $mysqli->query($query);
 	
 	if ($result) {
 	
-		if ($result->num_rows>0) return true;
-		
-		else return false;
+		if ($result->num_rows>0) {
+                   
+                    $arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+
+                    foreach ($arrayResult as $row) {
+
+                         if ($row['first_name']==$from_fist_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_username) $response = true;
+
+                    }
+                     
+		}
 	
 	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");
 	
+        return $response;
+
 }
 
 
