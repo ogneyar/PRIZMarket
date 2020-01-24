@@ -214,9 +214,9 @@ function _existence($table) {
 	
 	global $mysqli, $from_id, $from_first_name, $from_last_name, $from_username;
 
-        $resonse = false;
+    $resonse = false;
 	
-        if ($from_username != '') $from_Uname = "@".$from_username;
+    if ($from_username != '') $from_Uname = "@".$from_username;
 
 	$query = "SELECT * FROM {$table} WHERE id_client={$from_id}";
 	
@@ -226,19 +226,19 @@ function _existence($table) {
 	
 		if ($result->num_rows>0) {
                    
-                    $arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+            $arrayResult = $result->fetch_all(MYSQLI_ASSOC);
 
-                    foreach ($arrayResult as $row) {
+			foreach ($arrayResult as $row) {
 
-                         if ($row['first_name']==$from_fist_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_Uname) $response = true;
+				if ($row['first_name']==$from_fist_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_Uname) $response = true;
 
-                    }
-                     
+			}
+
 		}
 	
 	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");
 	
-        return $response;
+    return $response;
 
 }
 
@@ -269,37 +269,35 @@ function _format_links() {
 	}else {
 	
 		
-			$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
+		$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
 			   
+		if ($result) {
+				   
+			$result = $bot->sendMessage($channel_info, "@".$from_username);
+				   
 			if ($result) {
-				   
-				$result = $bot->sendMessage($channel_info, "@".$from_username);
-				   
+						
+				$result = $bot->sendMessage($channel_info, "&".$from_id);
+					
 				if ($result) {
-						
-					$result = $bot->sendMessage($channel_info, "&".$from_id);
 					
-					if ($result) {
-					
-						if ($id_bota == '475440299') {
+					if ($id_bota == '475440299') {
 		
-							$url_info = "https://t.me/check_user_infobot?start=".$from_id;
+						$url_info = "https://t.me/check_user_infobot?start=".$from_id;
 						
-						}elseif ($id_bota == '1052297281') {
+					}elseif ($id_bota == '1052297281') {
 						
-							$url_info = "https://t.me/Ne_wTest_Bot?start=".$from_id;
+						$url_info = "https://t.me/Ne_wTest_Bot?start=".$from_id;
 							
-						}
-
-						$bot->sendMessage($admin_group, $url_info, null, null, null, true);
-	
 					}
-						
+
+					$bot->sendMessage($admin_group, $url_info, null, null, null, true);
+	
 				}
-				   
+						
 			}
-			   
-		
+				   
+		}	
 		
 	}
 	
