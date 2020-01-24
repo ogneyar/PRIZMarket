@@ -14,7 +14,7 @@ if ($text == 'база') {
 
 	if ($id) {
 	
-		$bot->output_table($table_users, $id);
+		$bot->output_table($table_users, null $id);
 	
 	}else {
 		
