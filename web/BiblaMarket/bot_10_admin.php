@@ -868,15 +868,14 @@ if ($text){
 
 		
 		
-	}elseif ($text == "и1 клиента") {		
+	}elseif ($text == "иента") {		
 	
-		$query = "ALTER TABLE `garant_users` CHANGE `name` `name` VARCHAR( 200 ) NULL DEFAULT NULL";				
+		$query = "ALTER TABLE `pzmarkt` CHANGE `file_id` `file_id` VARCHAR( 200 ) NULL DEFAULT NULL";				
 		if ($result = $mysqli->query($query)) {					
 			$tg->sendMessage($chat_id, "Cовершенно!");								
 		}else $tg->sendMessage($chat_id, "Не получается изменить!");	
 		
-		
-		
+	
 	}elseif ($text == "и2 клиента") {		
 	
 		$query = "ALTER TABLE `garant_users` CHANGE `username` `username` VARCHAR( 100 ) NULL DEFAULT NULL";				
