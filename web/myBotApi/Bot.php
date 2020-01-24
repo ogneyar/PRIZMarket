@@ -442,7 +442,7 @@ class Bot
 			
 			if ($result = $mysqli->query($query)) {		
 			
-				$this->sendMessage($admin_group, 'Добавлен новый клиент '.$from_username);
+				$this->sendMessage($admin_group, 'Добавлен новый клиент '.$from_Uname);
 				
 				$est_li_v_base=true;	
 				
