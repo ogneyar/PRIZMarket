@@ -85,33 +85,24 @@ if ($reply_to_message) {
 		
 }elseif ($text=='пост'||$text == 'post') {
 		
-		if ($from_username == '') {
+	$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
 		   
-			$bot->sendMessage($chat_id, "Мы не принимаем заявки от клиентов без @username!\n\nВозвращайтесь когда поставите себе @username..");
-		   
-		}else {
-		   
-			$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
-		   
-			if ($result) {
+	if ($result) {
 			   
-				$result = $bot->sendMessage($channel_info, "@".$from_username);
+		$result = $bot->sendMessage($channel_info, "@".$from_username);
 			   
-				if ($result) {
+		if ($result) {
 					
-					$result = $bot->sendMessage($channel_info, "&".$from_id);
-					
-				}
-			   
-			}
-		   
+			$result = $bot->sendMessage($channel_info, "&".$from_id);
+				
 		}
-		
+			   
+	}		   
+	
+				
 }else { // если просто текст, фото или видео, безовсяких ответов и пересылок
 		
-	if ($chat_type == 'private') {  // если в личку боту
-			
-		$bot->add_to_database($table_users);
+	if ($chat_type == 'private') {  // если в личку боту		
 			
 		_deleting_old_records($table_message, $day/2);
 		
