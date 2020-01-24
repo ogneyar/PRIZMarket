@@ -75,7 +75,7 @@ if (mysqli_connect_errno()) {
 		if ($text){
 			$number = stripos($text, '%');
 			if ($number!==false&&$number == '0') {
-				if ($chat_id==$master) {
+				if ($chat_id==$master||$chat_id==$admin_group) {
 					$text = substr($text, 1);
 					include_once 'BiblaZakaz/Commands.php';
 					exit('ok');
