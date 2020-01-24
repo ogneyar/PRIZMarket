@@ -49,6 +49,7 @@ if ($data['message']){
 		$message_from = $data['message']['from'];
 		
 		$from_id = $message_from['id'];
+		$from_is_bot = $message_from['is_bot'];
 		$from_first_name = $message_from['first_name'];
 		$from_last_name = $message_from['last_name'];
 		$from_username = $message_from['username'];
