@@ -499,14 +499,20 @@ class Bot
 	** Вывод заданной таблицы на экран
 	**
 	** @param str $table
+	** @param int $max_kol_s
+	** @param int $id_client
 	**
 	** @return boolean
 	*/
-	public function output_table($table, $max_kol_s = '4000') { 
+	public function output_table($table, $max_kol_s = '4000', $id_client = null) { 
 
 		global $chat_id, $mysqli, $master;
-	
-		$query = "SELECT * FROM ".$table;
+		
+		if ($id_client) {
+			
+			$query = "SELECT * FROM ".$table." WHERE id_client=".$id_client;
+			
+		}else $query = "SELECT * FROM ".$table;
 		
 		if ($result = $mysqli->query($query)) {		
 		
@@ -581,8 +587,6 @@ class Bot
 		return true;
 		
 	}
-	
-	
 	
 	
 	
