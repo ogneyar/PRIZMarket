@@ -425,7 +425,7 @@ class Bot
 				
 				foreach ($arrayResult as $row){
 				
-					if ($row['user_name'] == $from_Uname) $est_li_v_base = true;	
+					if ($row['user_name'] == $from_Uname&&$row['first_name']==$from_first_name&&$row['last_name']==$from_last_name) $est_li_v_base = true;	
 				
 				}									
 
