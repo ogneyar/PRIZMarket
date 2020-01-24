@@ -450,7 +450,7 @@ class Bot
 			
 			if (!$from_Uname) {
  
-				$bot->sendMessage($from_id, "Мы не работаем с клиентами без @username!\n\n".
+				$this->sendMessage($from_id, "Мы не работаем с клиентами без @username!\n\n".
 					"Возвращайтесь когда поставите себе @username..");
 				exit('ok');		
 			
