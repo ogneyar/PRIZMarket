@@ -129,7 +129,7 @@ Function _info_otvetnoe() {
 	
 	global $bot, $chat_id, $message_id;
 	
-	$reply = "⭕️Ежели Ваше объявление требует повтора, достаточно скопировать ссылку (https://t.me/podrobno_s_PZP/573)  на это обьявление и отправить сюда с просьбой повторить.⭕️
+	$reply = "⭕️Ежели Ваше объявление требует повтора, достаточно [скопировать ссылку](https://t.me/podrobno_s_PZP/573)  на это обьявление и отправить сюда с просьбой повторить.⭕️
 
 Благодарим вас за ваше участие!
 
@@ -248,7 +248,7 @@ function _format_links() {
 			
 		}
 
-		$bot->sendMessage($admin_group, $url_info, null, null, null, true);
+		//$bot->sendMessage($admin_group, $url_info, null, null, null, true);
 	         
                 $bot->sendMessage($admin_group, $id_bota);
 
