@@ -49,6 +49,11 @@ if (mysqli_connect_errno()) {
 	
 	$this_admin = _this_admin();
 	
+if ($chat_id!=$master) {
+	$tg->sendMessage($chat_id, "Профилактические работы! Ожидайте, работа бота скоро возобновится..");
+	exit('ok');
+}
+	
 	if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {
 		if ($chat_type=='private') {
 			//_start_PZMgarant_bota($this_admin);  //БЕЗОПАСНЫЕ СДЕЛКИ
