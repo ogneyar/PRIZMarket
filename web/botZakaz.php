@@ -39,6 +39,8 @@ if (mysqli_connect_errno()) {
 	
 	//$this_admin = _this_admin();
 	
+	$bot->add_to_database($table_users);
+	
 	// Если пришла ссылка типа t.me//..?start=123456789
 	if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);
 	
