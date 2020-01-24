@@ -1,5 +1,5 @@
 <?
-
+/*
 foreach ($entities as $ent) {
 	
 	if ($ent['type'] == 'text_mention') $user = $ent['user'];
@@ -13,6 +13,8 @@ if ($user) {
 	$bot->sendMessage($chat_id, $url_info, null, null, null, true);
 
 }
+*/
+
 
 
 /*
