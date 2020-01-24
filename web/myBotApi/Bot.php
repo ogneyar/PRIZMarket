@@ -413,6 +413,8 @@ class Bot
 		
 		$est_li_v_base = false;
 		
+		if ($from_username!='') $from_Uname = "@".$from_username;
+		
 		$query = "SELECT * FROM ". $table . " WHERE id_client=".$from_id; 
 		
 		if ($result = $mysqli->query($query)) {			
@@ -423,7 +425,7 @@ class Bot
 				
 				foreach ($arrayResult as $row){
 				
-					if ($row['user_name'] == $from_username) $est_li_v_base = true;	
+					if ($row['user_name'] == $from_Uname) $est_li_v_base = true;	
 				
 				}									
 
@@ -433,10 +435,6 @@ class Bot
 			
 		if ($est_li_v_base == false) {                        
 			
-			//$from_Uname = $from_username;
-			
-			if ($from_username!='') $from_Uname = "@".$from_username;
-					
 			$query = "INSERT INTO ".$table." (`id_client`, `first_name`, `last_name`, 
 				`user_name`, `status`) VALUES ('".
 				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '" . 
