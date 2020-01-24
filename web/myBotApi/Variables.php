@@ -52,6 +52,14 @@ if ($data['message']){
 		$from_first_name = $message_from['first_name'];
 		$from_last_name = $message_from['last_name'];
 		$from_username = $message_from['username'];
+                if ($from_username == '') {
+			   
+			$bot->sendMessage($from_id, "Мы не работаем с клиентами без @username!\n\n".
+				"Возвращайтесь когда поставите себе @username..");
+                        exit('ok');
+			   
+		}
+			   
 		$from_language = $message_from['language_code'];
 	}
 	
