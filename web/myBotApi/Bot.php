@@ -424,21 +424,24 @@ class Bot
 			}			
 		}				
 			
-		if ($est_li_v_base == false) {		
+		if ($est_li_v_base == false) {
 
-			if ($from_username!='') $from_username = "@".$from_username;
+                        
+
+			if ($from_username!='') {
 		
-			$query = "INSERT INTO ".$table." (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES ('".
-				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '" . $from_username .
+			   $query = "INSERT INTO ".$table." (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES ('".
+				$from_id ."', '" . $from_first_name . "', '" . $from_last_name . "', '@" . $from_username .
 				"', 'client')";
 			
-			if ($result = $mysqli->query($query)) {		
+			   if ($result = $mysqli->query($query)) {		
 			
 				$this->sendMessage($admin_group, 'Добавлен новый клиент '.$from_username);
 				
 				$est_li_v_base=true;	
 				
-			}else $this->sendMessage($admin_group, 'Не смог добавить нового клиента');
+			   }else $this->sendMessage($admin_group, 'Не смог добавить нового клиента');
+                        }
 		}				
 
 		return $est_li_v_base;
