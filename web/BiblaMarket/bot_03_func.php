@@ -630,13 +630,15 @@ function _pechat_lotov($chatId, $arrS, $kol, $max) { // функция выво�
 		$inLineStr1=[$inLineBut1];
 		$inLineKeyb=[$inLineStr1];
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKeyb);
-					
+try{					
 		if ($format=='photo'){
 			$tg->sendPhoto($chatId, $file_id, $caption, null, $keyInLine, false, markdown); 
 		}elseif ($format=='video') {
 			$tg->sendVideo($chatId, $file_id, null, $caption, null, $keyInLine, false, false, markdown); 
 		}
-			
+}catch (Exception $e) {
+	$tg->sendMessage($master, 'вот одна ошибка '.$podrobno_url);
+}			
 		$i--;
 			
 	}	
