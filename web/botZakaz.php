@@ -39,7 +39,7 @@ if (mysqli_connect_errno()) {
 	
 	//$this_admin = _this_admin();
 	
-	if ($chat_type == 'private') $bot->add_to_database($table_users);
+	if ($chat_type == 'private' && !$from_is_bot) $bot->add_to_database($table_users);
 	
 	if (!$from_username && $chat_type == 'private') {
  
