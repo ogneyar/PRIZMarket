@@ -232,7 +232,7 @@ function _existence($table) {
 
 			foreach ($arrayResult as $row) {
 
-				if ($row['first_name']==$from_fist_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_Uname) $response = true;
+				if ($row['first_name']==$from_first_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_Uname) $response = true;
 
 			}
 
