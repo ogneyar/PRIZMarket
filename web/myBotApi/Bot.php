@@ -61,8 +61,7 @@ class Bot
     public function init($data_php)
     {
         // создаем массив из пришедших данных от API Telegram
-        $data = $this->getData($data_php); 
-        
+        $data = $this->getData($data_php);         
         return $data;        
     }
 	
@@ -109,48 +108,20 @@ class Bot
 	**
 	**  @return string
 	*/
-	public function PrintArray($mass, $i = 0) {
-		
-		global $flag;
-			
-		$flag .= "\t\t\t\t";			
-			
-		foreach($mass as $key[$i] => $value[$i]) {		
-		
-			if (is_array($value[$i])) {
-			
-					$response .= $flag . $key[$i] . " : \n";
-					
-					$response .= $this->PrintArray($value[$i], ++$i);
-					
-			}else $response .= $flag . $key[$i] . " : " . $value[$i] . "\n";
-			
-		}
-		
-		$str = $flag;
-		
-		$flag = substr($str, 0, -4);
-		
-		return $response;
-		
+	public function PrintArray($mass, $i = 0) {		
+		global $flag;			
+		$flag .= "\t\t\t\t";						
+		foreach($mass as $key[$i] => $value[$i]) {				
+			if (is_array($value[$i])) {			
+					$response .= $flag . $key[$i] . " : \n";					
+					$response .= $this->PrintArray($value[$i], ++$i);					
+			}else $response .= $flag . $key[$i] . " : " . $value[$i] . "\n";			
+		}		
+		$str = $flag;		
+		$flag = substr($str, 0, -4);		
+		return $response;		
 	}
 	
-	
-	/*
-	**  функция поимки выброшенного исключения
-	**
-	**  @param object $exception
-	**  @param int $master
-	*/
-	public function exception_handler($exception) {
-
-		global $master;
-		
-		$this->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	
-	  
-		exit('ok');  
-		
-	}
 	
     
     /*
