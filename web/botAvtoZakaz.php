@@ -11,7 +11,7 @@ $bot = new Bot($token);
 
 $id_bota = strstr($token, ':', true);	
 
-$table_message = 'avtozakaz_message';
+$table_market = 'avtozakaz_pzmarket';
 $table_users = 'avtozakaz_users';
 
 // Группа администрирования бота (Админка)
