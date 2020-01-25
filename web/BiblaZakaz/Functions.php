@@ -126,21 +126,19 @@ function _info_oznakomlenie() {
 
 
 
-function _info_otvetnoe() {
+function _info_otvetnoe($add = false) {
 	
 	global $bot, $chat_id, $message_id;	
-	
-	$add = false;
-	/*
+		
 	if ($add) {
 	
-		$reply = "⭕️Ежели Ваше объявление требует повтора, достаточно [скопировать ссылку]".
+		$replyAddition = "⭕️Ежели Ваше объявление требует повтора, достаточно [скопировать ссылку]".
 			"(https://t.me/podrobno_s_PZP/573) на Ваш пост и отправить в этот бот с просьбой повторить.⭕️".
 			" Либо прислать в бот Ваш готовый лот с канала 'Покупки на PRIZMarket'.⭕️\n\n";
 		
-	}else $reply = "";
-	*/
-	$reply = "Благодарим вас за ваше участие!
+	}else $replyAddition = "";
+	
+	$reply = $replyAddition."Благодарим вас за ваше участие!
 
             ⚠️НАПОМНИМ⚠️
 /start - перезагрузка бота
