@@ -64,12 +64,12 @@ if ($reply_to_message) {
 			}else {
 				
 				$entry_flag = '1';
-				
+				/*
 				if (strpos($text, "t.me/prizm_market") == false) {
 					
 					_info_otvetnoe(true);				
 					
-				}else _info_otvetnoe();	
+				}else */_info_otvetnoe();	
 				
 			}
 			
@@ -129,13 +129,17 @@ if ($reply_to_message) {
 				
 				$entry_flag = '1';				
 				
-				if (strpos($text, "t.me/prizm_market") == false && $reply_markup['inline_keyboard'][0][0]['text']!='Подробнее') {
+				_info_otvetnoe();
+				
+				if (strpos($text, "t.me/prizm_market") == false && $reply_markup['inline_keyboard'][0][0]['text']!='Подробнее') _format_links();
+/*				{
 					
 					_info_otvetnoe(true);
 					
 					_format_links();
 					
 				}else _info_otvetnoe();
+*/
 				
 			}
 			
