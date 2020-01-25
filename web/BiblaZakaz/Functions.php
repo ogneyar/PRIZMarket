@@ -117,7 +117,7 @@ function _info_oznakomlenie() {
 Команда @Prizm_market.";
 	
 
-        $reply = str_replace('_', '\_', $reply);
+        //$reply = str_replace('_', '\_', $reply);
 
 	$bot->sendMessage($chat_id, $reply, markdown);
 
@@ -155,7 +155,7 @@ Function _info_otvetnoe() {
 ```11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c```";
 
 	
-	$reply = str_replace('_', '\_', $reply);
+	//$reply = str_replace('_', '\_', $reply);
 
 	$bot->sendMessage($chat_id, $reply, markdown, null, $message_id, true);
 	
