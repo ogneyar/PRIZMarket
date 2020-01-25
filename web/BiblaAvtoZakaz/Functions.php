@@ -51,7 +51,7 @@ function exception_handler($exception) {
 
 function _insert_kuplu_prodam() {
 
-	global $bot, $chat_id;
+	global $bot, $chat_id, $message_id;
 	
 	$inLine_dejstvie = [
 		'inline_keyboard' => [
@@ -69,8 +69,18 @@ function _insert_kuplu_prodam() {
 	];
 	
 	$reply = "Выберите действие:";
-
+	
 	$bot->sendMessage($chat_id, $reply, null, $inLine_dejstvie);
+	
+	try {
+	
+		$bot->deleteMessage($chat_id, $message_id);
+		
+	}catch(Exception $e) {
+	
+		$bot->sendMessage($master, "Не смог удалить сообщение.\n - > chat_id = ".$chat_id);
+	
+	}
 
 }
 
