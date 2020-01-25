@@ -99,6 +99,59 @@ class Bot
         return $result;
     }
     
+	
+	/*
+	**  функция вывода на печать массива
+	**
+	**  @param array $mass
+	**  @param int $i
+	**  @param str $flag
+	**
+	**  @return string
+	*/
+	public function PrintArray($mass, $i = 0) {
+		
+		global $flag;
+			
+		$flag .= "\t\t\t\t";			
+			
+		foreach($mass as $key[$i] => $value[$i]) {		
+		
+			if (is_array($value[$i])) {
+			
+					$response .= $flag . $key[$i] . " : \n";
+					
+					$response .= $this->PrintArray($value[$i], ++$i);
+					
+			}else $response .= $flag . $key[$i] . " : " . $value[$i] . "\n";
+			
+		}
+		
+		$str = $flag;
+		
+		$flag = substr($str, 0, -4);
+		
+		return $response;
+		
+	}
+	
+	
+	/*
+	**  функция поимки выброшенного исключения
+	**
+	**  @param object $exception
+	**  @param int $master
+	*/
+	public function exception_handler($exception) {
+
+		global $master;
+		
+		$this->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	
+	  
+		exit('ok');  
+		
+	}
+	
     
     /*
 	**  функция отправки сообщения 
@@ -427,7 +480,7 @@ class Bot
 				
 				foreach ($arrayResult as $row){
 				
-					if ($row['user_name'] == $from_Uname&&$row['first_name']==$from_first_name&&$row['last_name']==$from_last_name) $est_li_v_base = true;	
+					if ($row['user_name']==$from_Uname&&$row['first_name']==$from_first_name&&$row['last_name']==$from_last_name) $est_li_v_base = true;						
 				
 				}									
 
