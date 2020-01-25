@@ -216,6 +216,8 @@ function _existence($table) {
 
     $resonse = false;
 	
+	$from_Uname = '';
+	
     if ($from_username != '') $from_Uname = "@".$from_username;
 
 	$query = "SELECT * FROM {$table} WHERE id_client={$from_id}";
@@ -234,7 +236,7 @@ function _existence($table) {
 
 			}
 
-		}
+		}		
 	
 	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");
 	
@@ -246,9 +248,11 @@ function _existence($table) {
 
 function _format_links() {
 	
-	global $bot, $mysqli, $chat_id, $admin_group, $from_username, $channel_info, $message_id, $from_id, $id_bota;
+	global $bot, $mysqli, $chat_id, $admin_group, $from_username, $channel_info, $message_id, $from_id, $id_bota, $master;
 	
 	$existence = _existence('info_users');	
+	
+	$bot->sendMessage($master, "_".$existence);
 	
 	if ($existence) {
 		
