@@ -14,6 +14,8 @@
  *
  * editMessageText
  *
+ * deleteMessage
+ *
  * sendPhoto
  *
  * sendVideo
@@ -246,6 +248,34 @@ class Bot
 		return $response;
 	}
     
+	
+	
+	/*
+	**  функция удаления сообщения	
+	**
+	**  @param int $chat_id
+	**  @param int $message_id  
+	**
+	**  @return array
+	*/
+	public function deleteMessage(		
+		$chat_id = null,		
+		$message_id = null
+	) {
+	
+		$response = $this->call("deleteMessage", [
+			'chat_id' => $chat_id,						
+			'message_id' => $message_id	
+		]);
+		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+	
+		return $response;
+	}
 	
 	
 	/*
