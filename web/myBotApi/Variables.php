@@ -166,6 +166,11 @@ if ($data['message']){
 	
 	$text = $data['message']['text'];
 	
+	if ($data['message']['reply_markup']) {
+	
+		$reply_markup = $data['message']['reply_markup'];
+	
+	}
 
 }elseif ($data['channel_post']) {
 	
