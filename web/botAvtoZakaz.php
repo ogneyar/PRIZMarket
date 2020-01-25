@@ -4,18 +4,18 @@ include_once 'myBotApi/Bot.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
 //exit('ok');
-$token = $tokenPublic;
+$token = $tokenAvtoZakaz;
 
 // Создаем объект бота
 $bot = new Bot($token);
 
 $id_bota = strstr($token, ':', true);	
 
-$table_message = 'public_message';
-$table_users = 'public_users';
+$table_message = 'avtozakaz_message';
+$table_users = 'avtozakaz_users';
 
 // Группа администрирования бота (Админка)
-$admin_group = $admin_group_Public;
+$admin_group = $admin_group_AvtoZakaz;
 
 // Подключение БД
 $mysqli = new mysqli($host, $username, $password, $dbname);
@@ -27,7 +27,7 @@ if (mysqli_connect_errno()) {
 }else { 	
 
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ФУНКЦИЙ
-	include 'BiblaPublic/Functions.php';	
+	include 'BiblaAvtoZakaz/Functions.php';	
 	
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 	include 'myBotApi/Variables.php';
@@ -44,18 +44,18 @@ if (mysqli_connect_errno()) {
 	
 	if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {
 		if ($chat_type=='private') {
-			_start_PublicBota();  			
+			_start_AvtoZakazBota();  			
 		}	
 	}
 	
 	if ($data['callback_query']) {
 	
-		include_once 'BiblaPublic/Callback_query.php';
+		include_once 'BiblaAvtoZakaz/Callback_query.php';
 		
 	
 	}elseif ($data['edited_message']) {
 	
-		include_once 'BiblaPublic/Edit_message.php';		
+		include_once 'BiblaAvtoZakaz/Edit_message.php';		
 	
 	// если пришло сообщение MESSAGE подключается необходимый файл
 	}elseif ($data['message']) {
@@ -67,18 +67,18 @@ if (mysqli_connect_errno()) {
 			if ($number!==false&&$number == '0') {
 				if ($chat_id==$master) {
 					$text = substr($text, 1);
-					include_once 'BiblaPublic/Commands.php';
+					include_once 'BiblaAvtoZakaz/Commands.php';
 					exit('ok');
 				}
 			}
 		}
 		//-----------------------------
 				
-		include_once 'BiblaPublic/Message.php';		
+		include_once 'BiblaAvtoZakaz/Message.php';		
 		
 	}elseif ($data['channel_post']) {
 		
-		include_once 'BiblaPublic/Channel_post.php';
+		include_once 'BiblaAvtoZakaz/Channel_post.php';
 		
 	}
 }
