@@ -31,28 +31,28 @@ if ($text == 'соо') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "CREATE TABLE IF NOT EXISTS `avtozakaz_users` (
+	$query = "CREATE TABLE IF NOT EXISTS `avtozakaz_pzmarket` (
 	  `id_client` bigint(20) DEFAULT NULL,
-	  `first_name` varchar(500) DEFAULT NULL,
-	  `last_name` varchar(500) DEFAULT NULL,
-	  `user_name` varchar(200) DEFAULT NULL,
-	  `status` varchar(10) DEFAULT NULL
+	  `id_zakaz` int(20) DEFAULT NULL,
+	  `kuplu_prodam` varchar(100) DEFAULT NULL,
+	  `nazvanie` varchar(500) DEFAULT NULL,
+	  `url_nazv` varchar(200) DEFAULT NULL,
+	  `valuta` varchar(100) DEFAULT NULL,
+	  `gorod` varchar(200) DEFAULT NULL,
+	  `username` varchar(200) DEFAULT NULL,
+	  `doverie` tinyint(1) DEFAULT NULL,
+	  `otdel` varchar(100) DEFAULT NULL,
+	  `format_file` varchar(20) DEFAULT NULL,
+	  `file_id` varchar(200) DEFAULT NULL,
+	  `url_podrobno` varchar(200) DEFAULT NULL,
+	  `status` varchar(20) DEFAULT NULL,
+	  `podrobno` blob,
+	  `url_tgraph` varchar(200) DEFAULT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 	
 	if ($result = $mysqli->query($query)) {
 	
-		$bot->sendMessage($master, "Всё отлично!");
-		
-		$query = "INSERT INTO `avtozakaz_users` (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES
-			(351009636, 'Ogneyar', NULL, '@Ogneyar_ya', 'admin'),
-			(298466355, 'Otrad', NULL, '@Otrad_ya', 'admin'),
-			(276795315, 'Rada', NULL, '@DJRADA', 'admin')";
-			
-		if ($result = $mysqli->query($query)) {
-		
-			$bot->sendMessage($master, "Тем более отлично!");
-			
-		}else throw new Exception("Не смог добавить записи в таблицу");
+		$bot->sendMessage($master, "Всё отлично!");		
 		
 	}else throw new Exception("Не смог создать таблицу");
 	
