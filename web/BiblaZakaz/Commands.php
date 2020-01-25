@@ -31,7 +31,7 @@ if ($text == 'соо') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `zakaz_message` ADD `flag` BOOLEAN NULL DEFAULT NULL";
+	$query = "AALTER TABLE `zakaz_message` CHANGE `date` `date` BIGINT( 20 ) NULL DEFAULT NULL";
 	if ($result = $mysqli->query($query)) {
 		$bot->sendMessage($master, "Всё отлично!");
 	}else throw new Exception("Не смог изменить таблицу {$table_message}");
