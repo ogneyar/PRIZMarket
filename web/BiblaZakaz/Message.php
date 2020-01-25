@@ -126,8 +126,8 @@ if ($reply_to_message) {
 				$entry_flag = '1';
 				
 				_info_otvetnoe();
-						
-				if (strpos($text, "t.me/prizm_market") == false) _format_links();
+			
+				if (strpos($text, "t.me/prizm_market") == false && $data['reply_markup']['inline_keyboard'][0][0]['text']!='Подробнее') _format_links();
 				
 			}
 			

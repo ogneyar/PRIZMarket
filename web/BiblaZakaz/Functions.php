@@ -248,11 +248,9 @@ function _existence($table) {
 
 function _format_links() {
 	
-	global $bot, $mysqli, $chat_id, $admin_group, $from_username, $channel_info, $message_id, $from_id, $id_bota, $master, $from_first_name, $from_last_name;
+	global $bot, $mysqli, $chat_id, $admin_group, $from_username, $channel_info, $message_id, $from_id, $id_bota;
 	
-	$existence = _existence('info_users');	
-	
-	$bot->sendMessage($master, "_".$existence);
+	$existence = _existence('info_users');		
 	
 	if ($existence) {
 		
