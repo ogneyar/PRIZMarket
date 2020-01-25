@@ -37,6 +37,17 @@ function _info_AvtoZakazBota() {
 }
 
 
+// при возникновении исключения вызывается эта функция
+function exception_handler($exception) {
+
+	global $bot, $master;
+	
+	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	
+  
+	exit('ok');  
+	
+}
+
 
 function _insert_kuplu_prodam() {
 
