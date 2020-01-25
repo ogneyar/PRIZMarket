@@ -1,7 +1,7 @@
 ﻿<?
 
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
-function _start_Zakaz_bota() {		
+function _start_AvtoZakazBota() {		
 
 	global $bot, $chat_id, $from_first_name, $HideKeyboard, $table_users;
 	
