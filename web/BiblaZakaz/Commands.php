@@ -31,10 +31,33 @@ if ($text == 'соо') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `zakaz_message` CHANGE `date` `date` BIGINT( 20 ) NULL DEFAULT NULL";
+	$query = "CREATE TABLE IF NOT EXISTS `avtozakaz_users` (
+	  `id_client` bigint(20) DEFAULT NULL,
+	  `first_name` varchar(500) DEFAULT NULL,
+	  `last_name` varchar(500) DEFAULT NULL,
+	  `user_name` varchar(200) DEFAULT NULL,
+	  `status` varchar(10) DEFAULT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+	
 	if ($result = $mysqli->query($query)) {
+	
 		$bot->sendMessage($master, "Всё отлично!");
-	}else throw new Exception("Не смог изменить таблицу {$table_message}");
+		
+		$query = "INSERT INTO `avtozakaz_users` (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES
+			(351009636, 'Ogneyar', NULL, '@Ogneyar_ya', 'admin'),
+			(298466355, 'Otrad', NULL, '@Otrad_ya', 'admin'),
+			(276795315, 'Rada', NULL, '@DJRADA', 'admin')";
+			
+		if ($result = $mysqli->query($query)) {
+		
+			$bot->sendMessage($master, "Тем более отлично!");
+			
+		}else throw new Exception("Не смог добавить записи в таблицу");
+		
+	}else throw new Exception("Не смог создать таблицу");
+	
+	
+	
 	
 	
 }elseif ($text == 'дел') {
