@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 21 2020 г., 23:29
+-- Время создания: Янв 25 2020 г., 22:34
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS `zakaz_users` (
 --
 
 INSERT INTO `zakaz_users` (`id_client`, `first_name`, `last_name`, `user_name`, `status`) VALUES
-(351009636, 'ooo', 'EE', '@Ogneyar', 'admin'),
-(298466355, 'Отрадъ', '', 'Otrad', 'admin');
+(351009636, 'Ogneyar', '', '@Ogneyar_ya', 'admin'),
+(298466355, 'Otrad', '', '@Otrad_ya', 'admin');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
