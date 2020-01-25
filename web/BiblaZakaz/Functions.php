@@ -117,7 +117,7 @@ function _info_oznakomlenie() {
 Команда @Prizm_market.";
 	
 
-        //$reply = str_replace('_', '\_', $reply);
+        $reply = str_replace('_', '\_', $reply);
 
 	$bot->sendMessage($chat_id, $reply, markdown);
 
