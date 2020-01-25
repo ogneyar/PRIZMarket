@@ -35,9 +35,15 @@ if (mysqli_connect_errno()) {
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
 	
-	//$text = str_replace ("@TesterBotoffBot", "", $text);	
+	if ($chat_type == 'private' && !$from_is_bot) $bot->add_to_database($table_users);
 	
-	//$this_admin = _this_admin();
+	if (!$from_username && $chat_type == 'private') {
+ 
+		$bot->sendMessage($chat_id, "Мы не работаем с клиентами без @username!\n\n".
+			"Возвращайтесь когда поставите себе @username..\n\n\n[Как установить юзернейм?](https://t.me/podrobno_s_PZP/924)", markdown);
+		exit('ok');		
+			
+	}
 	
 	// Если пришла ссылка типа t.me//..?start=123456789
 	if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);
