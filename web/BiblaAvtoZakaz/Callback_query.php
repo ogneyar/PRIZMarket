@@ -1,10 +1,10 @@
 ﻿<?
 
-if ($callback_data=='ознакомьтесь'){
+if ($callback_data=='создать'){
 
-	$bot->answerCallbackQuery($callback_query_id, "Внимательно ознакомьтесь!");
+	$bot->answerCallbackQuery($callback_query_id, "Начнём!");
 
-	_info_oznakomlenie();
+	_insert_kuplu_prodam();
 
 }
 

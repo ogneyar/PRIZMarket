@@ -11,12 +11,7 @@ if (strpos($text, ":")!==false) {
 }
 
 
-if ($text == 'соо') {
-	
-	$bot->output_table($table_message);	
-	
-		
-}elseif ($text == 'база') {
+if ($text == 'база') {
 
 	if ($id) {
 	
@@ -31,15 +26,13 @@ if ($text == 'соо') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `zakaz_message` CHANGE `date` `date` BIGINT( 20 ) NULL DEFAULT NULL";
+	$query = "ALTER TABLE `` CHANGE `date` `date` BIGINT( 20 ) NULL DEFAULT NULL";
+	
 	if ($result = $mysqli->query($query)) {
+	
 		$bot->sendMessage($master, "Всё отлично!");
-	}else throw new Exception("Не смог изменить таблицу {$table_message}");
-	
-	
-}elseif ($text == 'дел') {
-	
-	if(_deleting_old_records($table_message)) $bot->sendMessage($master, "Всё отлично!");
+		
+	}else throw new Exception("Не смог изменить таблицу");
 	
 	
 }elseif ($text == 'удали') {
@@ -77,7 +70,7 @@ if ($text == 'соо') {
 		
 }elseif ($text == "пост"&&($id)) {		
 		
-	$result = $bot->sendMessage($channel_market, $id);
+	$result = $bot->sendMessage($channel_podrobno, $id);
 	
 	if (!$result) throw new Exception("Не смог выложить пост..");	
 		
