@@ -115,7 +115,7 @@ function _info_oznakomlenie() {
 
 Мы рады быть полезными для Вас !
                 
-Команда @Prizm_market.";
+Команда @Prizm\_market.";
 	
 
         //$reply = str_replace('_', '\_', $reply);
