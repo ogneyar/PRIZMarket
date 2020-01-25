@@ -413,6 +413,8 @@ class Bot
 		
 		$est_li_v_base = false;
 		
+		$from_Uname = '';
+		
 		if ($from_username!='') $from_Uname = "@".$from_username;
 		
 		$query = "SELECT * FROM ". $table . " WHERE id_client=".$from_id; 
