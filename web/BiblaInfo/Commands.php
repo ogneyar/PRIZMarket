@@ -49,7 +49,7 @@ if ($text == 'база') {
 				
 				try{
 				
-					$bot->sendMessage($chanel_info, $row['user_name']);
+					$bot->sendMessage($channel_info, $row['user_name']);
 				
 				}catch (Exception $e) {
 					
