@@ -90,23 +90,25 @@ function _создать() {
 
 function _продаю() {
 
-	global $bot, $chat_id, $message_id, $channel_info, $callback_query_id;
+	global $bot, $chat_id, $message_id, $callback_query_id;
 	
 	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввод названия!");	
-	
-	$inLine = [
-		'inline_keyboard' => [
-			[
+
+	$ReplyKey = [
+		'keyboard' => [
+			[			
 				[
-					'text' => 'кохаю',
-					'url' => 'http://gghhpprooo.ru/'
+					'text' => "Отмена ввода"
 				]
 			]
-		]
+		],
+		'resize_keyboard' => true,
+		'selective' => true,
 	];
-		
 	
-	$bot->sendMessage($channel_info, "NshGsh", null, $inLine);
+	$reply = "Введите название:";
+	
+	$bot->sendMessage($chat_id, $reply, null, $ReplyKey);	
 	
 	try {
 	
