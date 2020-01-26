@@ -94,19 +94,19 @@ function _продаю() {
 	
 	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввод названия!");	
 	
-	$inLine_dejstvie = [
+	$inLine = [
 		'inline_keyboard' => [
 			[
 				[
-					'text' => 'одаю',
-					'url' => 'ээээ'
+					'text' => 'кохаю',
+					'url' => 'http://gghhpprooo.ru/'
 				]
 			]
 		]
 	];
 		
 	
-	$bot->sendMessage($channel_info, "NshGsh", null, $inLine_dejstvie);
+	$bot->sendMessage($channel_info, "NshGsh", null, $inLine);
 	
 	try {
 	
