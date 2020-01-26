@@ -1,5 +1,5 @@
 <?
-/*
+
 foreach ($entities as $ent) {
 	
 	if ($ent['type'] == 'text_mention') $user = $ent['user'];
@@ -8,12 +8,20 @@ foreach ($entities as $ent) {
 
 if ($user) {
 	
-	$url_info = "https://t.me/Ne_wTest_Bot?start=".$user['id'];
+	if ($id_bota == '475440299') {
+	
+		$url_info = "https://t.me/check_user_infobot?start=".$user['id'];
+						
+	}elseif ($id_bota == '1052297281') {
+						
+		$url_info = "https://t.me/Ne_wTest_Bot?start=".$user['id'];
+							
+	}
 
-	$bot->sendMessage($chat_id, $url_info, null, null, null, true);
+	$bot->sendMessage($admin_group, $url_info, null, null, null, true);	
 
 }
-*/
+
 
 
 

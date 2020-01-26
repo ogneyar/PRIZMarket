@@ -257,8 +257,8 @@ function _format_links() {
 	
 	global $bot, $mysqli, $chat_id, $admin_group, $from_username, $channel_info, $message_id, $from_id, $id_bota;
 	
-	$existence = _existence('info_users');		
-	
+	//$existence = _existence('info_users');		
+/*	
 	if ($existence) {
 		
 		if ($id_bota == '475440299') {
@@ -277,7 +277,7 @@ function _format_links() {
 
 	}else {
 	
-		
+*/		
 		$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
 			   
 		if ($result) {
@@ -287,7 +287,7 @@ function _format_links() {
 			if ($result) {
 						
 				$result = $bot->sendMessage($channel_info, "&".$from_id);
-					
+/*					
 				if ($result) {
 					
 					if ($id_bota == '475440299') {
@@ -303,12 +303,12 @@ function _format_links() {
 					$bot->sendMessage($admin_group, $url_info, null, null, null, true);
 	
 				}
-						
+*/		
 			}
 				   
 		}	
 		
-	}
+	//}
 	
 }
 
