@@ -60,7 +60,7 @@ function _создать() {
 			[
 				[
 					'text' => '#продаю',
-					'callback_data' => 'продаю'
+					'callback_data' => 'продам'
 				],
 				[
 					'text' => '#куплю',
@@ -70,10 +70,11 @@ function _создать() {
 		]
 	];
 	
-	$reply = "Выберите действие:";
+	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nВыберите необходимое действие:";
 	
 	$bot->sendMessage($chat_id, $reply, null, $inLine);
-	
+
+/*
 	try {
 	
 		$bot->deleteMessage($chat_id, $message_id);
@@ -83,14 +84,42 @@ function _создать() {
 		$bot->sendMessage($master, "Не смог удалить сообщение.\n - > chat_id = ".$chat_id);
 	
 	}
+*/
 
 }
 
 
 
-function _продаю() {
+function _куплю() {
+
+	_продам_куплю('куплю');
+
+}
+
+
+function _продам() {
+
+	_продам_куплю('продам');
+
+}
+
+function _запись_в_таблицу_маркет($айди_клиента, $имя_столбца, $действие) {
 
 	global $bot, $chat_id, $message_id, $callback_query_id;
+
+}
+
+
+function _ожидание_ввода() {}
+
+
+function _продам_куплю($действие) {
+
+	global $bot, $chat_id, $message_id, $callback_query_id, $from_id;
+	
+	_запись_в_таблицу_маркет($from_id, 'kuplu_prodam', $действие);
+	
+	_ожидание_ввода();
 	
 	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввод названия!");	
 
@@ -109,7 +138,8 @@ function _продаю() {
 	$reply = "Введите название:";
 	
 	$bot->sendMessage($chat_id, $reply, null, $ReplyKey);	
-	
+
+/*	
 	try {
 	
 		$bot->deleteMessage($chat_id, $message_id);
@@ -119,8 +149,11 @@ function _продаю() {
 		$bot->sendMessage($master, "Не смог удалить сообщение.\n - > chat_id = ".$chat_id);
 	
 	}
+*/
 
 }
+
+
 
 
 

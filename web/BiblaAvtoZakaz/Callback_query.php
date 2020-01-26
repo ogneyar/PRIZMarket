@@ -4,9 +4,13 @@ if ($callback_data=='создать'){
 
 	_создать();
 
-}elseif ($callback_data=='продаю') {	
+}elseif ($callback_data=='продам') {	
 
-	_продаю();
+	_продам();
+
+}elseif ($callback_data=='куплю') {	
+
+	_куплю();
 
 }
 
