@@ -8,12 +8,8 @@ if ($number!==false&&$number == '0') {
 
 	$result = $bot->getChat($text);
 		
-	if (!$result) {
-			
-		//$bot->sendMessage($chat_id, "Нужен только айди");	
-		
-	}elseif ($channel_info == $chat_id) {
-						
+	if (($result)&&$channel_info == $chat_id) {		
+	
 		$from_id = $result['id'];
 		$from_first_name = $result['first_name'];			
 		$from_last_name = $result['last_name'];
@@ -35,11 +31,6 @@ if ($number!==false&&$number == '0') {
 			"username: ".$result['username'];
 		
 		$bot->sendMessage($chat_id, $reply, markdown);		
-
-
-		$url_info = "https://t.me/Ne_wTest_Bot?start=".$result['id'];
-		
-		//$bot->sendMessage($admin_group, $url_info, null, null, null, true);
 		
 	}
 	
