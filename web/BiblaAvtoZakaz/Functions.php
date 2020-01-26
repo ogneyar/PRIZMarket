@@ -51,9 +51,11 @@ function exception_handler($exception) {
 
 function _создать() {
 
-	global $bot, $chat_id, $message_id;
+	global $bot, $chat_id, $message_id, $callback_query_id;	
 	
-	$inLine_dejstvie = [
+	$bot->answerCallbackQuery($callback_query_id, "Начнём!");
+	
+	$inLine = [
 		'inline_keyboard' => [
 			[
 				[
@@ -70,7 +72,7 @@ function _создать() {
 	
 	$reply = "Выберите действие:";
 	
-	$bot->sendMessage($chat_id, $reply, null, $inLine_dejstvie);
+	$bot->sendMessage($chat_id, $reply, null, $inLine);
 	
 	try {
 	
@@ -86,28 +88,23 @@ function _создать() {
 
 
 
-function _prodayu() {
+function _продаю() {
 
-	global $bot, $chat_id, $message_id, $channel_info;
+	global $bot, $chat_id, $message_id, $channel_info, $callback_query_id;
+	
+	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввод названия!");	
 	
 	$inLine_dejstvie = [
 		'inline_keyboard' => [
 			[
 				[
-					'text' => '#продаю',
-					'callback_data' => 'ээээ'
-				],
-				[
-					'text' => '#куплю',
-					'callback_data' => 'ууу'
+					'text' => 'одаю',
+					'url' => 'ээээ'
 				]
 			]
 		]
 	];
-	
-	$reply = "Выберите действие:";
-	
-	$bot->sendMessage($chat_id, $reply, null, $inLine_dejstvie);
+		
 	
 	$bot->sendMessage($channel_info, "NshGsh", null, $inLine_dejstvie);
 	
