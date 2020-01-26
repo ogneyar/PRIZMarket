@@ -35,6 +35,30 @@ if ($text == 'база') {
 	
 	
 	
+}elseif ($text == 'топ') {
+	
+	$query = "SELECT user_name FROM info_users";
+	
+	if ($result = $mysqli->query($query)) {
+	
+		if ($result->num_rows>0) {
+			
+			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+			
+			foreach ($arrayResult as $row) {
+			
+				$bot->sendMessage($chanel_info, $row['user_name']);
+			
+			}
+			
+			$bot->sendMessage($master, "Всё отлично!");
+			
+		}else throw new Exception("Пусто..");	
+		
+	}else throw new Exception("Не смог..");	
+	
+	
+	
 }elseif ($text == 'удали') {
 	
 	$query = "DELETE FROM ".$table_users." WHERE id_client=".$id;				
