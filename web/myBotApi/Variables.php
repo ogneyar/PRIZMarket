@@ -80,11 +80,24 @@ if ($data['message']){
 		$forward_last_name = $message_forward['last_name'];
 		//if ($forward_last_name=="") $forward_last_name = 'отсутствует';
 		$forward_username = $message_forward['username'];
-		//if ($forward_username=="") $forward_username = 'отсутствует';
+		//if ($forward_username=="") $forward_username = 'отсутствует';		
 
 	}
 	
 	$forward_sender_name = $data['message']['forward_sender_name'];
+	
+	if ($data['message']['forward_from_chat']) {
+	
+		$forward_from_chat = $data['message']['forward_from_chat'];
+		
+		$forward_chat_id = $forward_from_chat['id'];
+		$forward_chat_title = $forward_from_chat['title'];
+		$forward_chat_username = $forward_from_chat['username'];
+		$forward_chat_type = $forward_from_chat['type'];
+		
+	}
+	
+	$forward_from_message_id = $data['message']['forward_from_message_id'];
 
 	$forward_date = $data['message']['forward_date'];
 	
@@ -142,16 +155,28 @@ if ($data['message']){
 		if ($photo[2]){
 		
 			$file_id = $photo[2]['file_id'];
+			$file_unique_id = $photo[2]['file_unique_id'];
+			$file_size = $photo[2]['file_size'];
+			$width = $photo[2]['width'];
+			$height = $photo[2]['height'];
 			
 		}elseif ($photo[1]){
 		
 			$file_id = $photo[1]['file_id'];	
+			$file_unique_id = $photo[1]['file_unique_id'];
+			$file_size = $photo[1]['file_size'];
+			$width = $photo[1]['width'];
+			$height = $photo[1]['height'];
 			
 		}else {
 		
 			$file_id = $photo[0]['file_id'];	
+			$file_unique_id = $photo[0]['file_unique_id'];
+			$file_size = $photo[0]['file_size'];
+			$width = $photo[0]['width'];
+			$height = $photo[0]['height'];
 			
-		}
+		}		
 		
 	}
 	
@@ -159,12 +184,24 @@ if ($data['message']){
 	
 		$video = $data['message']['video'];
 		
-		$file_id = $video['file_id'];			
+		$duration = $video['duration'];
+		$width = $video['width'];
+		$height = $video['height'];
+		$mime_type = $video['mime_type'];
+		$thumb = $video['thumb'];
 		
-	}
+		$file_id = $video['file_id'];
+		
+		$file_unique_id = $video['file_unique_id'];
+		$file_size = $video['file_size'];
+		
+	}		
 	
+	$caption = $data['message']['caption'];	
+		
+	$caption_entities = $data['message']['caption_entities'];
 	
-	$text = $data['message']['text'];
+	$text = $data['message']['text'];	
 	
 	if ($data['message']['reply_markup']) {
 	
