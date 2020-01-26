@@ -60,6 +60,40 @@ if ($text == 'соо') {
 	
 	
 	
+}elseif ($text == 'топ') {
+	
+	$query = "SELECT user_name FROM info_users";
+	
+	if ($result = $mysqli->query($query)) {
+	
+		if ($result->num_rows>0) {
+			
+			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+			
+			foreach ($arrayResult as $row) {
+				
+				try{
+				
+					$bot->sendMessage($channel_info, $row['user_name']);
+				
+				}catch (Exception $e) {
+					
+					$bot->sendMessage($master, "Видимо нет юзернейма.");
+					
+				}
+			
+			}
+			
+			$bot->sendMessage($master, "Всё отлично!");
+			
+			exit('ok');
+			
+		}else throw new Exception("Пусто..");	
+		
+	}else throw new Exception("Не смог..");	
+	
+	
+	
 }elseif ($text == 'дел') {
 	
 	if(_deleting_old_records($table_message)) $bot->sendMessage($master, "Всё отлично!");
