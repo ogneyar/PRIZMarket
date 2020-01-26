@@ -49,7 +49,7 @@ function exception_handler($exception) {
 }
 
 
-function _insert_kuplu_prodam() {
+function _создать() {
 
 	global $bot, $chat_id, $message_id;
 	
@@ -83,6 +83,46 @@ function _insert_kuplu_prodam() {
 	}
 
 }
+
+
+
+function _prodayu() {
+
+	global $bot, $chat_id, $message_id, $channel_info;
+	
+	$inLine_dejstvie = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => '#продаю',
+					'callback_data' => 'ээээ'
+				],
+				[
+					'text' => '#куплю',
+					'callback_data' => 'ууу'
+				]
+			]
+		]
+	];
+	
+	$reply = "Выберите действие:";
+	
+	$bot->sendMessage($chat_id, $reply, null, $inLine_dejstvie);
+	
+	$bot->sendMessage($channel_info, "NshGsh", null, $inLine_dejstvie);
+	
+	try {
+	
+		$bot->deleteMessage($chat_id, $message_id);
+		
+	}catch(Exception $e) {
+	
+		$bot->sendMessage($master, "Не смог удалить сообщение.\n - > chat_id = ".$chat_id);
+	
+	}
+
+}
+
 
 
 // Проверка наличия клиента в базе
