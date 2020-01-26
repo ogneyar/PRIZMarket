@@ -46,8 +46,16 @@ if ($text == 'база') {
 			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
 			
 			foreach ($arrayResult as $row) {
-			
-				$bot->sendMessage($chanel_info, $row['user_name']);
+				
+				try{
+				
+					$bot->sendMessage($chanel_info, $row['user_name']);
+				
+				}catch (Exception $e) {
+					
+					$bot->sendMessage($master, "Видимо нет юзернейма.");
+					
+				}
 			
 			}
 			
