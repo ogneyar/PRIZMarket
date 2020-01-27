@@ -258,57 +258,20 @@ function _format_links() {
 	global $bot, $mysqli, $chat_id, $admin_group, $from_username, $channel_info, $message_id, $from_id, $id_bota;
 	
 	//$existence = _existence('info_users');		
-/*	
-	if ($existence) {
-		
-		if ($id_bota == '475440299') {
-		
-			$url_info = "https://t.me/check_user_infobot?start=".$from_id;
-		
-		}elseif ($id_bota == '1052297281') {
-		
-			$url_info = "https://t.me/Ne_wTest_Bot?start=".$from_id;
-			
-		}
-
-		$bot->sendMessage($admin_group, $url_info, null, null, null, true);
-	         
-                //$bot->sendMessage($admin_group, $id_bota);
-
-	}else {
 	
-*/		
-		$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
+//	$result = $bot->forwardMessage($channel_info, $chat_id, $message_id);
 			   
+//	if ($result) {
+				   
+		$result = $bot->sendMessage($channel_info, "&@".$from_username);
+				   
 		if ($result) {
-				   
-			$result = $bot->sendMessage($channel_info, "@".$from_username);
-				   
-			if ($result) {
 						
-				$result = $bot->sendMessage($channel_info, "&".$from_id);
-/*					
-				if ($result) {
-					
-					if ($id_bota == '475440299') {
-		
-						$url_info = "https://t.me/check_user_infobot?start=".$from_id;
-						
-					}elseif ($id_bota == '1052297281') {
-						
-						$url_info = "https://t.me/Ne_wTest_Bot?start=".$from_id;
-							
-					}
-
-					$bot->sendMessage($admin_group, $url_info, null, null, null, true);
+			$result = $bot->sendMessage($channel_info, "&".$from_id);
 	
-				}
-*/		
-			}
-				   
-		}	
+		}
 		
-	//}
+//	}	
 	
 }
 
