@@ -51,11 +51,11 @@ function exception_handler($exception) {
 
 function _создать() {
 
-	global $bot, $chat_id, $message_id, $callback_query_id, $callback_from_id;	
+	global $bot, $message_id, $callback_query_id, $callback_from_id;	
 	
 	$bot->answerCallbackQuery($callback_query_id, "Начнём!");
 	
-	_запись_в_таблицу_маркет($callback_from_id);
+	_запись_в_таблицу_маркет();
 	
 	$inLine = [
 		'inline_keyboard' => [
@@ -74,7 +74,7 @@ function _создать() {
 	
 	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nВыберите необходимое действие:";
 	
-	$bot->sendMessage($chat_id, $reply, null, $inLine);
+	$bot->sendMessage($callback_from_id, $reply, null, $inLine);
 
 /*
 	try {
