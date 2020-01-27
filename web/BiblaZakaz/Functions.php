@@ -263,11 +263,11 @@ function _format_links() {
 			   
 //	if ($result) {
 				   
-		$result = $bot->sendMessage($channel_info, "&@".$from_username);
+		$result = $bot->sendMessage($channel_info, "@".$from_username);
 				   
 		if ($result) {
 						
-			$result = $bot->sendMessage($channel_info, "&".$from_id);
+			$result = $bot->sendMessage($channel_info, $from_id);
 	
 		}
 		
