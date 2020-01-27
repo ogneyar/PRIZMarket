@@ -163,9 +163,9 @@ function _ожидание_ввода() {}
 
 function _продам_куплю($действие) {
 
-	global $bot, $chat_id, $message_id, $callback_query_id, $from_id;
+	global $bot, $chat_id, $message_id, $callback_query_id, $callback_from_id;
 	
-	_запись_в_таблицу_маркет($from_id, 'kuplu_prodam', $действие);
+	_запись_в_таблицу_маркет($callback_from_id, 'kuplu_prodam', $действие);
 	
 	_ожидание_ввода();
 	

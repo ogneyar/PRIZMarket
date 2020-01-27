@@ -1,8 +1,9 @@
 ﻿<?
 
-if ($text=='инфо') {
+if ($text=='Отмена ввода') {
 
-    
+    $bot->sendMessage($chat_id, "Ввод отменён.", null, $HideKeyboard);
+	
 
 }elseif ($text=='пост'||$text == 'post') {
 	
