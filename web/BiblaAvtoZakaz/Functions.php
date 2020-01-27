@@ -51,9 +51,11 @@ function exception_handler($exception) {
 
 function _создать() {
 
-	global $bot, $chat_id, $message_id, $callback_query_id;	
+	global $bot, $chat_id, $message_id, $callback_query_id, $callback_from_id;	
 	
 	$bot->answerCallbackQuery($callback_query_id, "Начнём!");
+	
+	_запись_в_таблицу_маркет($callback_from_id);
 	
 	$inLine = [
 		'inline_keyboard' => [
@@ -103,9 +105,55 @@ function _продам() {
 
 }
 
-function _запись_в_таблицу_маркет($айди_клиента, $имя_столбца, $действие) {
+function _запись_в_таблицу_маркет($айди_клиента, $имя_столбца = null, $действие = null) {
 
-	global $bot, $chat_id, $message_id, $callback_query_id;
+	global $table_market, $mysqli;
+	
+	if (!$имя_столбца) {
+	
+		$query = "DELETE FROM {$table_market} WHERE id_client={$айди_клиента} AND status=''";
+		
+		$result = $mysqli->query($query);
+		
+		if ($result) {
+			
+			$query = "INSERT INTO {$table_market} (
+			  `id_client`,
+			  `id_zakaz`,
+			  `kuplu_prodam`,
+			  `nazvanie`,
+			  `url_nazv`,
+			  `valuta`,
+			  `gorod`,
+			  `username`,
+			  `doverie`,
+			  `otdel`,
+			  `format_file`,
+			  `file_id`,
+			  `url_podrobno`,
+			  `status`,
+			  `podrobno`,
+			  `url_tgraph`
+			) VALUES (
+			  '{$айди_клиента}', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''
+			)";
+						
+			$result = $mysqli->query($query);
+			
+			if (!$result) throw new Exception("Не смог добавить запись в таблицу {$table_market}");
+			
+		}else throw new Exception("Не смог удалить запись в таблице {$table_market}");
+		
+	}else {
+		
+		$query ="UPDATE {$table_market} SET {$имя_столбца}={$действие} WHERE id_client={$айди_клиента} AND status=''";
+		
+		$result = $mysqli->query($query);
+			
+		if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");
+		
+		
+	}
 
 }
 

@@ -24,6 +24,20 @@ if ($text == 'база') {
 	}	
 
 
+}elseif ($text == 'марк') {
+	
+	if ($id) {
+	
+		$bot->output_table($table_market, $id);
+	
+	}else {
+		
+		$bot->output_table($table_market);
+		
+	}	
+	
+	
+	
 }elseif ($text == 'изи') {
 	
 	$query = "ALTER TABLE `` CHANGE `date` `date` BIGINT( 20 ) NULL DEFAULT NULL";
