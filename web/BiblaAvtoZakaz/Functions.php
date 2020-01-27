@@ -108,11 +108,11 @@ function _продам() {
 
 function _продам_куплю($действие) {
 
-	global $bot, $chat_id, $message_id, $callback_query_id, $callback_from_id;
+	global $bot, $message_id, $callback_query_id, $callback_from_id;
 	
-	_запись_в_таблицу_маркет($callback_from_id, 'kuplu_prodam', $действие);
+	_запись_в_таблицу_маркет('kuplu_prodam', $действие);
 	
-	_ожидание_ввода();
+	_ожидание_ввода('nazvanie');
 	
 	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввод названия!");	
 
@@ -130,7 +130,7 @@ function _продам_куплю($действие) {
 	
 	$reply = "Введите название:";
 	
-	$bot->sendMessage($chat_id, $reply, null, $ReplyKey);	
+	$bot->sendMessage($callback_from_id, $reply, null, $ReplyKey);	
 
 /*	
 	try {
@@ -148,13 +148,13 @@ function _продам_куплю($действие) {
 
 
 
-function _запись_в_таблицу_маркет($айди_клиента, $имя_столбца = null, $действие = null) {
+function _запись_в_таблицу_маркет($имя_столбца = null, $действие = null) {
 
-	global $table_market, $mysqli;
+	global $table_market, $mysqli, $callback_from_id, $callback_from_username;
 	
 	if (!$имя_столбца) {
 	
-		$query = "DELETE FROM {$table_market} WHERE id_client={$айди_клиента} AND status=''";
+		$query = "DELETE FROM {$table_market} WHERE id_client={$callback_from_id} AND status=''";
 		
 		$result = $mysqli->query($query);
 		
@@ -178,7 +178,7 @@ function _запись_в_таблицу_маркет($айди_клиента, 
 			  `podrobno`,
 			  `url_tgraph`
 			) VALUES (
-			  '{$айди_клиента}', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''
+			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', ''
 			)";
 						
 			$result = $mysqli->query($query);
@@ -189,7 +189,7 @@ function _запись_в_таблицу_маркет($айди_клиента, 
 		
 	}else {
 		
-		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$айди_клиента} AND status=''";
+		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$callback_from_id} AND status=''";
 		
 		$result = $mysqli->query($query);
 			
@@ -201,9 +201,15 @@ function _запись_в_таблицу_маркет($айди_клиента, 
 }
 
 
-function _ожидание_ввода($айди_клиента, $имя_столбца) {
+function _ожидание_ввода($имя_столбца = null) {
 	
-	global $mysqli;
+	global $mysqli, $callback_from_id;
+	
+	if (!$имя_столбца) {
+		//если не указан столбец, то надо проверить, есть ли ожидание ввода ..
+	}else {
+		//сли указан столбец, то надо сделать запись в таблице ожидания ввода
+	}
 	
 	
 }
