@@ -146,7 +146,7 @@ function _запись_в_таблицу_маркет($айди_клиента, 
 		
 	}else {
 		
-		$query ="UPDATE {$table_market} SET {$имя_столбца}={$действие} WHERE id_client={$айди_клиента} AND status=''";
+		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$айди_клиента} AND status=''";
 		
 		$result = $mysqli->query($query);
 			
