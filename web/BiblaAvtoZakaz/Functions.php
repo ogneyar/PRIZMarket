@@ -105,6 +105,49 @@ function _продам() {
 
 }
 
+
+function _продам_куплю($действие) {
+
+	global $bot, $chat_id, $message_id, $callback_query_id, $callback_from_id;
+	
+	_запись_в_таблицу_маркет($callback_from_id, 'kuplu_prodam', $действие);
+	
+	_ожидание_ввода();
+	
+	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввод названия!");	
+
+	$ReplyKey = [
+		'keyboard' => [
+			[			
+				[
+					'text' => "Отмена ввода"
+				]
+			]
+		],
+		'resize_keyboard' => true,
+		'selective' => true,
+	];
+	
+	$reply = "Введите название:";
+	
+	$bot->sendMessage($chat_id, $reply, null, $ReplyKey);	
+
+/*	
+	try {
+	
+		$bot->deleteMessage($chat_id, $message_id);
+		
+	}catch(Exception $e) {
+	
+		$bot->sendMessage($master, "Не смог удалить сообщение.\n - > chat_id = ".$chat_id);
+	
+	}
+*/
+
+}
+
+
+
 function _запись_в_таблицу_маркет($айди_клиента, $имя_столбца = null, $действие = null) {
 
 	global $table_market, $mysqli;
@@ -158,51 +201,12 @@ function _запись_в_таблицу_маркет($айди_клиента, 
 }
 
 
-function _ожидание_ввода() {}
-
-
-function _продам_куплю($действие) {
-
-	global $bot, $chat_id, $message_id, $callback_query_id, $callback_from_id;
+function _ожидание_ввода($айди_клиента, $имя_столбца) {
 	
-	_запись_в_таблицу_маркет($callback_from_id, 'kuplu_prodam', $действие);
+	global $mysqli;
 	
-	_ожидание_ввода();
 	
-	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввод названия!");	
-
-	$ReplyKey = [
-		'keyboard' => [
-			[			
-				[
-					'text' => "Отмена ввода"
-				]
-			]
-		],
-		'resize_keyboard' => true,
-		'selective' => true,
-	];
-	
-	$reply = "Введите название:";
-	
-	$bot->sendMessage($chat_id, $reply, null, $ReplyKey);	
-
-/*	
-	try {
-	
-		$bot->deleteMessage($chat_id, $message_id);
-		
-	}catch(Exception $e) {
-	
-		$bot->sendMessage($master, "Не смог удалить сообщение.\n - > chat_id = ".$chat_id);
-	
-	}
-*/
-
 }
-
-
-
 
 
 // Проверка наличия клиента в базе
