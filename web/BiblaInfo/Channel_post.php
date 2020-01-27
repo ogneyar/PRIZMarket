@@ -1,14 +1,10 @@
 <?
 
-$number = stripos($text, '&');
-
-if ($number!==false&&$number == '0') {
+if ($chat_id == $channel_info) {
 				
-	$text = substr($text, 1);
-
 	$result = $bot->getChat($text);
 		
-	if (($result)&&$channel_info == $chat_id) {		
+	if ($result) {		
 	
 		$from_id = $result['id'];
 		$from_first_name = $result['first_name'];			
