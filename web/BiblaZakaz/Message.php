@@ -47,7 +47,51 @@ if ($reply_to_message) {
 			
 	}elseif ($reply_sender_name) {
 			
-		$bot->sendMessage($chat_id, "Профиль скрыт.");
+		//$bot->sendMessage($chat_id, "Профиль скрыт.");
+		//тоже самое что и выше, только без учёта айди клиента
+		$query = "SELECT message_id_in, client_id FROM {$table_message} WHERE message_id_out={$reply_message_id}";
+		if ($result = $mysqli->query($query)) {				
+			if($result->num_rows>0){
+				
+				if($result->num_rows>1){
+					
+					$bot->sendMessage($chat_id, "Профиль скрыт.");
+					exit('ok');
+					
+				}
+				
+				$arrayResult = $result->fetch_all(MYSQLI_ASSOC);				
+				$message_id_in = $arrayResult[0]['message_id_in'];
+				$client_id = $arrayResult[0]['client_id'];
+			}else throw new Exception("Не смог найти message_id_in в таблице {$table_message}");
+		}else throw new Exception("Не смог узнать message_id_in в таблице {$table_message}");
+			
+		if ($text) {
+			
+			$result = $bot->sendMessage($client_id, $text, null, null, $message_id_in);
+				
+		}elseif ($photo) {			
+			
+			$result = $bot->sendPhoto($client_id, $file_id, null, null, null, $message_id_in);
+			
+		}elseif ($video) {
+			
+			$result = $bot->sendVideo($client_id, $file_id, null, null, null, $message_id_in);
+			
+		}
+				
+			
+		if ($result) {
+			
+			// а после надо сохранить айди сообщения админа клиенту
+			// для возможности его редактирования
+			
+			$query = "INSERT INTO {$table_message} VALUES ('{$client_id}',
+				'{$message_id}', '{$result['message_id']}', '{$result['date']}', '0')";
+			$mysql_result = $mysqli->query($query);
+					
+			if (!$mysql_result) throw new Exception("Не смог сделать записать в таблицу {$table_message}");
+		}
 			
 	}elseif ($chat_type == 'private') {			
 
