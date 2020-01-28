@@ -44,7 +44,7 @@ if ($callback_data=='создать'){
 
 	_фунт();
 
-}elseif ($callback_data=='не_нужна') {	
+}elseif ($callback_data=='призм') {	
 
 	_призм();
 
