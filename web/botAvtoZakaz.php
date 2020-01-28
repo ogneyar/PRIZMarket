@@ -13,6 +13,7 @@ $id_bota = strstr($token, ':', true);
 
 $table_market = 'avtozakaz_pzmarket';
 $table_users = 'avtozakaz_users';
+$таблица_ожидание = 'avtozakaz_ojidanie';
 
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_AvtoZakaz;
