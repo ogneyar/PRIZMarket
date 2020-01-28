@@ -12,6 +12,14 @@ if ($callback_data=='создать'){
 
 	_куплю();
 
+}elseif ($callback_data=='да_нужна') {	
+
+	_да_нужна();
+
+}elseif ($callback_data=='не_нужна') {	
+
+	_не_нужна();
+
 }
 
 ?>

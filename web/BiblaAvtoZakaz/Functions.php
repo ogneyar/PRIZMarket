@@ -112,7 +112,7 @@ function _продам_куплю($действие) {
 	
 	_запись_в_таблицу_маркет('kuplu_prodam', $действие);
 	
-	_ожидание_ввода('nazvanie');
+	_ожидание_ввода('nazvanie', 'kuplu_prodam');
 	
 	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввод названия!");	
 
@@ -201,18 +201,103 @@ function _запись_в_таблицу_маркет($имя_столбца = n
 }
 
 
-function _ожидание_ввода($имя_столбца = null) {
+function _ожидание_ввода($имя_столбца = null, $последнее_действие = null) {
 	
-	global $mysqli, $callback_from_id;
+	global $mysqli, $callback_from_id, $таблица_ожидание;
 	
-	if (!$имя_столбца) {
-		//если не указан столбец, то надо проверить, есть ли ожидание ввода ..
-	}else {
-		//сли указан столбец, то надо сделать запись в таблице ожидания ввода
+	$response = false;
+	
+	if ($имя_столбца) {//если указан столбец, то надо сделать запись в таблице ожидания ввода
+	
+		$query = "SELECT id_client FROM {$таблица_ожидание} WHERE id_client={$callback_from_id}";
+		
+		$result = $mysqli->query($query);
+		
+		if ($result->num_rows>0) {
+			
+			$query = "UPDATE {$таблица_ожидание} SET ojidanie='{$имя_столбца}' WHERE id_client={$callback_from_id}";
+		
+			$result = $mysqli->query($query);
+			
+			if (!$result) throw new Exception("Не смог обновить запись в таблице {$таблица_ожидание}");
+			
+			$response = true;
+			
+		}else {
+			
+			$query = "INSERT INTO {$таблица_ожидание} (
+				  `id_client`,
+				  `ojidanie`,
+				  `last`,
+				  `flag`
+			) VALUES ('{$callback_from_id}', '{$имя_столбца}', '{$последнее_действие}', '0')";	
+		
+			$result = $mysqli->query($query);
+			
+			if (!$result) throw new Exception("Не смог добавить запись в таблицу {$таблица_ожидание}");
+			
+			$response = true;
+			
+		}		
+		
+	}else {//если не указан столбец, то надо проверить, есть ли ожидание ввода ..
+	
+		$query = "SELECT * FROM {$таблица_ожидание} WHERE id_client={$callback_from_id}";
+		
+		$result = $mysqli->query($query);
+		
+		if ($result->num_rows>0) {
+		
+			$resultArray = $result->fetch_all(MYSQLI_ASSOC);
+			
+			$response = [
+				'id_client' => $resultArray[0]['id_client'],
+				'ojidanie' => $resultArray[0]['ojidanie'],
+				'last' => $resultArray[0]['last'],
+				'flag' => $resultArray[0]['flag']
+			];
+		
+		}		
+		
 	}
+	
+	return $response; // boolean or array
 	
 	
 }
+
+
+
+function _ссылка_в_названии() {
+
+	global $bot, $chat_id;
+	
+	$inLine = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => 'Да',
+					'callback_data' => 'да_нужна'
+				],
+				[
+					'text' => 'Нет',
+					'callback_data' => 'не_нужна'
+				]
+			]
+		]
+	];
+	
+	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nНужна ли Вам Ваша ссылка в названии?\n\nЕсли не знаете или не поймёте о чём речь, нажмите 'НЕТ'.";
+	
+	$bot->sendMessage($chat_id, $reply, null, $inLine);
+
+}
+
+
+
+function _да_нужна() {}
+
+function _не_нужна() {}
 
 
 // Проверка наличия клиента в базе

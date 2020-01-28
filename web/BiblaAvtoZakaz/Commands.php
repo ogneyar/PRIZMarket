@@ -34,8 +34,20 @@ if ($text == 'база') {
 		
 		$bot->output_table($table_market);
 		
-	}	
+	}		
 	
+	
+}elseif ($text == 'ож') {
+	
+	if ($id) {
+	
+		$bot->output_table($таблица_ожидание, $id);
+	
+	}else {
+		
+		$bot->output_table($таблица_ожидание);
+		
+	}		
 	
 	
 }elseif ($text == 'изи') {
