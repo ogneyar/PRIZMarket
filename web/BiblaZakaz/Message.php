@@ -49,18 +49,10 @@ if ($reply_to_message) {
 			
 		//$bot->sendMessage($chat_id, "Профиль скрыт.");
 		//тоже самое что и выше, только без учёта айди клиента
-		$query = "SELECT message_id_in, client_id FROM {$table_message} WHERE message_id_out={$reply_message_id}";
+		$query = "SELECT message_id_in, client_id FROM {$table_message} WHERE message_id_out={$reply_message_id} AND date={$reply_date}";
 		if ($result = $mysqli->query($query)) {				
 			if($result->num_rows>0){
-				
-				if($result->num_rows>1){
-					
-					$bot->sendMessage($chat_id, "Профиль скрыт.");
-					exit('ok');
-					
-				}
-				
-				$arrayResult = $result->fetch_all(MYSQLI_ASSOC);				
+			        $arrayResult = $result->fetch_all(MYSQLI_ASSOC);				
 				$message_id_in = $arrayResult[0]['message_id_in'];
 				$client_id = $arrayResult[0]['client_id'];
 			}else throw new Exception("Не смог найти message_id_in в таблице {$table_message}");
