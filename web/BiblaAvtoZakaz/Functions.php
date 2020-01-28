@@ -166,6 +166,8 @@ function _запись_в_таблицу_маркет($имя_столбца = n
 	
 	
 $bot->sendMessage($master, $from_username." bkb ".$callback_from_username);
+
+$bot->sendMessage($master, $from_id." bkb ".$callback_from_id);
 	
 	
 	if (!$имя_столбца) {
