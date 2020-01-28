@@ -14,6 +14,12 @@ if ($text=='Отмена ввода') {
 			
 			_создать();
 		
+		}elseif ($result['last'] == 'nazvanie') {
+		
+			_очистка_таблицы_ожидание();
+			
+			_ссылка_в_названии();
+		
 		}
 		
 	}else _start_AvtoZakazBota();
@@ -34,6 +40,16 @@ if ($text=='Отмена ввода') {
 			$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
 			
 			_ссылка_в_названии();
+			
+		}elseif ($result['ojidanie'] == 'url_nazv') {
+			
+			_запись_в_таблицу_маркет('url_nazv', $text);			
+			
+			_очистка_таблицы_ожидание();
+			
+			$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+			
+			_выбор_валюты();
 			
 		}
 		

@@ -9,6 +9,8 @@
 **
 ** exception_handler
 **
+** _existence
+**
 ** _создать
 **
 ** _куплю
@@ -29,20 +31,21 @@
 **
 ** _не_нужна
 **
-** _existence
+** _выбор_валюты
+**
+**
+**
+**
+**
 **
 **
 **
 */
 
-
-
-
-
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
 function _start_AvtoZakazBota() {		
 
-	global $bot, $chat_id, $from_first_name, $HideKeyboard, $table_users;
+	global $bot, $chat_id, $from_first_name, $HideKeyboard;
 	
 	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown, $HideKeyboard);
 
@@ -52,6 +55,7 @@ function _start_AvtoZakazBota() {
 	
 }
 
+// Краткая информация, перед началом работы с ботом
 function _info_AvtoZakazBota() {
 
 	global $bot, $chat_id;
@@ -75,7 +79,6 @@ function _info_AvtoZakazBota() {
 
 }
 
-
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
 
@@ -87,7 +90,45 @@ function exception_handler($exception) {
 	
 }
 
+// Проверка наличия клиента в базе
+function _existence($table) {
+	
+	global $mysqli, $from_id, $from_first_name, $from_last_name, $from_username;
 
+    $resonse = false;
+	
+	$from_Uname = '';
+	
+    if ($from_username != '') $from_Uname = "@".$from_username;
+
+	$query = "SELECT * FROM {$table} WHERE id_client={$from_id}";
+	
+	$result = $mysqli->query($query);
+	
+	if ($result) {
+	
+		if ($result->num_rows>0) {
+                   
+            $arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+
+			foreach ($arrayResult as $row) {
+
+				if ($row['first_name']==$from_first_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_Uname) $response = true;
+
+			}
+
+		}		
+	
+	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");
+	
+    return $response;
+
+}
+
+
+//------------------------------------------
+// Начало создания заявки на публикацию лота 
+//------------------------------------------
 function _создать() {
 
 	global $bot, $from_id, $message_id, $callback_query_id, $callback_from_id;	
@@ -119,36 +160,24 @@ function _создать() {
 	
 	$bot->sendMessage($callback_from_id, $reply, null, $inLine);
 
-/*
-	try {
-	
-		$bot->deleteMessage($chat_id, $message_id);
-		
-	}catch(Exception $e) {
-	
-		$bot->sendMessage($master, "Не смог удалить сообщение.\n - > chat_id = ".$chat_id);
-	
-	}
-*/
-
 }
 
 
-
+// Если клиент выбрал хештег КУПЛЮ
 function _куплю() {
 
 	_продам_куплю('куплю');
 
 }
 
-
+// Если клиент выбрал хештег ПРОДАМ
 function _продам() {
 
 	_продам_куплю('продам');
 
 }
 
-
+// Обработка выбранного действия ПРОДАМ/КУПЛЮ, с занесением в базу и ожиданием ввода НАЗВАНИЯ
 function _продам_куплю($действие) {
 
 	global $bot, $message_id, $callback_query_id, $callback_from_id;
@@ -175,22 +204,10 @@ function _продам_куплю($действие) {
 	
 	$bot->sendMessage($callback_from_id, $reply, null, $ReplyKey);	
 
-/*	
-	try {
-	
-		$bot->deleteMessage($chat_id, $message_id);
-		
-	}catch(Exception $e) {
-	
-		$bot->sendMessage($master, "Не смог удалить сообщение.\n - > chat_id = ".$chat_id);
-	
-	}
-*/
-
 }
 
 
-
+// Функция для записи данных в таблицу маркет
 function _запись_в_таблицу_маркет($имя_столбца = null, $действие = null) {
 
 	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;
@@ -247,7 +264,7 @@ function _запись_в_таблицу_маркет($имя_столбца = n
 
 }
 
-
+// Функция, помечающая, что же клиент должен прислать
 function _ожидание_ввода($имя_столбца = null, $последнее_действие = null) {
 	
 	global $mysqli, $callback_from_id, $таблица_ожидание, $from_id;
@@ -310,13 +327,12 @@ function _ожидание_ввода($имя_столбца = null, $после
 		
 	}
 	
-	return $response; // boolean or array
-	
+	return $response; // boolean or array	
 	
 }
 
 
-
+// Функция для очистки содержания таблицы ожидание
 function _очистка_таблицы_ожидание() {
 
 	global $mysqli, $callback_from_id, $таблица_ожидание, $from_id;
@@ -340,7 +356,7 @@ function _очистка_таблицы_ожидание() {
 }
 
 
-
+// После ввода клиентом НАЗВАНИЯ предлагается на выбор, нужнали ссылка вшитая в название
 function _ссылка_в_названии() {
 
 	global $bot, $chat_id;
@@ -360,7 +376,88 @@ function _ссылка_в_названии() {
 		]
 	];
 	
-	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nНужна ли Вам Ваша ссылка в названии?\n\nЕсли не знаете или не поймёте о чём речь, нажмите 'НЕТ'.";
+	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nНужна ли Вам Ваша ссылка, вшитая в названии?\n\nЕсли не знаете или не поймёте о чём речь, нажмите 'НЕТ'.";
+	
+	$bot->sendMessage($chat_id, $reply, null, $inLine);
+
+}
+
+
+// Нужна ли Вам Ваша ссылка, вшитая в названии?
+function _да_нужна() {
+
+	global $bot, $chat_id, $callback_query_id;
+	
+	_ожидание_ввода('url_nazv', 'nazvanie');
+	
+	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввода Вашей ссылки!");	
+
+	$ReplyKey = [
+		'keyboard' => [
+			[			
+				[
+					'text' => "Отмена ввода"
+				]
+			]
+		],
+		'resize_keyboard' => true,
+		'selective' => true,
+	];
+	
+	$reply = "Пришлите мне ссылку, типа:\n\n  https://mysite.ru/supersite/";
+	
+	$bot->sendMessage($chat_id, $reply, null, $inLine);
+
+}
+
+
+// Нужна ли Вам Ваша ссылка, вшитая в названии?
+function _не_нужна() {
+
+	_выбор_валюты()
+
+}
+
+
+// Предлагаются на выбор разные валюты
+function _выбор_валюты() {
+	
+	global $bot, $chat_id;
+	
+	$inLine = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => '₽',
+					'callback_data' => 'рубль'
+				],
+				[
+					'text' => '$',
+					'callback_data' => 'доллар'
+				],
+				[
+					'text' => '€',
+					'callback_data' => 'евро'
+				]
+			],
+			[
+				[
+					'text' => '¥',
+					'callback_data' => 'юань'
+				],
+				[
+					'text' => '₴',
+					'callback_data' => 'гривна'
+				],
+				[
+					'text' => '£',
+					'callback_data' => 'фунт'
+				]
+			]
+		]
+	];
+	
+	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nВыберите валюту, с которой Вы работаете, помимо PRIZM.";
 	
 	$bot->sendMessage($chat_id, $reply, null, $inLine);
 
@@ -368,45 +465,6 @@ function _ссылка_в_названии() {
 
 
 
-function _да_нужна() {}
-
-function _не_нужна() {}
-
-
-// Проверка наличия клиента в базе
-function _existence($table) {
-	
-	global $mysqli, $from_id, $from_first_name, $from_last_name, $from_username;
-
-    $resonse = false;
-	
-	$from_Uname = '';
-	
-    if ($from_username != '') $from_Uname = "@".$from_username;
-
-	$query = "SELECT * FROM {$table} WHERE id_client={$from_id}";
-	
-	$result = $mysqli->query($query);
-	
-	if ($result) {
-	
-		if ($result->num_rows>0) {
-                   
-            $arrayResult = $result->fetch_all(MYSQLI_ASSOC);
-
-			foreach ($arrayResult as $row) {
-
-				if ($row['first_name']==$from_first_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_Uname) $response = true;
-
-			}
-
-		}		
-	
-	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");
-	
-    return $response;
-
-}
 
 
 
