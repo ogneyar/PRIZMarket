@@ -54,40 +54,45 @@ if (mysqli_connect_errno()) {
 			_start_AvtoZakazBota();  			
 		}	
 	}
-	
-	if ($data['callback_query']) {
-	
-		include_once 'BiblaAvtoZakaz/Callback_query.php';
+
+	if ($chat_type=='private') {
 		
-	
-	}elseif ($data['edited_message']) {
-	
-		//include_once 'BiblaAvtoZakaz/Edit_message.php';		
-	
-	// если пришло сообщение MESSAGE подключается необходимый файл
-	}elseif ($data['message']) {
+		if ($data['callback_query']) {
 		
-		//-----------------------------
-		// это команды бота для мастера
-		if ($text){
-			$number = stripos($text, '%');
-			if ($number!==false&&$number == '0') {
-				if ($chat_id==$master) {
-					$text = substr($text, 1);
-					include_once 'BiblaAvtoZakaz/Commands.php';
-					exit('ok');
+			include_once 'BiblaAvtoZakaz/Callback_query.php';
+			
+		
+		}elseif ($data['edited_message']) {
+		
+			//include_once 'BiblaAvtoZakaz/Edit_message.php';		
+		
+		// если пришло сообщение MESSAGE подключается необходимый файл
+		}elseif ($data['message']) {
+			
+			//-----------------------------
+			// это команды бота для мастера
+			if ($text){
+				$number = stripos($text, '%');
+				if ($number!==false&&$number == '0') {
+					if ($chat_id==$master) {
+						$text = substr($text, 1);
+						include_once 'BiblaAvtoZakaz/Commands.php';
+						exit('ok');
+					}
 				}
 			}
+			//-----------------------------
+					
+			include_once 'BiblaAvtoZakaz/Message.php';		
+			
+		}elseif ($data['channel_post']) {
+			
+			//include_once 'BiblaAvtoZakaz/Channel_post.php';
+			
 		}
-		//-----------------------------
-				
-		include_once 'BiblaAvtoZakaz/Message.php';		
-		
-	}elseif ($data['channel_post']) {
-		
-		//include_once 'BiblaAvtoZakaz/Channel_post.php';
-		
+
 	}
+	
 }
 
 // закрываем подключение 
