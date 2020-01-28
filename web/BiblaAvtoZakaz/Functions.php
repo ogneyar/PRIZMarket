@@ -215,9 +215,9 @@ function _запись_в_таблицу_маркет($имя_столбца = n
 
 function _ожидание_ввода($имя_столбца = null, $последнее_действие = null) {
 	
-	global $mysqli, $callback_from_id, $таблица_ожидание, $chat_id;
+	global $mysqli, $callback_from_id, $таблица_ожидание, $from_id;
 	
-	if (!$callback_from_id) $callback_from_id = $chat_id;
+	if (!$callback_from_id) $callback_from_id = $from_id;
 	
 	$response = false;
 	
@@ -278,6 +278,30 @@ function _ожидание_ввода($имя_столбца = null, $после
 	return $response; // boolean or array
 	
 	
+}
+
+
+
+function _очистка_таблицы_ожидание() {
+
+	global $mysqli, $callback_from_id, $таблица_ожидание, $from_id;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;
+	
+	$response = false;
+	
+	$query = "DELETE FROM {$таблица_ожидание} WHERE id_client={$callback_from_id} AND status=''";
+		
+	$result = $mysqli->query($query);
+	
+	if ($result) {
+	
+		$response = true;
+	
+	}else  throw new Exception("Не смог удалить запись в таблице {$таблица_ожидание}");
+	
+	return $response;
+
 }
 
 
