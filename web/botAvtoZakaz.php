@@ -62,7 +62,7 @@ if (mysqli_connect_errno()) {
 	
 	}elseif ($data['edited_message']) {
 	
-		include_once 'BiblaAvtoZakaz/Edit_message.php';		
+		//include_once 'BiblaAvtoZakaz/Edit_message.php';		
 	
 	// если пришло сообщение MESSAGE подключается необходимый файл
 	}elseif ($data['message']) {
@@ -85,7 +85,7 @@ if (mysqli_connect_errno()) {
 		
 	}elseif ($data['channel_post']) {
 		
-		include_once 'BiblaAvtoZakaz/Channel_post.php';
+		//include_once 'BiblaAvtoZakaz/Channel_post.php';
 		
 	}
 }
