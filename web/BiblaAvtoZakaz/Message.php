@@ -26,6 +26,12 @@ if ($text=='Отмена ввода') {
 			
 			_выбор_валюты();
 		
+		}elseif ($result['last'] == 'gorod') {
+		
+			_очистка_таблицы_ожидание();
+			
+			_отправьте_файл();
+		
 		}
 		
 	}else _start_AvtoZakazBota();
@@ -73,15 +79,19 @@ if ($text=='Отмена ввода') {
 			
 			if ($video) $format_file == 'видео';
 			
-			_запись_в_таблицу_маркет('format_file', $format_file);
+			if ($photo||$video) {
+			
+				_запись_в_таблицу_маркет('format_file', $format_file);
 
-			_запись_в_таблицу_маркет('file_id', $file_id);
-			
-			_очистка_таблицы_ожидание();
-			
-			$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
-			
-			_отправьте_файл();
+				_запись_в_таблицу_маркет('file_id', $file_id);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+				
+				_опишите_подробно();
+				
+			}else $bot->deleteMessage($chat_id, $message_id);
 			
 		}
 		
