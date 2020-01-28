@@ -154,7 +154,7 @@ function _продам_куплю($действие) {
 
 function _запись_в_таблицу_маркет($имя_столбца = null, $действие = null) {
 
-	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;
+	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username, $bot, $master;
 	
 	if (!$callback_from_id) {
 	
@@ -163,6 +163,10 @@ function _запись_в_таблицу_маркет($имя_столбца = n
 		$callback_from_username = $from_username;
 		
 	}
+	
+	
+$bot->sendMessage($master, $from_username." bkb ".$callback_from_username);
+	
 	
 	if (!$имя_столбца) {
 	
