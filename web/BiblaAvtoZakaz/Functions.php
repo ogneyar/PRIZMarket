@@ -51,9 +51,13 @@ function exception_handler($exception) {
 
 function _создать() {
 
-	global $bot, $message_id, $callback_query_id, $callback_from_id;	
+	global $bot, $from_id, $message_id, $callback_query_id, $callback_from_id;	
 	
-	$bot->answerCallbackQuery($callback_query_id, "Начнём!");
+	if (!$callback_from_id) {
+	
+		$callback_from_id = $from_id;
+		
+	}else $bot->answerCallbackQuery($callback_query_id, "Начнём!");
 	
 	_запись_в_таблицу_маркет();
 	
@@ -150,7 +154,15 @@ function _продам_куплю($действие) {
 
 function _запись_в_таблицу_маркет($имя_столбца = null, $действие = null) {
 
-	global $table_market, $mysqli, $callback_from_id, $callback_from_username;
+	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;
+	
+	if (!$callback_from_id) {
+	
+		$callback_from_id = $from_id;
+		
+		$callback_from_username = $from_username;
+		
+	}
 	
 	if (!$имя_столбца) {
 	
