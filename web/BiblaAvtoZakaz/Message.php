@@ -32,6 +32,12 @@ if ($text=='Отмена ввода') {
 			
 			_ввод_местонахождения();
 		
+		}elseif ($result['last'] == 'format_file') {
+		
+			_очистка_таблицы_ожидание();
+			
+			_отправьте_файл();
+		
 		}
 		
 	}else _start_AvtoZakazBota();
@@ -92,6 +98,16 @@ if ($text=='Отмена ввода') {
 				_опишите_подробно();
 				
 			}else $bot->deleteMessage($chat_id, $message_id);
+			
+		}elseif ($result['ojidanie'] == 'podrobno') {
+		
+			_запись_в_таблицу_маркет('podrobno', $text);
+
+			_очистка_таблицы_ожидание();
+			
+			$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+			
+			_ожидание_результата();
 			
 		}
 		
