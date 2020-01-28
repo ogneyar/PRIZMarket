@@ -290,7 +290,7 @@ function _очистка_таблицы_ожидание() {
 	
 	$response = false;
 	
-	$query = "DELETE FROM {$таблица_ожидание} WHERE id_client={$callback_from_id} AND status=''";
+	$query = "DELETE FROM {$таблица_ожидание} WHERE id_client={$callback_from_id}";
 		
 	$result = $mysqli->query($query);
 	
