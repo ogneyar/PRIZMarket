@@ -1,5 +1,44 @@
 ﻿<?
 
+/* Список всех функций:
+**
+**
+** _start_AvtoZakazBota
+**
+** _info_AvtoZakazBota
+**
+** exception_handler
+**
+** _создать
+**
+** _куплю
+**
+** _продам
+**
+** _продам_куплю
+**
+** _запись_в_таблицу_маркет
+**
+** _ожидание_ввода
+**
+** _очистка_таблицы_ожидание
+**
+** _ссылка_в_названии
+**
+** _да_нужна
+**
+** _не_нужна
+**
+** _existence
+**
+**
+**
+*/
+
+
+
+
+
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
 function _start_AvtoZakazBota() {		
 
@@ -154,17 +193,11 @@ function _продам_куплю($действие) {
 
 function _запись_в_таблицу_маркет($имя_столбца = null, $действие = null) {
 
-	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username, $bot, $master;
+	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	
 	if (!$callback_from_username) $callback_from_username = $from_username;
-	
-	
-$bot->sendMessage($master, $from_username." bkb ".$callback_from_username);
-
-$bot->sendMessage($master, $from_id." bkb ".$callback_from_id);
-	
 	
 	if (!$имя_столбца) {
 	
