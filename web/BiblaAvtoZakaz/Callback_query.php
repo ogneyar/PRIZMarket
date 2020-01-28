@@ -20,6 +20,34 @@ if ($callback_data=='создать'){
 
 	_не_нужна();
 
+}elseif ($callback_data=='рубль') {	
+
+	_рубль();
+
+}elseif ($callback_data=='доллар') {	
+
+	_доллар();
+
+}elseif ($callback_data=='евро') {	
+
+	_евро();
+
+}elseif ($callback_data=='юань') {	
+
+	_юань();
+
+}elseif ($callback_data=='гривна') {	
+
+	_гривна();
+
+}elseif ($callback_data=='фунт') {	
+
+	_фунт();
+
+}elseif ($callback_data=='не_нужна') {	
+
+	_призм();
+
 }
 
 ?>
