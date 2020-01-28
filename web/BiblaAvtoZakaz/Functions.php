@@ -550,6 +550,8 @@ function _отправьте_файл() {
 
 	global $bot, $chat_id;
 	
+	_ожидание_ввода('format_file', 'gorod');
+	
 	$ReplyKey = [
 		'keyboard' => [
 			[			

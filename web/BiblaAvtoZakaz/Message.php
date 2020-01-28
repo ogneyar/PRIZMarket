@@ -67,6 +67,22 @@ if ($text=='Отмена ввода') {
 			
 			_отправьте_файл();
 			
+		}elseif ($result['ojidanie'] == 'format_file') {
+		
+			if ($photo) $format_file == 'фото';
+			
+			if ($video) $format_file == 'видео';
+			
+			_запись_в_таблицу_маркет('format_file', $format_file);
+
+			_запись_в_таблицу_маркет('file_id', $file_id);
+			
+			_очистка_таблицы_ожидание();
+			
+			$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+			
+			_отправьте_файл();
+			
 		}
 		
 	}else $bot->deleteMessage($chat_id, $message_id);
