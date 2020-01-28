@@ -8,7 +8,7 @@ if ($text=='Отмена ввода') {
 	
 	if ($result) {
 	
-		if ($result->last == 'kuplu_prodam') {			
+		if ($result['last'] == 'kuplu_prodam') {			
 			
 			_создать();
 		
