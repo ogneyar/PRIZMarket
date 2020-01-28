@@ -23,7 +23,7 @@ if ($text=='Отмена ввода') {
 	
 	if ($result) {
 		
-		if ($result->ojidanie == 'nazvanie') {
+		if ($result['ojidanie'] == 'nazvanie') {
 			
 			_запись_в_таблицу_маркет('nazvanie', $text);
 			
