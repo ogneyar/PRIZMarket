@@ -82,6 +82,8 @@ if ($text=='Отмена ввода') {
 			if ($photo||$video) {
 			
 				_запись_в_таблицу_маркет('format_file', $format_file);
+				
+				$bot->sendMessage($master, "Формат ".$format_file);
 
 				_запись_в_таблицу_маркет('file_id', $file_id);
 				
