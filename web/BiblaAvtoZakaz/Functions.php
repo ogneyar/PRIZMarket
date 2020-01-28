@@ -203,7 +203,9 @@ function _запись_в_таблицу_маркет($имя_столбца = n
 
 function _ожидание_ввода($имя_столбца = null, $последнее_действие = null) {
 	
-	global $mysqli, $callback_from_id, $таблица_ожидание;
+	global $mysqli, $callback_from_id, $таблица_ожидание, $chat_id;
+	
+	if (!$callback_from_id) $callback_from_id = $chat_id;
 	
 	$response = false;
 	
