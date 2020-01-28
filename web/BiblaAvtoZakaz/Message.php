@@ -75,15 +75,13 @@ if ($text=='Отмена ввода') {
 			
 		}elseif ($result['ojidanie'] == 'format_file') {
 		
-			if ($photo) $format_file == 'фото';
+			if ($photo) $format_file = 'фото';
 			
-			if ($video) $format_file == 'видео';
+			if ($video) $format_file = 'видео';
 			
 			if ($photo||$video) {
 			
 				_запись_в_таблицу_маркет('format_file', $format_file);
-				
-				$bot->sendMessage($master, "Формат ".$format_file);
 
 				_запись_в_таблицу_маркет('file_id', $file_id);
 				
