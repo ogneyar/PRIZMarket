@@ -157,7 +157,7 @@ function _запись_в_таблицу_маркет($имя_столбца = n
 	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username, $bot, $master;
 	
 	if (!$callback_from_id) {
-	
+		
 		$callback_from_id = $from_id;
 		
 		$callback_from_username = $from_username;
