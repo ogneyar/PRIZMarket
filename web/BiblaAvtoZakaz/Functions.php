@@ -25,6 +25,7 @@
 ** _фунт
 ** _призм
 ** _когда_валюта_выбрана
+** _ввод_местонахождения
 ** _отправьте_файл
 ** _опишите_подробно
 */
@@ -507,9 +508,7 @@ function _призм() {
 }
 
 // Когда уже выбрана валюта
-function _когда_валюта_выбрана($валюта = null) {
-	
-	global $bot, $message_id, $callback_query_id, $callback_from_id;
+function _когда_валюта_выбрана($валюта = null) {	
 	
 	if ($валюта) {
 		
@@ -523,9 +522,23 @@ function _когда_валюта_выбрана($валюта = null) {
 	
 	_запись_в_таблицу_маркет('valuta', $валюта);
 	
-	_ожидание_ввода('gorod', 'valuta');
+	_ввод_местонахождения();	
+
+}
+
+
+//
+function _ввод_местонахождения() {
+
+	global $bot, $callback_query_id, $callback_from_id, $from_id;
+
+	if (!$callback_from_id) {
 	
-	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввода местонахождения!");	
+		$callback_from_id = $from_id;
+	
+	}else $bot->answerCallbackQuery($callback_query_id, "Ожидаю ввода местонахождения!");	 
+	
+	_ожидание_ввода('gorod', 'valuta');
 
 	$ReplyKey = [
 		'keyboard' => [
