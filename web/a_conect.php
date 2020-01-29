@@ -19,6 +19,8 @@
     $tokenZakaz = getenv('TOKEN_ZAKAZ');
 	$tokenAvtoZakaz = getenv('TOKEN_AVTOZAKAZ');
 	
+	$tokenTGraph = getenv('TOKEN_TELEGRAPH');
+	
 	$master = getenv('MASTER');
 	$admin_group_market = getenv('ADMIN_GROUP_MARKET');
 	$admin_group_garant = getenv('ADMIN_GROUP_GARANT');		
