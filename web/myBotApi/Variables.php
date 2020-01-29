@@ -148,6 +148,8 @@ if ($data['message']){
 		
 	}
 	
+	$media_group_id = $data['message']['media_group_id'];
+	
 	if ($data['message']['photo']) {
 	
 		$photo = $data['message']['photo'];
