@@ -1,7 +1,7 @@
 ﻿<?
 // Если клиент шлёт сразу группу файлов
 if ($media_group_id) {
-
+	
 	if ($photo) {
 	
 		$format_file = 'фото';		
@@ -14,7 +14,7 @@ if ($media_group_id) {
 
 	$result = _ожидание_ввода();
 		
-	if (!$result || $result['last'] != 'foto_album') {
+	if (!$result || $result['last'] == 'podrobno') {
 			
 		_запись_в_таблицу_медиагрупа($format_file);	
 
