@@ -210,6 +210,20 @@ if ($data['message']){
 		$reply_markup = $data['message']['reply_markup'];
 	
 	}
+	
+	
+//------------------------------	
+	if ($photo) {
+		
+		$формат_файла = 'фото';
+		
+	}elseif ($video) {
+		
+		$формат_файла = 'видео';
+		
+	}
+//------------------------------
+
 
 }elseif ($data['channel_post']) {
 	
