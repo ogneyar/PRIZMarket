@@ -63,11 +63,12 @@ if ($text == 'база') {
 	
 }elseif ($text == 'креат') {
 	
-	$query = "CREATE TABLE IF NOT EXISTS `avtozakaz_ojidanie` (
+	$query = "CREATE TABLE IF NOT EXISTS `avtozakaz_mediagroup` (
+		  `id` int(10) DEFAULT NULL,
 		  `id_client` bigint(20) DEFAULT NULL,
-		  `ojidanie` varchar(200) DEFAULT NULL,
-		  `last` varchar(200) DEFAULT NULL,
-		  `flag` tinyint(1) DEFAULT NULL
+		  `media_group_id` bigint(20) DEFAULT NULL,
+		  `format_file` varchar(20) DEFAULT NULL,
+		  `file_id` varchar(200) DEFAULT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 	
 	if ($result = $mysqli->query($query)) {
