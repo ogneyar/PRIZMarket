@@ -737,41 +737,21 @@ function _запись_в_таблицу_медиагрупа() {
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	
-	$результат = _есть_ли_у_клиента_альбом();
+	$query = "INSERT INTO {$таблица_медиагруппа} (
+		`id`,
+		`id_client`,
+		`media_group_id`,
+		`format_file`,
+		`file_id`
+	) VALUES (
+		'0', '{$callback_from_id}', '{$media_group_id}', '{$формат_файла}', '{$file_id}'
+	)";
 	
-	if ($результат) {
-	/*
-		if (!$медиа_айди) {
-		
-			$медиа_айди = $media_group_id;
-			
-			$результат = _есть_ли_такой_медиа_альбом($медиа_айди);
-			
-			if (!$результат) {
-			
-				return false;
-			
-			}
-		
-		}
-	*/
-		$query = "INSERT INTO {$таблица_медиагруппа} (
-			  `id`,
-			  `id_client`,
-			  `media_group_id`,
-			  `format_file`,
-			  `file_id`
-		) VALUES (
-		  '0', '{$callback_from_id}', '{$media_group_id}', '{$формат_файла}', '{$file_id}'
-		)";
+	$result = $mysqli->query($query);
 	
-		$result = $mysqli->query($query);
-	
-		if (!$result) throw new Exception("Не смог добавить запись в таблицу {$таблица_медиагруппа}");
+	if (!$result) throw new Exception("Не смог добавить запись в таблицу {$таблица_медиагруппа}");
 			
-		return true;
-		
-	}
+	return true;
 	
 }
 

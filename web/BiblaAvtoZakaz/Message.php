@@ -4,7 +4,7 @@ if ($media_group_id) {
 	
 	$result = _ожидание_ввода();
 		
-	if ($result['ojidanie'] == 'podrobno') {
+	if ($result['ojidanie'] != 'format_file') {
 			
 		_запись_в_таблицу_медиагрупа();	
 
@@ -172,7 +172,7 @@ if ($text=='Отмена ввода') {
 				
 					_очистка_таблицы_ожидание();
 
-					_запись_в_таблицу_медиагрупа();					
+					//_запись_в_таблицу_медиагрупа();					
 					
 					$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
 					
