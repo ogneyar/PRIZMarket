@@ -125,7 +125,9 @@ if ($text=='Отмена ввода') {
 					$bot->deleteMessage($chat_id, $message_id);		
 				
 				}else {
-				
+					
+					// тут можно по entities достать только хештеги
+					
 					_запись_в_таблицу_маркет('gorod', $text);			
 				
 					_очистка_таблицы_ожидание();
@@ -177,14 +179,12 @@ if ($text=='Отмена ввода') {
 			if ($photo) {
 			
 				if ($media_group_id) {
-
-					$format_file = 'фото';			
-					
-					_запись_в_таблицу_маркет('foto_album', '1');
-
-					_запись_в_таблицу_медиагрупа($format_file, $media_group_id);
-					
+				
 					_очистка_таблицы_ожидание();
+
+					$format_file = 'фото';					
+
+					_запись_в_таблицу_медиагрупа($format_file, $media_group_id);					
 					
 					$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
 					

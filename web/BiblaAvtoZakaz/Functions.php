@@ -629,6 +629,8 @@ function _нужен_альбом() {
 	
 	global $bot, $chat_id;
 	
+	_запись_в_таблицу_маркет('foto_album', '1');
+	
 	_ожидание_ввода('foto_album', 'format_file');
 	
 	$ReplyKey = [
@@ -687,7 +689,7 @@ function _есть_ли_такой_медиа_альбом($медиа_айди)
 	
 	}
 
-	$query = "SELECT media_group_id FROM {$таблица_медиагруппа} WHERE id_client={$callback_from_id}";
+	$query = "SELECT media_group_id FROM {$таблица_медиагруппа} WHERE id_client={$callback_from_id} AND media_group_id={$медиа_айди}";
 		
 	$result = $mysqli->query($query);
 		
