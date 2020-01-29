@@ -4,7 +4,7 @@ if ($media_group_id) {
 	
 	$result = _ожидание_ввода();
 		
-	if (!$result || $result['ojidanie'] == 'podrobno') {
+	if ($result['ojidanie'] == 'podrobno') {
 			
 		_запись_в_таблицу_медиагрупа();	
 
