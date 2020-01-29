@@ -131,7 +131,21 @@ if ($text == 'база') {
 	if (!$result) throw new Exception("Не смог выложить пост..");	
 		
 		
+}elseif ($text == "граф") {		
+		
+	$результат = $Tgraph->createPagePhoto("Nazvanie", "/zMedia/super.jpg", true);
+	
+	if ($результат) $bot->sendMessage($master, $результат['url']);
+	else throw new Exception("Не смог выложить пост..");	
+		
+		
 }
+
+
+
+
+
+
 
 
 
