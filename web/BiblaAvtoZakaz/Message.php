@@ -139,9 +139,28 @@ if ($text=='Отмена ввода') {
 				
 				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
 				
+				_нужен_ли_фотоальбом();
+			
+			}else $bot->deleteMessage($chat_id, $message_id);
+			
+		}elseif ($result['ojidanie'] == 'foto_album') {						
+			
+			if ($photo) {
+
+				$format_file = 'фото';			
+				
+				_запись_в_таблицу_маркет('foto_album', '1');
+
+				_запись_в_таблицу_медиагрупа();
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+				
 				_опишите_подробно();
 				
-			}else $bot->deleteMessage($chat_id, $message_id);
+			}else $bot->deleteMessage($chat_id, $message_id);	
+			
 			
 		}elseif ($result['ojidanie'] == 'podrobno') {
 		

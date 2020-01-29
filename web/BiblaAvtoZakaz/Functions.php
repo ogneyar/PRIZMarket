@@ -27,6 +27,10 @@
 ** _когда_валюта_выбрана
 ** _ввод_местонахождения
 ** _отправьте_файл
+** _нужен_ли_фотоальбом
+** _нужен_альбом
+** _запись_в_таблицу_медиагрупа
+** _не_нужен_альбом
 ** _опишите_подробно
 ** _ожидание_результата
 **
@@ -592,13 +596,133 @@ function _отправьте_файл() {
 }
 
 
+// Спрашивается, нужен ли клиенту фотоальбом, на отдельном канале?
+function _нужен_ли_фотоальбом() {
 
-//
+	global $bot, $chat_id;
+	
+	$inLine = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => 'Да',
+					'callback_data' => 'нужен_альбом'
+				],
+				[
+					'text' => 'Нет',
+					'callback_data' => 'не_нужен_альбом'
+				]
+			]
+		]
+	];
+	
+	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nНужен ли Вам фотоальбом, размещённый на отдельном канале?\n\nЕсли не знаете или не поймёте о чём речь, нажмите 'НЕТ'.";
+	
+	$bot->sendMessage($chat_id, $reply, null, $inLine);
+
+}
+
+
+function _нужен_альбом() {
+	
+	global $bot, $chat_id;
+	
+	_ожидание_ввода('foto_album', 'format_file');
+	
+	$ReplyKey = [
+		'keyboard' => [
+			[			
+				[
+					'text' => "Отмена ввода"
+				]
+			]
+		],
+		'resize_keyboard' => true,
+		'selective' => true,
+	];
+	
+	$reply = "Скиньте мне разом все фото, которые должны оказаться в альбоме (НЕ по одной фотке)";
+	
+	$bot->sendMessage($chat_id, $reply, null, $ReplyKey);
+	
+}
+
+
+
+
+function _запись_в_таблицу_медиагрупа() {
+	
+	global $таблица_медиагруппа, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;		
+	
+	if (!$callback_from_username) $callback_from_username = $from_username;
+	
+	if (!$имя_столбца) {
+	
+		$query = "DELETE FROM {$table_market} WHERE id_client={$callback_from_id} AND status=''";
+		
+		$result = $mysqli->query($query);
+		
+		if ($result) {
+			
+			$query = "INSERT INTO {$table_market} (
+			  `id_client`,
+			  `id_zakaz`,
+			  `kuplu_prodam`,
+			  `nazvanie`,
+			  `url_nazv`,
+			  `valuta`,
+			  `gorod`,
+			  `username`,
+			  `doverie`,
+			  `otdel`,
+			  `format_file`,
+			  `file_id`,
+			  `url_podrobno`,
+			  `status`,
+			  `podrobno`,
+			  `url_tgraph`,
+			  `foto_album`
+			) VALUES (
+			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', '', ''
+			)";
+						
+			$result = $mysqli->query($query);
+			
+			if (!$result) throw new Exception("Не смог добавить запись в таблицу {$table_market}");
+			
+		}else throw new Exception("Не смог удалить запись в таблице {$table_market}");
+		
+	}else {
+		
+		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$callback_from_id} AND status=''";
+		
+		$result = $mysqli->query($query);
+			
+		if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");
+		
+		
+	}
+	
+}
+
+
+
+
+function _не_нужен_альбом() {
+	
+	_опишите_подробно();
+	
+}
+
+
+// функция предлагающая ввести ПОДРОБНую информацию о товаре/услуге
 function _опишите_подробно() {
 
 	global $bot, $chat_id;
 	
-	_ожидание_ввода('podrobno', 'format_file');
+	_ожидание_ввода('podrobno', 'foto_album');
 	
 	$ReplyKey = [
 		'keyboard' => [
@@ -622,7 +746,7 @@ function _опишите_подробно() {
 
 
 
-//
+// КОНЕЦ - клиент ожидает решения администрации
 function _ожидание_результата() {
 
 	global $bot, $chat_id;
