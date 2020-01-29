@@ -145,6 +145,10 @@ if ($text == 'база') {
 	
 	if ($результат) $bot->sendMessage($master, $результат['url']);
 	else throw new Exception("Не смог выложить пост..");	
+	
+	$реплика = "[абрвалг]({$результат['url']})";	
+	
+	$bot->sendMessage($channel_info, $реплика, markdown);
 		
 		
 }
