@@ -29,6 +29,8 @@
 ** _отправьте_файл
 ** _нужен_ли_фотоальбом
 ** _нужен_альбом
+** _есть_ли_у_клиента_альбом
+** _есть_ли_такой_медиа_альбом
 ** _запись_в_таблицу_медиагрупа
 ** _не_нужен_альбом
 ** _опишите_подробно
@@ -648,60 +650,98 @@ function _нужен_альбом() {
 }
 
 
+// Есть ли в таблице avtozakaz_pzmarket запись о том что у клиента имеется фотоальбом
+function _есть_ли_у_клиента_альбом($id_zakaz = '0') {
 
-
-function _запись_в_таблицу_медиагрупа() {
+	global $table_market, $mysqli, $callback_from_id, $from_id;
 	
-	global $таблица_медиагруппа, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;
+	if (!$callback_from_id) {
+	
+		$callback_from_id = $from_id;
+	
+	}
+
+	$query = "SELECT foto_album FROM {$table_market} WHERE id_client={$callback_from_id}".
+		" AND id_zakaz={$id_zakaz} AND foto_album='1'";
+		
+	$result = $mysqli->query($query);
+		
+	if ($result->num_rows>0) {
+	
+		return true;
+	
+	}else return false;
+
+}
+
+
+
+// есть ли в таблице avtozakaz_mediagroup такой номер - медиа_айди
+function _есть_ли_такой_медиа_альбом($медиа_айди) {
+
+	global $таблица_медиагруппа, $mysqli, $callback_from_id, $from_id;
+	
+	if (!$callback_from_id) {
+	
+		$callback_from_id = $from_id;
+	
+	}
+
+	$query = "SELECT media_group_id FROM {$таблица_медиагруппа} WHERE id_client={$callback_from_id}";
+		
+	$result = $mysqli->query($query);
+		
+	if ($result->num_rows>0) {
+	
+		return true;
+	
+	}else return false;
+
+}
+
+
+
+
+// функция записи в таблицу avtozakaz_mediagroup
+function _запись_в_таблицу_медиагрупа($формат_файла = null, $медиа_айди = null) {
+	
+	global $таблица_медиагруппа, $mysqli, $callback_from_id, $from_id, $media_group_id, $file_id;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	
-	if (!$callback_from_username) $callback_from_username = $from_username;
+	$результат = _есть_ли_у_клиента_альбом();
 	
-	if (!$имя_столбца) {
+	if ($результат) {
 	
-		$query = "DELETE FROM {$table_market} WHERE id_client={$callback_from_id} AND status=''";
+		if (!$медиа_айди) {
 		
-		$result = $mysqli->query($query);
-		
-		if ($result) {
+			$медиа_айди = $media_group_id;
 			
-			$query = "INSERT INTO {$table_market} (
+			$результат = _есть_ли_такой_медиа_альбом($медиа_айди);
+			
+			if (!$результат) {
+			
+				return false;
+			
+			}
+		
+		}
+	
+		$query = "INSERT INTO {$таблица_медиагруппа} (
+			  `id`,
 			  `id_client`,
-			  `id_zakaz`,
-			  `kuplu_prodam`,
-			  `nazvanie`,
-			  `url_nazv`,
-			  `valuta`,
-			  `gorod`,
-			  `username`,
-			  `doverie`,
-			  `otdel`,
+			  `media_group_id`,
 			  `format_file`,
-			  `file_id`,
-			  `url_podrobno`,
-			  `status`,
-			  `podrobno`,
-			  `url_tgraph`,
-			  `foto_album`
-			) VALUES (
-			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', '', ''
-			)";
-						
-			$result = $mysqli->query($query);
-			
-			if (!$result) throw new Exception("Не смог добавить запись в таблицу {$table_market}");
-			
-		}else throw new Exception("Не смог удалить запись в таблице {$table_market}");
-		
-	}else {
-		
-		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$callback_from_id} AND status=''";
-		
+			  `file_id`
+		) VALUES (
+		  '0', '{$callback_from_id}', '{$медиа_айди}', '{$формат_файла}', '{$file_id}'
+		)";
+	
 		$result = $mysqli->query($query);
+	
+		if (!$result) throw new Exception("Не смог добавить запись в таблицу {$таблица_медиагруппа}");
 			
-		if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");
-		
+		return true;
 		
 	}
 	

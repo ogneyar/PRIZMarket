@@ -1,4 +1,27 @@
 ﻿<?
+// Если клиент шлёт сразу группу файлов
+if ($media_group_id) {
+
+	if ($photo) {
+	
+		$format_file = 'фото';		
+		
+	}elseif ($video) {
+	
+		$format_file = 'видео';
+	
+	}
+
+	$result = _ожидание_ввода();
+		
+	if (!$result || $result['last'] != 'foto_album') {
+			
+		_запись_в_таблицу_медиагрупа($format_file);	
+
+	}	
+
+}
+
 
 if ($text=='Отмена ввода') {
 
@@ -37,6 +60,12 @@ if ($text=='Отмена ввода') {
 			_очистка_таблицы_ожидание();
 			
 			_отправьте_файл();
+		
+		}elseif ($result['last'] == 'foto_album') {
+		
+			_очистка_таблицы_ожидание();
+			
+			_нужен_ли_фотоальбом();
 		
 		}
 		
@@ -146,18 +175,28 @@ if ($text=='Отмена ввода') {
 		}elseif ($result['ojidanie'] == 'foto_album') {						
 			
 			if ($photo) {
+			
+				if ($media_group_id) {
 
-				$format_file = 'фото';			
-				
-				_запись_в_таблицу_маркет('foto_album', '1');
+					$format_file = 'фото';			
+					
+					_запись_в_таблицу_маркет('foto_album', '1');
 
-				_запись_в_таблицу_медиагрупа();
+					_запись_в_таблицу_медиагрупа($format_file, $media_group_id);
+					
+					_очистка_таблицы_ожидание();
+					
+					$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+					
+					_опишите_подробно();
 				
-				_очистка_таблицы_ожидание();
-				
-				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
-				
-				_опишите_подробно();
+				}else {
+					
+					$bot->sendMessage($chat_id, "Пришлите все фото сразу, не по одному!!!");
+					
+					$bot->deleteMessage($chat_id, $message_id);	
+					
+				}
 				
 			}else $bot->deleteMessage($chat_id, $message_id);	
 			
