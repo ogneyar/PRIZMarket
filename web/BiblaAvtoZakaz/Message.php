@@ -80,14 +80,32 @@ if ($text=='Отмена ввода') {
 		}elseif ($result['ojidanie'] == 'gorod') {
 			
 			if ($text) {
-				
-				_запись_в_таблицу_маркет('gorod', $text);			
 			
-				_очистка_таблицы_ожидание();
+				$количество = substr_count($text, '#');
 				
-				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+				if ($количество == 0) {
+					
+					$bot->sendMessage($chat_id, "Повторите ввод, но только теперь, обязательно поставьте хештег - #.");
+					
+					$bot->deleteMessage($chat_id, $message_id);		
+					
+				}elseif ($количество>3) {
+					
+					$bot->sendMessage($chat_id, "Повторите ввод, но, не больше трёх - #.");
+					
+					$bot->deleteMessage($chat_id, $message_id);		
 				
-				_отправьте_файл();
+				}else {
+				
+					_запись_в_таблицу_маркет('gorod', $text);			
+				
+					_очистка_таблицы_ожидание();
+					
+					$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+					
+					_отправьте_файл();
+				
+				}
 				
 			}else $bot->deleteMessage($chat_id, $message_id);			
 			
@@ -97,7 +115,21 @@ if ($text=='Отмена ввода') {
 				
 				if ($photo) $format_file = 'фото';
 			
-				if ($video) $format_file = 'видео';
+				if ($video) {
+					
+					if ($file_size>'5242880') {
+						
+						$bot->sendMessage($chat_id, "Повторите ввод, а то Ваш файл размером больше 5 МБ, сократите его немного.");
+					
+						$bot->deleteMessage($chat_id, $message_id);
+						
+						exit('ok');
+						
+					}					
+					
+					$format_file = 'видео';					
+					
+				}
 			
 				_запись_в_таблицу_маркет('format_file', $format_file);
 
