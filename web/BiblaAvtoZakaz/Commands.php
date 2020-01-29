@@ -50,6 +50,19 @@ if ($text == 'база') {
 	}		
 	
 	
+}elseif ($text == 'мед') {
+	
+	if ($id) {
+	
+		$bot->output_table($таблица_медиагруппа, $id);
+	
+	}else {
+		
+		$bot->output_table($таблица_медиагруппа);
+		
+	}		
+	
+	
 }elseif ($text == 'изи') {
 	
 	$query = "ALTER TABLE `avtozakaz_pzmarket` ADD `foto_album` BOOLEAN NULL DEFAULT NULL";
