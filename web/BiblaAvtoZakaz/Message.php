@@ -2,21 +2,11 @@
 // Если клиент шлёт сразу группу файлов
 if ($media_group_id) {
 	
-	if ($photo) {
-	
-		$format_file = 'фото';		
-		
-	}elseif ($video) {
-	
-		$format_file = 'видео';
-	
-	}
-
 	$result = _ожидание_ввода();
 		
-	if (!$result || $result['last'] == 'podrobno') {
+	if (!$result || $result['ojidanie'] == 'podrobno') {
 			
-		_запись_в_таблицу_медиагрупа($format_file);	
+		_запись_в_таблицу_медиагрупа();	
 
 	}	
 
@@ -176,15 +166,13 @@ if ($text=='Отмена ввода') {
 			
 		}elseif ($result['ojidanie'] == 'foto_album') {						
 			
-			if ($photo) {
+			if ($формат_файла) {
 			
 				if ($media_group_id) {
 				
 					_очистка_таблицы_ожидание();
 
-					$format_file = 'фото';					
-
-					_запись_в_таблицу_медиагрупа($format_file, $media_group_id);					
+					_запись_в_таблицу_медиагрупа();					
 					
 					$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
 					

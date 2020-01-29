@@ -731,16 +731,16 @@ function _есть_ли_такой_медиа_альбом($медиа_айди)
 
 
 // функция записи в таблицу avtozakaz_mediagroup
-function _запись_в_таблицу_медиагрупа($формат_файла = null, $медиа_айди = null) {
+function _запись_в_таблицу_медиагрупа() {
 	
-	global $таблица_медиагруппа, $mysqli, $callback_from_id, $from_id, $media_group_id, $file_id;
+	global $таблица_медиагруппа, $mysqli, $callback_from_id, $from_id, $media_group_id, $file_id, $формат_файла;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	
 	$результат = _есть_ли_у_клиента_альбом();
 	
 	if ($результат) {
-	
+	/*
 		if (!$медиа_айди) {
 		
 			$медиа_айди = $media_group_id;
@@ -754,7 +754,7 @@ function _запись_в_таблицу_медиагрупа($формат_фа
 			}
 		
 		}
-	
+	*/
 		$query = "INSERT INTO {$таблица_медиагруппа} (
 			  `id`,
 			  `id_client`,
@@ -762,7 +762,7 @@ function _запись_в_таблицу_медиагрупа($формат_фа
 			  `format_file`,
 			  `file_id`
 		) VALUES (
-		  '0', '{$callback_from_id}', '{$медиа_айди}', '{$формат_файла}', '{$file_id}'
+		  '0', '{$callback_from_id}', '{$media_group_id}', '{$формат_файла}', '{$file_id}'
 		)";
 	
 		$result = $mysqli->query($query);
