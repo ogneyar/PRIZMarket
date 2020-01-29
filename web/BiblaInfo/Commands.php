@@ -25,6 +25,18 @@ if ($text == 'база') {
 
 }elseif ($text == 'изи') {
 	
+	$query = "ALTER TABLE `avtozakaz_pzmarket` ADD `foto_album` BOOLEAN NULL DEFAULT NULL";
+	
+	if ($result = $mysqli->query($query)) {
+	
+		$bot->sendMessage($master, "Всё отлично!");
+		
+	}else throw new Exception("Не смог изменить таблицу {$table_users}");	
+	
+	
+	
+}elseif ($text == 'креат') {
+	
 	$query = "CREATE TABLE IF NOT EXISTS `avtozakaz_ojidanie` (
 		  `id_client` bigint(20) DEFAULT NULL,
 		  `ojidanie` varchar(200) DEFAULT NULL,
