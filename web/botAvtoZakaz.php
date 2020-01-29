@@ -1,6 +1,8 @@
 ﻿<?
 // Подключаем библиотеку с классом Bot
 include_once 'myBotApi/Bot.php';
+// Подключаем библиотеку с классом Tgraph
+include_once 'myBotApi/Tgraph.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
 //exit('ok');
@@ -10,6 +12,8 @@ $token = $tokenAvtoZakaz;
 $bot = new Bot($token);
 
 $id_bota = strstr($token, ':', true);	
+
+$Tgraph = new Tgraph($tokenTGraph);
 
 $table_market = 'avtozakaz_pzmarket';
 $table_users = 'avtozakaz_users';
