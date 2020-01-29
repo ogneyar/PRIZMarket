@@ -132,8 +132,16 @@ if ($text == 'база') {
 		
 		
 }elseif ($text == "граф") {		
-		
-	$результат = $Tgraph->createPagePhoto("Nazvanie", "/zMedia/super.jpg", true);
+	
+	$файлАйди = "AgACAgIAAxkBAAIGul4x3cTPtVld9yIqiwhnjrUSLzVTAAJ2rTEbWhCRSf7PQqiN1XQdha_CDwAEAQADAgADeQADy_ICAAEYBA";
+	
+	$Объект_файла = $bot->getFile($файлАйди);		
+	
+	$file_url = $bot->fileUrl . $bot->token;	
+	
+	$url = $file_url . "/" . $Объект_файла['file_path'];
+	
+	$результат = $Tgraph->createPagePhoto("Название", $url, true);
 	
 	if ($результат) $bot->sendMessage($master, $результат['url']);
 	else throw new Exception("Не смог выложить пост..");	
