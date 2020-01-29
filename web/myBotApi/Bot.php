@@ -24,6 +24,8 @@
  *
  * getChat
  *
+ * getFile
+ *
  *
  *
  * -----------------------------
@@ -44,9 +46,11 @@
 class Bot
 {
     // $token - созданный токен для нашего бота от @BotFather
-    private $token = null;
+    public $token = null;
     // адрес для запросов к API Telegram
-    private $apiUrl = "https://api.telegram.org/bot";
+    public $apiUrl = "https://api.telegram.org/bot";
+	
+	public $fileUrl = "https://api.telegram.org/file/bot";
     
 	/*
 	** @param str $token
@@ -445,6 +449,27 @@ class Bot
 
     
     
+	/*
+	** Возвращает информацию о файле
+	**
+	** @param int $file_id
+	**
+	** @return array
+	*/
+	public function getFile($file_id){
+		
+		$response = $this->call("getFile", ['file_id' => $file_id]);
+		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+		
+		return $response;
+	}
+	
+	
 	
 	
 	
