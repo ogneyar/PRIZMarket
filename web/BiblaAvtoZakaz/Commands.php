@@ -1,4 +1,4 @@
-﻿<?
+<?
 
 if (strpos($text, ":")!==false) {
 
@@ -159,7 +159,7 @@ if ($text == 'база') {
 		
 		
 }elseif ($text == "имг") {		
-/*	
+	
 	$файлАйди = "AgACAgIAAxkBAAIG5F4zH1NhqVZ6W437tdmcbUWhNla_AAJ_rDEbuTmZSZSx1SrrCC75iRvBDgAEAQADAgADeQAEPwIAARgE";
 	
 	$Объект_файла = $bot->getFile($файлАйди);		
@@ -172,9 +172,11 @@ if ($text == 'база') {
 	
 	if ($результат) {
 		
-		//$bot->sendMessage($master, $результат['path']);
+		//$bot->sendMessage($master, $imgBB_url);
 		
 		$imgBB_url = $результат['url'];		
+		
+		$bot->sendMessage($master, $imgBB_url);
 		
 	}else throw new Exception("Не смог выложить пост..");	
 	
@@ -182,7 +184,6 @@ if ($text == 'база') {
 	
 	$bot->sendMessage($channel_info, $реплика, markdown);
 		
-*/
 }
 
 
