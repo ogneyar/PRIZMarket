@@ -149,7 +149,13 @@ if ($text == 'база') {
 		
 		$path = $результат['path'];
 		
+
+$bot->sendMessage($master, $bot->PrintArray($результат));
+		
 		$результат = $Tgraph->getPage($path, true);
+
+$bot->sendMessage($master, $bot->PrintArray($результат));
+		
 		
 	}else throw new Exception("Не смог выложить пост..");	
 	
