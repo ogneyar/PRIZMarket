@@ -168,7 +168,11 @@ if ($text == 'база') {
 	
 	$url = $file_url . "/" . $Объект_файла['file_path'];	
 	
+	$bot->sendMessage($master, $url);
+	
 	$результат = $imgBB->upload($url);
+	
+	$bot->sendMessage($master, $bot->PrintArray($результат));
 	
 	if ($результат) {
 		
