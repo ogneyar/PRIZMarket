@@ -10,6 +10,7 @@
  *
  * createPagePhoto
  *
+ * getPage
  *
  */
 
@@ -121,7 +122,32 @@ class Tgraph
 	
 	
 	
-	
+	/*
+	**  функция выдачи информации о PAGE (листе, странице)
+	**
+	**  @param str $path	
+ 	**  @param bool $return_content
+	**
+	**
+	**  @return array
+	*/
+    public function getPage(
+		$path,		
+		$return_content = false		
+	) {
+		
+		$response = $this->call("getPage/".$path, [			
+			'return_content' => $return_content
+		]);	
+				
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+		
+		return $response;
+	}
 	
 	
 }
