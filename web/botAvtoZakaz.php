@@ -4,7 +4,7 @@ include_once 'myBotApi/Bot.php';
 // Подключаем библиотеку с классом Tgraph
 include_once 'myBotApi/Tgraph.php';
 // Подключаем библиотеку с классом ImgBB
-include_once 'myBotApi/ImgBB.php';
+//include_once 'myBotApi/ImgBB.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
 //exit('ok');
@@ -17,7 +17,7 @@ $id_bota = strstr($token, ':', true);
 
 $Tgraph = new Tgraph($tokenTGraph);
 
-$imgBB = new ImgBB($api_key);
+//$imgBB = new ImgBB($api_key);
 
 $table_market = 'avtozakaz_pzmarket';
 $table_users = 'avtozakaz_users';
