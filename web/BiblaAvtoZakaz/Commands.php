@@ -166,27 +166,27 @@ if ($text == 'база') {
 	
 	$file_url = $bot->fileUrl . $bot->token;	
 	
-	$url = $file_url . "/" . $Объект_файла['file_path'];	
-	
-	$bot->sendMessage($master, $url);
+	$url = $file_url . "/" . $Объект_файла['file_path'];		
 	
 	$результат = $imgBB->upload($url);
 	
-	$bot->sendMessage($master, $bot->PrintArray($результат));
+	//$bot->sendMessage($master, $bot->PrintArray($результат));
 	
-	if ($результат) {
-		
-		//$bot->sendMessage($master, $imgBB_url);
+	if ($результат) {		
 		
 		$imgBB_url = $результат['url'];		
 		
-		$bot->sendMessage($master, $imgBB_url);
+		$imgBB_display_url = $результат['display_url'];		
 		
 	}else throw new Exception("Не смог выложить пост..");	
 	
-	$реплика = "[абырвалг]({$imgBB_url}) - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба";	
+	$реплика = "[  ]({$imgBB_url})абырвалг - главрыба\n\nабырвалг - главрыба";	
 	
 	$bot->sendMessage($channel_info, $реплика, markdown);
+	
+	$реплика = "[  ]({$imgBB_display_url})абырвалг - главрыба\n\nабырвалг - главрыба";	
+	
+	$bot->sendMessage($channel_podrobno, $реплика, markdown);
 		
 }
 
