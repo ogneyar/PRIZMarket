@@ -11,7 +11,7 @@
  * upload
  *
  *
- */
+ *
 
 class ImgBB
 {
@@ -22,7 +22,7 @@ class ImgBB
     
 	/*
 	** @param str $api_key
-	*/
+	*
     public function __construct($api_key)
     {
         $this->api_key = $api_key;
@@ -36,7 +36,7 @@ class ImgBB
     ** @param array $data    
 	**
     ** @return mixed
-    */
+    *
     public function call($method, $data)
     {
         $result = null;
@@ -53,7 +53,7 @@ class ImgBB
     }
     
 	
-	
+	*/
 	
     
     /*
@@ -63,7 +63,7 @@ class ImgBB
 	**
 	**
 	**  @return array
-	*/
+	*
     public function upload($image) {		
 		
 		$response = $this->call("upload", [
@@ -85,6 +85,6 @@ class ImgBB
 	
 }
 
-
+*/
 
 ?>
