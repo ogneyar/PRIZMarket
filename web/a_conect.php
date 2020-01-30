@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 	$OtladkaBota = getenv('OTLADKA');
 
@@ -20,7 +20,7 @@
 	$tokenAvtoZakaz = getenv('TOKEN_AVTOZAKAZ');
 	
 	$tokenTGraph = getenv('TOKEN_TELEGRAPH');
-//	$api_key = getenv('API_KEY_IMGBB');
+	$api_key = getenv('API_KEY_IMGBB');
 	
 	$master = getenv('MASTER');
 	$admin_group_market = getenv('ADMIN_GROUP_MARKET');
