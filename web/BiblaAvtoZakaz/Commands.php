@@ -143,8 +143,15 @@ if ($text == 'база') {
 	
 	$результат = $Tgraph->createPagePhoto("Название", $url, true);
 	
-	if ($результат) $bot->sendMessage($master, $результат['image_url']);
-	else throw new Exception("Не смог выложить пост..");	
+	if ($результат) {
+		
+		//$bot->sendMessage($master, $результат['path']);
+		
+		$path = $результат['path'];
+		
+		$результат = $Tgraph->getPage($path, true);
+		
+	}else throw new Exception("Не смог выложить пост..");	
 	
 	$реплика = "[абырвалг]({$результат['image_url']})\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\n";	
 	
