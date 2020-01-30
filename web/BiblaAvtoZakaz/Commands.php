@@ -149,17 +149,36 @@ if ($text == 'база') {
 		
 		$path = $результат['path'];
 		
-
-$bot->sendMessage($master, $bot->PrintArray($результат));
-		
 		$результат = $Tgraph->getPage($path, true);
-
-$bot->sendMessage($master, $bot->PrintArray($результат));
-		
 		
 	}else throw new Exception("Не смог выложить пост..");	
 	
 	$реплика = "[абырвалг]({$результат['image_url']})\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\n";	
+	
+	$bot->sendMessage($channel_info, $реплика, markdown);
+		
+		
+}elseif ($text == "имг") {		
+	
+	$файлАйди = "AgACAgIAAxkBAAIG5F4zH1NhqVZ6W437tdmcbUWhNla_AAJ_rDEbuTmZSZSx1SrrCC75iRvBDgAEAQADAgADeQAEPwIAARgE";
+	
+	$Объект_файла = $bot->getFile($файлАйди);		
+	
+	$file_url = $bot->fileUrl . $bot->token;	
+	
+	$url = $file_url . "/" . $Объект_файла['file_path'];	
+	
+	$результат = $imgBB->upload($url);
+	
+	if ($результат) {
+		
+		//$bot->sendMessage($master, $результат['path']);
+		
+		$imgBB_url = $результат['url'];		
+		
+	}else throw new Exception("Не смог выложить пост..");	
+	
+	$реплика = "[абырвалг]({$imgBB_url}) - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба\n\nабырвалг - главрыба";	
 	
 	$bot->sendMessage($channel_info, $реплика, markdown);
 		
