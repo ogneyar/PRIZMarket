@@ -1,4 +1,4 @@
-﻿<?
+<?
 
 if (strpos($text, ":")!==false) {
 
@@ -9,7 +9,6 @@ if (strpos($text, ":")!==false) {
 	$text = $komanda;
 
 }
-
 
 if ($text == 'база') {
 
