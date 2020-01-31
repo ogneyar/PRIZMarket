@@ -195,6 +195,8 @@ if ($text=='Отмена ввода') {
 				
 				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
 				
+				_вывод_лота_на_каналы();
+				
 				_ожидание_результата();
 				
 			}else $bot->deleteMessage($chat_id, $message_id);		

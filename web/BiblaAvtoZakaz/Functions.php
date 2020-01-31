@@ -36,6 +36,7 @@
 ** _не_нужен_альбом
 ** _опишите_подробно
 ** _ожидание_результата
+** _вывод_лота_на_каналы
 **
 **
 **
@@ -809,6 +810,77 @@ function _ожидание_результата() {
 	$bot->sendMessage($chat_id, $reply);
 
 }
+
+
+
+
+
+// вывод на канал подробности уже готового лота
+function _вывод_лота_на_каналы() {
+
+	global $table_market, $bot, $master, $chat_id, $callback_from_id, $from_id, $mysqli, $imgBB, $channel_podrobno;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;		
+	
+	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz=0";
+		
+	$результат = $mysqli->query($запрос);
+	
+	if ($результат) {
+		
+		if ($результат->num_rows == 1) {
+		
+			$результМассив = $mysqli->num_rows(MYSQLI_ASSOC);
+			
+			foreach ($результМассив as $строка) {
+			
+				$файлАйди = $строка['file_id'];
+				
+				//if (!$строка['url_nazv']);
+				
+				$текст = "{$строка['kuplu_prodam']}\n\n▪️{$строка['nazvanie']}\n▪️{$строка['valuta']}\n▪️{$строка['gorod']}\n▪️{$строка['username']}\n\n{$строка['podrobno']}";
+								
+				if ($строка['format_file'] == 'фото') {
+				
+					$Объект_файла = $bot->getFile($файлАйди);		
+		
+					$ссыль_на_файл = $bot->fileUrl . $bot->token;	
+					
+					$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];		
+					
+					$результат = $imgBB->upload($ссыль);
+					
+					//$bot->sendMessage($master, $bot->PrintArray($результат));
+					
+					if ($результат) {		
+						
+						$imgBB_url = $результат['url'];		
+
+						_запись_в_таблицу_маркет('url_tgraph', $imgBB_url);
+						
+					}else throw new Exception("Не смог выложить пост..");					
+					
+					$реплика = "[  ]({$imgBB_url}){$текст}";	
+					
+					$результат = $bot->sendMessage($channel_podrobno, $реплика, markdown);
+					
+					if ($результат) {
+					
+						$bot->sendMessage($master, $bot->PrintArray($результат));
+					
+					}
+				
+				}else $bot->sendMessage($channel_podrobno, $текст, markdown);
+			
+			}
+		
+		}
+	
+	}	
+
+}
+
+
 
 
 

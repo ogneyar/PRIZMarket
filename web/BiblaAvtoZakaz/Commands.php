@@ -176,15 +176,11 @@ if ($text == 'база') {
 		
 		$imgBB_url = $результат['url'];		
 		
-		$imgBB_display_url = $результат['display_url'];		
+		//$imgBB_display_url = $результат['display_url'];		
 		
-	}else throw new Exception("Не смог выложить пост..");	
+	}else throw new Exception("Не смог выложить пост..");		
 	
-	$реплика = "[  ]({$imgBB_url})абырвалг - главрыба\n\nабырвалг - главрыба";	
-	
-	$bot->sendMessage($channel_info, $реплика, markdown);
-	
-	$реплика = "[  ]({$imgBB_display_url})абырвалг - главрыба\n\nабырвалг - главрыба";	
+	$реплика = "[ ]({$imgBB_url})абырвалг - главрыба\n\nабырвалг - главрыба";	
 	
 	$bot->sendMessage($channel_podrobno, $реплика, markdown);
 		
