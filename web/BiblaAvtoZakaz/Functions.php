@@ -818,7 +818,7 @@ function _ожидание_результата() {
 // вывод на канал подробности уже готового лота
 function _вывод_лота_на_каналы() {
 
-	global $table_market, $bot, $master, $chat_id, $callback_from_id, $from_id, $mysqli, $imgBB, $channel_podrobno;
+	global $table_market, $bot, $master, $chat_id, $callback_from_id, $from_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	
@@ -834,15 +834,25 @@ function _вывод_лота_на_каналы() {
 			
 			foreach ($результМассив as $строка) {
 			
-				$файлАйди = $строка['file_id'];
+				$файлАйди = $строка['file_id'];		
+
+				$формат_файла = $строка['format_file'];
+
+				if ($строка['url_nazv']) {
 				
-				//if (!$строка['url_nazv']);
+					$ссыль_в_названии = $строка['url_nazv'];	
+					
+				}else $ссыль_в_названии = '';
+								
+				$caption = "{$строка['kuplu_prodam']}\n\n▪️{$строка['nazvanie']}\n▪️{$строка['valuta']}\n▪️{$строка['gorod']}\n▪️{$строка['username']}";				
 				
-				$текст = "{$строка['kuplu_prodam']}\n\n▪️{$строка['nazvanie']}\n▪️{$строка['valuta']}\n▪️{$строка['gorod']}\n▪️{$строка['username']}\n\n{$строка['podrobno']}";
+				$подробности = $строка['podrobno'];
+				
+				$текст = $caption . "\n\n" . $подробности;
 				
 				$текст = str_replace('_', '\_', $текст);
 								
-				if ($строка['format_file'] == 'фото') {
+				if ($формат_файла == 'фото') {
 				
 					$Объект_файла = $bot->getFile($файлАйди);		
 		
@@ -864,7 +874,7 @@ function _вывод_лота_на_каналы() {
 					
 					$реплика = "[ ]({$imgBB_url}){$текст}";	
 					
-					$результат = $bot->sendMessage($channel_podrobno, $реплика, markdown);
+					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);
 					
 					if ($результат) {
 					
@@ -872,7 +882,42 @@ function _вывод_лота_на_каналы() {
 					
 					}
 				
-				}else $bot->sendMessage($channel_podrobno, $текст, markdown);
+				}else $КаналИнфо = $bot->sendMessage($channel_podrobno, $текст, markdown);
+				
+				if ($КаналИнфо) {
+										
+					$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$КаналИнфо['message_id']}";
+					
+					_запись_в_таблицу_маркет('id_zakaz', $КаналИнфо['message_id']);
+
+					if (!$ссыль_в_названии) _запись_в_таблицу_маркет('url_nazv', $ссыль_на_подробности);			
+					
+					_запись_в_таблицу_маркет('url_podrobno', $ссыль_на_подробности);
+					
+					_запись_в_таблицу_маркет('status', "опубликован");
+					
+					$inLine = [
+						'inline_keyboard' => [
+							[
+								[
+									'text' => 'Подробнее',
+									'url' => $ссыль_на_подробности
+								]
+							]
+						]
+					];				
+					
+					if ($формат_файла == 'фото') {
+					
+						$bot->sendPhoto($channel_market, $файлАйди, $caption, markdown, $inLine);
+						
+					}elseif ($формат_файла == 'видео') {
+						
+						$bot->sendVideo($channel_market, $файлАйди, $caption, markdown, $inLine);
+						
+					}
+					
+				}
 			
 			}
 		
