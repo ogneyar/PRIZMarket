@@ -839,6 +839,8 @@ function _вывод_лота_на_каналы() {
 				//if (!$строка['url_nazv']);
 				
 				$текст = "{$строка['kuplu_prodam']}\n\n▪️{$строка['nazvanie']}\n▪️{$строка['valuta']}\n▪️{$строка['gorod']}\n▪️{$строка['username']}\n\n{$строка['podrobno']}";
+				
+				$текст = str_replace('_', '\_', $текст);
 								
 				if ($строка['format_file'] == 'фото') {
 				
