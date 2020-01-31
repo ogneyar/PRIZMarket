@@ -860,7 +860,7 @@ function _вывод_лота_на_каналы() {
 						
 					}else throw new Exception("Не смог выложить пост..");					
 					
-					$реплика = "[  ]({$imgBB_url}){$текст}";	
+					$реплика = "[ ]({$imgBB_url}){$текст}";	
 					
 					$результат = $bot->sendMessage($channel_podrobno, $реплика, markdown);
 					
