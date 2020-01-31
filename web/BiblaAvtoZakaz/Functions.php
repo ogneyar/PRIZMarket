@@ -828,9 +828,9 @@ function _вывод_лота_на_каналы() {
 	
 	if ($результат) {
 		
-		if ($результат->num_rows>0) {
+		if ($результат->num_rows == 1) {
 		
-			$результМассив = $mysqli->num_rows(MYSQLI_ASSOC);
+			$результМассив = $mysqli->fetch_all(MYSQLI_ASSOC);
 			
 			foreach ($результМассив as $строка) {
 			
