@@ -883,13 +883,7 @@ function _вывод_лота_на_каналы() {
 					
 					$реплика = "[ ]({$imgBB_url}){$текст}";	
 					
-					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);
-					
-					if ($результат) {
-					
-						$bot->sendMessage($master, $bot->PrintArray($результат));
-					
-					}
+					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);					
 				
 				}else $КаналИнфо = $bot->sendMessage($channel_podrobno, $текст, markdown);
 				
