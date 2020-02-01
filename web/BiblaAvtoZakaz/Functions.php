@@ -518,11 +518,7 @@ function _не_нужна() {
 // выбор категории в которой будет находиться лот?
 function _выбор_категории() {
 
-	global $bot, $chat_id;	
-	
-	
-	
-	
+	global $bot, $chat_id, $DopKnopa;		
 	
 	$категории = [];			
 			
