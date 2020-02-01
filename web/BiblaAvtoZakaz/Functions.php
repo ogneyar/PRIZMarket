@@ -174,7 +174,7 @@ function _создать() {
 
 function _повторить() {
 	
-	global $table_market, $mysqli, $callback_from_id, $from_id;
+	global $bot, $table_market, $mysqli, $callback_from_id, $from_id;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	
