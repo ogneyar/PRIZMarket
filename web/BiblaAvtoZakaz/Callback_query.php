@@ -69,12 +69,6 @@ if ($callback_data=='создать'){
 }elseif ($callback_data=='опубликовать') {	
 
 	_вывод_лота_на_каналы($id);
-
-	$bot->sendMessage($master, "еее");
-	
-}elseif ($callback_data=='опубликовать:351009636') {	
-	
-	$bot->sendMessage($master, "ttt");
 	
 }
 
