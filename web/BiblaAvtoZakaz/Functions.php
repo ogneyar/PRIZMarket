@@ -847,7 +847,7 @@ function _отправка_лота_админам() {
 
 
 // вывод на канал подробности уже готового лота
-function _вывод_лота_на_каналы($id_client, $номер_лота = '0') {
+function _вывод_лота_на_каналы($id_client, $номер_лота = 0) {
 
 	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
 	
@@ -970,15 +970,15 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 						
 						$bot->sendMessage($id_client, $реплика, markdown);	
 						
-					}
+					}else throw new Exception("Не смог выложить пост на основной канал.");			
 					
-				}
+				}else throw new Exception("Не отправился лот на канал Подробности..");			
 			
 			}
 		
-		}
+		}else throw new Exception("Или нет заказа или больше одного..");			
 	
-	}	
+	}else throw new Exception("Нет такого заказа..");			
 
 }
 
