@@ -202,7 +202,7 @@ function _повторить() {
 					'callback_data' => "повтор:{$строка['id_zakaz']}"
 				]]]);
 				
-				$bot->sendMessage($callback_from_id, $кнопки);
+				$bot->sendMessage($callback_from_id, $название);
 				
 			}		
 			
