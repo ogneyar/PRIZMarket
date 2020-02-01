@@ -847,27 +847,39 @@ function _есть_ли_такой_медиа_альбом($медиа_айди)
 
 
 // функция записи в таблицу avtozakaz_mediagroup
-function _запись_в_таблицу_медиагрупа() {
+function _запись_в_таблицу_медиагрупа($id_client = null, $id_zakaz = null) {
 	
 	global $таблица_медиагруппа, $mysqli, $callback_from_id, $from_id, $media_group_id, $file_id, $формат_файла;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	
-	$query = "INSERT INTO {$таблица_медиагруппа} (
-		`id`,
-		`id_client`,
-		`media_group_id`,
-		`format_file`,
-		`file_id`
-	) VALUES (
-		'0', '{$callback_from_id}', '{$media_group_id}', '{$формат_файла}', '{$file_id}'
-	)";
-	
-	$result = $mysqli->query($query);
-	
-	if (!$result) throw new Exception("Не смог добавить запись в таблицу {$таблица_медиагруппа}");
+	if ($id_client&&$id_zakaz) {
+		
+		$query ="UPDATE {$таблица_медиагруппа} SET id='{$id_zakaz}' WHERE id_client={$id_client} AND id='0'";
+		
+		$result = $mysqli->query($query);
 			
-	return true;
+		if (!$result) throw new Exception("Не смог обновить запись в таблице {$таблица_медиагруппа}");
+		
+	}else {
+	
+		$query = "INSERT INTO {$таблица_медиагруппа} (
+			`id`,
+			`id_client`,
+			`media_group_id`,
+			`format_file`,
+			`file_id`
+		) VALUES (
+			'0', '{$callback_from_id}', '{$media_group_id}', '{$формат_файла}', '{$file_id}'
+		)";
+		
+		$result = $mysqli->query($query);
+		
+		if (!$result) throw new Exception("Не смог добавить запись в таблицу {$таблица_медиагруппа}");
+				
+		return true;
+	
+	}
 	
 }
 
@@ -1034,7 +1046,7 @@ function _отправка_лота_админам() {
 						
 					}else throw new Exception("Не смог выложить пост..");					
 					
-					$реплика = "[ ]({$imgBB_url}){$текст}";	
+					$реплика = "[ _____ ]({$imgBB_url})\n{$текст}";	
 					
 					$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);	
 				
@@ -1059,6 +1071,7 @@ function _отправка_лота_админам() {
 function _вывод_лота_на_каналы($id_client, $номер_лота = 0) {
 
 	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
+	global $таблица_медиагруппа, $channel_media_market;
 	
 	$from_id = $id_client; // это для функции _запись_в_таблицу_маркет()
 	
@@ -1118,17 +1131,27 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 				
 				if ($imgBB_url) {				
 					
-					$реплика = "[ ]({$imgBB_url}){$текст}";	
+					$реплика = "[ _____ ]({$imgBB_url})\n{$текст}";	
 					
 					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);		
 				
 				}else $КаналИнфо = $bot->sendMessage($channel_podrobno, $текст, markdown);
 				
 				if ($КаналИнфо) {
-										
-					$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$КаналИнфо['message_id']}";
 					
-					_запись_в_таблицу_маркет('id_zakaz', $КаналИнфо['message_id']);
+					$id_zakaz = $КаналИнфо['message_id'];
+					
+					if ($строка['foto_album']) {
+						
+						_запись_в_таблицу_медиагрупа($id_client, $id_zakaz);
+						
+						$фото_альбом = $строка['foto_album'];
+						
+					}
+					
+					$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";
+					
+					_запись_в_таблицу_маркет('id_zakaz', $id_zakaz);
 
 					if (!$ссыль_в_названии) {
 					
@@ -1175,9 +1198,9 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 						
 						$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
 						
-						$bot->sendMessage($id_client, $реплика, markdown);	
+						$bot->sendMessage($id_client, $реплика, markdown);						
 						
-					}else throw new Exception("Не смог выложить пост на основной канал.");			
+					}else throw new Exception("Не смог выложить пост на основной канал.");	
 					
 				}else throw new Exception("Не отправился лот на канал Подробности..");			
 			
@@ -1185,7 +1208,49 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 		
 		}else throw new Exception("Или нет заказа или больше одного..");			
 	
-	}else throw new Exception("Нет такого заказа..");			
+	}else throw new Exception("Нет такого заказа..");
+	
+	
+	
+	
+	$запрос = "SELECT * FROM {$таблица_медиагруппа} WHERE id_client={$id_client} AND id='{$номер_лота}'";
+	
+	$результат = $mysqli->query($запрос);
+	
+	if ($результат) {
+		
+		if ($результат->num_rows > 1) {
+		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			
+			$файл_медиа = [];
+			
+			foreach ($результМассив as $строка) {
+				
+				if ($строка['format_file'] == 'фото') {
+					
+					$медиа = $строка['file_id'];
+					
+					$файл_медиа = array_merge($файл_медиа, [
+					
+						[
+		
+							'type' => 'photo',							
+							'media' => $медиа
+		
+						]
+						
+					]);
+					
+				}
+				
+			}
+			
+		}
+		
+	}	
+
+	$bot->sendMediaGroup($channel_media_market, $файл_медиа);
 
 }
 
