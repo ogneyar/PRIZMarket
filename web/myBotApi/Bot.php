@@ -14,6 +14,8 @@
  *
  * editMessageText
  *
+ * editMessageMedia
+ *
  * editMessageReplyMarkup
  *
  * deleteMessage
@@ -256,6 +258,50 @@ class Bot
 		return $response;
 	}
     
+	
+	
+	
+	/*
+	**  функция редактирования медиа (фото или видео или ...)	
+	**
+	**  @param int $chat_id
+	**  @param int $message_id  
+	**  @param int $inline_message_id  
+	**  @param obj $media
+	**  @param array $reply_markup
+	**
+	**
+	**  @return array
+	*/
+	public function editMessageMedia(		
+		$chat_id = null,		
+		$message_id = null,		
+		$inline_message_id = null,
+		$media,
+		$reply_markup = null
+	) {
+	
+		if ($reply_markup) $reply_markup = json_encode($reply_markup);
+		
+		$response = $this->call("editMessageMedia", [
+			'chat_id' => $chat_id,						
+			'message_id' => $message_id,			
+			'inline_message_id' => $inline_message_id,		
+			'media' => json_encode($media),
+			'reply_markup' => $reply_markup			
+		]);
+		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+	
+		return $response;
+	}
+	
+	
+	
 	
 	
 	
