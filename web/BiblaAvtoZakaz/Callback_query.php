@@ -88,6 +88,16 @@ if ($callback_data=='создать'){
 	
 	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");
 	
+}elseif ($callback_data=='отказать') {	
+	
+	$bot->sendMessage($id, "Вам отказанно.\n\n/start");
+	
+	if (_удалить_лот($id)) {
+	
+		$bot->deleteMessage($chat_id, $message_id);
+		
+	}
+	
 }elseif ($callback_data=='старт') {	
 
 	_start_AvtoZakazBota();

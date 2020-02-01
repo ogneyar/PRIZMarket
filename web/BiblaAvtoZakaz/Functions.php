@@ -40,7 +40,7 @@
 ** _ожидание_результата
 ** _отправка_лота_админам
 ** _вывод_лота_на_каналы
-**
+** _удалить_лот
 **
 **
 */
@@ -980,7 +980,9 @@ function _отправка_лота_админам() {
 
 				$формат_файла = $строка['format_file'];
 				
-				$название = $строка['nazvanie'];				
+				$название = $строка['nazvanie'];
+
+				$название = str_replace('_', '\_', $название);
 
 				if ($строка['url_nazv']) {
 				
@@ -1074,7 +1076,9 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 
 				$формат_файла = $строка['format_file'];
 				
-				$название = $строка['nazvanie'];				
+				$название = $строка['nazvanie'];
+
+				$название = str_replace('_', '\_', $название);
 
 				if ($строка['url_nazv']) {
 				
@@ -1185,6 +1189,20 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 
 
 
+
+function _удалить_лот($айди_клиента) {
+	
+	global $bot, $mysqli, $table_market;
+	
+	$query = "DELETE FROM ".$table_market." WHERE id_client=".$айди_клиента." AND id_zakaz=0";	
+	
+	if ($result = $mysqli->query($query)) {
+	
+		return true;
+		
+	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
+	
+}
 
 
 
