@@ -14,6 +14,8 @@
  *
  * editMessageText
  *
+ * editMessageReplyMarkup
+ *
  * deleteMessage
  *
  * sendPhoto
@@ -254,6 +256,48 @@ class Bot
 		return $response;
 	}
     
+	
+	
+	
+	/*
+	**  функция редактирования кнопок	
+	**
+	**  @param int $chat_id
+	**  @param int $message_id  
+	**  @param int $inline_message_id  
+	**  @param array $reply_markup
+	**
+	**
+	**  @return array
+	*/
+	public function editMessageReplyMarkup(		
+		$chat_id = null,		
+		$message_id = null,		
+		$inline_message_id = null,		
+		$reply_markup = null
+	) {
+	
+		if ($reply_markup) $reply_markup = json_encode($reply_markup);
+		
+		$response = $this->call("editMessageReplyMarkup", [
+			'chat_id' => $chat_id,						
+			'message_id' => $message_id,			
+			'inline_message_id' => $inline_message_id,			
+			'reply_markup' => $reply_markup			
+		]);
+		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+	
+		return $response;
+	}
+	
+	
+	
+	
 	
 	
 	/*
