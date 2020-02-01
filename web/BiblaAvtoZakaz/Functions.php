@@ -214,7 +214,7 @@ function _повторить() {
 			
 			$реплика = "Выберите лот для повтора.";
 			
-			$bot->sendMessage($callback_from_id, "хз");
+			$bot->sendMessage($callback_from_id, $bot->PrintArray($кнопки));
 			
 			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);			
 			
