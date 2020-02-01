@@ -835,7 +835,7 @@ function _отправка_лота_админам() {
 		]
 	];
 	
-	$reply = "Проверьте новый лот от клиента {$callback_from_username}";
+	$reply = "Проверьте новый лот от клиента @{$callback_from_username}";
 	
 	$bot->sendMessage($admin_group, $reply, null, $inLine);
 
