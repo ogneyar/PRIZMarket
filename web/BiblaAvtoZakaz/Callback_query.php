@@ -34,6 +34,12 @@ if ($callback_data=='создать'){
 
 	_не_нужна();
 
+}elseif ($callback_data==$DopKnopa[0]||$callback_data==$DopKnopa[1]||$callback_data==$DopKnopa[2]||$callback_data==$DopKnopa[3]||$callback_data==$DopKnopa[4]||$callback_data==$DopKnopa[5]||$callback_data==$DopKnopa[6]||$callback_data==$DopKnopa[7]||$callback_data==$DopKnopa[8]||$callback_data==$DopKnopa[9]||$callback_data==$DopKnopa[10]||$callback_data==$DopKnopa[11]) {	
+
+	_запись_в_таблицу_маркет('otdel', $callback_data);
+
+	_выбор_валюты();
+
 }elseif ($callback_data=='рубль') {	
 
 	_рубль();

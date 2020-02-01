@@ -78,15 +78,18 @@ if ($text=='Отмена ввода') {
 			
 		}elseif ($result['ojidanie'] == 'url_nazv') {
 			
-			if ($text) {
+			if ($text) {				
 				
+				//надо проверить есть ли в тексте http://
 				_запись_в_таблицу_маркет('url_nazv', $text);			
 			
 				_очистка_таблицы_ожидание();
 				
 				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
 				
-				_выбор_валюты();
+				_выбор_категории();
+				
+				//_выбор_валюты();
 				
 			}else $bot->deleteMessage($chat_id, $message_id);			
 			
