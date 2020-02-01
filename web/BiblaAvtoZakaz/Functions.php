@@ -1141,13 +1141,7 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					
 					$id_zakaz = $КаналИнфо['message_id'];
 					
-					if ($строка['foto_album']) {
-						
-						_запись_в_таблицу_медиагрупа($id_client, $id_zakaz);
-						
-						$фото_альбом = $строка['foto_album'];
-						
-					}
+					$фото_альбом = $строка['foto_album'];
 					
 					$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";
 					
@@ -1210,10 +1204,7 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 	
 	}else throw new Exception("Нет такого заказа..");
 	
-	
-	
-	
-	$запрос = "SELECT * FROM {$таблица_медиагруппа} WHERE id_client={$id_client} AND id='{$номер_лота}'";
+	$запрос = "SELECT * FROM {$таблица_медиагруппа} WHERE id_client={$id_client} AND id='0'";
 	
 	$результат = $mysqli->query($запрос);
 	
@@ -1249,6 +1240,8 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 		}else throw new Exception("Или нет заказа или меньше одного..");
 		
 	}else throw new Exception("Нет такого заказа..");
+	
+	_запись_в_таблицу_медиагрупа($id_client, $id_zakaz);
 
 	$bot->sendMediaGroup($channel_media_market, $файл_медиа);
 

@@ -113,6 +113,17 @@ if ($text == 'база') {
 	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
 	
 	
+}elseif ($text == 'удали медиа') {
+	
+	$query = "DELETE FROM ".$таблица_медиагруппа." WHERE id=".$id;				
+	
+	if ($result = $mysqli->query($query)) {
+	
+		$bot->sendMessage($master, "Всё отлично!");
+		
+	}else throw new Exception("Не смог изменить таблицу {$таблица_медиагруппа}");	
+	
+	
 }elseif (($text == "админ")&&($id)) {		
 		
 	$query = "UPDATE ".$table_users." SET status='admin' WHERE id_client=".$id;
