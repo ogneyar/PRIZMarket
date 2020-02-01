@@ -339,4 +339,19 @@ $DopKnopa[11] = "#красота_и_здоровье";  //"Красота и з�
 $day = 86400;
 
 
+$для_примера_файл_айди_фото ="AgACAgIAAxkBAAIJu141fypzZg0el2vmTitcRyOV5-".
+	"eVAAIVsDEbfdqoSe7b5ehZ7JFsbmbLDgAEAQADAgADeQADlqcBAAEYBA";
+
+$InputMediaPhoto = [
+
+	'type' => 'photo',
+	'media' => $для_примера_файл_айди_фото,
+	'caption' => null,
+	'parse_mode' => null
+	
+];
+
+
+
+
 ?>
