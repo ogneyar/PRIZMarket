@@ -927,8 +927,9 @@ function _ожидание_результата() {
 
 // отправка лота администрации на проверку
 function _отправка_лота_админам() {
-
-	global $bot, $callback_from_username, $from_username, $admin_group, $callback_from_id, $from_id;
+	
+	global $table_market, $from_id, $bot, $mysqli, $imgBB, $admin_group;	
+	global $callback_from_username, $from_username, $callback_from_id, $from_id;
 	
 	if (!$callback_from_username) $callback_from_username = $from_username;
 	
@@ -941,29 +942,29 @@ function _отправка_лота_админам() {
 					'text' => 'Опубликовать',
 					'callback_data' => 'опубликовать:'.$callback_from_id
 				]
-			]
+			],
+			[
+				[
+					'text' => 'PRIZMarket доверяет',
+					'callback_data' => 'доверяет:'.$callback_from_id
+				]
+			],
+			[
+				[
+					'text' => 'Редактировать',
+					'callback_data' => 'редактировать:'.$callback_from_id
+				]
+			],
+			[
+				[
+					'text' => 'ОТКАЗАТЬ',
+					'callback_data' => 'отказать:'.$callback_from_id
+				]
+			],
 		]
 	];
-	
-	$reply = "Проверьте новый лот от клиента @{$callback_from_username}";
-	
-	$bot->sendMessage($admin_group, $reply, null, $inLine);
-
-}
-
-
-
-
-
-
-// вывод на канал подробности уже готового лота
-function _вывод_лота_на_каналы($id_client, $номер_лота = 0) {
-
-	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
-	
-	$from_id = $id_client; // это для функции _запись_в_таблицу_маркет()
-	
-	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$id_client} AND id_zakaz='{$номер_лота}'";
+		
+	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$from_id} AND id_zakaz=0";
 		
 	$результат = $mysqli->query($запрос);
 	
@@ -1031,6 +1032,88 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					
 					$реплика = "[ ]({$imgBB_url}){$текст}";	
 					
+					$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);	
+				
+				}else $КаналИнфо = $bot->sendMessage($admin_group, $текст, markdown, $inLine);
+				
+				if (!$КаналИнфо) throw new Exception("Не смог в админке опубликовать заказ..");
+				
+			}
+		
+		}else throw new Exception("Или нет заказа или больше одного..");
+	
+	}else throw new Exception("Нет такого заказа..");	
+
+}
+
+
+
+
+
+
+// вывод на канал подробности уже готового лота
+function _вывод_лота_на_каналы($id_client, $номер_лота = 0) {
+
+	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
+	
+	$from_id = $id_client; // это для функции _запись_в_таблицу_маркет()
+	
+	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$id_client} AND id_zakaz='{$номер_лота}'";
+		
+	$результат = $mysqli->query($запрос);
+	
+	if ($результат) {
+		
+		if ($результат->num_rows == 1) {
+		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			
+			foreach ($результМассив as $строка) {
+			
+				$файлАйди = $строка['file_id'];		
+
+				$формат_файла = $строка['format_file'];
+				
+				$название = $строка['nazvanie'];				
+
+				if ($строка['url_nazv']) {
+				
+					$ссыль_в_названии = $строка['url_nazv'];	
+					
+					$название_для_подробностей = "[{$название}]({$ссыль_в_названии})";
+					
+				}else $название_для_подробностей = $название;
+				
+				$куплю_или_продам = $строка['kuplu_prodam'];				
+				
+				$валюта = $строка['valuta'];
+				
+				$хештеги_города = $строка['gorod'];
+				
+				$юзера_имя = $строка['username'];
+				
+				$доверие = $строка['doverie'];
+				
+				$категория = $строка['otdel'];
+				
+				$подробности = $строка['podrobno'];
+				
+				$хештеги = "{$куплю_или_продам}\n\n{$категория}\n▪️";
+				
+				$хештеги = str_replace('_', '\_', $хештеги);
+				
+				$текст = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}\n\n{$подробности}";
+				
+				$текст = str_replace('_', '\_', $текст);
+				
+				$текст = "{$хештеги}{$название_для_подробностей}{$текст}";
+				
+				$imgBB_url = $строка['url_tgraph'];				
+				
+				if ($imgBB_url) {				
+					
+					$реплика = "[ ]({$imgBB_url}){$текст}";	
+					
 					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);		
 				
 				}else $КаналИнфо = $bot->sendMessage($channel_podrobno, $текст, markdown);
@@ -1067,6 +1150,8 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					$текст = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}";
 					
 					$текст = str_replace('_', '\_', $текст);
+					
+					if ($доверие) $текст .= "\n\n✅ PRIZMarket доверяет❗️"; 
 					
 					$текст = "{$хештеги}[{$название}]({$ссыль_в_названии}){$текст}";
 					

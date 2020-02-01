@@ -80,6 +80,14 @@ if ($callback_data=='создать'){
 
 	_вывод_лота_на_каналы($id);
 	
+}elseif ($callback_data=='доверяет') {	
+	
+	$from_id = $id;
+	
+	_запись_в_таблицу_маркет('doverie', '1');
+	
+	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");
+	
 }elseif ($callback_data=='старт') {	
 
 	_start_AvtoZakazBota();
