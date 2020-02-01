@@ -192,16 +192,18 @@ function _повторить() {
 			
 			foreach ($результМассив as $строка) {
 				
-				$название = $строка['nazvanie'];
-				
-				$bot->sendMessage($callback_from_id, $название);
+				$название = $строка['nazvanie'];				
 				
 				if (strlen($название)>7) $название = substr($название, 0, 6);
+				
+				$bot->sendMessage($callback_from_id, $название);
 				
 				$кнопки .= [
 					'text' => $строка['kuplu_prodam'] ." ". $название,
 					'callback_data' => 'повтор:' . $строка['id_zakaz']
-				];						
+				];
+				
+				$bot->sendMessage($callback_from_id, $кнопки);
 				
 			}
 						
