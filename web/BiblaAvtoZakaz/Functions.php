@@ -199,7 +199,7 @@ function _повторить() {
 				$кнопки = array_merge($кнопки, [[
 					'text' => "{$строка['kuplu_prodam']} {$название}",
 					'callback_data' => "повтор:{$строка['id_zakaz']}"
-				]];
+				]]);
 				
 				$bot->sendMessage($callback_from_id, $кнопки);
 				
