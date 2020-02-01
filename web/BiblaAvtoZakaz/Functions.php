@@ -214,11 +214,13 @@ function _повторить() {
 			
 			$реплика = "Выберите лот для повтора.";
 			
-			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);
+			$bot->sendMessage($callback_from_id, "хз");
 			
-		}
+			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);			
+			
+		}else throw new Exception("Нет такой записи в БД");
 		
-	}
+	}else throw new Exception("Не получился запрос к БД");
 
 }
 
