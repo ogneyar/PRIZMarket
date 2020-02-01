@@ -1,5 +1,15 @@
 ﻿<?
 
+if (strpos($callback_data, ":")!==false) {
+
+	$komanda = strstr($callback_data, ':', true);	
+	
+	$id = substr(strrchr($callback_data, ":"), 1);
+	
+	$callback_data = $komanda;
+
+}
+
 if ($callback_data=='создать'){
 
 	_создать();
@@ -55,6 +65,10 @@ if ($callback_data=='создать'){
 }elseif ($callback_data=='не_нужен_альбом') {	
 
 	_не_нужен_альбом();
+
+}elseif ($callback_data=='опубликовать') {	
+
+	_вывод_лота_на_каналы($id);
 
 }
 

@@ -36,6 +36,7 @@
 ** _не_нужен_альбом
 ** _опишите_подробно
 ** _ожидание_результата
+** _отправка_лота_админам
 ** _вывод_лота_на_каналы
 **
 **
@@ -814,15 +815,45 @@ function _ожидание_результата() {
 
 
 
+// отправка лота администрации на проверку
+function _отправка_лота_админам() {
+
+	global $bot, $callback_from_username, $from_username, $admin_group, $callback_from_id, $from_id;
+	
+	if (!$callback_from_username) $callback_from_username = $from_username;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;
+	
+	$inLine = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => 'Опубликовать',
+					'callback_data' => 'опубликовать:'.$callback_from_id
+				]
+			]
+		]
+	];
+	
+	$reply = "Проверьте новый лот от клиента {$callback_from_username}";
+	
+	$bot->sendMessage($admin_group, $reply, null, $inLine);
+
+}
+
+
+
+
+
 
 // вывод на канал подробности уже готового лота
-function _вывод_лота_на_каналы() {
+function _вывод_лота_на_каналы($id_client, $номер_лота = '0') {
 
-	global $table_market, $bot, $master, $chat_id, $callback_from_id, $from_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
+	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
 	
-	if (!$callback_from_id) $callback_from_id = $from_id;		
+	$from_id = $id_client; // это для функции _запись_в_таблицу_маркет()
 	
-	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz=0";
+	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$id_client} AND id_zakaz='{$номер_лота}'";
 		
 	$результат = $mysqli->query($запрос);
 	
@@ -862,7 +893,7 @@ function _вывод_лота_на_каналы() {
 				
 				$текст = str_replace('_', '\_', $текст);
 				
-				$текст = "{$куплю_или_продам}\n\n▪️{$название_для_подробностей}{$текст}";						
+				$текст = "{$куплю_или_продам}\n\n▪️{$название_для_подробностей}{$текст}";			
 				
 				if ($формат_файла == 'фото') {
 				
@@ -872,9 +903,7 @@ function _вывод_лота_на_каналы() {
 					
 					$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];		
 					
-					$результат = $imgBB->upload($ссыль);
-					
-					//$bot->sendMessage($master, $bot->PrintArray($результат));
+					$результат = $imgBB->upload($ссыль);					
 					
 					if ($результат) {		
 						
@@ -886,7 +915,7 @@ function _вывод_лота_на_каналы() {
 					
 					$реплика = "[ ]({$imgBB_url}){$текст}";	
 					
-					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);					
+					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);		
 				
 				}else $КаналИнфо = $bot->sendMessage($channel_podrobno, $текст, markdown);
 				
@@ -906,7 +935,7 @@ function _вывод_лота_на_каналы() {
 					
 					_запись_в_таблицу_маркет('url_podrobno', $ссыль_на_подробности);
 					
-					_запись_в_таблицу_маркет('status', "опубликован");
+					_запись_в_таблицу_маркет('status', "одобрен");
 					
 					$inLine = [
 						'inline_keyboard' => [
@@ -923,15 +952,23 @@ function _вывод_лота_на_каналы() {
 					
 					$текст = str_replace('_', '\_', $текст);
 					
-					$текст = "{$куплю_или_продам}\n\n▪️[{$название}]({$ссыль_в_названии}){$текст}";					
+					$текст = "{$куплю_или_продам}\n\n▪️[{$название}]({$ссыль_в_названии}){$текст}";
 					
 					if ($формат_файла == 'фото') {
 					
-						$bot->sendPhoto($channel_market, $файлАйди, $текст, markdown, $inLine);
+						$публикация = $bot->sendPhoto($channel_market, $файлАйди, $текст, markdown, $inLine);
 						
 					}elseif ($формат_файла == 'видео') {
 						
-						$bot->sendVideo($channel_market, $файлАйди, $текст, markdown, $inLine);
+						$публикация = $bot->sendVideo($channel_market, $файлАйди, $текст, markdown, $inLine);
+						
+					}
+					
+					if ($публикация) {
+						
+						$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
+						
+						$bot->sendMessage($id_client, $реплика, markdown);	
 						
 					}
 					
