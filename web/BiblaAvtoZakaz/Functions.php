@@ -196,24 +196,24 @@ function _повторить() {
 				
 				if (strlen($название)>14) $название = substr($название, 0, 13);
 				
-				$кнопки = array_merge($кнопки, [[
+				$кнопки = array_merge($кнопки, [[[
 					'text' => "{$строка['kuplu_prodam']} {$название}",
 					'callback_data' => "повтор:{$строка['id_zakaz']}"
-				]]);
+				]]]);
 				
-				$bot->sendMessage($callback_from_id, $кнопки);
+				//$bot->sendMessage($callback_from_id, $кнопки);
 				
 			}		
 			
 			$inLine = [
-				'inline_keyboard' => [
-					$кнопки
-				]
+			
+				'inline_keyboard' => $кнопки
+				
 			];
 			
 			$реплика = "Выберите лот для повтора.";
 			
-			$bot->sendMessage($callback_from_id, $bot->PrintArray($кнопки));
+			//$bot->sendMessage($callback_from_id, $bot->PrintArray($кнопки));
 			
 			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);			
 			
