@@ -32,5 +32,6 @@
 	$channel_market = getenv('CHANNEL_MARKET');
 	$channel_info = getenv('CHANNEL_INFO');
 	$channel_podrobno = getenv('CHANEL_PODROBNO');
+	$channel_media_market = getenv('CHANNEL_MEDIA_MARKET');
 	
 ?>
