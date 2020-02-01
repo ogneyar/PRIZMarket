@@ -188,11 +188,13 @@ function _повторить() {
 			
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 			
-			$кнопки = [];
+			$кнопки = null;
 			
 			foreach ($результМассив as $строка) {
 				
 				$название = $строка['nazvanie'];
+				
+				$bot->sendMessage($callback_from_id, $название);
 				
 				if (strlen($название)>7) $название = substr($название, 0, 6);
 				
