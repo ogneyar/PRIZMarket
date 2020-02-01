@@ -1065,7 +1065,7 @@ function _отправка_лота_админам() {
 function _вывод_лота_на_каналы($id_client, $номер_лота = 0) {
 
 	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
-	global $таблица_медиагруппа, $channel_media_market, $master, $message_id, $callback_from_id;
+	global $таблица_медиагруппа, $channel_media_market, $master, $message_id;
 	
 	$from_id = $id_client; // это для функции _запись_в_таблицу_маркет()
 	
@@ -1260,7 +1260,7 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 		]
 	];
 	
-	$bot->editMessageReplyMarkup($callback_from_id, $message_id, null, $inLine);
+	$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
 
 }
 
