@@ -102,6 +102,17 @@ if ($text == 'база') {
 	}else throw new Exception("Не смог изменить таблицу {$table_users}");	
 	
 	
+}elseif ($text == 'удали лот') {
+	
+	$query = "DELETE FROM ".$table_market." WHERE id_zakaz=".$id;				
+	
+	if ($result = $mysqli->query($query)) {
+	
+		$bot->sendMessage($master, "Всё отлично!");
+		
+	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
+	
+	
 }elseif (($text == "админ")&&($id)) {		
 		
 	$query = "UPDATE ".$table_users." SET status='admin' WHERE id_client=".$id;
