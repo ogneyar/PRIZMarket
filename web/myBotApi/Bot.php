@@ -20,6 +20,8 @@
  *
  * sendVideo
  *
+ * sendMediaGroup
+ *
  * answerCallbackQuery
  *
  * getChat
@@ -388,6 +390,42 @@ class Bot
 		return $response;
 	}
 	
+	
+	
+	
+	/*
+	**  функция отправки группы фото или видео
+	**
+	**  @param int $chat_id
+ 	**  @param array obj $media
+	**  @param bool $disable_notification
+	**  @param int $reply_to_message_id	
+	**
+	**  
+	**  @return array (message)
+	*/
+    public function sendMediaGroup(
+		$chat_id, 
+		$media,		
+		$disable_notification = false,
+		$reply_to_message_id = null			
+	) {	
+		
+		$response = $this->call("sendMediaGroup", [
+			'chat_id' => $chat_id,
+			'media' => json_encode($media),			
+			'disable_notification' => $disable_notification,
+			'reply_to_message_id' => $reply_to_message_id			
+		]);	
+				
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+		
+		return $response;
+	}
 	
 	
 	
