@@ -88,6 +88,10 @@ if ($callback_data=='создать'){
 	
 	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");
 	
+}elseif ($callback_data=='редактировать') {	
+		
+	$bot->answerCallbackQuery($callback_query_id, "Функция ещё не реализованна!");
+	
 }elseif ($callback_data=='отказать') {	
 	
 	$bot->sendMessage($id, "Вам отказанно.\n\n/start");

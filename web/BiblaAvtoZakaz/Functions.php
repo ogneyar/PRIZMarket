@@ -965,12 +965,6 @@ function _отправка_лота_админам() {
 			],
 			[
 				[
-					'text' => 'Редактировать',
-					'callback_data' => 'редактировать:'.$callback_from_id
-				]
-			],
-			[
-				[
 					'text' => 'ОТКАЗАТЬ',
 					'callback_data' => 'отказать:'.$callback_from_id
 				]
@@ -1071,7 +1065,7 @@ function _отправка_лота_админам() {
 function _вывод_лота_на_каналы($id_client, $номер_лота = 0) {
 
 	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
-	global $таблица_медиагруппа, $channel_media_market, $master;
+	global $таблица_медиагруппа, $channel_media_market, $master, $message_id, $callback_from_id;
 	
 	$from_id = $id_client; // это для функции _запись_в_таблицу_маркет()
 	
@@ -1204,46 +1198,69 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 	
 	}else throw new Exception("Нет такого заказа..");
 	
-	$запрос = "SELECT * FROM {$таблица_медиагруппа} WHERE id_client={$id_client} AND id='0'";
+	if ($фото_альбом) {
 	
-	$результат = $mysqli->query($запрос);
-	
-	if ($результат) {
+		$запрос = "SELECT * FROM {$таблица_медиагруппа} WHERE id_client={$id_client} AND id='0'";
 		
-		if ($результат->num_rows > 1) {
+		$результат = $mysqli->query($запрос);
 		
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+		if ($результат) {
 			
-			$файл_медиа = [];
+			if ($результат->num_rows > 1) {
 			
-			foreach ($результМассив as $строка) {
+				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 				
-				if ($строка['format_file'] == 'фото') {
+				$файл_медиа = [];
+				
+				foreach ($результМассив as $строка) {
 					
-					$медиа = $строка['file_id'];
-					
-					$файл_медиа = array_merge($файл_медиа, [
-					
-						[
-		
-							'type' => 'photo',							
-							'media' => $медиа
-		
-						]
+					if ($строка['format_file'] == 'фото') {
 						
-					]);
-					
-				}else $bot->sendMessage($master, "не фото");
-				
-			}
+						$медиа = $строка['file_id'];
+						
+						$файл_медиа = array_merge($файл_медиа, [
+						
+							[
 			
-		}else throw new Exception("Или нет заказа или меньше одного..");
+								'type' => 'photo',							
+								'media' => $медиа
+			
+							]
+							
+						]);
+						
+					}else $bot->sendMessage($master, "не фото");
+					
+				}
+				
+			}else throw new Exception("Или нет заказа или меньше одного..");
+			
+		}else throw new Exception("Нет такого заказа..");
 		
-	}else throw new Exception("Нет такого заказа..");
-	
-	_запись_в_таблицу_медиагрупа($id_client, $id_zakaz);
+		_запись_в_таблицу_медиагрупа($id_client, $id_zakaz);
 
-	$bot->sendMediaGroup($channel_media_market, $файл_медиа);
+		$bot->sendMediaGroup($channel_media_market, $файл_медиа);
+	
+	}
+	
+	$inLine = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => 'Опубликованно',
+					'url' => $ссыль_на_подробности
+				]
+			],
+			[
+				[
+					'text' => 'Редактировать',
+					'callback_data' => 'редактировать:'.$id_zakaz
+				]
+			]
+		]
+	];
+	
+	$bot->editMessageReplyMarkup($callback_from_id, $message_id, null, $inLine);
 
 }
 
