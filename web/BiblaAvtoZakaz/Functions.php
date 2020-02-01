@@ -179,8 +179,6 @@ function _повторить() {
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	
-	$bot->sendMessage($callback_from_id, "1");
-	
 	$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";
 	
 	$результат = $mysqli->query($запрос);
@@ -193,8 +191,6 @@ function _повторить() {
 			
 			$кнопки = [];			
 			
-			$bot->sendMessage($callback_from_id, "2");
-			
 			foreach ($результМассив as $строка) {
 				
 				$название = $строка['nazvanie'];				
@@ -206,7 +202,7 @@ function _повторить() {
 					'callback_data' => "повтор:{$строка['id_zakaz']}"
 				]]]);
 				
-				//$bot->sendMessage($callback_from_id, $кнопки);
+				$bot->sendMessage($callback_from_id, $кнопки);
 				
 			}		
 			
@@ -223,11 +219,11 @@ function _повторить() {
 			
 			$реплика = "Выберите лот для повтора.";
 			
-			//$bot->sendMessage($callback_from_id, $bot->PrintArray($кнопки));
+			$bot->sendMessage($callback_from_id, $bot->PrintArray($кнопки));
 			
 			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);		
 
-			$bot->sendMessage($callback_from_id, "3");
+			//$bot->sendMessage($callback_from_id, "3");
 			
 		}else throw new Exception("Нет такой записи в БД");
 		
