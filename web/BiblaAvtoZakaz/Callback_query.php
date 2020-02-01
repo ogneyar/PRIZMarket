@@ -14,6 +14,10 @@ if ($callback_data=='создать'){
 
 	_создать();
 
+}elseif ($callback_data=='повторить') {	
+
+	_повторить();
+
 }elseif ($callback_data=='продам') {	
 
 	_продам();
