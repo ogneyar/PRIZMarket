@@ -188,7 +188,7 @@ function _повторить() {
 			
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 			
-			$кнопки = [[]];			
+			$кнопки = [];			
 			
 			foreach ($результМассив as $строка) {
 				
@@ -196,16 +196,20 @@ function _повторить() {
 				
 				if (strlen($название)>14) $название = substr($название, 0, 13);
 				
-				$кнопки .= {
+				$кнопки = array_merge($кнопки, [[
 					'text' => "{$строка['kuplu_prodam']} {$название}",
 					'callback_data' => "повтор:{$строка['id_zakaz']}"
-				};
+				]];
 				
 				$bot->sendMessage($callback_from_id, $кнопки);
 				
 			}		
 			
-			$inLine = ['inline_keyboard' => $кнопки];
+			$inLine = [
+				'inline_keyboard' => [
+					$кнопки
+				]
+			];
 			
 			$реплика = "Выберите лот для повтора.";
 			
