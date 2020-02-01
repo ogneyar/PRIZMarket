@@ -72,6 +72,11 @@ if ($callback_data=='создать'){
 
 	$bot->sendMessage($master, $id);
 	
+}elseif ($callback_data=='опубликовать:351009636') {	
+	
+	$bot->sendMessage($master, "ttt");
+	
 }
+
 
 ?>
