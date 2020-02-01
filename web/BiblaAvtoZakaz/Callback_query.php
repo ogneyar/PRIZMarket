@@ -74,6 +74,10 @@ if ($callback_data=='создать'){
 
 	_вывод_лота_на_каналы($id);
 	
+}elseif ($callback_data=='старт') {	
+
+	_start_AvtoZakazBota();
+	
 }
 
 

@@ -205,6 +205,11 @@ function _повторить() {
 				
 			}		
 			
+			$кнопки = array_merge($кнопки, [[[
+					'text' => "в Главное меню",
+					'callback_data' => "старт"
+				]]]);
+			
 			$inLine = [
 			
 				'inline_keyboard' => $кнопки
