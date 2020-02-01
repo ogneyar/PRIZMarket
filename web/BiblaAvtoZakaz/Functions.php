@@ -7,6 +7,7 @@
 ** _existence
 **
 ** _создать
+** _повторить
 ** _куплю
 ** _продам
 ** _продам_куплю
@@ -67,14 +68,18 @@ function _info_AvtoZakazBota() {
 				[
 					'text' => 'Создать заявку',
 					'callback_data' => 'создать'
+				],
+				[
+					'text' => 'Повторить',
+					'callback_data' => 'повторить'
 				]
 			]
 		]
 	];
 	
 	$reply = "Это Бот для подачи заявки на публикацию вашего лота на канале [Покупки на PRIZMarket]".
-		"(https://t.me/prizm_market)\n\nПошагово пройдите по всем пунктам. Начните с нажатия кнопки ".
-		"'Создать заявку'.";
+		"(https://t.me/prizm_market)\n\nДля подачи заявки на публикацию пошагово пройдите".
+		" по всем пунктам. Начните с нажатия кнопки 'Создать заявку'.\nДля повтора уже имеющейся заявки - нажмите 'Повторить'.";
 
 	$bot->sendMessage($chat_id, $reply, markdown, $inLine_sozdanie, null, true);
 
@@ -164,6 +169,59 @@ function _создать() {
 	$bot->sendMessage($callback_from_id, $reply, null, $inLine);
 
 }
+
+
+
+function _повторить() {
+	
+	global $table_market, $mysqli, $callback_from_id, $from_id;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;		
+	
+	$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";
+	
+	$результат = $mysqli->query($запрос);
+	
+	if ($результат) {
+		
+		if ($результат->num_rows>0) {
+			
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			
+			$кнопки = [];
+			
+			foreach ($результМассив as $строка) {
+				
+				$название = $строка['nazvanie'];
+				
+				if (strlen($название)>7) $название = substr($название, 0, 6);
+				
+				$кнопки .= [
+					'text' => $строка['kuplu_prodam'] ." ". $название,
+					'callback_data' => 'повтор:' . $строка['id_zakaz']
+				];						
+				
+			}
+						
+			
+			$inLine = [
+				'inline_keyboard' => [
+					[
+						$кнопки
+					]
+				]
+			];
+			
+			$реплика = "Выберите лот для повтора.";
+			
+			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);
+			
+		}
+		
+	}
+
+}
+
 
 
 // Если клиент выбрал хештег КУПЛЮ
