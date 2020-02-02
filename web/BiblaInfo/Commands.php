@@ -25,7 +25,7 @@ if ($text == 'база') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `avtozakaz_pzmarket` ADD `foto_album` BOOLEAN NULL DEFAULT NULL";
+	$query = "ALTER TABLE `avtozakaz_mediagroup` ADD `url` BIGINT( 200 ) NULL DEFAULT NULL";
 	
 	if ($result = $mysqli->query($query)) {
 	
