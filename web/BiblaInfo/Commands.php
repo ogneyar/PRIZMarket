@@ -25,7 +25,7 @@ if ($text == 'база') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `avtozakaz_mediagroup` ADD `url` BIGINT( 200 ) NULL DEFAULT NULL";
+	$query = "ALTER TABLE `avtozakaz_mediagroup` CHANGE `url` `url` VARCHAR( 200 ) NULL DEFAULT NULL";
 	
 	if ($result = $mysqli->query($query)) {
 	
