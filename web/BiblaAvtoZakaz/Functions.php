@@ -1275,6 +1275,8 @@ function _публикация_на_канале_медиа($номер_клие
 	}else throw new Exception("Нет такого заказа..");		
 
 	$результат = $bot->sendMediaGroup($channel_media_market, $файл_медиа);
+	
+	$bot->sendMessage($master, $bot->PrintArray($результат));
 		
 	if ($результат) {		
 		
