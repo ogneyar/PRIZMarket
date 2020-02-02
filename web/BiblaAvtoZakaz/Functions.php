@@ -847,15 +847,15 @@ function _есть_ли_такой_медиа_альбом($медиа_айди)
 
 
 // функция записи в таблицу avtozakaz_mediagroup
-function _запись_в_таблицу_медиагрупа($id_client = null, $id_zakaz = null) {
+function _запись_в_таблицу_медиагрупа($id_client = null, $id_zakaz = null, $url_media_group = null) {
 	
 	global $таблица_медиагруппа, $mysqli, $callback_from_id, $from_id, $media_group_id, $file_id, $формат_файла;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	
-	if ($id_client&&$id_zakaz) {
+	if ($id_client&&$id_zakaz&&$url_media_group) {
 		
-		$query ="UPDATE {$таблица_медиагруппа} SET id='{$id_zakaz}' WHERE id_client={$id_client} AND id='0'";
+		$query ="UPDATE {$таблица_медиагруппа} SET id='{$id_zakaz}', url='{$url_media_group}' WHERE id_client={$id_client} AND id='0'";
 		
 		$result = $mysqli->query($query);
 			
@@ -870,7 +870,7 @@ function _запись_в_таблицу_медиагрупа($id_client = null,
 			`format_file`,
 			`file_id`
 		) VALUES (
-			'0', '{$callback_from_id}', '{$media_group_id}', '{$формат_файла}', '{$file_id}'
+			'0', '{$callback_from_id}', '{$media_group_id}', '{$формат_файла}', '{$file_id}', ''
 		)";
 		
 		$result = $mysqli->query($query);
@@ -990,8 +990,6 @@ function _отправка_лота_админам() {
 				
 				$название = $строка['nazvanie'];
 
-				//$название = str_replace('_', '\_', $название);
-
 				if ($строка['url_nazv']) {
 				
 					$ссыль_в_названии = $строка['url_nazv'];	
@@ -1040,7 +1038,7 @@ function _отправка_лота_админам() {
 						
 					}else throw new Exception("Не смог выложить пост..");					
 					
-					$реплика = "[ _____ ]({$imgBB_url})\n{$текст}";	
+					$реплика = "[_________]({$imgBB_url})\n{$текст}";	
 					
 					$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);	
 				
@@ -1082,166 +1080,129 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 			foreach ($результМассив as $строка) {
 			
 				$файлАйди = $строка['file_id'];		
-
-				$формат_файла = $строка['format_file'];
-				
+				$формат_файла = $строка['format_file'];				
 				$название = $строка['nazvanie'];
-
-				//$название = str_replace('_', '\_', $название);
-
-				if ($строка['url_nazv']) {
 				
-					$ссыль_в_названии = $строка['url_nazv'];	
-					
-					$название_для_подробностей = "[{$название}]({$ссыль_в_названии})";
-					
+				if ($строка['url_nazv']) {				
+					$ссыль_в_названии = $строка['url_nazv'];						
+					$название_для_подробностей = "[{$название}]({$ссыль_в_названии})";					
 				}else $название_для_подробностей = str_replace('_', '\_', $название);
 				
-				$куплю_или_продам = $строка['kuplu_prodam'];				
-				
-				$валюта = $строка['valuta'];
-				
-				$хештеги_города = $строка['gorod'];
-				
-				$юзера_имя = $строка['username'];
-				
+				$куплю_или_продам = $строка['kuplu_prodam'];								
+				$валюта = $строка['valuta'];				
+				$хештеги_города = $строка['gorod'];				
+				$юзера_имя = $строка['username'];				
 				$доверие = $строка['doverie'];
+				$категория = $строка['otdel'];				
+				$подробности = $строка['podrobno'];			
 				
-				$категория = $строка['otdel'];
-				
-				$подробности = $строка['podrobno'];
-				
-				$хештеги = "{$куплю_или_продам}\n\n{$категория}\n▪️";
-				
+				$хештеги = "{$куплю_или_продам}\n\n{$категория}\n▪️";				
 				$хештеги = str_replace('_', '\_', $хештеги);
 				
-				$текст = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}\n\n{$подробности}";
-				
-				$текст = str_replace('_', '\_', $текст);
-				
+				$текст = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}\n\n{$подробности}";				
+				$текст = str_replace('_', '\_', $текст);				
 				$текст = "{$хештеги}{$название_для_подробностей}{$текст}";
 				
-				$imgBB_url = $строка['url_tgraph'];				
-				
-				if ($imgBB_url) {				
-					
-					$реплика = "[ _____ ]({$imgBB_url})\n{$текст}";	
-					
-					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);		
-				
-				}else $КаналИнфо = $bot->sendMessage($channel_podrobno, $текст, markdown);
-				
-				if ($КаналИнфо) {
-					
-					$id_zakaz = $КаналИнфо['message_id'];
-					
-					$фото_альбом = $строка['foto_album'];
-					
-					$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";
-					
-					_запись_в_таблицу_маркет('id_zakaz', $id_zakaz);
+				$imgBB_url = $строка['url_tgraph'];	
 
-					if (!$ссыль_в_названии) {
-					
-						_запись_в_таблицу_маркет('url_nazv', $ссыль_на_подробности);			
-						
-						$ссыль_в_названии = $ссыль_на_подробности;
-						
-					}
-					
-					_запись_в_таблицу_маркет('url_podrobno', $ссыль_на_подробности);
-					
-					_запись_в_таблицу_маркет('status', "одобрен");
-					
+				if ($imgBB_url) {								
+					$реплика = "[_________]({$imgBB_url})\n{$текст}";					
+				}else $реплика = $текст;		
+				
+				if ($строка['foto_album']) {
+	
+					$ссылка_на_канал_медиа = _публикация_на_канале_медиа($id_client);
+									
 					$inLine = [
 						'inline_keyboard' => [
 							[
 								[
-									'text' => 'Подробнее',
-									'url' => $ссыль_на_подробности
+									'text' => 'Фото',
+									'url' => $ссылка_на_канал_медиа
 								]
 							]
 						]
-					];				
+					];					
 					
-					$текст = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}";
-					
-					$текст = str_replace('_', '\_', $текст);
-					
-					if ($доверие) $текст .= "\n\n✅ PRIZMarket доверяет❗️"; 
-					
-					$текст = "{$хештеги}[{$название}]({$ссыль_в_названии}){$текст}";
-					
-					if ($формат_файла == 'фото') {
-					
-						$публикация = $bot->sendPhoto($channel_market, $файлАйди, $текст, markdown, $inLine);
-						
-					}elseif ($формат_файла == 'видео') {
-						
-						$публикация = $bot->sendVideo($channel_market, $файлАйди, $текст, markdown, $inLine);
-						
-					}
-					
-					if ($публикация) {
-						
-						$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
-						
-						$bot->sendMessage($id_client, $реплика, markdown);						
-						
-					}else throw new Exception("Не смог выложить пост на основной канал.");	
-					
-				}else throw new Exception("Не отправился лот на канал Подробности..");			
-			
+					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown, $inLine);		
+				
+				}else $КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);					
+				
 			}
+			
+				
+			if ($КаналИнфо) {				
+					
+				$id_zakaz = $КаналИнфо['message_id'];
+				
+				if ($ссыль_на_группу_медиа) {
+				
+					_запись_в_таблицу_медиагрупа($id_client, $id_zakaz, $ссыль_на_группу_медиа);
+					
+				}
+					
+				$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";
+				
+				_запись_в_таблицу_маркет('id_zakaz', $id_zakaz);
+
+				if (!$ссыль_в_названии) {
+					
+					_запись_в_таблицу_маркет('url_nazv', $ссыль_на_подробности);			
+						
+					$ссыль_в_названии = $ссыль_на_подробности;
+						
+				}
+					
+				_запись_в_таблицу_маркет('url_podrobno', $ссыль_на_подробности);
+					
+				_запись_в_таблицу_маркет('status', "одобрен");
+					
+				$inLine = [
+					'inline_keyboard' => [
+						[
+							[
+								'text' => 'Подробнее',
+								'url' => $ссыль_на_подробности
+							]
+						]
+					]
+				];				
+					
+				$текст = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}";
+					
+				$текст = str_replace('_', '\_', $текст);
+					
+				if ($доверие) $текст .= "\n\n✅ PRIZMarket доверяет❗️"; 
+					
+				$текст = "{$хештеги}[{$название}]({$ссыль_в_названии}){$текст}";
+					
+				if ($формат_файла == 'фото') {
+					
+					$публикация = $bot->sendPhoto($channel_market, $файлАйди, $текст, markdown, $inLine);
+						
+				}elseif ($формат_файла == 'видео') {
+						
+					$публикация = $bot->sendVideo($channel_market, $файлАйди, $текст, markdown, $inLine);
+						
+				}
+					
+				if ($публикация) {
+						
+					$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
+						
+					$bot->sendMessage($id_client, $реплика, markdown);						
+						
+				}else throw new Exception("Не смог выложить пост на основной канал.");	
+					
+			}else throw new Exception("Не отправился лот на канал Подробности..");			
+			
+			
 		
 		}else throw new Exception("Или нет заказа или больше одного..");			
 	
 	}else throw new Exception("Нет такого заказа..");
 	
-	if ($фото_альбом) {
 	
-		$запрос = "SELECT * FROM {$таблица_медиагруппа} WHERE id_client={$id_client} AND id='0'";
-		
-		$результат = $mysqli->query($запрос);
-		
-		if ($результат) {
-			
-			if ($результат->num_rows > 1) {
-			
-				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
-				
-				$файл_медиа = [];
-				
-				foreach ($результМассив as $строка) {
-					
-					if ($строка['format_file'] == 'фото') {
-						
-						$медиа = $строка['file_id'];
-						
-						$файл_медиа = array_merge($файл_медиа, [
-						
-							[
-			
-								'type' => 'photo',							
-								'media' => $медиа
-			
-							]
-							
-						]);
-						
-					}else $bot->sendMessage($master, "не фото");
-					
-				}
-				
-			}else throw new Exception("Или нет заказа или меньше одного..");
-			
-		}else throw new Exception("Нет такого заказа..");
-		
-		_запись_в_таблицу_медиагрупа($id_client, $id_zakaz);
-
-		$bot->sendMediaGroup($channel_media_market, $файл_медиа);
-	
-	}
 	
 	$inLine = [
 		'inline_keyboard' => [
@@ -1261,6 +1222,66 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 	];
 	
 	$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
+
+}
+
+
+
+
+
+function _публикация_на_канале_медиа($номер_клиента) {
+	
+	global $bot, $таблица_медиагруппа, $mysqli, $channel_media_market;
+
+	
+	$запрос = "SELECT * FROM {$таблица_медиагруппа} WHERE id_client={$номер_клиента} AND id='0'";
+		
+	$результат = $mysqli->query($запрос);
+		
+	if ($результат) {
+			
+		if ($результат->num_rows > 1) {
+			
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+				
+			$файл_медиа = [];
+				
+			foreach ($результМассив as $строка) {
+					
+				if ($строка['format_file'] == 'фото') {
+						
+					$тип = 'photo';
+						
+				}elseif ($строка['format_file'] == 'видео') {
+					
+					$тип = 'video';
+					
+				}
+						
+				$медиа = $строка['file_id'];
+						
+				$файл_медиа = array_merge($файл_медиа, [						
+					[			
+						'type' => $тип,							
+						'media' => $медиа			
+					]							
+				]);
+					
+			}
+				
+		}else throw new Exception("Или нет заказа или меньше одного..");
+			
+	}else throw new Exception("Нет такого заказа..");		
+
+	$результат = $bot->sendMediaGroup($channel_media_market, $файл_медиа);
+		
+	if ($результат) {		
+		
+		$ссыль_на_группу_медиа = "https://t.me/{$результат['chat']['username']}/{$результат['message_id']}";	
+			
+		return $ссыль_на_группу_медиа;
+
+	}else return false;
 
 }
 
