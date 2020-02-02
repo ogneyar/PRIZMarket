@@ -1276,11 +1276,11 @@ function _публикация_на_канале_медиа($номер_клие
 
 	$результат = $bot->sendMediaGroup($channel_media_market, $файл_медиа);
 	
-	$bot->sendMessage($master, $bot->PrintArray($результат));
+	//$bot->sendMessage($master, $bot->PrintArray($результат));
 		
 	if ($результат) {		
 		
-		$ссыль_на_группу_медиа = "https://t.me/{$результат['chat']['username']}/{$результат['message_id']}";	
+		$ссыль_на_группу_медиа = "https://t.me/{$результат[0]['chat']['username']}/{$результат[0]['message_id']}";	
 			
 		return $ссыль_на_группу_медиа;
 
