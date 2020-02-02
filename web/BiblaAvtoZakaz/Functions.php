@@ -1110,24 +1110,51 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					$реплика = "[_________]({$imgBB_url})\n{$текст}";					
 				}else $реплика = $текст;		
 				
+				
+				
+				$кнопки = [];
+				
 				if ($строка['foto_album']) {
 	
-					$ссылка_на_канал_медиа = _публикация_на_канале_медиа($id_client);
-									
-					$inLine = [
-						'inline_keyboard' => [
+					$ссылка_на_канал_медиа = _публикация_на_канале_медиа($id_client);					
+					
+					$кнопки = array_merge($кнопки, [
+						[
 							[
-								[
-									'text' => 'Фото',
-									'url' => $ссылка_на_канал_медиа
-								]
+								'text' => 'Фото',
+								'url' => $ссылка_на_канал_медиа
 							]
 						]
-					];					
-					
-					$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown, $inLine);		
+					]);					
 				
-				}else $КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown);					
+				}
+				
+				$кнопки = array_merge($кнопки, [
+					[
+						[
+							'text' => 'INSTAGRAM PRIZMarket',
+							'url' => 'https://www.instagram.com/prizm_market_inst'
+						],
+						[
+							'text' => 'PZMarket bot',
+							'url' => 'https://t.me/Prizm_market_bot'
+						]
+					],
+					[
+						[
+							'text' => 'Заказать пост',
+							'url' => 'https://t.me/Zakaz_prizm_bot'
+						],
+						[
+							'text' => 'Канал PRIZMarket',
+							'url' => 'https://t.me/prizm_market/'
+						]
+					]
+				]);
+				
+				$inLine = ['inline_keyboard' => $кнопки];				
+				
+				$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown, $inLine);		
 				
 			}
 			
