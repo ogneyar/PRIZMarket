@@ -868,7 +868,8 @@ function _запись_в_таблицу_медиагрупа($id_client = null,
 			`id_client`,
 			`media_group_id`,
 			`format_file`,
-			`file_id`
+			`file_id`,
+			`url`
 		) VALUES (
 			'0', '{$callback_from_id}', '{$media_group_id}', '{$формат_файла}', '{$file_id}', ''
 		)";
