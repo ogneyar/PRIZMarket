@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 29 2020 г., 13:40
+-- Время создания: Фев 02 2020 г., 18:34
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS `avtozakaz_mediagroup` (
   `id_client` bigint(20) DEFAULT NULL,
   `media_group_id` bigint(20) DEFAULT NULL,
   `format_file` varchar(20) DEFAULT NULL,
-  `file_id` varchar(200) DEFAULT NULL
+  `file_id` varchar(200) DEFAULT NULL,
+  `url` bigint(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
