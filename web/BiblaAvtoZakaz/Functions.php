@@ -367,14 +367,8 @@ function _узнать_имя_по_номеру_лота($номер_лота) {
 		
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 			
-			foreach ($результМассив as $строка) {
+			return $строка[0]['username'];
 			
-				$bot->sendMessage($master, $строка['username']);
-				
-				return $строка['username'];
-			
-			}
-		
 		}else throw new Exception("Или нет заказа или больше одного..");
 	
 	}else throw new Exception("Нет такого заказа..");	
