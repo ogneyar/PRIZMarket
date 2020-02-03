@@ -260,24 +260,44 @@ if ($data['message']){
 
 }
 
+$RKeyMarkup = [ 'keyboard' => [	[ [	'text' => "Старт" ], [ 'text' => "Стоп" ] ] ], 
+	'resize_keyboard' => true,     'selective' => true ];
 
+//--------------------------------------------------------------------------------
+//-------------------------- КНОПКИ ----------------------------------------------
 
-$RKeyMarkup = [
-	'keyboard' => [
-		[			
-			[
-				'text' => "Старт"
-			],
-			[
-				'text' => "Стоп"
-			]
-		]
-	],
-	'resize_keyboard' => true,
-        'selective' => true,
+// обычная кнопка, внизу экрана
+$KeyboardButton = [
+	'text' => "Новая кнопка!",
+	'request_contact' => false,
+	'request_location' => false,
+	'request_poll' => null, // кнопка опросса KeyboardButtonPollType
 ];
 
+// одна кнопка на клавиатуре, прикреплённой к сообщению
+$InlineKeyboardButton = [
+	'text' => 'Текст',
+	'callback_data' => 'текст_команда',
+	'url' => null,
+	'login_url' => null,
+	'switch_inline_query' => null,
+	'switch_inline_query_current_chat' => null,
+	'callback_game' => null,
+	'pay' => false
+];
 
+// кнопка опроса
+$KeyboardButtonPollType = [
+	'type' => 'quiz' // или 'regular' или 'otherwise'
+];
+
+//--------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------
+//---------------------------------- КЛАВИАТУРЫ ----------------------------------
+
+// клавиатура вместо основной
 $ReplyKeyboardMarkup = [
 	'keyboard' => [
 		[
@@ -285,11 +305,15 @@ $ReplyKeyboardMarkup = [
 				'text' => "Новая кнопка!",
 				'request_contact' => false,
 				'request_location' => false,
+				'request_poll' => [
+					'type' => 'quiz' // или 'regular' или 'otherwise'
+				];
 			],
 			[
 				'text' => "Вторая новая кнопка!",
 				'request_contact' => false,
 				'request_location' => false,
+				'request_poll' => null,
 			],
 		],
 	],
@@ -298,25 +322,45 @@ $ReplyKeyboardMarkup = [
 	'selective' => false,
 ];
 
-
-$HideKeyboard = [
-	'hide_keyboard' => true,
-    'selective' => false,
-];
-
-
+// клавиатура на линии, привязанная к сообщению
 $InlineKeyboardMarkup = [
 	'inline_keyboard' => [
 		[
 			[
 				'text' => 'Информация',
-				'callback_data' => 'information'
+				'callback_data' => 'information',
+				'url' => null,
+				'login_url' => null,
+				'switch_inline_query' => null,
+				'switch_inline_query_current_chat' => null,
+				'callback_game' => null,
+				'pay' => false
 			]
 		]
 	]
 ];
 
+//-------------------------------------------------------------------------------
 
+
+//-------------------------------------------------------------------------------
+
+// удаление клавиатуры
+$HideKeyboard = [
+	'hide_keyboard' => true,
+    'selective' => false,
+];
+// ещё не пробовал
+$ReplyKeyboardRemove = [
+	'remove_keyboard' => true,
+	'selective' => false
+];
+// ответное сообщение клиенту
+$ForceReply = [
+	'force_reply' => true,
+    'selective' => false
+];
+//--------------------------------------------------------------------------------
 
 
 $DopKnopa[0] = "#недвижимость";  //"Недвижимость";  // \xF0\x9F\x8F\xA0 
