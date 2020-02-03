@@ -37,7 +37,7 @@ if ($text == 'база') {
 	}		
 	
 	
-}elseif ($text == 'ож') {
+}elseif ($text == 'ожид') {
 	
 	if ($id) {
 	
@@ -50,7 +50,7 @@ if ($text == 'база') {
 	}		
 	
 	
-}elseif ($text == 'мед') {
+}elseif ($text == 'меди') {
 	
 	if ($id) {
 	
