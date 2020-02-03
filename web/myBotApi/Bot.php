@@ -618,21 +618,20 @@ class Bot
 	public function answerInlineQuery(
 		$inline_query_id,
 		$results,
-		$cache_time,
-		$is_personal,
-		$next_offset,
-		$switch_pm_text,
-		$switch_pm_parameter
-	){
-		
+		$cache_time = null,
+		$is_personal = false,
+		$next_offset = null,
+		$switch_pm_text = null,
+		$switch_pm_parameter = null
+	){		
 		$response = $this->call("answerInlineQuery", [		
 			'inline_query_id' => $inline_query_id,
 			'results' => json_encode($results),
-			'cache_time' => null,
-			'is_personal' => false,
-			'next_offset' => null,
-			'switch_pm_text' => null,
-			'switch_pm_parameter' => null
+			'cache_time' => $cache_time,
+			'is_personal' => $is_personal,
+			'next_offset' => $next_offset,
+			'switch_pm_text' => $switch_pm_text,
+			'switch_pm_parameter' => $switch_pm_parameter
 		]);
 		
 		$response = json_decode($response, true);
