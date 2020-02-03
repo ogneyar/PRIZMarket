@@ -248,6 +248,31 @@ if ($data['message']){
 
 }elseif ($data['inline_query']) {
 
+	$inline_query = $data['inline_query'];
+	
+	$inline_query_id = $inline_query['id'];
+	
+	$from = $inline_query['from'];
+	
+	$from_id = $from['id'];	
+	
+	$from_is_bot = $from['is_bot'];
+	
+	$from_first_name = $from['first_name'];
+	
+	$from_last_name = $from['last_name'];
+
+	$from_username = $from['username'];
+	
+	$longitude = $inline_query['location']['longitude'];
+	
+	$latitude = $inline_query['location']['latitude'];
+	
+	$query = $inline_query['query'];
+	
+	$offset = $inline_query['offset'];
+	
+
 }elseif ($data['chosen_inline_result']) {
 
 //}elseif ($data['callback_query']) {
