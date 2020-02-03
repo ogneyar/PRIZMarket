@@ -43,7 +43,7 @@ if ($inline_query) {
 		]
 	];
 	
-	$bot->answerInlineQuery($inline_query_id, $InlineQueryResult);
+	$bot->answerInlineQuery($inline_query_id, $InlineQueryResultArticle);
 
 }
 
