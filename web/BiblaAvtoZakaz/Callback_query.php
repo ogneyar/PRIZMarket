@@ -18,6 +18,14 @@ if ($callback_data=='создать'){
 
 	_повторить();
 
+}elseif ($callback_data=='повтор') {	
+
+	_повтор($id);
+
+}elseif ($callback_data=='отправить_на_повтор') {	
+
+	_отправить_на_повтор($id);
+
 }elseif ($callback_data=='продам') {	
 
 	_продам();
