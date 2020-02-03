@@ -36,7 +36,7 @@ if ($callback_data=='создать'){
 
 }elseif ($callback_data==$категории[0]||$callback_data==$категории[1]||$callback_data==$категории[2]||$callback_data==$категории[3]||$callback_data==$категории[4]||$callback_data==$категории[5]||$callback_data==$категории[6]||$callback_data==$категории[7]||$callback_data==$категории[8]||$callback_data==$категории[9]||$callback_data==$категории[10]||$callback_data==$категории[11]) {	
 
-	_запись_в_таблицу_маркет('otdel', $callback_data);
+	_запись_в_таблицу_маркет($callback_from_id, 'otdel', $callback_data);
 
 	_выбор_валюты();
 
@@ -84,7 +84,7 @@ if ($callback_data=='создать'){
 	
 	$from_id = $id;
 	
-	_запись_в_таблицу_маркет('doverie', '1');
+	_запись_в_таблицу_маркет($callback_from_id, 'doverie', '1');
 	
 	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");
 	
