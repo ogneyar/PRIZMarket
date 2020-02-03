@@ -102,6 +102,12 @@ if (mysqli_connect_errno()) {
 
 	}
 	
+	if ($inline_query) {
+	
+		include_once 'BiblaAvtoZakaz/Inline_query.php';
+	
+	}
+	
 }
 
 // закрываем подключение 
