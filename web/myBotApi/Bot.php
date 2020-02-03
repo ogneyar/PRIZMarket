@@ -32,6 +32,7 @@
  *
  * getFile
  *
+ * answerInlineQuery
  *
  *
  * -----------------------------
@@ -598,6 +599,50 @@ class Bot
 	}
 	
 	
+	
+	
+	/*
+	** Ответ на сообщение inline
+	**
+	** @param int $inline_query_id
+	** @param array obj $results
+	** @param int cache_time
+	** @param bool is_personal
+	** @param str next_offset
+	** @param str switch_pm_text
+	** @param sttr switch_pm_parameter
+	**
+	**
+	** @return array
+	*/
+	public function answerInlineQuery(
+		$inline_query_id,
+		$results,
+		$cache_time,
+		$is_personal,
+		$next_offset,
+		$switch_pm_text,
+		$switch_pm_parameter
+	){
+		
+		$response = $this->call("answerInlineQuery", [		
+			'inline_query_id' => $inline_query_id,
+			'results' => json_encode($results),
+			'cache_time' => null,
+			'is_personal' => false,
+			'next_offset' => null,
+			'switch_pm_text' => null,
+			'switch_pm_parameter' => null
+		]);
+		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+		
+		return $response;
+	}
 	
 	
 	
