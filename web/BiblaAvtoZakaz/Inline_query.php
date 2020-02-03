@@ -4,11 +4,11 @@ if ($inline_query) {
 
 	//$bot->sendMessage($master, "еее");
 	
-	$InlineQueryResultPhoto = [
+	$InlineQueryResult = [
 		[
 
 			'type' => 'photo',
-			'id' => $inline_query_id,
+			'id' => gmp_neg($inline_query_id),
 			'photo_url' => 'https://i.ibb.co/SRCv6Z7/file-23.jpg',
 			'thumb_url' => 'https://i.ibb.co/SRCv6Z7/file-21.jpg',
 			'photo_width' => null,
@@ -23,7 +23,7 @@ if ($inline_query) {
 		]	
 	];
 	
-	$bot->answerInlineQuery($inline_query_id, $InlineQueryResultPhoto);
+	$bot->answerInlineQuery($inline_query_id, $InlineQueryResult);
 
 }
 
