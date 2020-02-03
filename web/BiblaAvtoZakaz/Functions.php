@@ -367,7 +367,7 @@ function _отправка_лота($куда, $номер_лота) {
 // функция вывода АДМИНАМ на экран лота, с просьбой о необходимости повторить
 function _отправить_на_повтор($номер_лота) {
 	
-	global $admin_group, $bot, $callback_from_id;
+	global $admin_group, $bot, $callback_from_id, $callback_query_id;
 	
 	_отправка_лота($admin_group, $номер_лота);	
 	
