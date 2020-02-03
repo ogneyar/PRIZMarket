@@ -208,7 +208,7 @@ if ($text=='Отмена ввода') {
 			
 		}
 		
-	}else $bot->deleteMessage($chat_id, $message_id);
+	}elseif ($chat_type == 'private') $bot->deleteMessage($chat_id, $message_id);
 	
 
 }
