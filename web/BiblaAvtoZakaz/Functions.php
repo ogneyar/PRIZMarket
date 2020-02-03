@@ -355,7 +355,7 @@ function _отправить_на_повтор($номер_лота) {
 // функция, которая возвращает юзернейм клиента по номеру лота 
 function _узнать_имя_по_номеру_лота($номер_лота) {
 	
-	global $table_market, $callback_from_id, $mysqli, $bot;
+	global $table_market, $callback_from_id, $mysqli, $bot, $master;
 	
 	$запрос = "SELECT 'username' FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";
 		
@@ -367,7 +367,13 @@ function _узнать_имя_по_номеру_лота($номер_лота) {
 		
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 			
-			return $результМассив[0]['username'];
+			foreach ($результМассив as $строка) {
+			
+				$bot->sendMessage($master, $строка['username']);
+				
+				return $строка['username'];
+			
+			}
 		
 		}else throw new Exception("Или нет заказа или больше одного..");
 	
