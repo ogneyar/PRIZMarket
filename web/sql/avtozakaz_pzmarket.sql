@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 29 2020 г., 13:04
+-- Время создания: Фев 03 2020 г., 13:58
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS `avtozakaz_pzmarket` (
   `status` varchar(20) DEFAULT NULL,
   `podrobno` blob,
   `url_tgraph` varchar(200) DEFAULT NULL,
-  `foto_album` tinyint(1) DEFAULT NULL
+  `foto_album` tinyint(1) DEFAULT NULL,
+  `url_info_bot` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
