@@ -10,7 +10,7 @@ if ($inline_query) {
 		'disable_web_page_preview' => false
 	];
 
-	$InlineQueryResultArticle = 
+	$InlineQueryResultArticle = [
 		[
 			'type' => 'article',
 			'id' => $from_id,
@@ -24,7 +24,7 @@ if ($inline_query) {
 			'thumb_width' => null,
 			'thumb_height' => null
 		]
-	;
+	];
 	
 	$bot->answerInlineQuery($inline_query_id, $InlineQueryResultArticle);
 
