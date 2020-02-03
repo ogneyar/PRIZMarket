@@ -41,7 +41,7 @@
 ** _отправка_лота_админам
 ** _вывод_лота_на_каналы
 ** _удалить_лот
-**
+** _отправка_сообщений_инфоботу
 **
 */
 
@@ -252,7 +252,7 @@ function _продам_куплю($действие) {
 
 	global $bot, $message_id, $callback_query_id, $callback_from_id;
 	
-	_запись_в_таблицу_маркет('kuplu_prodam', $действие);
+	_запись_в_таблицу_маркет($callback_from_id, 'kuplu_prodam', $действие);
 	
 	_ожидание_ввода('nazvanie', 'kuplu_prodam');
 	
@@ -278,7 +278,7 @@ function _продам_куплю($действие) {
 
 
 // Функция для записи данных в таблицу маркет
-function _запись_в_таблицу_маркет($имя_столбца = null, $действие = null) {
+function _запись_в_таблицу_маркет($номер_клиента = null, $имя_столбца = null, $действие = null) {
 
 	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;
 	
@@ -311,9 +311,10 @@ function _запись_в_таблицу_маркет($имя_столбца = n
 			  `status`,
 			  `podrobno`,
 			  `url_tgraph`,
-			  `foto_album`
+			  `foto_album`,
+			  `url_info_bot`
 			) VALUES (
-			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', '', ''
+			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', '', '', ''
 			)";
 						
 			$result = $mysqli->query($query);
@@ -324,7 +325,7 @@ function _запись_в_таблицу_маркет($имя_столбца = n
 		
 	}else {
 		
-		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$callback_from_id} AND status=''";
+		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$номер_клиента} AND status=''";
 		
 		$result = $mysqli->query($query);
 			
@@ -671,7 +672,7 @@ function _когда_валюта_выбрана($валюта = null) {
 		
 	}
 	
-	_запись_в_таблицу_маркет('valuta', $валюта);
+	_запись_в_таблицу_маркет($callback_from_id, 'valuta', $валюта);
 	
 	_ввод_местонахождения();	
 
@@ -771,7 +772,7 @@ function _нужен_альбом() {
 	
 	_очистка_таблицы_медиа();
 	
-	_запись_в_таблицу_маркет('foto_album', '1');
+	_запись_в_таблицу_маркет($callback_from_id, 'foto_album', '1');
 	
 	_ожидание_ввода('foto_album', 'format_file');
 	
@@ -1035,7 +1036,7 @@ function _отправка_лота_админам() {
 						
 						$imgBB_url = $результат['url'];		
 
-						_запись_в_таблицу_маркет('url_tgraph', $imgBB_url);
+						_запись_в_таблицу_маркет($callback_from_id, 'url_tgraph', $imgBB_url);
 						
 					}else throw new Exception("Не смог выложить пост..");					
 					
@@ -1066,7 +1067,7 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
 	global $таблица_медиагруппа, $channel_media_market, $master, $message_id;
 	
-	$from_id = $id_client; // это для функции _запись_в_таблицу_маркет()
+//	$from_id = $id_client; // это для функции _запись_в_таблицу_маркет()
 	
 	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$id_client} AND id_zakaz='{$номер_лота}'";
 		
@@ -1171,19 +1172,19 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					
 				$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";
 				
-				_запись_в_таблицу_маркет('id_zakaz', $id_zakaz);
+				_запись_в_таблицу_маркет($id_client, 'id_zakaz', $id_zakaz);
 
 				if (!$ссыль_в_названии) {
 					
-					_запись_в_таблицу_маркет('url_nazv', $ссыль_на_подробности);			
+					_запись_в_таблицу_маркет($id_client, 'url_nazv', $ссыль_на_подробности);			
 						
 					$ссыль_в_названии = $ссыль_на_подробности;
 						
 				}
 					
-				_запись_в_таблицу_маркет('url_podrobno', $ссыль_на_подробности);
+				_запись_в_таблицу_маркет($id_client, 'url_podrobno', $ссыль_на_подробности);
 					
-				_запись_в_таблицу_маркет('status', "одобрен");
+				_запись_в_таблицу_маркет($id_client, 'status', "одобрен");
 					
 				$inLine = [
 					'inline_keyboard' => [
@@ -1331,6 +1332,19 @@ function _удалить_лот($айди_клиента) {
 	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
 	
 }
+
+
+
+function _отправка_сообщений_инфоботу() {
+	
+	global $bot, $channel_info, $from_id, $from_username;
+	
+	$bot->sendMessage($channel_info, "@".$from_username);
+	
+	$bot->sendMessage($channel_info, $from_id);	
+	
+}
+
 
 
 
