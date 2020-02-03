@@ -348,7 +348,7 @@ $HideKeyboard = [
 	'hide_keyboard' => true,
     'selective' => false,
 ];
-// ещё не пробовал
+// так же удаление клавиатуры (не знаю в чём разница)
 $ReplyKeyboardRemove = [
 	'remove_keyboard' => true,
 	'selective' => false
