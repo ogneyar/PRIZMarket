@@ -520,21 +520,21 @@ function _не_нужна() {
 // выбор категории в которой будет находиться лот?
 function _выбор_категории() {
 
-	global $bot, $chat_id, $DopKnopa;		
+	global $bot, $chat_id, $категории;		
 	
-	$категории = [];			
+	$список_категорий = [];			
 			
 	for ($i=0; $i<12; $i++) {
 				
-		$категории = array_merge($категории, [
+		$список_категорий = array_merge($список_категорий, [
 			[
 				[
-					'text' => $DopKnopa[$i],
-					'callback_data' => $DopKnopa[$i]
+					'text' => $категории[$i],
+					'callback_data' => $категории[$i]
 				],
 				[
-					'text' => $DopKnopa[$i+1],
-					'callback_data' => $DopKnopa[$i+1]
+					'text' => $категории[$i+1],
+					'callback_data' => $категории[$i+1]
 				]
 			]
 		]);
@@ -545,7 +545,7 @@ function _выбор_категории() {
 	
 	$inLine = [
 	
-		'inline_keyboard' => $категории
+		'inline_keyboard' => $список_категорий
 		
 	];
 	
