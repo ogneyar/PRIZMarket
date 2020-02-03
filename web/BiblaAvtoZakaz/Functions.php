@@ -2,7 +2,8 @@
 /* Список всех функций:
 **
 ** _start_AvtoZakazBota
-** _info_AvtoZakazBota
+** _инфо_автоЗаказБота
+** _есть_ли_лоты
 ** exception_handler
 ** _existence
 **
@@ -56,39 +57,78 @@ function _start_AvtoZakazBota() {
 	
 	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown, $HideKeyboard);
 
-    _info_AvtoZakazBota();	
+    _инфо_автоЗаказБота();	
 	
 	exit('ok');
 	
 }
 
 // Краткая информация, перед началом работы с ботом
-function _info_AvtoZakazBota() {
+function _инфо_автоЗаказБота() {
 
 	global $bot, $chat_id;
 	
-	$inLine_sozdanie = [
-		'inline_keyboard' => [
+	$клавиатура = [
+		[
 			[
-				[
-					'text' => 'Создать заявку',
-					'callback_data' => 'создать'
-				],
+				'text' => 'Создать заявку',
+				'callback_data' => 'создать'
+			]
+		]
+	];
+	
+	if (_есть_ли_лоты()) {
+	
+		$клавиатура = array_merge($клавиатура, [
+			[
 				[
 					'text' => 'Повторить',
 					'callback_data' => 'повторить'
 				]
 			]
-		]
-	];
+		]);
+	}
+	
+	$inLine = [	'inline_keyboard' => $клавиатура ];
 	
 	$reply = "Это Бот для подачи заявки на публикацию вашего лота на канале [Покупки на PRIZMarket]".
 		"(https://t.me/prizm_market)\n\nДля подачи заявки на публикацию пошагово пройдите".
 		" по всем пунктам. Начните с нажатия кнопки 'Создать заявку'.\nДля повтора уже имеющейся заявки - нажмите 'Повторить'.";
 
-	$bot->sendMessage($chat_id, $reply, markdown, $inLine_sozdanie, null, true);
+	$bot->sendMessage($chat_id, $reply, markdown, $inLine, null, true);
 
 }
+
+
+
+// Проверка наличия у клиента лотов в базе
+function _есть_ли_лоты() {
+	
+	global $mysqli, $from_id, $callback_from_id, $table_market;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;	
+	
+    $resonse = false;	
+
+	$query = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";
+	
+	$result = $mysqli->query($query);
+	
+	if ($result) {
+	
+		if ($result->num_rows>0) {
+        
+            $response = true;
+
+		}		
+	
+	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");
+	
+    return $response;
+
+}
+
+
 
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
