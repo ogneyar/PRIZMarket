@@ -215,6 +215,10 @@ if ($text == 'база') {
 
 	$bot->sendMessage($chat_id, "Ремув", null, $ReplyKeyboardRemove);
 
+}elseif ($text == 'Новая кнопка!') {
+
+	$bot->sendMessage($chat_id, "Ремув", null, $HideKeyboard);
+
 }
 
 
