@@ -206,6 +206,15 @@ if ($text == 'база') {
 	
 	$bot->sendMessage($channel_podrobno, $реплика, markdown);
 		
+}elseif ($text == 'ае') {
+	
+	$bot->sendMessage($chat_id, "Лови", null, $ReplyKeyboardMarkup);
+	
+	
+}elseif ($text == 'Вторая новая кнопка!') {
+
+	$bot->sendMessage($chat_id, "Ремув", null, $ReplyKeyboardRemove);
+
 }
 
 
