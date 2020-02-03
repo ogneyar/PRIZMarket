@@ -661,6 +661,8 @@ function _призм() {
 
 // Когда уже выбрана валюта
 function _когда_валюта_выбрана($валюта = null) {	
+
+	global $callback_from_id;
 	
 	if ($валюта) {
 		
@@ -768,7 +770,7 @@ function _нужен_ли_фотоальбом() {
 
 function _нужен_альбом() {
 	
-	global $bot, $chat_id;
+	global $bot, $chat_id, $callback_from_id;
 	
 	_очистка_таблицы_медиа();
 	
