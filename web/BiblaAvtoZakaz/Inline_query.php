@@ -26,7 +26,9 @@ if ($inline_query) {
 		]
 	];
 	
-	$bot->answerInlineQuery($inline_query_id, $InlineQueryResultArticle);
+	$р = $bot->answerInlineQuery($inline_query_id, $InlineQueryResultArticle);
+
+        $bot->sendMessage($from_id, $bot->PrintArray($p));
 
 }
 
