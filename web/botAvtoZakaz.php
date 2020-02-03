@@ -96,7 +96,7 @@ if (mysqli_connect_errno()) {
 			
 		}elseif ($data['channel_post']) {
 			
-			//include_once 'BiblaAvtoZakaz/Channel_post.php';
+			include_once 'BiblaAvtoZakaz/Channel_post.php';
 			
 		}
 
