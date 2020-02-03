@@ -240,7 +240,7 @@ function _повторить() {
 // функция вывода на экран лота, который необходимо повторить
 function _повтор($номер_лота) {
 	
-	global $callback_from_id;
+	global $callback_from_id, $bot;
 	
 	_отправка_лота($callback_from_id, $номер_лота);	
 	
