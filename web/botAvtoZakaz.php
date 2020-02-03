@@ -64,7 +64,7 @@ if (mysqli_connect_errno()) {
 		}	
 	}
 
-	if ($chat_type == 'private' || $chat_id == $admin_group) {
+	if ($chat_type == 'private' || $chat_id == $admin_group || $chat_id == $channel_info) {
 		
 		if ($data['callback_query']) {
 		
