@@ -357,7 +357,7 @@ function _узнать_имя_по_номеру_лота($номер_лота) {
 	
 	global $table_market, $callback_from_id, $mysqli, $bot, $master;
 	
-	$запрос = "SELECT 'username' FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";
+	$запрос = "SELECT username FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";
 		
 	$результат = $mysqli->query($запрос);
 	
