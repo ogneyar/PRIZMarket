@@ -305,9 +305,7 @@ $ReplyKeyboardMarkup = [
 				'text' => "%Новая кнопка!",
 				'request_contact' => false,
 				'request_location' => false,
-				'request_poll' => [
-					'type' => 'quiz' // или 'regular' или 'otherwise'
-				];
+				'request_poll' => null
 			],
 			[
 				'text' => "%Вторая новая кнопка!",
