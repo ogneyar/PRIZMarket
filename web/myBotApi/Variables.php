@@ -302,7 +302,7 @@ $ReplyKeyboardMarkup = [
 	'keyboard' => [
 		[
 			[
-				'text' => "Новая кнопка!",
+				'text' => "%Новая кнопка!",
 				'request_contact' => false,
 				'request_location' => false,
 				'request_poll' => [
@@ -310,7 +310,7 @@ $ReplyKeyboardMarkup = [
 				];
 			],
 			[
-				'text' => "Вторая новая кнопка!",
+				'text' => "%Вторая новая кнопка!",
 				'request_contact' => false,
 				'request_location' => false,
 				'request_poll' => null,
@@ -383,16 +383,17 @@ $категории[11] = "#красота_и_здоровье";  //"Красо�
 $day = 86400;
 
 
+
+
 $для_примера_файл_айди_фото ="AgACAgIAAxkBAAIJu141fypzZg0el2vmTitcRyOV5-".
 	"eVAAIVsDEbfdqoSe7b5ehZ7JFsbmbLDgAEAQADAgADeQADlqcBAAEYBA";
 
+	
 $InputMediaPhoto = [
-
 	'type' => 'photo',
 	'media' => $для_примера_файл_айди_фото,
 	'caption' => null,
-	'parse_mode' => null
-	
+	'parse_mode' => null	
 ];
 
 
