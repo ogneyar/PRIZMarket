@@ -69,11 +69,9 @@ function _инфо_автоЗаказБота() {
 	global $bot, $chat_id;
 	
 	$клавиатура = [
-		[
-			[
-				'text' => 'Создать заявку',
-				'callback_data' => 'создать'
-			]
+		[		
+			'text' => 'Создать заявку',
+			'callback_data' => 'создать'		
 		]
 	];
 	
@@ -81,15 +79,13 @@ function _инфо_автоЗаказБота() {
 	
 		$клавиатура = array_merge($клавиатура, [
 			[
-				[
-					'text' => 'Повторить',
-					'callback_data' => 'повторить'
-				]
-			]
+				'text' => 'Повторить',
+				'callback_data' => 'повторить'
+			]			
 		]);
 	}
 	
-	$inLine = [	'inline_keyboard' => $клавиатура ];
+	$inLine = [ 'inline_keyboard' => [ $клавиатура ] ];
 	
 	$reply = "Это Бот для подачи заявки на публикацию вашего лота на канале [Покупки на PRIZMarket]".
 		"(https://t.me/prizm_market)\n\nДля подачи заявки на публикацию пошагово пройдите".
@@ -239,17 +235,11 @@ function _повторить() {
 				
 				$название = $строка['nazvanie'];
 
-				//$название = str_replace('_', '\_', $название);
-				
-				//if (strlen($название)>14) $название = substr($название, 0, 14);
-				
 				$кнопки = array_merge($кнопки, [[[
 					'text' => "{$строка['kuplu_prodam']} {$название}",
 					'callback_data' => "повтор:{$строка['id_zakaz']}"
 				]]]);
-				
-				//$bot->sendMessage($callback_from_id, $название);
-				
+			
 			}		
 			
 			$кнопки = array_merge($кнопки, [[[
@@ -264,9 +254,7 @@ function _повторить() {
 			];
 			
 			$реплика = "Выберите лот для повтора.";
-			
-			//$bot->sendMessage($callback_from_id, $bot->PrintArray($кнопки));
-			
+
 			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);		
 		
 		}else throw new Exception("Нет такой записи в БД");
@@ -379,13 +367,19 @@ function _отправка_лота($куда, $номер_лота) {
 // функция вывода АДМИНАМ на экран лота, с просьбой о необходимости повторить
 function _отправить_на_повтор($номер_лота) {
 	
-	global $admin_group, $bot;
+	global $admin_group, $bot, $callback_from_id;
 	
 	_отправка_лота($admin_group, $номер_лота);	
 	
 	$юзер_неим = _узнать_имя_по_номеру_лота($номер_лота);		
 	
 	$bot->sendMessage($admin_group, $юзер_неим." просит: Повторите публикацию, будьте так любезны, заранее благодарю.");
+	
+	$bot->sendMessage($callback_from_id, "|\n|\n|\nОтправил, ожидайте ответ.");	
+	
+	$bot->answerCallbackQuery($callback_query_id, "Ожидайте!");
+	
+	_инфо_автоЗаказБота();
 
 }
 
@@ -403,20 +397,17 @@ function _узнать_имя_по_номеру_лота($номер_лота) {
 	
 	if ($результат) {
 		
-		if ($результат->num_rows == 1) {
+		if ($результат->num_rows > 0) {
 		
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 			
-			return $строка[0]['username'];
+			return $результМассив[0]['username'];
 			
 		}else throw new Exception("Или нет заказа или больше одного..");
 	
 	}else throw new Exception("Нет такого заказа..");	
 
 }
-
-
-
 
 
 
