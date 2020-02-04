@@ -618,9 +618,9 @@ class Bot
 	public function answerInlineQuery(
 		$inline_query_id,
 		$results,
-		$cache_time = null,
+		$cache_time = 300,
 		$is_personal = false,
-		$next_offset = null,
+		$next_offset = '',
 		$switch_pm_text = null,
 		$switch_pm_parameter = null
 	){		
