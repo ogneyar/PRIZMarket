@@ -434,7 +434,13 @@ $InlineQueryResultArticle = [
 		'id' => $from_id,
 		'title' => 'Превосходная кнопка',
 		'input_message_content' => [ 'message_text' => 'хоть какой текст' ],			
-		'description' => 'нажми лучше её'		
+		//'reply_markup' => null,
+		//'url' => null,
+		//'hide_url' => false,
+		'description' => 'нажми лучше её',
+		//'thumb_url' => null,
+		//'thumb_width' => null,
+		//'thumb_height' => null
 	]
 ];
 
