@@ -432,15 +432,22 @@ $InlineQueryResultArticle = [
 	[
 		'type' => 'article',
 		'id' => $from_id,
-		'title' => 'тител',
-		'input_message_content' => $InputTextMessageContent,
+		'title' => 'Отличная кнопка',
+		'input_message_content' => [ 'message_text' => 'любой тут текст' ],
 		'reply_markup' => null,
 		'url' => null,
 		'hide_url' => false,
-		'description' => null,
+		'description' => 'нажми её',
 		'thumb_url' => null,
 		'thumb_width' => null,
 		'thumb_height' => null
+	],
+	[
+		'type' => 'article',
+		'id' => $from_id,
+		'title' => 'Превосходная кнопка',
+		'input_message_content' => [ 'message_text' => 'хоть какой текст' ],			
+		'description' => 'нажми лучше её'		
 	]
 ];
 
