@@ -6,9 +6,9 @@ if ($inline_query) {
 		[
 			'type' => 'article',
 			'id' => $from_id,
-			'title' => 'title',
+			'title' => 'титл',
 			'input_message_content' => [ 'message_text' => 'message_text' ],			
-			'description' => 'дескрипшн'		
+			'description' => 'нажми на кнопку'		
 		]
 	];
 	
