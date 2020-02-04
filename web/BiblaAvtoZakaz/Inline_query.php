@@ -14,9 +14,9 @@ if ($inline_query) {
 		]
 	];
 	
-	$р = $bot->answerInlineQuery($inline_query_id, $InlineQueryResult);
+	$результат = $bot->answerInlineQuery($inline_query_id, $InlineQueryResult);
 
-    $bot->sendMessage($from_id, $bot->PrintArray($p));
+    $bot->sendMessage($from_id, $bot->PrintArray($результат));
 
 }
 
