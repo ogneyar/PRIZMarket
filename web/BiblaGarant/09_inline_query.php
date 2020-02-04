@@ -31,7 +31,7 @@ if ($arr['inline_query']['query']=='курс'||$arr['inline_query']['query']=='�
 	$queryArticle = new \TelegramBot\Api\Types\Inline\QueryResult\Article($inline_query_from_id,
 		$title, $textClick, null,null,null, $inputText, $keyInLine10);		
 	$res=[$queryArticle];				
-	$tg->answerInlineQuery($inline_query_id, $res);			
+	$tg->answerInlineQuery($inline_query_id, $res, null,null,null,'h','hek');			
 	
 	exit('ok');
 }else {
