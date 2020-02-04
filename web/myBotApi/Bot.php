@@ -765,7 +765,7 @@ class Bot
 	**
 	** @return boolean
 	*/
-	public function output_table($table, $id_client = null, $max_kol_s = 6500) { 
+	public function output_table($table, $id_client = null, $max_kol_s = 5000) { 
 
 		global $chat_id, $mysqli, $master;
 		
