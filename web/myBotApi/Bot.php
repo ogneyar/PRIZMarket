@@ -826,7 +826,7 @@ class Bot
 				
 				while (!$результат && $kol > 1) {
 					
-					$this->sendMessage($chat_id, "Попытка 1 ".$kol);
+					//$this->sendMessage($chat_id, "Попытка 1 ".$kol);
 
 					$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 
@@ -836,7 +836,7 @@ class Bot
 
                         $kol = strlen($text);
 						
-						$this->sendMessage($chat_id, "Попытка 1.1 ".$kol);
+						//$this->sendMessage($chat_id, "Попытка 1.1 ".$kol);
 					   
 						$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 					   
@@ -866,7 +866,7 @@ class Bot
 				
 				while (!$результат && $kol > 1) {
 					
-					$this->sendMessage($chat_id, "Попытка 2 ".$kol);
+					//$this->sendMessage($chat_id, "Попытка 2 ".$kol);
 				
 					$результат = $this->sendMessage($chat_id, $str, null, null, null, true);
 
@@ -876,7 +876,7 @@ class Bot
 					   
 						$kol = strlen($str);	
 						
-						$this->sendMessage($chat_id, "Попытка 2.1 ".$kol);
+						//$this->sendMessage($chat_id, "Попытка 2.1 ".$kol);
 					   
 						$результат = $this->sendMessage($chat_id, $str, null, null, null, true);
 					   
@@ -900,7 +900,7 @@ class Bot
 			
 		}	
 		
-		$this->sendMessage($chat_id, "-- страница --");
+		//$this->sendMessage($chat_id, "-- страница --");
 
 		return true;
 		
