@@ -37,6 +37,19 @@ if ($text == 'база') {
 	}		
 	
 	
+}elseif ($text == 'ма') {
+	
+	if ($id) {
+	
+		$bot->output_table_mini($table_market, $id);
+	
+	}else {
+		
+		$bot->output_table_mini($table_market);
+		
+	}		
+	
+	
 }elseif ($text == 'ожид') {
 	
 	if ($id) {
