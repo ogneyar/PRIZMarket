@@ -8,13 +8,13 @@ if ($inline_query) {
 			'id' => $from_id,
 			'title' => 'Отличная кнопка',
 			'input_message_content' => [ 'message_text' => 'любой тут текст' ],
-			//'reply_markup' => null,
-			//'url' => null,
-			//'hide_url' => false,
+			'reply_markup' => null,
+			'url' => null,
+			'hide_url' => false,
 			'description' => 'нажми её',
-			//'thumb_url' => null,
-			//'thumb_width' => null,
-			//'thumb_height' => null
+			'thumb_url' => null,
+			'thumb_width' => null,
+			'thumb_height' => null
 		],
 		[
 			'type' => 'article',
@@ -25,7 +25,7 @@ if ($inline_query) {
 		]
 	];
 	
-	$bot->answerInlineQuery($inline_query_id, $InlineQueryResult);
+	$bot->answerInlineQuery($inline_query_id, $InlineQueryResult, null, null, null, "в бот", "s");
 
 }
 
