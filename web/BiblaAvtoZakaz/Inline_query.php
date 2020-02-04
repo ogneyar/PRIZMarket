@@ -4,11 +4,11 @@ if ($inline_query) {
 
 	//$bot->sendMessage($master, "еее");
 	
-	$InputTextMessageContent = [[
+	$InputTextMessageContent = [
 		'message_text' => 'текст',
 		'parse_mode' => null,
 		'disable_web_page_preview' => false
-	]];
+	];
 
 	$InlineQueryResultArticle = [
 		[
