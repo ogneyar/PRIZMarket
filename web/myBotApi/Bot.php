@@ -821,9 +821,9 @@ class Bot
 		
 		if ($id_client) {
 			
-			$query = "SELECT `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie` FROM ".$table." WHERE id_client=".$id_client;
+			$query = "SELECT `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie`, `username` FROM ".$table." WHERE id_client=".$id_client;
 			
-		}else $query = "SELECT `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie` FROM ".$table;
+		}else $query = "SELECT `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie`, `username` FROM ".$table;
 		
 		if ($result = $mysqli->query($query)) {		
 		
