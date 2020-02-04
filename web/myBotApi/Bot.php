@@ -820,7 +820,7 @@ class Bot
 			
 		$kol = strlen ($text) ;
 
-		if ($kol>'0'){
+		if ($kol>1){
 		
 			if ($kol<=$max_kol_s){
 
@@ -830,9 +830,17 @@ class Bot
 
                                    $результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 
-                                   if (!$результат) $text = substr($text, 1);	
+                                   if (!$результат) {
 
-                                }while (!$результат);			
+  
+                                       $text = substr($text, 1);
+
+                                       $kol = strlen($text);
+                                
+                                   }
+               
+
+                                }while (!$результат && $kol > 1);			
 
 			}else{					
 			
@@ -842,7 +850,6 @@ class Bot
 				
 				$str = substr($text, 0, -$kolich);
 				
-				$kol=strlen($str);	
 				
 				//$this->sendMessage($chat_id, $str, null, null, null, true);		
 							
@@ -850,11 +857,13 @@ class Bot
 								
 				do {
 
+                                   $kol=strlen($str);	
+				
                                    $результат = $this->sendMessage($chat_id, $str, null, null, null, true);
 
                                    if (!$результат) $str = substr($str, 1);	
 
-                                }while (!$результат);			
+                                }while (!$результат && $kol > 1);			
 
                                 
 				$str = substr($text, $kol);		
