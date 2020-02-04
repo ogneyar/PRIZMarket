@@ -818,15 +818,15 @@ class Bot
 			
 		$kol = strlen ($text) ;
 
-		if ($kol > 1){
+		if ($kol > '1'){
 		
 			if ($kol <= $max_kol_s){
 
 				$результат = null;
 				
-				while (!$результат && $kol > 1) {
+				while (!$результат && $kol > '1') {
 					
-					$this->sendMessage($chat_id, "Попытка 1");
+					$this->sendMessage($chat_id, "Попытка 1 ".$kol);
 
 					$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 
@@ -836,11 +836,11 @@ class Bot
 
                         $kol = strlen($text);
 						
-						$this->sendMessage($chat_id, "Попытка 1.1");
+						$this->sendMessage($chat_id, "Попытка 1.1 ".$kol);
 					   
 						$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 					   
-						if (!$результат && $kol > 2) {
+						if (!$результат && $kol > '2') {
 					   
 							$text = substr($text, 1, -l);	
 						   
@@ -864,23 +864,23 @@ class Bot
 
 				$kol = strlen($text);	
 				
-				while (!$результат && $kol > 1) {
+				while (!$результат && $kol > '1') {
 					
-					$this->sendMessage($chat_id, "Попытка 2");
+					$this->sendMessage($chat_id, "Попытка 2 ".$kol);
 				
 					$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 
-					if (!$результат && $kol > 1) {
+					if (!$результат) {
 					   
 						$text = substr($text, 0, -l);	
 					   
 						$kol = strlen($text);	
 						
-						$this->sendMessage($chat_id, "Попытка 2.1");
+						$this->sendMessage($chat_id, "Попытка 2.1 ".$kol);
 					   
 						$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 					   
-						if (!$результат && $kol > 2) {
+						if (!$результат && $kol > '2') {
 					   
 							$text = substr($text, 1, -l);	
 						   
@@ -888,7 +888,7 @@ class Bot
 						   
 						}
 					   
-				   }
+					}
 
 				}			
 				
