@@ -7,7 +7,7 @@
 **--------------------------------------------------
 **
 */
-if ($arr['inline_query']['query']) {	
+if ($arr['inline_query']) {	
 	
 	$reply = _kurs_PZM();
 	
