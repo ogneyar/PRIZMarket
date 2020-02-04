@@ -22,7 +22,7 @@ if ($inline_query) {
 	
 	$р = $bot->answerInlineQuery($inline_query_id, $InlineQueryResultArticle);
 
-    $bot->sendMessage($from_id, $bot->PrintArray($p). "\n\nTrututu");
+    $bot->sendMessage($from_id, $bot->PrintArray($p). "\n\nTrututu\n\n".$inline_query_id."\n\n".$from_id);
 
 }
 
