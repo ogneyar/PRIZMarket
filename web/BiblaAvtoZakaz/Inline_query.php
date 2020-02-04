@@ -18,7 +18,7 @@ if ($inline_query) {
 		],
 		[
 			'type' => 'article',
-			'id' => $from_id,
+			'id' => $from_id."-2",
 			'title' => 'титл',
 			'input_message_content' => [ 'message_text' => 'мессадж_текст' ],			
 			'description' => 'нажми на кнопку'		
