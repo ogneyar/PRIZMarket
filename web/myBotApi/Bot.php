@@ -812,19 +812,19 @@ class Bot
 	**
 	** @return boolean
 	*/
-	public function output($text, $max_kol_s = '6500') { 
+	public function output($text, $max_kol_s = 6500) { 
 
 		global $chat_id, $master;
 			
 		$kol = strlen ($text) ;
 
-		if ($kol > '1'){
+		if ($kol > 1){
 		
 			if ($kol <= $max_kol_s){
 
 				$результат = null;
 				
-				while (!$результат && $kol > '1') {
+				while (!$результат && $kol > 1) {
 					
 					$this->sendMessage($chat_id, "Попытка 1 ".$kol);
 
@@ -842,7 +842,7 @@ class Bot
 					   
 						if (!$результат && $kol > '2') {
 					   
-							$text = substr($text, 1, -l);	
+							$text = substr($text, 1, -1);	
 						   
 							$kol = strlen($text);	
 							   
@@ -854,9 +854,9 @@ class Bot
 
 			}else{					
 			
-				$len_str=strlen($text);				
+				$len_str = strlen($text);				
 				
-				$kolich=$len_str-$max_kol_s;
+				$kolich = $len_str - $max_kol_s;
 				
 				$text = substr($text, 0, -$kolich);
 				
@@ -864,7 +864,7 @@ class Bot
 
 				$kol = strlen($text);	
 				
-				while (!$результат && $kol > '1') {
+				while (!$результат && $kol > 1) {
 					
 					$this->sendMessage($chat_id, "Попытка 2 ".$kol);
 				
@@ -872,7 +872,7 @@ class Bot
 
 					if (!$результат) {
 					   
-						$text = substr($text, 0, -l);	
+						$text = substr($text, 0, -1);	
 					   
 						$kol = strlen($text);	
 						
@@ -880,9 +880,9 @@ class Bot
 					   
 						$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 					   
-						if (!$результат && $kol > '2') {
+						if (!$результат && $kol > 2) {
 					   
-							$text = substr($text, 1, -l);	
+							$text = substr($text, 1, -1);	
 						   
 							$kol = strlen($text);	
 						   
