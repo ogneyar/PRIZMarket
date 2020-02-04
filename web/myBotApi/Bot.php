@@ -823,8 +823,16 @@ class Bot
 		if ($kol>'0'){
 		
 			if ($kol<=$max_kol_s){
+
+                                $результат = null;
 								
-				$this->sendMessage($chat_id, $text, null, null, null, true);				
+				do {
+
+                                   $результат = $this->sendMessage($chat_id, $text, null, null, null, true);
+
+                                   if (!$результат) $text = substr($text, 1);	
+
+                                }while (!$результат);			
 
 			}else{					
 			
