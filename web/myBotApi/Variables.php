@@ -428,20 +428,7 @@ $InputTextMessageContent = [
 	'disable_web_page_preview' => false
 ];
 
-$InlineQueryResultArticle = [
-	[
-		'type' => 'article',
-		'id' => $from_id,
-		'title' => 'Отличная кнопка',
-		'input_message_content' => [ 'message_text' => 'любой тут текст' ],
-		'reply_markup' => null,
-		'url' => null,
-		'hide_url' => false,
-		'description' => 'нажми её',
-		'thumb_url' => null,
-		'thumb_width' => null,
-		'thumb_height' => null
-	],
+$InlineQueryResultArticle = [	
 	[
 		'type' => 'article',
 		'id' => $from_id,
