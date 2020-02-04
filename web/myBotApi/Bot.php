@@ -45,6 +45,8 @@
  *
  * output_table
  *
+ * output_table_mini
+ *
  * output
  *
  *
@@ -800,6 +802,55 @@ class Bot
 		return true;
 	
 	}
+	
+		
+	
+	
+	/*
+	** Вывод заданной таблицы на экран (сокращённый вариант)
+	**
+	** @param str $table
+	** @param int $max_kol_s
+	** @param int $id_client
+	**
+	** @return boolean
+	*/
+	public function output_table_mini($table, $id_client = null, $max_kol_s = 5000) { 
+
+		global $chat_id, $mysqli, $master;
+		
+		if ($id_client) {
+			
+			$query = "SELECT id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie` FROM ".$table." WHERE id_client=".$id_client;
+			
+		}else $query = "SELECT id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie` FROM ".$table;
+		
+		if ($result = $mysqli->query($query)) {		
+		
+			$reply="Таблица {$table}:\n";
+			
+			if($result->num_rows>0){
+			
+				$arrayResult = $result->fetch_all();		
+				
+				foreach($arrayResult as $row){					
+				
+					foreach($row as $stroka) $reply.= "| ".$stroka." ";
+					
+					$reply.="|\n";							
+				}					
+		
+				$this->output($reply, $max_kol_s);
+					
+			}else $this->sendMessage($chat_id, "пуста таблица ".
+					" \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
+					
+		}else throw new Exception("Не смог получить записи в таблице {$table}");
+
+		return true;
+	
+	}
+	
 	
 	
 	
