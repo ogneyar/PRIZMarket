@@ -858,33 +858,33 @@ class Bot
 				
 				$kolich = $len_str - $max_kol_s;
 				
-				$text = substr($text, 0, -$kolich);
+				$str = substr($text, 0, -$kolich);
 				
 				$результат = null;
 
-				$kol = strlen($text);	
+				$kol = strlen($str);	
 				
 				while (!$результат && $kol > 1) {
 					
 					$this->sendMessage($chat_id, "Попытка 2 ".$kol);
 				
-					$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
+					$результат = $this->sendMessage($chat_id, $str, null, null, null, true);
 
 					if (!$результат) {
 					   
-						$text = substr($text, 0, -1);	
+						$str = substr($str, 0, -1);	
 					   
-						$kol = strlen($text);	
+						$kol = strlen($str);	
 						
 						$this->sendMessage($chat_id, "Попытка 2.1 ".$kol);
 					   
-						$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
+						$результат = $this->sendMessage($chat_id, $str, null, null, null, true);
 					   
 						if (!$результат && $kol > 2) {
 					   
-							$text = substr($text, 1, -1);	
+							$str = substr($str, 1, -1);	
 						   
-							$kol = strlen($text);	
+							$kol = strlen($str);	
 						   
 						}
 					   
@@ -892,9 +892,9 @@ class Bot
 
 				}			
 				
-				$text = substr($text, $kol);		
+				$str = substr($text, $kol);		
 	
-				$this->output($text, $max_kol_s);
+				$this->output($str, $max_kol_s);
 				
 			}		
 			
