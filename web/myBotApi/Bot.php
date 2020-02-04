@@ -637,11 +637,11 @@ class Bot
 		]);
 		
 		$response = json_decode($response, true);
-		
+		/*
 		if ($response['ok']) {
 			$response = $response['result'];
 		}else $response = false;
-		
+		*/
 		return $response;
 	}
 	
