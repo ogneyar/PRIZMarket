@@ -815,32 +815,39 @@ class Bot
 	public function output($text, $max_kol_s = '6500') { 
 
 		global $chat_id, $master;
-		
-		$str=null;	
 			
 		$kol = strlen ($text) ;
 
-		if ($kol>1){
+		if ($kol > 1){
 		
 			if ($kol<=$max_kol_s){
 
                                 $результат = null;
 								
-				do {
+				while (!$результат && $kol > 1) {
 
-                                   $результат = $this->sendMessage($chat_id, $text, null, null, null, true);
+				$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 
-                                   if (!$результат) {
+                       		if (!$результат) {
 
-  
-                                       $text = substr($text, 1);
+					$text = substr($text, 1);
 
-                                       $kol = strlen($text);
+                                	$kol = strlen($text);
+					   
+					$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
+					   
+					if (!$результат && $kol > 2) {
+					   
+						$text = substr($text, 1, -l);	
+					   
+						$kol = strlen($text);	
+						   
+					}
                                 
                                    }
                
 
-                                }while (!$результат && $kol > 1);			
+                                }			
 
 			}else{					
 			
@@ -848,30 +855,45 @@ class Bot
 				
 				$kolich=$len_str-$max_kol_s;
 				
-				$str = substr($text, 0, -$kolich);
+				$text = substr($text, 0, -$kolich);
 				
-				
-				//$this->sendMessage($chat_id, $str, null, null, null, true);		
-							
                                 $результат = null;
+
+				$kol = strlen($text);	
 								
-				do {
-
-                                   $kol=strlen($str);	
+				while (!$результат && $kol > 1) {
 				
-                                   $результат = $this->sendMessage($chat_id, $str, null, null, null, true);
+                                   $результат = $this->sendMessage($chat_id, $text, null, null, null, true);
 
-                                   if (!$результат) $str = substr($str, 1);	
+                                   if (!$результат && $kol > 1) {
+					   
+					$text = substr($text, 0, -l);	
+					   
+					$kol = strlen($text);	
+					   
+					$результат = $this->sendMessage($chat_id, $text, null, null, null, true);
+					   
+					if (!$результат && $kol > 2) {
+					   
+						$text = substr($text, 1, -l);	
+					   
+						$kol = strlen($text);	
+						   
+					}
+					   
+				   }
 
-                                }while (!$результат && $kol > 1);			
+                                }			
 
                                 
-				$str = substr($text, $kol);		
+				$text = substr($text, $kol);		
 	
-				$this->output($str, $max_kol_s);
+				$this->output($text, $max_kol_s);
 			}		
 			
 		}	
+		
+		$this->sendMessage($chat_id, "Закончил.");
 
 		return true;
 		
