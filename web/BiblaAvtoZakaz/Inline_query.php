@@ -25,7 +25,7 @@ if ($inline_query) {
 		]
 	];
 	
-	$bot->answerInlineQuery($inline_query_id, $InlineQueryResult, null, null, null, "в бот", "s");
+	$bot->answerInlineQuery($inline_query_id, $InlineQueryResult, null, null, null, "in_bot", "s");
 
 }
 
