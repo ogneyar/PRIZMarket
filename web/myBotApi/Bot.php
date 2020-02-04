@@ -844,8 +844,19 @@ class Bot
 				
 				$kol=strlen($str);	
 				
-				$this->sendMessage($chat_id, $str, null, null, null, true);		
+				//$this->sendMessage($chat_id, $str, null, null, null, true);		
 							
+                                $результат = null;
+								
+				do {
+
+                                   $результат = $this->sendMessage($chat_id, $str, null, null, null, true);
+
+                                   if (!$результат) $str = substr($str, 1);	
+
+                                }while (!$результат);			
+
+                                
 				$str = substr($text, $kol);		
 	
 				$this->output($str, $max_kol_s);
