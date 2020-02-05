@@ -467,23 +467,23 @@ $InlineQueryResultPhoto = [
 
 $InlineQueryResultVideo = [
 	[
-	// обязательные
-		'type' => 'video',
-		'id' => '',
-		'video_url' => '',
-		'mime_type' => 'video/mp4', // или 'text/html'
-		'thumb_url' => '',
-		'title' => '',
-	// необязательные
-		//'caption' => '',
-		//'parse_mode' => '',
-		//'video_width' => '',
-		//'video_height' => '',
-		//'video_duration' => '',
-		//'description' => '',
-		//'reply_markup' => '',
-		//'input_message_content' => '',
-	]
+		// обязательные
+			'type' => 'video',
+			'id' => $from_id."xz",
+			'video_url' => 'https://prizm-market.s3.amazonaws.com/1006.mp4',
+			'mime_type' => 'video/mp4', // или 'text/html'
+			'thumb_url' => 'https://prizm-market.s3.amazonaws.com/1006.mp4',
+			'title' => 'нажми',
+		// необязательные
+			//'caption' => '',
+			//'parse_mode' => '',
+			//'video_width' => '',
+			//'video_height' => '',
+			//'video_duration' => '',
+			//'description' => '',
+			//'reply_markup' => '',
+			//'input_message_content' => ''
+		]
 ];
 
 
