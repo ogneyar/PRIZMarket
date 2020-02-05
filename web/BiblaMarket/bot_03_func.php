@@ -562,33 +562,89 @@ function _this_admin() { // функция проверки есть ли у ю�
 
 
 
-function _pechat($text=null, $max_kol_s = '6500') { // функция печати (разбивание сообщения на части)
+function _pechat($text=null, $max_kol_s = 6500) { // функция печати (разбивание сообщения на части)
 
 	global $chat_id, $tg;
 	
 	$str=null;	
 		
 	$kol = strlen ($text) ;
-	if ($kol>'0'){
-		if ($kol<=$max_kol_s){
+	
+	if ($kol > 1){
+	
+		if ($kol<=$max_kol_s){				
+
+			$результат = null;
+				
+				while (!$результат && $kol > 1) {
+					
+					$результат = $tg->sendMessage($chat_id, $text, null, true);	
+
+                    if (!$результат) {
+
+						$text = substr($text, 1);
+
+                        $kol = strlen($text);
 						
-			$tg->sendMessage($chat_id, $text, null, true);				
+						$результат = $tg->sendMessage($chat_id, $text, null, true);	
+					   
+						if (!$результат && $kol > 2) {
+					   
+							$text = substr($text, 1, -1);	
+						   
+							$kol = strlen($text);	
+						
+						}
+                        
+                    }
+               
+				}
 			
 		}else{					
-			$len_str=strlen($text);				
+		
+			$len_str=strlen($text);			
+			
 			$kolich=$len_str-$max_kol_s;
+			
 			$str = substr($text, 0, -$kolich);
+			
+			$результат = null;
+
 			$kol=strlen($str);	
 			
-			$tg->sendMessage($chat_id, $str, null, true);		
-						
+			while (!$результат && $kol > 1) {
+				
+				$результат = $tg->sendMessage($chat_id, $str, null, true);
+
+				if (!$результат) {
+					   
+					$str = substr($str, 0, -1);	
+					   
+					$kol = strlen($str);	
+					   
+					$результат = $tg->sendMessage($chat_id, $str, null, true);
+					   
+					if (!$результат && $kol > 2) {
+					   
+						$str = substr($str, 1, -1);	
+						   
+						$kol = strlen($str);	
+						   
+					}
+					   
+				}
+
+			}
+			
 			$str = substr($text, $kol);		
 			
 			_pechat($str, $max_kol_s);
+
 		}		
+		
 	}
 	
-	//return $str;
+	return true;
 	
 }
 	
