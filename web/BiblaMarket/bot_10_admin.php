@@ -371,7 +371,7 @@ if ($text){
 					$sms.="|\n\n";												
 				}									
 				
-				_pechat($sms, '4000');				
+				_pechat($sms, 4004);				
 				
 			}else $tg->sendMessage($chat_id, "пуста таблица \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
 			
