@@ -25,7 +25,7 @@ if ($text == 'база') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `avtozakaz_pzmarket` ADD `url_info_bot` VARCHAR( 200 ) NULL DEFAULT NULL";
+	$query = "ALTER TABLE `pzmarkt` CHANGE `caption4` `caption4` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
 	
 	if ($result = $mysqli->query($query)) {
 	
