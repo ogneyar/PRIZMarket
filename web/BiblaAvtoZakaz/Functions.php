@@ -45,8 +45,12 @@
 ** _ожидание_результата
 ** _отправка_лота_админам
 ** _вывод_лота_на_каналы
-** _удалить_лот
+** _публикация_на_канале_медиа
 ** _отправка_сообщений_инфоботу
+** _доверяет
+** _отказать
+** _удалить_лот
+** 
 ** 
 ** _возврат_лотов_для_инлайн
 **
@@ -1242,8 +1246,6 @@ function _отправка_лота_админам() {
 
 
 
-
-
 // вывод на канал подробности уже готового лота
 function _вывод_лота_на_каналы($id_client, $номер_лота = 0) {
 
@@ -1446,12 +1448,10 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 
 
 
-
-
+// публикация альбома с фотографиями на отдельном канале
 function _публикация_на_канале_медиа($номер_клиента) {
 	
 	global $bot, $master, $таблица_медиагруппа, $mysqli, $channel_media_market;
-
 	
 	$запрос = "SELECT * FROM {$таблица_медиагруппа} WHERE id_client={$номер_клиента} AND id='0'";
 		
@@ -1507,24 +1507,7 @@ function _публикация_на_канале_медиа($номер_клие
 }
 
 
-
-
-function _удалить_лот($айди_клиента) {
-	
-	global $bot, $mysqli, $table_market;
-	
-	$query = "DELETE FROM ".$table_market." WHERE id_client=".$айди_клиента." AND id_zakaz=0";	
-	
-	if ($result = $mysqli->query($query)) {
-	
-		return true;
-		
-	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
-	
-}
-
-
-
+// отправка сообщений инфоботу на его канал, для формирования ссылки "о клиенте"
 function _отправка_сообщений_инфоботу() {
 	
 	global $bot, $channel_info, $from_id, $from_username;
@@ -1536,6 +1519,80 @@ function _отправка_сообщений_инфоботу() {
 }
 
 
+
+
+// отметка доверием (PRIZMarket доверяет)
+function _доверяет($id) {
+
+	global $bot, $callback_query_id, $chat_id, $message_id;
+	
+	_запись_в_таблицу_маркет($id, 'doverie', '1');
+	
+	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");
+	
+	$inLine = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => 'Опубликовать',
+					'callback_data' => 'опубликовать:'.$id
+				]
+			],
+			[
+				[
+					'text' => 'ОТКАЗАТЬ',
+					'callback_data' => 'отказать:'.$id
+				]
+			],
+		]
+	];
+	
+	$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
+
+}
+
+
+// отметка доверием (PRIZMarket доверяет)
+function _отказать($id) {
+
+	global $bot, $callback_query_id, $chat_id, $message_id;
+
+	$bot->sendMessage($id, "Вам отказанно.\n\n/start");
+	
+	if (_удалить_лот($id)) {
+		
+		$inLine = [
+			'inline_keyboard' => [
+				[
+					[
+						'text' => 'Отказанно',
+						'callback_data' => 'отказанно'
+					]
+				]
+			]
+		];
+		
+		$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
+	
+	}
+
+}
+
+
+// удаление лота
+function _удалить_лот($айди_клиента, $номер_лота = '0') {
+	
+	global $bot, $mysqli, $table_market;
+	
+	$query = "DELETE FROM ".$table_market." WHERE id_client=".$айди_клиента." AND id_zakaz={$номер_лота}";	
+	
+	if ($result = $mysqli->query($query)) {
+	
+		return true;
+		
+	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
+	
+}
 
 
 

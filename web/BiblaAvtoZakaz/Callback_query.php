@@ -89,26 +89,24 @@ if ($callback_data=='создать'){
 	_вывод_лота_на_каналы($id);
 	
 }elseif ($callback_data=='доверяет') {	
+		
+	_доверяет($id);
 	
-	$from_id = $id;
-	
-	_запись_в_таблицу_маркет($callback_from_id, 'doverie', '1');
-	
-	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");
 	
 }elseif ($callback_data=='редактировать') {	
 		
 	$bot->answerCallbackQuery($callback_query_id, "Функция ещё не реализованна!");
 	
+	
 }elseif ($callback_data=='отказать') {	
 	
-	$bot->sendMessage($id, "Вам отказанно.\n\n/start");
+	_отказать($id);
 	
-	if (_удалить_лот($id)) {
 	
-		$bot->deleteMessage($chat_id, $message_id);
+}elseif ($callback_data=='отказанно') {	
 		
-	}
+	$bot->answerCallbackQuery($callback_query_id, "Отказанно!");
+	
 	
 }elseif ($callback_data=='старт') {	
 
