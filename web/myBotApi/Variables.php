@@ -430,10 +430,12 @@ $InputTextMessageContent = [
 
 $InlineQueryResultArticle = [	
 	[
+	// обязательные
 		'type' => 'article',
 		'id' => $from_id,
 		'title' => 'Превосходная кнопка',
-		'input_message_content' => [ 'message_text' => 'хоть какой текст' ],			
+		'input_message_content' => [ 'message_text' => 'хоть какой текст' ],
+	// необязательные
 		//'reply_markup' => null,
 		//'url' => null,
 		//'hide_url' => false,
@@ -446,19 +448,42 @@ $InlineQueryResultArticle = [
 
 $InlineQueryResultPhoto = [
 	[
+	// обязательные
 		'type' => 'photo',
-		'id' => $from_id,
+		'id' => $from_id."z",
 		'photo_url' => 'https://i.ibb.co/SRCv6Z7/file-23.jpg',
 		'thumb_url' => 'https://i.ibb.co/SRCv6Z7/file-21.jpg',
-		'photo_width' => null,
-		'photo_height' => null,
-		'title' => null,
-		'description' => null,
-		'caption' => null,
-		'parse_mode' => null,
-		'reply_markup' => null,
-		'input_message_content' => null		
+	// необязательные
+		//'photo_width' => null,
+		//'photo_height' => null,
+		'title' => 'Продам молоток',
+		'description' => 'молотки в ассортименте',
+		'caption' => '#продам',
+		//'parse_mode' => null,
+		//'reply_markup' => null,
+		//'input_message_content' => null		
 	]	
+];
+
+$InlineQueryResultVideo = [
+	[
+	// обязательные
+		'type' => 'video',
+		'id' => '',
+		'video_url' => '',
+		'mime_type' => 'video/mp4', // или 'text/html'
+		'thumb_url' => '',
+		'title' => '',
+	// необязательные
+		'caption' => '',
+		'parse_mode' => '',
+		'video_width' => '',
+		'video_height' => '',
+		'video_duration' => '',
+		'description' => '',
+		'reply_markup' => '',
+		'input_message_content' => '',
+	]
 ];
 
 
