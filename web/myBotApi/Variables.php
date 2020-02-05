@@ -475,14 +475,14 @@ $InlineQueryResultVideo = [
 		'thumb_url' => '',
 		'title' => '',
 	// необязательные
-		'caption' => '',
-		'parse_mode' => '',
-		'video_width' => '',
-		'video_height' => '',
-		'video_duration' => '',
-		'description' => '',
-		'reply_markup' => '',
-		'input_message_content' => '',
+		//'caption' => '',
+		//'parse_mode' => '',
+		//'video_width' => '',
+		//'video_height' => '',
+		//'video_duration' => '',
+		//'description' => '',
+		//'reply_markup' => '',
+		//'input_message_content' => '',
 	]
 ];
 
