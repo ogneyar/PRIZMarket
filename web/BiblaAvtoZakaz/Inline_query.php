@@ -56,8 +56,7 @@ if ($inline_query) {
 		]
 	];
 	
-	$bot->answerInlineQuery($inline_query_id, $InlineQueryResultPhoto, 300, false, '', "in_bot", "s");
-	//
+	$bot->answerInlineQuery($inline_query_id, $InlineQueryResultPhoto, null, false, null, "в бот", "s");
 
 }
 
