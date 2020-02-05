@@ -53,10 +53,80 @@ if ($inline_query) {
 			//'thumb_url' => null,
 			//'thumb_width' => null,
 			//'thumb_height' => null
-		]
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-1",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-2",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-3",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-4",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-5",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-6",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-7",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-8",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-9",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
+		[
+			'type' => 'article',
+			'id' => $from_id."-10",
+			'title' => 'Отличная кнопка',
+			'input_message_content' => [ 'message_text' => 'любой тут текст' ],			
+			'description' => 'нажми её',		
+		],
 	];
 	
-	$bot->answerInlineQuery($inline_query_id, $InlineQueryResultPhoto, null, false, null, "в бот", "s");
+	$bot->answerInlineQuery($inline_query_id, $InlineQueryResult, null, false, null, "в бот", "s");
 
 }
 
