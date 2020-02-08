@@ -497,9 +497,10 @@ function _запись_в_таблицу_маркет($номер_клиента
 			  `podrobno`,
 			  `url_tgraph`,
 			  `foto_album`,
-			  `url_info_bot`
+			  `url_info_bot`,
+			  `date`
 			) VALUES (
-			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', '', '', ''
+			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', '', '', '', ''
 			)";
 						
 			$result = $mysqli->query($query);
