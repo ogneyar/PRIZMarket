@@ -25,7 +25,7 @@ if ($text == 'база') {
 
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `pzmarkt` CHANGE `url` `url` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
+	$query = "ALTER TABLE `avtozakaz_pzmarket` ADD `date` BIGINT( 20 ) NULL DEFAULT NULL";
 	
 	if ($result = $mysqli->query($query)) {
 	
