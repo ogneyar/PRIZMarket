@@ -15,7 +15,7 @@ if (strpos($text, ":")!==false) {
 	
 //$время = date("H:i:s");
 
-$UNIXtime = time();
+$UNIXtime = time() + $три_часа;
 	
 $переведённое_время = date("d.m.Y H:i:s", $UNIXtime);
 
@@ -43,7 +43,7 @@ $переведённое_время = date("d.m.Y H:i:s", $UNIXtime+$ожида
 
 $bot->sendMessage($channel_info, $переведённое_время);
 	
-$UNIXtime = time();
+$UNIXtime = time() + $три_часа;
 
 $переведённое_время = date("d.m.Y H:i:s", $UNIXtime);
 	
