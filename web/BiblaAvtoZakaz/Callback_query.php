@@ -98,6 +98,11 @@ if ($callback_data=='создать'){
 	$bot->answerCallbackQuery($callback_query_id, "Функция ещё не реализованна!");
 	
 	
+}elseif ($callback_data=='редактор_клиент') {	
+		
+	$bot->answerCallbackQuery($callback_query_id, "Функция ещё не реализованна!");
+	
+	
 }elseif ($callback_data=='отказать') {	
 	
 	_отказать($id);
