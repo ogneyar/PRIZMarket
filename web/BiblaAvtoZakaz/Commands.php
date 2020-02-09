@@ -232,6 +232,14 @@ if ($text == 'база') {
 
 	$bot->sendMessage($chat_id, "Ремув", null, $HideKeyboard);
 
+}elseif ($text == 'пуб') {
+
+	$bot->sendMessage($channel_info, "Ремув", null, $HideKeyboard);
+	
+	sleep(30);
+	
+	$bot->sendMessage($channel_info, "Ремув", null, $HideKeyboard);
+
 }
 
 
