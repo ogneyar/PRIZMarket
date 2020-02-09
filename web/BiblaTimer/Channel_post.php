@@ -34,12 +34,13 @@ $bot->sendMessage($channel_info, $UNIXtime);
 $ожидание = 10;
 
 sleep($ожидание);
+
+$bot->sendMessage($channel_info, $UNIXtime+10);
 	
 $UNIXtime = time();
 	
 $bot->sendMessage($channel_info, $UNIXtime);
 
-$bot->sendMessage($channel_info, $UNIXtime+10);
 	
 
 
