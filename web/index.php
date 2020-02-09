@@ -12,6 +12,7 @@
 	include_once 'botZakaz.php';
 	include_once 'botInfo.php';
 	include_once 'botAvtoZakaz.php';
+	include_once 'botTimer.php';
 
 ?>
 </body>	
