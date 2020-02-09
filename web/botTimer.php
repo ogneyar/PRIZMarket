@@ -14,75 +14,86 @@ $bot = new Bot($token);
 
 $id_bota = strstr($token, ':', true);	
  	
-
-	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ФУНКЦИЙ
-	include 'BiblaTimer/Functions.php';	
+// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ФУНКЦИЙ
+include 'BiblaTimer/Functions.php';	
 	
-	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-	include 'myBotApi/Variables.php';
+// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
+include 'myBotApi/Variables.php';
 	
-	// Обработчик исключений
-	set_exception_handler('exception_handler');
+// Обработчик исключений
+set_exception_handler('exception_handler');
 
-	// Если пришла ссылка типа t.me//..?start=123456789
-	if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);
+// Если пришла ссылка типа t.me//..?start=123456789
+if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);
 	
-	if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {
+if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {
 		
-		if ($chat_type=='private') {
+	if ($chat_type=='private') {
 			
-			_старт_ТаймерБота();  			
+		_старт_ТаймерБота();  			
 			
-		}	
+	}	
 		
-	}
+}
 
-	if ($chat_type == 'private' || $chat_id == $channel_info) {
+if ($chat_type == 'private' || $chat_id == $channel_info) {
 		
-		if ($data['callback_query']) {
+	if ($data['callback_query']) {
 		
-			//include_once 'BiblaTimer/Callback_query.php';			
+		//include_once 'BiblaTimer/Callback_query.php';			
 		
-		}elseif ($data['edited_message']) {
+	}elseif ($data['edited_message']) {
 		
-			//include_once 'BiblaTimer/Edit_message.php';		
+		//include_once 'BiblaTimer/Edit_message.php';		
 		
-		// если пришло сообщение MESSAGE подключается необходимый файл
-		}elseif ($data['message']) {
+	// если пришло сообщение MESSAGE подключается необходимый файл
+	}elseif ($data['message']) {
 			
-			//-----------------------------
-			// это команды бота для мастера
-			if ($text){
+		//-----------------------------
+		// это команды бота для мастера
+		if ($text){
 				
-				$number = stripos($text, '%');
+			$number = stripos($text, '%');
 				
-				if ($number!==false&&$number == '0') {
+			if ($number!==false&&$number == '0') {
 					
-					if ($chat_id==$master) {
-						
-						$text = substr($text, 1);
-						
-						include_once 'BiblaTimer/Commands.php';
-						
-						exit('ok');
-						
-					}
+				if ($chat_id==$master) {
 					
+					$text = substr($text, 1);
+						
+					include_once 'BiblaTimer/Commands.php';
+						
+					exit('ok');
+						
 				}
+					
+			}
+				
+		}
+			
+		//-----------------------------
+					
+		include_once 'BiblaTimer/Message.php';		
+			
+	}elseif ($data['channel_post']) {
+		
+		if ($text){
+				
+			$number = stripos($text, '?');
+				
+			if ($number!==false&&$number == '0') {
+			
+				include_once 'BiblaTimer/Channel_post.php';
+				
+				exit('ok');
 				
 			}
-			
-			//-----------------------------
-					
-			include_once 'BiblaTimer/Message.php';		
-			
-		}elseif ($data['channel_post']) {
-			
-			include_once 'BiblaTimer/Channel_post.php';
-			
+		
 		}
-
+	
 	}
+
+}
 	
 	if ($inline_query) {
 	
