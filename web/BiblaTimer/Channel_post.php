@@ -1,5 +1,5 @@
 <?
-
+/*
 if (strpos($text, ":")!==false) {
 
 	$komanda = strstr($text, ':', true);	
@@ -9,26 +9,39 @@ if (strpos($text, ":")!==false) {
 	$text = $komanda;
 
 }
+*/
 
-if ($id) {
+$дата = date("m.d.y");
 	
-	sleep($id);
+$время = date("H:i:s");
+
+$UNIXtime = time();
 	
-	$bot->sendMessage($channel_info, "?Время");
+$переведённая_дата = date("d.m.Y H:i:s", $UNIXtime);
+
+if ($text == 'старт') {
+
+	if ($id_bota == '1098126237') {	
+		
+		$bot->sendMessage($channel_info, "?".$UNIXtime);
 	
-}else {
+	}else exit('ok');
+
+}elseif ($text == 'стоп') exit('ok');
+
+$bot->sendMessage($channel_info, $UNIXtime);
+
+$ожидание = 10;
+
+sleep($ожидание);
 	
-	$дата = date("m.d.y");
+$UNIXtime = time();
 	
-	$время = date("H:i:s");
+$bot->sendMessage($channel_info, $UNIXtime);
+
+$bot->sendMessage($channel_info, $UNIXtime+10);
 	
-	$UNIXtime = time();
-	
-	$переведённая_дата = date("d.m.Y", $UNIXtime);
-	
-	$bot->sendMessage($channel_info, $дата);
-	
-}
+
 
 
 
