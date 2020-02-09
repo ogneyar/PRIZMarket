@@ -438,7 +438,7 @@ function _удаление($номер_лота) {
 // функция удаления лота из базы данных
 function _удалить_выбранный_лот($номер_лота) {
 	
-	global $table_market, $callback_query_id, $mysqli, $bot, $master;
+	global $table_market, $таблица_медиагруппа, $callback_query_id, $mysqli, $bot, $master;
 	
 	$запрос = "DELETE FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";
 	
@@ -449,6 +449,10 @@ function _удалить_выбранный_лот($номер_лота) {
 		_инфо_автоЗаказБота();
 		
 		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!");
+		
+		$запрос = "DELETE FROM {$таблица_медиагруппа} WHERE id_zakaz='{$номер_лота}'";
+	
+		$результат = $mysqli->query($запрос);
 	
 	}else throw new Exception("Не смог удалить лот..");	
 
