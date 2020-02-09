@@ -31,11 +31,11 @@ if ($text == 'старт') {
 
 $bot->sendMessage($channel_info, $UNIXtime);
 
-$ожидание = 30;
+$ожидание = 10;
 
 sleep($ожидание);
 
-$bot->sendMessage($channel_info, $UNIXtime+30);
+$bot->sendMessage($channel_info, $UNIXtime+$ожидание);
 	
 $UNIXtime = time();
 	
