@@ -450,7 +450,7 @@ function _удалить_выбранный_лот($номер_лота) {
 		
 		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!");
 		
-		$запрос = "DELETE FROM {$таблица_медиагруппа} WHERE id_zakaz='{$номер_лота}'";
+		$запрос = "DELETE FROM {$таблица_медиагруппа} WHERE id='{$номер_лота}'";
 	
 		$результат = $mysqli->query($запрос);
 	
