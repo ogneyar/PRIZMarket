@@ -234,11 +234,11 @@ if ($text == 'база') {
 
 }elseif ($text == 'пуб') {
 
-	$bot->sendMessage($channel_info, "Ремув", null, $HideKeyboard);
+	$bot->sendMessage($chat_id, "Текст");
 	
 	sleep(30);
 	
-	$bot->sendMessage($channel_info, "Ремув", null, $HideKeyboard);
+	$bot->sendMessage($chat_id, "Текст с задержкой");
 
 }
 
