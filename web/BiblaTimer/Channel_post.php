@@ -11,15 +11,15 @@ if (strpos($text, ":")!==false) {
 }
 */
 
-$дата = date("m.d.y");
+//$дата = date("m.d.y");
 	
-$время = date("H:i:s");
+//$время = date("H:i:s");
 
 $UNIXtime = time();
 	
-$переведённая_дата = date("d.m.Y H:i:s", $UNIXtime);
+$переведённое_время = date("d.m.Y H:i:s", $UNIXtime);
 
-$переведённое_время = date("H:i:s", $UNIXtime);
+//$переведённое_время = date("H:i:s", $UNIXtime);
 
 if ($text == 'старт') {
 
@@ -39,15 +39,15 @@ $ожидание = 20;
 
 sleep($ожидание);
 
-$переведённое_время = date("H:i:s", $UNIXtime+$ожидание);
+$переведённое_время = date("d.m.Y H:i:s", $UNIXtime+$ожидание);
 
 $bot->sendMessage($channel_info, $переведённое_время);
 	
 $UNIXtime = time();
 
-$переведённое_время = date("H:i:s", $UNIXtime);
+$переведённое_время = date("d.m.Y H:i:s", $UNIXtime);
 	
-$bot->sendMessage($channel_info, $UNIXtime);
+$bot->sendMessage($channel_info, $переведённое_время);
 
 exit('ok');
 
