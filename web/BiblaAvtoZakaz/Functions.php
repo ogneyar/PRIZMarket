@@ -428,7 +428,7 @@ function _удаление($номер_лота) {
 		]
 	];				
 	
-	$bot->sendMessage($callback_from_id, "|\n|\n|\nПовторить? Если хотите повторить публикацию этого лота, нажмите 'Да'.", null, $inLine);
+	$bot->sendMessage($callback_from_id, "|\n|\n|\nУдалить? Если хотите удалить этот лот из базы нажмите 'Да'.", null, $inLine);
 
 }
 
@@ -445,6 +445,8 @@ function _удалить_выбранный_лот($номер_лота) {
 	$результат = $mysqli->query($запрос);
 	
 	if ($результат) {
+		
+		_инфо_автоЗаказБота();
 		
 		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!");
 	
