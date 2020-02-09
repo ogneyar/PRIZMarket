@@ -236,7 +236,7 @@ if ($text == 'база') {
 
 	$bot->sendMessage($chat_id, "Текст");
 	
-	sleep(30);
+	//sleep(30);
 	
 	$bot->sendMessage($chat_id, "Текст с задержкой");
 
