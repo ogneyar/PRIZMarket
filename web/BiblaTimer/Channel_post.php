@@ -19,25 +19,33 @@ $UNIXtime = time();
 	
 $переведённая_дата = date("d.m.Y H:i:s", $UNIXtime);
 
+$переведённое_время = date("H:i:s", $UNIXtime);
+
 if ($text == 'старт') {
 
 	if ($id_bota == '1098126237') {	
 		
-		$bot->sendMessage($channel_info, "?".$UNIXtime);
+		$bot->sendMessage($channel_info, "?".$переведённое_время);
+		
+		exit('ok');
 	
 	}else exit('ok');
 
 }elseif ($text == 'стоп') exit('ok');
 
-$bot->sendMessage($channel_info, $UNIXtime);
+$bot->sendMessage($channel_info, $переведённое_время);
 
 $ожидание = 20;
 
 sleep($ожидание);
 
-$bot->sendMessage($channel_info, $UNIXtime+$ожидание);
+$переведённое_время = date("H:i:s", $UNIXtime+$ожидание);
+
+$bot->sendMessage($channel_info, $переведённое_время);
 	
 $UNIXtime = time();
+
+$переведённое_время = date("H:i:s", $UNIXtime);
 	
 $bot->sendMessage($channel_info, $UNIXtime);
 
