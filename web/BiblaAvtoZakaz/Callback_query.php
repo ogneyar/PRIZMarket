@@ -16,7 +16,8 @@ if ($callback_data=='создать'){
 
 }elseif ($callback_data=='повторить') {	
 
-	_повторить();
+	_вывод_списка_лотов("повтор");
+	
 
 }elseif ($callback_data=='повтор') {	
 
@@ -26,6 +27,21 @@ if ($callback_data=='создать'){
 
 	_отправить_на_повтор($id);
 
+}elseif ($callback_data=='удалить') {	
+	
+	_вывод_списка_лотов("удаление");
+	
+	
+}elseif ($callback_data=='удаление') {	
+	
+	_удаление($id);
+	
+	
+}elseif ($callback_data=='удалить_выбранный_лот') {	
+	
+	_удалить_выбранный_лот($id);
+	
+	
 }elseif ($callback_data=='продам') {	
 
 	_продам();
@@ -94,11 +110,6 @@ if ($callback_data=='создать'){
 	
 	
 }elseif ($callback_data=='редактировать') {	
-		
-	$bot->answerCallbackQuery($callback_query_id, "Функция ещё не реализованна!");
-	
-	
-}elseif ($callback_data=='редактор_клиент') {	
 		
 	$bot->answerCallbackQuery($callback_query_id, "Функция ещё не реализованна!");
 	

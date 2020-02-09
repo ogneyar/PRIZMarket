@@ -8,10 +8,12 @@
 ** _existence
 **
 ** _создать
-** _повторить
+** _вывод_списка_лотов
 ** _повтор
 ** _отправка_лота
 ** _отправить_на_повтор
+** _удаление
+** _удалить_выбранный_лот
 ** _узнать_имя_по_номеру_лота
 ** _куплю
 ** _продам
@@ -92,8 +94,8 @@ function _инфо_автоЗаказБота() {
 					'callback_data' => 'повторить'
 				],
 				[
-					'text' => 'Редактирование',
-					'callback_data' => 'редактор_клиент'
+					'text' => 'Удалить публикацию',
+					'callback_data' => 'удалить'
 				]
 			]
 		]);
@@ -228,7 +230,7 @@ function _создать() {
 
 
 
-function _повторить() {
+function _вывод_списка_лотов($действие) {
 	
 	global $bot, $table_market, $mysqli, $callback_from_id, $from_id;
 	
@@ -252,7 +254,7 @@ function _повторить() {
 
 				$кнопки = array_merge($кнопки, [[[
 					'text' => "{$строка['kuplu_prodam']} {$название}",
-					'callback_data' => "повтор:{$строка['id_zakaz']}"
+					'callback_data' => "{$действие}:{$строка['id_zakaz']}"
 				]]]);
 			
 			}		
@@ -305,6 +307,8 @@ function _повтор($номер_лота) {
 	$bot->sendMessage($callback_from_id, "|\n|\n|\nПовторить? Если хотите повторить публикацию этого лота, нажмите 'Да'.", null, $inLine);
 
 }
+
+
 
 
 // функция отправки лота 
@@ -395,6 +399,56 @@ function _отправить_на_повтор($номер_лота) {
 	$bot->answerCallbackQuery($callback_query_id, "Ожидайте!");
 	
 	_инфо_автоЗаказБота();
+
+}
+
+
+
+
+
+// функция вывода на экран лота, который необходимо удалить
+function _удаление($номер_лота) {
+	
+	global $callback_from_id, $bot;
+	
+	_отправка_лота($callback_from_id, $номер_лота);	
+	
+	$inLine = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => 'Да',
+					'callback_data' => "удалить_выбранный_лот:".$номер_лота
+				],
+				[
+					'text' => 'Нет',
+					'callback_data' => "старт"
+				]
+			]
+		]
+	];				
+	
+	$bot->sendMessage($callback_from_id, "|\n|\n|\nПовторить? Если хотите повторить публикацию этого лота, нажмите 'Да'.", null, $inLine);
+
+}
+
+
+
+
+// функция удаления лота из базы данных
+function _удалить_выбранный_лот($номер_лота) {
+	
+	global $table_market, $callback_query_id, $mysqli, $bot, $master;
+	
+	$запрос = "DELETE FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";
+	
+	$результат = $mysqli->query($запрос);
+	
+	if ($результат) {
+		
+		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!");
+	
+	}else throw new Exception("Не смог удалить лот..");	
 
 }
 
