@@ -82,6 +82,8 @@ if ($chat_type == 'private' || $chat_id == $channel_info) {
 			$number = stripos($text, '?');
 				
 			if ($number!==false&&$number == '0') {
+				
+				$text = substr($text, 1);
 			
 				include_once 'BiblaTimer/Channel_post.php';
 				
