@@ -6,6 +6,7 @@
 ** _есть_ли_лоты
 ** exception_handler
 ** _existence
+** _дай_айди
 **
 ** _создать
 ** _вывод_списка_лотов
@@ -56,7 +57,7 @@
 ** 
 ** _возврат_лотов_для_инлайн
 **
-** _дай_айди
+** 
 */
 
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
@@ -187,6 +188,34 @@ function _existence($table) {
 	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");
 	
     return $response;
+
+}
+
+
+// функция возвращает айди клиента по его юзернейму
+function _дай_айди($Юнейм) {
+	
+	global $mysqli, $table_users;
+		
+    $ответ = false;	
+
+	$запрос = "SELECT id_client FROM {$table_users} WHERE user_name={$Юнейм}";
+	
+	$результат = $mysqli->query($запрос);
+	
+	if ($результат) {
+	
+		if ($результат->num_rows>0) {
+			
+			$результат->fetch_all(MYSQLI_ASSOC);
+        
+            $ответ = $результат[0]['id_client'];
+
+		}		
+	
+	}else throw new Exception("Не смог узнать айди клиента - {$Юнейм}");
+	
+    return $ответ;
 
 }
 
@@ -1797,34 +1826,6 @@ function _возврат_лотов_для_инлайн($id_client) {
 
 
 
-
-
-// функция возвращает айди клиента по его юзернейму
-function _дай_айди($Юнейм) {
-	
-	global $mysqli, $table_users;
-		
-    $ответ = false;	
-
-	$запрос = "SELECT user_name FROM {$table_users} WHERE id_client={$Юнейм}";
-	
-	$результат = $mysqli->query($запрос);
-	
-	if ($результат) {
-	
-		if ($результат->num_rows>0) {
-			
-			$результат->fetch_all(MYSQLI_ASSOC);
-        
-            $ответ = $результат[0]['user_name'];
-
-		}		
-	
-	}else throw new Exception("Не смог узнать айди клиента - {$Юнейм}");
-	
-    return $ответ;
-
-}
 
 
 
