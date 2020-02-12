@@ -274,11 +274,27 @@ function _создать() {
 
 	global $bot, $from_id, $message_id, $callback_query_id, $callback_from_id;	
 	
-	if (!$callback_from_id) {
+	$давно = _последняя_публикация();
 	
-		$callback_from_id = $from_id;
+	if ($давно) {
+	
+		if (!$callback_from_id) {
 		
-	}else $bot->answerCallbackQuery($callback_query_id, "Начнём!");
+			$callback_from_id = $from_id;
+			
+		}else $bot->answerCallbackQuery($callback_query_id, "Начнём!");
+	
+	}else {
+		
+		if ($callback_query_id) {
+			
+			$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);
+			
+		}
+		
+		exit('ok');
+		
+	}
 	
 	_запись_в_таблицу_маркет();
 	
@@ -365,26 +381,44 @@ function _вывод_списка_лотов($действие) {
 // функция вывода на экран лота, который необходимо повторить
 function _повтор($номер_лота) {
 	
-	global $callback_from_id, $bot;
+	global $callback_from_id, $bot, $callback_query_id;
 	
-	_отправка_лота($callback_from_id, $номер_лота);	
+	$давно = _последняя_публикация();
 	
-	$inLine = [
-		'inline_keyboard' => [
-			[
+	if ($давно) {
+	
+		_отправка_лота($callback_from_id, $номер_лота);	
+	
+		$inLine = [
+			'inline_keyboard' => [
 				[
-					'text' => 'Да',
-					'callback_data' => "отправить_на_повтор:".$номер_лота
-				],
-				[
-					'text' => 'Нет',
-					'callback_data' => "старт"
+					[
+						'text' => 'Да',
+						'callback_data' => "отправить_на_повтор:".$номер_лота
+					],
+					[
+						'text' => 'Нет',
+						'callback_data' => "старт"
+					]
 				]
 			]
-		]
-	];				
+		];				
+		
+		$bot->sendMessage($callback_from_id, "|\n|\n|\nПовторить? Если хотите повторить публикацию этого лота, нажмите 'Да'.", null, $inLine);
 	
-	$bot->sendMessage($callback_from_id, "|\n|\n|\nПовторить? Если хотите повторить публикацию этого лота, нажмите 'Да'.", null, $inLine);
+	}else {
+		
+		if ($callback_query_id) {
+			
+			$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);
+			
+		}
+		
+		exit('ok');
+		
+	}
+	
+	
 
 }
 
