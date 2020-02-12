@@ -26,7 +26,11 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			
 		}
 		
-		$bot->sendMessage($master, $юзер_нейм);		
+		//$bot->sendMessage($master, $юзер_нейм);
+		
+		$id_client = _дай_айди($юзер_нейм);
+		
+		$bot->sendMessage($id_client, $reply_text);
 		
 	}
 
