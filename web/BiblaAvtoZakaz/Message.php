@@ -10,7 +10,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 	
 	$bot->sendMessage($master, 'Э');
 	
-	$номер_строки = strpos($caption, '@');
+	$номер_строки = stripos($caption, '@');
 	
 	if ($номер_строки) {
 		
