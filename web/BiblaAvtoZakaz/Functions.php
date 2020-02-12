@@ -1520,9 +1520,9 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					
 				if ($публикация) {
 						
-					_запись_в_таблицу_маркет($id_client, 'date', time());
+					_запись_в_таблицу_маркет($id_client, 'date', 333);
 					
-					$bot->sendMessage($master, time());
+					//$bot->sendMessage($master, time());
 					
 					//$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
 						
