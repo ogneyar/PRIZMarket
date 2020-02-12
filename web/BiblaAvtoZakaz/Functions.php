@@ -4,6 +4,7 @@
 ** _start_AvtoZakazBota
 ** _инфо_автоЗаказБота
 ** _есть_ли_лоты
+** _последняя_публикация
 ** exception_handler
 ** _existence
 ** _дай_айди
@@ -145,6 +146,49 @@ function _есть_ли_лоты() {
     return $response;
 
 }
+
+
+
+
+// Проверка давно ли была последняя публикация лота у данного клиента
+function _последняя_публикация() {
+	
+	global $mysqli, $from_id, $callback_from_id, $table_market;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;	
+	
+    $resonse = false;	
+
+	$query = "SELECT date FROM {$table_market} WHERE id_client={$callback_from_id}";
+	
+	$result = $mysqli->query($query);
+	
+	if ($result) {
+	
+		if ($result->num_rows>0) {
+        
+			$результат = $result->fetch_all(MYSQLI_ASSOC);
+			
+			$время = time()-80000; // примерно 22 часа, а точнее 22,22222222222
+			
+			$давно = true; // если публикация была давно
+			
+			foreach ($результат as $строка) {
+				
+				if ($строка['date']>$время) $давно = false;
+				
+			}
+		
+            if ($давно) $response = true;
+
+		}else $response = true;
+	
+	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");
+	
+    return $response;
+
+}
+
 
 
 
@@ -1309,11 +1353,19 @@ function _предпросмотр_лота() {
 // отправка клиентом введённой информации 
 function _на_публикацию() {
 	
-	_отправка_лота_админам();
+	global $callback_query_id;
+	
+	$давно = _последняя_публикация();
+	
+	if ($давно) {
+		
+		_отправка_лота_админам();
 
-	_ожидание_результата();
+		_ожидание_результата();
 
-	_отправка_сообщений_инфоботу();	
+		_отправка_сообщений_инфоботу();	
+		
+	}else $bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот !", true);
 
 }
 
