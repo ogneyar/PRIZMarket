@@ -8,9 +8,9 @@ if ($media_group_id) {
 
 if ($reply_to_message && $chat_id == $admin_group) {
 	
-	$bot->sendMessage($master, 'Э');
+	$bot->sendMessage($master, $caption);
 	
-	$номер_строки = stripos($caption, '@');
+	$номер_строки = strpos($caption, '@');
 	
 	if ($номер_строки) {
 		
