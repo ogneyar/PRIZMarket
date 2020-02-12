@@ -1476,19 +1476,23 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					
 				if ($формат_файла == 'фото') {
 					
-					$публикация = $bot->sendPhoto($channel_market, $файлАйди, $текст, markdown, $inLine);
+					//$публикация = $bot->sendPhoto($channel_market, $файлАйди, $текст, markdown, $inLine);
+					
+					$публикация = $bot->sendPhoto($admin_group, $файлАйди, $текст, markdown, $inLine);
 						
 				}elseif ($формат_файла == 'видео') {
 						
-					$публикация = $bot->sendVideo($channel_market, $файлАйди, $текст, markdown, $inLine);
-						
+					//$публикация = $bot->sendVideo($channel_market, $файлАйди, $текст, markdown, $inLine);
+					
+					$публикация = $bot->sendVideo($admin_group, $файлАйди, $текст, markdown, $inLine);
+					
 				}
 					
 				if ($публикация) {
 						
-					$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
+					//$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
 						
-					$bot->sendMessage($id_client, $реплика, markdown);						
+					//$bot->sendMessage($id_client, $реплика, markdown);						
 						
 				}else throw new Exception("Не смог выложить пост на основной канал.");	
 					
@@ -1506,7 +1510,7 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 		'inline_keyboard' => [
 			[
 				[
-					'text' => 'Опубликованно',
+					'text' => 'Опубликованно в подробностях',
 					'url' => $ссыль_на_подробности
 				]
 			],
