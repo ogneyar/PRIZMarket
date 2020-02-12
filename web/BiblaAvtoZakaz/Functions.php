@@ -1283,7 +1283,17 @@ function _предпросмотр_лота() {
 					]
 				];			
 				
-				$bot->sendMessage($from_id, $текст, markdown, $inLine);		
+				//$bot->sendMessage($from_id, $текст, markdown, $inLine);		
+				
+				if ($формат_файла == 'фото') {
+					
+					$публикация = $bot->sendPhoto($from_id, $файлАйди, $текст, markdown, $inLine);
+						
+				}elseif ($формат_файла == 'видео') {
+					
+					$публикация = $bot->sendVideo($from_id, $файлАйди, $текст, markdown, $inLine);
+					
+				}
 				
 			}
 		
@@ -1368,7 +1378,7 @@ function _отправка_лота_админам() {
 		]
 	];
 		
-	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$from_id} AND id_zakaz=0";
+	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz=0";
 		
 	$результат = $mysqli->query($запрос);
 	
