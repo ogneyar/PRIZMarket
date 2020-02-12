@@ -128,6 +128,14 @@ if ($callback_data=='создать'){
 
 	_start_AvtoZakazBota();
 	
+}elseif ($callback_data=='на_публикацию') {	
+
+	_на_публикацию();
+	
+}elseif ($callback_data=='изменить_подробности') {	
+
+	_изменить_подробности();
+	
 }
 
 

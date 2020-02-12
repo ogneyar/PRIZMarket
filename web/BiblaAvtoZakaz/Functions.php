@@ -45,6 +45,9 @@
 ** _запись_в_таблицу_медиагрупа
 ** _не_нужен_альбом
 ** _опишите_подробно
+** _предпросмотр_лота
+** _на_публикацию
+** _изменить_подробности
 ** _ожидание_результата
 ** _отправка_лота_админам
 ** _вывод_лота_на_каналы
@@ -1216,15 +1219,116 @@ function _опишите_подробно() {
 
 
 
+
+
+// перед отправкой лота админам показывается клиенту вся введённая информация 
+function _предпросмотр_лота() {
+
+	global $from_id, $table_market, $bot, $mysqli, $master;
+
+	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$from_id} AND id_zakaz='0'";
+		
+	$результат = $mysqli->query($запрос);
+	
+	if ($результат) {
+		
+		if ($результат->num_rows == 1) {
+		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			
+			foreach ($результМассив as $строка) {
+			
+				$файлАйди = $строка['file_id'];		
+				$формат_файла = $строка['format_file'];				
+				$название = $строка['nazvanie'];
+				$ссыль_в_названии = $строка['url_nazv'];						
+				$название_для_подробностей = "[{$название}]({$ссыль_в_названии})";
+				$куплю_или_продам = $строка['kuplu_prodam'];
+				$валюта = $строка['valuta'];				
+				$хештеги_города = $строка['gorod'];				
+				$юзера_имя = $строка['username'];				
+				$доверие = $строка['doverie'];
+				$категория = $строка['otdel'];				
+				$подробности = $строка['podrobno'];			
+				
+				$хештеги = "{$куплю_или_продам}\n\n{$категория}\n▪️";				
+				$хештеги = str_replace('_', '\_', $хештеги);
+				
+				$текст = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}";				
+				$текст = str_replace('_', '\_', $текст);				
+				$текст = "{$хештеги}{$название_для_подробностей}{$текст}";
+				
+				$bot->sendMessage($from_id, $подробности);
+				
+				$inLine = [
+					'inline_keyboard' => [
+						[
+							[
+								'text' => 'Отправить на публикацию',
+								'callback_data' => 'на_публикацию'
+							]
+						],
+						[
+							[
+								'text' => 'Изменить подробности',
+								'callback_data' => 'изменить_подробности'
+							]
+						],
+						[
+							[
+								'text' => 'В начало',
+								'callback_data' => 'старт'
+							]
+						]
+					]
+				];			
+				
+				$bot->sendMessage($from_id, $текст, markdown, $inLine);		
+				
+			}
+		
+		}else throw new Exception("Или нет заказа или больше одного..");			
+	
+	}else throw new Exception("Нет такого заказа..");
+
+}
+
+
+
+
+// отправка клиентом введённой информации 
+function _на_публикацию() {
+	
+	_отправка_лота_админам();
+
+	_ожидание_результата();
+
+	_отправка_сообщений_инфоботу();	
+
+}
+
+
+
+// возврат к вводу подробной информации о лоте
+function _изменить_подробности() {
+
+	_опишите_подробно();
+
+}
+
+
+
 // КОНЕЦ - клиент ожидает решения администрации
 function _ожидание_результата() {
 
-	global $bot, $chat_id;
-		
+	global $bot, $from_id, $callback_from_id;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;
+	
 	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nОжидайте результат.\n\n(После публикации Вашего лота".
 		" Вы будете об этом уведомлены, в случае отказа Вас также, уведомят. Ожидайте..)";
 	
-	$bot->sendMessage($chat_id, $reply);
+	$bot->sendMessage($callback_from_id, $reply);
 
 }
 
@@ -1518,9 +1622,7 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					
 				if ($публикация) {
 						
-					_запись_в_таблицу_маркет($id_client, 'date', time()+$три_часа);
-					
-					//$bot->sendMessage($master, time());
+					_запись_в_таблицу_маркет($id_client, 'date', time());
 					
 					//$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
 						
@@ -1625,11 +1727,16 @@ function _публикация_на_канале_медиа($номер_клие
 // отправка сообщений инфоботу на его канал, для формирования ссылки "о клиенте"
 function _отправка_сообщений_инфоботу() {
 	
-	global $bot, $channel_info, $from_id, $from_username;
+	global $bot, $channel_info;
+	global $callback_from_username, $from_username, $callback_from_id, $from_id;
 	
-	$bot->sendMessage($channel_info, "@".$from_username);
+	if (!$callback_from_username) $callback_from_username = $from_username;
 	
-	$bot->sendMessage($channel_info, $from_id);	
+	if (!$callback_from_id) $callback_from_id = $from_id;
+	
+	$bot->sendMessage($channel_info, "@".$callback_from_username);
+	
+	$bot->sendMessage($channel_info, $callback_from_id);	
 	
 }
 

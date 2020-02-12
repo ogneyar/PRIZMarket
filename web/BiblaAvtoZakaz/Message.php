@@ -219,19 +219,13 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 			if ($text) {
 				
-				_запись_в_таблицу_маркет($from_id, 'podrobno', $text);
-
+				_запись_в_таблицу_маркет($from_id, 'podrobno', $text);				
+				
 				_очистка_таблицы_ожидание();
 				
 				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
-				
-				//_вывод_лота_на_каналы();
-				
-				_отправка_лота_админам();
-				
-				_ожидание_результата();
-				
-				_отправка_сообщений_инфоботу();
+			
+				_предпросмотр_лота();				
 				
 			}else $bot->deleteMessage($chat_id, $message_id);		
 			
