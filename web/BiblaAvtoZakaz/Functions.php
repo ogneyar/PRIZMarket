@@ -288,7 +288,7 @@ function _создать() {
 		'inline_keyboard' => [
 			[
 				[
-					'text' => '#продаю',
+					'text' => '#продам',
 					'callback_data' => 'продам'
 				],
 				[
@@ -1353,7 +1353,9 @@ function _предпросмотр_лота() {
 // отправка клиентом введённой информации 
 function _на_публикацию() {
 	
-	global $callback_query_id;
+	global $callback_query_id, $callback_from_id, $from_id;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;
 	
 	$давно = _последняя_публикация();
 	
@@ -1364,6 +1366,8 @@ function _на_публикацию() {
 		_ожидание_результата();
 
 		_отправка_сообщений_инфоботу();	
+		
+		_запись_в_таблицу_маркет($callback_from_id, 'date', time());
 		
 	}else $bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот !", true);
 
@@ -1682,9 +1686,7 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					
 				}
 					
-				if ($публикация) {
-						
-					_запись_в_таблицу_маркет($id_client, 'date', time());
+				if ($публикация) {					
 					
 					//$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
 						
