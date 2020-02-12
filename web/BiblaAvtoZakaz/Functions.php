@@ -207,9 +207,9 @@ function _дай_айди($Юнейм) {
 	
 		if ($результат->num_rows>0) {
 			
-			$результат->fetch_all(MYSQLI_ASSOC);
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
         
-            $ответ = $результат[0]['id_client'];
+            $ответ = $результМассив[0]['id_client'];
 
 		}		
 	
