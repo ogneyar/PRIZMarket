@@ -1483,8 +1483,6 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					
 				_запись_в_таблицу_маркет($id_client, 'url_podrobno', $ссыль_на_подробности);
 					
-				_запись_в_таблицу_маркет($id_client, 'status', "одобрен");
-					
 				$inLine = [
 					'inline_keyboard' => [
 						[
@@ -1520,13 +1518,15 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					
 				if ($публикация) {
 						
-					_запись_в_таблицу_маркет($id_client, 'date', 333);
+					_запись_в_таблицу_маркет($id_client, 'date', time()+$три_часа);
 					
 					//$bot->sendMessage($master, time());
 					
 					//$реплика = "Лот опубликован.\n\nДля продолжения работы с ботом жмите /start";
 						
-					//$bot->sendMessage($id_client, $реплика, markdown);						
+					//$bot->sendMessage($id_client, $реплика, markdown);
+					
+					_запись_в_таблицу_маркет($id_client, 'status', "одобрен");
 						
 				}else throw new Exception("Не смог отправить лот в админку.");	
 					
