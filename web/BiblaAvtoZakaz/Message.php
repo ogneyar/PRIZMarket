@@ -6,8 +6,21 @@ if ($media_group_id) {
 
 }
 
+if ($reply_to_message && $chat_id == $admin_group) {
+	
+	$номер_строки = strpos($caption, '@');
+	
+	if ($номер_строки) {
+		
+		$строка = strstr($caption, '@');
+		
+		$юзер_нейм = strstr($строка, ' ', true);
+		
+		$bot->sendMessage($master, $юзер_нейм);
+		
+	}
 
-if ($text=='Отмена ввода') {
+}elseif ($text=='Отмена ввода') {
 
 	$bot->sendMessage($chat_id, "Ввод отменён.", null, $HideKeyboard);
 	
