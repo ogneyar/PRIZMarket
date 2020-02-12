@@ -199,7 +199,7 @@ function _дай_айди($Юнейм) {
 		
     $ответ = false;	
 
-	$запрос = "SELECT id_client FROM {$table_users} WHERE user_name={$Юнейм}";
+	$запрос = "SELECT id_client FROM {$table_users} WHERE user_name='{$Юнейм}'";
 	
 	$результат = $mysqli->query($запрос);
 	
