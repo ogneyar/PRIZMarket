@@ -32,9 +32,9 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 		//$bot->sendMessage($master, $id_client);
 		
-		$bot->sendMessage($id_client, $reply_text);
+		$bot->sendMessage($id_client, $text);
 		
-		//$bot->sendMessage($master, $reply_text."- hh");
+		//$bot->sendMessage($master, $text."- hh");
 	}
 
 }elseif ($text=='Отмена ввода') {
