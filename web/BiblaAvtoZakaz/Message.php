@@ -8,17 +8,13 @@ if ($media_group_id) {
 
 if ($reply_to_message && $chat_id == $admin_group) {
 	
-	$bot->sendMessage($master, $reply_caption);
-	
-	$номер_строки = strpos($caption, '@');
+	$номер_строки = strpos($reply_caption, '@');
 	
 	if ($номер_строки) {
 		
-		$строка = strstr($caption, '@');
+		$строка = strstr($reply_caption, '@');
 		
 		$юзер_нейм = strstr($строка, ' ', true);
-		
-		$bot->sendMessage($master, 'Ы');
 		
 		$bot->sendMessage($master, $юзер_нейм);		
 		
