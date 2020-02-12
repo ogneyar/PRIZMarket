@@ -14,7 +14,17 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 		$строка = strstr($reply_caption, '@');
 		
-		$юзер_нейм = strstr($строка, ' ', true);
+		$есть_ли_энтр = strpos($reply_caption, 10);
+		
+		if ($есть_ли_энтр) {
+			
+			$юзер_нейм = strstr($строка, 10, true);
+			
+		}else {
+			
+			$юзер_нейм = $строка;
+			
+		}
 		
 		$bot->sendMessage($master, $юзер_нейм);		
 		
