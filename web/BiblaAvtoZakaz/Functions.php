@@ -211,8 +211,6 @@ function _дай_айди($Юнейм) {
         
             $ответ = $результМассив[0]['id_client'];
 			
-			throw new Exception($ответ);
-
 		}else throw new Exception("Не нашёл записей");
 	
 	}else throw new Exception("Не смог узнать айди клиента - {$Юнейм}");
