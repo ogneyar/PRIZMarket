@@ -146,6 +146,8 @@ if ($data['message']){
 
 		$reply_text = $reply_to_message['text'];
 		
+		$reply_caption = $reply_to_message['caption'];
+		
 	}
 	
 	$media_group_id = $data['message']['media_group_id'];
