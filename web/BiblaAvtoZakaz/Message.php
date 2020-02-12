@@ -8,7 +8,7 @@ if ($media_group_id) {
 
 if ($reply_to_message && $chat_id == $admin_group) {
 	
-	$bot->sendMessage($master, $caption);
+	$bot->sendMessage($master, $reply_caption);
 	
 	$номер_строки = strpos($caption, '@');
 	
