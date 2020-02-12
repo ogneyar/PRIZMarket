@@ -14,7 +14,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 		$строка = strstr($reply_caption, '@');
 		
-		$есть_ли_энтр = strpos($reply_caption, 10);
+		$есть_ли_энтр = strpos($строка, 10);
 		
 		if ($есть_ли_энтр) {
 			
