@@ -145,11 +145,15 @@ function _есть_ли_лоты() {
 
 		}else {
 		
+			$bot->sendMessage($master, "tttt");
+		
 			$query = "SELECT id FROM `pzmarkt` WHERE caption5=▪️@{$callback_from_username}";
 	
 			$result = $mysqli->query($query);
 			
 			if ($result) {
+			
+				$bot->sendMessage($master, "zzzzzzzzz");
 			
 				if ($result->num_rows>0) $response = true;
 			
