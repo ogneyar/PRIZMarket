@@ -1921,11 +1921,11 @@ function _отказать($id) {
 		];
 		
 		$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
-		
+/*		
 		$чат = $bot->getChat($id);
 		
-		$bot->sendMessage($chat_id, "Это сообщение для ответа клиенту {$чат['username']}");
-	
+		$bot->sendMessage($chat_id, "Это сообщение для ответа клиенту @{$чат['username']}");
+*/	
 	}
 
 }
