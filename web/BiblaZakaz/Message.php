@@ -154,8 +154,6 @@ if ($reply_to_message) {
 		
 		$result = $bot->forwardMessage($admin_group, $chat_id, $message_id);
 		
-		$bot->forwardMessage($master, $chat_id, $message_id);
-					
 		if ($result) {
 			
 			// флаг проверки отправленного ответного сообщения
