@@ -144,9 +144,7 @@ function _есть_ли_лоты() {
         
             $response = true;
 
-		}else {
-		
-			$bot->sendMessage($master, $callback_from_username);
+		}else {		
 		
 			$query = "SELECT * FROM `pzmarkt` WHERE caption5='▪️@{$callback_from_username}'";
 	
@@ -154,7 +152,7 @@ function _есть_ли_лоты() {
 			
 			if ($result) {
 			
-				$bot->sendMessage($master, "zzzzzzzzz");
+				//$bot->sendMessage($master, "zzzzzzzzz");
 			
 				if ($result->num_rows>0) $response = true;
 			
