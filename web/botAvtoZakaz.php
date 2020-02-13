@@ -42,6 +42,10 @@ if (mysqli_connect_errno()) {
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 	include 'myBotApi/Variables.php';
 	
+	
+	$bot->sendMessage($test_group, $bot->PrintArray($data)); 
+	
+	
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
 	
