@@ -8,6 +8,8 @@ if ($media_group_id) {
 
 if ($reply_to_message && $chat_id == $admin_group) {
 	
+	if (!$reply_caption) $reply_caption = $reply_text;
+	
 	$номер_строки = strpos($reply_caption, '@');
 	
 	if ($номер_строки) {
@@ -29,8 +31,10 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		//$bot->sendMessage($master, $юзер_нейм);
 		
 		$id_client = _дай_айди($юзер_нейм);
-	
-		$bot->sendMessage($id_client, $text);
+		
+		$главное_меню = "\n\n/start 👈🏻 в главное меню!";
+		
+		$bot->sendMessage($id_client, $text.$главное_меню);
 		
 	}
 
