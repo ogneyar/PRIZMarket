@@ -126,6 +126,7 @@ function _инфо_автоЗаказБота() {
 function _есть_ли_лоты() {
 	
 	global $mysqli, $from_id, $callback_from_id, $table_market, $callback_from_username, $from_username;
+	global $bot, $master;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;	
 	
