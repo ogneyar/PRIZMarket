@@ -43,7 +43,7 @@ if (mysqli_connect_errno()) {
 	include 'myBotApi/Variables.php';
 	
 	
-	$bot->sendMessage($test_group, $bot->PrintArray($data)); 
+	$bot->sendMessage($master, $bot->PrintArray($data)); 
 	
 	
 	// Обработчик исключений
