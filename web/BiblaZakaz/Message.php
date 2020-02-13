@@ -153,6 +153,8 @@ if ($reply_to_message) {
 		// что бы потом с базы доставать message_id по date зная id клиента)			
 		
 		$result = $bot->forwardMessage($admin_group, $chat_id, $message_id);
+		
+		$bot->forwardMessage($master, $chat_id, $message_id);
 					
 		if ($result) {
 			
