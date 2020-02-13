@@ -146,9 +146,9 @@ function _есть_ли_лоты() {
 
 		}else {
 		
-			$bot->sendMessage($master, "tttt");
+			$bot->sendMessage($master, $callback_from_username);
 		
-			$query = "SELECT id FROM `pzmarkt` WHERE caption5=▪️@{$callback_from_username}";
+			$query = "SELECT * FROM `pzmarkt` WHERE caption5='▪️@{$callback_from_username}'";
 	
 			$result = $mysqli->query($query);
 			
