@@ -125,9 +125,11 @@ function _инфо_автоЗаказБота() {
 // Проверка наличия у клиента лотов в базе
 function _есть_ли_лоты() {
 	
-	global $mysqli, $from_id, $callback_from_id, $table_market;
+	global $mysqli, $from_id, $callback_from_id, $table_market, $callback_from_username, $from_username;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;	
+	
+	if (!$callback_from_username) $callback_from_username = $from_username;	
 	
     $resonse = false;	
 
@@ -141,7 +143,19 @@ function _есть_ли_лоты() {
         
             $response = true;
 
-		}		
+		}else {
+		
+			$query = "SELECT id FROM `pzmarkt` WHERE caption5=▪️@{$callback_from_username}";
+	
+			$result = $mysqli->query($query);
+			
+			if ($result) {
+			
+				if ($result->num_rows>0) $response = true;
+			
+			}
+		
+		}	
 	
 	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");
 	
