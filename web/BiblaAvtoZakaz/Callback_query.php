@@ -109,9 +109,11 @@ if ($callback_data=='создать'){
 	_доверяет($id);
 	
 	
-}elseif ($callback_data=='редактировать') {	
+}elseif ($callback_data=='редактировать_фото') {	
 		
-	$bot->answerCallbackQuery($callback_query_id, "Функция ещё не реализованна!");
+	//$bot->answerCallbackQuery($callback_query_id, "Функция ещё не реализованна!");
+	
+	_редактировать_фото($id);
 	
 	
 }elseif ($callback_data=='отказать') {	

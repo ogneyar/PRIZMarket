@@ -93,7 +93,38 @@ if ($reply_to_message && $chat_id == $admin_group) {
 	
 	if ($result) {
 		
-		if ($result['ojidanie'] == 'nazvanie') {
+		if ($result['ojidanie'] == 'замена_фото') {
+			
+			$айди_клиента = $result['last'];
+			
+			if ($photo) {
+			
+				_запись_в_таблицу_маркет($айди_клиента, 'file_id', $file_id);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);				
+				
+				$Объект_файла = $bot->getFile($file_id);		
+		
+				$ссыль_на_файл = $bot->fileUrl . $bot->token;	
+					
+				$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];		
+					
+				$результат = $imgBB->upload($ссыль);					
+					
+				if ($результат) {		
+						
+					$imgBB_url = $результат['url'];		
+
+					_запись_в_таблицу_маркет($айди_клиента, 'url_tgraph', $imgBB_url);
+						
+				}else throw new Exception("Не смог сделать imgBB_url");					
+						
+			}			
+
+			
+		}elseif ($result['ojidanie'] == 'nazvanie') {
 			
 			if ($text) {
 				
