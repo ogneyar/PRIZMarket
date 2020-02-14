@@ -146,7 +146,7 @@ function _есть_ли_лоты() {
 
 		}else {		
 		
-			$query = "SELECT * FROM `pzmarkt` WHERE caption5='▪️@{$callback_from_username}'";
+			$query = "SELECT * FROM `pzmarkt` WHERE username='▪️@{$callback_from_username}'";
 	
 			$result = $mysqli->query($query);
 			
@@ -345,58 +345,37 @@ function _создать() {
 
 
 
-function _вывод_списка_лотов($действие) {
-	
-	global $bot, $table_market, $mysqli, $callback_from_id, $from_id;
-	
-	if (!$callback_from_id) $callback_from_id = $from_id;		
-	
-	$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";
-	
-	$результат = $mysqli->query($запрос);
-	
-	if ($результат) {
-		
-		if ($результат->num_rows>0) {
-			
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
-			
-			$кнопки = [];			
-			
-			foreach ($результМассив as $строка) {
-				
+//-----------------------------------------------------------------------
+function _вывод_списка_лотов($действие) {	
+	global $bot, $table_market, $mysqli, $callback_from_id, $from_id;	
+	if (!$callback_from_id) $callback_from_id = $from_id;			
+	$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";	
+	$результат = $mysqli->query($запрос);	
+	if ($результат) {		
+		if ($результат->num_rows>0) {			
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
+			$кнопки = [];						
+			foreach ($результМассив as $строка) {				
 				$название = $строка['nazvanie'];
-
 				$кнопки = array_merge($кнопки, [[[
 					'text' => "{$строка['kuplu_prodam']} {$название}",
 					'callback_data' => "{$действие}:{$строка['id_zakaz']}"
-				]]]);
-			
-			}		
-			
+				]]]);			
+			}					
 			$кнопки = array_merge($кнопки, [[[
 					'text' => "*** в Главное меню ***",
 					'callback_data' => "старт"
-				]]]);
-			
-			$inLine = [
-			
-				'inline_keyboard' => $кнопки
-				
-			];
-			
-			if ($действие == 'повтор') $реплика = "Выберите лот для повтора.";
-			
-			elseif ($действие == 'удаление') $реплика = "Выберите лот для удаления.";
-			
-			
-			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);		
-		
-		}else throw new Exception("Нет такой записи в БД");
-		
+				]]]);			
+			$inLine = [			
+				'inline_keyboard' => $кнопки				
+			];			
+			if ($действие == 'повтор') $реплика = "Выберите лот для повтора.";			
+			elseif ($действие == 'удаление') $реплика = "Выберите лот для удаления.";			
+			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);				
+		}else throw new Exception("Нет такой записи в БД");		
 	}else throw new Exception("Не получился запрос к БД");
-
 }
+//--------------------------------------------------------------
 
 
 
@@ -438,9 +417,7 @@ function _повтор($номер_лота) {
 		
 		exit('ok');
 		
-	}
-	
-	
+	}	
 
 }
 
@@ -474,9 +451,8 @@ function _отправка_лота($куда, $номер_лота) {
 				$юзера_имя = $строка['username'];				
 				$доверие = $строка['doverie'];
 				$категория = $строка['otdel'];				
-				$подробности = $строка['podrobno'];	
-				$ссыль_на_подробности = $строка['url_podrobno'];
-				$ссыль_в_названии = $строка['url_nazv'];
+				//$подробности = $строка['podrobno'];	
+				$ссыль_на_подробности = $строка['url_podrobno'];				
 						
 				$inLine = [
 					'inline_keyboard' => [
