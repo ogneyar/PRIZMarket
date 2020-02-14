@@ -26,7 +26,7 @@ if ($text == 'база') {
 
 }elseif ($text == 'марк') {
 	
-	if ($id) {
+	if ($id >= '0') {
 	
 		$bot->output_table($table_market, $id);
 	
