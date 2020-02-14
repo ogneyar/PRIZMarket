@@ -51,9 +51,9 @@ if ($text == 'база') {
 			}
 			
 			
-		}else throw new Exception("Нет записей в таблице `zakaz_users`");					
+		}else $bot->sendMessage($master, "Нет записей в таблице `zakaz_users`");					
 		
-	}else throw new Exception("Не смог .. `zakaz_users`");	
+	}else $bot->sendMessage($master, "Не смог .. `zakaz_users`");	
 	
 	
 }elseif ($text == 'обнова') {
@@ -134,9 +134,9 @@ if ($text == 'база') {
 							
 							if ($result) {
 								$bot->sendMessage($master, "новая запись");
-							}else throw new Exception("Не смог добавить запись в таблицу {$table_market}");
+							}else $bot->sendMessage($master, "Не смог добавить запись в таблицу {$table_market}");
 						
-						}else throw new Exception("Не смог найти айди клиента..");			
+						}else $bot->sendMessage($master, "Не смог найти айди клиента..");			
 	
 	
 	
@@ -146,9 +146,10 @@ if ($text == 'база') {
 			}
 			
 			
-		}else throw new Exception("Нет записей в таблице `zakaz_users`");					
+		}else $bot->sendMessage($master, "Нет записей в таблице `pzmarkt`");					
 		
-	}else throw new Exception("Не смог .. `zakaz_users`");	
+	}else $bot->sendMessage($master, "Не смог .. `pzmarkt`");	
+	
 	
 	
 }elseif ($text == 'марк') {
