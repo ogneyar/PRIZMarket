@@ -26,7 +26,20 @@ if ($text == 'база') {
 
 }elseif ($text == 'марк') {
 	
-	if ($id >= '0') {
+	if ($id) {
+	
+		$bot->output_table($table_market, $id);
+	
+	}else {
+		
+		$bot->output_table($table_market);
+		
+	}		
+	
+	
+}elseif ($text == 'марк') {
+	
+	if ($id) {
 	
 		$bot->output_table($table_market, $id);
 	
@@ -51,10 +64,14 @@ if ($text == 'база') {
 }elseif ($text == 'ма') {
 	
 	if ($id) {
-	
+		
+		$bot->sendMessage($master, "ну");
+		
 		$bot->output_table_mini($table_market, $id);
 	
 	}else {
+		
+		$bot->sendMessage($master, "нууу");
 		
 		$bot->output_table_mini($table_market);
 		
