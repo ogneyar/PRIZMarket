@@ -37,30 +37,6 @@ if ($text == 'база') {
 	}		
 	
 	
-}elseif ($text == 'марк') {
-	
-	if ($id) {
-	
-		$bot->output_table($table_market, $id);
-	
-	}else {
-		
-		$bot->output_table($table_market);
-		
-	}		
-	
-	
-}elseif (($text == "обнули")) {		
-		
-	$query = "UPDATE ".$table_market." SET date='0' WHERE id_zakaz=".$id;
-	
-	if ($result = $mysqli->query($query)) {
-	
-		$bot->sendMessage($master, "Всё отлично!");
-		
-	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
-		
-		
 }elseif ($text == 'ма') {
 	
 	if ($id) {
@@ -274,7 +250,7 @@ if ($text == 'база') {
 	
 }elseif ($text == 'рассылка') {
 	
-	
+/*	
 	$query = "SELECT DISTINCT id_client FROM `zakaz_users`";			
 	if ($результат = $mysqli->query($query)) {	
 		if ($результат->num_rows>0) {			
@@ -289,8 +265,19 @@ if ($text == 'база') {
 			}			
 		}else $bot->sendMessage($master, "Нет записей в таблице `zakaz_users`");			
 	}else $bot->sendMessage($master, "Не смог .. `zakaz_users`");	
+*/
 	
+}elseif ($text == "обнули") {		
+		
+	$query = "UPDATE ".$table_market." SET date='0' WHERE id_zakaz=".$id;
 	
+	if ($result = $mysqli->query($query)) {
+	
+		$bot->sendMessage($master, "Всё отлично!");
+		
+	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
+		
+		
 }
 
 
