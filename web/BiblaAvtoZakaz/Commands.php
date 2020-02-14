@@ -90,6 +90,7 @@ if ($text == 'база') {
 				$валюта = str_replace('▪', '', $строка['valuta']);				
 				$хештеги_города = str_replace('▪', '', $строка['gorod']);				
 				$юзера_имя = str_replace('▪', '', $строка['username']);			
+				$юзера_имя = str_replace(' ', '', $юзера_имя);		
 				
 				$bot->sendMessage($master, $юзера_имя);
 				
@@ -113,7 +114,7 @@ if ($text == 'база') {
 						$bot->sendMessage($master, "такой заказ уже есть");	
 					}else {
 						
-						$query = "SELECT * FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
+						$query = "SELECT id_client FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
 						$result = $mysqli->query($query);
 						if ($result) {
 							if ($result->num_rows > 0) {
