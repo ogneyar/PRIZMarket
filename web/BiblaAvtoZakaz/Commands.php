@@ -41,14 +41,10 @@ if ($text == 'база') {
 	
 	if ($id) {
 		
-		$bot->sendMessage($master, "ну");
-		
 		$bot->output_table_mini($table_market, $id);
 	
 	}else {
-		
-		$bot->sendMessage($master, "нууу");
-		
+	
 		$bot->output_table_mini($table_market);
 		
 	}		
