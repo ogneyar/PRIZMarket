@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 16 2019 г., 20:18
+-- Время создания: Фев 14 2020 г., 10:04
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -31,15 +31,15 @@ CREATE TABLE IF NOT EXISTS `pzmarkt` (
   `otdel` varchar(100) DEFAULT NULL,
   `format` varchar(20) DEFAULT NULL,
   `file_id` varchar(100) DEFAULT NULL,
-  `url` varchar(100) DEFAULT NULL,
-  `caption1` varchar(100) DEFAULT NULL,
-  `caption2` varchar(255) DEFAULT NULL,
-  `caption3` varchar(100) DEFAULT NULL,
-  `caption4` varchar(100) DEFAULT NULL,
-  `caption5` varchar(100) DEFAULT NULL,
-  `doverie` varchar(100) NOT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `kuplu_prodam` varchar(100) DEFAULT NULL,
+  `nazvanie` varchar(255) DEFAULT NULL,
+  `valuta` varchar(100) DEFAULT NULL,
+  `gorod` varchar(200) DEFAULT NULL,
+  `username` varchar(200) DEFAULT NULL,
+  `doverie` varchar(100) DEFAULT NULL,
   `podrobno` varchar(100) DEFAULT NULL,
-  `flag` tinyint(1) NOT NULL DEFAULT '0'
+  `time` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
