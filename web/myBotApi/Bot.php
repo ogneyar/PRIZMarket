@@ -869,7 +869,7 @@ class Bot
 		
 		//$text = str_replace("'", '', $text);
 		
-		$text = mysql_real_escape_string($text);
+		$text = mysqli_real_escape_string($text);
 		
 		$kol = strlen($text) ;
 
