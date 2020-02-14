@@ -815,7 +815,7 @@ class Bot
 	**
 	** @return boolean
 	*/
-	public function output_table_mini($table, $id_client = null, $max_kol_s = 5000) { 
+	public function output_table_mini($table, $id_client = null, $max_kol_s = 4000) { 
 
 		global $chat_id, $mysqli, $master;
 		
@@ -863,7 +863,7 @@ class Bot
 	**
 	** @return boolean
 	*/
-	public function output($text, $max_kol_s = 6500) { 
+	public function output($text, $max_kol_s = 4000) { 
 
 		global $chat_id, $master;
 			
