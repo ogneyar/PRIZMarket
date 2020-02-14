@@ -120,6 +120,9 @@ if ($text == 'база') {
 							if ($result->num_rows > 0) {
 								$результат = $result->fetch_all(MYSQLI_ASSOC);
 								foreach($результат as $строка) {
+									
+									if ($юзера_имя == '@Otrad_Ya') $bot->sendMessage($master, $строка['user_name']);
+									
 									if ($строка['user_name'] == $юзера_имя) {
 										$айди_клиента = $строка['id_client'];
 									}
