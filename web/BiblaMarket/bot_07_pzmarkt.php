@@ -58,6 +58,8 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	
 	$time = time();
 	$doverie = 0;
+	
+	$caption = str_replace("'", "\'", $caption);
 
 	$caption1 = strstr($caption, 10, true);
 	$kol=strlen($caption1)+1;			
