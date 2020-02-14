@@ -57,7 +57,9 @@ if ($text == 'база') {
 	
 	
 }elseif ($text == 'обнова') {
-		
+	
+	echo "ok";
+	
 	$query = "SELECT * FROM `pzmarkt`";				
 	
 	if ($результат = $mysqli->query($query)) {
@@ -111,7 +113,7 @@ if ($text == 'база') {
 						$bot->sendMessage($master, "такой заказ уже есть");	
 					}else {
 												
-						$query = "SELECT id_client FROM `zakaz_users` WHERE user_name={$юзера_имя}";
+						$query = "SELECT id_client FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
 						$result = $mysqli->query($query);
 						if ($result) {
 							if ($result->num_rows > 0) {
@@ -123,8 +125,7 @@ if ($text == 'база') {
 							}
 						}else {
 							$bot->sendMessage($master, "Не смог .. `zakaz_users`");	
-							//continue;
-							echo "ok";
+							continue;							
 						}
 						
 						if ($айди_клиента) {
