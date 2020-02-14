@@ -87,7 +87,7 @@ if ($text == 'база') {
 						if ($result) {
 							if ($result->num_rows > 0) {
 								$результат = $result->fetch_all(MYSQLI_ASSOC);
-								$айди_клиента = $строка['id_client'];
+								$айди_клиента = $результат[0]['id_client'];
 							}else {
 								$bot->sendMessage($master, "Нет записей в таблице `zakaz_users`");
 								continue;
