@@ -866,8 +866,12 @@ class Bot
 	public function output($text, $max_kol_s = 4000) { 
 
 		global $chat_id, $master;
-			
-		$kol = strlen ($text) ;
+		
+		//$text = str_replace("'", '', $text);
+		
+		$text = mysql_real_escape_string($text);
+		
+		$kol = strlen($text) ;
 
 		if ($kol > 1){
 		
