@@ -130,7 +130,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				
 				//$text = mysqli_real_escape_string($text);
 				
-				if (str_len($text) > 60) {
+				if (strlen($text) > 60) {
 				
 					$bot->sendMessage($chat_id, "Слишком длинное название.\nНапишите название, около 30 символов.");
 					
