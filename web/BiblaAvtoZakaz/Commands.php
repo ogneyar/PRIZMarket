@@ -68,7 +68,8 @@ if ($text == 'база') {
 			
 			foreach($результМассив as $строка) {
 				
-				$номер_заказа = $строка['id'];
+				$номер_заказа = $строка['id'];						
+				
 				$категория = $строка['otdel'];
 				if ($строка['format_file'] == 'photo') {
 					
@@ -102,32 +103,46 @@ if ($text == 'база') {
 				$ссыль_на_подробности = $строка['podrobno'];	
 				$время = $строка['time'];
 				
-				$query = "SELECT id_client FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
-				if ($result = $mysqli->query($query)) {
-					if ($result->num_rows>0) {
-						$результат = $result->fetch_all(MYSQLI_ASSOC);
-						$айди_клиента = $результат[0]['id_client'];
+				
+				$запрос = "SELECT username FROM {$table_market} WHERE id_zakaz='{$номер_заказа}'";		
+				$результат = $mysqli->query($запрос);	
+				if ($результат) {		
+					if ($результат->num_rows > 0) {		
+						$bot->sendMessage($master, "такой заказ уже есть");	
+					}else {
+		
+		
+						$query = "SELECT id_client FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
+						if ($result = $mysqli->query($query)) {
+							if ($result->num_rows>0) {
+								$результат = $result->fetch_all(MYSQLI_ASSOC);
+								$айди_клиента = $результат[0]['id_client'];
+							}
+						}
+						
+						if ($айди_клиента) {
+						
+							$query = "INSERT INTO {$table_market} (
+							  `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie`,  `url_nazv`,  `valuta`, `gorod`,
+							  `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, `status`,
+							  `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
+							) VALUES (
+							  '{$айди_клиента}', '{$номер_заказа}', '{$куплю_или_продам}', '{$название}', '{$ссыль_в_названии}', '{$валюта}', '{$хештеги_города}', '{$юзера_имя}', '{$доверие}', '{$категория}', '{$формат_файла}', '{$файлАйди}', '{$ссыль_на_подробности}', 'перенесён', '', '', '', '', '{$время}'
+							)";
+										
+							$result = $mysqli->query($query);
+							
+							if ($result) {
+								$bot->sendMessage($master, "новая запись");
+							}else throw new Exception("Не смог добавить запись в таблицу {$table_market}");
+						
+						}else throw new Exception("Не смог найти айди клиента..");			
+	
+	
+	
 					}
-				}
+				}else $bot->sendMessage($master, "Нет такого заказа..");					
 				
-				if ($айди_клиента) {
-				
-					$query = "INSERT INTO {$table_market} (
-					  `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie`,  `url_nazv`,  `valuta`, `gorod`,
-					  `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, `status`,
-					  `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
-					) VALUES (
-					  '{$айди_клиента}', '{$номер_заказа}', '{$куплю_или_продам}', '{$название}', '{$ссыль_в_названии}', '{$валюта}', '{$хештеги_города}', '{$юзера_имя}', '{$доверие}', '{$категория}', '{$формат_файла}', '{$файлАйди}', '{$ссыль_на_подробности}', 'перенесён', '', '', '', '', '{$время}'
-					)";
-								
-					$result = $mysqli->query($query);
-					
-					if ($result) {
-						$bot->sendMessage($master, "новая запись");
-					}else throw new Exception("Не смог добавить запись в таблицу {$table_market}");
-				
-				}else throw new Exception("Не смог найти айди клиента..");
-			
 			}
 			
 			
