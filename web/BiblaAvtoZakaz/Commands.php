@@ -110,11 +110,13 @@ if ($text == 'база') {
 					if ($результат->num_rows > 0) {		
 						$bot->sendMessage($master, "такой заказ уже есть");	
 					}else {
-		
-		
+						
+						sleep(1);
+						
 						$query = "SELECT id_client FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
-						if ($result = $mysqli->query($query)) {
-							if ($result->num_rows>0) {
+						$result = $mysqli->query($query);
+						if ($result) {
+							if ($result->num_rows > 0) {
 								$результат = $result->fetch_all(MYSQLI_ASSOC);
 								$айди_клиента = $результат[0]['id_client'];
 							}else {
