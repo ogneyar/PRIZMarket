@@ -144,21 +144,7 @@ function _есть_ли_лоты() {
         
             $response = true;
 
-		}else {		
-		
-			$query = "SELECT * FROM `pzmarkt` WHERE username='▪️@{$callback_from_username}'";
-	
-			$result = $mysqli->query($query);
-			
-			if ($result) {
-			
-				//$bot->sendMessage($master, "zzzzzzzzz");
-			
-				if ($result->num_rows>0) $response = true;
-			
-			}
-		
-		}	
+		}
 	
 	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");
 	

@@ -50,6 +50,83 @@ if ($text == 'база') {
 			
 			}
 			
+			
+		}else throw new Exception("Нет записей в таблице `zakaz_users`");					
+		
+	}else throw new Exception("Не смог .. `zakaz_users`");	
+	
+	
+}elseif ($text == 'обнова') {
+		
+	$query = "SELECT * FROM `pzmarkt`";				
+	
+	if ($результат = $mysqli->query($query)) {
+	
+		if ($результат->num_rows>0) {
+			
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			
+			foreach($результМассив as $строка) {
+				
+				$номер_заказа = $строка['id'];
+				$категория = $строка['otdel'];
+				if ($строка['format_file'] == 'photo') {
+					
+					$формат_файла = 'фото';
+					
+				}elseif ($строка['format_file'] == 'video') {
+					
+					$формат_файла = 'видео';
+					
+				}
+				$файлАйди = $строка['file_id'];		
+				$ссыль_в_названии = $строка['url'];
+				$куплю_или_продам = $строка['kuplu_prodam'];
+				
+				$название = str_replace('▪', '', $строка['nazvanie']);				
+				$валюта = str_replace('▪', '', $строка['valuta']);				
+				$хештеги_города = str_replace('▪', '', $строка['gorod']);				
+				$юзера_имя = str_replace('▪', '', $строка['username']);			
+				
+				if ($строка['doverie'] == '0') {
+					
+					$доверие = '0';
+					
+				}else {
+				
+					$доверие = '1';
+					
+				}
+				$ссыль_на_подробности = $строка['podrobno'];	
+				$время = $строка['time'];
+				
+				$query = "SELECT id_client FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
+				if ($result = $mysqli->query($query)) {
+					if ($result->num_rows>0) {
+						$результат = $result->fetch_all(MYSQLI_ASSOC);
+						$айди_клиента = $результат[0]['id_client'];
+					}
+				}
+				
+				if ($айди_клиента) {
+				
+					$query = "INSERT INTO {$table_market} (
+					  `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie`,  `url_nazv`,  `valuta`, `gorod`,
+					  `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, `status`,
+					  `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
+					) VALUES (
+					  '{$айди_клиента}', '{$номер_заказа}', '{$куплю_или_продам}', '{$название}', '{$ссыль_в_названии}', '{$валюта}', '{$хештеги_города}', '{$юзера_имя}', '{$доверие}', '{$категория}', '{$формат_файла}', '{$файлАйди}', '{$ссыль_на_подробности}', 'перенесён', '', '', '', '', '{$время}'
+					)";
+								
+					$result = $mysqli->query($query);
+					
+					if (!$result) throw new Exception("Не смог добавить запись в таблицу {$table_market}");
+				
+				}
+			
+			}
+			
+			
 		}else throw new Exception("Нет записей в таблице `zakaz_users`");					
 		
 	}else throw new Exception("Не смог .. `zakaz_users`");	
