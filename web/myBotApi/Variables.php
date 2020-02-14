@@ -4,7 +4,9 @@ $data = $bot->init('php://input');
 
 // Вывод на печать JSON файла пришедшего от бота, в группу тестирования
 if ($OtladkaBota == 'да') $bot->sendMessage($test_group, $bot->PrintArray($data)); 
+
 echo "ok";
+
 $update_id = $data['update_id'];
 
 
@@ -40,9 +42,21 @@ if ($data['edited_message']){
 }
 
 
+if ($data['channel_post']) {
+	
+	$channel_post = $data['channel_post'];
+	
+	$data['message'] = $channel_post;
+	
+}
+
+
+
 if ($data['message']){
 
 	$message_id = $data['message']['message_id'];
+	
+	$author_signature = $data['message']['author_signature'];
 
 	if ($data['message']['from']){
 		
@@ -202,16 +216,15 @@ if ($data['message']){
 	}		
 	
 	$caption = $data['message']['caption'];	
+	
+	$entities = $data['message']['entities'];
 		
 	$caption_entities = $data['message']['caption_entities'];
 	
 	$text = $data['message']['text'];	
 	
-	if ($data['message']['reply_markup']) {
+	$reply_markup = $data['message']['reply_markup'];
 	
-		$reply_markup = $data['message']['reply_markup'];
-	
-	}
 	
 	
 //------------------------------	
@@ -227,27 +240,6 @@ if ($data['message']){
 //------------------------------
 
 
-}elseif ($data['channel_post']) {
-	
-	$message_id = $data['channel_post']['message_id'];
-	
-	$author_signature = $data['channel_post']['author_signature'];
-	
-	$chat_id = $data['channel_post']['chat']['id'];
-	
-	$chat_title = $data['channel_post']['chat']['title'];
-	
-	$chat_type = $data['channel_post']['chat']['type'];
-	
-	$date = $data['channel_post']['date'];
-	
-	$text = $data['channel_post']['text'];
-	
-	$entities = $data['channel_post']['entities'];
-	
-	$reply_markup = $data['channel_post']['reply_markup'];
-	
-	
 }elseif ($data['edited_channel_post']) {
 
 }elseif ($data['inline_query']) {
