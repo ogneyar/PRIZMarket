@@ -16,6 +16,9 @@ if ($user) {
 
 }
 	
+
+	
+/*
 	
 $url_text = $reply_markup['inline_keyboard'][0][0]['text'];
 
@@ -44,6 +47,9 @@ if ($url_text == 'Подробнее') {
 
 }
 	
+*/
+
+
 
 
 ?>
