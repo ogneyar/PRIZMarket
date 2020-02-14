@@ -839,8 +839,8 @@ class Bot
 					
 					$reply.="|\n";							
 				}					
-		
-				$this->output($reply, $max_kol_s);
+$this->sendMessage($master, $reply);		
+				$this->output($reply, $max_kol_s);				
 					
 			}else $this->sendMessage($chat_id, "пуста таблица ".
 					" \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");		
