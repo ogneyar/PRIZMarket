@@ -120,7 +120,9 @@ if ($text == 'база') {
 								
 					$result = $mysqli->query($query);
 					
-					if (!$result) throw new Exception("Не смог добавить запись в таблицу {$table_market}");
+					if ($result) {
+						$bot->sendMessage($master, "новая запись");
+					}else throw new Exception("Не смог добавить запись в таблицу {$table_market}");
 				
 				}
 			
