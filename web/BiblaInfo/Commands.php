@@ -80,6 +80,8 @@ if ($text == 'база') {
 						$bot->sendMessage($master, "такой заказ уже есть");	
 					}else {
 						
+						$айди_клиента = '';
+						
 						$query = "SELECT id_client FROM `zakaz_users` WHERE user_name='{$юзера_имя}'"; 
 						$result = $mysqli->query($query);
 						if ($result) {
