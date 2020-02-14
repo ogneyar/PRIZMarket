@@ -245,6 +245,8 @@ if ($data['message']){
 	
 	$entities = $data['channel_post']['entities'];
 	
+	$reply_markup = $data['channel_post']['reply_markup'];
+	
 	
 }elseif ($data['edited_channel_post']) {
 
