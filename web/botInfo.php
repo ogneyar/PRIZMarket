@@ -51,6 +51,10 @@ if (mysqli_connect_errno()) {
 	if ($data['callback_query']) {
 	
 		include_once 'BiblaInfo/Callback_query.php';
+		
+	}elseif ($data['channel_post']) {
+		
+		include_once 'BiblaInfo/Channel_post.php';
 	
 	// если пришло сообщение MESSAGE подключается необходимый файл
 	}elseif ($data['message']) {
@@ -70,10 +74,6 @@ if (mysqli_connect_errno()) {
 		//-----------------------------
 		
 		include_once 'BiblaInfo/Message.php';		
-		
-	}elseif ($data['channel_post']) {
-		
-		include_once 'BiblaInfo/Channel_post.php';
 		
 	}
 	

@@ -64,6 +64,11 @@ if (mysqli_connect_errno()) {
 		include_once 'BiblaZakaz/Callback_query.php';
 		
 	
+	}elseif ($data['channel_post']) {
+		
+		include_once 'BiblaZakaz/Channel_post.php';
+		
+		
 	}elseif ($data['edited_message']) {
 	
 		include_once 'BiblaZakaz/Edit_message.php';		
@@ -86,10 +91,6 @@ if (mysqli_connect_errno()) {
 		//-----------------------------
 				
 		include_once 'BiblaZakaz/Message.php';		
-		
-	}elseif ($data['channel_post']) {
-		
-		include_once 'BiblaZakaz/Channel_post.php';
 		
 	}
 }

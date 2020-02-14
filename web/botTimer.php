@@ -42,6 +42,24 @@ if ($chat_type == 'private' || $chat_id == $channel_info) {
 		
 		//include_once 'BiblaTimer/Callback_query.php';			
 		
+	}elseif ($data['channel_post']) {
+		
+		if ($text){
+				
+			$number = stripos($text, '?');
+				
+			if ($number!==false&&$number == '0') {
+				
+				$text = substr($text, 1);
+			
+				include_once 'BiblaTimer/Channel_post.php';
+				
+				exit('ok');
+				
+			}
+		
+		}
+	
 	}elseif ($data['edited_message']) {
 		
 		//include_once 'BiblaTimer/Edit_message.php';		
@@ -75,24 +93,6 @@ if ($chat_type == 'private' || $chat_id == $channel_info) {
 					
 		include_once 'BiblaTimer/Message.php';		
 			
-	}elseif ($data['channel_post']) {
-		
-		if ($text){
-				
-			$number = stripos($text, '?');
-				
-			if ($number!==false&&$number == '0') {
-				
-				$text = substr($text, 1);
-			
-				include_once 'BiblaTimer/Channel_post.php';
-				
-				exit('ok');
-				
-			}
-		
-		}
-	
 	}
 
 }
