@@ -89,8 +89,9 @@ if ($text == 'база') {
 				$название = str_replace('▪', '', $строка['nazvanie']);				
 				$валюта = str_replace('▪', '', $строка['valuta']);				
 				$хештеги_города = str_replace('▪', '', $строка['gorod']);				
-				$юзера_имя = str_replace('▪', '', $строка['username']);			
-				$юзера_имя = str_replace(' ', '', $юзера_имя);		
+				//$юзера_имя = str_replace('▪', '', $строка['username']);			
+				//$юзера_имя = str_replace(' ', '', $юзера_имя);						
+				$юзера_имя = strstr($строка['username'], '@');				
 				
 				$bot->sendMessage($master, $юзера_имя);
 				
