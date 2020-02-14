@@ -117,7 +117,7 @@ if ($text == 'база') {
 							if ($result->num_rows>0) {
 								$результат = $result->fetch_all(MYSQLI_ASSOC);
 								$айди_клиента = $результат[0]['id_client'];
-							}$bot->sendMessage($master, "Нет записей в таблице `zakaz_users`");
+							}else $bot->sendMessage($master, "Нет записей в таблице `zakaz_users`");
 						}else $bot->sendMessage($master, "Не смог .. `zakaz_users`");	
 						
 						if ($айди_клиента) {
