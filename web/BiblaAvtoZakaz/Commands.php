@@ -88,6 +88,8 @@ if ($text == 'база') {
 				$хештеги_города = str_replace('▪', '', $строка['gorod']);				
 				$юзера_имя = str_replace('▪', '', $строка['username']);			
 				
+				$bot->sendMessage($master, $юзера_имя);
+				
 				if ($строка['doverie'] == '0') {
 					
 					$доверие = '0';
@@ -124,7 +126,7 @@ if ($text == 'база') {
 						$bot->sendMessage($master, "новая запись");
 					}else throw new Exception("Не смог добавить запись в таблицу {$table_market}");
 				
-				}
+				}else throw new Exception("Не смог найти айди клиента..");
 			
 			}
 			
