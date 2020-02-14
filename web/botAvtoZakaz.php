@@ -7,8 +7,8 @@ include_once 'myBotApi/Tgraph.php';
 include_once 'myBotApi/ImgBB.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
-//exit('ok');
-echo "ok";
+exit('ok');
+
 $token = $tokenAvtoZakaz;
 
 // Создаем объект бота
