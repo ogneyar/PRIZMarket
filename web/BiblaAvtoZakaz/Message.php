@@ -128,6 +128,8 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			
 			if ($text) {
 				
+				$text = str_replace("'", "\'", $text);
+				
 				_запись_в_таблицу_маркет($from_id, 'nazvanie', $text);
 			
 				_очистка_таблицы_ожидание();
@@ -158,7 +160,9 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		}elseif ($result['ojidanie'] == 'gorod') {
 			
 			if ($text) {
-			
+				
+				$text = str_replace("'", "\'", $text);
+				
 				$количество = substr_count($text, '#');
 				
 				if ($количество == 0) {
@@ -253,6 +257,8 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		}elseif ($result['ojidanie'] == 'podrobno') {
 		
 			if ($text) {
+				
+				$text = str_replace("'", "\'", $text);
 				
 				_запись_в_таблицу_маркет($from_id, 'podrobno', $text);				
 				
