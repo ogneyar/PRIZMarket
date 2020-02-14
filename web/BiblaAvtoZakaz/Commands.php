@@ -150,6 +150,8 @@ if ($text == 'база') {
 		
 	}else $bot->sendMessage($master, "Не смог .. `pzmarkt`");	
 	
+	exit('ok');
+	
 	
 	
 }elseif ($text == 'марк') {
