@@ -121,7 +121,11 @@ if ($text == 'база') {
 								$bot->sendMessage($master, "Нет записей в таблице `zakaz_users`");
 								continue;
 							}
-						}else $bot->sendMessage($master, "Не смог .. `zakaz_users`");	
+						}else {
+							$bot->sendMessage($master, "Не смог .. `zakaz_users`");	
+							//continue;
+							echo "ok";
+						}
 						
 						if ($айди_клиента) {
 						
