@@ -114,12 +114,17 @@ if ($text == 'база') {
 						$bot->sendMessage($master, "такой заказ уже есть");	
 					}else {
 						
-						$query = "SELECT id_client FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
+						$query = "SELECT id_client, user_name FROM `zakaz_users`"; // WHERE user_name='{$юзера_имя}'
 						$result = $mysqli->query($query);
 						if ($result) {
 							if ($result->num_rows > 0) {
 								$результат = $result->fetch_all(MYSQLI_ASSOC);
-								$айди_клиента = $результат[0]['id_client'];
+								foreach($результат as $строка) {
+									if ($строка['user_name'] == $юзера_имя) {
+										$айди_клиента = $строка['id_client'];
+									}
+								}
+								
 							}else {
 								$bot->sendMessage($master, "Нет записей в таблице `zakaz_users`");
 								continue;
