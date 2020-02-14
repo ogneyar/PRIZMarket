@@ -112,8 +112,8 @@ if ($text == 'база') {
 					if ($результат->num_rows > 0) {		
 						$bot->sendMessage($master, "такой заказ уже есть");	
 					}else {
-												
-						$query = "SELECT id_client FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
+						
+						$query = "SELECT * FROM `zakaz_users` WHERE user_name='{$юзера_имя}'";
 						$result = $mysqli->query($query);
 						if ($result) {
 							if ($result->num_rows > 0) {
