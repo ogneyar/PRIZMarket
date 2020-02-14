@@ -4,6 +4,7 @@ include_once 'myBotApi/Bot.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
 //exit('ok');
+echo "ok";
 $token = $tokenZakaz;
 
 // Создаем объект бота

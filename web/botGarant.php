@@ -2,6 +2,7 @@
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
 //exit('ok');
+echo "ok";
 $token = $tokenGARANT;
 $tg = new \TelegramBot\Api\BotApi($token);
 

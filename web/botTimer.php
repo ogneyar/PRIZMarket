@@ -6,6 +6,7 @@ include_once 'myBotApi/Bot.php';
 include_once 'a_conect.php';
 
 //exit('ok');
+echo "ok";
 
 $token = $tokenTimer;
 
