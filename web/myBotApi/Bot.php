@@ -839,7 +839,7 @@ class Bot
 					
 					$reply.="|\n";							
 				}					
-$this->sendMessage($master, $reply);		
+
 				$this->output($reply, $max_kol_s);				
 					
 			}else $this->sendMessage($chat_id, "пуста таблица ".
