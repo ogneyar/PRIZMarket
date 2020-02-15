@@ -178,13 +178,18 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			
 			if ($text) {
 				
-				$text = str_replace("'", "\'", $text);
-				$text = str_replace('"', '\"', $text);
-				$text = str_replace(';', '\;', $text);
-				$text = str_replace('*', '\*', $text);
-				$text = str_replace('%', '\%', $text);
-				$text = str_replace('`', '\`', $text);
-				$text = str_replace('_', '\_', $text);
+				$text = str_replace("'", "", $text);
+				$text = str_replace('"', '', $text);
+				$text = str_replace(';', '', $text);
+				$text = str_replace('*', '', $text);
+				$text = str_replace('%', '', $text);
+				$text = str_replace('`', '', $text);
+				$text = str_replace('?', '', $text);
+				$text = str_replace('&', '', $text);
+				$text = str_replace('$', '', $text);
+				$text = str_replace('^', '', $text);
+				$text = str_replace('\\', '', $text);
+				//$text = str_replace('_', '\_', $text);
 				
 				$количество = substr_count($text, '#');
 				
