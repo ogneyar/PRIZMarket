@@ -69,9 +69,11 @@
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
 function _start_AvtoZakazBota() {		
 
-	global $bot, $chat_id, $from_first_name, $HideKeyboard;
+	global $bot, $chat_id, $callback_from_first_name, $from_first_name, $HideKeyboard;
 	
-	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown, $HideKeyboard);
+	if (!$callback_from_first_name) $callback_from_first_name = $from_first_name;
+	
+	$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", markdown, $HideKeyboard);
 
     _инфо_автоЗаказБота();	
 	
@@ -1516,6 +1518,10 @@ function _отправка_лота_админам() {
 				
 				$текст = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}\n\n{$подробности}";				
 				$текст = str_replace('_', '\_', $текст);
+				$текст = str_replace('"', '\"', $текст);
+				$текст = str_replace("'", "\'", $текст);
+				$текст = str_replace('`', '\`', $текст);
+				$текст = str_replace('*', '\*', $текст);
 				
 				$текст = "{$хештеги}{$название_для_подробностей}{$текст}";			
 				
