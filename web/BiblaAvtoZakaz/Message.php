@@ -139,15 +139,15 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace('"', '\"', $text);
-				$text = str_replace(';', '\;', $text);
-				$text = str_replace('*', '\*', $text);
-				$text = str_replace('%', '\%', $text);
-				$text = str_replace('`', '\`', $text);				
-				$text = str_replace('&', '\&', $text);
-				$text = str_replace('$', '\$', $text);
-				$text = str_replace('^', '\^', $text);
+				$text = str_replace(';', '', $text);
+				$text = str_replace('*', 'х', $text);
+				$text = str_replace('%', '', $text);
+				$text = str_replace('`', '', $text);				
+				$text = str_replace('&', '', $text);
+				$text = str_replace('$', '', $text);
+				$text = str_replace('^', '', $text);
 				
-				$text = str_replace('_', '\_', $text);
+				$text = str_replace('_', ' ', $text);
 							
 				$text = str_replace('\\', '', $text);
 				$text = str_replace('|', '', $text);
