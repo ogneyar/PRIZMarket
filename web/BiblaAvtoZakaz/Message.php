@@ -143,7 +143,13 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				$text = str_replace('*', '\*', $text);
 				$text = str_replace('%', '\%', $text);
 				$text = str_replace('`', '\`', $text);
+				$text = str_replace('?', '\?', $text);
+				$text = str_replace('&', '\&', $text);
+				$text = str_replace('$', '\$', $text);
+				$text = str_replace('^', '\^', $text);
+				
 				$text = str_replace('_', '\_', $text);
+				
 				
 				_запись_в_таблицу_маркет($from_id, 'nazvanie', $text);
 			
