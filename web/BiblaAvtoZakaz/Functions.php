@@ -84,7 +84,7 @@ function _start_AvtoZakazBota() {
 // Краткая информация, перед началом работы с ботом
 function _инфо_автоЗаказБота() {
 
-	global $bot, $chat_id;
+	global $bot, $chat_id, $тех_поддержка;
 	
 	$клавиатура = [
 		[
