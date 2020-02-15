@@ -304,6 +304,22 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 			if ($text) {
 				
+				$количество = strlen($text);
+				
+				if ($количество < 200) {
+					
+					$bot->sendMessage($chat_id, "Для 'подробностей' слишком мало текста. Повторите ввод.");
+					
+					exit('ok');
+					
+				}elseif ($количество > 4000) {
+					
+					$bot->sendMessage($chat_id, "Для 'подробностей' слишком много текста. Повторите ввод.");
+					
+					exit('ok');
+				
+				}
+				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace('"', '\"', $text);
 				$text = str_replace(';', '\;', $text);
