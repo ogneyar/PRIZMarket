@@ -26,6 +26,8 @@ if ($text == 'база') {
 
 }elseif ($text == 'марк') {
 	
+	$bot->sendMessage($master, "анука!");
+	
 	if ($id) {
 	
 		$bot->output_table($table_market, $id);
@@ -38,6 +40,8 @@ if ($text == 'база') {
 	
 	
 }elseif ($text == 'ма') {
+	
+	$bot->sendMessage($master, "анука!");
 	
 	if ($id) {
 		
