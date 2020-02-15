@@ -867,11 +867,11 @@ class Bot
 
 		global $chat_id, $master;
 		
-		$text = str_replace('_', '\_', $text);
-		$text = str_replace('"', '\"', $text);
-		$text = str_replace("'", "\'", $text);
-		$text = str_replace('`', '\`', $text);
-		$text = str_replace('*', '\*', $text);
+		//$text = str_replace('_', '\_', $text);
+		//$text = str_replace('"', '\"', $text);
+		//$text = str_replace("'", "\'", $text);
+		//$text = str_replace('`', '\`', $text);
+		//$text = str_replace('*', '\*', $text);
 
 		
 		//$text = mysqli_real_escape_string($text);
