@@ -41,6 +41,11 @@ if ($message_forward) {
 	$bot->sendMessage($chat_id, $reply, null, $HideKeyboard);
 			
 			
+}elseif ($text=='Стоп'){	
+	
+	$bot->sendMessage($chat_id, "Так держать, Мастер!");
+	
+	
 }elseif ($text){		
 				
 	$result = $bot->getChat($text);
