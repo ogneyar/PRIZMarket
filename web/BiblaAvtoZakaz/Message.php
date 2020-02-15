@@ -126,7 +126,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			
 		}elseif ($result['ojidanie'] == 'nazvanie') {
 			
-			if ($text) {
+			if ($text) {				
 				
 				//$text = mysqli_real_escape_string($text);
 				
@@ -139,6 +139,11 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace('"', '\"', $text);
+				$text = str_replace(';', '\;', $text);
+				$text = str_replace('*', '\*', $text);
+				$text = str_replace('%', '\%', $text);
+				$text = str_replace('`', '\`', $text);
+				$text = str_replace('_', '\_', $text);
 				
 				_запись_в_таблицу_маркет($from_id, 'nazvanie', $text);
 			
@@ -174,6 +179,12 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			if ($text) {
 				
 				$text = str_replace("'", "\'", $text);
+				$text = str_replace('"', '\"', $text);
+				$text = str_replace(';', '\;', $text);
+				$text = str_replace('*', '\*', $text);
+				$text = str_replace('%', '\%', $text);
+				$text = str_replace('`', '\`', $text);
+				$text = str_replace('_', '\_', $text);
 				
 				$количество = substr_count($text, '#');
 				
@@ -271,6 +282,12 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			if ($text) {
 				
 				$text = str_replace("'", "\'", $text);
+				$text = str_replace('"', '\"', $text);
+				$text = str_replace(';', '\;', $text);
+				$text = str_replace('*', '\*', $text);
+				$text = str_replace('%', '\%', $text);
+				$text = str_replace('`', '\`', $text);
+				$text = str_replace('_', '\_', $text);
 				
 				_запись_в_таблицу_маркет($from_id, 'podrobno', $text);				
 				
