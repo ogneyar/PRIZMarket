@@ -872,6 +872,11 @@ class Bot
 		//$text = str_replace("'", "\'", $text);
 		//$text = str_replace('`', '\`', $text);
 		//$text = str_replace('*', '\*', $text);
+		
+		$text = str_replace(';', '', $text);
+		$text = str_replace('*', '', $text);
+		$text = str_replace('%', '', $text);
+		$text = str_replace('`', '', $text);
 
 		
 		//$text = mysqli_real_escape_string($text);
