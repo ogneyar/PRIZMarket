@@ -61,14 +61,14 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	
 	$caption = str_replace("'", "\'", $caption);
 
-	$caption1 = strstr($caption, 10, true);
-	$kol=strlen($caption1)+1;			
+	$kuplu_prodam = strstr($caption, 10, true);
+	$kol=strlen($kuplu_prodam)+1;			
 	$caption = substr($caption, $kol);	
 	
-	if ($caption1=='') exit('ok');
+	if ($kuplu_prodam=='') exit('ok');
 	
-	$ishnee = strstr($caption, 10, true);	
-	$kol=strlen($ishnee)+1;	
+	$лишняя_строка = strstr($caption, 10, true);	
+	$kol=strlen($лишняя_строка)+1;	
 	$caption = substr($caption, $kol);	
 	
 	$otdel = strstr($caption, 10, true);
@@ -84,31 +84,36 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 		exit('ok');
 	}
 
-	$caption2 = strstr($caption, 10, true);
-	$kol=strlen($caption2)+1;			
+	$nazvanie = strstr($caption, 10, true);
+	$kol=strlen($nazvanie)+1;			
 	$caption = substr($caption, $kol);	
 	
-	if ($caption2=='') exit('ok');
+	if ($nazvanie=='') exit('ok');
+	//$nazvanie = str_replace("▪️", "", $nazvanie);
 
-	$caption3 = strstr($caption, 10, true);
-	$kol=strlen($caption3)+1;			
+	$valuta = strstr($caption, 10, true);
+	$kol=strlen($valuta)+1;			
 	$caption = substr($caption, $kol);	
 	
-	if ($caption3=='') exit('ok');
+	if ($valuta=='') exit('ok');
+	//$valuta = str_replace("▪️", "", $valuta);
 	
-	$caption4 = strstr($caption, 10, true);
-	$kol=strlen($caption4)+1;			
+	$gorod = strstr($caption, 10, true);
+	$kol=strlen($gorod)+1;			
 	$caption = substr($caption, $kol);	
 	
-	if ($caption4=='') exit('ok');
+	if ($gorod=='') exit('ok');
+	//$gorod = str_replace("▪️", "", $gorod);	
+	
 	
 	$pos = strpos($caption, 10);
 	
 	if ($pos === false) {
-		$caption5 = $caption;		
+		$username = $caption;		
+		$doverie = '0';
 	}else {	
-		$caption5 = strstr($caption, 10, true);
-		$kol=strlen($caption5)+1;			
+		$username = strstr($caption, 10, true);
+		$kol=strlen($username)+1;			
 		$caption = substr($caption, $kol);		
 		
 		$pos = strpos($caption, 10);
@@ -119,24 +124,14 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 		} else {		
 			$номер_лота = strstr($caption, 10, true);
 			$kol=strlen($номер_лота)+1;			
-			$caption = substr($caption, $kol);	
+			$doverie = substr($caption, $kol);	
 		
-			$pos = strpos($caption, 10);
-
-			if ($pos === false) {
-				$caption5 = $caption;
-				$doverie = '0';
-			} else {
-				$caption5 = strstr($caption, 10, true);
-				$kol=strlen($caption5)+1;			
-				$doverie = substr($caption, $kol);	
-		
-				if (!$doverie) $doverie = '0';
-			}
+			if (!$doverie) $doverie = '0';		
 		
 		}		
 		
 	}	
+	//$username = str_replace("▪️", "", $username);	
 	
 	$est_li_v_base=false;
 	
@@ -159,7 +154,7 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	}		
 	
 	$query = "INSERT INTO ".$table5." VALUES ('{$id}', '{$otdel}', '{$format}', '{$file_id}', '{$urlCaption}'".
-		", '{$caption1}', '{$caption2}', '{$caption3}', '{$caption4}', '{$caption5}', '{$doverie}'".
+		", '{$kuplu_prodam}', '{$nazvanie}', '{$valuta}', '{$gorod}', '{$username}', '{$doverie}'".
 		", '{$urlPodrobno}', '{$time}')";	
 	
 	if ($result = $mysqli->query($query)) {		
