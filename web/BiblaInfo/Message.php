@@ -43,7 +43,15 @@ if ($message_forward) {
 			
 }elseif ($text=='еее'){	
 	
-	$bot->sendMessage($chat_id, "Так держать, Мастер!");
+	if ($from_id == $master) {
+		
+		$bot->sendMessage($chat_id, "Так держать, Мастер!");
+		
+	}else {
+	
+		$bot->sendMessage($chat_id, "Так держать, {$from_first_name}!");
+		
+	}
 	
 	
 }elseif ($text){		
