@@ -88,6 +88,12 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			
 			_нужен_ли_фотоальбом();
 		
+		}elseif ($result['last'] == 'хорошо') {
+		
+			_очистка_таблицы_ожидание();
+			
+			$bot->sendMessage($chat_id, "Отменил, хорошо.", null, $HideKeyboard);	
+		
 		}
 		
 	}else _start_AvtoZakazBota();
