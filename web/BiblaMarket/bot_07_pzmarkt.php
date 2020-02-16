@@ -95,39 +95,48 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	$caption = substr($caption, $kol);	
 	
 	if ($caption3=='') exit('ok');
-
+	
+	$caption4 = strstr($caption, 10, true);
+	$kol=strlen($caption4)+1;			
+	$caption = substr($caption, $kol);	
+	
+	if ($caption4=='') exit('ok');
+	
 	$pos = strpos($caption, 10);
 	
 	if ($pos === false) {
-		$caption4 = $caption;
-		$caption5 = null;
-		$doverie = '0';
-	} else {
-	
-		$caption4 = strstr($caption, 10, true);
-		$kol=strlen($caption4)+1;			
-		$caption = substr($caption, $kol);	
-	
-		//
+		$caption5 = $caption;		
+	}else {	
+		$caption5 = strstr($caption, 10, true);
+		$kol=strlen($caption5)+1;			
+		$caption = substr($caption, $kol);		
+		
 		$pos = strpos($caption, 10);
-
+	
 		if ($pos === false) {
-			$caption5 = $caption;
+			$номер_лота = $caption;			
 			$doverie = '0';
-		} else {
-			$caption5 = strstr($caption, 10, true);
-			$kol=strlen($caption5)+1;			
+		} else {		
+			$номер_лота = strstr($caption, 10, true);
+			$kol=strlen($номер_лота)+1;			
 			$caption = substr($caption, $kol);	
-	
-			$ishnee = strstr($caption, 10, true);	
-			$kol=strlen($ishnee)+1;	
-			$caption = substr($caption, $kol);	
-	
-			$doverie = $caption;
-			if ($doverie == '') $doverie = '0';
-		}
-	
-	}
+		
+			$pos = strpos($caption, 10);
+
+			if ($pos === false) {
+				$caption5 = $caption;
+				$doverie = '0';
+			} else {
+				$caption5 = strstr($caption, 10, true);
+				$kol=strlen($caption5)+1;			
+				$doverie = substr($caption, $kol);	
+		
+				if (!$doverie) $doverie = '0';
+			}
+		
+		}		
+		
+	}	
 	
 	$est_li_v_base=false;
 	
