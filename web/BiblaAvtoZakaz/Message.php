@@ -34,7 +34,13 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 		$главное_меню = "\n\n/start 👈🏻 в главное меню!";
 		
-		$bot->sendMessage($id_client, $text.$главное_меню);
+		$результат = $bot->sendMessage($id_client, $text.$главное_меню);
+		
+		if ($результат) {
+			
+			$bot->sendMessage($chat_id, "Отправил.", null, null, $message_id);
+			
+		}
 		
 	}
 
