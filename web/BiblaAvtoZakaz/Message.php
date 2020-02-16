@@ -92,8 +92,6 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 			_очистка_таблицы_ожидание();
 			
-			$bot->sendMessage($chat_id, "Отменил, хорошо.", null, $HideKeyboard);	
-		
 		}
 		
 	}else _start_AvtoZakazBota();
