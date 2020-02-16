@@ -52,6 +52,9 @@
 ** _изменить_подробности
 ** _ожидание_результата
 ** _отправка_лота_админам
+** _редактировать_название
+** _редактировать_хештеги
+** _редактировать_подробности
 ** _редактировать_фото
 ** _вывод_лота_на_каналы
 ** _публикация_на_канале_медиа
@@ -1479,6 +1482,24 @@ function _отправка_лота_админам() {
 			],
 			[
 				[
+					'text' => 'Редактировать название',
+					'callback_data' => 'редактировать_название:'.$callback_from_id
+				]
+			],
+			[
+				[
+					'text' => 'Редактировать хештеги',
+					'callback_data' => 'редактировать_хештеги:'.$callback_from_id
+				]
+			],
+			[
+				[
+					'text' => 'Редактировать подробности',
+					'callback_data' => 'редактировать_подробности:'.$callback_from_id
+				]
+			],
+			[
+				[
 					'text' => 'Редактировать фото',
 					'callback_data' => 'редактировать_фото:'.$callback_from_id
 				]
@@ -1579,6 +1600,52 @@ function _отправка_лота_админам() {
 	
 	}else throw new Exception("Нет такого заказа..");	
 
+}
+
+
+
+
+// замена админом названия лота
+function _редактировать_название($id_client) {
+
+	global $bot, $callback_query_id;
+	
+	//if (!$callback_from_id) $callback_from_id = $from_id;	
+	
+	_ожидание_ввода('замена_названия', $id_client);
+	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с названием.", true);	
+	
+}
+
+
+
+// замена админом хештегов
+function _редактировать_хештеги($id_client) {
+
+	global $bot, $callback_query_id;
+	
+	//if (!$callback_from_id) $callback_from_id = $from_id;	
+	
+	_ожидание_ввода('замена_хештегов', $id_client);
+	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с хештегами.", true);	
+	
+}
+
+
+
+// замена админом текста с подробностями
+function _редактировать_подробности($id_client) {
+
+	global $bot, $callback_query_id;
+	
+	//if (!$callback_from_id) $callback_from_id = $from_id;	
+	
+	_ожидание_ввода('замена_подробностей', $id_client);
+	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст подробностей.", true);	
+	
 }
 
 
@@ -1898,7 +1965,7 @@ function _доверяет($id) {
 	_запись_в_таблицу_маркет($id, 'doverie', '1');
 	
 	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");
-	
+/*	
 	$inLine = [
 		'inline_keyboard' => [
 			[
@@ -1917,7 +1984,7 @@ function _доверяет($id) {
 	];
 	
 	$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
-
+*/
 }
 
 

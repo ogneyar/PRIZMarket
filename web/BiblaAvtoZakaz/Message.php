@@ -93,7 +93,58 @@ if ($reply_to_message && $chat_id == $admin_group) {
 	
 	if ($result) {
 		
-		if ($result['ojidanie'] == 'замена_фото') {
+		if ($result['ojidanie'] == 'замена_названия') {
+			
+			$айди_клиента = $result['last'];
+			
+			if ($text) {
+			
+				_запись_в_таблицу_маркет($айди_клиента, 'nazvanie', $text);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
+
+				$bot->sendMessage($chat_id, $text);			
+				
+			}			
+
+			
+		}elseif ($result['ojidanie'] == 'замена_хештегов') {
+			
+			$айди_клиента = $result['last'];
+			
+			if ($text) {
+			
+				_запись_в_таблицу_маркет($айди_клиента, 'gorod', $text);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);				
+				
+				$bot->sendMessage($chat_id, $text);		
+				
+			}			
+
+			
+		}elseif ($result['ojidanie'] == 'замена_подробностей') {
+			
+			$айди_клиента = $result['last'];
+			
+			if ($text) {
+			
+				_запись_в_таблицу_маркет($айди_клиента, 'podrobno', $text);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);				
+				
+				$bot->sendMessage($chat_id, $text);		
+			
+			}			
+
+			
+		}elseif ($result['ojidanie'] == 'замена_фото') {
 			
 			$айди_клиента = $result['last'];
 			
