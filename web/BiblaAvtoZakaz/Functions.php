@@ -1991,7 +1991,7 @@ function _не_доверяет($id) {
 	
 	_запись_в_таблицу_маркет($id, 'doverie', '0');
 	
-	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");
+	$bot->answerCallbackQuery($callback_query_id, "ОТМЕНА отметки доверием!");
 
 }
 
