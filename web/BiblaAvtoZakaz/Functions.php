@@ -1418,7 +1418,7 @@ function _предпросмотр_лота() {
 // отправка клиентом введённой информации 
 function _на_публикацию() {
 	
-	global $callback_query_id, $callback_from_id, $from_id, $bot;
+	global $callback_query_id, $callback_from_id, $from_id, $bot, $message_id;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;	
 	
