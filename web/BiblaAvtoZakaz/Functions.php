@@ -1673,6 +1673,8 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 	
 //	$from_id = $id_client; // это для функции _запись_в_таблицу_маркет()
 	
+	_очистка_таблицы_ожидание();
+	
 	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$id_client} AND id_zakaz='{$номер_лота}'";
 		
 	$результат = $mysqli->query($запрос);
