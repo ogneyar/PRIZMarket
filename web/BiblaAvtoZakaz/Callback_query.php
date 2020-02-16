@@ -144,6 +144,11 @@ if ($callback_data=='создать'){
 	$bot->answerCallbackQuery($callback_query_id, "Отказанно!");
 	
 	
+}elseif ($callback_data=='отправлено') {	
+		
+	$bot->answerCallbackQuery($callback_query_id, "Отправлено!");
+	
+	
 }elseif ($callback_data=='старт') {	
 
 	_start_AvtoZakazBota();

@@ -48,6 +48,7 @@
 ** _не_нужен_альбом
 ** _опишите_подробно
 ** _предпросмотр_лота
+**
 ** _на_публикацию
 ** _изменить_подробности
 ** _ожидание_результата
@@ -1415,7 +1416,7 @@ function _на_публикацию() {
 	
 	global $callback_query_id, $callback_from_id, $from_id, $bot;
 	
-	if (!$callback_from_id) $callback_from_id = $from_id;
+	if (!$callback_from_id) $callback_from_id = $from_id;	
 	
 	$давно = _последняя_публикация();
 	
@@ -1428,6 +1429,23 @@ function _на_публикацию() {
 		_отправка_сообщений_инфоботу();	
 		
 		_запись_в_таблицу_маркет($callback_from_id, 'date', time());
+		
+		$inLine = [
+			'inline_keyboard' => [
+				[
+					[
+						'text' => 'Отправлено',
+						'callback_data' => 'отправлено'
+					],
+					[
+						'text' => 'В начало',
+						'callback_data' => 'старт'
+					]
+				]
+			]
+		];
+		
+		$bot->editMessageReplyMarkup($callback_from_id, $message_id, null, $inLine);
 		
 	}else $bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);
 
