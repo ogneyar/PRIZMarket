@@ -1,5 +1,20 @@
 ﻿<?php
 
+/*
+** Список функций
+**
+** PrintArr
+** exception_handler
+**
+** _CoinMarketCap
+** _PricePZM_in_Monet
+** _kurs_PZM
+**
+** --------------------
+**
+**
+*/
+
 /*      ---------------------------
 **
 **       +-----------------------+
@@ -39,7 +54,9 @@ function exception_handler($exception) {
 
 
 function _CoinMarketCap($id){	
-
+	
+	global $cmc_api_key;
+	
 	// 'RUB'='2806' 
 	// 'PZM'='1681'
 	// 'ETH'='2'
@@ -52,7 +69,7 @@ function _CoinMarketCap($id){
 
 	$headers = [
 		'Accepts: application/json',
-		'X-CMC_PRO_API_KEY: c6791c7f-da01-47d3-8e06-2ef5def157b8'
+		'X-CMC_PRO_API_KEY: '.$cmc_api_key
 	];
 	$qs = http_build_query($parameters); // query string encode the parameters
 	$request = "{$url}?{$qs}"; // create the request URL
