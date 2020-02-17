@@ -29,6 +29,8 @@ $table5='pzmarkt';
 // Имя таблицы chat_garant в которой хранятся данные о группах Администраторов ГарантБота
 $table6='chat_garant';
 
+$таблица_переменных = 'variables';
+
 
 $Key_VES = [[['text' => 'Перейти..', 'url' => 'http://t.me/PRIZM_world_bot?start=']]];
 $keyInLine_VES = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($Key_VES);

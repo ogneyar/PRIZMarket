@@ -9,7 +9,11 @@
 ** _CoinMarketCap
 ** _PricePZM_in_Monet // временно не используется --------------------
 ** _kurs_PZM
+** 
+** _запись_переменной_курса
+** _время_записи_курса
 **
+** _дай_курс_PZM
 ** --------------------
 **
 **
@@ -137,53 +141,167 @@ function _PricePZM_in_Monet($symbol){
 
 
 function _kurs_PZM(){	
-
-		$arrayCMC_RUB=json_decode(_CoinMarketCap('2806'), true); 	//  RUB
-		$PriceRUB_in_USD=$arrayCMC_RUB['data']['2806']['quote']['USD']['price'];	
-		$PriceUSD_in_RUB=1/$PriceRUB_in_USD;	
-
-		$arrayCMC_PZM=json_decode(_CoinMarketCap('1681'), true); // PRIZM
-		$PricePZM_in_USD=$arrayCMC_PZM['data']['1681']['quote']['USD']['price'];
-		$PricePZM_in_RUB=$PriceUSD_in_RUB*$PricePZM_in_USD;
-/*	
-		$arrayCMC_ETH=json_decode(_CoinMarketCap('2'), true); // ETH
-		$PriceETH_in_USD=$arrayCMC_ETH['data']['2']['quote']['USD']['price'];
-		$PriceUSD_in_ETH=1/$PriceETH_in_USD;	
-		$PricePZM_in_ETH=$PricePZM_in_USD*$PriceUSD_in_ETH;
 	
-		$arrayCMC_BTC=json_decode(_CoinMarketCap('1'), true); // BTC
-		$PriceBTC_in_USD=$arrayCMC_BTC['data']['1']['quote']['USD']['price'];
-		$PriceUSD_in_BTC=1/$PriceBTC_in_USD;	
-		$PricePZM_in_BTC=$PricePZM_in_USD*$PriceUSD_in_BTC;
-*/
-		$Date_PricePZM=$arrayCMC_PZM['data']['1681']['quote']['USD']['last_updated'];
+	$время = time();
 	
-		$unixDate=strtotime($Date_PricePZM);
-		$Date_PricePZM = gmdate('d.m.Y H:i:s', $unixDate + 3*3600);
+	$время_записи = _время_записи_курса('курс PZM');
 	
-		$Round_PricePZM_in_USD=round($PricePZM_in_USD, 2);
-		$Round_PricePZM_in_RUB=round($PricePZM_in_RUB, 2);
-//		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
-//		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
-	
-		$reply="Курс PRIZM на [CoinMarketCap:](https://coinmarketcap.com/ru/currencies/prizm/)\n1PZM = ".
-			$Round_PricePZM_in_USD." $\n1PZM = ".$Round_PricePZM_in_RUB.
-			" \xE2\x82\xBD\n\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
-		$reply.="на ".$Date_PricePZM." МСК";	
+	if ($время_записи) {
 		
-		return $reply;
-/*		
-		$tg->call('sendMessage', [
-            'chat_id' => $chatId,
-            'text' => $reply,
-            'parse_mode' => markdown,
-            'disable_web_page_preview' => true,
-            'reply_to_message_id' => null,
-            'reply_markup' => null,
-            'disable_notification' => false,
-        ]);
-*/
+		$разница = $время - $время_записи;
+		
+		if ($разница > 600) {
+
+			$arrayCMC_RUB=json_decode(_CoinMarketCap('2806'), true); 	//  RUB
+			$PriceRUB_in_USD=$arrayCMC_RUB['data']['2806']['quote']['USD']['price'];	
+			$PriceUSD_in_RUB=1/$PriceRUB_in_USD;	
+
+			$arrayCMC_PZM=json_decode(_CoinMarketCap('1681'), true); // PRIZM
+			$PricePZM_in_USD=$arrayCMC_PZM['data']['1681']['quote']['USD']['price'];
+			$PricePZM_in_RUB=$PriceUSD_in_RUB*$PricePZM_in_USD;
+			
+	/*	
+			$arrayCMC_ETH=json_decode(_CoinMarketCap('2'), true); // ETH
+			$PriceETH_in_USD=$arrayCMC_ETH['data']['2']['quote']['USD']['price'];
+			$PriceUSD_in_ETH=1/$PriceETH_in_USD;	
+			$PricePZM_in_ETH=$PricePZM_in_USD*$PriceUSD_in_ETH;
+		
+			$arrayCMC_BTC=json_decode(_CoinMarketCap('1'), true); // BTC
+			$PriceBTC_in_USD=$arrayCMC_BTC['data']['1']['quote']['USD']['price'];
+			$PriceUSD_in_BTC=1/$PriceBTC_in_USD;	
+			$PricePZM_in_BTC=$PricePZM_in_USD*$PriceUSD_in_BTC;
+	*/
+	//		$Date_PricePZM=$arrayCMC_PZM['data']['1681']['quote']['USD']['last_updated'];
+		
+	//		$unixDate=strtotime($Date_PricePZM);	
+	//		$Date_PricePZM = gmdate('d.m.Y H:i:s', $unixDate + 3*3600);
+	
+			$Date_PricePZM = gmdate('d.m.Y H:i', $время + 3*3600);
+	
+			$Round_PricePZM_in_USD=round($PricePZM_in_USD, 2);
+			$Round_PricePZM_in_RUB=round($PricePZM_in_RUB, 2);
+	//		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
+	//		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
+						
+			_запись_переменной_курса('курс PZM', $Round_PricePZM_in_USD, 'USD', $время);
+			
+			_запись_переменной_курса('курс PZM', $Round_PricePZM_in_RUB, 'RUB', $время);
+					
+			$reply="Курс PRIZM на [CoinMarketCap:](https://coinmarketcap.com/ru/currencies/prizm/)\n1PZM = ".
+				$Round_PricePZM_in_USD." $\n1PZM = ".$Round_PricePZM_in_RUB.
+				" \xE2\x82\xBD\n\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
+			$reply.="на ".$Date_PricePZM." МСК";	
+			
+		}else {
+			
+			$reply = _дай_курс_PZM();
+			
+		}
+		
+	}
+
+	return $reply;
+
 }
+
+
+// функция вывода из таблицы данных о курсе
+function _дай_курс_PZM(){	
+	
+	global $id_bota, $таблица_переменных;
+	
+	$ответ = false;
+	
+	$запрос = "SELECT * FROM {$таблица_переменных} WHERE id_bota='{$id_bota}' AND nazvanie='курс PZM'";
+	 
+	$результат = $mysqli->query($запрос);
+
+	if ($результат->num_rows > 0) {
+		
+		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+		
+		foreach($результМассив as $строка) { 
+		
+			if ($строка['opisanie'] == 'USD') {
+			
+				$курсPZM_USD = $строка['soderjimoe'];
+				
+			}elseif ($строка['opisanie'] == 'RUB') {
+				
+				$курсPZM_RUB = $строка['soderjimoe'];
+				
+			}
+			
+		}
+		
+		$время = $результМассив[0]['vremya'];
+		
+		$ответ = "Курс PRIZM на [CoinMarketCap:](https://coinmarketcap.com/ru/currencies/prizm/)\n1PZM = ".
+		$курсPZM_USD." $\n1PZM = ".$курсPZM_RUB." \xE2\x82\xBD\n\nна ".$время." МСК";	
+		
+	}	
+
+	return $ответ;
+
+}
+
+
+
+
+// запись в таблицу для переменных
+function _запись_переменной_курса($название, $содержимое, $описание, $время){	
+	
+	global $id_bota, $таблица_переменных;
+	
+	//$время = time();
+	
+	$запрос = "SELECT nazvanie FROM {$таблица_переменных} WHERE id_bota='{$id_bota}' AND nazvanie='{$название}' AND opisanie='{$описание}'";
+	 
+	$результат = $mysqli->query($запрос);
+
+	if ($результат->num_rows > 0) {
+		
+		$запрос = "UPDATE {$таблица_переменных} SET soderjimoe='{$содержимое}', vremya='{$время}'  WHERE id_bota='{$id_bota}' AND nazvanie='{$название}' AND opisanie='{$описание}'";
+		
+		$результат = $mysqli->query($запрос);
+		
+	}else {
+		
+		$запрос = "INSERT INTO {$таблица_переменных} (
+			`id_bota`, `nazvanie`, `soderjimoe`, `opisanie`, `vremya`
+		) VALUES (
+			'{$id_bota}', '{$название}', '{$содержимое}', '{$описание}', '{$время}'
+		)";		
+		
+	}
+	
+}
+
+
+// проверка последней записи курса
+function _время_записи_курса($название){	
+	
+	global $id_bota, $таблица_переменных;
+	
+	$ответ = false;
+		
+	$запрос = "SELECT vremya FROM {$таблица_переменных} WHERE id_bota='{$id_bota}' AND nazvanie='{$название}'";
+	 
+	$результат = $mysqli->query($запрос);
+
+	if ($результат->num_rows > 0) {
+		
+		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+		
+		$ответ = $результМассив[0]['vremya'];
+		
+	}
+	
+	return $ответ;
+	
+}
+
+
 
 
 
