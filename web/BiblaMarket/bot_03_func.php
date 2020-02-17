@@ -7,7 +7,7 @@
 ** exception_handler
 **
 ** _CoinMarketCap
-** _PricePZM_in_Monet
+** _PricePZM_in_Monet // временно не используется --------------------
 ** _kurs_PZM
 **
 ** --------------------
@@ -52,15 +52,15 @@ function exception_handler($exception) {
 	exit('ok');  
 }
 
-
+// отправка сообщения к АПИ КМК
 function _CoinMarketCap($id){	
 	
 	global $cmc_api_key;
 	
 	// 'RUB'='2806' 
 	// 'PZM'='1681'
-	// 'ETH'='2'
-	// 'BTC'='1'
+	// 'ETH'='2'   // отключён
+	// 'BTC'='1'   // отключён
 	
 	$url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest';
 	$parameters = [			
@@ -91,10 +91,11 @@ function _CoinMarketCap($id){
 
 }
 
+// временно не используется --------------------
 function _PricePZM_in_Monet($symbol){
 		
-	if ($symbol=="\xE2\x82\xBD"){
-		$CMCid='2806';
+	if ($symbol=="\xE2\x82\xBD"){ 
+		$CMCid='2806'; // 2806 это рубль
 	}elseif ($symbol=="ETH"){
 		$CMCid='2';
 	}elseif ($symbol=="BTC"){
@@ -144,7 +145,7 @@ function _kurs_PZM(){
 		$arrayCMC_PZM=json_decode(_CoinMarketCap('1681'), true); // PRIZM
 		$PricePZM_in_USD=$arrayCMC_PZM['data']['1681']['quote']['USD']['price'];
 		$PricePZM_in_RUB=$PriceUSD_in_RUB*$PricePZM_in_USD;
-	
+/*	
 		$arrayCMC_ETH=json_decode(_CoinMarketCap('2'), true); // ETH
 		$PriceETH_in_USD=$arrayCMC_ETH['data']['2']['quote']['USD']['price'];
 		$PriceUSD_in_ETH=1/$PriceETH_in_USD;	
@@ -154,7 +155,7 @@ function _kurs_PZM(){
 		$PriceBTC_in_USD=$arrayCMC_BTC['data']['1']['quote']['USD']['price'];
 		$PriceUSD_in_BTC=1/$PriceBTC_in_USD;	
 		$PricePZM_in_BTC=$PricePZM_in_USD*$PriceUSD_in_BTC;
-
+*/
 		$Date_PricePZM=$arrayCMC_PZM['data']['1681']['quote']['USD']['last_updated'];
 	
 		$unixDate=strtotime($Date_PricePZM);
@@ -162,13 +163,13 @@ function _kurs_PZM(){
 	
 		$Round_PricePZM_in_USD=round($PricePZM_in_USD, 2);
 		$Round_PricePZM_in_RUB=round($PricePZM_in_RUB, 2);
-		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
-		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
+//		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
+//		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
 	
 		$reply="Курс PRIZM на [CoinMarketCap:](https://coinmarketcap.com/ru/currencies/prizm/)\n1PZM = ".
 			$Round_PricePZM_in_USD." $\n1PZM = ".$Round_PricePZM_in_RUB.
-			" \xE2\x82\xBD\n1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC\n";
-		$reply.="Данные на ".$Date_PricePZM." МСК";	
+			" \xE2\x82\xBD\n\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
+		$reply.="на ".$Date_PricePZM." МСК";	
 		
 		return $reply;
 /*		
@@ -382,10 +383,11 @@ function vibor_valut($valuta) { // функция выбора кплю/прод
 	$mysqli->query($query);	
 		
 	
-	$PricePZM_and_Date=_PricePZM_in_Monet($valuta);	
+	//$PricePZM_and_Date=_PricePZM_in_Monet($valuta);	
 	
+	//\n[{$PricePZM_and_Date}](https://coinmarketcap.com/ru/currencies/prizm/)
 	
-	$sms.= $valuta."\n.\n[{$PricePZM_and_Date}](https://coinmarketcap.com/ru/currencies/prizm/)" . $tehPodderjka . "Отлично, теперь *введите ".$cenaText."*, огромная просьба".
+	$sms.= $valuta."\n." . $tehPodderjka . "Отлично, теперь *введите ".$cenaText."*, огромная просьба".
 		" \xF0\x9F\x99\x8F делайте это не спеша, а после нажмите \xE2\x9C\x85";
 
 	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine4);
