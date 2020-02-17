@@ -16,6 +16,8 @@ $table4='obrabotka_zayavok';
 // Имя таблицы chat_garant в которой хранятся данные о группах Администраторов ГарантБота
 $table6='chat_garant';
 
+$таблица_переменных = 'variables';
+
 //$except = __LINE__."\n".__FILE__."\n";
 
 $userBot = $tg->getMe();
