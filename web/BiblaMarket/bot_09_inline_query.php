@@ -11,8 +11,8 @@ if ($arr['inline_query']) {
 	
 	$reply = _kurs_PZM();
 	
-	$reply = str_replace("[CoinMarketCap:](https://coinmarketcap.com/ru/currencies/prizm/)",
-		"CoinMarketCap:", $reply);
+	$reply = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)",
+		"CoinMarketCap.com", $reply);
 	
 	$title = "Курс PRIZM.";
 	
