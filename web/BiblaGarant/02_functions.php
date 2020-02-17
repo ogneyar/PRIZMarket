@@ -52,7 +52,7 @@ function _CoinMarketCap($id){
 
 	$headers = [
 		'Accepts: application/json',
-		'X-CMC_PRO_API_KEY: c6791c7f-da01-47d3-8e06-2ef5def157b8'
+		'X-CMC_PRO_API_KEY: '.$cmc_api_key
 	];
 	$qs = http_build_query($parameters); // query string encode the parameters
 	$request = "{$url}?{$qs}"; // create the request URL
