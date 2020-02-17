@@ -146,12 +146,14 @@ function _kurs_PZM(){
 	
 	$время_записи = _время_записи_курса();
 	
-	if ($время_записи) {
+	if ($время_записи) $разница = $время - $время_записи;
+	
+	if ($время_записи&&$разница < 600) {
 		
-		$разница = $время - $время_записи;
+			$reply = _дай_курс_PZM();
+			
+	}else {
 		
-		if ($разница > 600) {
-
 			$arrayCMC_RUB=json_decode(_CoinMarketCap('2806'), true); 	//  RUB
 			$PriceRUB_in_USD=$arrayCMC_RUB['data']['2806']['quote']['USD']['price'];	
 			$PriceUSD_in_RUB=1/$PriceRUB_in_USD;	
@@ -190,15 +192,9 @@ function _kurs_PZM(){
 			$reply="Курс PRIZM на [CoinMarketCap:](https://coinmarketcap.com/ru/currencies/prizm/)\n1PZM = ".
 				$Round_PricePZM_in_USD." $\n1PZM = ".$Round_PricePZM_in_RUB.
 				" \xE2\x82\xBD\n\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
-			$reply.="на ".$время." МСК";	
+			$reply.="на ".$время." МСК";			
 			
-		}else {
-			
-			$reply = _дай_курс_PZM();
-			
-		}
-		
-	}else $reply = _дай_курс_PZM();
+	}
 
 	return $reply;
 
@@ -290,13 +286,17 @@ function _время_записи_курса(){
 	$запрос = "SELECT vremya FROM {$таблица_переменных} WHERE id_bota={$id_bota} AND nazvanie='курс PZM'";
 	 
 	$результат = $mysqli->query($запрос);
-
-	if ($результат->num_rows > 0) {
-		
-		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
-		
-		$ответ = $результМассив[0]['vremya'];
-		
+	
+	if ($результат) {
+	
+		if ($результат->num_rows > 0) {
+			
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			
+			$ответ = $результМассив[0]['vremya'];
+			
+		}
+	
 	}
 	
 	return $ответ;
