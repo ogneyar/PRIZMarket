@@ -198,7 +198,7 @@ function _kurs_PZM(){
 			
 		}
 		
-	}
+	}else $reply = _дай_курс_PZM();
 
 	return $reply;
 
