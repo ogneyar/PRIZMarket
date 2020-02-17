@@ -357,10 +357,11 @@ function vibor_valut($valuta) { // функция выбора кплю/прод
 	$mysqli->query($query);	
 		
 	
-	$PricePZM_and_Date=_PricePZM_in_Monet($valuta);	
+	//$PricePZM_and_Date=_PricePZM_in_Monet($valuta);	
 	
+	//\n[{$PricePZM_and_Date}](https://coinmarketcap.com/ru/currencies/prizm/)
 	
-	$sms.= $valuta."\n.\n[{$PricePZM_and_Date}](https://coinmarketcap.com/ru/currencies/prizm/)" . $tehPodderjka . "Отлично, теперь *введите ".$cenaText."*, огромная просьба".
+	$sms.= $valuta."\n." . $tehPodderjka . "Отлично, теперь *введите ".$cenaText."*, огромная просьба".
 		" \xF0\x9F\x99\x8F делайте это не спеша, а после нажмите \xE2\x9C\x85";
 
 	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine4);
