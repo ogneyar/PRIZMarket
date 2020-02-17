@@ -40,6 +40,8 @@ function exception_handler($exception) {
 
 function _CoinMarketCap($id){	
 
+	global $cmc_api_key;
+
 	// 'RUB'='2806' 
 	// 'PZM'='1681'
 	// 'ETH'='2'
