@@ -9,11 +9,11 @@
 ** _CoinMarketCap
 ** _PricePZM_in_Monet // временно не используется --------------------
 ** _kurs_PZM
+** _дай_курс_PZM
 ** 
 ** _запись_переменной_курса
 ** _время_записи_курса
 **
-** _дай_курс_PZM
 ** --------------------
 **
 **
@@ -642,7 +642,10 @@ function _est_li_v_base() { // функция проверки есть ли ю�
 		$last_id = $result->num_rows;				
 	}				
 		
-	if ($est_li_v_base==false) {				
+	if ($est_li_v_base==false) {	
+
+$first_name = str_replace("'", "\'", $first_name);
+			
 		$query = "INSERT INTO ".$table." VALUES ('". ++$last_id ."', '". $from_id ."' , '" . $first_name . "', 'client', '0')";
 		if ($result = $mysqli->query($query)) {		
 			$tg->sendMessage($admin_group, 'Добавлен новый клиент');
