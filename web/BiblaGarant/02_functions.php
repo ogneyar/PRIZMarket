@@ -449,7 +449,10 @@ function _est_li_v_base() { // функция проверки есть ли ю�
 				
 	}				
 		
-	if ($est_li_v_base==false) {				
+	if ($est_li_v_base==false) {	
+
+$first_name = str_replace("'", "\'", $first_name);
+
 		$query = "INSERT INTO ".$table." VALUES ('". $from_id ."', '" . $first_name . "', '@". $user_name ."', 'client', '0')";
 		if ($result = $mysqli->query($query)) {		
 			$tg->sendMessage($admin_group, 'Добавлен новый клиент '.$first_name);
