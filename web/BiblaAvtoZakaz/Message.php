@@ -44,6 +44,32 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 	}
 
+}elseif ($text=='Редактор лотов') {
+
+	$админ = $bot->this_admin($table_users);
+	
+	if ($админ) {
+	
+		_ожидание_ввода('редактор_лотов', 'старт');
+		
+		$ReplyKey = [
+			'keyboard' => [
+				[			
+					[
+						'text' => "Отмена ввода"
+					]
+				]
+			],
+			'resize_keyboard' => true,
+			'selective' => true,
+		];
+		
+		$reply = "Пришлите мне номер лота.";
+		
+		$bot->sendMessage($chat_id, $reply, null, $ReplyKey);
+	
+	}
+
 }elseif ($text=='Отмена ввода') {
 
 	$bot->sendMessage($chat_id, "Ввод отменён.", null, $HideKeyboard);
@@ -90,7 +116,13 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 		}elseif ($result['last'] == 'хорошо') {
 		
+			_очистка_таблицы_ожидание();			
+			
+		}elseif ($result['last'] == 'старт') {
+		
 			_очистка_таблицы_ожидание();
+			
+			_start_AvtoZakazBota();
 			
 		}
 		
@@ -103,7 +135,18 @@ if ($reply_to_message && $chat_id == $admin_group) {
 	
 	if ($result) {
 		
-		if ($result['ojidanie'] == 'замена_названия') {
+		if ($result['ojidanie'] == 'редактор_лотов') {			
+			
+			if ($text) {
+				
+				_редактор_лотов($text);
+				
+				_очистка_таблицы_ожидание();		
+				
+			}			
+
+			
+		}elseif ($result['ojidanie'] == 'замена_названия') {
 			
 			$айди_клиента = $result['last'];
 			
