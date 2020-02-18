@@ -729,7 +729,9 @@ class Bot
 	*/
 	public function this_admin($table) { 
 
-		global $admin_group, $mysqli, $from_id, $callback_from_id;
+		global $master, $mysqli, $from_id, $callback_from_id;
+		
+		if (!$callback_from_id) $callback_from_id = $from_id;
 		
 		$this_admin = false;		
 		
@@ -745,12 +747,12 @@ class Bot
 				
 				for ($i=0; $i<$kolS; $i++) {		
 									
-					if ($from_id==$arrStrok[$i]['id_client']||$callback_from_id==$arrStrok[$i]['id_client']) $this_admin = true;
+					if ($callback_from_id==$arrStrok[$i]['id_client']) $this_admin = true;
 				}						
 				
 			}	
 			
-		}else $this->sendMessage($admin_group, 'Чего то не получается узнать администраторов бота');			
+		}else $this->sendMessage($master, 'Чего то не получается узнать администраторов бота');			
 		
 		return $this_admin;
 		
