@@ -1287,6 +1287,10 @@ function _запись_в_таблицу_медиагрупа($id_client = null,
 
 
 function _не_нужен_альбом() {
+
+	global $callback_from_id, $from_id;
+	
+	if (!$callback_from_id) $callback_from_id = $from_id;
 	
 	_очистка_таблицы_медиа();
 	
