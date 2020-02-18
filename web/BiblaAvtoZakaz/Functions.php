@@ -1290,6 +1290,8 @@ function _не_нужен_альбом() {
 	
 	_очистка_таблицы_медиа();
 	
+	_запись_в_таблицу_маркет($callback_from_id, 'foto_album', '0');
+	
 	_опишите_подробно();
 	
 }
@@ -1775,14 +1777,18 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 	
 					$ссылка_на_канал_медиа = _публикация_на_канале_медиа($id_client);					
 					
-					$кнопки = array_merge($кнопки, [
-						[
+					if ($ссылка_на_канал_медиа) {
+					
+						$кнопки = array_merge($кнопки, [
 							[
-								'text' => 'Фото',
-								'url' => $ссылка_на_канал_медиа
+								[
+									'text' => 'Фото',
+									'url' => $ссылка_на_канал_медиа
+								]
 							]
-						]
-					]);					
+						]);
+
+					}
 				
 				}
 				
@@ -1919,6 +1925,8 @@ function _публикация_на_канале_медиа($номер_клие
 	
 	global $bot, $master, $таблица_медиагруппа, $mysqli, $channel_media_market;
 	
+	$ответ = false;
+	
 	$запрос = "SELECT * FROM {$таблица_медиагруппа} WHERE id_client={$номер_клиента} AND id='0'";
 		
 	$результат = $mysqli->query($запрос);
@@ -1953,22 +1961,22 @@ function _публикация_на_канале_медиа($номер_клие
 				]);
 					
 			}
-				
-		}else throw new Exception("Или нет заказа или меньше одного..");
 			
-	}else throw new Exception("Нет такого заказа..");		
-
-	$результат = $bot->sendMediaGroup($channel_media_market, $файл_медиа);
+			$результат = $bot->sendMediaGroup($channel_media_market, $файл_медиа);
 	
-	//$bot->sendMessage($master, $bot->PrintArray($результат));
-		
-	if ($результат) {		
-		
-		$ссыль_на_группу_медиа = "https://t.me/{$результат[0]['chat']['username']}/{$результат[0]['message_id']}";	
-			
-		return $ссыль_на_группу_медиа;
+			//$bot->sendMessage($master, $bot->PrintArray($результат));
+				
+			if ($результат) {		
+				
+				$ответ = "https://t.me/{$результат[0]['chat']['username']}/{$результат[0]['message_id']}";	
 
-	}else return false;
+			}
+			
+		}else $bot->sendMessage($master, "Или нет заказа или меньше двух в {$таблица_медиагруппа}");
+			
+	}else $bot->sendMessage($master, "Нет такого заказа в {$таблица_медиагруппа}");	
+	
+	return $ответ;	
 
 }
 
