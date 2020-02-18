@@ -54,7 +54,7 @@ if ($text == 'база') {
 	}		
 	
 	
-}elseif (($text == "уф")&&($id)) {		
+}elseif (($text == "обнули фото альбом")&&($id)) {		
 		
 	$query = "UPDATE ".$table_market." SET foto_album='0' WHERE id_client=".$id." AND id_zakaz='0'";
 	
