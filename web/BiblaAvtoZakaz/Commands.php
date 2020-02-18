@@ -54,6 +54,17 @@ if ($text == 'база') {
 	}		
 	
 	
+}elseif (($text == "уф")&&($id)) {		
+		
+	$query = "UPDATE ".$table_market." SET foto_album='0' WHERE id_client=".$id." AND id_zakaz='0'";
+	
+	if ($result = $mysqli->query($query)) {
+	
+		$bot->sendMessage($master, "Всё отлично!");
+		
+	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
+		
+		
 }elseif ($text == 'ожид') {
 	
 	if ($id) {
