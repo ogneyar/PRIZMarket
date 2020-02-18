@@ -143,7 +143,89 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				
 				_очистка_таблицы_ожидание();		
 				
+			}
+			
+		}elseif ($result['ojidanie'] == 'название_редакт') {
+			
+			$айди_заказа = $result['last'];
+			
+			if ($text) {
+			
+				_редакт_таблицы_маркет($айди_заказа, 'nazvanie', $text);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
+
+				$bot->sendMessage($chat_id, $text);			
+				
 			}			
+
+			
+		}elseif ($result['ojidanie'] == 'ссылку_редакт') {
+			
+			$айди_заказа = $result['last'];
+			
+			if ($text) {
+			
+				_редакт_таблицы_маркет($айди_заказа, 'url_nazv', $text);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
+
+				$bot->sendMessage($chat_id, $text);			
+				
+			}			
+
+			
+		}elseif ($result['ojidanie'] == 'хештеги_редакт') {
+			
+			$айди_заказа = $result['last'];
+			
+			if ($text) {
+			
+				_редакт_таблицы_маркет($айди_заказа, 'gorod', $text);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
+
+				$bot->sendMessage($chat_id, $text);			
+				
+			}			
+
+			
+		}elseif ($result['ojidanie'] == 'подробности_редакт') {
+			
+			$айди_заказа = $result['last'];
+			
+			if ($text) {
+			
+				_редакт_таблицы_маркет($айди_заказа, 'podrobno', $text);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
+
+				$bot->sendMessage($chat_id, $text);			
+				
+			}			
+
+			
+		}elseif ($result['ojidanie'] == 'фото_редакт') {
+			
+			$айди_заказа = $result['last'];
+			
+			if ($photo) {
+			
+				_редакт_таблицы_маркет($айди_заказа, 'file_id', $file_id);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);				
+				
+			}
 
 			
 		}elseif ($result['ojidanie'] == 'замена_названия') {
