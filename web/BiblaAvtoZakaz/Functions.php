@@ -2383,11 +2383,73 @@ function _редакт_таблицы_маркет($номер_лота, $имя
 // Показ админу отредактированного лота
 function _показать_редакт($номер_лота) {
 	
-	global $bot, $callback_query_id, $callback_from_id, $from_id;
+	global $bot, $mysqli, $table_market, $callback_query_id, $callback_from_id, $from_id;
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;
+
+	$запрос = "SELECT * FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";
+		
+	$результат = $mysqli->query($запрос);
 	
-	_отправка_лота($callback_from_id, $номер_лота);
+	if ($результат) {
+		
+		if ($результат->num_rows == 1) {
+		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			
+			foreach ($результМассив as $строка) {
+			
+				$файлАйди = $строка['file_id'];		
+				$формат_файла = $строка['format_file'];				
+				$название = $строка['nazvanie'];
+				$ссыль_в_названии = $строка['url_nazv'];
+				$куплю_или_продам = $строка['kuplu_prodam'];								
+				$валюта = $строка['valuta'];				
+				$хештеги_города = $строка['gorod'];				
+				$юзера_имя = $строка['username'];				
+				$доверие = $строка['doverie'];
+				$категория = $строка['otdel'];				
+				//$подробности = $строка['podrobno'];	
+				$ссыль_на_подробности = $строка['url_podrobno'];				
+						
+				$inLine = [
+					'inline_keyboard' => [
+						[
+							[
+								'text' => 'Подробнее',
+								'url' => $ссыль_на_подробности
+							]
+						]
+					]
+				];				
+				
+				$хештеги = "{$куплю_или_продам}\n\n{$категория}\n▪️";				
+				$хештеги = str_replace('_', '\_', $хештеги);
+				
+				$текст_после_названия = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}";					
+				$текст_после_названия = str_replace('_', '\_', $текст_после_названия);
+					
+				if ($доверие) $текст_после_названия .= "\n\n✅ PRIZMarket доверяет❗️"; 
+					
+				$текст = "{$хештеги}[{$название}]({$ссыль_в_названии}){$текст_после_названия}";
+					
+				if ($формат_файла == 'фото') {
+					
+					$публикация = $bot->sendPhoto($callback_from_id, $файлАйди, $текст, markdown, $inLine);
+						
+				}elseif ($формат_файла == 'видео') {
+						
+					$публикация = $bot->sendVideo($callback_from_id, $файлАйди, $текст, markdown, $inLine);
+						
+				}		
+				
+			}
+		
+		}else throw new Exception("Или нет заказа или больше одного..");
+	
+	}else throw new Exception("Нет такого заказа..");	
+
+
 	
 	$bot->answerCallbackQuery($callback_query_id, "Держи Мастер!");	
 	
