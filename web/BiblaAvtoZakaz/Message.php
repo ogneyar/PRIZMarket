@@ -163,6 +163,23 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			}			
 
 			
+		}elseif ($result['ojidanie'] == 'замена_ссылки') {
+			
+			$айди_клиента = $result['last'];
+			
+			if ($text) {
+			
+				_запись_в_таблицу_маркет($айди_клиента, 'url_nazv', $text);
+				
+				_очистка_таблицы_ожидание();
+				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
+
+				$bot->sendMessage($chat_id, $text);			
+				
+			}			
+
+			
 		}elseif ($result['ojidanie'] == 'замена_хештегов') {
 			
 			$айди_клиента = $result['last'];

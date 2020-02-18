@@ -56,6 +56,7 @@
 ** _отправка_лота_админам
 **
 ** _редактировать_название
+** _редактировать_ссылку
 ** _редактировать_хештеги
 ** _редактировать_подробности
 ** _редактировать_фото
@@ -1525,58 +1526,16 @@ function _отправка_лота_админам() {
 	
 	if (!$callback_from_id) $callback_from_id = $from_id;
 	
-	$inLine = [
-		'inline_keyboard' => [
-			[
-				[
-					'text' => 'Опубликовать',
-					'callback_data' => 'опубликовать:'.$callback_from_id
-				]
-			],
-			[
-				[
-					'text' => 'PRIZMarket доверяет',
-					'callback_data' => 'доверяет:'.$callback_from_id
-				]
-			],
-			[
-				[
-					'text' => 'PRIZMarket НЕ доверяет',
-					'callback_data' => 'не_доверяет:'.$callback_from_id
-				]
-			],
-			[
-				[
-					'text' => 'Редактировать название',
-					'callback_data' => 'редактировать_название:'.$callback_from_id
-				]
-			],
-			[
-				[
-					'text' => 'Редактировать хештеги',
-					'callback_data' => 'редактировать_хештеги:'.$callback_from_id
-				]
-			],
-			[
-				[
-					'text' => 'Редактировать подробности',
-					'callback_data' => 'редактировать_подробности:'.$callback_from_id
-				]
-			],
-			[
-				[
-					'text' => 'Редактировать фото',
-					'callback_data' => 'редактировать_фото:'.$callback_from_id
-				]
-			],
-			[
-				[
-					'text' => 'ОТКАЗАТЬ',
-					'callback_data' => 'отказать:'.$callback_from_id
-				]
-			],
-		]
-	];
+	$кнопки = [
+		[ [ 'text' => 'Опубликовать',
+			'callback_data' => 'опубликовать:'.$callback_from_id ] ],
+		[ [ 'text' => 'PRIZMarket доверяет',
+			'callback_data' => 'доверяет:'.$callback_from_id ] ],
+		[ [ 'text' => 'PRIZMarket НЕ доверяет',
+			'callback_data' => 'не_доверяет:'.$callback_from_id ] ],
+		[ [ 'text' => 'Редактировать название',
+			'callback_data' => 'редактировать_название:'.$callback_from_id ] ],
+	];	
 		
 	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz=0";
 		
@@ -1594,10 +1553,30 @@ function _отправка_лота_админам() {
 				$формат_файла = $строка['format_file'];				
 				$название = $строка['nazvanie'];
 
-				if ($строка['url_nazv']) {				
+				if ($строка['url_nazv']) {	
+				
 					$ссыль_в_названии = $строка['url_nazv'];						
-					$название_для_подробностей = "[{$название}]({$ссыль_в_названии})";					
+					$название_для_подробностей = "[{$название}]({$ссыль_в_названии})";		
+					
+					$кнопки = array_merge($кнопки, [
+						[ [ 'text' => 'Редактировать ссылку',
+							'callback_data' => 'редактировать_ссылку:'.$callback_from_id ] ],
+					]);	
+					
 				}else $название_для_подробностей = str_replace('_', '\_', $название);
+				
+				$кнопки = array_merge($кнопки, [
+					[ [ 'text' => 'Редактировать хештеги',
+						'callback_data' => 'редактировать_хештеги:'.$callback_from_id ] ],
+					[ [ 'text' => 'Редактировать подробности',
+						'callback_data' => 'редактировать_подробности:'.$callback_from_id ] ],
+					[ [ 'text' => 'Редактировать фото',
+						'callback_data' => 'редактировать_фото:'.$callback_from_id ] ],
+					[ [ 'text' => 'ОТКАЗАТЬ',
+						'callback_data' => 'отказать:'.$callback_from_id ] ],
+				]);
+	
+				$inLine = [ 'inline_keyboard' => $кнопки ];
 				
 				$куплю_или_продам = $строка['kuplu_prodam'];								
 				$валюта = $строка['valuta'];				
@@ -1631,7 +1610,11 @@ function _отправка_лота_админам() {
 				$текст = str_replace('~', '', $текст);
 				$текст = str_replace(':', '', $текст);
 				
-				$текст = "{$хештеги}{$название_для_подробностей}{$текст}";			
+				if ($ссыль_в_названии) {
+				
+					$текст = "{$хештеги}{$название_для_подробностей}\n{$ссыль_в_названии}{$текст}";		
+				
+				}else $текст = "{$хештеги}{$название_для_подробностей}{$текст}";
 				
 				if ($формат_файла == 'фото') {
 				
@@ -1674,12 +1657,23 @@ function _отправка_лота_админам() {
 function _редактировать_название($id_client) {
 
 	global $bot, $callback_query_id;
-	
-	//if (!$callback_from_id) $callback_from_id = $from_id;	
-	
+
 	_ожидание_ввода('замена_названия', $id_client);
 	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с названием.", true);	
+	
+}
+
+
+
+// замена админом ссылки в названии лота
+function _редактировать_ссылку($id_client) {
+
+	global $bot, $callback_query_id;
+
+	_ожидание_ввода('замена_ссылки', $id_client);
+	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новую ссылку.", true);	
 	
 }
 
@@ -1689,9 +1683,7 @@ function _редактировать_название($id_client) {
 function _редактировать_хештеги($id_client) {
 
 	global $bot, $callback_query_id;
-	
-	//if (!$callback_from_id) $callback_from_id = $from_id;	
-	
+
 	_ожидание_ввода('замена_хештегов', $id_client);
 	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с хештегами.", true);	
@@ -1704,9 +1696,7 @@ function _редактировать_хештеги($id_client) {
 function _редактировать_подробности($id_client) {
 
 	global $bot, $callback_query_id;
-	
-	//if (!$callback_from_id) $callback_from_id = $from_id;	
-	
+
 	_ожидание_ввода('замена_подробностей', $id_client);
 	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст подробностей.", true);	
@@ -1719,9 +1709,7 @@ function _редактировать_подробности($id_client) {
 function _редактировать_фото($id_client) {
 
 	global $bot, $callback_query_id;
-	
-	//if (!$callback_from_id) $callback_from_id = $from_id;	
-	
+
 	_ожидание_ввода('замена_фото', $id_client);
 	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.", true);	
