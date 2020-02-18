@@ -1172,7 +1172,7 @@ function _нужен_альбом() {
 	
 	_запись_в_таблицу_маркет($callback_from_id, 'foto_album', '1');
 	
-	_ожидание_ввода('foto_album', 'format_file');
+	_ожидание_ввода('foto_album', 'foto_album');
 	
 	$ReplyKey = [
 		'keyboard' => [
