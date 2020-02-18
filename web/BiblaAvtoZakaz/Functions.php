@@ -78,11 +78,33 @@
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
 function _start_AvtoZakazBota() {		
 
-	global $bot, $chat_id, $callback_from_first_name, $from_first_name, $HideKeyboard;
+	global $bot, $table_users, $chat_id, $callback_from_first_name, $from_first_name, $HideKeyboard;
 	
 	if (!$callback_from_first_name) $callback_from_first_name = $from_first_name;
 	
-	$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", markdown, $HideKeyboard);
+	$админ = $bot->this_admin($table_users);
+	
+	if ($админ) {
+		
+		$ReplyKey = [
+			'keyboard' => [
+				[			
+					[
+						'text' => "Редактор лотов"
+					]
+				]
+			],
+			'resize_keyboard' => true,
+			'selective' => true,
+		];
+	
+		$bot->sendMessage($chat_id, "Здравствуй МАСТЕР *".$callback_from_first_name."*!", markdown, $ReplyKey);
+	
+	}else {
+	
+		$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", markdown, $HideKeyboard);
+		
+	}
 
     _инфо_автоЗаказБота();	
 	
