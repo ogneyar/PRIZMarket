@@ -223,7 +223,23 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				
 				_очистка_таблицы_ожидание();
 				
-				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);				
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);		
+
+				$Объект_файла = $bot->getFile($file_id);		
+		
+				$ссыль_на_файл = $bot->fileUrl . $bot->token;	
+					
+				$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];		
+					
+				$результат = $imgBB->upload($ссыль);					
+					
+				if ($результат) {		
+						
+					$imgBB_url = $результат['url'];		
+
+					_редакт_таблицы_маркет($айди_заказа, 'url_tgraph', $imgBB_url);
+					
+				}else throw new Exception("Не смог сделать редакт imgBB_url");				
 				
 			}
 
@@ -321,7 +337,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 					$imgBB_url = $результат['url'];		
 
 					_запись_в_таблицу_маркет($айди_клиента, 'url_tgraph', $imgBB_url);
-						
+					
 				}else throw new Exception("Не смог сделать imgBB_url");					
 						
 			}			
