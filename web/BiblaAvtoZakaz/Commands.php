@@ -91,6 +91,14 @@ if ($text == 'база') {
 	}		
 	
 	
+}elseif ($text == 'эди') {
+	
+	$хокей = $bot->editMessageText($channel_podrobno, '82', 'abuf');
+	
+	if ($хокей) $bot->sendMessage($master, "Всё отлично!");
+
+	
+	
 }elseif ($text == 'изи') {
 	
 	$query = "ALTER TABLE `avtozakaz_pzmarket` ADD `foto_album` BOOLEAN NULL DEFAULT NULL";
