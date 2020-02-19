@@ -2068,7 +2068,7 @@ function _отказать($id) {
 
 	global $bot, $callback_query_id, $chat_id, $message_id;
 
-	$bot->sendMessage($id, "Вам отказанно. [Читайте правила](https://t.me/podrobno_s_PZP/562).\n\n/start 👈🏻 в главное меню!", markdown);
+	$bot->sendMessage($id, "Вам отказанно. [Читайте правила](https://t.me/podrobno_s_PZP/562).\n\n/start 👈🏻 в главное меню!", markdown, true);
 	
 	if (_удалить_лот($id)) {
 		
