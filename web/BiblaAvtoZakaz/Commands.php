@@ -93,7 +93,7 @@ if ($text == 'база') {
 	
 }elseif ($text == 'эди') {
 	
-	$хокей = $bot->editMessageText($channel_podrobno, '82', 'abuf');
+	$хокей = $bot->editMessageText($channel_podrobno, $id, 'abuf');
 	
 	if ($хокей) $bot->sendMessage($master, "Всё отлично!");
 
