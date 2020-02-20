@@ -150,7 +150,10 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			$айди_заказа = $result['last'];
 			
 			if ($text) {
-			
+				
+				$text = str_replace("'", "\'", $text);
+				$text = str_replace("`", "\`", $text);
+				
 				_редакт_таблицы_маркет($айди_заказа, 'nazvanie', $text);
 				
 				_очистка_таблицы_ожидание();
@@ -201,6 +204,9 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			$айди_заказа = $result['last'];
 			
 			if ($text) {
+				
+				$text = str_replace("'", "\'", $text);
+				$text = str_replace("`", "\`", $text);
 			
 				_редакт_таблицы_маркет($айди_заказа, 'podrobno', $text);
 				
@@ -249,6 +255,9 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			$айди_клиента = $result['last'];
 			
 			if ($text) {
+				
+				$text = str_replace("'", "\'", $text);
+				$text = str_replace("`", "\`", $text);
 			
 				_запись_в_таблицу_маркет($айди_клиента, 'nazvanie', $text);
 				
@@ -300,6 +309,9 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			$айди_клиента = $result['last'];
 			
 			if ($text) {
+				
+				$text = str_replace("'", "\'", $text);
+				$text = str_replace("`", "\`", $text);
 			
 				_запись_в_таблицу_маркет($айди_клиента, 'podrobno', $text);
 				
@@ -367,15 +379,14 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				$text = str_replace('^', '', $text);
 				
 				$text = str_replace('_', ' ', $text);
-							
+				
 				$text = str_replace('\\', '', $text);
 				$text = str_replace('|', '', $text);
 				$text = str_replace('/', '', $text);
 				$text = str_replace('<', '', $text);
 				$text = str_replace('>', '', $text);
 				$text = str_replace('~', '', $text);
-				
-				
+								
 				_запись_в_таблицу_маркет($from_id, 'nazvanie', $text);
 			
 				_очистка_таблицы_ожидание();
@@ -540,21 +551,16 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				}
 				
 				$text = str_replace("'", "\'", $text);
+				$text = str_replace("`", "\`", $text);
+				
 				$text = str_replace('"', '\"', $text);
 				$text = str_replace('-', '\-', $text);
 				$text = str_replace(';', '', $text);
 				$text = str_replace('*', 'х', $text);
-				//$text = str_replace('%', '\%', $text);
-				$text = str_replace('`', "'", $text);
-				//$text = str_replace('_', '\_', $text);
 				$text = str_replace('|', '\|', $text);
-				//$text = str_replace('/', '\/', $text);
-				//$text = str_replace('<', '\<', $text);
-				//$text = str_replace('>', '\>', $text);
 				$text = str_replace('~', '', $text);
 				$text = str_replace('[', '(', $text);
 				$text = str_replace(']', ')', $text);
-				
 				
 				_запись_в_таблицу_маркет($from_id, 'podrobno', $text);				
 				
