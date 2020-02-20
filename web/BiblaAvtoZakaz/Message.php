@@ -576,12 +576,8 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 	}elseif ($chat_type == 'private') $bot->deleteMessage($chat_id, $message_id);
 	
-
 }
 	
-
-  
-  
 
 
 
