@@ -1,29 +1,15 @@
 <?
-/*
-if (strpos($text, ":")!==false) {
 
-	$komanda = strstr($text, ':', true);	
-	
-	$id = substr(strrchr($text, ":"), 1);
-	
-	$text = $komanda;
-
-}
-*/
-
-//$дата = date("m.d.y");
-	
-//$время = date("H:i:s");
-
-$UNIXtime = time() + $три_часа;
-	
+$UNIXtime = time() + $три_часа;	
 $переведённое_время = date("d.m.Y H:i:s", $UNIXtime);
 
-//$переведённое_время = date("H:i:s", $UNIXtime);
+$запуск = _запуск_таймера();
 
 if ($text == 'старт' || $text == '') {
 
 	if ($id_bota == '1098126237') {	
+		
+		$запуск = _запуск_таймера('старт');
 		
 		$bot->sendMessage($channel_info, "?".$переведённое_время);
 		
@@ -31,11 +17,21 @@ if ($text == 'старт' || $text == '') {
 	
 	}else exit('ok');
 
-}elseif ($text == 'стоп') exit('ok');
+}elseif ($text == 'стоп') {
+	
+	$запуск = _запуск_таймера('стоп');
+	
+	exit('ok');
+	
+}elseif ($запуск) {
+	
+	
+
+}
 
 $bot->sendMessage($channel_info, $переведённое_время);
 
-$ожидание = 20;
+$ожидание = 19;
 
 sleep($ожидание);
 
