@@ -534,7 +534,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				
 				}else {
 					
-					$bot->sendMessage($chat_id, "Пришлите все фото сразу, не по одному!!!");
+					$bot->sendMessage($chat_id, "Пришлите все фото сразу, не по одному!\n(При отправке выберите: 'отправить альбом')");
 					
 					$bot->deleteMessage($chat_id, $message_id);	
 					
