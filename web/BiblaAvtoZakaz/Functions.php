@@ -305,7 +305,7 @@ function _existence($table) {
 // функция возвращает айди клиента по его юзернейму
 function _дай_айди($Юнейм) {
 	
-	global $mysqli, $table_users;
+	global $mysqli, $table_users, $master, $bot;
 		
     $ответ = false;	
 
@@ -321,9 +321,9 @@ function _дай_айди($Юнейм) {
         
             $ответ = $результМассив[0]['id_client'];
 			
-		}else throw new Exception("Не нашёл записей");
+		}else $bot->sendMessage($master, "Не нашёл записей");
 	
-	}else throw new Exception("Не смог узнать айди клиента - {$Юнейм}");
+	}else $bot->sendMessage($master, "Не смог узнать айди клиента - {$Юнейм}");
 	
     return $ответ;
 
@@ -2638,9 +2638,10 @@ function _редакт_лота_на_канале_подробности($ном
 
 
 
-function _список_всех_лотов($айди_клиента = null) {	
-	global $bot, $table_market, $mysqli, $callback_from_id, $from_id;
+function _список_всех_лотов($юзернеим = null) {	
+	global $bot, $table_market, $mysqli, $callback_from_id, $from_id;	
 	if (!$callback_from_id) $callback_from_id = $from_id;
+	$айди_клиента = _дай_айди($юзернеим);
 	if ($айди_клиента) {
 		$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$айди_клиента} AND id_zakaz>0";	
 	}else $запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_zakaz>0";
@@ -2648,7 +2649,7 @@ function _список_всех_лотов($айди_клиента = null) {
 	if ($результат) {		
 		$количество = $результат->num_rows;
 		if ($количество > 0) {			
-			if ($количество < 76) {
+			if ($количество < 100) {
 				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
 				$кнопки = [];						
 				foreach ($результМассив as $строка) {				
@@ -2667,9 +2668,9 @@ function _список_всех_лотов($айди_клиента = null) {
 				];			
 				$реплика = "Выберите лот для просмотра.";						
 				$bot->sendMessage($callback_from_id, $реплика, null, $inLine);	
-			}else throw new Exception($количество);		
-		}else throw new Exception("Нет такой записи в БД");		
-	}else throw new Exception("Не получился запрос к БД");
+			}else $bot->sendMessage($callback_from_id, $количество);		
+		}else $bot->sendMessage($callback_from_id, "Нет такой записи в БД");		
+	}else throw new Exception("Не получился запрос к БД (_список_всех_лотов)");
 }
 
 
