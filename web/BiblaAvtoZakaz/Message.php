@@ -8,11 +8,23 @@ if ($media_group_id) {
 
 if (strpos($text, ":")!==false) {
 
-	$komanda = strstr($text, ':', true);	
+	$команда = strstr($text, ':', true);	
 	
 	$id = substr(strrchr($text, ":"), 1);
 	
-	if ($komanda == 'лоты') $text = $komanda;
+	if ($команда == 'лоты') {
+	
+		if ($id) {
+		
+			_список_всех_лотов($id);
+		
+		}else {
+			
+			_список_всех_лотов();
+			
+		}		
+		
+	}
 
 }
 
@@ -92,18 +104,6 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		$bot->sendMessage($chat_id, $reply, null, $ReplyKey);
 	
 	}
-
-}elseif ($text=='лоты') {
-	
-	if ($id) {
-	
-		_список_всех_лотов($id);
-	
-	}else {
-		
-		_список_всех_лотов();
-		
-	}		
 
 }elseif ($text=='Отмена ввода') {
 
