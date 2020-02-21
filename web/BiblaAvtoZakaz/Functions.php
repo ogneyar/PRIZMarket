@@ -543,17 +543,29 @@ function _отправить_на_повтор($номер_лота) {
 	
 	global $admin_group, $bot, $callback_from_id, $callback_query_id;
 	
-	_отправка_лота($admin_group, $номер_лота);	
+	$давно = _последняя_публикация();
 	
-	_установка_времени($номер_лота);
+	if ($давно) {
 	
-	$юзер_неим = _узнать_имя_по_номеру_лота($номер_лота);		
+		_отправка_лота($admin_group, $номер_лота);	
+		
+		_установка_времени($номер_лота);
+		
+		$юзер_неим = _узнать_имя_по_номеру_лота($номер_лота);		
+		
+		$bot->sendMessage($admin_group, "{$юзер_неим} просит: Повторите публикацию, будьте так любезны, заранее благодарю.");
+		
+		$bot->sendMessage($callback_from_id, "|\n|\n|\nОтправил, ожидайте ответ.");	
+		
+		$bot->answerCallbackQuery($callback_query_id, "Ожидайте!");
 	
-	$bot->sendMessage($admin_group, "{$юзер_неим} просит: Повторите публикацию, будьте так любезны, заранее благодарю.");
-	
-	$bot->sendMessage($callback_from_id, "|\n|\n|\nОтправил, ожидайте ответ.");	
-	
-	$bot->answerCallbackQuery($callback_query_id, "Ожидайте!");
+	}else {
+		
+		$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);
+		
+		exit('ok');
+		
+	}	
 	
 }
 
