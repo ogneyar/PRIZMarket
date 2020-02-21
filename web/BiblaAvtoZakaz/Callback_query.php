@@ -200,7 +200,7 @@ if ($callback_data=='создать'){
 	
 }elseif ($callback_data=='покажи') {	
 
-	_отправка_лота($chat_id, $id);
+	_отправка_лота($chat_id, $id, true);
 	
 }
 

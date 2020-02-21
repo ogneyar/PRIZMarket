@@ -468,11 +468,15 @@ function _повтор($номер_лота) {
 
 
 // функция отправки лота 
-function _отправка_лота($куда, $номер_лота) {
+function _отправка_лота($куда, $номер_лота, $админ = false) {
 	
 	global $table_market, $callback_from_id, $mysqli, $bot;
 	
-	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz='{$номер_лота}'";
+	if ($админ) {		
+		$запрос = "SELECT * FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";		
+	}else {	
+		$запрос = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz='{$номер_лота}'";	
+	}
 		
 	$результат = $mysqli->query($запрос);
 	
