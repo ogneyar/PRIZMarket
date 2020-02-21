@@ -24,6 +24,21 @@ if ($text == 'база') {
 	}	
 
 
+}elseif ($text == 'маркет') {
+	
+	$bot->sendMessage($master, "анука!");
+	
+	if ($id) {
+	
+		_список_всех_лотов($id);
+	
+	}else {
+		
+		_список_всех_лотов();
+		
+	}		
+	
+	
 }elseif ($text == 'марк') {
 	
 	$bot->sendMessage($master, "анука!");

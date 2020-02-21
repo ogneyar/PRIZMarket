@@ -2638,32 +2638,36 @@ function _редакт_лота_на_канале_подробности($ном
 
 
 
-function _список_всех_лотов($действие) {	
-	global $bot, $table_market, $mysqli, $callback_from_id, $from_id;	
-	if (!$callback_from_id) $callback_from_id = $from_id;			
-	$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";	
+function _список_всех_лотов($айди_клиента = null) {	
+	global $bot, $table_market, $mysqli, $callback_from_id, $from_id;
+	if (!$callback_from_id) $callback_from_id = $from_id;
+	if ($айди_клиента) {
+		$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$айди_клиента} AND id_zakaz>0";	
+	}else $запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_zakaz>0";
 	$результат = $mysqli->query($запрос);	
 	if ($результат) {		
-		if ($результат->num_rows>0) {			
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
-			$кнопки = [];						
-			foreach ($результМассив as $строка) {				
-				$название = $строка['nazvanie'];
+		$количество = $результат->num_rows;
+		if ($количество > 0) {			
+			if ($количество < 10) {
+				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
+				$кнопки = [];						
+				foreach ($результМассив as $строка) {				
+					$название = $строка['nazvanie'];
+					$кнопки = array_merge($кнопки, [[[
+						'text' => "{$строка['kuplu_prodam']} {$название}",
+						'callback_data' => "покажи:{$строка['id_zakaz']}"
+					]]]);			
+				}					
 				$кнопки = array_merge($кнопки, [[[
-					'text' => "{$строка['kuplu_prodam']} {$название}",
-					'callback_data' => "{$действие}:{$строка['id_zakaz']}"
-				]]]);			
-			}					
-			$кнопки = array_merge($кнопки, [[[
-					'text' => "*** в Главное меню ***",
-					'callback_data' => "старт"
-				]]]);			
-			$inLine = [			
-				'inline_keyboard' => $кнопки				
-			];			
-			if ($действие == 'повтор') $реплика = "Выберите лот для повтора.";			
-			elseif ($действие == 'удаление') $реплика = "Выберите лот для удаления.";			
-			$bot->sendMessage($callback_from_id, $реплика, null, $inLine);				
+						'text' => "*** в Главное меню ***",
+						'callback_data' => "старт"
+					]]]);			
+				$inLine = [			
+					'inline_keyboard' => $кнопки				
+				];			
+				$реплика = "Выберите лот для просмотра.";						
+				$bot->sendMessage($callback_from_id, $реплика, null, $inLine);	
+			}else throw new Exception($количество);		
 		}else throw new Exception("Нет такой записи в БД");		
 	}else throw new Exception("Не получился запрос к БД");
 }
