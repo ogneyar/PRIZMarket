@@ -26,8 +26,6 @@ if ($text == 'база') {
 
 }elseif ($text == 'маркет') {
 	
-	$bot->sendMessage($master, "анука!");
-	
 	if ($id) {
 	
 		_список_всех_лотов($id);
@@ -41,8 +39,6 @@ if ($text == 'база') {
 	
 }elseif ($text == 'марк') {
 	
-	$bot->sendMessage($master, "анука!");
-	
 	if ($id) {
 	
 		$bot->output_table($table_market, $id);
@@ -55,8 +51,6 @@ if ($text == 'база') {
 	
 	
 }elseif ($text == 'ма') {
-	
-	$bot->sendMessage($master, "анука!");
 	
 	if ($id) {
 		
@@ -120,6 +114,21 @@ if ($text == 'база') {
 	
 	if ($хокей) $bot->sendMessage($master, "Всё отлично!");
 
+	
+	
+}elseif ($text == 'перенесены') {
+	
+	//_покажи_перенесённые_лоты();
+	
+	$query = "SELECT id_zakaz FROM {$table_market} WHERE status='перенесён'";			
+	if ($результат = $mysqli->query($query)) {	
+		if ($результат->num_rows>0) {			
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
+			foreach($результМассив as $строка) {			
+				$bot->sendMessage($master, $строка['id_zakaz']);
+			}			
+		}else $bot->sendMessage($master, "Нет записей в таблице {$table_market}");			
+	}else $bot->sendMessage($master, "Не смог .. {$table_market}");	
 	
 	
 }elseif ($text == 'изи') {
