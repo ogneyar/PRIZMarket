@@ -198,6 +198,10 @@ if ($callback_data=='создать'){
 
 	_фото_редакт($id);
 	
+}elseif ($callback_data=='покажи') {	
+
+	_отправка_лота($chat_id, $id);
+	
 }
 
 
