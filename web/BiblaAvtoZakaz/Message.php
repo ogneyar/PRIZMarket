@@ -280,7 +280,9 @@ if ($reply_to_message && $chat_id == $admin_group) {
 
 					_редакт_таблицы_маркет($айди_заказа, 'url_tgraph', $imgBB_url);
 					
-				}else throw new Exception("Не смог сделать редакт imgBB_url");				
+				}else throw new Exception("Не смог сделать редакт imgBB_url");			
+
+				_редакт_таблицы_маркет($айди_заказа, 'format_file', 'фото');
 				
 			}
 
