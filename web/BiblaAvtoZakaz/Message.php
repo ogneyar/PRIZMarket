@@ -12,7 +12,7 @@ if (strpos($text, ":")!==false) {
 	
 	$id = substr(strrchr($text, ":"), 1);
 	
-	$text = $komanda;
+	if ($komanda == 'лоты') $text = $komanda;
 
 }
 
