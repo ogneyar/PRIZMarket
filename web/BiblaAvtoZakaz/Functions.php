@@ -2639,7 +2639,7 @@ function _редакт_лота_на_канале_подробности($ном
 
 
 function _список_всех_лотов($юзернеим = null) {	
-	global $bot, $table_market, $mysqli, $callback_from_id, $from_id;	
+	global $bot, $table_market, $mysqli, $callback_from_id, $from_id, $chat_id;	
 	if (!$callback_from_id) $callback_from_id = $from_id;
 	$айди_клиента = _дай_айди($юзернеим);
 	if ($айди_клиента) {
@@ -2667,9 +2667,9 @@ function _список_всех_лотов($юзернеим = null) {
 					'inline_keyboard' => $кнопки				
 				];			
 				$реплика = "Выберите лот для просмотра.";						
-				$bot->sendMessage($callback_from_id, $реплика, null, $inLine);	
-			}else $bot->sendMessage($callback_from_id, $количество);		
-		}else $bot->sendMessage($callback_from_id, "Нет такой записи в БД");		
+				$bot->sendMessage($chat_id, $реплика, null, $inLine);	
+			}else $bot->sendMessage($chat_id, $количество);		
+		}else $bot->sendMessage($chat_id, "Нет такой записи в БД");		
 	}else throw new Exception("Не получился запрос к БД (_список_всех_лотов)");
 }
 
