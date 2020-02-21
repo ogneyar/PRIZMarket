@@ -12,10 +12,10 @@ if ($reply_to_message && $chat_id == $admin_group) {
 	
 	$номер_строки = strpos($reply_caption, '@');
 	
-	if ($номер_строки) {
+	if ($номер_строки >= 0) {
 		
 		$строка = strstr($reply_caption, '@');
-		
+
 		$есть_ли_энтр = strpos($строка, 10);
 		
 		if ($есть_ли_энтр) {
@@ -24,9 +24,22 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			
 		}else {
 			
-			$юзер_нейм = $строка;
+                      $есть_ли_пробел = strpos($строка, ' ');
+		
+		      if ($есть_ли_пробел) {
 			
+			      $юзер_нейм = strstr($строка, ' ', true);
+			
+		      }else {
+			
+			      $юзер_нейм = $строка;
+			
+		      }
+
+
 		}
+
+
 		
 		//$bot->sendMessage($master, $юзер_нейм);
 		
