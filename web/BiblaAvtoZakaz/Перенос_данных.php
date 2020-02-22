@@ -1,6 +1,6 @@
 ﻿<?
 
-foreach ($entities as $ent) {
+foreach ($caption_entities as $ent) {
 		
 	if ($ent['type']=='text_link') $urlCaption=$ent['url'];
 	
@@ -85,11 +85,19 @@ if ($photo||$video){
 	$username = str_replace("▪️", "", $username);	
 	
 	$id_client = _дай_айди($username);
+	
+	$Объект_файла = $bot->getFile($file_id);		
+	$ссыль_на_файл = $bot->fileUrl . $bot->token;			
+	$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];							
+	$результат = $imgBB->upload($ссыль);										
+	if ($результат) {								
+		$url_tgraph = $результат['url'];						
+	}else $bot->sendMessage($chat_id, "Не смог сделать редакт url_tgraph");		
 		
 	$query = "INSERT INTO {$table_market} VALUES (
 		'{$id_client}', '{$id}', '{$kuplu_prodam}', '{$nazvanie}', '{$urlCaption}',
 		'{$valuta}', '{$gorod}', '{$username}', '{$doverie}', '{$otdel}', '{$формат_файла}',
-		'{$file_id}', '{$url_podrobnee}', 'перенесён', '', '', '', '', '{$time}'
+		'{$file_id}', '{$url_podrobnee}', 'перенесён', '', '{$url_tgraph}', '', '', '{$time}'
 	)";	
 	
 	$result = $mysqli->query($query);
