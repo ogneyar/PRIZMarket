@@ -68,6 +68,13 @@ if (mysqli_connect_errno()) {
 	}
 
 	if ($chat_type == 'private' || $chat_id == $admin_group || $chat_id == $channel_info) {
+	
+		$url_text = $reply_markup['inline_keyboard'][0][0]['text'];	
+	
+		if ($url_text == 'Подробнее') {
+			include_once 'BiblaAvtoZakaz/Перенос_данных.php';
+			exit('ok');
+		}
 		
 		if ($data['callback_query']) {
 		
