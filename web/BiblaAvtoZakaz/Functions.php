@@ -321,8 +321,9 @@ function _existence($table) {
 // функция возвращает айди клиента по его юзернейму
 function _дай_айди($Юнейм) {	
 	global $mysqli, $table_users, $master, $bot;		
-    $ответ = false;	
-	$запрос = "SELECT id_client FROM {$table_users} WHERE user_name={$Юнейм}";	
+    $ответ = false;		
+	$Юнейм = str_replace(" ", "", $Юнейм);	
+	$запрос = "SELECT id_client FROM {$table_users} WHERE user_name='{$Юнейм}'";	
 	$результат = $mysqli->query($запрос);	
 	if ($результат) {	
 		if ($результат->num_rows>0) {			
