@@ -49,6 +49,7 @@ if ($photo||$video){
 		
 	if ($nazvanie=='') exit('ok');
 	$nazvanie = str_replace("▪️", "", $nazvanie);
+	$nazvanie = str_replace(" ", "", $nazvanie);	
 
 	$valuta = strstr($caption, 10, true);
 	$kol=strlen($valuta)+1;			
@@ -56,6 +57,7 @@ if ($photo||$video){
 		
 	if ($valuta=='') exit('ok');
 	$valuta = str_replace("▪️", "", $valuta);
+	$valuta = str_replace(" ", "", $valuta);	
 		
 	$gorod = strstr($caption, 10, true);
 	$kol=strlen($gorod)+1;			
@@ -63,6 +65,7 @@ if ($photo||$video){
 		
 	if ($gorod=='') exit('ok');
 	$gorod = str_replace("▪️", "", $gorod);	
+	$gorod = str_replace(" ", "", $gorod);	
 		
 	$pos = strpos($caption, 10);
 		
