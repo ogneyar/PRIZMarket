@@ -91,27 +91,31 @@ if ($photo||$video){
 	$id_client = _дай_айди($username);
 	if (!$id_client) $id_client = _дай_айди($username, 'info_users');
 	
-	$Объект_файла = $bot->getFile($file_id);		
-	$ссыль_на_файл = $bot->fileUrl . $bot->token;			
-	$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];							
-	$результат = $imgBB->upload($ссыль);										
-	if ($результат) {								
-		$url_tgraph = $результат['url'];						
-	}else $bot->sendMessage($chat_id, "Не смог сделать редакт url_tgraph");		
+	if ($id_client) {
+	
+		$Объект_файла = $bot->getFile($file_id);		
+		$ссыль_на_файл = $bot->fileUrl . $bot->token;			
+		$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];							
+		$результат = $imgBB->upload($ссыль);										
+		if ($результат) {								
+			$url_tgraph = $результат['url'];						
+		}else $bot->sendMessage($chat_id, "Не смог сделать редакт url_tgraph");		
+			
+		$query = "INSERT INTO {$table_market} VALUES (
+			'{$id_client}', '{$id}', '{$kuplu_prodam}', '{$nazvanie}', '{$urlCaption}',
+			'{$valuta}', '{$gorod}', '{$username}', '{$doverie}', '{$otdel}', '{$формат_файла}',
+			'{$file_id}', '{$url_podrobnee}', 'перенесён', '', '{$url_tgraph}', '', '', '{$time}'
+		)";	
 		
-	$query = "INSERT INTO {$table_market} VALUES (
-		'{$id_client}', '{$id}', '{$kuplu_prodam}', '{$nazvanie}', '{$urlCaption}',
-		'{$valuta}', '{$gorod}', '{$username}', '{$doverie}', '{$otdel}', '{$формат_файла}',
-		'{$file_id}', '{$url_podrobnee}', 'перенесён', '', '{$url_tgraph}', '', '', '{$time}'
-	)";	
+		$result = $mysqli->query($query);
+		
+		if ($result) {				
+			$bot->sendMessage($chat_id, "Лот {$id} добавлен в базу."); 				
+		}else{ 		
+			$bot->sendMessage($chat_id, "Не получилось добавить лот {$id}"); 		
+		}
 	
-	$result = $mysqli->query($query);
-	
-	if ($result) {				
-		$bot->sendMessage($chat_id, "Лот {$id} добавлен в базу."); 				
-	}else{ 		
-		$bot->sendMessage($chat_id, "Не получилось добавить лот {$id}"); 		
-	}
+	}else $bot->sendMessage($chat_id, "Не удалось узнать айди клиента {$username}"); 
 
 }else {				
 	$bot->sendMessage($chat_id, "Неее, мне надо с фоткой или с видео.."); 
