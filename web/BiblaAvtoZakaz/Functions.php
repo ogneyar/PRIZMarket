@@ -3,7 +3,8 @@
 **
 ** _start_AvtoZakazBota
 ** _инфо_автоЗаказБота
-** _есть_ли_лоты
+** _есть_ли_лоты   // по айди клиента
+** _есть_ли_лот    // по номеру заказа
 ** _последняя_публикация
 ** exception_handler
 ** _existence
@@ -190,7 +191,7 @@ function _есть_ли_лоты() {
 	
 	if (!$callback_from_username) $callback_from_username = $from_username;	
 	
-    $resonse = false;	
+    $response = false;	
 
 	$query = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";
 	
@@ -210,6 +211,21 @@ function _есть_ли_лоты() {
 
 }
 
+
+
+// Проверка наличия лота в базе
+function _есть_ли_лот($номер_лота) {	
+	global $mysqli, $table_market;		
+    $ответ = false;	
+	$query = "SELECT * FROM {$table_market} WHERE id_zakaz={$номер_лота}";	
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		if ($result->num_rows>0) {        
+            $ответ = true;
+		}	
+	}else throw new Exception("Не смог узнать наличие лота (_есть_ли_лот)");	
+    return $ответ;
+}
 
 
 

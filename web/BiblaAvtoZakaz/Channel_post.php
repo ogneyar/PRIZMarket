@@ -4,6 +4,8 @@ foreach ($entities as $ent) {
 	
 	if ($ent['type'] == 'text_mention') $user = $ent['user'];
 	
+	if ($ent['type']=='text_link') $urlCaption=$ent['url'];
+	
 }
 
 if ($user) {	
@@ -14,11 +16,9 @@ if ($user) {
 
 	//$bot->sendMessage($admin_group, $url_info, null, null, null, true);		
 
+}elseif($urlCaption) {
+	
 }
-	
-
-	
-
 	
 $url_text = $reply_markup['inline_keyboard'][0][0]['text'];	
 	
@@ -27,7 +27,7 @@ if ($url_text == 'Подробнее') {
 	$url_podrobnee = $reply_markup['inline_keyboard'][0][0]['url'];
 
 	$номер_заказа = substr(strrchr($url_podrobnee, '/'), 1);	
-	
+/*	
 	$query ="UPDATE {$table_market} SET file_id='{$file_id}' WHERE id_zakaz={$номер_заказа}";
 		
 	$result = $mysqli->query($query);
@@ -37,7 +37,10 @@ if ($url_text == 'Подробнее') {
 		$bot->sendMessage($master, "обновил");
 		
 	}else $bot->sendMessage($master, "Не смог обновить запись в таблице {$table_market}");
-
+*/
+	
+	
+	
 }
 	
 
