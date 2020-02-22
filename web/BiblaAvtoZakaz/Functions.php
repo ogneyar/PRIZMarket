@@ -92,125 +92,79 @@
 **
 */
 
+
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
 function _start_AvtoZakazBota() {		
-
-	global $bot, $table_users, $chat_id, $callback_from_first_name, $from_first_name, $HideKeyboard;
-	
-	_очистка_таблицы_ожидание();
-	
-	if (!$callback_from_first_name) $callback_from_first_name = $from_first_name;
-	
-	$админ = $bot->this_admin($table_users);
-	
-	if ($админ) {
-		
-		$ReplyKey = [
-			'keyboard' => [
-				[			
-					[
-						'text' => "Редактор лотов"
-					]
-				]
-			],
+	global $bot, $table_users, $chat_id, $callback_from_first_name, $from_first_name, $HideKeyboard;	
+	_очистка_таблицы_ожидание();	
+	if (!$callback_from_first_name) $callback_from_first_name = $from_first_name;	
+	$админ = $bot->this_admin($table_users);	
+	if ($админ) {		
+		$ReplyKey = [ 'keyboard' => 
+			[ [ [
+				'text' => "Редактор лотов"
+			] ] ],
 			'resize_keyboard' => true,
 			'selective' => true,
-		];
-	
-		$bot->sendMessage($chat_id, "Здравствуй МАСТЕР *".$callback_from_first_name."*!", markdown, $ReplyKey);
-	
-	}else {
-	
-		$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", markdown, $HideKeyboard);
-		
+		];	
+		$bot->sendMessage($chat_id, "Здравствуй МАСТЕР *".$callback_from_first_name."*!", markdown, $ReplyKey);	
+	}else {	
+		$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", markdown, $HideKeyboard);		
 	}
-
-    _инфо_автоЗаказБота();	
-	
-	exit('ok');
-	
+    _инфо_автоЗаказБота();		
+	exit('ok');	
 }
+
 
 // Краткая информация, перед началом работы с ботом
 function _инфо_автоЗаказБота() {
-
-	global $bot, $chat_id, $тех_поддержка;
-	
+	global $bot, $chat_id, $тех_поддержка;	
 	$клавиатура = [
-		[
-			[		
-				'text' => 'Правила',
-				'url' => 'https://t.me/podrobno_s_PZP/562'		
-			]
-		],
-		[
-			[		
-				'text' => 'Создать заявку',
-				'callback_data' => 'создать'		
-			]
-		]
-	];
-	
-	if (_есть_ли_лоты()) {
-	
+		[ [		
+			'text' => 'Правила',
+			'url' => 'https://t.me/podrobno_s_PZP/562'		
+		] ],
+		[ [		
+			'text' => 'Создать заявку',
+			'callback_data' => 'создать'		
+		] ]
+	];	
+	if (_есть_ли_лоты()) {	
 		$клавиатура = array_merge($клавиатура, [
-			[
-				[
-					'text' => 'Повтор публикации',
-					'callback_data' => 'повторить'
-				],
-				[
-					'text' => 'Удалить публикацию',
-					'callback_data' => 'удалить'
-				]
-			]
-		]);
-		
-	}
-		
-	$inLine = [ 'inline_keyboard' => $клавиатура ];
-	
+			[ [
+				'text' => 'Повтор публикации',
+				'callback_data' => 'повторить'
+			],[
+				'text' => 'Удалить публикацию',
+				'callback_data' => 'удалить'
+			] ]
+		]);		
+	}		
+	$inLine = [ 'inline_keyboard' => $клавиатура ];	
 	$reply = "Это Бот для подачи заявки на публикацию вашего лота на канале [Покупки на PRIZMarket]".
 		"(https://t.me/prizm_market)\n\nДля подачи заявки на публикацию пошагово пройдите".
 		" по всем пунктам. Для начала изучите 'Правила', а затем нажмите кнопку ".
 		"'Создать заявку'. После создания заявки появится возможность повтора публикации.{$тех_поддержка}";
-
 	$bot->sendMessage($chat_id, $reply, markdown, $inLine, null, true);
-
 }
-
 
 
 // Проверка наличия у клиента лотов в базе
-function _есть_ли_лоты() {
-	
+function _есть_ли_лоты() {	
 	global $mysqli, $from_id, $callback_from_id, $table_market, $callback_from_username, $from_username;
-	global $bot, $master;
-	
-	if (!$callback_from_id) $callback_from_id = $from_id;	
-	
-	if (!$callback_from_username) $callback_from_username = $from_username;	
-	
+	global $bot, $master;	
+	if (!$callback_from_id) $callback_from_id = $from_id;		
+	if (!$callback_from_username) $callback_from_username = $from_username;		
     $response = false;	
-
-	$query = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";
-	
-	$result = $mysqli->query($query);
-	
-	if ($result) {
-	
-		if ($result->num_rows>0) {
-        
+	$query = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";	
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		if ($result->num_rows>0) {        
             $response = true;
-
-		}
-	
-	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");
-	
+		}	
+	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");	
     return $response;
-
 }
-
 
 
 // Проверка наличия лота в базе
@@ -228,93 +182,53 @@ function _есть_ли_лот($номер_лота) {
 }
 
 
-
 // Проверка давно ли была последняя публикация лота у данного клиента
-function _последняя_публикация() {
-	
-	global $mysqli, $from_id, $callback_from_id, $table_market;
-	
-	if (!$callback_from_id) $callback_from_id = $from_id;	
-	
+function _последняя_публикация() {	
+	global $mysqli, $from_id, $callback_from_id, $table_market;	
+	if (!$callback_from_id) $callback_from_id = $from_id;		
     $resonse = false;	
-
-	$query = "SELECT date FROM {$table_market} WHERE id_client={$callback_from_id}";
-	
-	$result = $mysqli->query($query);
-	
-	if ($result) {
-	
-		if ($result->num_rows>0) {
-        
-			$результат = $result->fetch_all(MYSQLI_ASSOC);
-			
-			$время = time()-80000; // примерно 22 часа, а точнее 22,22222222222
-			
-			$давно = true; // если публикация была давно
-			
-			foreach ($результат as $строка) {
-				
-				if ($строка['date']>$время) $давно = false;
-				
-			}
-		
+	$query = "SELECT date FROM {$table_market} WHERE id_client={$callback_from_id}";	
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		if ($result->num_rows>0) {        
+			$результат = $result->fetch_all(MYSQLI_ASSOC);			
+			$время = time()-80000; // примерно 22 часа, а точнее 22,22222222222			
+			$давно = true; // если публикация была давно			
+			foreach ($результат as $строка) {				
+				if ($строка['date']>$время) $давно = false;				
+			}		
             if ($давно) $response = true;
-
-		}else $response = true;
-	
-	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");
-	
+		}else $response = true;	
+	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");	
     return $response;
-
 }
-
-
 
 
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
-
-	global $bot, $master;
-	
-	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	
-  
-	exit('ok');  
-	
+	global $bot, $master;	
+	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
+	exit('ok');  	
 }
 
+
 // Проверка наличия клиента в базе
-function _existence($table) {
-	
+function _existence($table) {	
 	global $mysqli, $from_id, $from_first_name, $from_last_name, $from_username;
-
-    $resonse = false;
-	
-	$from_Uname = '';
-	
+    $resonse = false;	
+	$from_Uname = '';	
     if ($from_username != '') $from_Uname = "@".$from_username;
-
-	$query = "SELECT * FROM {$table} WHERE id_client={$from_id}";
-	
-	$result = $mysqli->query($query);
-	
-	if ($result) {
-	
-		if ($result->num_rows>0) {
-                   
+	$query = "SELECT * FROM {$table} WHERE id_client={$from_id}";	
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		if ($result->num_rows>0) {                   
             $arrayResult = $result->fetch_all(MYSQLI_ASSOC);
-
 			foreach ($arrayResult as $row) {
-
 				if ($row['first_name']==$from_first_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_Uname) $response = true;
-
 			}
-
-		}		
-	
-	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");
-	
+		}			
+	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");	
     return $response;
-
 }
 
 
