@@ -329,6 +329,14 @@ if ($text == 'база') {
 	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
 		
 		
+}elseif ($text == "измени хеш продам") {		
+		
+	_редакт_таблицы_маркет($id, 'kuplu_prodam', '#продам')
+		
+}elseif ($text == "измени хеш куплю") {		
+		
+	_редакт_таблицы_маркет($id, 'kuplu_prodam', '#куплю')
+		
 }
 
 
