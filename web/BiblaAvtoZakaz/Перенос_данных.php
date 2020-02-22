@@ -82,7 +82,8 @@ if ($photo||$video){
 		}		
 			
 	}	
-	$username = str_replace("▪️", "", $username);	
+	//$username = str_replace("▪️", "", $username);	
+	$username = strrchr($username, "@");
 	
 	$id_client = _дай_айди($username);
 	
