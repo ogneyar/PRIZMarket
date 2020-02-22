@@ -319,17 +319,18 @@ function _existence($table) {
 
 
 // функция возвращает айди клиента по его юзернейму
-function _дай_айди($Юнейм) {	
+function _дай_айди($Юнейм, $таблица = null) {	
 	global $mysqli, $table_users, $master, $bot;		
     $ответ = false;		
+	if (!$таблица) $таблица = $table_users;
 	$Юнейм = str_replace(" ", "", $Юнейм);	
-	$запрос = "SELECT id_client FROM {$table_users} WHERE user_name='{$Юнейм}'";	
+	$запрос = "SELECT id_client FROM {$таблица} WHERE user_name='{$Юнейм}'";	
 	$результат = $mysqli->query($запрос);	
 	if ($результат) {	
 		if ($результат->num_rows>0) {			
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);        
             $ответ = $результМассив[0]['id_client'];			
-		}else $bot->sendMessage($master, "Не нашёл записей в базе (_дай_айди)");	
+		}//else $bot->sendMessage($master, "Не нашёл записей в базе (_дай_айди)");	
 	}else $bot->sendMessage($master, "Не смог узнать айди клиента - {$Юнейм}");	
     return $ответ;
 }

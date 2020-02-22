@@ -89,6 +89,7 @@ if ($photo||$video){
 	$username = strrchr($username, "@");
 	
 	$id_client = _дай_айди($username);
+	if (!$id_client) _дай_айди($username, 'info_users');
 	
 	$Объект_файла = $bot->getFile($file_id);		
 	$ссыль_на_файл = $bot->fileUrl . $bot->token;			
