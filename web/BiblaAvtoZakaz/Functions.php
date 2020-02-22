@@ -88,7 +88,6 @@
 **
 ** _редакт_лота_на_канале_подробности
 **
-** _список_всех_лотов
 **
 */
 
@@ -1571,45 +1570,6 @@ function _редакт_лота_на_канале_подробности($ном
 		}else $bot->sendMessage($master, "Или нет заказа или больше одного.. (_редакт_лота_на_канале_подробности)");	
 	}else throw new Exception("Не смог найти заказ.. (_редакт_лота_на_канале_подробности)");		
 	if ($изменил) $bot->sendMessage($chat_id, "Изменил лот на канале 'Подробности'");	
-}
-
-// вывод на экран списка всех лотов (либо лотов определённого клиента по юзернейм)
-function _список_всех_лотов($юзернеим = null) {	
-	global $bot, $table_market, $mysqli, $callback_from_id, $from_id, $chat_id;	
-	if (!$callback_from_id) $callback_from_id = $from_id;
-	$айди_клиента = _дай_айди($юзернеим);
-	if (!$айди_клиента) $айди_клиента = _дай_айди($юзернеим, 'info_users');
-	if ($юзернеим) {
-		if ($айди_клиента) {
-			$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$айди_клиента} AND id_zakaz>0";	
-		}else $bot->sendMessage($chat_id, "Нет такого клиента в базе (_список_всех_лотов)");	
-	}else $запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_zakaz>0";
-	$результат = $mysqli->query($запрос);	
-	if ($результат) {		
-		$количество = $результат->num_rows;
-		if ($количество > 0) {			
-			if ($количество < 100) {
-				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
-				$кнопки = [];						
-				foreach ($результМассив as $строка) {				
-					$название = $строка['nazvanie'];
-					$кнопки = array_merge($кнопки, [[[
-						'text' => "{$строка['kuplu_prodam']} {$название} (лот {$строка['id_zakaz']})",
-						'callback_data' => "покажи:{$строка['id_zakaz']}"
-					]]]);			
-				}					
-				$кнопки = array_merge($кнопки, [[[
-						'text' => "*** в Главное меню ***",
-						'callback_data' => "старт"
-					]]]);			
-				$inLine = [			
-					'inline_keyboard' => $кнопки				
-				];			
-				$реплика = "Выберите лот для просмотра.";						
-				$bot->sendMessage($chat_id, $реплика, null, $inLine);	
-			}else $bot->sendMessage($chat_id, $количество);		
-		}else $bot->sendMessage($chat_id, "Нет такой записи в БД");		
-	}else throw new Exception("Не получился запрос к БД (_список_всех_лотов)");
 }
 
 ?>
