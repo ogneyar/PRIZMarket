@@ -2207,15 +2207,11 @@ function _редактор_лотов($номер_лота) {
 
 // Функция для редактирования таблицы маркет
 function _редакт_таблицы_маркет($номер_лота, $имя_столбца, $действие) {
-
-	global $table_market, $mysqli;
-		
-	$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_zakaz={$номер_лота}";
-		
-	$result = $mysqli->query($query);
-			
-	if (!$result) throw new Exception("Не смог обновить запись в таблице (_редакт_таблицы_маркет)");
-	
+	global $table_market, $mysqli;		
+	$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_zakaz={$номер_лота}";		
+	$result = $mysqli->query($query);			
+	if (!$result) throw new Exception("Не смог обновить запись в таблице (_редакт_таблицы_маркет)");	
+	return true;	
 }
 
 
