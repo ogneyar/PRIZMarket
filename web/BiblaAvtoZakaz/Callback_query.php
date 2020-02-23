@@ -84,7 +84,8 @@ if ($callback_data=='создать'){
 	
 }elseif ($callback_data=='применить') {	
 	_очистка_таблицы_ожидание();
-	_отправка_лота($callback_from_id, $id, true);		
+	_редакт_лота_на_канале_подробности($id);		
+	_отправка_лота($callback_from_id, $id, true);	
 	
 }elseif ($callback_data=='доверяет') {		
 	if (_есть_ли_лот($id)) {
@@ -152,37 +153,6 @@ if ($callback_data=='создать'){
 }elseif ($callback_data=='удалить_выбранный_лот') {		
 	_удалить_выбранный_лот($id);	
 		
-	
-}elseif ($callback_data=='показать_редакт') {	
-	_показать_редакт($id);		
-	
-}elseif ($callback_data=='доверяет_редакт') {	
-	_редакт_таблицы_маркет($id, 'doverie', '1');	
-	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");	
-	
-}elseif ($callback_data=='не_доверяет_редакт') {	
-	_редакт_таблицы_маркет($id, 'doverie', '0');	
-	$bot->answerCallbackQuery($callback_query_id, "ОТМЕНА отметки доверием!");
-	
-}elseif ($callback_data=='название_редакт') {	
-	_ожидание_ввода('название_редакт', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с названием.");		
-	
-}elseif ($callback_data=='ссылку_редакт') {	
-	_ожидание_ввода('ссылку_редакт', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новую ссылку.");		
-	
-}elseif ($callback_data=='хештеги_редакт') {	
-	_ожидание_ввода('хештеги_редакт', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с хештегами.");	
-	
-}elseif ($callback_data=='подробности_редакт') {	
-	_ожидание_ввода('подробности_редакт', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с подробностями.");		
-	
-}elseif ($callback_data=='фото_редакт') {	
-	_ожидание_ввода('фото_редакт', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.");	
 	
 }elseif ($callback_data=='покажи') {	
 	_отправка_лота($chat_id, $id, true);	
