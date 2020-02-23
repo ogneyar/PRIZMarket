@@ -367,8 +367,9 @@ function _отправка_лота_админам($номер_лота = null) 
 					$текст = "{$хештеги}{$название_для_подробностей}\n({$ссыль_в_названии}){$текст}";		
 				}else $текст = "{$хештеги}{$название_для_подробностей}{$текст}";
 				if ($формат_файла == 'фото') {	
-					if ($номер_лота) {					
-						$imgBB_url = $строка['url_tgraph'];						
+					if ($номер_лота) {
+						$реплика = "[_________]({$строка['url_tgraph']})\n{$текст}";
+						$КаналИнфо = $bot->sendMessage($id, $реплика, markdown, $inLine);
 					}else {
 						$Объект_файла = $bot->getFile($файлАйди);				
 						$ссыль_на_файл = $bot->fileUrl . $bot->token;
@@ -378,9 +379,10 @@ function _отправка_лота_админам($номер_лота = null) 
 							$imgBB_url = $результат['url'];		
 							_запись_в_таблицу_маркет($callback_from_id, 'url_tgraph', $imgBB_url);				
 						}else throw new Exception("Не смог выложить пост..");
+						$реплика = "[_________]({$imgBB_url})\n{$текст}";
+						$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);
 					}
-					$реплика = "[_________]({$imgBB_url})\n{$текст}";
-					$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);				
+					
 				}else $КаналИнфо = $bot->sendMessage($admin_group, $текст, markdown, $inLine);				
 				if (!$КаналИнфо) throw new Exception("Не смог в админке опубликовать заказ..");				
 			}					
