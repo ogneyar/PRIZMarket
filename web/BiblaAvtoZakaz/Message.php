@@ -14,6 +14,7 @@ if (strpos($text, ":")!==false) {
 		}else {				
 			_вывод_списка_лотов("покажи", null, true);		
 		}				
+		exit('ok');
 	}
 }
 // Если было ответное сообщение (reply_to_message) в админке 
