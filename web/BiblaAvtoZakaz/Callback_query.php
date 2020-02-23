@@ -106,41 +106,38 @@ if ($callback_data=='создать'){
 	
 }elseif ($callback_data=='доверяет') {	
 		
-	_доверяет($id);
-	
+	//_доверяет($id);
+	_запись_в_таблицу_маркет($id, 'doverie', '1');	
+	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");
 	
 }elseif ($callback_data=='не_доверяет') {	
 		
-	_не_доверяет($id);
-	
+	//_не_доверяет($id);
+	_запись_в_таблицу_маркет($id, 'doverie', '0');	
+	$bot->answerCallbackQuery($callback_query_id, "ОТМЕНА отметки доверием!");	
 	
 }elseif ($callback_data=='редактировать_название') {	
-	
-	//_редактировать_название($id);
+
 	_ожидание_ввода('замена_названия', $id);
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с названием.", true);
 	
 }elseif ($callback_data=='редактировать_ссылку') {	
-	
-	//_редактировать_ссылку($id);
+
 	_ожидание_ввода('замена_ссылки', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новую ссылку.", true);		
 	
 }elseif ($callback_data=='редактировать_хештеги') {	
 	
-	//_редактировать_хештеги($id);
 	_ожидание_ввода('замена_хештегов', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с хештегами.", true);	
 	
 }elseif ($callback_data=='редактировать_подробности') {	
 	
-	//_редактировать_подробности($id);
 	_ожидание_ввода('замена_подробностей', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст подробностей.", true);
 	
 }elseif ($callback_data=='редактировать_фото') {	
 	
-	//_редактировать_фото($id);
 	_ожидание_ввода('замена_фото', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.", true);
 	
