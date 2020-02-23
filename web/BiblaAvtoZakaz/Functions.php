@@ -369,7 +369,7 @@ function _отправка_лота_админам($номер_лота = null) 
 				if ($формат_файла == 'фото') {	
 					if ($номер_лота) {
 						$реплика = "[_________]({$строка['url_tgraph']})\n{$текст}";
-						$КаналИнфо = $bot->sendMessage($id, $реплика, markdown, $inLine);
+						$КаналИнфо = $bot->sendMessage($callback_from_id, $реплика, markdown, $inLine);
 					}else {
 						$Объект_файла = $bot->getFile($файлАйди);				
 						$ссыль_на_файл = $bot->fileUrl . $bot->token;
@@ -384,7 +384,7 @@ function _отправка_лота_админам($номер_лота = null) 
 					}
 					
 				}else $КаналИнфо = $bot->sendMessage($admin_group, $текст, markdown, $inLine);				
-				if (!$КаналИнфо) throw new Exception("Не смог в админке опубликовать заказ..");				
+				if (!$КаналИнфо) throw new Exception("Не смог опубликовать лот..");				
 			}					
 		}else throw new Exception("Или нет заказа или больше одного..");	
 	}else throw new Exception("Нет такого заказа..");	
