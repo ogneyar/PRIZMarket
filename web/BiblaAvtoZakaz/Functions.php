@@ -1,4 +1,6 @@
 ﻿<?
+include 'Functions_mysqli.php'; // подключение функций работающих с таблицами
+
 /* Список всех функций:
 **
 ** exception_handler	-	// функция отлова исключений
@@ -6,31 +8,11 @@
 ** ----------------------
 ** _старт_АвтоЗаказБота
 ** _инфо_автоЗаказБота
-** _отправка_лота	-	-	// лота (вида фото/видео с кэпшином) куда угодно
-** _вывод_списка_лотов	-	// список лотов для повтора/удаления/просмотра
-** _есть_ли_лоты	-	-	// проверка наличия по айди клиента
-** _есть_ли_лот		-	-	// проверка наличия по номеру заказа
-** _последняя_публикация	// проверка даты последней публикации
-** _дай_айди	-	-	-	// функция возврата айди по юзернейму (если есть в базе)
 ** ----------------------
 **
 ** _создать
-** _повтор
-** _отправить_на_повтор
-** _установка_времени
-** _удаление
-** _удалить_выбранный_лот
-** _узнать_имя_по_номеру_лота
-** _куплю
-** _продам
 ** _продам_куплю
-** _запись_в_таблицу_маркет
-** _ожидание_ввода
-** _очистка_таблицы_ожидание
-** _очистка_таблицы_медиа
 ** _ссылка_в_названии
-** _да_нужна
-** _не_нужна
 ** _выбор_категории
 ** _выбор_валюты
 ** _когда_валюта_выбрана
@@ -48,8 +30,14 @@
 ** _изменить_подробности
 ** _ожидание_результата
 ** _на_публикацию
-**
 ** _отправка_лота_админам
+**
+** _повтор
+** _отправить_на_повтор
+** _установка_времени
+** _удаление
+** _удалить_выбранный_лот
+**
 **
 ** _вывод_лота_на_каналы
 ** _публикация_на_канале_медиа
@@ -128,118 +116,6 @@ function _инфо_автоЗаказБота() {
 	$bot->sendMessage($chat_id, $reply, markdown, $inLine, null, true);
 }
 
-// функция отправки лота 
-function _отправка_лота($куда, $номер_лота, $админ = false) {	
-	global $table_market, $callback_from_id, $mysqli, $bot;	
-	if ($админ) {		
-		$запрос = "SELECT * FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";		
-	}else {	
-		$запрос = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz='{$номер_лота}'";	
-	}		
-	$результат = $mysqli->query($запрос);	
-	if ($результат) {		
-		if ($результат->num_rows == 1) {		
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
-			foreach ($результМассив as $строка) {			
-				$файлАйди = $строка['file_id'];		
-				$формат_файла = $строка['format_file'];				
-				$название = $строка['nazvanie'];
-				$ссыль_в_названии = $строка['url_nazv'];				
-				$куплю_или_продам = $строка['kuplu_prodam'];						
-				$валюта = $строка['valuta'];				
-				$хештеги_города = $строка['gorod'];				
-				$юзера_имя = $строка['username'];				
-				$доверие = $строка['doverie'];
-				$категория = $строка['otdel'];								
-				$ссыль_на_подробности = $строка['url_podrobno'];
-				$inLine = [	'inline_keyboard' => 
-					[ [ [ 'text' => 'Подробнее',
-						  'url' => $ссыль_на_подробности ] ] ] ];
-				$хештеги = "{$куплю_или_продам}\n\n{$категория}\n▪️";				
-				$хештеги = str_replace('_', '\_', $хештеги);				
-				$текст_после_названия = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}\n  лот {$номер_лота}";
-				$текст_после_названия = str_replace('_', '\_', $текст_после_названия);
-				if ($доверие) $текст_после_названия .= "\n✅ PRIZMarket доверяет❗️";
-				$текст = "{$хештеги}[{$название}]({$ссыль_в_названии}){$текст_после_названия}";					
-				if ($формат_файла == 'фото') {					
-					$публикация = $bot->sendPhoto($куда, $файлАйди, $текст, markdown, $inLine);					
-				}elseif ($формат_файла == 'видео') {						
-					$публикация = $bot->sendVideo($куда, $файлАйди, $текст, markdown, $inLine);					
-				}						
-			}		
-		}else throw new Exception("Или нет заказа или больше одного..");	
-	}else throw new Exception("Нет такого заказа..");	
-}
-
-// Проверка наличия у клиента лотов в базе
-function _есть_ли_лоты() {	
-	global $mysqli, $from_id, $callback_from_id, $table_market, $callback_from_username, $from_username;
-	global $bot, $master;	
-	if (!$callback_from_id) $callback_from_id = $from_id;		
-	if (!$callback_from_username) $callback_from_username = $from_username;		
-    $response = false;	
-	$query = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";	
-	$result = $mysqli->query($query);	
-	if ($result) {	
-		if ($result->num_rows>0) {        
-            $response = true;
-		}	
-	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");	
-    return $response;
-}
-
-// Проверка наличия лота в базе
-function _есть_ли_лот($номер_лота) {	
-	global $mysqli, $table_market;		
-    $ответ = false;	
-	$query = "SELECT * FROM {$table_market} WHERE id_zakaz={$номер_лота}";	
-	$result = $mysqli->query($query);	
-	if ($result) {	
-		if ($result->num_rows>0) {        
-            $ответ = true;
-		}	
-	}else throw new Exception("Не смог узнать наличие лота (_есть_ли_лот)");	
-    return $ответ;
-}
-
-// Проверка давно ли была последняя публикация лота у данного клиента
-function _последняя_публикация() {	
-	global $mysqli, $from_id, $callback_from_id, $table_market;	
-	if (!$callback_from_id) $callback_from_id = $from_id;		
-    $resonse = false;	
-	$query = "SELECT date FROM {$table_market} WHERE id_client={$callback_from_id}";	
-	$result = $mysqli->query($query);	
-	if ($result) {	
-		if ($result->num_rows>0) {        
-			$результат = $result->fetch_all(MYSQLI_ASSOC);			
-			$время = time()-80000; // примерно 22 часа, а точнее 22,22222222222			
-			$давно = true; // если публикация была давно			
-			foreach ($результат as $строка) {				
-				if ($строка['date']>$время) $давно = false;				
-			}		
-            if ($давно) $response = true;
-		}else $response = true;	
-	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");	
-    return $response;
-}
-
-// функция возвращает айди клиента по его юзернейму
-function _дай_айди($Юнейм, $таблица = null) {	
-	global $mysqli, $table_users, $master, $bot;		
-    $ответ = false;		
-	if (!$таблица) $таблица = $table_users;
-	$Юнейм = str_replace(" ", "", $Юнейм);	
-	$запрос = "SELECT id_client FROM {$таблица} WHERE user_name='{$Юнейм}'";	
-	$результат = $mysqli->query($запрос);	
-	if ($результат) {	
-		if ($результат->num_rows>0) {			
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);        
-            $ответ = $результМассив[0]['id_client'];			
-		}//else $bot->sendMessage($master, "Не нашёл записей в базе (_дай_айди)");	
-	}else $bot->sendMessage($master, "Не смог узнать айди клиента - {$Юнейм}");	
-    return $ответ;
-}
-
 
 
 //------------------------------------------
@@ -272,267 +148,19 @@ function _создать() {
 	$bot->sendMessage($callback_from_id, $reply, null, $inLine);
 }
 
-function _вывод_списка_лотов($действие, $юзернейм = null, $все_лоты = false) {	
-	global $bot, $table_market, $mysqli, $callback_from_id, $from_id, $chat_id;	
-	if (!$callback_from_id) $callback_from_id = $from_id;				
-	if ($все_лоты) {
-		$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_zakaz>0";
-	}elseif ($юзернеим) {
-		$айди_клиента = _дай_айди($юзернеим);
-		if (!$айди_клиента) $айди_клиента = _дай_айди($юзернеим, 'info_users');
-		if ($айди_клиента) {
-			$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$айди_клиента} AND id_zakaz>0";	
-		}else {
-			$bot->sendMessage($chat_id, "Нет такого клиента в базе (_список_всех_лотов)");	
-			exit('ok');
-		}
-	}else $запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";	
-	$результат = $mysqli->query($запрос);	
-	if ($результат) {		
-		$количество = $результат->num_rows;
-		if ($количество > 0) {			
-			if ($количество < 100) {
-				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
-				$кнопки = [];						
-				foreach ($результМассив as $строка) {				
-					$название = $строка['nazvanie'];
-					$кнопки = array_merge($кнопки, [[[
-						'text' => "{$строка['kuplu_prodam']} {$название} (лот {$строка['id_zakaz']})",
-						'callback_data' => "{$действие}:{$строка['id_zakaz']}"
-					]]]);			
-				}					
-				$кнопки = array_merge($кнопки, [[[
-						'text' => "*** в Главное меню ***",
-						'callback_data' => "старт"
-					]]]);			
-				$inLine = [			
-					'inline_keyboard' => $кнопки				
-				];			
-				if ($действие == 'повтор') $реплика = "Выберите лот для повтора.";			
-				elseif ($действие == 'удаление') $реплика = "Выберите лот для удаления.";	
-				elseif ($действие == 'покажи') $реплика = "Выберите лот для просмотра.";		
-				$bot->sendMessage($chat_id, $реплика, null, $inLine);			
-			}else $bot->sendMessage($chat_id, $количество);		
-		}else $bot->sendMessage($chat_id, "Нет такой записи в БД (_вывод_списка_лотов)");		
-	}else throw new Exception("Не получился запрос к БД");
-}
-
-// функция вывода на экран лота, который необходимо повторить
-function _повтор($номер_лота) {	
-	global $callback_from_id, $bot, $callback_query_id;	
-	$давно = _последняя_публикация();	
-	if ($давно) {
-		_отправка_лота($callback_from_id, $номер_лота);		
-		$inLine = [
-			'inline_keyboard' => [
-				[
-					[
-						'text' => 'Да',
-						'callback_data' => "отправить_на_повтор:".$номер_лота
-					],
-					[
-						'text' => 'Нет',
-						'callback_data' => "старт"
-					]
-				]
-			]
-		];						
-		$bot->sendMessage($callback_from_id, "|\n|\n|\nПовторить? Если хотите повторить публикацию этого лота, нажмите 'Да'.", null, $inLine);	
-	}else {		
-		if ($callback_query_id) {			
-			$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);			
-		}		
-		exit('ok');		
-	}	
-}
-
-// функция вывода АДМИНАМ на экран лота, с просьбой о необходимости повторить
-function _отправить_на_повтор($номер_лота) {	
-	global $admin_group, $bot, $callback_from_id, $callback_query_id;	
-	$давно = _последняя_публикация();	
-	if ($давно) {	
-		_отправка_лота($admin_group, $номер_лота);			
-		_установка_времени($номер_лота);		
-		$юзер_неим = _узнать_имя_по_номеру_лота($номер_лота);				
-		$bot->sendMessage($admin_group, "{$юзер_неим} просит: Повторите публикацию, будьте так любезны, заранее благодарю.");		
-		$bot->sendMessage($callback_from_id, "|\n|\n|\nОтправил, ожидайте ответ.");	
-		$bot->answerCallbackQuery($callback_query_id, "Ожидайте!");	
-	}else {		
-		$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);		
-		exit('ok');
-	}		
-}
-
-// функция становки времени публикации
-function _установка_времени($номер_лота) {		
-	global $table_market, $mysqli, $callback_from_id, $from_id;	
-	if (!$callback_from_id) $callback_from_id = $from_id;				
-	$время = time();	
-	$query ="UPDATE {$table_market} SET date='{$время}' WHERE id_zakaz={$номер_лота}";		
-	$result = $mysqli->query($query);			
-	if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");	
-	return true;
-}
-
-// функция вывода на экран лота, который необходимо удалить
-function _удаление($номер_лота) {	
-	global $callback_from_id, $bot;	
-	_отправка_лота($callback_from_id, $номер_лота);		
-	$inLine = [
-		'inline_keyboard' => [
-			[
-				[
-					'text' => 'Да',
-					'callback_data' => "удалить_выбранный_лот:".$номер_лота
-				],
-				[
-					'text' => 'Нет',
-					'callback_data' => "старт"
-				]
-			]
-		]
-	];					
-	$bot->sendMessage($callback_from_id, "|\n|\n|\nУдалить? Если хотите удалить этот лот из базы нажмите 'Да'.", null, $inLine);
-}
-
-// функция удаления лота из базы данных
-function _удалить_выбранный_лот($номер_лота) {
-	global $table_market, $таблица_медиагруппа, $callback_query_id, $mysqli, $bot, $master;	
-	$запрос = "DELETE FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";	
-	$результат = $mysqli->query($запрос);	
-	if ($результат) {		
-		_инфо_автоЗаказБота();		
-		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!");		
-		$запрос = "DELETE FROM {$таблица_медиагруппа} WHERE id='{$номер_лота}'";	
-		$результат = $mysqli->query($запрос);	
-	}else throw new Exception("Не смог удалить лот..");	
-}
-
-// функция, которая возвращает юзернейм клиента по номеру лота 
-function _узнать_имя_по_номеру_лота($номер_лота) {	
-	global $table_market, $callback_from_id, $mysqli, $bot, $master;	
-	$запрос = "SELECT username FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";		
-	$результат = $mysqli->query($запрос);	
-	if ($результат) {		
-		if ($результат->num_rows > 0) {		
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
-			return $результМассив[0]['username'];			
-		}else throw new Exception("Или нет заказа или больше одного..");	
-	}else throw new Exception("Нет такого заказа..");	
-}
-
-// Если клиент выбрал хештег КУПЛЮ
-function _куплю() { _продам_куплю('#куплю'); }
-
-// Если клиент выбрал хештег ПРОДАМ
-function _продам() { _продам_куплю('#продам'); }
-
-// Обработка выбранного действия ПРОДАМ/КУПЛЮ, с занесением в базу и ожиданием ввода НАЗВАНИЯ
+// Обработка выбранного действия ПРОДАМ/КУПЛЮ
 function _продам_куплю($действие) {
 	global $bot, $message_id, $callback_query_id, $callback_from_id;	
 	_запись_в_таблицу_маркет($callback_from_id, 'kuplu_prodam', $действие);	
 	_ожидание_ввода('nazvanie', 'kuplu_prodam');	
 	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввод названия!");	
 	$ReplyKey = [
-		'keyboard' => [
-			[			
-				[
-					'text' => "Отмена ввода"
-				]
-			]
-		],
+		'keyboard' => [ [ [ 'text' => "Отмена ввода" ] ] ],
 		'resize_keyboard' => true,
 		'selective' => true,
 	];	
 	$reply = "Введите название:";	
 	$bot->sendMessage($callback_from_id, $reply, null, $ReplyKey);	
-}
-
-// Функция для записи данных в таблицу маркет
-function _запись_в_таблицу_маркет($номер_клиента = null, $имя_столбца = null, $действие = null) {
-	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;	
-	if (!$callback_from_id) $callback_from_id = $from_id;			
-	if (!$callback_from_username) $callback_from_username = $from_username;	
-	if (!$имя_столбца) {	
-		$query = "DELETE FROM {$table_market} WHERE id_client={$callback_from_id} AND status=''";		
-		$result = $mysqli->query($query);		
-		if ($result) {			
-			$query = "INSERT INTO {$table_market} (
-			  `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie`, `url_nazv`, `valuta`, 
-			  `gorod`, `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, 
-			  `status`, `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
-			) VALUES (
-			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', '', '', '', ''
-			)";						
-			$result = $mysqli->query($query);			
-			if (!$result) throw new Exception("Не смог добавить запись в таблицу {$table_market}");			
-		}else throw new Exception("Не смог удалить запись в таблице {$table_market}");		
-	}else {		
-		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$номер_клиента} AND status=''";		
-		$result = $mysqli->query($query);			
-		if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");				
-	}
-}
-
-// Функция для очистки содержания таблицы mediagroup
-function _очистка_таблицы_медиа() {
-	global $mysqli, $callback_from_id, $таблица_медиагруппа, $from_id;	
-	if (!$callback_from_id) $callback_from_id = $from_id;		
-	$query = "DELETE FROM {$таблица_медиагруппа} WHERE id_client={$callback_from_id} AND id='0'";		
-	$result = $mysqli->query($query);	
-	if ($result) {	
-		return true;	
-	}else  throw new Exception("Не смог удалить запись в таблице {$таблица_медиагруппа}");	
-}
-
-// Функция, помечающая, что же клиент должен прислать
-function _ожидание_ввода($имя_столбца = null, $последнее_действие = null) {	
-	global $mysqli, $callback_from_id, $таблица_ожидание, $from_id;	
-	if (!$callback_from_id) $callback_from_id = $from_id;	
-	$response = false;	
-	if ($имя_столбца) {//если указан столбец, то надо сделать запись в таблице ожидания ввода	
-		$query = "SELECT id_client FROM {$таблица_ожидание} WHERE id_client={$callback_from_id}";		
-		$result = $mysqli->query($query);		
-		if ($result->num_rows>0) {			
-			$query = "UPDATE {$таблица_ожидание} SET ojidanie='{$имя_столбца}' WHERE id_client={$callback_from_id}";		
-			$result = $mysqli->query($query);			
-			if (!$result) throw new Exception("Не смог обновить запись в таблице {$таблица_ожидание}");			
-			$response = true;			
-		}else {			
-			$query = "INSERT INTO {$таблица_ожидание} (
-				`id_client`, `ojidanie`, `last`, `flag`
-			) VALUES ('{$callback_from_id}', '{$имя_столбца}', '{$последнее_действие}', '0')";			
-			$result = $mysqli->query($query);			
-			if (!$result) throw new Exception("Не смог добавить запись в таблицу {$таблица_ожидание}");			
-			$response = true;			
-		}				
-	}else {//если не указан столбец, то надо проверить, есть ли ожидание ввода ..	
-		$query = "SELECT * FROM {$таблица_ожидание} WHERE id_client={$callback_from_id}";		
-		$result = $mysqli->query($query);		
-		if ($result->num_rows>0) {		
-			$resultArray = $result->fetch_all(MYSQLI_ASSOC);			
-			$response = [
-				'id_client' => $resultArray[0]['id_client'],
-				'ojidanie' => $resultArray[0]['ojidanie'],
-				'last' => $resultArray[0]['last'],
-				'flag' => $resultArray[0]['flag']
-			];		
-		}				
-	}	
-	return $response; // boolean or array		
-}
-
-// Функция для очистки содержания таблицы ожидание
-function _очистка_таблицы_ожидание() {
-	global $mysqli, $callback_from_id, $таблица_ожидание, $from_id;	
-	if (!$callback_from_id) $callback_from_id = $from_id;	
-	$response = false;	
-	$query = "DELETE FROM {$таблица_ожидание} WHERE id_client={$callback_from_id}";		
-	$result = $mysqli->query($query);	
-	if ($result) {	
-		$response = true;	
-	}else  throw new Exception("Не смог удалить запись в таблице {$таблица_ожидание}");	
-	return $response;
 }
 
 // После ввода клиентом НАЗВАНИЯ предлагается на выбор, нужнали ссылка вшитая в название
@@ -541,43 +169,14 @@ function _ссылка_в_названии() {
 	$inLine = [
 		'inline_keyboard' => [
 			[
-				[
-					'text' => 'Да',
-					'callback_data' => 'да_нужна'
-				],
-				[
-					'text' => 'Нет',
-					'callback_data' => 'не_нужна'
-				]
+				[ 'text' => 'Да', 'callback_data' => 'да_нужна' ],
+				[ 'text' => 'Нет', 'callback_data' => 'не_нужна' ]
 			]
 		]
 	];	
 	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nНужна ли Вам Ваша ссылка, вшитая в названии?\n\nЕсли не знаете или не поймёте о чём речь, нажмите 'НЕТ'.";	
 	$bot->sendMessage($chat_id, $reply, null, $inLine);
 }
-
-// Нужна ли Вам Ваша ссылка, вшитая в названии?
-function _да_нужна() {
-	global $bot, $chat_id, $callback_query_id;	
-	_ожидание_ввода('url_nazv', 'nazvanie');	
-	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввода Вашей ссылки!");	
-	$ReplyKey = [
-		'keyboard' => [
-			[			
-				[
-					'text' => "Отмена ввода"
-				]
-			]
-		],
-		'resize_keyboard' => true,
-		'selective' => true,
-	];	
-	$reply = "Пришлите мне ссылку, типа:\n\n  https://mysite.ru/supersite/";	
-	$bot->sendMessage($chat_id, $reply, null, $ReplyKey);
-}
-
-// Нужна ли Вам Ваша ссылка, вшитая в названии?
-function _не_нужна() { _выбор_категории(); }
 
 // выбор категории в которой будет находиться лот?
 function _выбор_категории() {
@@ -586,14 +185,10 @@ function _выбор_категории() {
 	for ($i=0; $i<12; $i++) {				
 		$список_категорий = array_merge($список_категорий, [
 			[
-				[
-					'text' => $категории[$i],
-					'callback_data' => $категории[$i]
-				],
-				[
-					'text' => $категории[$i+1],
-					'callback_data' => $категории[$i+1]
-				]
+				[ 	'text' => $категории[$i],
+					'callback_data' => $категории[$i] ],
+				[ 	'text' => $категории[$i+1],
+					'callback_data' => $категории[$i+1] ]
 			]
 		]);		
 		$i++;		
@@ -951,6 +546,98 @@ function _отправка_лота_админам() {
 			}		
 		}else throw new Exception("Или нет заказа или больше одного..");	
 	}else throw new Exception("Нет такого заказа..");	
+}
+
+
+// функция вывода на экран лота, который необходимо повторить
+function _повтор($номер_лота) {	
+	global $callback_from_id, $bot, $callback_query_id;	
+	$давно = _последняя_публикация();	
+	if ($давно) {
+		_отправка_лота($callback_from_id, $номер_лота);		
+		$inLine = [
+			'inline_keyboard' => [
+				[
+					[
+						'text' => 'Да',
+						'callback_data' => "отправить_на_повтор:".$номер_лота
+					],
+					[
+						'text' => 'Нет',
+						'callback_data' => "старт"
+					]
+				]
+			]
+		];						
+		$bot->sendMessage($callback_from_id, "|\n|\n|\nПовторить? Если хотите повторить публикацию этого лота, нажмите 'Да'.", null, $inLine);	
+	}else {		
+		if ($callback_query_id) {			
+			$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);			
+		}		
+		exit('ok');		
+	}	
+}
+
+// функция вывода АДМИНАМ на экран лота, с просьбой о необходимости повторить
+function _отправить_на_повтор($номер_лота) {	
+	global $admin_group, $bot, $callback_from_id, $callback_query_id;	
+	$давно = _последняя_публикация();	
+	if ($давно) {	
+		_отправка_лота($admin_group, $номер_лота);			
+		_установка_времени($номер_лота);		
+		$юзер_неим = _узнать_имя_по_номеру_лота($номер_лота);				
+		$bot->sendMessage($admin_group, "{$юзер_неим} просит: Повторите публикацию, будьте так любезны, заранее благодарю.");		
+		$bot->sendMessage($callback_from_id, "|\n|\n|\nОтправил, ожидайте ответ.");	
+		$bot->answerCallbackQuery($callback_query_id, "Ожидайте!");	
+	}else {		
+		$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);		
+		exit('ok');
+	}		
+}
+
+// функция становки времени публикации
+function _установка_времени($номер_лота) {		
+	global $table_market, $mysqli, $callback_from_id, $from_id;	
+	if (!$callback_from_id) $callback_from_id = $from_id;				
+	$время = time();	
+	$query ="UPDATE {$table_market} SET date='{$время}' WHERE id_zakaz={$номер_лота}";		
+	$result = $mysqli->query($query);			
+	if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");	
+	return true;
+}
+
+// функция вывода на экран лота, который необходимо удалить
+function _удаление($номер_лота) {	
+	global $callback_from_id, $bot;	
+	_отправка_лота($callback_from_id, $номер_лота);		
+	$inLine = [
+		'inline_keyboard' => [
+			[
+				[
+					'text' => 'Да',
+					'callback_data' => "удалить_выбранный_лот:".$номер_лота
+				],
+				[
+					'text' => 'Нет',
+					'callback_data' => "старт"
+				]
+			]
+		]
+	];					
+	$bot->sendMessage($callback_from_id, "|\n|\n|\nУдалить? Если хотите удалить этот лот из базы нажмите 'Да'.", null, $inLine);
+}
+
+// функция удаления лота из базы данных
+function _удалить_выбранный_лот($номер_лота) {
+	global $table_market, $таблица_медиагруппа, $callback_query_id, $mysqli, $bot, $master;	
+	$запрос = "DELETE FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";	
+	$результат = $mysqli->query($запрос);	
+	if ($результат) {		
+		_инфо_автоЗаказБота();		
+		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!");		
+		$запрос = "DELETE FROM {$таблица_медиагруппа} WHERE id='{$номер_лота}'";	
+		$результат = $mysqli->query($запрос);	
+	}else throw new Exception("Не смог удалить лот..");	
 }
 
 // вывод на канал подробности уже готового лота
