@@ -217,6 +217,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				_запись_в_таблицу_маркет($from_id, 'nazvanie', $text);			
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);	
+				$bot->sendMessage($chat_id, $text);
 				
 				_ссылка_в_названии();							
 				
@@ -228,6 +229,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				_запись_в_таблицу_маркет($from_id, 'url_nazv', $text);					
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);	
+				$bot->sendMessage($chat_id, $text);
 				
 				_выбор_категории();					
 				
@@ -264,6 +266,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 					_запись_в_таблицу_маркет($from_id, 'gorod', $text);					
 					_очистка_таблицы_ожидание();					
 					$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+					$bot->sendMessage($chat_id, $text);
 					
 					_отправьте_файл();				
 					
@@ -324,8 +327,8 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				_запись_в_таблицу_маркет($from_id, 'podrobno', $text);					
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);	
+				$bot->sendMessage($chat_id, $text);
 				
-				//_предпросмотр_лота();								
 				_отправка_лота($chat_id, 0, false, true);
 				
 			}else $bot->deleteMessage($chat_id, $message_id);					
