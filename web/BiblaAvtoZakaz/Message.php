@@ -94,7 +94,8 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			if ($text) {				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace("`", "\`", $text);				
-				_редакт_таблицы_маркет($айди_заказа, 'nazvanie', $text);				
+				//_редакт_таблицы_маркет($айди_заказа, 'nazvanie', $text);				
+				_запись_в_таблицу_маркет(null, 'nazvanie', $text, $айди_заказа);
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
 				$bot->sendMessage($chat_id, $text);							
@@ -102,7 +103,8 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		}elseif ($result['ojidanie'] == 'ссылку_редакт') {			
 			$айди_заказа = $result['last'];			
 			if ($text) {			
-				_редакт_таблицы_маркет($айди_заказа, 'url_nazv', $text);				
+				//_редакт_таблицы_маркет($айди_заказа, 'url_nazv', $text);	
+				_запись_в_таблицу_маркет(null, 'url_nazv', $text, $айди_заказа);
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
 				$bot->sendMessage($chat_id, $text);							
@@ -110,7 +112,8 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		}elseif ($result['ojidanie'] == 'хештеги_редакт') {			
 			$айди_заказа = $result['last'];			
 			if ($text) {			
-				_редакт_таблицы_маркет($айди_заказа, 'gorod', $text);				
+				//_редакт_таблицы_маркет($айди_заказа, 'gorod', $text);	
+				_запись_в_таблицу_маркет(null, 'gorod', $text, $айди_заказа);
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
 				$bot->sendMessage($chat_id, $text);							
@@ -120,7 +123,8 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			if ($text) {				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace("`", "\`", $text);			
-				_редакт_таблицы_маркет($айди_заказа, 'podrobno', $text);				
+				//_редакт_таблицы_маркет($айди_заказа, 'podrobno', $text);
+				_запись_в_таблицу_маркет(null, 'podrobno', $text, $айди_заказа);
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);
 				$bot->sendMessage($chat_id, $text);							
@@ -128,7 +132,8 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		}elseif ($result['ojidanie'] == 'фото_редакт') {			
 			$айди_заказа = $result['last'];			
 			if ($photo) {			
-				_редакт_таблицы_маркет($айди_заказа, 'file_id', $file_id);				
+				//_редакт_таблицы_маркет($айди_заказа, 'file_id', $file_id);		
+				_запись_в_таблицу_маркет(null, 'file_id', $text, $айди_заказа);
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
 				$Объект_файла = $bot->getFile($file_id);				
@@ -137,9 +142,11 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				$результат = $imgBB->upload($ссыль);									
 				if ($результат) {								
 					$imgBB_url = $результат['url'];		
-					_редакт_таблицы_маркет($айди_заказа, 'url_tgraph', $imgBB_url);		
+					//_редакт_таблицы_маркет($айди_заказа, 'url_tgraph', $imgBB_url);	
+					_запись_в_таблицу_маркет(null, 'url_tgraph', $text, $айди_заказа);
 				}else throw new Exception("Не смог сделать редакт imgBB_url");	
-				_редакт_таблицы_маркет($айди_заказа, 'format_file', 'фото');			
+				//_редакт_таблицы_маркет($айди_заказа, 'format_file', 'фото');		
+				_запись_в_таблицу_маркет(null, 'format_file', $text, $айди_заказа);
 			}			
 		}elseif ($result['ojidanie'] == 'замена_названия') {			
 			$айди_клиента = $result['last'];			

@@ -20,29 +20,29 @@
 */
 
 // Функция для записи данных в таблицу маркет
-function _запись_в_таблицу_маркет($номер_клиента = null, $имя_столбца = null, $действие = null) {
+function _запись_в_таблицу_маркет($номер_клиента = null, $имя_столбца = null, $действие = null, $номер_лота = null) {
 	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;	
 	if (!$callback_from_id) $callback_from_id = $from_id;			
 	if (!$callback_from_username) $callback_from_username = $from_username;	
+	
 	if (!$имя_столбца) {	
-		$query = "DELETE FROM {$table_market} WHERE id_client={$callback_from_id} AND status=''";		
-		$result = $mysqli->query($query);		
-		if ($result) {			
+		$query = "DELETE FROM {$table_market} WHERE id_client={$callback_from_id} AND status=''";				
+		if ($mysqli->query($query)) {			
 			$query = "INSERT INTO {$table_market} (
 			  `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie`, `url_nazv`, `valuta`, 
 			  `gorod`, `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, 
 			  `status`, `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
 			) VALUES (
 			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', '', '', '', ''
-			)";						
-			$result = $mysqli->query($query);			
-			if (!$result) throw new Exception("Не смог добавить запись в таблицу {$table_market}");			
-		}else throw new Exception("Не смог удалить запись в таблице {$table_market}");		
-	}else {		
-		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$номер_клиента} AND status=''";		
-		$result = $mysqli->query($query);			
-		if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");				
+			)";							
+		}else throw new Exception("Не смог удалить запись в таблице {$table_market}");
+	}elseif ($номер_лота) {
+		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_zakaz={$номер_лота}";				
+	}else {
+		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$номер_клиента} AND status=''";				
 	}
+	$result = $mysqli->query($query);			
+	if (!$result) throw new Exception("Не смог сделать запись в таблицу {$table_market}");			
 }
 
 // Функция, помечающая, что же клиент должен прислать
