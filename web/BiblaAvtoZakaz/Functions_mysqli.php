@@ -1,0 +1,281 @@
+<?
+/* 
+** Список функций для работы с таблицами MYSQL
+**
+** _запись_в_таблицу_маркет	-	// функция для записи данных в таблицу маркет
+** _ожидание_ввода	-	-	-	// Функция, помечающая, что же клиент должен прислать
+** _очистка_таблицы_ожидание	// Функция для очистки содержания таблицы ожидание
+** _очистка_таблицы_медиа	-	// Функция для очистки содержания таблицы mediagroup
+** _отправка_лота	-	-	-	// отправка лота (вида фото/видео с кэпшином) куда угодно
+** _вывод_списка_лотов	-	-	// список лотов для повтора/удаления/просмотра
+** _есть_ли_лоты	-	-	-	// проверка наличия по айди клиента
+** _есть_ли_лот		-	-	-	// проверка наличия по номеру заказа
+** _последняя_публикация	-	// проверка даты последней публикации
+** _дай_айди	-	-	-	-	// функция возврата айди по юзернейму (если есть в базе)
+** _узнать_имя_по_номеру_лота	// функция возвращающая юзернейм по номеру лота
+**
+*/
+
+// Функция для записи данных в таблицу маркет
+function _запись_в_таблицу_маркет($номер_клиента = null, $имя_столбца = null, $действие = null) {
+	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;	
+	if (!$callback_from_id) $callback_from_id = $from_id;			
+	if (!$callback_from_username) $callback_from_username = $from_username;	
+	if (!$имя_столбца) {	
+		$query = "DELETE FROM {$table_market} WHERE id_client={$callback_from_id} AND status=''";		
+		$result = $mysqli->query($query);		
+		if ($result) {			
+			$query = "INSERT INTO {$table_market} (
+			  `id_client`, `id_zakaz`, `kuplu_prodam`, `nazvanie`, `url_nazv`, `valuta`, 
+			  `gorod`, `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, 
+			  `status`, `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
+			) VALUES (
+			  '{$callback_from_id}', '', '', '', '', '', '', '@{$callback_from_username}', '', '', '', '', '', '', '', '', '', '', ''
+			)";						
+			$result = $mysqli->query($query);			
+			if (!$result) throw new Exception("Не смог добавить запись в таблицу {$table_market}");			
+		}else throw new Exception("Не смог удалить запись в таблице {$table_market}");		
+	}else {		
+		$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client={$номер_клиента} AND status=''";		
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");				
+	}
+}
+
+// Функция, помечающая, что же клиент должен прислать
+function _ожидание_ввода($имя_столбца = null, $последнее_действие = null) {	
+	global $mysqli, $callback_from_id, $таблица_ожидание, $from_id;	
+	if (!$callback_from_id) $callback_from_id = $from_id;	
+	$response = false;	
+	if ($имя_столбца) {//если указан столбец, то надо сделать запись в таблице ожидания ввода	
+		$query = "SELECT id_client FROM {$таблица_ожидание} WHERE id_client={$callback_from_id}";		
+		$result = $mysqli->query($query);		
+		if ($result->num_rows>0) {			
+			$query = "UPDATE {$таблица_ожидание} SET ojidanie='{$имя_столбца}' WHERE id_client={$callback_from_id}";		
+			$result = $mysqli->query($query);			
+			if (!$result) throw new Exception("Не смог обновить запись в таблице {$таблица_ожидание}");			
+			$response = true;			
+		}else {			
+			$query = "INSERT INTO {$таблица_ожидание} (
+				`id_client`, `ojidanie`, `last`, `flag`
+			) VALUES ('{$callback_from_id}', '{$имя_столбца}', '{$последнее_действие}', '0')";			
+			$result = $mysqli->query($query);			
+			if (!$result) throw new Exception("Не смог добавить запись в таблицу {$таблица_ожидание}");			
+			$response = true;			
+		}				
+	}else {//если не указан столбец, то надо проверить, есть ли ожидание ввода ..	
+		$query = "SELECT * FROM {$таблица_ожидание} WHERE id_client={$callback_from_id}";		
+		$result = $mysqli->query($query);		
+		if ($result->num_rows>0) {		
+			$resultArray = $result->fetch_all(MYSQLI_ASSOC);			
+			$response = [
+				'id_client' => $resultArray[0]['id_client'],
+				'ojidanie' => $resultArray[0]['ojidanie'],
+				'last' => $resultArray[0]['last'],
+				'flag' => $resultArray[0]['flag']
+			];		
+		}				
+	}	
+	return $response; // boolean or array		
+}
+
+// Функция для очистки содержания таблицы ожидание
+function _очистка_таблицы_ожидание() {
+	global $mysqli, $callback_from_id, $таблица_ожидание, $from_id;	
+	if (!$callback_from_id) $callback_from_id = $from_id;	
+	$response = false;	
+	$query = "DELETE FROM {$таблица_ожидание} WHERE id_client={$callback_from_id}";		
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		$response = true;	
+	}else  throw new Exception("Не смог удалить запись в таблице {$таблица_ожидание}");	
+	return $response;
+}
+
+// Функция для очистки содержания таблицы mediagroup
+function _очистка_таблицы_медиа() {
+	global $mysqli, $callback_from_id, $таблица_медиагруппа, $from_id;	
+	if (!$callback_from_id) $callback_from_id = $from_id;		
+	$query = "DELETE FROM {$таблица_медиагруппа} WHERE id_client={$callback_from_id} AND id='0'";		
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		return true;	
+	}else  throw new Exception("Не смог удалить запись в таблице {$таблица_медиагруппа}");	
+}
+
+// функция отправки лота 
+function _отправка_лота($куда, $номер_лота, $админ = false) {	
+	global $table_market, $callback_from_id, $mysqli, $bot;	
+	if ($админ) {		
+		$запрос = "SELECT * FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";		
+	}else {	
+		$запрос = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz='{$номер_лота}'";	
+	}		
+	$результат = $mysqli->query($запрос);	
+	if ($результат) {		
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
+			foreach ($результМассив as $строка) {			
+				$файлАйди = $строка['file_id'];		
+				$формат_файла = $строка['format_file'];				
+				$название = $строка['nazvanie'];
+				$ссыль_в_названии = $строка['url_nazv'];				
+				$куплю_или_продам = $строка['kuplu_prodam'];						
+				$валюта = $строка['valuta'];				
+				$хештеги_города = $строка['gorod'];				
+				$юзера_имя = $строка['username'];				
+				$доверие = $строка['doverie'];
+				$категория = $строка['otdel'];								
+				$ссыль_на_подробности = $строка['url_podrobno'];
+				$inLine = [	'inline_keyboard' => 
+					[ [ [ 'text' => 'Подробнее',
+						  'url' => $ссыль_на_подробности ] ] ] ];
+				$хештеги = "{$куплю_или_продам}\n\n{$категория}\n▪️";				
+				$хештеги = str_replace('_', '\_', $хештеги);				
+				$текст_после_названия = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}\n  лот {$номер_лота}";
+				$текст_после_названия = str_replace('_', '\_', $текст_после_названия);
+				if ($доверие) $текст_после_названия .= "\n✅ PRIZMarket доверяет❗️";
+				$текст = "{$хештеги}[{$название}]({$ссыль_в_названии}){$текст_после_названия}";					
+				if ($формат_файла == 'фото') {					
+					$публикация = $bot->sendPhoto($куда, $файлАйди, $текст, markdown, $inLine);					
+				}elseif ($формат_файла == 'видео') {						
+					$публикация = $bot->sendVideo($куда, $файлАйди, $текст, markdown, $inLine);					
+				}						
+			}		
+		}else throw new Exception("Или нет заказа или больше одного..");	
+	}else throw new Exception("Нет такого заказа..");	
+}
+
+// вывод на экран списка лотов для повтора/удаления/просмотра
+function _вывод_списка_лотов($действие, $юзернейм = null, $все_лоты = false) {	
+	global $bot, $table_market, $mysqli, $callback_from_id, $from_id, $chat_id;	
+	if (!$callback_from_id) $callback_from_id = $from_id;				
+	if ($все_лоты) {
+		$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_zakaz>0";
+	}elseif ($юзернеим) {
+		$айди_клиента = _дай_айди($юзернеим);
+		if (!$айди_клиента) $айди_клиента = _дай_айди($юзернеим, 'info_users');
+		if ($айди_клиента) {
+			$запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$айди_клиента} AND id_zakaz>0";	
+		}else {
+			$bot->sendMessage($chat_id, "Нет такого клиента в базе (_список_всех_лотов)");	
+			exit('ok');
+		}
+	}else $запрос = "SELECT id_zakaz, kuplu_prodam, nazvanie FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";	
+	$результат = $mysqli->query($запрос);	
+	if ($результат) {		
+		$количество = $результат->num_rows;
+		if ($количество > 0) {			
+			if ($количество < 100) {
+				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
+				$кнопки = [];						
+				foreach ($результМассив as $строка) {				
+					$название = $строка['nazvanie'];
+					$кнопки = array_merge($кнопки, [[[
+						'text' => "{$строка['kuplu_prodam']} {$название} (лот {$строка['id_zakaz']})",
+						'callback_data' => "{$действие}:{$строка['id_zakaz']}"
+					]]]);			
+				}					
+				$кнопки = array_merge($кнопки, [[[
+						'text' => "*** в Главное меню ***",
+						'callback_data' => "старт"
+					]]]);			
+				$inLine = [			
+					'inline_keyboard' => $кнопки				
+				];			
+				if ($действие == 'повтор') $реплика = "Выберите лот для повтора.";			
+				elseif ($действие == 'удаление') $реплика = "Выберите лот для удаления.";	
+				elseif ($действие == 'покажи') $реплика = "Выберите лот для просмотра.";		
+				$bot->sendMessage($chat_id, $реплика, null, $inLine);			
+			}else $bot->sendMessage($chat_id, $количество);		
+		}else $bot->sendMessage($chat_id, "Нет такой записи в БД (_вывод_списка_лотов)");		
+	}else throw new Exception("Не получился запрос к БД");
+}
+
+// Проверка наличия у клиента лотов в базе
+function _есть_ли_лоты() {	
+	global $mysqli, $from_id, $callback_from_id, $table_market, $callback_from_username, $from_username;
+	global $bot, $master;	
+	if (!$callback_from_id) $callback_from_id = $from_id;		
+	if (!$callback_from_username) $callback_from_username = $from_username;		
+    $response = false;	
+	$query = "SELECT * FROM {$table_market} WHERE id_client={$callback_from_id} AND id_zakaz>0";	
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		if ($result->num_rows>0) {        
+            $response = true;
+		}	
+	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");	
+    return $response;
+}
+
+// Проверка наличия лота в базе
+function _есть_ли_лот($номер_лота) {	
+	global $mysqli, $table_market;		
+    $ответ = false;	
+	$query = "SELECT * FROM {$table_market} WHERE id_zakaz={$номер_лота}";	
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		if ($result->num_rows>0) {        
+            $ответ = true;
+		}	
+	}else throw new Exception("Не смог узнать наличие лота (_есть_ли_лот)");	
+    return $ответ;
+}
+
+// Проверка давно ли была последняя публикация лота у данного клиента
+function _последняя_публикация() {	
+	global $mysqli, $from_id, $callback_from_id, $table_market;	
+	if (!$callback_from_id) $callback_from_id = $from_id;		
+    $resonse = false;	
+	$query = "SELECT date FROM {$table_market} WHERE id_client={$callback_from_id}";	
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		if ($result->num_rows>0) {        
+			$результат = $result->fetch_all(MYSQLI_ASSOC);			
+			$время = time()-80000; // примерно 22 часа, а точнее 22,22222222222			
+			$давно = true; // если публикация была давно			
+			foreach ($результат as $строка) {				
+				if ($строка['date']>$время) $давно = false;				
+			}		
+            if ($давно) $response = true;
+		}else $response = true;	
+	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");	
+    return $response;
+}
+
+// функция возвращает айди клиента по его юзернейму
+function _дай_айди($Юнейм, $таблица = null) {	
+	global $mysqli, $table_users, $master, $bot;		
+    $ответ = false;		
+	if (!$таблица) $таблица = $table_users;
+	$Юнейм = str_replace(" ", "", $Юнейм);	
+	$запрос = "SELECT id_client FROM {$таблица} WHERE user_name='{$Юнейм}'";	
+	$результат = $mysqli->query($запрос);	
+	if ($результат) {	
+		if ($результат->num_rows>0) {			
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);        
+            $ответ = $результМассив[0]['id_client'];			
+		}//else $bot->sendMessage($master, "Не нашёл записей в базе (_дай_айди)");	
+	}else $bot->sendMessage($master, "Не смог узнать айди клиента - {$Юнейм}");	
+    return $ответ;
+}
+
+// функция, которая возвращает юзернейм клиента по номеру лота 
+function _узнать_имя_по_номеру_лота($номер_лота) {	
+	global $table_market, $callback_from_id, $mysqli, $bot, $master;	
+	$запрос = "SELECT username FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";		
+	$результат = $mysqli->query($запрос);	
+	if ($результат) {		
+		if ($результат->num_rows > 0) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
+			return $результМассив[0]['username'];			
+		}else throw new Exception("Или нет заказа или больше одного..");	
+	}else throw new Exception("Нет такого заказа..");	
+}
+
+
+
+
+
+?>
