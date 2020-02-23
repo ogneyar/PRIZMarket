@@ -13,6 +13,9 @@
 ** _последняя_публикация	-	// проверка даты последней публикации
 ** _дай_айди	-	-	-	-	// функция возврата айди по юзернейму (если есть в базе)
 ** _узнать_имя_по_номеру_лота	// функция возвращающая юзернейм по номеру лота
+** _есть_ли_у_клиента_альбом
+** _есть_ли_такой_медиа_альбом
+** _запись_в_таблицу_медиагрупа
 **
 */
 
@@ -104,8 +107,9 @@ function _очистка_таблицы_медиа() {
 }
 
 // функция отправки лота 
-function _отправка_лота($куда, $номер_лота, $админ = false) {	
-	global $table_market, $callback_from_id, $mysqli, $bot;	
+function _отправка_лота($куда, $номер_лота, $админ = false, $предпросмотр = false) {	
+	global $table_market, $callback_from_id, $from_id, $mysqli, $bot;	
+	if (!$callback_from_id) $callback_from_id = $from_id;
 	if ($админ) {		
 		$запрос = "SELECT * FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";		
 	}else {	
@@ -127,9 +131,17 @@ function _отправка_лота($куда, $номер_лота, $админ
 				$доверие = $строка['doverie'];
 				$категория = $строка['otdel'];								
 				$ссыль_на_подробности = $строка['url_podrobno'];
-				$inLine = [	'inline_keyboard' => 
-					[ [ [ 'text' => 'Подробнее',
-						  'url' => $ссыль_на_подробности ] ] ] ];
+				if ($предпросмотр) {
+					$inLine = [ 'inline_keyboard' => [
+						[ [ 'text' => 'Отправить на публикацию', 'callback_data' => 'на_публикацию' ] ],
+						[ [ 'text' => 'Изменить подробности', 'callback_data' => 'изменить_подробности' ] ],
+						[ [ 'text' => 'В начало', 'callback_data' => 'старт' ] ]
+					] ];
+				}else {
+					$inLine = [	'inline_keyboard' => 
+						[ [ [ 'text' => 'Подробнее',
+							  'url' => $ссыль_на_подробности ] ] ] ];
+				}
 				$хештеги = "{$куплю_или_продам}\n\n{$категория}\n▪️";				
 				$хештеги = str_replace('_', '\_', $хештеги);				
 				$текст_после_названия = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}\n  лот {$номер_лота}";
@@ -272,6 +284,54 @@ function _узнать_имя_по_номеру_лота($номер_лота) {
 			return $результМассив[0]['username'];			
 		}else throw new Exception("Или нет заказа или больше одного..");	
 	}else throw new Exception("Нет такого заказа..");	
+}
+
+
+// Есть ли в таблице avtozakaz_pzmarket запись о том что у клиента имеется фотоальбом
+function _есть_ли_у_клиента_альбом($id_zakaz = '0') {
+	global $table_market, $mysqli, $callback_from_id, $from_id;	
+	if (!$callback_from_id) {	
+		$callback_from_id = $from_id;	
+	}
+	$query = "SELECT foto_album FROM {$table_market} WHERE id_client={$callback_from_id}".
+		" AND id_zakaz={$id_zakaz} AND foto_album='1'";		
+	$result = $mysqli->query($query);		
+	if ($result->num_rows>0) {	
+		return true;	
+	}else return false;
+}
+
+// есть ли в таблице avtozakaz_mediagroup такой номер - медиа_айди
+function _есть_ли_такой_медиа_альбом($медиа_айди) {
+	global $таблица_медиагруппа, $mysqli, $callback_from_id, $from_id;	
+	if (!$callback_from_id) {	
+		$callback_from_id = $from_id;	
+	}
+	$query = "SELECT media_group_id FROM {$таблица_медиагруппа} WHERE id_client={$callback_from_id} AND media_group_id={$медиа_айди}";		
+	$result = $mysqli->query($query);		
+	if ($result->num_rows>0) {	
+		return true;	
+	}else return false;
+}
+
+// функция записи в таблицу avtozakaz_mediagroup
+function _запись_в_таблицу_медиагрупа($id_client = null, $id_zakaz = null, $url_media_group = null) {	
+	global $таблица_медиагруппа, $mysqli, $callback_from_id, $from_id, $media_group_id, $file_id, $формат_файла;
+	if (!$callback_from_id) $callback_from_id = $from_id;			
+	if ($id_client&&$id_zakaz&&$url_media_group) {		
+		$query ="UPDATE {$таблица_медиагруппа} SET id='{$id_zakaz}', url='{$url_media_group}' WHERE id_client={$id_client} AND id='0'";		
+		$result = $mysqli->query($query);			
+		if (!$result) throw new Exception("Не смог обновить запись в таблице {$таблица_медиагруппа}");		
+	}else {	
+		$query = "INSERT INTO {$таблица_медиагруппа} (
+			`id`, `id_client`, `media_group_id`, `format_file`, `file_id`, `url` 
+		) VALUES (
+			'0', '{$callback_from_id}', '{$media_group_id}', '{$формат_файла}', '{$file_id}', ''
+		)";		
+		$result = $mysqli->query($query);		
+		if (!$result) throw new Exception("Не смог добавить запись в таблицу {$таблица_медиагруппа}");			
+		return true;	
+	}	
 }
 
 

@@ -3,6 +3,7 @@
 if ($media_group_id) {
 	_запись_в_таблицу_медиагрупа();	
 }
+// Если админ пишет команду, через двоеточие номер $id (номер клиента/заказа)
 if (strpos($text, ":")!==false) {
 	$команда = strstr($text, ':', true);		
 	$id = substr(strrchr($text, ":"), 1);	
@@ -15,6 +16,8 @@ if (strpos($text, ":")!==false) {
 		}				
 	}
 }
+// Если было ответное сообщение (reply_to_message) в админке 
+// то отправляется это сообщение клиенту, по его юзернейму
 if ($reply_to_message && $chat_id == $admin_group) {	
 	if (!$reply_caption) $reply_caption = $reply_text;		
 	$номер_строки = strpos($reply_caption, '@');		
@@ -38,18 +41,15 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			$bot->sendMessage($chat_id, "Отправил.", null, null, $message_id);			
 		}		
 	}
+// Редактирование лотов админами (кнопка "Редактор лотов" видна только админам)
 }elseif ($text=='Редактор лотов') {
 	$админ = $bot->this_admin($table_users);	
 	if ($админ) {	
-		_ожидание_ввода('редактор_лотов', 'старт');		
-		$ReplyKey = [
-			'keyboard' => [ [ [ 'text' => "Отмена ввода" ] ] ],
-			'resize_keyboard' => true,
-			'selective' => true,
-		];		
+		_ожидание_ввода('редактор_лотов', 'старт');				
 		$reply = "Пришлите мне номер лота.";		
-		$bot->sendMessage($chat_id, $reply, null, $ReplyKey);	
+		$bot->sendMessage($chat_id, $reply, null, $клавиатура_отмена_ввода);	
 	}
+// Когда отправлена команда "Отмена ввода" проверяется функция "_ожидание_ввода"
 }elseif ($text=='Отмена ввода') {
 	$bot->sendMessage($chat_id, "Ввод отменён.", null, $HideKeyboard);	
 	$result = _ожидание_ввода();		
@@ -79,6 +79,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 			_старт_АвтоЗаказБота();			
 		}		
 	}else _старт_АвтоЗаказБота();
+// Если не спец команды, значит проверяется функция "_ожидание_ввода" 
 }else { 	
 	$result = _ожидание_ввода();	
 	if ($result) {		
@@ -190,6 +191,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 					_запись_в_таблицу_маркет($айди_клиента, 'url_tgraph', $imgBB_url);	
 				}else throw new Exception("Не смог сделать imgBB_url");					
 			}						
+		// Если ожидается ввод названия
 		}elseif ($result['ojidanie'] == 'nazvanie') {			
 			if ($text) {												
 				if (strlen($text) > 60) {				
@@ -214,17 +216,23 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				$text = str_replace('~', '', $text);								
 				_запись_в_таблицу_маркет($from_id, 'nazvanie', $text);			
 				_очистка_таблицы_ожидание();				
-				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);			
+				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);	
+				
 				_ссылка_в_названии();							
-			}else $bot->deleteMessage($chat_id, $message_id);						
+				
+			}else $bot->deleteMessage($chat_id, $message_id);	
+		// Если ожидается ввод ссылки, вшиваемой в название
 		}elseif ($result['ojidanie'] == 'url_nazv') {			
 			if ($text) {														
 				//надо проверить есть ли в тексте http://
 				_запись_в_таблицу_маркет($from_id, 'url_nazv', $text);					
 				_очистка_таблицы_ожидание();				
-				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);			
+				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);	
+				
 				_выбор_категории();					
-			}else $bot->deleteMessage($chat_id, $message_id);				
+				
+			}else $bot->deleteMessage($chat_id, $message_id);	
+		// Если ожидается ввод хештегов местонахождения клиента
 		}elseif ($result['ojidanie'] == 'gorod') {		
 			if ($text) {
 				$text = str_replace('|', '', $text);
@@ -255,10 +263,13 @@ if ($reply_to_message && $chat_id == $admin_group) {
 					// тут можно по entities достать только хештеги					
 					_запись_в_таблицу_маркет($from_id, 'gorod', $text);					
 					_очистка_таблицы_ожидание();					
-					$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);		
+					$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);
+					
 					_отправьте_файл();				
+					
 				}				
-			}else $bot->deleteMessage($chat_id, $message_id);					
+			}else $bot->deleteMessage($chat_id, $message_id);		
+		// Если ожидается ввод основного фото/видео
 		}elseif ($result['ojidanie'] == 'format_file') {						
 			if ($photo||$video) {
 				if ($video) {
@@ -274,20 +285,26 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				if ($media_group_id) {					
 					$реплика = "Принял только ЭТОТ 👆🏻 файл.";				
 				}else $реплика = "Принял.";				
-				$bot->sendMessage($chat_id, $реплика, null, $HideKeyboard);				
+				$bot->sendMessage($chat_id, $реплика, null, $HideKeyboard);		
+				
 				_нужен_ли_фотоальбом();			
-			}else $bot->deleteMessage($chat_id, $message_id);			
+				
+			}else $bot->deleteMessage($chat_id, $message_id);		
+		// Если ожидается ввод фотоальбома
 		}elseif ($result['ojidanie'] == 'foto_album') {									
 			if ($формат_файла) {			
 				if ($media_group_id) {				
 					_очистка_таблицы_ожидание();
 					$bot->sendMessage($chat_id, "Принял, ВСЕ.", null, $HideKeyboard);	
+					
 					_опишите_подробно();				
+					
 				}else {					
 					$bot->sendMessage($chat_id, "Пришлите все фото сразу, не по одному!\n(При отправке выберите: 'отправить альбом')");				
 					$bot->deleteMessage($chat_id, $message_id);						
 				}				
-			}else $bot->deleteMessage($chat_id, $message_id);				
+			}else $bot->deleteMessage($chat_id, $message_id);	
+		// Если ожидается ввод текста с подробным описанием товара/услуги
 		}elseif ($result['ojidanie'] == 'podrobno') {		
 			if ($text) {				
 				$количество = strlen($text);				
@@ -306,15 +323,16 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				$text = str_replace(']', ')', $text);				
 				_запись_в_таблицу_маркет($from_id, 'podrobno', $text);					
 				_очистка_таблицы_ожидание();				
-				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);			
-				_предпросмотр_лота();								
+				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);	
+				
+				//_предпросмотр_лота();								
+				_отправка_лота($chat_id, 0, false, true);
+				
 			}else $bot->deleteMessage($chat_id, $message_id);					
 		}		
+	// Если нет ожидания ввода, то в личке у бота удаляются сообщения
 	}elseif ($chat_type == 'private') $bot->deleteMessage($chat_id, $message_id);	
 }
 	
-
-
-
 
 ?>

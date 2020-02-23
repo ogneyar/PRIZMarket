@@ -8,26 +8,27 @@ if (strpos($callback_data, ":")!==false) {
 if ($callback_data=='создать'){
 	_создать();
 	
-}elseif ($callback_data=='продам') {	
-	//_продам();
+}elseif ($callback_data=='продам') {		
 	_продам_куплю('#продам');
 	
 }elseif ($callback_data=='куплю') {	
-	//_куплю();
 	_продам_куплю('#куплю');
 	
-}elseif ($callback_data=='да_нужна') {	
-	//_да_нужна();
+}elseif ($callback_data=='нужна_ссылка') {	
 	_ожидание_ввода('url_nazv', 'nazvanie');	
 	$bot->answerCallbackQuery($callback_query_id, "Ожидаю ввода Вашей ссылки!");	
 	$reply = "Пришлите мне ссылку, типа:\n\n  https://mysite.ru/supersite/";	
 	$bot->sendMessage($chat_id, $reply, null, $клавиатура_отмена_ввода);
 	
-}elseif ($callback_data=='не_нужна') {	
-	//_не_нужна();
+}elseif ($callback_data=='не_нужна_ссылка') {	
 	_выбор_категории();
 	
-}elseif ($callback_data==$категории[0]||$callback_data==$категории[1]||$callback_data==$категории[2]||$callback_data==$категории[3]||$callback_data==$категории[4]||$callback_data==$категории[5]||$callback_data==$категории[6]||$callback_data==$категории[7]||$callback_data==$категории[8]||$callback_data==$категории[9]||$callback_data==$категории[10]||$callback_data==$категории[11]) {	
+}elseif ($callback_data==$категории[0]||$callback_data==$категории[1]||
+		 $callback_data==$категории[2]||$callback_data==$категории[3]||
+		 $callback_data==$категории[4]||$callback_data==$категории[5]||
+		 $callback_data==$категории[6]||$callback_data==$категории[7]||
+		 $callback_data==$категории[8]||$callback_data==$категории[9]||
+		 $callback_data==$категории[10]||$callback_data==$категории[11]) {		
 	_запись_в_таблицу_маркет($callback_from_id, 'otdel', $callback_data);
 	_выбор_валюты();
 	
@@ -53,10 +54,18 @@ if ($callback_data=='создать'){
 	_когда_валюта_выбрана();
 	
 }elseif ($callback_data=='нужен_альбом') {	
-	_нужен_альбом();
+	//_нужен_альбом();
+	_очистка_таблицы_медиа();	
+	_запись_в_таблицу_маркет($callback_from_id, 'foto_album', '1');	
+	_ожидание_ввода('foto_album', 'foto_album');		
+	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nСкиньте мне разом все фото, которые должны оказаться в альбоме (НЕ по одной фотке)";	
+	$bot->sendMessage($chat_id, $reply, null, $клавиатура_отмена_ввода);	
 	
 }elseif ($callback_data=='не_нужен_альбом') {	
-	_не_нужен_альбом();
+	//_не_нужен_альбом();
+	_очистка_таблицы_медиа();	
+	_запись_в_таблицу_маркет($callback_from_id, 'foto_album', '0');	
+	_опишите_подробно();	
 	
 }elseif ($callback_data=='опубликовать') {	
 	_вывод_лота_на_каналы($id);	
@@ -131,37 +140,30 @@ if ($callback_data=='создать'){
 	_показать_редакт($id);		
 	
 }elseif ($callback_data=='доверяет_редакт') {	
-	//_доверяет_редакт($id);	
 	_редакт_таблицы_маркет($id, 'doverie', '1');	
 	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");	
 	
 }elseif ($callback_data=='не_доверяет_редакт') {	
-	//_не_доверяет_редакт($id);	
 	_редакт_таблицы_маркет($id, 'doverie', '0');	
 	$bot->answerCallbackQuery($callback_query_id, "ОТМЕНА отметки доверием!");
 	
 }elseif ($callback_data=='название_редакт') {	
-	//_название_редакт($id);	
 	_ожидание_ввода('название_редакт', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с названием.");		
 	
 }elseif ($callback_data=='ссылку_редакт') {	
-	//_ссылку_редакт($id);	
 	_ожидание_ввода('ссылку_редакт', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новую ссылку.");		
 	
 }elseif ($callback_data=='хештеги_редакт') {	
-	//_хештеги_редакт($id);	
 	_ожидание_ввода('хештеги_редакт', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с хештегами.");	
 	
 }elseif ($callback_data=='подробности_редакт') {	
-	//_подробности_редакт($id);	
 	_ожидание_ввода('подробности_редакт', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с подробностями.");		
 	
 }elseif ($callback_data=='фото_редакт') {	
-	//_фото_редакт($id);	
 	_ожидание_ввода('фото_редакт', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.");	
 	
