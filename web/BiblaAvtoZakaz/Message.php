@@ -1,73 +1,55 @@
 ﻿<?
 // Если клиент шлёт сразу группу файлов
 if ($media_group_id) {
-
 	_запись_в_таблицу_медиагрупа();	
-
 }
 
 if (strpos($text, ":")!==false) {
-
-	$команда = strstr($text, ':', true);	
-	
-	$id = substr(strrchr($text, ":"), 1);
-	
+	$команда = strstr($text, ':', true);		
+	$id = substr(strrchr($text, ":"), 1);	
 	if ($id == '') $id = null;
 	
-	if ($команда == 'лоты') {
-	
-		if ($id) {
-			
-			//_список_всех_лотов($id);
-			_вывод_списка_лотов("покажи", $id);
-			
-		}else {
-				
-			//_список_всех_лотов();
-			_вывод_списка_лотов("покажи", null, true);
-		
-		}		
-		
+	if ($команда == 'лоты') {	
+		if ($id) {		
+			_вывод_списка_лотов("покажи", $id);			
+		}else {				
+			_вывод_списка_лотов("покажи", null, true);		
+		}				
 	}
 
 }
 
 
+if ($reply_to_message && $chat_id == $admin_group) {	
 
-if ($reply_to_message && $chat_id == $admin_group) {
+	if (!$reply_caption) $reply_caption = $reply_text;	
 	
-	if (!$reply_caption) $reply_caption = $reply_text;
+	$номер_строки = strpos($reply_caption, '@');	
 	
-	$номер_строки = strpos($reply_caption, '@');
-	
-	if ($номер_строки >= 0) {
+	if ($номер_строки >= 0) {		
 		
 		$строка = strstr($reply_caption, '@');
-
-		$есть_ли_энтр = strpos($строка, 10);
+		$есть_ли_энтр = strpos($строка, 10);		
 		
-		if ($есть_ли_энтр) {
-			
-			$юзер_нейм = strstr($строка, 10, true);
+		if ($есть_ли_энтр) {			
+		
+			$юзер_нейм = strstr($строка, 10, true);			
 			
 		}else {
 			
-                      $есть_ли_пробел = strpos($строка, ' ');
-		
-		      if ($есть_ли_пробел) {
+			$есть_ли_пробел = strpos($строка, ' ');
 			
-			      $юзер_нейм = strstr($строка, ' ', true);
-			
-		      }else {
-			
-			      $юзер_нейм = $строка;
-			
-		      }
+			if ($есть_ли_пробел) {
 
+				$юзер_нейм = strstr($строка, ' ', true);
+			
+			}else {
+			
+				$юзер_нейм = $строка;
+			
+			}
 
 		}
-
-
 		
 		//$bot->sendMessage($master, $юзер_нейм);
 		
@@ -84,6 +66,7 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		}
 		
 	}
+	
 
 }elseif ($text=='Редактор лотов') {
 
@@ -163,11 +146,11 @@ if ($reply_to_message && $chat_id == $admin_group) {
 		
 			_очистка_таблицы_ожидание();
 			
-			_start_AvtoZakazBota();
+			_старт_АвтоЗаказБота();
 			
 		}
 		
-	}else _start_AvtoZakazBota();
+	}else _старт_АвтоЗаказБота();
 	
 
 }else { 

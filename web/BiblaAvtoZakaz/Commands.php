@@ -243,7 +243,7 @@ if ($text == 'база') {
 		
 	}else throw new Exception("Не смог выложить пост..");	
 	
-	$реплика = "[абырвалг]({$результат['image_url']})\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\nглаврыба\n\nабырвалг\n\n";	
+	$реплика = "[абырвалг]({$результат['image_url']})\n\nглаврыба\n\nабырвалг";	
 	
 	$bot->sendMessage($channel_info, $реплика, markdown);
 		
@@ -274,31 +274,6 @@ if ($text == 'база') {
 	
 	$bot->sendMessage($channel_podrobno, $реплика, markdown);
 		
-}elseif ($text == 'ае') {
-	
-	$bot->sendMessage($chat_id, "Лови", null, $ReplyKeyboardMarkup);
-	
-	
-}elseif ($text == 'Вторая новая кнопка!') {
-
-	$bot->sendMessage($chat_id, "Ремув", null, $ReplyKeyboardRemove);
-
-}elseif ($text == 'Новая кнопка!') {
-
-	$bot->sendMessage($chat_id, "Ремув", null, $HideKeyboard);
-
-}elseif ($text == 'пуб') {
-
-	$bot->sendMessage($chat_id, "Текст");
-	
-	sleep(10);
-	
-	$bot->sendMessage($chat_id, "Текст с задержкой");
-	
-	exit('ok');
-
-	
-	
 }elseif ($text == 'рассылка') {
 	
 /*	
@@ -341,9 +316,6 @@ if ($text == 'база') {
 	
 	if ($результат )$bot->sendMessage($master, "Всё отлично!");
 }
-
-
-
 
 
 

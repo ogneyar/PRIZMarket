@@ -4,8 +4,6 @@ foreach ($entities as $ent) {
 	
 	if ($ent['type'] == 'text_mention') $user = $ent['user'];
 	
-	if ($ent['type']=='text_link') $urlCaption=$ent['url'];
-	
 }
 
 if ($user) {	

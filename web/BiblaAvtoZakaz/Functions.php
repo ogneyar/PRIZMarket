@@ -1,18 +1,20 @@
 ﻿<?
 /* Список всех функций:
 **
-** _start_AvtoZakazBota
+** exception_handler	-	// функция отлова исключений
+**
+** ----------------------
+** _старт_АвтоЗаказБота
 ** _инфо_автоЗаказБота
-** _отправка_лота
-** _есть_ли_лоты   // по айди клиента
-** _есть_ли_лот    // по номеру заказа
-** _последняя_публикация
-** exception_handler
-** _existence
-** _дай_айди
+** _отправка_лота	-	-	// лота (вида фото/видео с кэпшином) куда угодно
+** _вывод_списка_лотов	-	// список лотов для повтора/удаления/просмотра
+** _есть_ли_лоты	-	-	// проверка наличия по айди клиента
+** _есть_ли_лот		-	-	// проверка наличия по номеру заказа
+** _последняя_публикация	// прверка даты последней публикации
+** _дай_айди	-	-	-	// функция возврата айди по юзернейму (если есть в базе)
+** ----------------------
 **
 ** _создать
-** _вывод_списка_лотов
 ** _повтор
 ** _отправить_на_повтор
 ** _установка_времени
@@ -64,10 +66,8 @@
 ** _не_доверяет
 ** _отказать
 ** _удалить_лот
-** 
-** _возврат_лотов_для_инлайн
 **
-**
+** -----------------------------------
 ** _редактор_лотов
 ** _редакт_таблицы_маркет
 **
@@ -81,20 +81,19 @@
 ** _фото_редакт
 **
 ** _редакт_лота_на_канале_подробности
-**
+** -----------------------------------
 **
 */
 
-/* _рубль
-** _доллар
-** _евро
-** _юань
-** _гривна
-** _фунт
-** _призм*/
+// при возникновении исключения вызывается эта функция
+function exception_handler($exception) {
+	global $bot, $master;	
+	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
+	exit('ok');  	
+}
 
 // функция старта бота ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЯХ
-function _start_AvtoZakazBota() {		
+function _старт_АвтоЗаказБота() {		
 	global $bot, $table_users, $chat_id, $callback_from_first_name, $from_first_name, $HideKeyboard;	
 	_очистка_таблицы_ожидание();	
 	if (!$callback_from_first_name) $callback_from_first_name = $from_first_name;	
@@ -237,32 +236,6 @@ function _последняя_публикация() {
             if ($давно) $response = true;
 		}else $response = true;	
 	}else throw new Exception("Не смог узнать наличие лота у клиента {$callback_from_id}");	
-    return $response;
-}
-
-// при возникновении исключения вызывается эта функция
-function exception_handler($exception) {
-	global $bot, $master;	
-	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
-	exit('ok');  	
-}
-
-// Проверка наличия клиента в базе
-function _existence($table) {	
-	global $mysqli, $from_id, $from_first_name, $from_last_name, $from_username;
-    $resonse = false;	
-	$from_Uname = '';	
-    if ($from_username != '') $from_Uname = "@".$from_username;
-	$query = "SELECT * FROM {$table} WHERE id_client={$from_id}";	
-	$result = $mysqli->query($query);	
-	if ($result) {	
-		if ($result->num_rows>0) {                   
-            $arrayResult = $result->fetch_all(MYSQLI_ASSOC);
-			foreach ($arrayResult as $row) {
-				if ($row['first_name']==$from_first_name&&$row['last_name']==$from_last_name&&$row['user_name']==$from_Uname) $response = true;
-			}
-		}			
-	}else throw new Exception("Не смог узнать наличие клиента в таблице {$table}");	
     return $response;
 }
 
@@ -671,28 +644,7 @@ function _выбор_валюты() {
 	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nВыберите валюту, с которой Вы работаете, помимо PRIZM.";	
 	$bot->sendMessage($chat_id, $reply, null, $inLine);
 }
-/*
-// Если выбрана валюта
-function _рубль() {	_когда_валюта_выбрана('₽'); }
 
-// Если выбрана валюта
-function _доллар() { _когда_валюта_выбрана('$'); }
-
-// Если выбрана валюта
-function _евро() { _когда_валюта_выбрана('€'); }
-
-// Если выбрана валюта
-function _юань() { _когда_валюта_выбрана('¥'); }
-
-// Если выбрана валюта
-function _гривна() { _когда_валюта_выбрана('₴'); }
-
-// Если выбрана валюта
-function _фунт() { _когда_валюта_выбрана('£'); }
-
-// Если выбрана валюта
-function _призм() { _когда_валюта_выбрана(); }
-*/
 // Когда уже выбрана валюта
 function _когда_валюта_выбрана($валюта = null) {	
 	global $callback_from_id;	
@@ -1239,83 +1191,6 @@ function _удалить_лот($айди_клиента, $номер_лота =
 	if ($result = $mysqli->query($query)) {	
 		return true;		
 	}else throw new Exception("Не смог изменить таблицу {$table_market}");		
-}
-
-// возврат лотов из базы по номеру клиента для инлайн режима
-function _возврат_лотов_для_инлайн($id_client) {
-	global $table_market, $bot, $mysqli, $master;	
-	$response = false;	
-	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$id_client} AND id_zakaz>0";		
-	$результат = $mysqli->query($запрос);	
-	if ($результат) {		
-		if ($результат->num_rows > 0) {		
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
-			$i = 1;			
-			$InlineQueryResult = [];			
-			foreach ($результМассив as $строка) {			
-				$файлАйди = $строка['file_id'];		
-				$формат_файла = $строка['format_file'];				
-				$название = $строка['nazvanie'];
-				$ссыль_в_названии = $строка['url_nazv'];
-				$куплю_или_продам = $строка['kuplu_prodam'];							
-				$валюта = $строка['valuta'];				
-				$хештеги_города = $строка['gorod'];				
-				$юзера_имя = $строка['username'];				
-				$доверие = $строка['doverie'];
-				$категория = $строка['otdel'];								
-				$ссыль_на_подробности = $строка['url_podrobno'];										
-				$номер_лота = $строка['id_zakaz'];				
-				$photo_url = $строка['url_tgraph'];							
-				$inLine = [
-					'inline_keyboard' => [
-						[ [ 'text' => 'Подробнее', 'url' => $ссыль_на_подробности ] ]
-					]
-				];
-				$хештеги = "{$куплю_или_продам}\n\n{$категория}\n▪️";				
-				$хештеги = str_replace('_', '\_', $хештеги);				
-				$текст_после_названия = "\n▪️{$валюта}\n▪️{$хештеги_города}\n▪️{$юзера_имя}\n  лот {$номер_лота}";
-				$текст_после_названия = str_replace('_', '\_', $текст_после_названия);					
-				if ($доверие) $текст_после_названия .= "\n✅ PRIZMarket доверяет❗️"; 					
-				$текст = "{$хештеги}[{$название}]({$ссыль_в_названии}){$текст_после_названия}";					
-				if ($формат_файла == 'фото') {				
-					$InlineQueryResult = array_merge($InlineQueryResult, [
-						[
-							'type' => 'photo',
-							'id' => $id_client."_".$i,
-							'photo_url' => $photo_url,
-							'thumb_url' => $photo_url,							
-							'title' => $куплю_или_продам,
-							'description' => $название,
-							'caption' => $текст,
-							'parse_mode' => 'markdown',
-							'reply_markup' => $inLine,							
-						],
-					]);									
-				}elseif ($формат_файла == 'видео') {					
-					$Объект_файла = $bot->getFile($файлАйди);			
-					$ссыль_на_файл = $bot->fileUrl . $bot->token;						
-					$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];					
-					$InlineQueryResult = array_merge($InlineQueryResult, [
-						[						
-							'type' => 'video',
-							'id' => $id_client."_".$i,
-							'video_url' => $ссыль,
-							'mime_type' => 'video/mp4', // или 'text/html'
-							'thumb_url' => $ссыль,
-							'title' => $куплю_или_продам,					
-							'caption' => $текст,
-							'description' => $название,
-							'parse_mode' => 'markdown',
-							'reply_markup' => $inLine,								
-						],
-					]);										
-				}				
-				$i++;				
-			}			
-			$response = $InlineQueryResult;		
-		}else throw new Exception("Или нет заказа или больше одного..");		
-	}else throw new Exception("Нет такого заказа..");		
-	return $response;	
 }
 
 // отправка лота администратору для редактирования
