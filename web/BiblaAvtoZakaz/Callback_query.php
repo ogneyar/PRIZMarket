@@ -79,35 +79,46 @@ if ($callback_data=='создать'){
 	
 	
 }elseif ($callback_data=='опубликовать') {	
+	_очистка_таблицы_ожидание();
 	_вывод_лота_на_каналы($id);	
 	
+}elseif ($callback_data=='применить') {	
+	_очистка_таблицы_ожидание();
+	_отправка_лота($callback_from_id, $id, true);		
+	
 }elseif ($callback_data=='доверяет') {		
-	_запись_в_таблицу_маркет($id, 'doverie', '1');	
+	if (_есть_ли_лот($id)) {
+		_запись_в_таблицу_маркет(null, 'doverie', '1', $id);	
+	}else _запись_в_таблицу_маркет($id, 'doverie', '1');	
 	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");	
 	
 }elseif ($callback_data=='не_доверяет') {	
-	_запись_в_таблицу_маркет($id, 'doverie', '0');	
+	if (_есть_ли_лот($id)) {
+		_запись_в_таблицу_маркет(null, 'doverie', '0', $id);	
+	}else _запись_в_таблицу_маркет($id, 'doverie', '0');	
 	$bot->answerCallbackQuery($callback_query_id, "ОТМЕНА отметки доверием!");	
 	
-}elseif ($callback_data=='редактировать_название') {	
+}elseif ($callback_data=='редактировать_название') {
 	_ожидание_ввода('замена_названия', $id);
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с названием.", true);	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с названием.");	
 	
 }elseif ($callback_data=='редактировать_ссылку') {	
 	_ожидание_ввода('замена_ссылки', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новую ссылку.", true);	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новую ссылку.");	
 	
 }elseif ($callback_data=='редактировать_хештеги') {		
 	_ожидание_ввода('замена_хештегов', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с хештегами.", true);		
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с хештегами.");		
 	
 }elseif ($callback_data=='редактировать_подробности') {		
 	_ожидание_ввода('замена_подробностей', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст подробностей.", true);	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст подробностей.");	
 	
 }elseif ($callback_data=='редактировать_фото') {		
 	_ожидание_ввода('замена_фото', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.", true);	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.");	
+	
+	
 	
 }elseif ($callback_data=='отказать') {		
 	_отказать($id);	
@@ -129,12 +140,15 @@ if ($callback_data=='создать'){
 }elseif ($callback_data=='отправить_на_повтор') {	
 	_отправить_на_повтор($id);
 	
+// кнопка в начале бота для выбора лотов на удаление	
 }elseif ($callback_data=='удалить') {		
 	_вывод_списка_лотов("удаление");		
-	
+
+// вывод на экран выбранного лота с предложением потвердить удаление  
 }elseif ($callback_data=='удаление') {		
 	_удаление($id);		
-	
+
+// удаление с базы выбранного лота
 }elseif ($callback_data=='удалить_выбранный_лот') {		
 	_удалить_выбранный_лот($id);	
 		

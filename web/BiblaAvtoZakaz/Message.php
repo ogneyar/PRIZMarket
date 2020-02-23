@@ -85,109 +85,61 @@ if ($reply_to_message && $chat_id == $admin_group) {
 	$result = _ожидание_ввода();	
 	if ($result) {		
 		if ($result['ojidanie'] == 'редактор_лотов') {					
-			if ($text) {				
-				_редактор_лотов($text);				
-				_очистка_таблицы_ожидание();						
-			}			
-		}elseif ($result['ojidanie'] == 'название_редакт') {			
-			$айди_заказа = $result['last'];			
-			if ($text) {				
-				$text = str_replace("'", "\'", $text);
-				$text = str_replace("`", "\`", $text);				
-				//_редакт_таблицы_маркет($айди_заказа, 'nazvanie', $text);				
-				_запись_в_таблицу_маркет(null, 'nazvanie', $text, $айди_заказа);
-				_очистка_таблицы_ожидание();				
-				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
-				$bot->sendMessage($chat_id, $text);							
-			}						
-		}elseif ($result['ojidanie'] == 'ссылку_редакт') {			
-			$айди_заказа = $result['last'];			
-			if ($text) {			
-				//_редакт_таблицы_маркет($айди_заказа, 'url_nazv', $text);	
-				_запись_в_таблицу_маркет(null, 'url_nazv', $text, $айди_заказа);
-				_очистка_таблицы_ожидание();				
-				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
-				$bot->sendMessage($chat_id, $text);							
-			}						
-		}elseif ($result['ojidanie'] == 'хештеги_редакт') {			
-			$айди_заказа = $result['last'];			
-			if ($text) {			
-				//_редакт_таблицы_маркет($айди_заказа, 'gorod', $text);	
-				_запись_в_таблицу_маркет(null, 'gorod', $text, $айди_заказа);
-				_очистка_таблицы_ожидание();				
-				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
-				$bot->sendMessage($chat_id, $text);							
-			}						
-		}elseif ($result['ojidanie'] == 'подробности_редакт') {			
-			$айди_заказа = $result['last'];			
-			if ($text) {				
-				$text = str_replace("'", "\'", $text);
-				$text = str_replace("`", "\`", $text);			
-				//_редакт_таблицы_маркет($айди_заказа, 'podrobno', $text);
-				_запись_в_таблицу_маркет(null, 'podrobno', $text, $айди_заказа);
-				_очистка_таблицы_ожидание();				
-				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);
-				$bot->sendMessage($chat_id, $text);							
-			}						
-		}elseif ($result['ojidanie'] == 'фото_редакт') {			
-			$айди_заказа = $result['last'];			
-			if ($photo) {			
-				//_редакт_таблицы_маркет($айди_заказа, 'file_id', $file_id);		
-				_запись_в_таблицу_маркет(null, 'file_id', $text, $айди_заказа);
-				_очистка_таблицы_ожидание();				
-				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
-				$Объект_файла = $bot->getFile($file_id);				
-				$ссыль_на_файл = $bot->fileUrl . $bot->token;						
-				$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];				
-				$результат = $imgBB->upload($ссыль);									
-				if ($результат) {								
-					$imgBB_url = $результат['url'];		
-					//_редакт_таблицы_маркет($айди_заказа, 'url_tgraph', $imgBB_url);	
-					_запись_в_таблицу_маркет(null, 'url_tgraph', $text, $айди_заказа);
-				}else throw new Exception("Не смог сделать редакт imgBB_url");	
-				//_редакт_таблицы_маркет($айди_заказа, 'format_file', 'фото');		
-				_запись_в_таблицу_маркет(null, 'format_file', $text, $айди_заказа);
+			if ($text) {
+				_очистка_таблицы_ожидание();
+				_отправка_лота_админам($text);
 			}			
 		}elseif ($result['ojidanie'] == 'замена_названия') {			
-			$айди_клиента = $result['last'];			
+			$номер = $result['last'];					
 			if ($text) {				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace("`", "\`", $text);
-				_запись_в_таблицу_маркет($айди_клиента, 'nazvanie', $text);				
+				if (_есть_ли_лот($номер)) {
+					_запись_в_таблицу_маркет(null, 'nazvanie', $text, $номер);	
+				}else _запись_в_таблицу_маркет($номер, 'nazvanie', $text);				
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
 				$bot->sendMessage($chat_id, $text);							
 			}						
 		}elseif ($result['ojidanie'] == 'замена_ссылки') {			
-			$айди_клиента = $result['last'];			
+			$номер = $result['last'];			
 			if ($text) {			
-				_запись_в_таблицу_маркет($айди_клиента, 'url_nazv', $text);				
+				if (_есть_ли_лот($номер)) {
+					_запись_в_таблицу_маркет(null, 'url_nazv', $text, $номер);	
+				}else _запись_в_таблицу_маркет($номер, 'url_nazv', $text);				
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);
 				$bot->sendMessage($chat_id, $text);							
 			}						
 		}elseif ($result['ojidanie'] == 'замена_хештегов') {			
-			$айди_клиента = $result['last'];			
+			$номер = $result['last'];			
 			if ($text) {			
-				_запись_в_таблицу_маркет($айди_клиента, 'gorod', $text);				
+				if (_есть_ли_лот($номер)) {
+					_запись_в_таблицу_маркет(null, 'gorod', $text, $номер);	
+				}else _запись_в_таблицу_маркет($номер, 'gorod', $text);				
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
 				$bot->sendMessage($chat_id, $text);						
 			}						
 		}elseif ($result['ojidanie'] == 'замена_подробностей') {			
-			$айди_клиента = $result['last'];			
+			$номер = $result['last'];			
 			if ($text) {				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace("`", "\`", $text);			
-				_запись_в_таблицу_маркет($айди_клиента, 'podrobno', $text);				
+				if (_есть_ли_лот($номер)) {
+					_запись_в_таблицу_маркет(null, 'podrobno', $text, $номер);	
+				}else _запись_в_таблицу_маркет($номер, 'podrobno', $text);				
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
 				$bot->sendMessage($chat_id, $text);					
 			}						
 		}elseif ($result['ojidanie'] == 'замена_фото') {			
-			$айди_клиента = $result['last'];			
-			if ($photo) {			
-				_запись_в_таблицу_маркет($айди_клиента, 'file_id', $file_id);			
+			$номер = $result['last'];			
+			if ($photo) {	
+				$есть_ли_лот = _есть_ли_лот($номер);
+				if ($есть_ли_лот) {
+					_запись_в_таблицу_маркет(null, 'file_id', $text, $номер);	
+				}else _запись_в_таблицу_маркет($номер, 'file_id', $file_id);			
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
 				$Объект_файла = $bot->getFile($file_id);			
@@ -196,7 +148,9 @@ if ($reply_to_message && $chat_id == $admin_group) {
 				$результат = $imgBB->upload($ссыль);									
 				if ($результат) {								
 					$imgBB_url = $результат['url'];		
-					_запись_в_таблицу_маркет($айди_клиента, 'url_tgraph', $imgBB_url);	
+					if ($есть_ли_лот) {
+						_запись_в_таблицу_маркет(null, 'url_tgraph', $text, $номер);	
+					}else _запись_в_таблицу_маркет($номер, 'url_tgraph', $imgBB_url);	
 				}else throw new Exception("Не смог сделать imgBB_url");					
 			}						
 		// Если ожидается ввод названия
