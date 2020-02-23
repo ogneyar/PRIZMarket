@@ -52,12 +52,6 @@
 **
 ** _отправка_лота_админам
 **
-** _редактировать_название
-** _редактировать_ссылку
-** _редактировать_хештеги
-** _редактировать_подробности
-** _редактировать_фото
-**
 ** _вывод_лота_на_каналы
 ** _публикация_на_канале_медиа
 ** _отправка_сообщений_инфоботу
@@ -967,41 +961,6 @@ function _отправка_лота_админам() {
 			}		
 		}else throw new Exception("Или нет заказа или больше одного..");	
 	}else throw new Exception("Нет такого заказа..");	
-}
-
-// замена админом названия лота
-function _редактировать_название($id_client) {
-	global $bot, $callback_query_id;
-	_ожидание_ввода('замена_названия', $id_client);
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с названием.", true);		
-}
-
-// замена админом ссылки в названии лота
-function _редактировать_ссылку($id_client) {
-	global $bot, $callback_query_id;
-	_ожидание_ввода('замена_ссылки', $id_client);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новую ссылку.", true);		
-}
-
-// замена админом хештегов
-function _редактировать_хештеги($id_client) {
-	global $bot, $callback_query_id;
-	_ожидание_ввода('замена_хештегов', $id_client);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с хештегами.", true);		
-}
-
-// замена админом текста с подробностями
-function _редактировать_подробности($id_client) {
-	global $bot, $callback_query_id;
-	_ожидание_ввода('замена_подробностей', $id_client);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст подробностей.", true);		
-}
-
-// замена админом фото у лота
-function _редактировать_фото($id_client) {
-	global $bot, $callback_query_id;
-	_ожидание_ввода('замена_фото', $id_client);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.", true);		
 }
 
 // вывод на канал подробности уже готового лота
