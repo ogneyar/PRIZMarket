@@ -68,7 +68,7 @@ if (mysqli_connect_errno()) {
 	}
 	
 	if ($chat_type == 'private' && $reply_markup['inline_keyboard'][0][0]['text'] == 'Подробнее') {
-		include_once 'BiblaAvtoZakaz/Перенос_данных.php';
+		include_once 'BiblaAvtoZakaz/Data_transfer.php';
 		exit('ok');
 	}
 
