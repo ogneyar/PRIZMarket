@@ -19,7 +19,7 @@ if (strpos($text, ":")!==false) {
 }
 // Если было ответное сообщение (reply_to_message) в админке 
 // то отправляется это сообщение клиенту, по его юзернейму
-if ($reply_to_message && ($chat_id == $admin_group || $chat_id == $master) {	
+if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $chat_id == $master)) {	
 	if (!$reply_caption) $reply_caption = $reply_text;		
 	$номер_строки = strpos($reply_caption, '@');		
 	if ($номер_строки >= 0) {				
