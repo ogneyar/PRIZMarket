@@ -10,7 +10,10 @@ $секунда = date("s", $UNIXtime_Moscow);
 if ($text == 'старт') {	
 	if ($id_bota == '1098126237') {		
 		$запуск = _запуск_таймера('старт');	
-		if ($запуск) $bot->sendMessage($channel_info, "?".$время);			
+		if ($запуск) {
+			$bot->sendMessage($channel_info, "#".$время);			
+			$bot->sendMessage($channel_info, "?");			
+		}
 	}
 	exit('ok');
 }elseif ($text == 'стоп' && $id_bota == '1098126237') {	
