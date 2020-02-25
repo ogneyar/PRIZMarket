@@ -19,6 +19,7 @@
     $tokenZakaz = getenv('TOKEN_ZAKAZ');
 	$tokenAvtoZakaz = getenv('TOKEN_AVTOZAKAZ');
 	$tokenTimer = getenv('TOKEN_TIMER');
+	$tokenTimer2 = getenv('TOKEN_TIMER_2');
 	
 	$cmc_api_key = getenv('CMC_PRO_API_KEY');
 	$tokenTGraph = getenv('TOKEN_TELEGRAPH');
