@@ -10,7 +10,7 @@ function _старт_ТаймерБота() {
 
 
 // запись в таблицу информации о страрте или остановке таймера
-function _запуск_таймера() {
+function _запуск_таймера($команда = null) {
 	
 	global $mysqli;
 	
@@ -26,17 +26,47 @@ function _запуск_таймера() {
 		
 		if ($количество > 0) {
 			
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			if ($команда == 'стоп') {
+				
+				$запрос = "DELETE FROM `variables` WHERE id_bota='8' AND nazvanie='таймер'";
+				
+				$результат = $mysqli->query($запрос);
+				
+				if ($результат) $ответ = true;
+				
+			}elseif ($команда == 'старт') {
+				
+				$запрос = "UPDATE `variables` SET soderjimoe='старт' WHERE id_bota='8' AND nazvanie='таймер'";
+				
+				$результат = $mysqli->query($запрос);
+				
+				if ($результат) $ответ = true;
+				
+			}else {
 			
-			$ответ = $результМассив[0]['soderjimoe'];
+				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 			
+				$ответ = $результМассив[0]['soderjimoe'];
+				
+			}
+		
 		}else {
 			
+			if ($команда == 'старт') {
+				
+				$запрос = "INSERT INTO `variables` VALUES ('8', 'таймер', 'старт', '', '')";
+				
+				$результат = $mysqli->query($запрос);
+				
+				if ($результат) $ответ = true;
+				
+			}
 			
-		
 		}
 		
 	}
+	
+	return $ответ;
 	
 }
 
