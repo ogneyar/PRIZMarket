@@ -1,10 +1,16 @@
 <?
-$UNIXtime = time() + $три_часа;	
-$переведённое_время = date("d.m.Y H:i:s", $UNIXtime);
+$UNIXtime = time();
+$UNIXtime_Moscow = $UNIXtime + $три_часа;	
+$дата_и_время = date("d.m.Y H:i:s", $UNIXtime_Moscow);
+$дата = date("d.m.Y", $UNIXtime_Moscow);
+$время = date("H:i:s", $UNIXtime_Moscow);
+$час = date("H", $UNIXtime_Moscow);
+$минута = date("i", $UNIXtime_Moscow);
+$секунда = date("s", $UNIXtime_Moscow);
 if ($text == 'старт') {	
 	if ($id_bota == '1098126237') {		
 		$запуск = _запуск_таймера('старт');	
-		if ($запуск) $bot->sendMessage($channel_info, "?".$переведённое_время);			
+		if ($запуск) $bot->sendMessage($channel_info, "?".$время);			
 	}
 	exit('ok');
 }elseif ($text == 'стоп' && $id_bota == '1098126237') {	
@@ -13,16 +19,26 @@ if ($text == 'старт') {
 		if ($запуск) $bot->sendMessage($channel_info, "Остановил.");			
 	}	
 	exit('ok');		
-}else $запуск = _запуск_таймера();	
+}else $запуск = false;
+$запуск = _запуск_таймера();
 if ($запуск == 'старт') {	
-	$bot->sendMessage($channel_info, $переведённое_время);
-	$ожидание = 19;
+	$пора_показать_время = false;
+	if ($секунда >= 40) {
+		$ожидание = 60 - $секунда; // если 40 ожидание 20 секунд если 59, то 1 секунду
+		$пора_показать_время = true;
+	}elseif ($секунда >= 20) {
+		$ожидание = 40 - $секунда; // если 20 ожидание 20 секунд если 39, то 1 секунду
+	}else {
+		$ожидание = 20 - $секунда; // если 0 ожидание 20 секунд если 19, то 1 секунду
+	}	
 	sleep($ожидание);
-	$переведённое_время = date("d.m.Y H:i:s", $UNIXtime+$ожидание);
-	$bot->sendMessage($channel_info, $переведённое_время);	
-	$UNIXtime = time() + $три_часа;
-	$переведённое_время = date("d.m.Y H:i:s", $UNIXtime);	
-	$bot->sendMessage($channel_info, "?Риал тайм - ".$переведённое_время);
+	if ($пора_показать_время) {
+		$UNIXtime = time();
+		$UNIXtime_Moscow = $UNIXtime + $три_часа;	
+		$время = date("H:i:s", $UNIXtime_Moscow);
+		$bot->sendMessage($channel_info, "#".$время);	
+	}
+	$bot->sendMessage($channel_info, "?");		
 	exit('ok');
 }
 
