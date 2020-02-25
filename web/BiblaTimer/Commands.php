@@ -34,6 +34,8 @@ if ($text == 'таймер') {
 	}
 	
 	$bot->sendMessage($master, $ответ);
+	
+	$bot->sendMessage($master, "хз");
 
 
 }elseif ($text == 'марк') {
