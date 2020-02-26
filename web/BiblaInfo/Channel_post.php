@@ -1,6 +1,6 @@
 <?
 
-if ($chat_id == $channel_info) {
+if ($chat_id == $channel_info && $text != '?') {
 				
 	$result = $bot->getChat($text);
 		
