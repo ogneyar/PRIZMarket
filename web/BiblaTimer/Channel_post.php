@@ -8,7 +8,7 @@ $час = date("H", $UNIXtime_Moscow);
 $минута = date("i", $UNIXtime_Moscow);
 $секунда = date("s", $UNIXtime_Moscow);
 if ($text == 'старт') {	
-	if ($id_bota == '1098126237') {		
+	if ($id_bota == '1098126237' || $id_bota == '1145916719') {		
 		$запуск = _запуск_таймера('старт');	
 		if ($запуск) {
 			$bot->sendMessage($channel_info, "#".$время);			
@@ -16,8 +16,8 @@ if ($text == 'старт') {
 		}
 	}
 	exit('ok');
-}elseif ($text == 'стоп' && $id_bota == '1098126237') {	
-	if ($id_bota == '1098126237') {	
+}elseif ($text == 'стоп') {	
+	if ($id_bota == '1098126237' || $id_bota == '1145916719') {	
 		$запуск = _запуск_таймера('стоп');	
 		if ($запуск) $bot->sendMessage($channel_info, "Остановил.");			
 	}	
