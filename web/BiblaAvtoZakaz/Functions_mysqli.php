@@ -15,8 +15,11 @@
 ** _есть_ли_у_клиента_альбом
 ** _есть_ли_такой_медиа_альбом
 ** _запись_в_таблицу_медиагрупа
-** _установка_времени
-**
+** _установка_времени	-	-	// установка времени в таблицу маркет, когда была сделана заявка
+** _ожидание_публикации
+** _выбор_времени_публикации	// выбор времени публикации лота, проверка наличия очереди
+** _удаление_лота_из_очереди
+** _уведомление_о_публикации
 */
 
 // Функция для записи данных в таблицу маркет
@@ -153,7 +156,8 @@ function _отправка_лота($куда, $номер_лота, $админ
 					$публикация = $bot->sendPhoto($куда, $файлАйди, $текст, markdown, $inLine);					
 				}elseif ($формат_файла == 'видео') {						
 					$публикация = $bot->sendVideo($куда, $файлАйди, $текст, markdown, $inLine);					
-				}						
+				}				
+				if ($публикация) return $публикация;
 			}		
 		}else throw new Exception("Или нет заказа или больше одного..");	
 	}else throw new Exception("Нет такого заказа..");	
@@ -345,6 +349,102 @@ function _установка_времени($номер_лота) {
 	if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");	
 	return true;
 }
+
+// функция постановки лота в ожидание публикации
+function _ожидание_публикации($номер_лота = null) {		
+	global $bot, $id_bota, $mysqli, $callback_from_id, $from_id, $channel_market;		
+	if (!$callback_from_id) $callback_from_id = $from_id;				
+	$ответ = false;
+	if ($номер_лота) {		
+		$запрос ="SELECT soderjimoe FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND soderjimoe='{$номер_лота}'";				
+		$результат = $mysqli->query($запрос);
+		if ($результат) {			
+			if ($результат->num_rows > 0) {			
+				$bot->sendMessage($callback_from_id, "Такой заказ в ожидании на публикацию уже есть!");			
+			}else {
+				$время_публикации = _выбор_времени_публикации();
+				$запрос ="INSERT INTO `variables` (
+					`id_bota`, `nazvanie`, `soderjimoe`, `opisanie`, `vremya`
+				) VALUES (
+					'{$id_bota}', 'номер_лота', '{$номер_лота}', '', '{$время_публикации}'
+				)";						
+				$результат = $mysqli->query($запрос);								
+				if ($результат) {
+					$ответ = $время_публикации;
+				}else throw new Exception("Не смог добавить запись в таблицу `variables` (_ожидание_публикации)");				
+			}			
+		}else throw new Exception("Не смог узнать наличие записи в таблице `variables` (_ожидание_публикации)");			
+	}else {
+		$UNIXtime = time();
+		$UNIXtime_Moscow = $UNIXtime + $три_часа;	
+		$запрос ="SELECT soderjimoe FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND vremya<'{$UNIXtime_Moscow}'";				
+		$результат = $mysqli->query($запрос);				
+		if ($результат) {			
+			if ($результат->num_rows > 0) {			
+				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+				foreach($результМассив as $строка) {
+					$результат = _отправка_лота($channel_market, $строка['soderjimoe'], true);
+					if ($результат) {
+						_удаление_лота_из_очереди($строка['soderjimoe']);
+						_уведомление_о_публикации($строка['soderjimoe'], $результат['message_id']);
+					}
+				}				
+			}
+		}		
+	}	
+	return $ответ;	
+}
+
+// функция проверки наличия лотов в ожидании, если есть, то показывает время последнего в очереди
+function _выбор_времени_публикации() {		}
+
+// функция удаления лота из очереди ожидания публикации
+function _удаление_лота_из_очереди($номер_лота) {
+	global $id_bota, $mysqli;
+	$запрос ="DELETE FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND soderjimoe='{$номер_лота}'";
+	if ($mysqli->query($запрос)) return true;
+}
+
+// уведомление клиента о совершённой публикации и отсылка ему ссылки на опубликованный лот
+function _уведомление_о_публикации($номер_лота, $номер_сообщения) {
+	global $bot, $id_bota, $mysqli, $table_market, $master;
+	$ссылка = "https://t.me/prizm_market/".$номер_сообщения;
+	$запрос ="SELECT id_client, username FROM {$table_market} WHERE id_zakaz={$номер_лота}";
+	$результат = $mysqli->query($запрос);
+	if ($результат) {
+		if ($результат->num_rows > 0) {
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			$bot->sendMessage($результМассив[0]['id_client'], $результМассив[0]['username']." Ваш лот опубликован.\n\n{$ссылка}");	
+		}else $bot->sendMessage($master, "Не смог найти лот {$номер_лота} (_уведомление_о_публикации)");
+	}else $bot->sendMessage($master, "Не смог узнать есть ли лот {$номер_лота} (_уведомление_о_публикации)");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>
