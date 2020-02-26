@@ -1,7 +1,7 @@
 <?
 $number = stripos($text, '#');
 
-if ($number == false $number != '0') {
+if ($number == false || $number != '0') {
 
 	if ($chat_id == $channel_info && $text != '?') {
 					
