@@ -351,7 +351,7 @@ function _установка_времени($номер_лота) {
 	if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");	
 	return true;
 }
-/*
+
 // функция постановки лота в ожидание публикации
 function _ожидание_публикации($номер_лота = null) {		
 	global $bot, $id_bota, $mysqli, $callback_from_id, $from_id, $channel_market, $admin_group, $master;		
@@ -400,10 +400,10 @@ function _ожидание_публикации($номер_лота = null) {
 	}	
 	return $ответ;	
 }
-*/
+
 // функция проверки наличия лотов в ожидании, если есть, то показывает время последнего в очереди
 function _выбор_времени_публикации() {
-	global $mysqli, $id_bota, $три_часа, master, $bot;
+	global $mysqli, $id_bota, $три_часа, $master, $bot;
 	$ответ = false;
 	$запрос ="SELECT MAX(vremya) FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота'";			
 	$результат = $mysqli->query($запрос);
