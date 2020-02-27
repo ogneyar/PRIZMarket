@@ -2,7 +2,7 @@
 $number = stripos($text, '#');
 
 if ($number != false && $number == '0') {
-
+/*
 	$UNIXtime = time();
 	$UNIXtime_Moscow = $UNIXtime + $три_часа;	
 	$дата_и_время = date("d.m.Y H:i:s", $UNIXtime_Moscow);
@@ -11,7 +11,7 @@ if ($number != false && $number == '0') {
 	$час = date("H", $UNIXtime_Moscow);
 	$минута = date("i", $UNIXtime_Moscow);
 	$секунда = date("s", $UNIXtime_Moscow);
-	
+*/	
 	_ожидание_публикации();
 
 }else {
