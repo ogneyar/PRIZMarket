@@ -389,7 +389,8 @@ function _ожидание_публикации($номер_лота = null) {
 					$результат = _отправка_лота($channel_market, $строка['soderjimoe'], true);
 					if ($результат) {
 						_удаление_лота_из_очереди($строка['soderjimoe']);
-						_уведомление_о_публикации($строка['soderjimoe'], $результат['message_id']);
+						$ссылка = "https://t.me/{$результат['chat']['username']}/{$результат['message_id']}";
+						_уведомление_о_публикации($строка['soderjimoe'], $ссылка);
 						$bot->sendMessage($admin_group, "Лот {$строка['soderjimoe']} опубликован.");
 					}else $bot->sendMessage($master, "Не смог отправить лот {$строка['soderjimoe']} (_ожидание_публикации)");
 				}				
@@ -451,15 +452,14 @@ function _удаление_лота_из_очереди($номер_лота) {
 }
 
 // уведомление клиента о совершённой публикации и отсылка ему ссылки на опубликованный лот
-function _уведомление_о_публикации($номер_лота, $номер_сообщения) {
-	global $bot, $id_bota, $mysqli, $table_market, $master;
-	$ссылка = "https://t.me/prizm_market/".$номер_сообщения;
+function _уведомление_о_публикации($номер_лота, $ссылка) {
+	global $bot, $id_bota, $mysqli, $table_market, $master;	
 	$запрос ="SELECT id_client, username FROM {$table_market} WHERE id_zakaz={$номер_лота}";
 	$результат = $mysqli->query($запрос);
 	if ($результат) {
 		if ($результат->num_rows > 0) {
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
-			$bot->sendMessage($результМассив[0]['id_client'], $результМассив[0]['username']." Ваш лот опубликован.\n\n{$ссылка}");	
+			$bot->sendMessage($результМассив[0]['id_client'], $результМассив[0]['username']." Ваш лот опубликован.\n\n{$ссылка}\n\n/start");	
 		}else $bot->sendMessage($master, "Не смог найти лот {$номер_лота} (_уведомление_о_публикации)");
 	}else $bot->sendMessage($master, "Не смог узнать есть ли лот {$номер_лота} (_уведомление_о_публикации)");
 }
