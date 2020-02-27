@@ -559,6 +559,8 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 				$результат = $bot->sendMessage($id_client, $сообщение);		
 				if ($результат) $bot->sendMessage($chat_id, $сообщение);		
 				
+				$bot->sendMessage($master, "четыре");
+				
 			}else throw new Exception("Не отправился лот на канал Подробности..");			
 		}else throw new Exception("Или нет заказа или больше одного..");				
 	}else throw new Exception("Нет такого заказа..");	
