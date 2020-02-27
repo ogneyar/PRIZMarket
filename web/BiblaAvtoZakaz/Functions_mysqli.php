@@ -354,7 +354,7 @@ function _установка_времени($номер_лота) {
 
 // функция постановки лота в ожидание публикации
 function _ожидание_публикации($номер_лота = null) {		
-	global $bot, $id_bota, $mysqli, $callback_from_id, $from_id, $channel_market;		
+	global $bot, $id_bota, $mysqli, $callback_from_id, $from_id, $channel_market, $admin_group;		
 	if (!$callback_from_id) $callback_from_id = $from_id;				
 	$ответ = false;
 	if ($номер_лота) {		
@@ -389,6 +389,7 @@ function _ожидание_публикации($номер_лота = null) {
 					if ($результат) {
 						_удаление_лота_из_очереди($строка['soderjimoe']);
 						_уведомление_о_публикации($строка['soderjimoe'], $результат['message_id']);
+						$bot->sendMessage($admin_group, "Лот {$строка['soderjimoe']} опубликован.");
 					}
 				}				
 			}
