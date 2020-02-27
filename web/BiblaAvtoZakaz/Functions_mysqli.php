@@ -354,7 +354,7 @@ function _установка_времени($номер_лота) {
 
 // функция постановки лота в ожидание публикации
 function _ожидание_публикации($номер_лота = null) {		
-	global $bot, $id_bota, $mysqli, $callback_from_id, $from_id, $channel_market, $admin_group, $master;		
+	global $bot, $id_bota, $mysqli, $callback_from_id, $from_id, $channel_market, $admin_group, $master, $три_часа;		
 	if (!$callback_from_id) $callback_from_id = $from_id;				
 	$ответ = false;
 	if ($номер_лота) {
@@ -377,6 +377,7 @@ function _ожидание_публикации($номер_лота = null) {
 			}			
 		}else throw new Exception("Не смог узнать наличие записи в таблице `variables` (_ожидание_публикации)");			
 	}else {
+		//$bot->sendMessage($master, "еее");		
 		$UNIXtime = time();
 		$UNIXtime_Moscow = $UNIXtime + $три_часа;	
 		$запрос ="SELECT soderjimoe FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND vremya<{$UNIXtime_Moscow}";				
