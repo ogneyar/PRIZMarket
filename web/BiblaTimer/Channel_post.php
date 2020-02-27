@@ -39,7 +39,7 @@ if ($запуск == 'старт') {
 		$UNIXtime = time();
 		$UNIXtime_Moscow = $UNIXtime + $три_часа;	
 		$время = date("H:i:s", $UNIXtime_Moscow);
-		sleep(2);
+		sleep(3);
 		$bot->sendMessage($channel_info, "#".$время);	
 	}
 	$bot->sendMessage($channel_info, "?");		
