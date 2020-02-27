@@ -357,7 +357,7 @@ function _ожидание_публикации($номер_лота = null) {
 	global $bot, $id_bota, $mysqli, $callback_from_id, $from_id, $channel_market, $admin_group, $master;		
 	if (!$callback_from_id) $callback_from_id = $from_id;				
 	$ответ = false;
-	if ($номер_лота) {		
+	if ($номер_лота) {
 		$запрос ="SELECT soderjimoe FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND soderjimoe='{$номер_лота}'";				
 		$результат = $mysqli->query($запрос);
 		if ($результат) {			
@@ -396,7 +396,7 @@ function _ожидание_публикации($номер_лота = null) {
 					}
 				}				
 			}
-		}		
+		}else throw new Exception("Не смог осуществить запрос к таблице `variables` (_ожидание_публикации)");		
 	}	
 	return $ответ;	
 }
@@ -437,7 +437,7 @@ function _выбор_времени_публикации() {
 			
 			$bot->sendMessage($master, "два");
 		}
-	}
+	}else throw new Exception("Не смог сделать запрос к таблице `variables` (_выбор_времени_публикации)");
 	return $ответ;
 }
 
