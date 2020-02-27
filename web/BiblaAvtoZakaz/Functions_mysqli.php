@@ -351,7 +351,7 @@ function _установка_времени($номер_лота) {
 	if (!$result) throw new Exception("Не смог обновить запись в таблице {$table_market}");	
 	return true;
 }
-
+/*
 // функция постановки лота в ожидание публикации
 function _ожидание_публикации($номер_лота = null) {		
 	global $bot, $id_bota, $mysqli, $callback_from_id, $from_id, $channel_market, $admin_group, $master;		
@@ -494,7 +494,7 @@ function _обнулить_секунды($юникс_время) {
 
 
 
-
+*/
 
 
 
