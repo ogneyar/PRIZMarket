@@ -487,7 +487,7 @@ function _нет_ли_брони($время) {		// если нет брОни, 
 	$запрос ="SELECT * FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='бронь' AND vremya='{$время}'";
 	$результат = $mysqli->query($запрос);
 	if ($результат) {			
-		if ($результат->num_rows == 0) $ответ = "свободно"
+		if ($результат->num_rows == 0) $ответ = "свободно";
 	}else throw new Exception("Не смог узнать наличие записи в таблице `variables` (_нет_ли_брони)");		
 	return $ответ;	
 }
