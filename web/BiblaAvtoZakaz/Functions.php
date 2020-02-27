@@ -260,7 +260,8 @@ function _на_публикацию() {
 	global $callback_query_id, $callback_from_id, $from_id, $bot, $message_id;	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
 	$давно = _последняя_публикация();	
-	if ($давно) {		
+	if ($давно) {	
+		$bot->answerCallbackQuery($callback_query_id, "Лот отправлен на публикацию!", true);
 		$inLine = [
 			'inline_keyboard' => [
 				[ [ 'text' => 'Отправлено', 'callback_data' => 'отправлено' ] ],
