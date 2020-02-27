@@ -437,10 +437,10 @@ function _удалить_выбранный_лот($номер_лота) {
 	$запрос = "DELETE FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";	
 	$результат = $mysqli->query($запрос);	
 	if ($результат) {		
-		_старт_АвтоЗаказБота();		
-		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!", true);		
+		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!", true);	
+		_старт_АвтоЗаказБота();
 		$запрос = "DELETE FROM {$таблица_медиагруппа} WHERE id='{$номер_лота}'";	
-		$результат = $mysqli->query($запрос);	
+		$результат = $mysqli->query($запрос);			
 	}else {
 		$bot->answerCallbackQuery($callback_query_id, "Не смог удалить лот..");
 		throw new Exception("Не смог удалить лот.. (_удалить_выбранный_лот)");	
