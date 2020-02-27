@@ -406,15 +406,32 @@ function _повтор($номер_лота) {
 
 // функция вывода АДМИНАМ на экран лота, с просьбой о необходимости повторить
 function _отправить_на_повтор($номер_лота) {	
-	global $admin_group, $bot, $callback_from_id, $callback_query_id;	
+	global $admin_group, $bot, $mysqli, $callback_from_id, $callback_query_id, $table_market;	
 	$давно = _последняя_публикация();	
 	if ($давно) {	
+		$время = _ожидание_публикации($номер_лота);
+		$время_публикации = date("H:i", $время);
+		$запрос ="SELECT id_client, username FROM {$table_market} WHERE id_zakaz={$номер_лота}";
+		$результат = $mysqli->query($запрос);
+		if ($результат) {
+			if ($результат->num_rows > 0) {
+				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+				$id_client = $результМассив[0]['id_client'];
+				$юзера_имя = $результМассив[0]['username'];
+			}else throw new Exception("Не смог найти лот {$номер_лота} (_отправить_на_повтор)");
+		}else throw new Exception("Не смог узнать есть ли лот {$номер_лота} (_отправить_на_повтор)");		
+		$сообщение = "{$юзера_имя}  лот {$номер_лота}\nПовтор публикации в {$время_публикации} мск";
+		$результат = $bot->sendMessage($id_client, $сообщение);		
+		if ($результат) $bot->sendMessage($admin_group, $сообщение);	
+/*		
 		_отправка_лота($admin_group, $номер_лота, true);			
 		_установка_времени($номер_лота);		
 		$юзер_неим = _узнать_имя_по_номеру_лота($номер_лота);				
 		$bot->sendMessage($admin_group, "{$юзер_неим} просит: Повторите публикацию, будьте так любезны, заранее благодарю.");		
 		$bot->sendMessage($callback_from_id, "|\n|\n|\nОтправил, ожидайте ответ.");	
 		$bot->answerCallbackQuery($callback_query_id, "Ожидайте!");	
+*/		
+		
 	}else {		
 		$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);		
 		exit('ok');
