@@ -535,9 +535,9 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 			
 			//	_запись_в_таблицу_маркет($id_client, 'status', "одобрен");	
 				
-				$bot->sendMessage($master, "пять");
+			//	$bot->sendMessage($master, "пять");
 				
-/*				
+			
 				$inLine = [ 'inline_keyboard' => [
 					[ [ 'text' => 'Подробнее', 'url' => $ссыль_на_подробности ] ]
 				] ];									
@@ -554,19 +554,19 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 				if ($публикация) {										
 					_запись_в_таблицу_маркет($id_client, 'status', "одобрен");	
 				}else throw new Exception("Не смог отправить лот в админку.");		
-*/
 
+/*
 				$время = _ожидание_публикации($id_zakaz);
 				
-				$bot->sendMessage($master, "шесть");
+			//	$bot->sendMessage($master, "шесть");
 				
 				$время_публикации = date("H:i", $время);
 				$сообщение = "{$юзера_имя}\nПубликация лота {$id_zakaz} в {$время_публикации} мск";
 				$результат = $bot->sendMessage($id_client, $сообщение);		
 				if ($результат) $bot->sendMessage($chat_id, $сообщение);		
 				
-				$bot->sendMessage($master, "четыре");
-				
+			//	$bot->sendMessage($master, "четыре");
+*/				
 			}else throw new Exception("Не отправился лот на канал Подробности..");			
 		}else throw new Exception("Или нет заказа или больше одного..");				
 	}else throw new Exception("Нет такого заказа..");	
