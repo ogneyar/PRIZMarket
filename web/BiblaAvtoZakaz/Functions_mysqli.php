@@ -399,7 +399,7 @@ function _ожидание_публикации($номер_лота = null) {
 
 // функция проверки наличия лотов в ожидании, если есть, то показывает время последнего в очереди
 function _выбор_времени_публикации() {
-	global $mysqli $id_bota;
+	global $mysqli, $id_bota;
 	$ответ = false;
 	$запрос ="SELECT MAX(vremya) FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота'";			
 	$результат = $mysqli->query($запрос);
