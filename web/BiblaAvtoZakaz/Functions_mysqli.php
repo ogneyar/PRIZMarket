@@ -379,7 +379,7 @@ function _ожидание_публикации($номер_лота = null) {
 	}else {
 		$UNIXtime = time();
 		$UNIXtime_Moscow = $UNIXtime + $три_часа;	
-		$запрос ="SELECT soderjimoe FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND vremya<'{$UNIXtime_Moscow}'";				
+		$запрос ="SELECT soderjimoe FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND vremya<{$UNIXtime_Moscow}";				
 		$результат = $mysqli->query($запрос);				
 		if ($результат) {			
 			if ($результат->num_rows > 0) {			
@@ -390,7 +390,7 @@ function _ожидание_публикации($номер_лота = null) {
 						_удаление_лота_из_очереди($строка['soderjimoe']);
 						_уведомление_о_публикации($строка['soderjimoe'], $результат['message_id']);
 						$bot->sendMessage($admin_group, "Лот {$строка['soderjimoe']} опубликован.");
-					}
+					}else $bot->sendMessage($master, "Не смог отправить лот {$строка['soderjimoe']} (_ожидание_публикации)");
 				}				
 			}
 		}else throw new Exception("Не смог осуществить запрос к таблице `variables` (_ожидание_публикации)");	

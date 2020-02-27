@@ -13,7 +13,7 @@ if ($number !== false && $number == '0') {
 	$секунда = date("s", $UNIXtime_Moscow);
 */	
 
-	$bot->sendMessage($master, "еее");
+//	$bot->sendMessage($master, "еее");
 	_ожидание_публикации();
 
 }else {
