@@ -362,7 +362,8 @@ function _ожидание_публикации($номер_лота = null) {
 		$результат = $mysqli->query($запрос);
 		if ($результат) {
 			if ($результат->num_rows > 0) {			
-				$bot->sendMessage($callback_from_id, "Такой заказ в ожидании на публикацию уже есть!");			
+				$bot->sendMessage($callback_from_id, "Такой заказ в ожидании на публикацию уже есть!");	
+				exit('ok');
 			}else {
 				$время_публикации = _выбор_времени_публикации();
 				$запрос ="INSERT INTO `variables` (
