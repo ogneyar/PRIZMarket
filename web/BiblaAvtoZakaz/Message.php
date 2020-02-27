@@ -86,6 +86,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 	if ($result) {		
 		if ($result['ojidanie'] == 'редактор_лотов') {					
 			if ($text) {
+				$bot->sendMessage($chat_id, "Вот.", null, $HideKeyboard);	
 				_очистка_таблицы_ожидание();
 				_отправка_лота_админам($text);
 			}			
