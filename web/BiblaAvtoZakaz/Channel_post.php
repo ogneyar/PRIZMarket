@@ -12,6 +12,8 @@ if ($number != false && $number == '0') {
 	$минута = date("i", $UNIXtime_Moscow);
 	$секунда = date("s", $UNIXtime_Moscow);
 */	
+
+	$bot->sendMessage($master, "еее");
 	_ожидание_публикации();
 
 }else {
