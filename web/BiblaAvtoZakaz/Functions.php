@@ -378,8 +378,8 @@ function _отправка_лота_админам($номер_лота = null) 
 				}else $КаналИнфо = $bot->sendMessage($admin_group, $текст, markdown, $inLine);				
 				if (!$КаналИнфо) throw new Exception("Не смог опубликовать лот..");				
 			}					
-		}else throw new Exception("Или нет заказа или больше одного..");	
-	}else throw new Exception("Нет такого заказа..");	
+		}else throw new Exception("Или нет заказа или больше одного.. (_отправка_лота_админам)");	
+	}else throw new Exception("Нет такого заказа.. (_отправка_лота_админам)");	
 }
 
 
@@ -443,7 +443,7 @@ function _удалить_выбранный_лот($номер_лота) {
 		$результат = $mysqli->query($запрос);	
 	}else {
 		$bot->answerCallbackQuery($callback_query_id, "Не смог удалить лот..");
-		throw new Exception("Не смог удалить лот..");	
+		throw new Exception("Не смог удалить лот.. (_удалить_выбранный_лот)");	
 	}
 }
 //-----------------------------------------------------------------------------------
@@ -567,9 +567,9 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 				
 				$bot->sendMessage($master, "четыре");
 		
-			}else throw new Exception("Не отправился лот на канал Подробности..");			
-		}else throw new Exception("Или нет заказа или больше одного..");				
-	}else throw new Exception("Нет такого заказа..");	
+			}else throw new Exception("Не отправился лот на канал Подробности.. (_вывод_лота_на_каналы)");			
+		}else throw new Exception("Или нет заказа или больше одного.. (_вывод_лота_на_каналы)");				
+	}else throw new Exception("Нет такого заказа.. (_вывод_лота_на_каналы)");	
 	$inLine = [ 'inline_keyboard' => [
 		[ [ 'text' => 'Опубликованно в подробностях', 'url' => $ссыль_на_подробности ] ]
 	] ];	
@@ -626,7 +626,7 @@ function _отказать($id) {
 				[ [ 'text' => 'Отказанно', 'callback_data' => 'отказанно' ] ] 
 		] ];		
 		$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
-	}else throw new Exception("Не смог удалить запись в таблице {$table_market}");	
+	}else throw new Exception("Не смог удалить запись в таблице {$table_market} (_отказать)");	
 }
 
 //------------------------------------------------
@@ -715,5 +715,6 @@ function _редакт_лота_на_канале_подробности($ном
 	}else throw new Exception("Не смог найти заказ.. (_редакт_лота_на_канале_подробности)");		
 	if ($изменил) $bot->sendMessage($chat_id, "Изменил лот на канале 'Подробности'");	
 }
+
 
 ?>
