@@ -438,7 +438,7 @@ function _удалить_выбранный_лот($номер_лота) {
 	$результат = $mysqli->query($запрос);	
 	if ($результат) {		
 		_старт_АвтоЗаказБота();		
-		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!");		
+		$bot->answerCallbackQuery($callback_query_id, "Лот удалён из базы!", true);		
 		$запрос = "DELETE FROM {$таблица_медиагруппа} WHERE id='{$номер_лота}'";	
 		$результат = $mysqli->query($запрос);	
 	}else {
