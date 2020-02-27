@@ -376,8 +376,7 @@ function _ожидание_публикации($номер_лота = null) {
 				}else throw new Exception("Не смог добавить запись в таблицу `variables` (_ожидание_публикации)");				
 			}			
 		}else throw new Exception("Не смог узнать наличие записи в таблице `variables` (_ожидание_публикации)");			
-	}else {
-		//$bot->sendMessage($master, "еее");		
+	}else {	
 		$UNIXtime = time();
 		$UNIXtime_Moscow = $UNIXtime + $три_часа;	
 		$запрос ="SELECT soderjimoe FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND vremya<{$UNIXtime_Moscow}";				
@@ -478,7 +477,6 @@ function _нет_ли_брони($время) {		// если нет брОни, 
 
 // функция удаляет секунды реального времени в юникс времени
 function _обнулить_секунды($юникс_время) {	
-	global $bot, $master;
 	$ответ = false;
 	$год = date("Y", $юникс_время);
 	$месяц = date("m", $юникс_время);
@@ -486,7 +484,6 @@ function _обнулить_секунды($юникс_время) {
 	$час = date("H", $юникс_время);
 	$минута = date("i", $юникс_время);			
 	$ответ = mktime($час, $минута, 0, $месяц, $день, $год);
-	$bot->sendMessage($master, "вот ".$ответ);
 	return $ответ;
 }
 
