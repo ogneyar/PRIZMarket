@@ -414,20 +414,27 @@ function _ожидание_публикации($номер_лота = null) {
 function _выбор_времени_публикации() {
 	global $mysqli, $id_bota, $три_часа, $master, $bot;
 	$ответ = false;
-	$запрос ="SELECT MAX(vremya) FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота'";			
+	$запрос ="SELECT vremya FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота'";			
 	$результат = $mysqli->query($запрос);
-	if ($результат) {		
-		if ($результат->num_rows > 0) {
+	if ($результат) {	
+		$количество = $результат->num_rows;
+		if ($количество > 0) {
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
-			$последняя_в_очереди = $результМассив[0]['vremya'];			
+			if ($количество > 1) {
+				$последняя_в_очереди = 0;
+				foreach($результМассив as $строка) {
+					if ($строка['vremya'] > $последняя_в_очереди) $последняя_в_очереди = $строка['vremya'];
+				}
+			}else $последняя_в_очереди = $результМассив[0]['vremya'];			
 			$ответ = $последняя_в_очереди + 1200; // + 20 минут		
-			$i = true;
-			while ($i) {
-				if (_нет_ли_брони($ответ)) {
-					$i = false;
+			$счётчик = false;
+			while ($счётчик == false) {
+				$бронь = _нет_ли_брони($ответ);
+				if ($бронь == "свободно") {
+					$счётчик = true;
 				}else {
 					$ответ = $ответ + 1200;
-				}
+				}				
 			}			
 		}else {
 		
@@ -474,16 +481,14 @@ function _уведомление_о_публикации($номер_лота, $
 }
 
 // функция проверяет есть ли бронь публикации на заданное время 
-function _нет_ли_брони($время = null) {		// если нет брОни, вернёт true
+function _нет_ли_брони($время) {		// если нет брОни, вернёт "свободно"
 	global $bot, $id_bota, $mysqli;					
 	$ответ = false;
-	if ($номер_лота) {		
-		$запрос ="SELECT * FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='бронь' AND vremya='{$время}'";				
-		$результат = $mysqli->query($запрос);
-		if ($результат) {			
-			if ($результат->num_rows == 0) $ответ = true;
-		}else throw new Exception("Не смог узнать наличие записи в таблице `variables` (_нет_ли_брони)");		
-	}
+	$запрос ="SELECT * FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='бронь' AND vremya='{$время}'";
+	$результат = $mysqli->query($запрос);
+	if ($результат) {			
+		if ($результат->num_rows == 0) $ответ = "свободно"
+	}else throw new Exception("Не смог узнать наличие записи в таблице `variables` (_нет_ли_брони)");		
 	return $ответ;	
 }
 
