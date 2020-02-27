@@ -1,7 +1,7 @@
 <?
 $number = stripos($text, '#');
 
-if ($number != false) {
+if ($number !== false && $number == '0') {
 /*
 	$UNIXtime = time();
 	$UNIXtime_Moscow = $UNIXtime + $три_часа;	
