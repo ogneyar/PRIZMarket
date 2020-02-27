@@ -11,45 +11,26 @@ if ($text == 'база') {
 	}else {		
 		$bot->output_table($table_users);		
 	}	
-
-}elseif ($text == 'варя') {
 	
-	if ($id) {
-	
-		$bot->output_table('variables', $id);
-	
-	}else {
+}elseif ($text == 'варя') {	
+	$bot->output_table('variables');		
 		
-		$bot->output_table('variables');
-		
-	}		
+}elseif ($text == 'время') {
+	$bot->sendMessage($chat_id, time());
 	
+}elseif ($text == 'маркет') {	
+	if ($id) {	
+		_список_всех_лотов($id);	
+	}else {		
+		_список_всех_лотов();		
+	}			
 	
-}elseif ($text == 'маркет') {
-	
-	if ($id) {
-	
-		_список_всех_лотов($id);
-	
-	}else {
-		
-		_список_всех_лотов();
-		
-	}		
-	
-	
-}elseif ($text == 'марк') {
-	
-	if ($id) {
-	
-		$bot->output_table($table_market, $id);
-	
-	}else {
-		
-		$bot->output_table($table_market);
-		
-	}		
-	
+}elseif ($text == 'марк') {	
+	if ($id) {	
+		$bot->output_table($table_market, $id);	
+	}else {		
+		$bot->output_table($table_market);		
+	}			
 	
 }elseif ($text == 'ма') {
 	

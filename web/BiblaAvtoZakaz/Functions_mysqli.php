@@ -361,15 +361,9 @@ function _ожидание_публикации($номер_лота = null) {
 		$запрос ="SELECT soderjimoe FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND soderjimoe='{$номер_лота}'";				
 		$результат = $mysqli->query($запрос);
 		if ($результат) {
-			
-			$bot->sendMessage($master, "семь");
-			
 			if ($результат->num_rows > 0) {			
 				$bot->sendMessage($callback_from_id, "Такой заказ в ожидании на публикацию уже есть!");			
 			}else {
-			
-				$bot->sendMessage($master, "восемь");
-				
 				$время_публикации = _выбор_времени_публикации();
 				$запрос ="INSERT INTO `variables` (
 					`id_bota`, `nazvanie`, `soderjimoe`, `opisanie`, `vremya`
@@ -379,16 +373,10 @@ function _ожидание_публикации($номер_лота = null) {
 				$результат = $mysqli->query($запрос);								
 				if ($результат) {
 					$ответ = $время_публикации;
-					
-					$bot->sendMessage($master, "раз");
-					
 				}else throw new Exception("Не смог добавить запись в таблицу `variables` (_ожидание_публикации)");				
 			}			
 		}else throw new Exception("Не смог узнать наличие записи в таблице `variables` (_ожидание_публикации)");			
 	}else {
-	
-		$bot->sendMessage($master, "девять");
-		
 		$UNIXtime = time();
 		$UNIXtime_Moscow = $UNIXtime + $три_часа;	
 		$запрос ="SELECT soderjimoe FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота' AND vremya<'{$UNIXtime_Moscow}'";				
@@ -405,7 +393,7 @@ function _ожидание_публикации($номер_лота = null) {
 					}
 				}				
 			}
-		}else throw new Exception("Не смог осуществить запрос к таблице `variables` (_ожидание_публикации)");		
+		}else throw new Exception("Не смог осуществить запрос к таблице `variables` (_ожидание_публикации)");	
 	}	
 	return $ответ;	
 }
@@ -437,9 +425,6 @@ function _выбор_времени_публикации() {
 				}				
 			}			
 		}else {
-		
-			$bot->sendMessage($master, "десять");
-			
 			$UNIXtime = time();
 			$UNIXtime_Moscow = $UNIXtime + $три_часа;	
 			$время = _обнулить_секунды($UNIXtime_Moscow);
@@ -452,8 +437,6 @@ function _выбор_времени_публикации() {
 				$смещение = 30 - $минута;
 			}else $смещение = 10 - $минута;
 			$ответ = $время + $смещение * 60;		
-			
-			$bot->sendMessage($master, "два");
 		}
 	}else throw new Exception("Не смог сделать запрос к таблице `variables` (_выбор_времени_публикации)");
 	return $ответ;
@@ -495,9 +478,6 @@ function _нет_ли_брони($время) {		// если нет брОни, 
 // функция удаляет секунды реального времени в юникс времени
 function _обнулить_секунды($юникс_время) {	
 	global $bot, $master;
-	
-	$bot->sendMessage($master, "11");
-	
 	$ответ = false;
 	$год = date("Y", $юникс_время);
 	$месяц = date("m", $юникс_время);
@@ -505,9 +485,6 @@ function _обнулить_секунды($юникс_время) {
 	$час = date("H", $юникс_время);
 	$минута = date("i", $юникс_время);			
 	$ответ = mktime(0, $минута, $час, $месяц, $день, $год);
-	
-	$bot->sendMessage($master, "три");
-	
 	return $ответ;
 }
 
