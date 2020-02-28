@@ -307,7 +307,7 @@ if ($text == 'база') {
 }elseif ($text == "рэди") {		
 	
 	if ($результат) $bot->editMessageText($admin_group, "22354", "Лот 1169 опубликован.
-https://t.me/prizm_market/4482");
+https://t.me/prizm_market/4482", null, null, true);
 }
 
 
