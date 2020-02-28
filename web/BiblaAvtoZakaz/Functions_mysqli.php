@@ -391,7 +391,7 @@ function _ожидание_публикации($номер_лота = null) {
 						_удаление_лота_из_очереди($строка['soderjimoe']);
 						$ссылка = "https://t.me/{$результат['chat']['username']}/{$результат['message_id']}";
 						_уведомление_о_публикации($строка['soderjimoe'], $ссылка);
-						$bot->sendMessage($admin_group, "Лот {$строка['soderjimoe']} опубликован.\n{$ссылка}");
+						$bot->sendMessage($admin_group, "Лот {$строка['soderjimoe']} опубликован.\n{$ссылка}", null, null, null, true);
 					}else $bot->sendMessage($master, "Не смог отправить лот {$строка['soderjimoe']} (_ожидание_публикации)");
 				}				
 			}
