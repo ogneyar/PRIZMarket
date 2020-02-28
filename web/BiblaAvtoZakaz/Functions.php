@@ -494,8 +494,8 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 				}else $реплика = $текст;						
 				$ссылка_инфобота = $строка['url_info_bot'];
                                 if (!$ссылка_инфобота) {
-$ссылка_инфобота = "https://t.me/check_user_infobot?start={$id_client}";
-//_запись_в_таблицу_маркет($id_client, 'id_zakaz', $id_zakaz);
+                                       $ссылка_инфобота = "https://t.me/check_user_infobot?start={$id_client}";
+                                       _запись_в_таблицу_маркет($id_client, 'url_info_bot', $ссылка_инфобота);
                                 } 							
 				$кнопки = [
 					[
