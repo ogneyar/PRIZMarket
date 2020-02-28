@@ -296,14 +296,20 @@ if ($text == 'база') {
 		
 	$результат = _редакт_таблицы_маркет($id, 'kuplu_prodam', '#продам');
 	
-	if ($результат )$bot->sendMessage($master, "Всё отлично!");
+	if ($результат) $bot->sendMessage($master, "Всё отлично!");
 		
 }elseif ($text == "измени хеш куплю") {		
 		
 	$результат = _редакт_таблицы_маркет($id, 'kuplu_prodam', '#куплю');
 	
-	if ($результат )$bot->sendMessage($master, "Всё отлично!");
+	if ($результат) $bot->sendMessage($master, "Всё отлично!");
+
+}elseif ($text == "рэди") {		
+	
+	if ($результат) $bot->editMessageText($admin_group, "22354", "Лот 1169 опубликован.
+https://t.me/prizm_market/4482");
 }
+
 
 
 
