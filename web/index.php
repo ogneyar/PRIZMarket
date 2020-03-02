@@ -12,7 +12,7 @@
 	<!-- Adopt website to current screen -->
 	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="site_pzm/css/style.css">
 	
 	<!-- Here we add libs for jQuery, Ajax... -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -54,7 +54,7 @@
 	<div id="wrapper">
 		<div id="leftCol">
 			<article>
-				<a href="" title=""><img src="img/art/1.jpg" alt="" title=""/></a>
+				<a href="" title=""><img src="site_pzm/img/art/1.jpg" alt="" title=""/></a>
 				<h2>Как создать игру? Часть 2/5</h2>
 				<p>На краудфандинговой платформе Kickstarter появилась кампания по сбору средств на производство очень своеобразного хэндмейда. 
 Шведский дизайнер Лав Хультен соединил дерево с олдскульной электроникой, создав тем самым эстетичный ретро-геймпад. 
@@ -62,7 +62,7 @@
 				<p><a href="" title="">Читать далее</a><span>30 ноября 2015 в 1:58</span></p>
 			</article>
 			<article>
-				<a href="" title=""><img src="img/art/1.jpg" alt="" title=""/></a>
+				<a href="" title=""><img src="site_pzm/img/art/1.jpg" alt="" title=""/></a>
 				<h2>Как создать игру? Часть 2/5</h2>
 				<p>На краудфандинговой платформе Kickstarter появилась кампания по сбору средств на производство очень своеобразного хэндмейда. 
 Шведский дизайнер Лав Хультен соединил дерево с олдскульной электроникой, создав тем самым эстетичный ретро-геймпад. 
@@ -70,21 +70,13 @@
 				<p><a href="" title="">Читать далее</a><span>30 ноября 2015 в 1:58</span></p>
 			</article>
 			<article>
-				<a href="" title=""><img src="img/art/1.jpg" alt="" title=""/></a>
+				<a href="" title=""><img src="site_pzm/img/art/1.jpg" alt="" title=""/></a>
 				<h2>Как создать игру? Часть 2/5</h2>
 				<p>На краудфандинговой платформе Kickstarter появилась кампания по сбору средств на производство очень своеобразного хэндмейда. 
 Шведский дизайнер Лав Хультен соединил дерево с олдскульной электроникой, создав тем самым эстетичный ретро-геймпад. 
 Как сообщается, винтажные чудо способно запускать игры консолей NES, Atari 2600 и Game Boy.</p>
 				<p><a href="" title="">Читать далее</a><span>30 ноября 2015 в 1:58</span></p>
-			</article>
-			<article>
-				<a href="" title=""><img src="img/art/1.jpg" alt="" title=""/></a>
-				<h2>Как создать игру? Часть 2/5</h2>
-				<p>На краудфандинговой платформе Kickstarter появилась кампания по сбору средств на производство очень своеобразного хэндмейда. 
-Шведский дизайнер Лав Хультен соединил дерево с олдскульной электроникой, создав тем самым эстетичный ретро-геймпад. 
-Как сообщается, винтажные чудо способно запускать игры консолей NES, Atari 2600 и Game Boy.</p>
-				<p><a href="" title="">Читать далее</a><span>30 ноября 2015 в 1:58</span></p>
-			</article>
+			</article>			
 		</div>
 		<div id="rightCol">
 			<div class="banner">
@@ -96,7 +88,7 @@
 			</div>
 			<div class="banner">
 				<span>Поддержать проект:</span>
-				<img src="img/WM_sps.png" id="wm" alt="Сказать спасибо" title="Сказать спасибо"/>
+				<img src="site_pzm/img/WM_sps.png" id="wm" alt="Сказать спасибо" title="Сказать спасибо"/>
 			</div>
 		</div>
 	</div>
@@ -105,9 +97,9 @@
 			Все права защищены &copy; <?=date('Y')?>
 		</div>
 		<div id="social">
-			<a href="" title="Google+"><img src="img/social/Google+.png" alt="Google+" /></a>
-			<a href="" title="Группа FaceBook"><img src="img/social/facebook.png" alt="Группа FaceBook" /></a>
-			<a href="" title="Группа Вконтакте"><img src="img/social/vkontakte.png" alt="Группа Вконтакте" /></a>
+			<a href="" title="Google+"><img src="site_pzm/img/social/Google+.png" alt="Google+" /></a>
+			<a href="" title="Группа FaceBook"><img src="site_pzm/img/social/facebook.png" alt="Группа FaceBook" /></a>
+			<a href="" title="Группа Вконтакте"><img src="site_pzm/img/social/vkontakte.png" alt="Группа Вконтакте" /></a>
 		</div>
 	</footer>
 </body>
