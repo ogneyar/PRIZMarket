@@ -1,5 +1,5 @@
 <?php
-include_once '../vendor/autoload.php';	
+//include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
 include_once 'site_pzm/pzmarket.php';
 ?>
@@ -79,7 +79,7 @@ include_once 'site_pzm/pzmarket.php';
 			</div>
 			<div class="banner">
 				<span>Стоит посмотреть:</span>
-				<iframe src="https://youtu.be/1mMzEIjz9uY" frameborder="0" allowfullscreen></iframe>
+				<iframe src="https://youtu.be/7-wxMhp99N8" frameborder="0" allowfullscreen></iframe>
 			</div>
 			<div class="banner">
 				<span>Поддержать проект:</span>
