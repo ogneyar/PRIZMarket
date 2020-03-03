@@ -1,9 +1,7 @@
 <?php
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
-$ссыль_на_фото1 = "https://boxbuket.s3.eu-west-3.amazonaws.com/104.jpg";
-$ссыль_на_фото2 = "https://boxbuket.s3.eu-west-3.amazonaws.com/105.jpg";
-$ссыль_на_фото3 = "https://boxbuket.s3.eu-west-3.amazonaws.com/106.jpg";
+include_once 'site_pzm/pzmarket.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -60,21 +58,18 @@ $ссыль_на_фото3 = "https://boxbuket.s3.eu-west-3.amazonaws.com/106.jp
 	<div id="wrapper">
 		<div id="leftCol">
 			<article>
-				<a href="" title=""><img src="<?=$ссыль_на_фото1?>" alt="" title=""/></a>
-				<h2>Продаю кедровый орех за pzm</h2>
-				<p>Продаю кедровый орех за криптовалюту Prizm, но не исключена оплата рублями. За любой интересующей информацией обращаться в ЛС.</p>
+				<a href="" title=""><img src="<?=$ссыль_на_фото[0]?>" alt="" title=""/></a>				
+				<?=$текст_лота[0]?>
 				<p><a href="" title="">Подробности</a><span>2 марта 2020 в 22:18</span></p>
 			</article>
 			<article>
-				<a href="" title=""><img src="<?=$ссыль_на_фото2?>" alt="" title=""/></a>
-				<h2>Интернет магазин все за призм</h2>
-				<p>Здравия друзья, предлогаю товары за призм! Одежда,обувь для всей семьи! Так же есть и многое другое. Добро пожаловать! Буду рада вам ! Всем добра. https://vk.com/club190279811</p>
+				<a href="" title=""><img src="<?=$ссыль_на_фото[1]?>" alt="" title=""/></a>				
+				<?=$текст_лота[1]?>
 				<p><a href="" title="">Читать далее</a><span>2 марта 2020 в 22:22</span></p>
 			</article>
 			<article>
-				<a href="" title=""><img src="<?=$ссыль_на_фото3?>" alt="" title=""/></a>
-				<h2>#продам Kia</h2>
-				<p>Kia PICANTO 2 2011 реально в хорошем состоянии, зимний пакет, комплектация агонь, выносливая, 410 000т.р./PRIZM. НА АВТО РУ ПОЛНОЕ ОПИСАНИЕ.</p>
+				<a href="" title=""><img src="<?=$ссыль_на_фото[2]?>" alt="" title=""/></a>				
+				<?=$текст_лота[2]?>
 				<p><a href="" title="">Читать далее</a><span>30 ноября 2015 в 1:58</span></p>
 			</article>			
 		</div>
