@@ -47,7 +47,7 @@ if ($text){
 		
 	}elseif ($text == "кузя") {		
 	
-		$tg->sendMessage($chat_id, "Не могу сказать о правоте, но спорить я не стану!");		
+		$tg->sendMessage($chat_id, "Х.З!");		
 				
 		
 	}elseif ($text == "покажи таблицы") {		
