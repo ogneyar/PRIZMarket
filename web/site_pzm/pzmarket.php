@@ -11,6 +11,8 @@ $token = $tokenMARKET;
 // Создаем объект бота
 $bot = new Bot($token);
 
+$id_bota = strstr($token, ':', true);	
+
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // проверка подключения 
@@ -23,6 +25,7 @@ if (mysqli_connect_errno()) {
 set_exception_handler('exception_handler');
 
 echo '1';
+/*
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
 	
 $запрос = "SELECT * FROM pzmarkt"; 
@@ -34,7 +37,7 @@ if ($результат)	{
 	exit('ok');	
 }
 
-if($i>0) $arrS = $результат->fetch_all(/*MYSQLI_ASSOC*/);		
+if($i>0) $arrS = $результат->fetch_all();		
 else {
 	$bot->sendMessage($master, 'Таблица пуста.. (работа сайта)');
 	exit('ok');	
@@ -80,7 +83,7 @@ while ($a<3){
 	
 	$a++;	
 }	
-
+*/
 // закрываем подключение 
 $mysqli->close();		
 
