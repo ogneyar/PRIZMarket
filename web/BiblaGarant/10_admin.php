@@ -45,6 +45,11 @@ if ($text){
 		}		
 		
 		
+	}elseif ($text == "кузя") {		
+	
+		$tg->sendMessage($chat_id, "Не могу сказать о правоте, но спорить я не стану!");		
+				
+		
 	}elseif ($text == "покажи таблицы") {		
 	
 		$query = "SHOW TABLES";
