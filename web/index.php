@@ -1,7 +1,7 @@
 <?php
 //include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
-include_once 'site_pzm/pzmarket.php';
+//include_once 'site_pzm/pzmarket.php';
 echo '2';
 ?>
 <!DOCTYPE html>
