@@ -1,4 +1,7 @@
-<?php?>
+<?php
+include_once '../vendor/autoload.php';	
+include_once 'a_conect.php';
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -66,7 +69,7 @@
 				<p><a href="" title="">Читать далее</a><span>2 марта 2020 в 22:22</span></p>
 			</article>
 			<article>
-				<a href="" title=""><img src="site_pzm/img/art/1.jpg" alt="" title=""/></a>
+				<a href="" title=""><img src="https://boxbuket.s3.eu-west-3.amazonaws.com/1063.mp4" alt="" title=""/></a>
 				<h2>#продам Kia</h2>
 				<p>Kia PICANTO 2 2011 реально в хорошем состоянии, зимний пакет, комплектация агонь, выносливая, 410 000т.р./PRIZM. НА АВТО РУ ПОЛНОЕ ОПИСАНИЕ.</p>
 				<p><a href="" title="">Читать далее</a><span>30 ноября 2015 в 1:58</span></p>
