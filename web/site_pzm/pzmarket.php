@@ -6,7 +6,7 @@
 //exit('ok');	
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_market;
-
+/*
 $token = $tokenMARKET;
 // Создаем объект бота
 $bot = new Bot($token);
@@ -23,11 +23,11 @@ if (mysqli_connect_errno()) {
 
 // Обработчик исключений
 //set_exception_handler('exception_handler');
-
-//echo '1';
+*/
+echo '1';
 
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
-	
+	/*
 $запрос = "SELECT * FROM pzmarkt"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
@@ -42,7 +42,7 @@ else {
 	$bot->sendMessage($master, 'Таблица пуста.. (работа сайта)');
 	exit('ok');	
 }
-		
+		*/
 $a=0;
 $текст_лота = [];
 $ссыль_на_фото = [];
@@ -83,11 +83,11 @@ while ($a<3){
 	
 	$a++;	
 }	
-
+/*
 // закрываем подключение 
 $mysqli->close();		
 
-/*
+
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
 	global $bot, $master;	
