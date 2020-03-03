@@ -22,7 +22,7 @@ if (mysqli_connect_errno()) {
 }
 
 // Обработчик исключений
-set_exception_handler('exception_handler');
+//set_exception_handler('exception_handler');
 
 //echo '1';
 
@@ -87,13 +87,14 @@ while ($a<3){
 // закрываем подключение 
 $mysqli->close();		
 
+/*
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
 	global $bot, $master;	
 	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
 	exit('ok');  	
 }
-
+*/
 
 
 ?>		
