@@ -1,4 +1,4 @@
-﻿<?php	/*
+﻿<?php	
 // Подключаем библиотеку с классом Bot
 include_once 'myBotApi/Bot.php';
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
@@ -12,7 +12,7 @@ $token = $tokenMARKET;
 $bot = new Bot($token);
 
 $id_bota = strstr($token, ':', true);	
-
+/*
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // проверка подключения 
@@ -20,10 +20,10 @@ if (mysqli_connect_errno()) {
 	$bot->sendMessage($master, 'Чёт не выходит подключиться к MySQL');	
 	exit('ok');
 }
-
+*/
 // Обработчик исключений
 set_exception_handler('exception_handler');
-*/
+
 echo '1';
 /*
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
