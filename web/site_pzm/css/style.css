@@ -50,14 +50,7 @@ header {
 	padding: 0.5% 1%;
 }
 
-header a#logo {
-	font-family: 'Obelix';
-	font-size: 1.7em;
-	color: white;
-	float: left;
-	width: 25%;
-	margin-left: 15%;
-}
+
 
 header a#logo span {
 	font-size: 1.3em;
@@ -69,14 +62,30 @@ header span#contact {
 	width: 40%;
 	margin-right: 20%;
 	font-family: Times New Roman, sans-serif
+}
+header a#logo {
+	font-family: 'Obelix';
+	font-size: 1.7em;
+	color: white;
+	float: left;
+	width: 25%;
+	margin-left: 15%;
 }}
 
 @media (max-width: 639px){
 header span#contact {
 	float: right;
 	width: 40%;
-	margin-right: 5%;
+	margin-right: 10%;
 	font-family: Times New Roman, sans-serif
+}
+header a#logo {
+	font-family: 'Obelix';
+	font-size: 1.7em;
+	color: white;
+	float: left;
+	width: 25%;
+	margin-left: 10%;
 }}
 
 header span#contact a {
