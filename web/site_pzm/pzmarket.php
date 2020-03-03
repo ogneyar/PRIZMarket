@@ -12,7 +12,7 @@ $token = $tokenMARKET;
 //$bot = new \myBotApi\Bot($token);
 
 $id_bota = strstr($token, ':', true);	
-/*
+
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // проверка подключения 
@@ -22,27 +22,21 @@ if (mysqli_connect_errno()) {
 }
 
 // Обработчик исключений
-//set_exception_handler('exception_handler');
-*/
+set_exception_handler('exception_handler');
+
 echo '1';
 
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
-	/*
+
 $запрос = "SELECT * FROM pzmarkt"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$i = $результат->num_rows;
-}else {
-	$bot->sendMessage($master, 'Не смог проверить таблицу `pzmarkt`.. (работа сайта)');
-	exit('ok');	
-}
+}else throw new Exception('Не смог проверить таблицу `pzmarkt`.. (работа сайта)');	
 
 if($i>0) $arrS = $результат->fetch_all();		
-else {
-	$bot->sendMessage($master, 'Таблица пуста.. (работа сайта)');
-	exit('ok');	
-}
-		*/
+else throw new Exception('Таблица пуста.. (работа сайта)');
+		
 $a=0;
 $текст_лота = [];
 $ссыль_на_фото = [];
@@ -83,18 +77,20 @@ while ($a<3){
 	
 	$a++;	
 }	
-/*
+
 // закрываем подключение 
 $mysqli->close();		
 
 
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
-	global $bot, $master;	
-	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
+	
+	echo "Ошибка! ".$exception->getCode()." ".$exception->getMessage();	  
+	
 	exit('ok');  	
+	
 }
-*/
+
 
 
 ?>		
