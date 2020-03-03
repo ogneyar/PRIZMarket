@@ -89,6 +89,28 @@ nav {
 	padding: 0 1% 0.7% 1%;
 }
 
+nav a, nav#fixed a {
+	border-top: 5px solid rgba(255,255,255,0);
+	padding: 0.5% 1% 0 1%;
+	float: left;
+	margin-right: 4%;
+	font-family: Times New Roman, sans-serif;
+	font-size: 1.4em;
+	color: #686869;
+}
+
+@media (min-width: 720px){
+nav a:first-child, nav#fixed a:first-child {
+	margin-left: 12%; 
+	border-top: 5px solid #6accd7;
+}}
+
+@media (max-width: 719px){
+nav a:first-child, nav#fixed a:first-child {
+	margin-left: 4%; 
+	border-top: 5px solid #6accd7;
+}}
+
 nav#fixed {
 	position: fixed;
 	top: 0;
@@ -102,21 +124,6 @@ nav#fixed {
 
 nav#fixed:hover {
 	background-color: #fff;
-}
-
-nav a:first-child, nav#fixed a:first-child {
-	margin-left: 12%; 
-	border-top: 5px solid #6accd7;
-}
-
-nav a, nav#fixed a {
-	border-top: 5px solid rgba(255,255,255,0);
-	padding: 0.5% 1% 0 1%;
-	float: left;
-	margin-right: 4%;
-	font-family: Times New Roman, sans-serif;
-	font-size: 1.4em;
-	color: #686869;
 }
 
 nav a:hover, nav#fixed a:hover {
