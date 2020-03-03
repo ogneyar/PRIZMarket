@@ -6,13 +6,13 @@ include_once '../myBotApi/Variables.php';
 //exit('ok');	
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_market;
-/*
+
 $token = $tokenMARKET;
 // Создаем объект бота
 $bot = new Bot($token);
 
 $id_bota = strstr($token, ':', true);	
-
+/*
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // проверка подключения 
