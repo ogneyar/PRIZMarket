@@ -19,6 +19,10 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }
 
+// Обработчик исключений
+set_exception_handler('exception_handler');
+
+echo '1';
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
 	
 $запрос = "SELECT * FROM pzmarkt"; 
@@ -80,6 +84,12 @@ while ($a<3){
 // закрываем подключение 
 $mysqli->close();		
 
+// при возникновении исключения вызывается эта функция
+function exception_handler($exception) {
+	global $bot, $master;	
+	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
+	exit('ok');  	
+}
 	
 
 ?>		
