@@ -1,18 +1,18 @@
 ﻿<?php	
 // Подключаем библиотеку с классом Bot
-//include_once 'myBotApi/Bot.php';
+include_once '../myBotApi/Bot.php';
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-//include_once 'myBotApi/Variables.php';
+include_once '../myBotApi/Variables.php';
 //exit('ok');	
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_market;
 
 $token = $tokenMARKET;
 // Создаем объект бота
-//$bot = new Bot($token);
+$bot = new Bot($token);
 
 $id_bota = strstr($token, ':', true);	
-/*
+
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // проверка подключения 
@@ -20,12 +20,12 @@ if (mysqli_connect_errno()) {
 	$bot->sendMessage($master, 'Чёт не выходит подключиться к MySQL');	
 	exit('ok');
 }
-*/
+
 // Обработчик исключений
 set_exception_handler('exception_handler');
 
-echo '1';
-/*
+//echo '1';
+
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
 	
 $запрос = "SELECT * FROM pzmarkt"; 
@@ -94,6 +94,6 @@ function exception_handler($exception) {
 	exit('ok');  	
 }
 
-*/
+
 
 ?>		
