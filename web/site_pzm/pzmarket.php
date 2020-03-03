@@ -9,7 +9,7 @@ $admin_group = $admin_group_market;
 
 $token = $tokenMARKET;
 // Создаем объект бота
-$bot = new \Bot($token);
+$bot = new \myBotApi\Bot($token);
 
 $id_bota = strstr($token, ':', true);	
 /*
