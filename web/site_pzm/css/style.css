@@ -63,12 +63,21 @@ header a#logo span {
 	font-size: 1.3em;
 }
 
+@media (min-width: 640){
 header span#contact {
 	float: right;
 	width: 40%;
 	margin-right: 20%;
 	font-family: Times New Roman, sans-serif
-}
+}}
+
+@media (max-width: 639){
+header span#contact {
+	float: right;
+	width: 40%;
+	margin-right: 5%;
+	font-family: Times New Roman, sans-serif
+}}
 
 header span#contact a {
 	color: white;
