@@ -1,8 +1,8 @@
 ﻿<?php	
 // Подключаем библиотеку с классом Bot
-include_once 'myBotApi/Bot.php';
+//include_once 'myBotApi/Bot.php';
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-include_once 'myBotApi/Variables.php';
+//include_once 'myBotApi/Variables.php';
 //exit('ok');	
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_market;
