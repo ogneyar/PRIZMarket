@@ -165,11 +165,20 @@ nav a:hover, nav#fixed a:hover {
 		Левая часть сайта
 ----------------------------------*/
 
+@media (min-width: 690px) {
 #wrapper #leftCol {
 	width: 65%;
 	margin-right: 10%;
 	float: left;
-}
+}}
+
+@media (max-width: 689px) {
+#wrapper #leftCol {
+	width: 90%;
+	margin-left: 5%;
+	float: left;
+	margin-bottom: 20px;
+}}
 
 #leftCol article {
 	width: 100%;
@@ -216,10 +225,18 @@ nav a:hover, nav#fixed a:hover {
 		Правая часть сайта
 ----------------------------------*/
 
+@media (min-width: 690px) {
 #wrapper #rightCol {
 	width: 25%;
 	float: left;
-}
+}}
+
+@media (max-width: 689px) {
+#wrapper #rightCol {
+	width: 80%;
+	margin-left: 10%;
+	float: left;
+}}
 
 #rightCol .banner {
 	width: 100%;
