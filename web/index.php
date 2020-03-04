@@ -39,8 +39,7 @@ include_once 'site_pzm/pzmarket.php';
 <body>
 	<header>
 		<a href="/" id="logo">
-			<span>PRIZM</span>arket 
-			<span>Ваш</span> рынок!
+			<span>PRIZM</span>arket!
 		</a>
 		<span id="contact">
 			<a href="">Реклама</a>
