@@ -7,7 +7,7 @@ include_once 'site_pzm/pzmarket.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />	
-	<title>PRIZMarket Ваш рынок!</title>
+	<title>PRIZMarket!</title>
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 	<meta name="robots" content="all,index,follow" />
@@ -49,29 +49,24 @@ include_once 'site_pzm/pzmarket.php';
 	</header>
 	<nav>
 		<a href="/">Главная</a>
-		<a href="">Подробности</a>
-		<a href="">Медиа</a>
-		<a href="">Саппорт</a>
-		<a href="">Разное</a>
+		<a href="<?=$ссыль_на_канал_подробности?>">Подробности</a>
+		<a href="<?=$ссыль_на_саппорт_бота?>">Саппорт</a>
+		<a href="">О нас</a>
+<!--	<a href="">Разное</a> -->
 	</nav>
-	<div id="slideMenu">Уроки по программированию!</div>
+	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
 		<div id="leftCol">
-			<article>
-				<a href="" title=""><img src="<?=$ссыль_на_фото[0]?>" alt="" title=""/></a>				
-				<?=$текст_лота[0]?>
+	<!--	<article>
+				<a href="" title=""><img src="<?//=$ссыль_на_фото[0]?>" alt="" title=""/></a>				
+				<?//=$текст_лота[0]?>
 				<p><a href="" title="">Подробности</a><span>2 марта 2020 в 22:18</span></p>
-			</article>
-			<article>
-				<a href="" title=""><img src="<?=$ссыль_на_фото[1]?>" alt="" title=""/></a>				
-				<?=$текст_лота[1]?>
-				<p><a href="" title="">Читать далее</a><span>2 марта 2020 в 22:22</span></p>
-			</article>
-			<article>
-				<a href="" title=""><img src="<?=$ссыль_на_фото[2]?>" alt="" title=""/></a>				
-				<?=$текст_лота[2]?>
-				<p><a href="" title="">Читать далее</a><span>30 ноября 2015 в 1:58</span></p>
-			</article>			
+			</article>  -->			
+			<?
+			foreach($лот as $публикация) {
+				echo $публикация;
+			}			
+			?>			
 		</div>
 		<div id="rightCol">
 			<div class="banner">
@@ -93,7 +88,7 @@ include_once 'site_pzm/pzmarket.php';
 		</div>
 		<div id="social">
 			<a href="" title="Google+"><img src="site_pzm/img/social/Google+.png" alt="Google+" /></a>
-			<a href="" title="Группа FaceBook"><img src="site_pzm/img/social/facebook.png" alt="Группа FaceBook" /></a>
+			<a href="" title="Инстаграм"><img src="site_pzm/img/social/facebook.png" alt="Группа FaceBook" /></a>
 			<a href="" title="Группа Вконтакте"><img src="site_pzm/img/social/vkontakte.png" alt="Группа Вконтакте" /></a>
 		</div>
 	</footer>
