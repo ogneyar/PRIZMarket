@@ -48,8 +48,8 @@ include_once 'site_pzm/pzmarket.php';
 	</header>
 	<nav>
 		<a href="/">Главная</a>
-		<a href="<?=$ссыль_на_канал_подробности?>">Подробности</a>
-		<a href="<?=$ссыль_на_саппорт_бота?>">Саппорт</a>
+		<a href="<?=$ссыль_на_канал_подробности?>" target="_blank">Подробности</a>
+		<a href="<?=$ссыль_на_саппорт_бота?>" target="_blank">Саппорт</a>
 		<a href="" onclick="alert('Эта функция ещё не подключена!')">О нас</a>
 <!--	<a href="">Разное</a> -->
 	</nav>
@@ -86,8 +86,8 @@ include_once 'site_pzm/pzmarket.php';
 			&copy; PRIZMarket <?=date('Y')?>
 		</div>
 		<div id="social">			
-			<a href="https://www.instagram.com/prizm_market_inst" title="Инстаграм"><img src="site_pzm/img/social/instagram.png" alt="Инстаграм PRIZMarket" /></a>
-			<a href="https://vk.com/prizmarket_vk" title="Группа Вконтакте"><img src="site_pzm/img/social/vkontakte.png" alt="Вконтакте PRIZMarket" /></a>
+			<a href="https://www.instagram.com/prizm_market_inst" title="Инстаграм" target="_blank"><img src="site_pzm/img/social/instagram.png" alt="Инстаграм PRIZMarket" /></a>
+			<a href="https://vk.com/prizmarket_vk" title="Группа Вконтакте" target="_blank"><img src="site_pzm/img/social/vkontakte.png" alt="Вконтакте PRIZMarket" /></a>
 		</div>
 	</footer>
 </body>
