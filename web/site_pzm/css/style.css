@@ -72,7 +72,7 @@ header a#logo {
 	margin-left: 15%;
 }}
 
-@media (min-width: 350px; max-width: 639px){
+@media (min-width: 350px, max-width: 639px){
 header span#contact {
 	float: right;
 	width: 40%;
