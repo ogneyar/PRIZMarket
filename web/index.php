@@ -42,15 +42,15 @@ include_once 'site_pzm/pzmarket.php';
 			<span>PRIZM</span>arket!
 		</a>
 		<span id="contact">
-			<a href="">Реклама</a>
-			<a href="">Контакты</a>
+			<a href="" onclick="alert('Эта функция ещё не подключена!')">Реклама</a>
+			<a href="" onclick="alert('Эта функция ещё не подключена!')">Контакты</a>
 		</span>
 	</header>
 	<nav>
 		<a href="/">Главная</a>
 		<a href="<?=$ссыль_на_канал_подробности?>">Подробности</a>
 		<a href="<?=$ссыль_на_саппорт_бота?>">Саппорт</a>
-		<a href="<?=$не_работает?>">О нас</a>
+		<a href="" onclick="alert('Эта функция ещё не подключена!')">О нас</a>
 <!--	<a href="">Разное</a> -->
 	</nav>
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
@@ -83,11 +83,10 @@ include_once 'site_pzm/pzmarket.php';
 	</div>
 	<footer>
 		<div id="rights">
-			Все права защищены &copy; <?=date('Y')?>
+			&copy; PRIZMarket <?=date('Y')?>
 		</div>
-		<div id="social">
-			<a href="" title="Google+"><img src="site_pzm/img/social/Google+.png" alt="Google+" /></a>
-			<a href="" title="Инстаграм"><img src="site_pzm/img/social/facebook.png" alt="Группа FaceBook" /></a>
+		<div id="social">			
+			<a href="" title="Инстаграм"><img src="site_pzm/img/social/instagram.png" alt="Группа FaceBook" /></a>
 			<a href="" title="Группа Вконтакте"><img src="site_pzm/img/social/vkontakte.png" alt="Группа Вконтакте" /></a>
 		</div>
 	</footer>
