@@ -4,7 +4,7 @@ include_once '../myBotApi/Bot.php';
 //exit('ok');
 $token = $tokenMARKET;
 // Создаем объект бота
-$bot = new \myBotApi\Bot($token);
+//$bot = new \myBotApi\Bot($token);
 $id_bota = strstr($token, ':', true);	
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 include '../myBotApi/Variables.php';
