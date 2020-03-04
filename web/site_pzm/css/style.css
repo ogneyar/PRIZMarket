@@ -72,7 +72,7 @@ header a#logo {
 	margin-left: 15%;
 }}
 
-@media (max-width: 639px){
+@media (min-width: 350px; max-width: 639px){
 header span#contact {
 	float: right;
 	width: 40%;
@@ -86,6 +86,22 @@ header a#logo {
 	float: left;
 	width: 25%;
 	margin-left: 10%;
+}}
+
+@media (max-width: 349px){
+header span#contact {
+	float: right;
+	width: 40%;
+	margin-right: 5%;
+	font-family: Times New Roman, sans-serif
+}
+header a#logo {
+	font-family: 'Obelix';
+	font-size: 1.7em;
+	color: white;
+	float: left;
+	width: 25%;
+	margin-left: 5%;
 }}
 
 header span#contact a {
