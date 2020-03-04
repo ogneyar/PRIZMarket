@@ -7,13 +7,13 @@ $token = $tokenMARKET;
 //$bot = new \myBotApi\Bot($token);
 $id_bota = strstr($token, ':', true);	
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-include '../myBotApi/Variables.php';
+//include '../myBotApi/Variables.php';
 
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
 // проверка подключения 
 if (mysqli_connect_errno()) {
-	$bot->sendMessage($master, 'Чёт не выходит подключиться к MySQL');	
+	throw new Exception('Чёт не выходит подключиться к MySQL');	
 	exit('ok');
 }
 
