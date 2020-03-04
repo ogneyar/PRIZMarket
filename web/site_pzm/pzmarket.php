@@ -1,4 +1,13 @@
 ﻿<?php	
+// Подключаем библиотеку с классом Bot
+include_once '../myBotApi/Bot.php';
+//exit('ok');
+$token = $tokenMARKET;
+// Создаем объект бота
+$bot = new Bot($token);
+$id_bota = strstr($token, ':', true);	
+// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
+include '../myBotApi/Variables.php';
 
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
@@ -90,6 +99,10 @@ function exception_handler($exception) {
 $ссыль_на_канал_подробности = "https://teleg.link/podrobno_s_PZP";
 
 $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
+
+$не_работает = "<script type='text/javascript'>
+window.alert('Временно не работает.')
+</script>";
 
 
 
