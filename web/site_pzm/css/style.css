@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'Obelix'; /* font name */
-    src: url('/fonts/Obelix.ttf'); /* URL to font */
+    src: url('/site_pzm/fonts/Obelix.ttf'); /* URL to font */
 }
 
 * {
@@ -72,7 +72,7 @@ header a#logo {
 	margin-left: 15%;
 }}
 
-@media (min-width: 350px, max-width: 639px){
+@media (max-width: 639px) and (min-width: 350px){
 header span#contact {
 	float: right;
 	width: 40%;
