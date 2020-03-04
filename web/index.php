@@ -86,8 +86,8 @@ include_once 'site_pzm/pzmarket.php';
 			&copy; PRIZMarket <?=date('Y')?>
 		</div>
 		<div id="social">			
-			<a href="" title="Инстаграм"><img src="site_pzm/img/social/instagram.png" alt="Группа FaceBook" /></a>
-			<a href="" title="Группа Вконтакте"><img src="site_pzm/img/social/vkontakte.png" alt="Группа Вконтакте" /></a>
+			<a href="https://www.instagram.com/prizm_market_inst" title="Инстаграм"><img src="site_pzm/img/social/instagram.png" alt="Инстаграм PRIZMarket" /></a>
+			<a href="https://vk.com/prizmarket_vk" title="Группа Вконтакте"><img src="site_pzm/img/social/vkontakte.png" alt="Вконтакте PRIZMarket" /></a>
 		</div>
 	</footer>
 </body>
