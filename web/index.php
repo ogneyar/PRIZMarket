@@ -55,12 +55,7 @@ include_once 'site_pzm/pzmarket.php';
 	</nav>
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
-		<div id="leftCol">
-	<!--	<article>
-				<a href="" title=""><img src="<?//=$ссыль_на_фото[0]?>" alt="" title=""/></a>				
-				<?//=$текст_лота[0]?>
-				<p><a href="" title="">Подробности</a><span>2 марта 2020 в 22:18</span></p>
-			</article>  -->			
+		<div id="leftCol">		
 			<?
 			foreach($лот as $публикация) {
 				echo $публикация;
