@@ -213,6 +213,14 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }}
 
+#wrapper #leftCol  #o_prizmarket {
+	width: 90%;
+	margin-right: 5%;
+	margin-left: 5%;
+	margin-top: 5%;
+	float: left;
+}
+
 @media (max-width: 689px) {
 #wrapper #leftCol {
 	width: 90%;
