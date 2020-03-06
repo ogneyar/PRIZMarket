@@ -39,7 +39,7 @@ include_once 'site_pzm/pzmarket.php';
 <body>
 	<header>
 		<a href="/" id="logo">
-			<span>PRIZM</span>arket!
+			<span>PRIZM</span>arket
 		</a>
 		<span id="contact">
 			<a href="" onclick="alert('Эта функция ещё не подключена!')">Реклама</a>
