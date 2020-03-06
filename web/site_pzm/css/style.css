@@ -30,9 +30,6 @@ body {
 	width: 100%;
 	height: 100%;
 	float: left;
-/*	display: flex;
-	display: -webkit-flex;
-	flex-direction: column;	*/	
 }
 
 /* -------------------------------
@@ -203,9 +200,6 @@ nav a:hover, nav#fixed a:hover {
 	width: 86%;
 	margin-left: 7%;
 	float: left;
-/*	flex-grow: 1;*/
-	min-height: 100%;
-	position: relative;	
 }
 
 /* -------------------------------
@@ -235,19 +229,7 @@ nav a:hover, nav#fixed a:hover {
 #support h3 b{
 	color: green;
 }
-/*
-#o_prizmarket div{
-	width: 90%;
-	margin-right: 5%;
-	margin-left: 5%;
-	margin-top: 5%;
-	float: left;
-}
 
-#o_prizmarket h1 b{
-	color: blue;
-}
-*/
 #o_prizmarket h3 b{
 	color: red;
 }
@@ -361,10 +343,6 @@ footer {
 	padding: 0.8% 1%;
 	margin-top: 20px;
 	background-color: #3e3e3f;
-	
-	position: absolute;
-	bottom: 0;
-	height: 50px;
 }
 
 footer div#rights {
