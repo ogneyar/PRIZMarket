@@ -38,7 +38,7 @@ include_once 'site_pzm/pzmarket.php';
 </head>
 <body>
 	<header>
-		<?include '/site_pzm/site_files/header.html';?>
+		<?include_once '/site_pzm/site_files/header.php';?>
 	</header>
 	<nav>
 		<a href="/">Главная</a>
