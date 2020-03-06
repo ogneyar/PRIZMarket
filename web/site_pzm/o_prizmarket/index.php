@@ -1,13 +1,13 @@
 <?php
-//include_once '../vendor/autoload.php';	
-include_once 'a_conect.php';
-include_once 'site_pzm/pzmarket.php';
+//include_once '../../../vendor/autoload.php';	
+include_once '../../a_conect.php';
+//include_once '../site_pzm/pzmarket.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />	
-	<title>PRIZMarket!</title>
+	<title>О нас, о PRIZMarket!</title>
 	<?include_once 'site_pzm/site_files/head.html';?>
 </head>
 <body>
