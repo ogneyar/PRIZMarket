@@ -213,7 +213,7 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }}
 
-#wrapper #leftCol  #o_prizmarket {
+#o_prizmarket div{
 	width: 90%;
 	margin-right: 5%;
 	margin-left: 5%;
