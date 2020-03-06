@@ -221,10 +221,10 @@ nav a:hover, nav#fixed a:hover {
 
 #support div, #o_prizmarket div{
 	width: 90%;
-	margin-right: 5%;
-	margin-left: 5%;
+	margin: 5%;
+/*	margin-left: 5%;
 	margin-top: 5%;
-	margin-bottom: 5%;
+	margin-bottom: 5%;*/
 	float: left;
 }
 
@@ -265,7 +265,7 @@ nav a:hover, nav#fixed a:hover {
 
 #leftCol article h2 {
 	font-size: 1.2em;
-	font-family: 'Obelix';
+/*	font-family: 'Obelix';*/
 	color: #3e3e3f;
 	width: 90%;
 	margin-left: 5%;
@@ -320,7 +320,7 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 	width: 88%;
 	font-size: 1em;
-	font-family: 'Obelix';
+/*	font-family: 'Obelix';*/
 	background-color: #d4d4d4;
 	border: 0;
 	outline: none;
@@ -334,7 +334,7 @@ nav a:hover, nav#fixed a:hover {
 
 #rightCol .banner span {
 	font-size: 1em;
-	font-family: 'Obelix';
+/*	font-family: 'Obelix';*/
 	color: #3e3e3f;
 	line-height: 450%;
 }
@@ -351,7 +351,7 @@ footer {
 	background-color: #3e3e3f;
 	
 	position: absolute;
-	bottom: 0;
+	bottom: 0px;
 	height: 40px;
 }
 
