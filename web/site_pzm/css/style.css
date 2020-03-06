@@ -11,7 +11,7 @@
 	outline: none;
 }
 
-body {
+html, body {
 	height: 100%;
 }
 
