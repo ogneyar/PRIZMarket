@@ -6,7 +6,7 @@
 	<!-- Adopt website to current screen -->
 	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	
-	<link rel="stylesheet" href="/site_pzm/css/style2.css">
+	<link rel="stylesheet" href="/site_pzm/css/style.css">
 	
 	<!-- Here we add libs for jQuery, Ajax... -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
