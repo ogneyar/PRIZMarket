@@ -76,7 +76,7 @@ header a#logo {
 header span#contact {
 	float: right;
 	width: 40%;
-	margin-right: 10%;
+	margin-right: 8%;
 	font-family: Times New Roman, sans-serif
 }
 header a#logo {
@@ -85,7 +85,7 @@ header a#logo {
 	color: white;
 	float: left;
 	width: 25%;
-	margin-left: 10%;
+	margin-left: 8%;
 }}
 
 @media (max-width: 349px) and (min-width: 311px){
