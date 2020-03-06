@@ -15,11 +15,7 @@ include_once 'site_pzm/pzmarket.php';
 		<?include_once 'site_pzm/site_files/header.html';?>
 	</header>
 	<nav>
-		<a href="/">Главная</a>
-		<a href="/site_pzm/podrobnosti/index.php">Подробности</a>
-		<a href="<?=$ссыль_на_саппорт_бота?>" target="_blank">Саппорт</a>
-		<a href="" onclick="alert('Эта функция ещё не подключена!')">О нас</a>
-<!--	<a href="">Разное</a> -->
+		<?include_once 'site_pzm/site_files/nav.html';?>
 	</nav>
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
