@@ -20,7 +20,7 @@ include_once 'site_pzm/pzmarket.php';
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
 		<div id="leftCol">		
-			<?include_once 'site_pzm/site_files/div-wrapper-leftCol.php';?>
+			<?include_once 'site_pzm/site_files/div-wrapper-leftCol-o_prizmarket.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once 'site_pzm/site_files/div-wrapper-rightCol.html';?>
