@@ -25,6 +25,8 @@ a, *:hover {
 	transition: all.6s ease;
 }
 
+html {height: 100%;}
+
 body {
 	background-color: #ececee;
 	width: 100%;
