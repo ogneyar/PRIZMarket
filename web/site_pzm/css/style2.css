@@ -208,8 +208,8 @@ nav a:hover, nav#fixed a:hover {
 
 @media (min-width: 690px) {
 #wrapper #leftCol {
-	width: 60%;
-	margin-right: 5%;
+	width: 65%;
+	margin-right: 7%;
 	float: left;
 }}
 
@@ -268,7 +268,7 @@ nav a:hover, nav#fixed a:hover {
 
 @media (min-width: 690px) {
 #wrapper #rightCol {
-	width: 35%;
+	width: 28%;
 	float: left;
 }}
 
