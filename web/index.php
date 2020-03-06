@@ -19,7 +19,12 @@ include_once 'site_pzm/pzmarket.php';
 	</nav>
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
-		<?include_once 'site_pzm/site_files/div-wrapper.html';?>
+		<div id="leftCol">		
+			<?include_once 'site_pzm/site_files/div-wrapper-leftCol.php';?>
+		</div>
+		<div id="rightCol">
+			<?include_once 'site_pzm/site_files/div-wrapper-rightCol.html';?>
+		</div>
 	</div>
 	<footer>
 		<?include_once 'site_pzm/site_files/footer.html';?>
