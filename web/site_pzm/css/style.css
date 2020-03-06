@@ -213,6 +213,22 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }}
 
+#support div{
+	width: 90%;
+	margin-right: 5%;
+	margin-left: 5%;
+	margin-top: 5%;
+	float: left;
+}
+
+#support h1 b{
+	color: blue;
+}
+
+#support h3 b{
+	color: green;
+}
+
 #o_prizmarket div{
 	width: 90%;
 	margin-right: 5%;
