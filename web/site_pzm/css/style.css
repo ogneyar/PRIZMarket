@@ -157,8 +157,7 @@ nav a, nav#fixed a {
 
 @media (max-width: 719px){
 nav a:first-child, nav#fixed a:first-child {
-	margin-left: 4%; 
-	border-top: 5px solid #6accd7;
+	margin-left: 4%; 	
 }
 nav a, nav#fixed a {	
 	padding: 0.5% 1% 0 1%;
