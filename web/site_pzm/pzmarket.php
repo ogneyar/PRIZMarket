@@ -83,6 +83,10 @@ while ($a<5){
 	$a++;	
 }	
 
+if ($_GET['podrobnosti']) {
+	echo "ДААААААААААААААААААААА";
+}
+
 // закрываем подключение 
 $mysqli->close();		
 
@@ -100,9 +104,5 @@ $ссыль_на_канал_подробности = "https://teleg.link/podrobn
 
 $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
 
-$не_работает = "<script type='text/javascript'>
-alert('Временно не работает.')
-</script>";
-//window.
 
 ?>		
