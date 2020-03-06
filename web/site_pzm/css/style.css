@@ -221,11 +221,11 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }
 
-#o_prizmarket h1 em{
+#o_prizmarket h1 b{
 	color: blue;
 }
 
-#o_prizmarket h3 em{
+#o_prizmarket h3 b{
 	color: red;
 }
 
