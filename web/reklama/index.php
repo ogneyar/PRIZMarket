@@ -16,7 +16,7 @@ include_once 'a_conect.php';
 	<!-- Adopt website to current screen -->
 	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	
-	<link rel="stylesheet" href="site_pzm/css/style.css">
+	<link rel="stylesheet" href="/site_pzm/css/style.css">
 	
 	<!-- Here we add libs for jQuery, Ajax... -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -71,7 +71,7 @@ include_once 'a_conect.php';
 			</div>
 			<div class="banner">
 				<span>Поддержать проект:</span>
-				<img src="site_pzm/img/WM_sps.png" id="wm" alt="Сказать спасибо" title="Сказать спасибо"/>
+				<img src="/site_pzm/img/WM_sps.png" id="wm" alt="Сказать спасибо" title="Сказать спасибо"/>
 			</div>
 		</div>
 	</div>
@@ -80,8 +80,8 @@ include_once 'a_conect.php';
 			&copy; PRIZMarket <?=date('Y')?>
 		</div>
 		<div id="social">			
-			<a href="https://www.instagram.com/prizm_market_inst" title="Инстаграм" target="_blank"><img src="site_pzm/img/social/instagram.png" alt="Инстаграм PRIZMarket" /></a>
-			<a href="https://vk.com/prizmarket_vk" title="Группа Вконтакте" target="_blank"><img src="site_pzm/img/social/vkontakte.png" alt="Вконтакте PRIZMarket" /></a>
+			<a href="https://www.instagram.com/prizm_market_inst" title="Инстаграм" target="_blank"><img src="/site_pzm/img/social/instagram.png" alt="Инстаграм PRIZMarket" /></a>
+			<a href="https://vk.com/prizmarket_vk" title="Группа Вконтакте" target="_blank"><img src="/site_pzm/img/social/vkontakte.png" alt="Вконтакте PRIZMarket" /></a>
 		</div>
 	</footer>
 </body>
