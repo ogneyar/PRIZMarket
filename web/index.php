@@ -8,33 +8,7 @@ include_once 'site_pzm/pzmarket.php';
 <head>
 	<meta charset="utf-8" />	
 	<title>PRIZMarket!</title>
-	<meta name="description" content="" />
-	<meta name="author" content="" />
-	<meta name="robots" content="all,index,follow" />
-	<meta name="distribution" content="global" />
-	
-	<!-- Adopt website to current screen -->
-	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	
-	<link rel="stylesheet" href="site_pzm/css/style.css">
-	
-	<!-- Here we add libs for jQuery, Ajax... -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	
-	<script type="text/javascript">
-		if(screen.width > 800) { // Animate navigation
-			$(document).ready(function() {
-			// функцию скролла привязать к окну браузера
-				$(window).scroll(function(){
-					var distanceTop = $('#slideMenu').offset().top;
-					if ($(window).scrollTop() >= distanceTop)
-						$ ('nav').attr ("id", "fixed");
-					else //if ($(window).scrollTop() < distanceTop)
-						$ ('nav').attr ("id", "nav");
-				});
-			});
-		}
-	</script>
+	<?include_once 'site_pzm/site_files/head.html';?>
 </head>
 <body>
 	<header>
