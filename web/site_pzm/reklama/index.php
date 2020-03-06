@@ -48,7 +48,7 @@ include_once 'a_conect.php';
 	</header>
 	<nav>
 		<a href="/">Главная</a>
-		<a href="<?=$ссыль_на_канал_подробности?>" target="_blank">Подробности</a>
+		<a href="/site_pzm/podrobnosti/index.php">Подробности</a>
 		<a href="<?=$ссыль_на_саппорт_бота?>" target="_blank">Саппорт</a>
 		<a href="" onclick="alert('Эта функция ещё не подключена!')">О нас</a>
 <!--	<a href="">Разное</a> -->
