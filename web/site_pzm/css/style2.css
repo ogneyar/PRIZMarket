@@ -221,10 +221,13 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }
 
-#o_prizmarket a{
+#o_prizmarket h1 em{
 	color: blue;
 }
 
+#o_prizmarket h3 em{
+	color: red;
+}
 
 @media (max-width: 689px) {
 #wrapper #leftCol {
