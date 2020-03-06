@@ -7,7 +7,7 @@ include_once 'a_conect.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />	
-	<title>PRIZMarket!</title>
+	<title>Ваша реклама на PRIZMarket!</title>
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 	<meta name="robots" content="all,index,follow" />
@@ -42,7 +42,7 @@ include_once 'a_conect.php';
 			<span>PRIZM</span>arket
 		</a>
 		<span id="contact">
-			<a href="" onclick="alert('Эта функция ещё не подключена!')">Реклама</a>
+			<a href="/reklama">Реклама</a>
 			<a href="" onclick="alert('Эта функция ещё не подключена!')">Контакты</a>
 		</span>
 	</header>
@@ -56,11 +56,10 @@ include_once 'a_conect.php';
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
 		<div id="leftCol">		
-			<?
-			foreach($лот as $публикация) {
-				echo $публикация;
-			}			
-			?>			
+			<article>
+				<a href='' title=''><img src='/site_pzm/img/art/PRIZMarket.jpg' alt='' title=''/></a>			
+				<p>Здесь может быть Ваша РЕКЛАМА!</p>
+			</article>			
 		</div>
 		<div id="rightCol">
 			<div class="banner">
