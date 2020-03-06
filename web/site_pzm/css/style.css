@@ -31,7 +31,8 @@ body {
 	height: 100%;
 	float: left;
 	display: flex;
-	flex-direction: column;
+	display: -webkit-flex;
+	flex-direction: column;	
 }
 
 /* -------------------------------
