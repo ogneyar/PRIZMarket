@@ -1,8 +1,7 @@
 <?php
 //include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
-include_once '/site_pzm/pzmarket.php';
-include_once '/site_pzm/site_files/header.php';
+include_once 'site_pzm/pzmarket.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,7 +38,7 @@ include_once '/site_pzm/site_files/header.php';
 </head>
 <body>
 	<header>
-		<?=$header?>
+		<?include_once 'site_pzm/site_files/header.html';?>
 	</header>
 	<nav>
 		<a href="/">Главная</a>
