@@ -19,26 +19,7 @@ include_once 'site_pzm/pzmarket.php';
 	</nav>
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
-		<div id="leftCol">		
-			<?
-			foreach($лот as $публикация) {
-				echo $публикация;
-			}			
-			?>			
-		</div>
-		<div id="rightCol">
-			<div class="banner">
-				<input type="text" placeholder="Поиск" id="search"/>
-			</div>
-			<div class="banner">
-				<span>Стоит посмотреть:</span>
-				<iframe src="https://youtu.be/7-wxMhp99N8" frameborder="0" allowfullscreen></iframe>
-			</div>
-			<div class="banner">
-				<span>Поддержать проект:</span>
-				<img src="site_pzm/img/WM_sps.png" id="wm" alt="Сказать спасибо" title="Сказать спасибо"/>
-			</div>
-		</div>
+		<?include_once 'site_pzm/site_files/div-wrapper.html';?>
 	</div>
 	<footer>
 		<div id="rights">
