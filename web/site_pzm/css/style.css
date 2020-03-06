@@ -221,6 +221,11 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }
 
+#o_prizmarket a{
+	color: blue;
+}
+
+
 @media (max-width: 689px) {
 #wrapper #leftCol {
 	width: 90%;
