@@ -22,13 +22,7 @@ include_once 'site_pzm/pzmarket.php';
 		<?include_once 'site_pzm/site_files/div-wrapper.html';?>
 	</div>
 	<footer>
-		<div id="rights">
-			&copy; PRIZMarket <?=date('Y')?>
-		</div>
-		<div id="social">			
-			<a href="https://www.instagram.com/prizm_market_inst" title="Инстаграм" target="_blank"><img src="site_pzm/img/social/instagram.png" alt="Инстаграм PRIZMarket" /></a>
-			<a href="https://vk.com/prizmarket_vk" title="Группа Вконтакте" target="_blank"><img src="site_pzm/img/social/vkontakte.png" alt="Вконтакте PRIZMarket" /></a>
-		</div>
+		<?include_once 'site_pzm/site_files/footer.html';?>
 	</footer>
 </body>
 </html>
