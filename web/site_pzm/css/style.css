@@ -226,14 +226,14 @@ body {
 	flex-grow: 1;
 }
 
-/* Для переноса длинного текста */
+/* Для переноса длинного текста 
 #wrapper {
 	-webkit-hyphens: auto; 
 	-moz-hyphens: auto; 
 	-ms-hyphens: auto;
 	hyphens: auto; 
 	word-wrap: break-word;
-}
+}*/
 
 /* -------------------------------
 		Левая часть сайта
@@ -405,7 +405,7 @@ footer {
 	padding: 0.8% 1%;
 	margin-top: 20px;
 	background-color: #3e3e3f;
-	
+
 	margin-bottom: -20px;
 }
 
