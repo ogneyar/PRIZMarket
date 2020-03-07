@@ -215,6 +215,7 @@ nav a:hover, nav#fixed a:hover {
 body {
 	display: -webkit-flex;
 	display: flex;
+	-webkit-flex-direction: column;
 	flex-direction: column;
 }
 #wrapper {
