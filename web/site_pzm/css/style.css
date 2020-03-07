@@ -60,12 +60,15 @@ header {
 	border-style: solid; 
 	border-color: green;*/
 	
-	border-bottom: 5px solid #4a4a4a;	
+	border-bottom: 5px solid #525252;	
 }
 
 header a#logo span {
 	font-size: 1.3em;
-	text-shadow: 1px 1px 2px grey, 0 0 1em #e0e0e0;
+}
+
+header #logo a {
+	text-shadow: 1px 1px 2px grey, 0 0 1em white;
 }
 
 @media (min-width: 640px){
