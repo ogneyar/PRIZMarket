@@ -315,12 +315,12 @@ body {
 	margin-left: 10%;
 	float: left;
 }}
-
-#reklama div {
+/*
+#reklama span {
 	width: 84%;
 	margin: 3%;
 	float: left;
-}
+}*/
 
 /* отсебятина */
 #rightCol article {
