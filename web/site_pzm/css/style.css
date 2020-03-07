@@ -217,6 +217,7 @@ body {
 	display: flex;
 	-webkit-flex-direction: column;
 	flex-direction: column;
+	flex-wrap: wrap;
 }
 #wrapper {
 	flex-grow: 1;
@@ -337,6 +338,8 @@ body {
 	width: 86%;	
 	float: left;
 	margin: 10px;
+	
+	flex-basic: 15px;
 }
 #rightCol article a {color: #6accd7; font-size: 1.2em}
 #rightCol article a:hover {color: #647f82}
