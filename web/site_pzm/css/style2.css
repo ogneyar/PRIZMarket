@@ -192,7 +192,8 @@ nav a:hover, nav#fixed a:hover {
 
 #slideMenu {
 	float: left;
-	color: rgba(255,255,255,0);
+/*	color: rgba(255,255,255,0);*/
+	color: red;
 	-webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -316,6 +317,38 @@ body {
 	float: left;
 }}
 
+
+/* отсебятина */
+#rightCol article {
+	width: 100%;
+	background-color: #fff;
+	margin-bottom: 20px;
+	float: left;
+}
+#rightCol article:last-child {margin-bottom: 0}
+#rightCol article img {
+	width: 100%;
+	float: left;
+	margin-bottom: 10px;
+}
+#rightCol article p {
+	font-size: 1em;
+	font-family: Times New Roman, sans-serif;
+	color: #3e3e3f;
+	width: 86%;
+	margin: 2% 7%;
+	float: left;
+}
+#rightCol article a {color: #6accd7; font-size: 1.2em}
+#rightCol article a:hover {color: #647f82}
+#rightCol article span {
+	float: right;
+	color: #7c7c7c;
+}
+/* хз чё получится */
+
+
+
 #rightCol .banner {
 	width: 100%;
 	float: left;
@@ -323,9 +356,7 @@ body {
 	margin-bottom: 20px;
 	text-align: center;
 }
-
 #rightCol .banner:last-child {margin-bottom: 0}
-
 #rightCol .banner input#search {
 	float: left;
 	width: 88%;
@@ -341,7 +372,6 @@ body {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-
 #rightCol .banner span {
 	font-size: 1em;
 /*	font-family: 'Obelix';*/
