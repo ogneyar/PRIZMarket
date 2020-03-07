@@ -60,11 +60,12 @@ header {
 	border-style: solid; 
 	border-color: green;*/
 	
-	border-bottom: 5px solid #434343;
+	border-bottom: 5px solid #4a4a4a;	
 }
 
 header a#logo span {
 	font-size: 1.3em;
+	text-shadow: 1px 1px 2px grey, 0 0 1em #e0e0e0;
 }
 
 @media (min-width: 640px){
@@ -186,7 +187,7 @@ nav#fixed {
 	position: fixed;
 	top: 0;
 	background-color: rgba(255,255,255,0.87);
-	border-color: rgba(255,255,255,0.87);
+	border-color: rgba(224,224,224,0.87);
 	-webkit-transition: all.6s ease;
 	-moz-transition: all.6s ease;
 	-o-transition: all.6s ease;
