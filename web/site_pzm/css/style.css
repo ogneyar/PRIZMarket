@@ -215,7 +215,7 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }
 
-/* Для фиксации футера в подвале */
+/* Для фиксации футера в подвале 
 body {
 	display: -webkit-flex;
 	display: flex;
@@ -224,16 +224,16 @@ body {
 }
 #wrapper {
 	flex-grow: 1;
-}
+}*/
 
-/* Для переноса длинного текста 
+/* Для переноса длинного текста */
 #wrapper {
 	-webkit-hyphens: auto; 
 	-moz-hyphens: auto; 
 	-ms-hyphens: auto;
 	hyphens: auto; 
 	word-wrap: break-word;
-}*/
+}
 
 /* -------------------------------
 		Левая часть сайта
