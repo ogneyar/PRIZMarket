@@ -192,8 +192,7 @@ nav a:hover, nav#fixed a:hover {
 
 #slideMenu {
 	float: left;
-/*	color: rgba(255,255,255,0);*/
-	color: red;
+	color: rgba(255,255,255,0);
 	-webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -317,6 +316,11 @@ body {
 	float: left;
 }}
 
+#reklama div {
+	width: 84%;
+	margin: 3%;
+	float: left;
+}
 
 /* отсебятина */
 #rightCol article {
