@@ -211,14 +211,14 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }
 
-/* это для фиксации футера в подвале */
+/* это для фиксации футера в подвале 
 body {
 	display: flex;
 	flex-direction: column;
 }
 #wrapper {
 	flex-grow: 1;
-}
+}*/
 
 /* -------------------------------
 		Левая часть сайта
