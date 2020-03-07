@@ -342,7 +342,7 @@ body {
 	color: #3e3e3f;
 	width: 86%;	
 	float: left;
-	margin-bottom: 10px;
+	margin: 10px;
 }
 #rightCol article a {color: #6accd7; font-size: 1.2em}
 #rightCol article a:hover {color: #647f82}
