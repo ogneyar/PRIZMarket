@@ -9,6 +9,7 @@ include_once 'site_pzm/pzmarket.php';
 	<meta charset="utf-8" />	
 	<title>PRIZMarket!</title>
 	<?include_once 'site_pzm/site_files/head.html';?>
+	<style type="text/css"></style>
 </head>
 <body>
 	<header>
