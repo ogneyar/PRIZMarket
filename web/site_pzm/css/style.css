@@ -148,6 +148,8 @@ nav {
 	float: left;
 	background-color: #ffffff;
 	padding: 0 1% 0.7% 1%;
+	
+	border-bottom: 3px solid #eaeaea;
 }
 
 @media (min-width: 720px){
