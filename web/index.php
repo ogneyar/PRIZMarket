@@ -13,7 +13,7 @@ include_once 'site_pzm/pzmarket.php';
 </head>
 <body>
 	<header>
-		<?//include_once 'site_pzm/site_files/header.html';?>
+		<?include_once 'site_pzm/site_files/header.html';?>
 	</header>
 	<nav>
 		<?include_once 'site_pzm/site_files/nav.html';?>
