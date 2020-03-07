@@ -60,7 +60,7 @@ header {
 	border-style: solid; 
 	border-color: green;*/
 	
-	border-bottom: 5px solid green;
+	border-bottom: 5px solid #434343;
 }
 
 header a#logo span {
@@ -186,6 +186,7 @@ nav#fixed {
 	position: fixed;
 	top: 0;
 	background-color: rgba(255,255,255,0.87);
+	border-color: rgba(255,255,255,0.87);
 	-webkit-transition: all.6s ease;
 	-moz-transition: all.6s ease;
 	-o-transition: all.6s ease;
@@ -285,6 +286,9 @@ body {
 	background-color: #fff;
 	margin-bottom: 20px;
 	float: left;
+	
+	border-radius: 5px;	
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 #leftCol article:last-child {margin-bottom: 0}
