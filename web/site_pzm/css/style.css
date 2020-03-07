@@ -213,6 +213,7 @@ nav a:hover, nav#fixed a:hover {
 
 /* это для фиксации футера в подвале */
 body {
+	display: -webkit-flex;
 	display: flex;
 	flex-direction: column;
 }
@@ -234,7 +235,6 @@ body {
 #support div, #o_prizmarket div{
 	width: 90%;
 	margin: 5%;
-
 	float: left;
 }
 
@@ -315,14 +315,7 @@ body {
 	margin-left: 10%;
 	float: left;
 }}
-/*
-#reklama span {
-	width: 84%;
-	margin: 3%;
-	float: left;
-}*/
 
-/* отсебятина */
 #rightCol article {
 	width: 100%;
 	background-color: #fff;
@@ -352,10 +345,9 @@ body {
 	color: #7c7c7c;
 	margin-bottom: 10px;
 }
-/* хз чё получится */
 
 
-
+/* не используется */
 #rightCol .banner {
 	width: 100%;
 	float: left;
@@ -384,7 +376,10 @@ body {
 /*	font-family: 'Obelix';*/
 	color: #3e3e3f;
 	line-height: 450%;
-}
+} 
+/* не используется */
+
+
 
 /* -------------------------------
 		Футер сайта
@@ -394,7 +389,7 @@ footer {
 	width: 98%;
 	float: left;
 	padding: 0.8% 1%;
-/*	margin-top: 20px;*/
+	margin-top: 20px;
 	background-color: #3e3e3f;
 }
 
