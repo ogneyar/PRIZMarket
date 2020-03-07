@@ -332,7 +332,7 @@ body {
 #rightCol article:last-child {margin-bottom: 0}
 #rightCol article img {
 	width: 100%;
-	float: left;
+	float: center;
 	margin-bottom: 10px;
 }
 #rightCol article p {
