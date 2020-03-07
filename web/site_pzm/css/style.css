@@ -331,7 +331,8 @@ body {
 }
 #rightCol article:last-child {margin-bottom: 0}
 #rightCol article img {
-	width: 100%;
+	width: 94%;
+	margin: 3%;
 	float: center;
 	margin-bottom: 10px;
 }
@@ -339,15 +340,17 @@ body {
 	font-size: 1em;
 	font-family: Times New Roman, sans-serif;
 	color: #3e3e3f;
-	width: 86%;
-	
+	width: 86%;	
 	float: left;
+	margin-bottom: 10px;
 }
 #rightCol article a {color: #6accd7; font-size: 1.2em}
 #rightCol article a:hover {color: #647f82}
 #rightCol article span {
 	float: left;
+	margin: 3%;
 	color: #7c7c7c;
+	margin-bottom: 10px;
 }
 /* хз чё получится */
 
