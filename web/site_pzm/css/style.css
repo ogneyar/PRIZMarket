@@ -211,14 +211,14 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }
 
-/* это для фиксации футера в подвале 
+/* это для фиксации футера в подвале */
 body {
 	display: flex;
 	flex-direction: column;
 }
 #wrapper {
 	flex-grow: 1;
-}*/
+}
 
 /* -------------------------------
 		Левая часть сайта
@@ -394,12 +394,8 @@ footer {
 	width: 98%;
 	float: left;
 	padding: 0.8% 1%;
-	margin-top: 20px;
+/*	margin-top: 20px;*/
 	background-color: #3e3e3f;
-/*
-	position: absolute;
-	bottom: 0px;
-	height: 40px;*/
 }
 
 footer div#rights {
