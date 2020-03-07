@@ -33,12 +33,6 @@ body {
 	background-color: #ececee;
 	width: 100%;
 	float: left;
-	
-	-webkit-hyphens: auto; 
-	-moz-hyphens: auto; 
-	-ms-hyphens: auto;
-	hyphens: auto; 
-	word-wrap: break-word;
 }
 
 /* -------------------------------
@@ -217,7 +211,7 @@ nav a:hover, nav#fixed a:hover {
 	float: left;
 }
 
-/* это для фиксации футера в подвале */
+/* Для фиксации футера в подвале */
 body {
 	display: -webkit-flex;
 	display: flex;
@@ -226,6 +220,15 @@ body {
 }
 #wrapper {
 	flex-grow: 1;
+}
+
+/* Для переноса длинного текста */
+#wrapper {
+	-webkit-hyphens: auto; 
+	-moz-hyphens: auto; 
+	-ms-hyphens: auto;
+	hyphens: auto; 
+	word-wrap: break-word;
 }
 
 /* -------------------------------
@@ -343,12 +346,6 @@ body {
 	width: 86%;	
 	float: left;
 	margin: 10px;
-/* Для переноса длинного текста 
-	-webkit-hyphens: auto; 
-	-moz-hyphens: auto; 
-	-ms-hyphens: auto;
-	hyphens: auto; 
-	word-wrap: break-word;*/
 }
 #rightCol article a {color: #6accd7; font-size: 1.2em}
 #rightCol article a:hover {color: #647f82}
