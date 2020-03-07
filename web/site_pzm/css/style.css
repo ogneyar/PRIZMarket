@@ -55,6 +55,12 @@ header {
 	float: left;
 	background-color: #3e3e3f;
 	padding: 0.5% 1%;
+	
+/*	border-width: 5px;
+	border-style: solid; 
+	border-color: green;*/
+	
+	border-bottom: 5px solid green;
 }
 
 header a#logo span {
