@@ -338,6 +338,12 @@ body {
 	float: left;
 }}
 
+#wrapper #rightCol {
+	border-radius: 5px;
+	border-bottom: 4px solid #e0e0e0;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
 #rightCol article {
 	width: 100%;
 	background-color: #fff;
