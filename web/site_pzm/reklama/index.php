@@ -1,13 +1,13 @@
 <?php
 //include_once '../../../vendor/autoload.php';	
-include_once '../../a_conect.php';
+//include_once '../../a_conect.php';
 //include_once '../pzmarket.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />	
-	<title>PRIZMarket!</title>
+	<title>Ваша реклама на PRIZMarket!</title>
 	<?include_once '../site_files/head.html';?>
 	<style type="text/css"></style>
 </head>
