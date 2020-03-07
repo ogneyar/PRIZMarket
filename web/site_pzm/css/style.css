@@ -340,13 +340,13 @@ body {
 	font-family: Times New Roman, sans-serif;
 	color: #3e3e3f;
 	width: 86%;
-	margin: 2% 7%;
+	
 	float: left;
 }
 #rightCol article a {color: #6accd7; font-size: 1.2em}
 #rightCol article a:hover {color: #647f82}
 #rightCol article span {
-	float: right;
+	float: left;
 	color: #7c7c7c;
 }
 /* хз чё получится */
