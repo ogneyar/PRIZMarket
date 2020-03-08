@@ -257,6 +257,7 @@ body {
 -----------------------------------*/
 
 #wrapper #TopCol {
+	height: 40px; 
 	width: 90%;
 	margin-left: 5%;
 	float: left;
