@@ -257,10 +257,9 @@ body {
 -----------------------------------*/
 
 #wrapper #TopCol {
-	height: 100px; 		
+	height: 200px; 		
 	float: left;
 	margin-bottom: 20px;
-	margin-top: 0;
 }
 
 @media (min-width: 690px) {
@@ -275,37 +274,26 @@ body {
 }}
 
 #TopCol #brendPhoto {
-	width: 100px;
-	
-	margin-bottom: 20px;
+	width: 200px;
 }
 #TopCol #brendName {
-	width: calc(100%-120px);
+	width: calc(100%-300px);
 	float: right;	
-	
-	margin-bottom: 20px;
 }
 
 #TopCol article {
-	width: 100%;
 	background-color: #fff;	
 	float: left;	
 	border-radius: 5px;	
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
-	/*	пробую центрировать текст
-	height: 10em;
-	display: flex;
-	align-items: center;
-	justify-content: center; */
 }
 
-#TopCol #brendPhoto article img {
+#TopCol #brendPhoto img {
 	width: 100%;
 	float: left;
 }
 
-#TopCol #brendName article h1 {
+#TopCol #brendName  h1 {
 	font-size: 2em;
 	font-family: 'RussianSuvenir';
 	color: #3e3e3f;
@@ -314,7 +302,7 @@ body {
 	float: left;
 }
 
-#TopCol #brendName article span {
+#TopCol #brendName span {
 	color: #7c7c7c;
 }
 
