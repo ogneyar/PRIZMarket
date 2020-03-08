@@ -65,7 +65,10 @@ header {
 
 header a#logo span {
 	font-size: 1.3em;
-	text-shadow: 1px 1px 2px white, 0 0 2em white;
+}
+
+header #logo {
+	text-shadow: 1px 1px 2px gray, 0 0 2em white;
 }
 
 @media (min-width: 640px){
