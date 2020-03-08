@@ -257,7 +257,7 @@ body {
 -----------------------------------*/
 
 #wrapper #TopCol {
-	height: 200px; 		
+	max-height: 200px; 		
 	float: left;
 	margin-bottom: 20px;
 }
@@ -274,11 +274,11 @@ body {
 }}
 
 #TopCol #brendPhoto {
-	width: 200px;
+	max-width: 200px;
 }
 #TopCol #brendName {
-	width: calc(100%-300px);
-	float: right;	
+	width: 50%;/*calc(100%-300px);*/
+	float: left;	
 }
 
 #TopCol article {
