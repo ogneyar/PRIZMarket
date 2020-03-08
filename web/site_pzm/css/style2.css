@@ -257,19 +257,30 @@ body {
 -----------------------------------*/
 
 #wrapper #TopCol {
-	height: 40px; 
-	width: 90%;
-	margin-left: 5%;
+	height: 100px; 		
 	float: left;
 	margin-bottom: 20px;
 }
 
+@media (min-width: 690px) {
+#wrapper #TopCol {
+	width: 100%;
+}}
+
+@media (max-width: 689px) {
+#wrapper #TopCol {
+	width: 90%;
+	margin-left: 5%;
+}}
+
+#TopCol #brendPhoto {
+	width: 100px;
+}
+
 #TopCol article {
 	width: 100%;
-	background-color: #fff;
-	margin-bottom: 20px;
-	float: left;
-	
+	background-color: #fff;	
+	float: left;	
 	border-radius: 5px;	
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
@@ -280,13 +291,13 @@ body {
 	justify-content: center; */
 }
 
-#TopCol article img {
+#TopCol #brendPhoto article img {
 	width: 100%;
 	float: left;
 	margin-right: 10px;
 }
 
-#TopCol article h1 {
+#TopCol #brendName article h1 {
 	font-size: 2em;
 	font-family: 'RussianSuvenir';
 	color: #3e3e3f;
@@ -295,9 +306,7 @@ body {
 	float: left;
 }
 
-#TopCol article a:hover {color: #647f82}
-
-#TopCol article span {
+#TopCol #brendName article span {
 	color: #7c7c7c;
 }
 
