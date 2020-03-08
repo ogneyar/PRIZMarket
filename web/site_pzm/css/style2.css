@@ -257,39 +257,40 @@ body {
 		Верхняя часть контента
 -----------------------------------*/
 
-#wrapper #TopColPhoto, #wrapper #TopColText  {
-	height: 200px; 		
+#wrapper #TopColPhoto, #wrapper #TopColText  {	
 	float: left;
 	margin-bottom: 20px;
 }
 
 @media (min-width: 690px) {
 #wrapper #TopColPhoto {
-	width: 30%;
+/*	width: 30%;*/
+	width: 200px;
+	height: 200px;
 	margin-right: 2%;
 }
 #wrapper #TopColText {
-	width: 68%;
+/*	width: 68%;*/
+	width: calc(98%-200px);
+	height: 200px;
 }}
 
 @media (max-width: 689px) {
 #wrapper #TopColPhoto {
-	width: 25%;
+/*	width: 25%;*/
+	width: 150px;
+	height: 150px;
 	margin-left: 5%;
 	margin-right: 2%;
 }
 #wrapper #TopColText {
-	width: 63%;
+/*	width: 63%;*/
+	width: calc(93%-150px);
+	height: 150px;
 }}
-/*
-#TopColText {
-	width: calc(100%-300px);
-	float: left;	
-}
-*/
 
 #TopColPhoto article {
-	height: 100%;
+	width: 100%;
 	float: left;		
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
@@ -304,7 +305,8 @@ body {
 }
 
 #TopColPhoto img {
-	width: 100%;
+	width: 200px;
+	height: 200px;
 	float: left;
 }
 
