@@ -266,18 +266,20 @@ body {
 @media (min-width: 690px) {
 #wrapper #TopColPhoto {
 	width: 30%;
+	margin-right: 2%;
 }
 #wrapper #TopColText {
-	width: 70%;
+	width: 68%;
 }}
 
 @media (max-width: 689px) {
 #wrapper #TopColPhoto {
 	width: 25%;
 	margin-left: 5%;
+	margin-right: 2%;
 }
 #wrapper #TopColText {
-	width: 65%;
+	width: 63%;
 }}
 /*
 #TopColText {
@@ -294,6 +296,7 @@ body {
 
 #TopColText article {
 	height: 100%;
+	width: 100%;
 	background-color: #fff;	
 	float: left;	
 	border-radius: 5px;	
