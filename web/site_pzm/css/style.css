@@ -257,7 +257,7 @@ body {
 -----------------------------------*/
 
 #wrapper #TopColPhoto, #wrapper #TopColText  {
-	max-height: 200px; 		
+	height: 200px; 		
 	float: left;
 	margin-bottom: 20px;
 }
@@ -279,17 +279,13 @@ body {
 	width: 65%;
 }}
 /*
-#TopColPhoto {
-	max-width: 200px;
-	width: 50%;
-	float: left;
-}
 #TopColText {
 	width: calc(100%-300px);
 	float: left;	
 }
 */
 #TopColText article, #TopColPhoto article {
+	height: 100%;
 	background-color: #fff;	
 	float: left;	
 	border-radius: 5px;	
@@ -297,7 +293,7 @@ body {
 }
 
 #TopColPhoto img {
-	width: 100%;
+	height: 100%;
 	float: left;
 }
 
