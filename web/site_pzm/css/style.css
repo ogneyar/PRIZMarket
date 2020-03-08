@@ -269,8 +269,8 @@ body {
 	margin-right: 2%;
 }
 #wrapper #TopColText {
-/*	width: 68%;*/
-	width: calc(90%-230px);
+	width: 60%;
+/*	width: calc(90%-230px);*/
 	height: 200px;
 	margin-bottom: 20px;
 }}
@@ -284,8 +284,8 @@ body {
 	margin-right: 2%;
 }
 #wrapper #TopColText {
-/*	width: 63%;*/
-	width: calc(85%-180px);
+	width: 60%;
+/*	width: calc(85%-180px);*/
 	height: 150px;
 	margin-bottom: 20px;
 }}
