@@ -256,44 +256,52 @@ body {
 		Верхняя часть контента
 -----------------------------------*/
 
-#wrapper #TopCol {
+#wrapper #TopColPhoto, #wrapper #TopColText  {
 	max-height: 200px; 		
 	float: left;
 	margin-bottom: 20px;
 }
 
 @media (min-width: 690px) {
-#wrapper #TopCol {
-	width: 100%;
+#wrapper #TopColPhoto {
+	width: 30%;
+}
+#wrapper #TopColText {
+	width: 70%;
 }}
 
 @media (max-width: 689px) {
-#wrapper #TopCol {
-	width: 90%;
+#wrapper #TopColPhoto {
+	width: 25%;
 	margin-left: 5%;
+}
+#wrapper #TopColText {
+	width: 65%;
 }}
 
-#TopCol #brendPhoto {
+#TopColPhoto {
 	max-width: 200px;
+	width: 50%;
+	float: left;
 }
-#TopCol #brendName {
+#TopColText {
 	width: 50%;/*calc(100%-300px);*/
 	float: left;	
 }
 
-#TopCol article {
+#TopColText article {
 	background-color: #fff;	
 	float: left;	
 	border-radius: 5px;	
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-#TopCol #brendPhoto img {
+#TopColPhoto img {
 	width: 100%;
 	float: left;
 }
 
-#TopCol #brendName  h1 {
+#TopColText  h1 {
 	font-size: 2em;
 	font-family: 'RussianSuvenir';
 	color: #3e3e3f;
@@ -302,7 +310,7 @@ body {
 	float: left;
 }
 
-#TopCol #brendName span {
+#TopColText span {
 	color: #7c7c7c;
 }
 
