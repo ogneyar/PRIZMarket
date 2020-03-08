@@ -278,18 +278,18 @@ body {
 #wrapper #TopColText {
 	width: 65%;
 }}
-
+/*
 #TopColPhoto {
 	max-width: 200px;
 	width: 50%;
 	float: left;
 }
 #TopColText {
-	width: 50%;/*calc(100%-300px);*/
+	width: calc(100%-300px);
 	float: left;	
 }
-
-#TopColText article {
+*/
+#TopColText article, #TopColPhoto article {
 	background-color: #fff;	
 	float: left;	
 	border-radius: 5px;	
