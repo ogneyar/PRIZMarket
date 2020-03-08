@@ -276,6 +276,9 @@ body {
 #TopCol #brendPhoto {
 	width: 100px;
 }
+#TopCol #brendName {
+	width: calc(100%-100px);
+}
 
 #TopCol article {
 	width: 100%;
