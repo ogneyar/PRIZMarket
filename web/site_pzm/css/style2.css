@@ -3,7 +3,8 @@
 @font-face {
     font-family: 'mr_InsulaG'; /* font name */
     src: url('/site_pzm/fonts/mr_InsulaG.ttf'); /* URL to font */
-	
+}
+@font-face {
 	font-family: 'RussianSuvenir'; /* font name */
     src: url('/site_pzm/fonts/RussianSuvenir.ttf'); /* URL to font */
 }
@@ -284,7 +285,14 @@ body {
 	float: left;	
 }
 */
-#TopColText article, #TopColPhoto article {
+
+#TopColPhoto article {
+	height: 100%;
+	float: left;		
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#TopColText article {
 	height: 100%;
 	background-color: #fff;	
 	float: left;	
@@ -293,7 +301,7 @@ body {
 }
 
 #TopColPhoto img {
-	height: 100%;
+	width: 100%;
 	float: left;
 }
 
