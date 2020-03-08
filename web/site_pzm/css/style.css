@@ -1,8 +1,11 @@
 @charset "utf-8";
 
 @font-face {
-    font-family: 'Obelix'; /* font name */
-    src: url('/site_pzm/fonts/Obelix.ttf'); /* URL to font */
+    font-family: 'mr_InsulaG'; /* font name */
+    src: url('/site_pzm/fonts/mr_InsulaG.ttf'); /* URL to font */
+	
+	font-family: 'RussianSuvenir'; /* font name */
+    src: url('/site_pzm/fonts/RussianSuvenir.ttf'); /* URL to font */
 }
 
 * {
@@ -79,7 +82,7 @@ header span#contact {
 	font-family: Times New Roman, sans-serif
 }
 header a#logo {
-	font-family: 'Obelix';
+	font-family: 'mr_InsulaG';
 	font-size: 1.7em;
 	color: white;
 	float: left;
@@ -95,7 +98,7 @@ header span#contact {
 	font-family: Times New Roman, sans-serif
 }
 header a#logo {
-	font-family: 'Obelix';
+	font-family: 'mr_InsulaG';
 	font-size: 1.7em;
 	color: white;
 	float: left;
@@ -111,7 +114,7 @@ header span#contact {
 	font-family: Times New Roman, sans-serif
 }
 header a#logo {
-	font-family: 'Obelix';
+	font-family: 'mr_InsulaG';
 	font-size: 1.7em;
 	color: white;
 	float: left;
@@ -127,7 +130,7 @@ header span#contact {
 	font-family: Times New Roman, sans-serif
 }
 header a#logo {
-	font-family: 'Obelix';
+	font-family: 'mr_InsulaG';
 	font-size: 1.7em;
 	color: white;
 	float: left;
@@ -249,9 +252,73 @@ body {
 	word-wrap: break-word;
 }
 
+/* --------------------------------
+		Верхняя часть контента
+-----------------------------------*/
+
+#wrapper #TopCol {
+	width: 90%;
+	margin-left: 5%;
+	float: left;
+	margin-bottom: 20px;
+}
+
+#TopCol article {
+	width: 100%;
+	background-color: #fff;
+	margin-bottom: 20px;
+	float: left;
+	
+	border-radius: 5px;	
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+	/*	пробую центрировать текст
+	height: 10em;
+	display: flex;
+	align-items: center;
+	justify-content: center; */
+}
+
+#TopCol article img {
+	width: 100%;
+	float: left;
+	margin-right: 10px;
+}
+
+#TopCol article h1 {
+	font-size: 2em;
+	font-family: 'RussianSuvenir';
+	color: #3e3e3f;
+	width: 90%;
+	margin: 5%;
+	float: left;
+}
+
+#TopCol article a:hover {color: #647f82}
+
+#TopCol article span {
+	color: #7c7c7c;
+}
+
+
 /* -------------------------------
 		Левая часть сайта
 ----------------------------------*/
+
+#support div, #o_prizmarket div{
+	width: 90%;
+	margin: 5%;
+	float: left;
+}
+#support h1 b, #o_prizmarket h1 b{
+	color: blue;
+}
+#support h3 b{
+	color: green;
+}
+#o_prizmarket h3 b{
+	color: red;
+}
 
 @media (min-width: 690px) {
 #wrapper #leftCol {
@@ -259,24 +326,6 @@ body {
 	margin-right: 7%;
 	float: left;
 }}
-
-#support div, #o_prizmarket div{
-	width: 90%;
-	margin: 5%;
-	float: left;
-}
-
-#support h1 b, #o_prizmarket h1 b{
-	color: blue;
-}
-
-#support h3 b{
-	color: green;
-}
-
-#o_prizmarket h3 b{
-	color: red;
-}
 
 @media (max-width: 689px) {
 #wrapper #leftCol {
@@ -306,7 +355,7 @@ body {
 
 #leftCol article h2 {
 	font-size: 1.2em;
-/*	font-family: 'Obelix';*/
+/*	font-family: 'mr_InsulaG';*/
 	color: #3e3e3f;
 	width: 90%;
 	margin-left: 5%;
@@ -400,7 +449,7 @@ body {
 	float: left;
 	width: 88%;
 	font-size: 1em;
-/*	font-family: 'Obelix';*/
+/*	font-family: 'mr_InsulaG';*/
 	background-color: #d4d4d4;
 	border: 0;
 	outline: none;
@@ -413,7 +462,7 @@ body {
 }
 #rightCol .banner span {
 	font-size: 1em;
-/*	font-family: 'Obelix';*/
+/*	font-family: 'mr_InsulaG';*/
 	color: #3e3e3f;
 	line-height: 450%;
 } 
@@ -438,7 +487,7 @@ footer {
 
 footer div#rights {
 	float: left;
-	font-family: 'Obelix';
+	font-family: 'mr_InsulaG';
 	color: white;
 	width: 55%;
 	margin-left: 5%;
