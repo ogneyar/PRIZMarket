@@ -258,8 +258,7 @@ body {
 -----------------------------------*/
 
 #wrapper #TopColPhoto, #wrapper #TopColText  {	
-	float: left;
-	margin-bottom: 20px;
+	float: left;	
 }
 
 @media (min-width: 690px) {
@@ -271,8 +270,9 @@ body {
 }
 #wrapper #TopColText {
 /*	width: 68%;*/
-	width: calc(98%-205px);
+	width: calc(98%-220px);
 	height: 200px;
+	margin-bottom: 20px;
 }}
 
 @media (max-width: 689px) {
@@ -285,8 +285,9 @@ body {
 }
 #wrapper #TopColText {
 /*	width: 63%;*/
-	width: calc(93%-155px);
+	width: calc(93%-170px);
 	height: 150px;
+	margin-bottom: 20px;
 }}
 
 #TopColPhoto article {
