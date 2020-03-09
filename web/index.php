@@ -21,13 +21,13 @@ include_once 'site_pzm/pzmarket.php';
 	<div id="slideMenu">Моё)</div>
 	<div id="wrapper">
 		<div id="TopCol">		
-			<?include_once 'site_pzm/site_files/div-wrapper-TopCol.php';?>
+			<?include_once 'site_pzm/site_files/wrapper-topCol.php';?>
 		</div>		
 		<div id="leftCol">		
-			<?include_once 'site_pzm/site_files/div-wrapper-leftCol.php';?>
+			<?include_once 'site_pzm/site_files/wrapper-leftCol.php';?>
 		</div>
 		<div id="rightCol">
-			<?include_once 'site_pzm/site_files/div-wrapper-rightCol.html';?>
+			<?include_once 'site_pzm/site_files/wrapper-rightCol.php';?>
 		</div>
 	</div>
 	<footer>
