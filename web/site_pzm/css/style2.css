@@ -281,10 +281,7 @@ body {
 	font-family: 'RussianSuvenir';
 	color: #3e3e3f;
 	width: 100%;
-	text-align: center;
-	display: block;
-	margin-left: auto;
-    margin-right: auto;
+	text-align: center;	
 }
 #topColText span {
 	color: #7c7c7c;
@@ -303,6 +300,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 3em;	
+	margin-top: calc(100px - 1.5em);
 }}
 
 @media (max-width: 1299px)  and (min-width: 1000px) {
@@ -317,7 +315,8 @@ body {
 	height: 180px;
 }
 #topColText  h1 {	
-	font-size: 2.5em;
+	font-size: 2.5em;	
+	margin-top: calc(90px - 1.25em);
 }}
 
 @media (max-width: 999px)  and (min-width: 800px) {
@@ -333,6 +332,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 2em;
+	margin-top: calc(80px - 1em);
 }}
 
 @media (max-width: 799px) and (min-width: 690px) {
@@ -348,6 +348,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 1.5em;
+	margin-top: calc(70px - 0.75em);
 }}
 
 @media (max-width: 689px) {
@@ -363,6 +364,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 1em;
+	margin-top: calc(60px - 0.5em);
 }}
 
 
