@@ -277,7 +277,7 @@ body {
 
 #topColPhoto {
 	width: 200px;
-	margin-right: 2%;
+	margin-right: 20px;
 	margin-bottom: 20px;
 }
 
@@ -286,53 +286,25 @@ body {
 }
 #topColText {
 	background-color: #fff;		
-/*	width: 100%; */
-/*	width: 80%; */ 
-	width: calc(98% - 200px);
+	width: calc(100% - 220px);
 	height: 200px;
 	border-radius: 5px;	
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	float: left;
-	margin-bottom: 20px;
-	
-/*	
-	
-	
-		
-	*/
+	margin-bottom: 20px;	
 }
-
-
-/*
 
 #topColText  h1 {	
 	font-family: 'RussianSuvenir';
 	color: #3e3e3f;
-	float: left;
+/*	float: left;*/
 	width: 90%;
+	margin: 5%;
+	font-size: 1.5em;
 }
 #topColText span {
 	color: #7c7c7c;
 }
-
-
-#topColText {
-	width: 63%;
-	height: 200px;
-	margin-bottom: 20px;
-}
-#topColText  h1 {
-	font-size: 1.5em;		
-	margin: 5%;
-}
-*/
-
-
-
-
-
-
-
 
 
 
