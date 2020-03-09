@@ -257,6 +257,62 @@ body {
 		Верхняя часть контента
 -----------------------------------*/
 
+#topCol {
+	-webkit-display: flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+}
+
+#topColPhoto {
+	float: left;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+#topColPhoto img {
+	width: 100%;
+	float: left;
+}
+
+#topColText {
+	flex-grow: 1;
+}
+#topColText {
+	height: 100%;
+	width: 100%; 
+	background-color: #fff;	
+	float: left;	
+	border-radius: 5px;	
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+#topColText  h1 {	
+	font-family: 'RussianSuvenir';
+	color: #3e3e3f;
+	float: left;
+	width: 90%;
+}
+#topColText span {
+	color: #7c7c7c;
+}
+
+#topColPhoto {
+	width: 200px;
+	height: 200px;
+	margin-right: 2%;
+	margin-bottom: 20px;
+}
+#topColText {
+	width: 63%;
+	height: 200px;
+	margin-bottom: 20px;
+}
+#topColText  h1 {
+	font-size: 1.5em;		
+	margin: 5%;
+}
+
+
+
+/*
 #wrapper #TopColPhoto, #wrapper #TopColText  {	
 	float: left;	
 }
@@ -342,7 +398,7 @@ body {
 #TopColText span {
 	color: #7c7c7c;
 }
-
+*/
 
 /* -------------------------------
 		Левая часть сайта
