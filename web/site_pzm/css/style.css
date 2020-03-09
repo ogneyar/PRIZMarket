@@ -38,8 +38,10 @@ a, *:hover {
 }
 
 body {
-	background-color: rgba(175,177,205);  /*#ececee;*/
+/*	background-color: #ececee;*/
+/*	background-color: rgba(175,177,205); */ /* номер 20 */     
 /*	background-color: rgba(93,167,207);  PANTONE 284 */
+	background-color: rgba(209,208,226);  /* номер 15 */     
 	width: 100%;
 	float: left;
 }
