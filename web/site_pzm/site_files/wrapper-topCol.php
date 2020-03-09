@@ -1,6 +1,6 @@
 ﻿<article id="topColPhoto">
 	<a href='' title=''>
-		<img src="/site_pzm/img/art/PRIZMarket.jpg" />
+		<img src="/site_pzm/img/art/PRIZMarket.png" />
 	</a>
 </article>
 <article id="topColText">
