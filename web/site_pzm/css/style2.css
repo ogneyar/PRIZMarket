@@ -276,15 +276,16 @@ body {
 	margin-bottom: 20px;	
 }
 #topColText  h1 {	
-	font-family: 'RussianSuvenir';	
-	color: rgba(121,50,218);
+/*	font-family: 'RussianSuvenir';	*/
+	color: green; /*rgba(121,50,218);*/
 	width: 100%;
 	text-align: center;	
-	text-shadow: 1px 1px 2px rgba(191,111,191), 0 0 2em rgba(191,111,191);
+/*	text-shadow: 1px 1px 2px rgba(191,111,191), 0 0 2em rgba(191,111,191);*/
 }
+/*
 #topColText span {
 	color: #3e3e3f;
-}
+}*/
 
 @media (min-width: 1300px) {
 #topColPhoto {
@@ -645,3 +646,12 @@ footer div#social img {
 	margin-right: 2%;
 	width: 100%;
 }
+
+#social a {
+	width: 40px;
+}
+
+
+
+
+
