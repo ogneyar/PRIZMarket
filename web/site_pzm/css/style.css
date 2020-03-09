@@ -277,7 +277,7 @@ body {
 
 #topColPhoto {
 /*	width: 200px;*/
-	width: 17%;
+	width: 18%;
 	margin-right: 2%;
 	margin-bottom: 20px;
 }
@@ -287,15 +287,19 @@ body {
 }
 #topColText {
 	background-color: #fff;	
-/*	height: 100%;*/
+/*	height: 100%;
+	width: 100%; */
+	width: 80%; 
 	height: 200px;
 	border-radius: 5px;	
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	float: left;
+	margin-bottom: 20px;
 	
 /*	
-	width: 100%; 
 	
-	float: left;	
+	
+		
 	*/
 }
 
