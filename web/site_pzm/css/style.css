@@ -260,9 +260,9 @@ body {
 #topCol {
 	width: 100%;
 	height: 200px;
-	-webkit-display: flex;
+/*	-webkit-display: flex;
 	display: flex;
-/*	-webkit-flex-direction: row;
+	-webkit-flex-direction: row;
 	flex-direction: row;*/
 }
 
@@ -280,10 +280,11 @@ body {
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
-
+/*
 #topColText {
 	flex-grow: 1;
 }
+*/
 #topColText {
 	background-color: #fff;		
 	width: calc(100% - 220px);
