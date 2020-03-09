@@ -269,7 +269,7 @@ body {
 	margin-right: 2%;
 }
 #wrapper #TopColText {
-	width: 70%;
+	width: 30%;
 /*	width: calc(90%-230px);*/
 	height: 200px;
 	margin-bottom: 20px;
@@ -289,7 +289,7 @@ body {
 	margin-right: 2%;
 }
 #wrapper #TopColText {
-	width: 50%;
+	width: 65%;
 /*	width: calc(85%-180px);*/
 	height: 150px;
 	margin-bottom: 20px;
