@@ -18,14 +18,11 @@ include_once 'site_pzm/pzmarket.php';
 	<nav>
 		<?include_once 'site_pzm/site_files/nav.html';?>
 	</nav>
-	<div id="slideMenu">Моё детище, а не просто сайт!</div>
+	<div id="slideMenu">Моё)</div>
 	<div id="wrapper">
-		<div id="TopColPhoto">		
-			<?include_once 'site_pzm/site_files/div-wrapper-TopColPhoto.php';?>
-		</div>
-		<div id="TopColText">		
-			<?include_once 'site_pzm/site_files/div-wrapper-TopColText.php';?>
-		</div>
+		<div id="TopCol">		
+			<?include_once 'site_pzm/site_files/div-wrapper-TopCol.php';?>
+		</div>		
 		<div id="leftCol">		
 			<?include_once 'site_pzm/site_files/div-wrapper-leftCol.php';?>
 		</div>
