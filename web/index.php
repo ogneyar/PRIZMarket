@@ -8,21 +8,21 @@ include_once 'site_pzm/pzmarket.php';
 <head>
 	<meta charset="utf-8" />	
 	<title>PRIZMarket!</title>
-	<?include_once 'site_pzm/site_files/head.html';?>
+	<?include_once 'site_pzm/site_files/head.php';?>
 	<style type="text/css"></style>
 </head>
 <body>
 	<header>
-		<?include_once 'site_pzm/site_files/header.html';?>
+		<?include_once 'site_pzm/site_files/header.php';?>
 	</header>
 	<nav>
-		<?include_once 'site_pzm/site_files/nav.html';?>
+		<?include_once 'site_pzm/site_files/nav.php';?>
 	</nav>
 	<div id="slideMenu">Моё)</div>
 	<div id="wrapper">
 		<div id="TopCol">		
 			<?include_once 'site_pzm/site_files/wrapper-topCol.php';?>
-		</div>		
+		</div>
 		<div id="leftCol">		
 			<?include_once 'site_pzm/site_files/wrapper-leftCol.php';?>
 		</div>
@@ -31,7 +31,7 @@ include_once 'site_pzm/pzmarket.php';
 		</div>
 	</div>
 	<footer>
-		<?include_once 'site_pzm/site_files/footer.html';?>
+		<?include_once 'site_pzm/site_files/footer.php';?>
 	</footer>
 </body>
 </html>
