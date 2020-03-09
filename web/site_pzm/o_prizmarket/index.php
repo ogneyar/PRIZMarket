@@ -19,6 +19,9 @@ include_once '../../a_conect.php';
 	</nav>
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
+		<div id="TopCol">		
+			<?include_once 'site_pzm/site_files/wrapper-topCol.php';?>
+		</div>
 		<div id="leftCol">		
 			<?include_once '../site_files/wrapper-leftCol-o_prizmarket.php';?>
 		</div>
