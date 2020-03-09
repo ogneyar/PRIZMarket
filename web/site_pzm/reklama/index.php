@@ -8,27 +8,30 @@
 <head>
 	<meta charset="utf-8" />	
 	<title>Ваша реклама на PRIZMarket!</title>
-	<?include_once '../site_files/head.html';?>
+	<?include_once '../site_files/head.php';?>
 	<style type="text/css"></style>
 </head>
 <body>
 	<header>
-		<?include_once '../site_files/header.html';?>
+		<?include_once '../site_files/header.php';?>
 	</header>
 	<nav>
-		<?include_once '../site_files/nav.html';?>
+		<?include_once '../site_files/nav.php';?>
 	</nav>
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
+		<div id="TopCol">		
+			<?include_once 'site_pzm/site_files/wrapper-topCol.php';?>
+		</div>
 		<div id="leftCol">		
-			<?include_once '../site_files/div-wrapper-leftCol-reklama.php';?>
+			<?include_once '../site_files/wrapper-leftCol-reklama.php';?>
 		</div>
 		<div id="rightCol">
-			<?include_once '../site_files/div-wrapper-rightCol.html';?>
+			<?include_once '../site_files/wrapper-rightCol.php';?>
 		</div>
 	</div>
 	<footer>
-		<?include_once '../site_files/footer.html';?>
+		<?include_once '../site_files/footer.php';?>
 	</footer>
 </body>
 </html>
