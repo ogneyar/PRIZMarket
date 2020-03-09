@@ -8,26 +8,26 @@ include_once '../pzmarket.php';
 <head>
 	<meta charset="utf-8" />	
 	<title>Подробности PRIZMarket!</title>
-	<?include_once '../site_files/head.html';?>
+	<?include_once '../site_files/head.php';?>
 </head>
 <body>
 	<header>
-		<?include_once '../site_files/header.html';?>
+		<?include_once '../site_files/header.php';?>
 	</header>
 	<nav>
-		<?include_once '../site_files/nav.html';?>
+		<?include_once '../site_files/nav.php';?>
 	</nav>
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
 		<div id="leftCol">		
-			<?include_once '../site_files/div-wrapper-leftCol.php';?>
+			<?include_once '../site_files/wrapper-leftCol.php';?>
 		</div>
 		<div id="rightCol">
-			<?include_once '../site_files/div-wrapper-rightCol.html';?>
+			<?include_once '../site_files/wrapper-rightCol.php';?>
 		</div>
 	</div>
 	<footer>
-		<?include_once '../site_files/footer.html';?>
+		<?include_once '../site_files/footer.php';?>
 	</footer>
 </body>
 </html>
