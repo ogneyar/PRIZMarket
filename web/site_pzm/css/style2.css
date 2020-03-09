@@ -276,8 +276,7 @@ body {
 }
 
 #topColPhoto {
-	width: 200px;
-/*	height: 200px;*/
+/*	width: 200px;*/
 	margin-right: 2%;
 	margin-bottom: 20px;
 }
@@ -285,16 +284,20 @@ body {
 #topColText {
 	flex-grow: 1;
 }
-
-/*
 #topColText {
-	height: 100%;
-	width: 100%; 
 	background-color: #fff;	
+	
+/*	height: 100%;
+	width: 100%; 
+	
 	float: left;	
 	border-radius: 5px;	
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);*/
 }
+
+
+/*
+
 #topColText  h1 {	
 	font-family: 'RussianSuvenir';
 	color: #3e3e3f;
