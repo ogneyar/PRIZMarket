@@ -281,13 +281,10 @@ body {
 	font-family: 'RussianSuvenir';
 	color: #3e3e3f;
 	width: 100%;
-/*	margin: 5%;*/	
 	text-align: center;
-	min-height: 10em;
-	display: table-cell;
-	vertical-align: middle;
-/*	margin-left: auto;
-    margin-right: auto;*/
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
 }
 #topColText span {
 	color: #7c7c7c;
@@ -305,7 +302,7 @@ body {
 	height: 200px;
 }
 #topColText  h1 {	
-	font-size: 3em;
+	font-size: 3em;	
 }}
 
 @media (max-width: 1299px)  and (min-width: 1000px) {
