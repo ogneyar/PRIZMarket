@@ -258,6 +258,7 @@ body {
 -----------------------------------*/
 
 #topCol {
+	width: 100%;
 	-webkit-display: flex;
 	display: flex;
 	-webkit-flex-direction: row;
