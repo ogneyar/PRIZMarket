@@ -273,9 +273,18 @@ body {
 	float: left;
 }
 
+#topColPhoto {
+	width: 200px;
+	height: 200px;
+	margin-right: 2%;
+	margin-bottom: 20px;
+}
+
 #topColText {
 	flex-grow: 1;
 }
+
+/*
 #topColText {
 	height: 100%;
 	width: 100%; 
@@ -294,12 +303,7 @@ body {
 	color: #7c7c7c;
 }
 
-#topColPhoto {
-	width: 200px;
-	height: 200px;
-	margin-right: 2%;
-	margin-bottom: 20px;
-}
+
 #topColText {
 	width: 63%;
 	height: 200px;
@@ -309,6 +313,15 @@ body {
 	font-size: 1.5em;		
 	margin: 5%;
 }
+*/
+
+
+
+
+
+
+
+
 
 
 
