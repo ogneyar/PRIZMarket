@@ -641,13 +641,12 @@ footer div#social {
 	margin-right: 5%;
 }
 
-footer #social article {
+footer #social a {
 	width: 35px;
 	float: right;
 }
 
 footer div#social img {
-	float: right;
 	margin-right: 2%;
 	width: 100%;
 }
