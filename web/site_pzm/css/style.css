@@ -259,11 +259,7 @@ body {
 
 #topCol {
 	width: 100%;
-	height: 200px;
-/*	-webkit-display: flex;
-	display: flex;
-	-webkit-flex-direction: row;
-	flex-direction: row;*/
+/*	height: 200px;*/
 }
 
 #topColPhoto {
@@ -274,27 +270,21 @@ body {
 	width: 100%;
 	float: left;
 }
-
 #topColPhoto {
-	width: 200px;
+/*	width: 200px;*/
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
-/*
-#topColText {
-	flex-grow: 1;
-}
-*/
+
 #topColText {
 	background-color: #fff;		
-	width: calc(100% - 220px);
-	height: 200px;
+/*	width: calc(100% - 220px);
+	height: 200px;*/
 	border-radius: 5px;	
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	float: left;
 	margin-bottom: 20px;	
 }
-
 #topColText  h1 {	
 	font-family: 'RussianSuvenir';
 	color: #3e3e3f;
@@ -307,96 +297,67 @@ body {
 	color: #7c7c7c;
 }
 
-
-
-
-/*
-#wrapper #TopColPhoto, #wrapper #TopColText  {	
-	float: left;	
+@media (min-width: 1300px) {
+#topCol {
+	height: 200px;
 }
-
-@media (min-width: 800px) {
-#wrapper #TopColPhoto {
+#topColPhoto {
 	width: 200px;
-	height: 200px;
-	margin-right: 2%;
-	margin-bottom: 20px;
 }
-#wrapper #TopColText {
-	width: 68%;
+#topColText {
+	width: calc(100% - 220px); /* 20px маргин райт)*/
 	height: 200px;
-	margin-bottom: 20px;
+}}
+
+@media (max-width: 1299px)  and (min-width: 1000px) {
+#topCol {
+	height: 180px;
 }
-#TopColText  h1 {
-	font-size: 2.2em;
-	margin: 25%;
+#topColPhoto {
+	width: 180px;
+}
+#topColText {
+	width: calc(100% - 200px);
+	height: 180px;
+}}
+
+@media (max-width: 999px)  and (min-width: 800px) {
+#topCol {
+	height: 160px;
+}
+#topColPhoto {
+	width: 160px;
+}
+#topColText {
+	width: calc(100% - 180px);
+	height: 160px;
 }}
 
 @media (max-width: 799px) and (min-width: 690px) {
-#wrapper #TopColPhoto {
-	width: 200px;
-	height: 200px;
-	margin-right: 2%;
-	margin-bottom: 20px;
+#topCol {
+	height: 140px;
 }
-#wrapper #TopColText {
-	width: 63%;
-	height: 200px;
-	margin-bottom: 20px;
+#topColPhoto {
+	width: 140px;
 }
-#TopColText  h1 {
-	font-size: 2em;		
-	margin: 15%;
+#topColText {
+	width: calc(100% - 160px);
+	height: 140px;
 }}
 
 @media (max-width: 689px) {
-#wrapper #TopColPhoto {
-	width: 150px;
-	height: 150px;
-	margin-left: 5%;
-	margin-right: 2%;
-	margin-bottom: 20px;
+#topCol {
+	height: 120px;
 }
-#wrapper #TopColText {
-	width: 55%;
-	height: 150px;
-	margin-bottom: 20px;
+#topColPhoto {
+	width: 120px;
 }
-#TopColText  h1 {
-	font-size: 1.5em;
-	margin: 5%;
+#topColText {
+	width: calc(100% - 140px);
+	height: 120px;
 }}
 
-#TopColPhoto article {
-	float: left;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
 
-#TopColText article {
-	height: 100%;
-	width: 100%; 
-	background-color: #fff;	
-	float: left;	
-	border-radius: 5px;	
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-
-#TopColPhoto img {
-	width: 100%;
-	float: left;
-}
-
-#TopColText  h1 {	
-	font-family: 'RussianSuvenir';
-	color: #3e3e3f;
-	float: left;
-	width: 90%;
-}
-
-#TopColText span {
-	color: #7c7c7c;
-}
-*/
 
 /* -------------------------------
 		Левая часть сайта
