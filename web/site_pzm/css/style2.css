@@ -38,7 +38,7 @@ a, *:hover {
 }
 
 body {
-	background-color: #ececee;
+	background-color: rgba(175,177,205); /*#ececee;*/
 	width: 100%;
 	float: left;
 }
