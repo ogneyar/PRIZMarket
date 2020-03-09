@@ -380,8 +380,8 @@ body {
 
 @media (max-width: 689px) {
 #wrapper #leftCol {
-	width: 90%;
-	margin-left: 5%;
+	width: 100%;
+/*	margin-left: 5%;*/
 	float: left;
 	margin-bottom: 20px;
 }}
@@ -406,7 +406,6 @@ body {
 
 #leftCol article h2 {
 	font-size: 1.2em;
-/*	font-family: 'mr_InsulaG';*/
 	color: #3e3e3f;
 	width: 90%;
 	margin-left: 5%;
