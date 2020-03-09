@@ -273,6 +273,11 @@ body {
 /*	width: calc(90%-230px);*/
 	height: 200px;
 	margin-bottom: 20px;
+}
+#TopColText  h1 {
+	font-size: 2em;	
+	width: 90%;
+	margin: 5%;
 }}
 
 @media (max-width: 689px) {
@@ -288,6 +293,11 @@ body {
 /*	width: calc(85%-180px);*/
 	height: 150px;
 	margin-bottom: 20px;
+}
+#TopColText  h1 {
+	font-size: 1.5em;	
+	width: 90%;
+	margin: 5%;
 }}
 
 #TopColPhoto article {
@@ -311,12 +321,9 @@ body {
 	float: left;
 }
 
-#TopColText  h1 {
-	font-size: 2em;
+#TopColText  h1 {	
 	font-family: 'RussianSuvenir';
 	color: #3e3e3f;
-	width: 90%;
-	margin: 5%;
 	float: left;
 }
 
