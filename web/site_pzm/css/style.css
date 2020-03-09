@@ -277,7 +277,7 @@ body {
 }
 #topColText  h1 {	
 /*	font-family: 'RussianSuvenir';	*/
-	color: green; /*rgba(121,50,218);*/
+	color: blue; /*rgba(121,50,218);*/
 	width: 100%;
 	text-align: center;	
 /*	text-shadow: 1px 1px 2px rgba(191,111,191), 0 0 2em rgba(191,111,191);*/
@@ -641,15 +641,18 @@ footer div#social {
 	margin-right: 5%;
 }
 
+footer #social article {
+	width: 35px;
+/*	height: 35px;*/
+}
+
 footer div#social img {
 	float: right;
 	margin-right: 2%;
 	width: 100%;
 }
 
-#social a {
-	width: 40px;
-}
+
 
 
 
