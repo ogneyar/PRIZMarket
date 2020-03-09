@@ -258,16 +258,14 @@ body {
 -----------------------------------*/
 
 #topColPhoto {
+	margin-right: 20px;
+	margin-bottom: 20px;
 	float: left;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 #topColPhoto img {
 	width: 100%;
 	float: left;
-}
-#topColPhoto {
-	margin-right: 20px;
-	margin-bottom: 20px;
 }
 
 #topColText {
@@ -278,19 +276,19 @@ body {
 	margin-bottom: 20px;	
 }
 #topColText  h1 {	
-	font-family: 'RussianSuvenir';
-	color: #3e3e3f;
+	font-family: 'RussianSuvenir';	
+	color: #7c7c7c;
 	width: 100%;
 	text-align: center;	
 }
 #topColText span {
-	color: #7c7c7c;
+	color: #3e3e3f;
 }
 
 @media (min-width: 1300px) {
-#topCol {
+/*#topCol {
 	height: 200px;
-}
+}*/
 #topColPhoto {
 	width: 200px;
 }
