@@ -38,7 +38,8 @@ a, *:hover {
 }
 
 body {
-	background-color: rgba(175,177,205); /*#ececee;*/
+	/*background-color: rgba(175,177,205);*/ /*#ececee;*/
+	background-color: rgba(93,167,207);
 	width: 100%;
 	float: left;
 }
@@ -258,7 +259,8 @@ body {
 -----------------------------------*/
 
 #topColPhoto {
-	background-color: rgba(0,23,255);	
+/*	background-color: rgba(0,23,255);	*/
+	background-color: rgba(92,151,230);
 	margin-right: 20px;
 	margin-bottom: 20px;
 	float: left;
@@ -270,7 +272,8 @@ body {
 }
 
 #topColText {
-	background-color: rgba(0,23,255,0.5);		
+/*	background-color: rgba(0,23,255,0.5);		*/
+	background-color: rgba(92,151,230);
 	border-radius: 5px;	
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	float: left;
