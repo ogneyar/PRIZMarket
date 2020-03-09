@@ -643,4 +643,5 @@ footer div#social {
 footer div#social img {
 	float: right;
 	margin-right: 2%;
+	width: 100%;
 }
