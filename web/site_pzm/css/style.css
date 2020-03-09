@@ -244,7 +244,7 @@ body {
 	flex-grow: 1;
 }
 
-/* Для переноса длинного текста 
+/* Для переноса длинного текста */
 #wrapper {
 	-webkit-hyphens: auto; 
 	-moz-hyphens: auto; 
@@ -252,7 +252,7 @@ body {
 	hyphens: auto; 
 	word-wrap: break-word;
 }
-*/
+
 /* --------------------------------
 		Верхняя часть контента
 -----------------------------------*/
@@ -263,16 +263,14 @@ body {
 
 @media (min-width: 690px) {
 #wrapper #TopColPhoto {
-/*	width: 30%;*/
 	width: 200px;
 	height: 200px;
 	margin-right: 2%;
 }
 #wrapper #TopColText {
-	width: 45%;
-/*	width: calc(90%-230px);*/
+	width: 59%;
 	height: 200px;
-	margin-bottom: 20px;
+/*	margin-bottom: 20px;*/
 }
 #TopColText  h1 {
 	font-size: 2em;	
@@ -301,14 +299,14 @@ body {
 }}
 
 #TopColPhoto article {
-	width: 100%;
-	float: left;		
+/*	width: 100%;
+	float: left;		*/
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 #TopColText article {
 	height: 100%;
-/*	width: 100%; */
+	width: 100%; 
 	background-color: #fff;	
 	float: left;	
 	border-radius: 5px;	
