@@ -324,7 +324,7 @@ body {
 	margin-top: 65px;
 }}
 
-@media (max-width: 799px) and (min-width: 690px) {
+@media (max-width: 799px) and (min-width: 700px) {
 #topColPhoto {
 	width: 140px;
 }
@@ -333,11 +333,11 @@ body {
 	height: 140px;
 }
 #topColText  h1 {	
-	font-size: 1.5em;
+	font-size: 1.8em;
 	margin-top: 58px;
 }}
 
-@media (max-width: 689px) {
+@media (max-width: 699px) and (min-width: 600px) {
 #topColPhoto {
 	width: 120px;
 }
@@ -346,10 +346,61 @@ body {
 	height: 120px;
 }
 #topColText  h1 {	
-	font-size: 1em;
+	font-size: 1.7em;
 	margin-top: 50px;
 }}
 
+@media (max-width: 599px) and (min-width: 500px) {
+#topColPhoto {
+	width: 100px;
+}
+#topColText {
+	width: calc(100% - 120px);
+	height: 100px;
+}
+#topColText  h1 {	
+	font-size: 1.6em;
+	margin-top: 43px;
+}}
+
+@media (max-width: 499px) and (min-width: 400px) {
+#topColPhoto {
+	width: 80px;
+}
+#topColText {
+	width: calc(100% - 100px);
+	height: 80px;
+}
+#topColText  h1 {	
+	font-size: 1.5em;
+	margin-top: 35px;
+}}
+
+@media (max-width: 399px) and (min-width: 300px) {
+#topColPhoto {
+	width: 70px;
+}
+#topColText {
+	width: calc(100% - 90px);
+	height: 70px;
+}
+#topColText  h1 {	
+	font-size: 1.4em;
+	margin-top: 32px;
+}}
+
+@media (max-width: 299px) {
+#topColPhoto {
+	width: 60px;
+}
+#topColText {
+	width: calc(100% - 80px);
+	height: 60px;
+}
+#topColText  h1 {	
+	font-size: 1.3em;
+	margin-top: 27px;
+}}
 
 
 /* -------------------------------
@@ -371,14 +422,14 @@ body {
 	color: red;
 }
 
-@media (min-width: 690px) {
+@media (min-width: 700px) {
 #wrapper #leftCol {
 	width: 65%;
 	margin-right: 7%;
 	float: left;
 }}
 
-@media (max-width: 689px) {
+@media (max-width: 699px) {
 #wrapper #leftCol {
 	width: 100%;
 /*	margin-left: 5%;*/
@@ -433,13 +484,13 @@ body {
 		Правая часть сайта
 ----------------------------------*/
 
-@media (min-width: 690px) {
+@media (min-width: 700px) {
 #wrapper #rightCol {
 	width: 28%;
 	float: left;
 }}
 
-@media (max-width: 689px) {
+@media (max-width: 699px) {
 #wrapper #rightCol {
 	width: 80%;
 	margin-left: 10%;
