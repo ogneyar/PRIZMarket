@@ -360,7 +360,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 1.6em;
-	margin-top: 43px;
+	margin-top: 40px;
 }}
 
 @media (max-width: 539px) and (min-width: 490px) {
@@ -373,7 +373,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 1.4em;
-	margin-top: 43px;
+	margin-top: 38px;
 }}
 
 @media (max-width: 489px) and (min-width: 440px) {
@@ -386,7 +386,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 1.3em;
-	margin-top: 35px;
+	margin-top: 30px;
 }}
 
 @media (max-width: 439px) and (min-width: 390px) {
@@ -399,7 +399,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 1.1em;
-	margin-top: 32px;
+	margin-top: 25px;
 }}
 
 @media (max-width: 389px) and (min-width: 340px) {
@@ -412,7 +412,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 1em;
-	margin-top: 27px;
+	margin-top: 22px;
 }}
 
 @media (max-width: 339px) and (min-width: 300px) {
@@ -425,7 +425,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 0.8em;
-	margin-top: 23px;
+	margin-top: 20px;
 }}
 
 @media (max-width: 299px) {
@@ -438,7 +438,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 0.6em;
-	margin-top: 20px;
+	margin-top: 18px;
 }}
 
 /* -------------------------------
