@@ -643,7 +643,7 @@ footer div#social {
 
 footer #social article {
 	width: 35px;
-/*	height: 35px;*/
+	float: right;
 }
 
 footer div#social img {
