@@ -261,8 +261,8 @@ body {
 	width: 100%;
 	-webkit-display: flex;
 	display: flex;
-	-webkit-flex-direction: row;
-	flex-direction: row;
+/*	-webkit-flex-direction: row;
+	flex-direction: row;*/
 }
 
 #topColPhoto {
