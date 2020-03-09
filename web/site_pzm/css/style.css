@@ -209,7 +209,7 @@ nav#fixed:hover {
 nav a:hover, nav#fixed a:hover {
 	border-top: 5px solid #6accd7;
 	color: #8c8c8c;
-	text-shadow: 1px 1px 2px grey, 0 0 1em grey;
+/*	text-shadow: 1px 1px 2px grey, 0 0 1em grey;*/
 }
 
 #slideMenu {
@@ -280,6 +280,7 @@ body {
 	color: #7c7c7c;
 	width: 100%;
 	text-align: center;	
+	text-shadow: 1px 1px 2px rgba(191,111,191,0.5), 0 0 1em rgba(230,200,230,0.5);
 }
 #topColText span {
 	color: #3e3e3f;
