@@ -321,7 +321,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 2em;
-	margin-top: 65px;
+	margin-top: 60px;
 }}
 
 @media (max-width: 799px) and (min-width: 700px) {
@@ -334,7 +334,7 @@ body {
 }
 #topColText  h1 {	
 	font-size: 1.8em;
-	margin-top: 58px;
+	margin-top: 53px;
 }}
 
 @media (max-width: 699px) and (min-width: 600px) {
@@ -347,10 +347,10 @@ body {
 }
 #topColText  h1 {	
 	font-size: 1.7em;
-	margin-top: 50px;
+	margin-top: 45px;
 }}
 
-@media (max-width: 599px) and (min-width: 500px) {
+@media (max-width: 599px) and (min-width: 540px) {
 #topColPhoto {
 	width: 100px;
 }
@@ -363,7 +363,20 @@ body {
 	margin-top: 43px;
 }}
 
-@media (max-width: 499px) and (min-width: 400px) {
+@media (max-width: 539px) and (min-width: 490px) {
+#topColPhoto {
+	width: 100px;
+}
+#topColText {
+	width: calc(100% - 120px);
+	height: 100px;
+}
+#topColText  h1 {	
+	font-size: 1.6em;
+	margin-top: 43px;
+}}
+
+@media (max-width: 489px) and (min-width: 440px) {
 #topColPhoto {
 	width: 80px;
 }
@@ -376,7 +389,7 @@ body {
 	margin-top: 35px;
 }}
 
-@media (max-width: 399px) and (min-width: 300px) {
+@media (max-width: 439px) and (min-width: 390px) {
 #topColPhoto {
 	width: 70px;
 }
@@ -387,6 +400,32 @@ body {
 #topColText  h1 {	
 	font-size: 1.4em;
 	margin-top: 32px;
+}}
+
+@media (max-width: 389px) and (min-width: 340px) {
+#topColPhoto {
+	width: 60px;
+}
+#topColText {
+	width: calc(100% - 80px);
+	height: 60px;
+}
+#topColText  h1 {	
+	font-size: 1.3em;
+	margin-top: 27px;
+}}
+
+@media (max-width: 339px) and (min-width: 300px) {
+#topColPhoto {
+	width: 60px;
+}
+#topColText {
+	width: calc(100% - 80px);
+	height: 60px;
+}
+#topColText  h1 {	
+	font-size: 1.3em;
+	margin-top: 27px;
 }}
 
 @media (max-width: 299px) {
@@ -401,7 +440,6 @@ body {
 	font-size: 1.3em;
 	margin-top: 27px;
 }}
-
 
 /* -------------------------------
 		Левая часть сайта
