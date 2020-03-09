@@ -266,11 +266,12 @@ body {
 	width: 200px;
 	height: 200px;
 	margin-right: 2%;
+	margin-bottom: 20px;
 }
 #wrapper #TopColText {
 	width: 59%;
 	height: 200px;
-/*	margin-bottom: 20px;*/
+	margin-bottom: 20px;
 }
 #TopColText  h1 {
 	font-size: 2em;	
@@ -280,15 +281,14 @@ body {
 
 @media (max-width: 689px) {
 #wrapper #TopColPhoto {
-/*	width: 25%;*/
 	width: 150px;
 	height: 150px;
 	margin-left: 5%;
 	margin-right: 2%;
+	margin-bottom: 20px;
 }
 #wrapper #TopColText {
-	width: 75%;
-/*	width: calc(85%-180px);*/
+	width: 69%;
 	height: 150px;
 	margin-bottom: 20px;
 }
@@ -299,8 +299,8 @@ body {
 }}
 
 #TopColPhoto article {
-/*	width: 100%;
-	float: left;		*/
+/*	width: 100%;*/
+	float: left;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
