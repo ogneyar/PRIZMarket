@@ -20,15 +20,15 @@ if (mysqli_connect_errno()) {
 // Обработчик исключений
 set_exception_handler('exception_handler');
 
-//echo '1';
-
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
+
+$показ_одного_лота = '';
 
 $запрос = "SELECT * FROM pzmarkt"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$i = $результат->num_rows;
-}else throw new Exception('Не смог проверить таблицу `pzmarkt`.. (работа сайта)');	
+}else throw new Exception('Не смог проверить таблицу `pzm`.. (работа сайта)');	
 
 if($i>0) $arrS = $результат->fetch_all();		
 else throw new Exception('Таблица пуста.. (работа сайта)');
@@ -77,21 +77,35 @@ while ($a<5){
 			
 		$ссыль_на_фото[$a] = $ссылка_на_амазон . $id_lota . ".jpg";		
 		
+		if ($_GET['podrobnosti']) {
+			$запрос = "SELECT podrobno FROM `avtozakaz_pzmarket` WHERE id_zakaz='{$id_lota}'"; 
+			$результат = $mysqli->query($запрос);
+			if ($результат)	{
+				$количество = $результат->num_rows;
+			}else throw new Exception('Не смог проверить таблицу `avtozak`.. (работа сайта)');	
+			if($количество > 0) {
+				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);		
+				$подробности = $результМассив['podrobno'];
+			}else $подробности ="Нет информации..";						
+			$кнопка_подробнее = "<p>{$подробности}<span>{$дата_публикации[$a]}</span></p>";
+		}else {
+			$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";
+		}
+		
 		$лот[$a] = "<article>
 				<h3>
 				<a href='' title=''><img src='{$ссыль_на_фото[$a]}' alt='' title=''/></a>{$текст_лота[$a]}		
-				<p><a href='/site_pzm/podrobnosti/index.php?id={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>
+				{$кнопка_подробнее}
 				</h3>
 			</article>";
+			
+		if ($_GET['podrobnosti'] == $id_lota) $показ_одного_лота = $лот[$a];
 		
 	}
 	
 	$a++;	
 }	
 
-if ($_GET['podrobnosti']) {
-	//echo "ДААААААААААААААААААААА";
-}
 
 // закрываем подключение 
 $mysqli->close();		
@@ -99,11 +113,10 @@ $mysqli->close();
 
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
-	
+	global $mysqli;
 	echo "Ошибка! ".$exception->getCode()." ".$exception->getMessage();	  
-	
+	$mysqli->close();		
 	exit('ok');  	
-	
 }
 
 $ссыль_на_канал_подробности = "https://teleg.link/podrobno_s_PZP";
