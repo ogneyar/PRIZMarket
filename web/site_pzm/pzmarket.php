@@ -80,7 +80,7 @@ while ($a<5){
 		$лот[$a] = "<article>
 				<h3>
 				<a href='' title=''><img src='{$ссыль_на_фото[$a]}' alt='' title=''/></a>{$текст_лота[$a]}		
-				<p><a href='' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>
+				<p><a href='/site_pzm/podrobnosti/index.php?id={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>
 				</h3>
 			</article>";
 		
