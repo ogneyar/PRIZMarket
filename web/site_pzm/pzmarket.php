@@ -85,8 +85,8 @@ while ($a<5){
 			}else throw new Exception('Не смог проверить таблицу `avtozak`.. (работа сайта)');	
 			if($количество > 0) {
 				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);		
-				$подробности = $результМассив['podrobno'];
-			}else $подробности ="Нет информации..";						
+				$подробности = $результМассив[0]['podrobno'];
+			}else $подробности = "Нет информации..";						
 			$кнопка_подробнее = "<p>{$подробности}<span>{$дата_публикации[$a]}</span></p>";
 		}else {
 			$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";
@@ -100,16 +100,14 @@ while ($a<5){
 			</article>";
 			
 		if ($_GET['podrobnosti'] == $id_lota) $показ_одного_лота = $лот[$a];
-		
-	}
-	
-	$a++;	
-}	
 
+	}
+
+	$a++;
+}
 
 // закрываем подключение 
-$mysqli->close();		
-
+$mysqli->close();
 
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
@@ -122,6 +120,5 @@ function exception_handler($exception) {
 $ссыль_на_канал_подробности = "https://teleg.link/podrobno_s_PZP";
 
 $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
-
 
 ?>		
