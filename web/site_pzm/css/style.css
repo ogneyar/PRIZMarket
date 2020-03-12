@@ -163,10 +163,10 @@ nav {
 	border-bottom: 4px solid #e0e0e0;
 }
 
-@media (min-width: 720px){
+@media (min-width: 837px){
 nav a:first-child, nav#fixed a:first-child {
 	margin-left: 12%; 
-	border-top: 5px solid #6accd7;
+/*	border-top: 5px solid #6accd7;*/
 }
 nav a, nav#fixed a {
 	border-top: 5px solid rgba(255,255,255,0);
@@ -178,7 +178,7 @@ nav a, nav#fixed a {
 	color: #686869;
 }}
 
-@media (max-width: 719px){
+@media (max-width: 836px){
 nav a:first-child, nav#fixed a:first-child {
 	margin-left: 4%; 	
 }
