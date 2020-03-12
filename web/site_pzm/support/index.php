@@ -9,6 +9,13 @@ include_once '../../a_conect.php';
 	<meta charset="utf-8" />	
 	<title>ТехПоддержка PRIZMarket!</title>
 	<?include_once '../site_files/head.php';?>
+	
+	<style type="text/css">
+		nav a:nth-child(3), nav#fixed a:nth-child(3) {
+			border-top: 5px solid #6accd7;
+		}
+	</style>
+	
 </head>
 <body>
 	<header>
