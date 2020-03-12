@@ -9,7 +9,13 @@
 	<meta charset="utf-8" />	
 	<title>Ваша реклама на PRIZMarket!</title>
 	<?include_once '../site_files/head.php';?>
-	<style type="text/css"></style>
+	
+	<style type="text/css">
+		nav a:nth-child(4), nav#fixed a:nth-child(4) {
+			border-top: 5px solid #6accd7;
+		}
+	</style>
+	
 </head>
 <body>
 	<header>
