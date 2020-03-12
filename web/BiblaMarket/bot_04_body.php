@@ -173,7 +173,7 @@ if ($est!==false){
 }
 
 
-if (($text)&&($text!=$knopa03)&&($this_admin==false)&&($chat_id!==$master)&&($chat_type=='private'){
+if (($text)&&($text!=$knopa03)&&($this_admin==false)&&($chat_id!==$master)&&($chat_type=='private')) {
 
 	//ОТПРАВКА ИФОРМАЦИИ О СООБЩЕНИИ В ГРУППУ 
 
