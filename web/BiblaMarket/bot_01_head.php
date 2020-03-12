@@ -25,7 +25,18 @@ if ($text=='/setting'){
 
 // при добавлении ГарантБота в группу подключается файл..
 if ($new_chat_part_id=='1037491432'||$new_chat_part_id=='1066944801') {
+	$reply = "Меня добавили в чат:\nchat_id: {$chat_id}\nchat_title: {$chat_title}\nchat_type: {$chat_type}";
+	$tg->sendMessage($admin_group, $reply); 
 	include_once 'bot_12_addInGroup.php';	
+}
+
+// при добавлении Бота в группу об этом сообщается райминам
+if ($new_chat_part_id == $id_bota) {
+	$reply = "Меня добавили в чат:\nchat_id: {$chat_id}\nchat_title: {$chat_title}\nchat_type: {$chat_type}";
+	$tg->sendMessage($admin_group, $reply); 
+}elseif ($left_chat_part_id == $id_bota) {
+	$reply = "Меня удалили из чата:\nchat_id: {$chat_id}\nchat_title: {$chat_title}\nchat_type: {$chat_type}";
+	$tg->sendMessage($admin_group, $reply); 
 }
 
 // Обработчик исключений

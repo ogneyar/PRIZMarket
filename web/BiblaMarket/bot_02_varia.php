@@ -51,6 +51,11 @@ $update = $arr['update_id'];
 // айди нового участника группы
 $new_chat_part_id = $arr['message']['new_chat_participant']['id'];
 
+$left_chat_part_id = $arr['message']['left_chat_participant']['id'];
+
+// название чата
+$chat_title = $arr['message']['chat']['title'];
+
 // Из какого чата пришло сообщение MESSAGE (private, group, super_group) 
 $chat_type = $arr['message']['chat']['type'];
 
