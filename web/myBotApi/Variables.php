@@ -84,6 +84,8 @@ if ($data['message']){
 	}
 		
 	$date = $data['message']['date'];
+	
+	$new_chat_participant = $data['message']['new_chat_participant'];
 		
 	if ($data['message']['forward_from']) {
 	
