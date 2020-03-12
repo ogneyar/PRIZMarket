@@ -9,7 +9,13 @@ include_once 'site_pzm/pzmarket.php';
 	<meta charset="utf-8" />	
 	<title>PRIZMarket!</title>
 	<?include_once 'site_pzm/site_files/head.php';?>
-	<style type="text/css"></style>
+	
+	<style type="text/css">
+		nav a:first-child, nav#fixed a:first-child {
+			border-top: 5px solid #6accd7;
+		}
+	</style>
+	
 </head>
 <body>
 	<header>
