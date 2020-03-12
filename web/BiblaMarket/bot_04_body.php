@@ -174,7 +174,7 @@ if ($est!==false){
 
 
 if (($text)&&($text!=$knopa03)&&($this_admin==false)&&($chat_id!==$master)&&($chat_id!==$admin_group)){
-
+  if (stripos($text, "🗣")===false) {
 	//ОТПРАВКА ИФОРМАЦИИ О СООБЩЕНИИ В ГРУППУ 
 
 	$reply = $first_name . " (@{$user_name}) пишет:\n" . $text . "\n". $chat_id . ":" . $message_id . " r.";
@@ -188,6 +188,7 @@ if (($text)&&($text!=$knopa03)&&($this_admin==false)&&($chat_id!==$master)&&($ch
             'reply_markup' => null,
             'disable_notification' => false,
     ]);
+  } 
 	
 }
 
