@@ -11,9 +11,10 @@ include_once '../../a_conect.php';
 	<?include_once '../site_files/head.php';?>
 	
 	<style type="text/css">
+                @media (min-width: 700px) {
 		nav a:last-child, nav#fixed a:last-child {
 			border-top: 5px solid #6accd7;
-		}
+		}} 
 	</style>
 	
 </head>
