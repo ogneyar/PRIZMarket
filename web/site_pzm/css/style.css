@@ -212,9 +212,10 @@ nav a:hover, nav#fixed a:hover {
   padding: 0;
 }
 .topmenu  li {
-  display: inline-block;
-  margin-right: 20px;
-  position: relative;
+	display: inline-block;
+	margin-right: 20px;
+	float: left;
+	position: relative;
 }
 .topmenu  li:last-child {
   margin-right: 0;
@@ -239,8 +240,10 @@ nav a:hover, nav#fixed a:hover {
 	transition: 0.5s ease-in-out;
 }
 .submenu li a {
-  border-bottom: 1px solid #8c8c8c;
-  color: #8c8c8c;
+	border-bottom: 1px solid #8c8c8c;
+	color: #8c8c8c;
+	margin-right: 20px;
+	float: left;
 }
 .submenu {
 	display: none;
@@ -250,17 +253,6 @@ nav a:hover, nav#fixed a:hover {
 .topmenu li:hover .submenu {
   display: block;
 }
-
-/*
-.submenu {
-  visibility: hidden;
-  opacity: 0;
-  background: #BAD78B;
-}
-.topmenu li:hover .submenu {
-  visibility: visible;
-  opacity: 1;
-}*/
 
 
 #slideMenu {
