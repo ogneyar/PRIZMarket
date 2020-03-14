@@ -90,7 +90,8 @@ header a#logo {
 	font-family: 'mr_InsulaG';
 	font-size: 1.7em;
 /*	color: white;*/
-	color: rgba(102,41,214);
+/*	color: rgba(102,41,214);*/
+	color: rgba(76,0,164);
 	float: left;
 	width: 25%;
 	margin-left: 15%;
@@ -145,7 +146,8 @@ header a#logo {
 }}
 
 header span#contact a {
-	color: yellow;
+/*	color: yellow;*/
+	color: rgba(255,235,59);
 	float: right;
 	margin-left: 10%;
 	font-size: 1.4em;
