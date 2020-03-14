@@ -11,7 +11,7 @@ include_once 'site_pzm/pzmarket.php';
 	<?include_once 'site_pzm/site_files/head.php';?>
 	
 	<style type="text/css">
-                @media (min-width: 700px) {
+		@media (min-width: 700px) {
 		nav a:first-child, nav#fixed a:first-child {
 			border-top: 5px solid #6accd7;
 		}} 
