@@ -231,7 +231,7 @@ nav a:hover, nav#fixed a:hover {
 	position: absolute;
 	top: 100%;
 	left: 0;
-/*	width: 100%;*/
+	width: 100%;
 	z-index: 10;
 	-webkit-transition: 0.5s ease-in-out;
 	-moz-transition: 0.5s ease-in-out;
@@ -239,7 +239,7 @@ nav a:hover, nav#fixed a:hover {
 	transition: 0.5s ease-in-out;
 }
 .submenu li a {
-  border-bottom: 1px solid rgba(255,255,255,.3);
+  border-bottom: 1px solid #8c8c8c;
   color: #8c8c8c;
 }
 .submenu {
