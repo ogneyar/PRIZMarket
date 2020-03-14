@@ -133,7 +133,7 @@ header a#logo {
 
 header span#contact a {
 /*	color: yellow;*/
-	color: rgba(255,235,59);
+	color: rgba(255,235,59); 
 	float: right;
 	margin-left: 10%;
 	font-size: 1.4em;
@@ -552,7 +552,7 @@ body {
 	margin-bottom: 10px;
 }
 
-#leftCol article h3 {
+#leftCol article h2 {
 	font-size: 1em;
 /*	color: #3e3e3f;*/
 	color: rgba(172,172,183); 
@@ -570,7 +570,11 @@ body {
 	float: left;
 }
 
-#leftCol article a {color: #6accd7; font-size: 1.2em}
+#leftCol article a {
+/*	color: #6accd7; */
+	color: rgba(255,235,59);
+	font-size: 1.2em
+}
 #leftCol article a:hover {color: #647f82}
 
 #leftCol article span {
