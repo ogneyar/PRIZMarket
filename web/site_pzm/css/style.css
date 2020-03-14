@@ -200,7 +200,7 @@ nav#fixed:hover {
 }
 
 nav a:hover, nav#fixed a:hover {
-	border-top: 5px solid #6accd7;
+	border-top: 5px solid rgba(255,235,59);
 	color: #8c8c8c;
 /*	text-shadow: 1px 1px 2px grey, 0 0 1em grey;*/
 }
