@@ -214,12 +214,12 @@ nav a:hover, nav#fixed a:hover {
   margin: 0;
   padding: 0;
 }
-.topmenu > li {
+.topmenu  li {
   display: inline-block;
   margin-right: 20px;
   position: relative;
 }
-.topmenu > li:last-child {
+.topmenu  li:last-child {
   margin-right: 0;
 }
 .topmenu a {
