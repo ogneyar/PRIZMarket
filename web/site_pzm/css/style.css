@@ -208,7 +208,6 @@ nav a:hover, nav#fixed a:hover {
 }
 
 
-
 .topmenu ul {
   list-style: none; 
   margin: 0;
@@ -250,12 +249,13 @@ nav a:hover, nav#fixed a:hover {
   border-bottom: 1px solid rgba(255,255,255,.3);
   color: white;
 }
-
-
-
-
-
-
+.submenu {
+  display: none;
+  background: #b19891;
+}
+.topmenu li:hover .submenu {
+  display: block;
+}
 
 
 #slideMenu {
