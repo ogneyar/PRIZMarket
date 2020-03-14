@@ -60,7 +60,8 @@ body {
 header {
 	width: 98%;
 	float: left;
-	background-color: #3e3e3f;
+/*	background-color: #3e3e3f;*/
+	background-color: rgba(20,17,45);
 	padding: 0.5% 1%;
 	
 /*	border-width: 5px;
@@ -88,7 +89,8 @@ header span#contact {
 header a#logo {
 	font-family: 'mr_InsulaG';
 	font-size: 1.7em;
-	color: white;
+/*	color: white;*/
+	color: rgba(102,41,214);
 	float: left;
 	width: 25%;
 	margin-left: 15%;
@@ -275,7 +277,7 @@ body {
 }
 
 #topColText {
-	background-color: rgba(0,0,0);
+	background-color: rgba(255,255,255);
 /*	background-color: rgba(0,23,255,0.5);*/ /* PANTONE 2736 */
 /*	background-color: rgba(92,151,230,0.5);*/ /* PANTONE 652 */
 	border-radius: 5px;	
