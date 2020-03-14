@@ -279,7 +279,8 @@ body {
 }
 #topColText  h1 {	
 /*	font-family: 'RussianSuvenir';	*/
-	color: blue; /*rgba(121,50,218);*/
+/*	color: blue;*/ /*rgba(121,50,218);*/
+	color: rgba(255,255,255);
 	width: 100%;
 	text-align: center;	
 	text-shadow: 1px 1px 2px grey, 0 0 3em #ececee;
