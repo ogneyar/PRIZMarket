@@ -38,10 +38,8 @@ a, *:hover {
 }
 
 body {
-	background-color: #ececee;
-/*	background-color: rgba(175,177,205); */ /* номер 20 */     
-/*	background-color: rgba(93,167,207);  PANTONE 284 */
-/*	background-color: rgba(209,208,226);*/  /* номер 15 */     
+/*	background-color: #ececee;*/
+	background-color: rgba(172,172,183); 
 	width: 100%;
 	float: left;
 }
@@ -344,10 +342,6 @@ body {
 	text-align: center;	
 	text-shadow: 1px 1px 2px grey, 0 0 3em #ececee;
 }
-/*
-#topColText span {
-	color: #3e3e3f;
-}*/
 
 @media (min-width: 1300px) {
 #topColPhoto {
@@ -558,9 +552,10 @@ body {
 	margin-bottom: 10px;
 }
 
-#leftCol article h2 {
-	font-size: 1.2em;
-	color: #3e3e3f;
+#leftCol article h3 {
+	font-size: 1em;
+/*	color: #3e3e3f;*/
+	color: rgba(172,172,183); 
 	width: 90%;
 	margin-left: 5%;
 	float: left;
@@ -623,7 +618,8 @@ body {
 #rightCol article p {
 	font-size: 1em;
 	font-family: Times New Roman, sans-serif;
-	color: #3e3e3f;
+/*	color: #3e3e3f;*/
+	color: #7c7c7c;
 	width: 86%;	
 	float: left;
 	margin: 10px;
@@ -636,7 +632,8 @@ body {
 #rightCol article span {
 	float: left;
 	margin: 3%;
-	color: #7c7c7c;
+/*	color: #7c7c7c;*/
+	color: rgba(172,172,183); 
 	margin-bottom: 10px;
 }
 
