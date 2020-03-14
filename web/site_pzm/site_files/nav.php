@@ -4,10 +4,10 @@
 <!--<a href="/site_pzm/reklama/index.php">Реклама</a>-->
 <a href="/site_pzm/o_prizmarket/index.php">О нас</a>
 <ul class="topmenu">
-	<li><a href="#">About<i class="fa"></i></a>
+	<li><a href="#">Тест</a>
 		<ul class="submenu">	
-			<li><a href="">Item 1</a></li>
-			<li><a href="">Item 2</a></li>
+			<li><a href="">Менюх 1</a></li>
+			<li><a href="">Менюх 2</a></li>
 		</ul>
 </ul>
 
