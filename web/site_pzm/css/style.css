@@ -249,24 +249,25 @@ nav a:hover, nav#fixed a:hover {
   border-bottom: 1px solid rgba(255,255,255,.3);
   color: white;
 }
-/*
 .submenu {
-  display: none;
+	display: none;
 /*  background: #b19891;*/
-}/*
+	background: white;
+}
 .topmenu li:hover .submenu {
   display: block;
-}*/
+}
 
+/*
 .submenu {
   visibility: hidden;
   opacity: 0;
-/*  background: #BAD78B;*/
+  background: #BAD78B;
 }
 .topmenu li:hover .submenu {
   visibility: visible;
   opacity: 1;
-}
+}*/
 
 
 #slideMenu {
