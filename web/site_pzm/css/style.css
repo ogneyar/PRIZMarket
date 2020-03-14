@@ -539,7 +539,6 @@ body {
 	background-color: rgba(20,17,45);
 	margin-bottom: 20px;
 	float: left;
-	color: rgba(172,172,183); 
 	border-radius: 5px;	
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
@@ -564,7 +563,8 @@ body {
 #leftCol article p {
 	font-size: 1em;
 	font-family: Times New Roman, sans-serif;
-	color: #3e3e3f;
+/*	color: #3e3e3f;*/
+	color: rgba(172,172,183); 
 	width: 86%;
 	margin: 2% 7%;
 	float: left;
