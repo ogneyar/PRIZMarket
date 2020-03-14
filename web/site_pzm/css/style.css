@@ -223,10 +223,10 @@ nav a:hover, nav#fixed a:hover {
 }
 .topmenu a {
   display: block;
-  padding: 10px 15px;
+/*  padding: 10px 15px;*/
   text-decoration: none;
   outline: none;
-  font-family: 'Lora', serif;
+/*  font-family: 'Lora', serif;*/
   transition: .5s linear;
 }
 .fa {
