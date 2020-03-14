@@ -222,7 +222,7 @@ nav a:hover, nav#fixed a:hover {
 }
 .topmenu a {
   display: block;
-/*  padding: 10px 15px;*/
+  padding: 10px 15px;
   text-decoration: none;
   outline: none;
 /*  font-family: 'Lora', serif;*/
@@ -233,7 +233,7 @@ nav a:hover, nav#fixed a:hover {
 	top: 100%;
 	left: 0;
 /*	width: 100%;*/
-/*	z-index: 10;*/
+	z-index: 10;
 	-webkit-transition: 0.5s ease-in-out;
 	-moz-transition: 0.5s ease-in-out;
 	-o-transition: 0.5s ease-in-out;
@@ -242,7 +242,7 @@ nav a:hover, nav#fixed a:hover {
 .submenu li a {
 	border-bottom: 1px solid #8c8c8c;
 	color: #8c8c8c;
-	margin-right: 20px;
+	margin-left: 0;
 	float: left;
 }
 .submenu {
