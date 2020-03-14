@@ -8,6 +8,6 @@
 			<li><a href="/">Главная</a></li>
 			<li><a href="/site_pzm/podrobnosti/index.php?podrobnosti=st">Подробности</a></li>
 			<li><a href="/site_pzm/support/index.php">ТехПоддержка</a></li>
-			<li><a href="/site_pzm/o_prizmarket/index.php">О нас</a></li>
+			<li><a href="/site_pzm/o_prizmarket/index.php">О_нас</a></li>
 		</ul>
 </ul>
