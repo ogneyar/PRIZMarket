@@ -254,8 +254,6 @@ body {
 
 #topColPhoto {
 /*	background-color: rgba(255,255,255);*/
-/*	background-color: rgba(0,23,255);*/ /* PANTONE 2736 */
-/*	background-color: rgba(92,151,230,0.5);*/ /* PANTONE 652 */
 	background-color: rgba(20,17,45);
 	margin-right: 20px;
 	margin-bottom: 20px;
@@ -269,8 +267,6 @@ body {
 
 #topColText {
 /*	background-color: rgba(255,255,255);*/
-/*	background-color: rgba(0,23,255,0.5);*/ /* PANTONE 2736 */
-/*	background-color: rgba(92,151,230,0.5);*/ /* PANTONE 652 */
 	background-color: rgba(20,17,45);
 	border-radius: 5px;	
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -482,7 +478,8 @@ body {
 
 #leftCol article {
 	width: 100%;
-	background-color: #fff;
+/*	background-color: #fff;*/
+	background-color: rgba(20,17,45);
 	margin-bottom: 20px;
 	float: left;
 	
@@ -542,8 +539,8 @@ body {
 
 #rightCol article {
 	width: 100%;
-	background-color: rgba(255,255,255);
-/*	background-color: rgba(92,151,230);*/ /* PANTONE 652 */
+/*	background-color: rgba(255,255,255);*/
+	background-color: rgba(20,17,45);
 	margin-bottom: 20px;
 	float: left;
 	
