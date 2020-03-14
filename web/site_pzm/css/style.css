@@ -205,7 +205,9 @@ nav a:hover, nav#fixed a:hover {
 /*	text-shadow: 1px 1px 2px grey, 0 0 1em grey;*/
 }
 
-
+.topmenu {
+  margin-top: 0;
+}
 .topmenu ul {
   list-style: none; 
   margin: 0;
