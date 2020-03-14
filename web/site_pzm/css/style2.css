@@ -70,10 +70,10 @@ header {
 	
 	border-bottom: 5px solid #525252;	
 }
-
+/*
 header a#logo span {
 	font-size: 1.3em;
-}
+}*/
 
 header #logo {
 	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
@@ -93,7 +93,7 @@ header span#contact {
 	font-family: Times New Roman, sans-serif
 }
 header a#logo {
-	font-size: 1.7em;
+	font-size: 2em;
 	margin-left: 15%;
 }}
 
