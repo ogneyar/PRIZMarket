@@ -146,7 +146,7 @@ header span#contact a:hover {
 
 
 nav {
-	width: calc(98% / 4);
+	width: 98%;
 	float: left;
 	background-color: #ffffff;
 	padding: 0 1% 0.7% 1%;
@@ -212,6 +212,9 @@ nav a:hover, nav#fixed a:hover {
 
 .line-menu {
 	margin-top: -20px;
+}
+.line-menu a {
+	width: calc(98% / 4);
 }
 
 .topmenu {
