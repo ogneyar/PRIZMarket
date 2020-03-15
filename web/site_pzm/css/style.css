@@ -146,7 +146,7 @@ header span#contact a:hover {
 
 
 nav {
-	width: 98%;
+	width: calc(98% / 4);
 	float: left;
 	background-color: #ffffff;
 	padding: 0 1% 0.7% 1%;
