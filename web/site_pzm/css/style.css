@@ -186,7 +186,7 @@ header span#contact a:hover {
 }
 
 
-
+/*
 .toggle-button:before {
     content: attr(data-close);
     font-size: 1rem;
@@ -210,25 +210,23 @@ header span#contact a:hover {
 #menu-checkbox:checked + nav[role="navigation"] .toggle-button:before {
     color: green;
 }
+*/
 
 
-/*
 .toggle-button:after {
-  /* получаем данные из атрибута data-open в html *//*
+  /* получаем данные из атрибута data-open в html */
   content: attr(data-open);
   display: block;
   margin: 10px 0;
   padding: 10px 30px;
 }
 #menu-checkbox:checked + nav[role="navigation"] .main-menu {
-  /* когда чекбокс активен меню становится видимым *//*
+  /* когда чекбокс активен меню становится видимым */
   display: block;
 }
 #menu-checkbox:checked + nav[role="navigation"] .toggle-button:after {
   content: attr(data-close);
-}
-*/
-}
+}}
 
 
 
