@@ -1,7 +1,9 @@
-﻿<a href="/">Главная</a>
+﻿<div class="line-menu">
+<a href="/">Главная</a>
 <a href="/site_pzm/podrobnosti/index.php?podrobnosti=st">Подробности</a>
 <a href="/site_pzm/support/index.php">ТехПоддержка</a>
 <a href="/site_pzm/o_prizmarket/index.php">О нас</a>
+</div>
 <ul class="topmenu">
 	<li id="mini-menu"><a href="#">Меню<i class="fa fa-bars" aria-hidden="true"></i></a>
 		<ul class="submenu">	
