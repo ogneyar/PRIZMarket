@@ -200,6 +200,10 @@ nav a:hover, nav#fixed a:hover {
 	color: #8c8c8c;
 }
 
+@media (max-width: 699px){
+.line-menu {
+	display: none;
+}}
 @media (min-width: 700px){
 .topmenu {
 	display: none;
