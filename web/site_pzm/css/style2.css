@@ -145,131 +145,6 @@ header span#contact a:hover {
 }
 
 
-
-@media (max-width: 700px){
-/* Menu  */
-#menu-checkbox {
-  /* чекбокс скрыт */
-  display: none;
-}
-.main-menu {
-  /* пункты меню скрыты */
-  display: none;
-  padding: 0;
-  margin: 0;
-}
-.main-menu li {
-  /* пункты меню расположены вертикально */
-  /* каждый имеет ширину 100% */
-  font-size: 1em;
-  display: block;
-  width: 100%;
-}
-.main-menu a {
-  /* немного стилизуем ссылки */
-  display: block;
-  border-bottom: 1px solid blueviolet;
-  color: lightslategray;
-  padding: .5em;
-  text-decoration: none;
-}
-.main-menu a:hover {
-  text-decoration: underline;
-}
-.toggle-button {
-  text-align: center;
-  display: block;
-  /* не забываем явно указать каким должен быть курсор */
-  cursor: pointer;
-  background-color: #333;
-  color: #fff;
-}
-
-
-
-.toggle-button:before {
-    content: attr(data-close);
-    font-size: 1rem;
-    position: relative;
-    right: 3px;
-    bottom: 3px;
-}
-.toggle-button:after {
-    content: "\f0c9";
-    font-family: 'FontAwesome';
-    display: inline-block;
-}
-#menu-checkbox:checked + nav[role="navigation"] .menu {
-    display: block;
-}
-#menu-checkbox:checked + nav[role="navigation"] .toggle-button:after {
-    content: "\f0c9";
-    font-family: 'FontAwesome';
-    color: green;
-}
-#menu-checkbox:checked + nav[role="navigation"] .toggle-button:before {
-    color: green;
-}
-
-
-/*
-.toggle-button:after {
-  /* получаем данные из атрибута data-open в html *//*
-  content: attr(data-open);
-  display: block;
-  margin: 10px 0;
-  padding: 10px 30px;
-}
-#menu-checkbox:checked + nav[role="navigation"] .main-menu {
-  /* когда чекбокс активен меню становится видимым *//*
-  display: block;
-}
-#menu-checkbox:checked + nav[role="navigation"] .toggle-button:after {
-  content: attr(data-close);
-}
-*/
-}
-
-
-
-@media screen and (min-width: 701px) {
-    .toggle-button {
-      /* label скрыт */
-      display: none;
-    }
-    .main-menu {
-      display: block;
-      margin: 0 auto;
-      background-color: #333;
-      height: 30px;
-    }
-    .main-menu li {
-      /* теги <li> расположены в ряд */
-      width: calc(100% / 5);
-      text-align: center;
-      display: inline-block;
-      margin-right: -4px;
-    }
-    .main-menu a {
-      display: inline-block;
-      margin-right: -4px;
-      font-size: .8em;
-      background-color: #333;
-      text-decoration: none;
-      color: #fff;
-      text-transform: capitalize;
-      border-bottom: 0;
-    }
-  }
-  
-  
-
-
-
-
-/*
-
-
 nav {
 	width: 98%;
 	float: left;
@@ -372,8 +247,11 @@ nav a:hover, nav#fixed a:hover {
 .topmenu li:hover .submenu {
   display: block;
 }
-
-*/
+.fa {
+  font-family: "FontAwesome";
+  color: inherit;
+  padding-left: 10px;
+}
 
 
 #slideMenu {
