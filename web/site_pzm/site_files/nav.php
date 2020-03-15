@@ -3,7 +3,7 @@
 <a href="/site_pzm/support/index.php">ТехПоддержка</a>
 <a href="/site_pzm/o_prizmarket/index.php">О нас</a>
 <ul class="topmenu">
-	<li id="mini-menu"><a href="#">Меню</a>
+	<li id="mini-menu"><a href="#">Меню<i class="fa fa-bars" aria-hidden="true"></i></a>
 		<ul class="submenu">	
 			<li><a href="/">Главная</a></li>
 			<li><a href="/site_pzm/podrobnosti/index.php?podrobnosti=st">Подробности</a></li>
