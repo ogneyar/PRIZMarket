@@ -11,7 +11,7 @@ include_once '../../a_conect.php';
 	<?include_once '../site_files/head.php';?>
 	
 	<style type="text/css">
-                @media (min-width: 700px) {
+		@media (min-width: 700px) {
 		nav a:nth-child(3), nav#fixed a:nth-child(3) {
 			border-top: 5px solid rgba(255,235,59);
 		}} 
