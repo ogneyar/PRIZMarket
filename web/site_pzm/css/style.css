@@ -208,6 +208,7 @@ nav a:hover, nav#fixed a:hover {
 @media (min-width: 700px){
 .topmenu {
 	display: none;
+	width: 0;
 }}
 
 .line-menu {
