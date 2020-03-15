@@ -208,14 +208,13 @@ nav a:hover, nav#fixed a:hover {
 @media (min-width: 700px){
 .topmenu {
 	display: none;
-	width: 1%;
 }}
 
 .line-menu {
 	margin-top: -20px;
 }
 .line-menu a {
-	width: calc(98% / 4);
+	width: calc(90% / 4);
 }
 
 .topmenu {
