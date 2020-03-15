@@ -215,6 +215,7 @@ nav a:hover, nav#fixed a:hover {
 }
 .line-menu a {
 	width: calc(90% / 4);
+	text-align: center;
 }
 
 .topmenu {
