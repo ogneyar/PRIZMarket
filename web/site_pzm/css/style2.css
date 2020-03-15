@@ -200,6 +200,7 @@ nav a:hover, nav#fixed a:hover {
 	color: #8c8c8c;
 }
 
+
 @media (max-width: 699px){
 .line-menu {
 	display: none;
@@ -209,8 +210,12 @@ nav a:hover, nav#fixed a:hover {
 	display: none;
 }}
 
+.line-menu {
+	margin-top: -20px;
+}
+
 .topmenu {
-	margin-top: 0;	
+	margin-top: -20px;
 }
 .topmenu ul {
   list-style: none; 
