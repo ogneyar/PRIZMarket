@@ -214,7 +214,7 @@ nav a:hover, nav#fixed a:hover {
 	margin-top: -20px;
 }
 .line-menu a {
-	width: calc(95% / 4);
+	width: calc(100% / 4);
 }
 
 .topmenu {
