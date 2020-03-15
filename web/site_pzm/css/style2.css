@@ -184,20 +184,51 @@ header span#contact a:hover {
   background-color: #333;
   color: #fff;
 }
+
+
+
+.toggle-button:before {
+    content: attr(data-close);
+    font-size: 1rem;
+    position: relative;
+    right: 3px;
+    bottom: 3px;
+}
 .toggle-button:after {
-  /* получаем данные из атрибута data-open в html */
+    content: "\f0c9";
+    font-family: 'FontAwesome';
+    display: inline-block;
+}
+#menu-checkbox:checked + nav[role="navigation"] .menu {
+    display: block;
+}
+#menu-checkbox:checked + nav[role="navigation"] .toggle-button:after {
+    content: "\f0c9";
+    font-family: 'FontAwesome';
+    color: green;
+}
+#menu-checkbox:checked + nav[role="navigation"] .toggle-button:before {
+    color: green;
+}
+
+
+/*
+.toggle-button:after {
+  /* получаем данные из атрибута data-open в html *//*
   content: attr(data-open);
   display: block;
   margin: 10px 0;
   padding: 10px 30px;
 }
 #menu-checkbox:checked + nav[role="navigation"] .main-menu {
-  /* когда чекбокс активен меню становится видимым */
+  /* когда чекбокс активен меню становится видимым *//*
   display: block;
 }
 #menu-checkbox:checked + nav[role="navigation"] .toggle-button:after {
   content: attr(data-close);
-}}
+}
+*/
+}
 
 
 
@@ -230,6 +261,8 @@ header span#contact a:hover {
       border-bottom: 0;
     }
   }
+  
+  
 
 
 
