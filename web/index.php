@@ -22,9 +22,23 @@ include_once 'site_pzm/pzmarket.php';
 	<header>
 		<?include_once 'site_pzm/site_files/header.php';?>
 	</header>
-	<nav>
-		<?include_once 'site_pzm/site_files/nav.php';?>
-	</nav>
+	
+	<input type="checkbox" id="menu-checkbox" />
+    <nav role="navigation"><!-- навигация -->
+      <label for="menu-checkbox" class="toggle-button" data-open="Menu" data-close="Close" onclick></label>
+      <ul class="main-menu"><!-- список пунктов меню -->
+        <li><a href="#">home</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="#">contacts</a></li>
+        <li><a href="#">projects</a></li>
+        <li><a href="#">publications</a></li>
+      </ul>
+    </nav>
+	
+	
+<!--	<nav>
+		<?//include_once 'site_pzm/site_files/nav.php';?>
+	</nav> -->
 	<div id="slideMenu">Моё)</div>
 	<div id="wrapper">
 		<div id="TopCol">		
