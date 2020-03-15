@@ -200,8 +200,13 @@ nav a:hover, nav#fixed a:hover {
 	color: #8c8c8c;
 }
 
+@media (min-width: 700px){
 .topmenu {
-  margin-top: 0;
+	display: none;
+}}
+
+.topmenu {
+	margin-top: 0;	
 }
 .topmenu ul {
   list-style: none; 
