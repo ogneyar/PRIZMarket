@@ -1,7 +1,23 @@
 <?php
-//include_once '../vendor/autoload.php';	
+include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
 include_once 'site_pzm/pzmarket.php';
+
+//exit('ok');
+
+$token = $tokenMARKET;
+$tg = new \TelegramBot\Api\BotApi($token);
+
+$id_bota = strstr($token, ':', true);	
+
+// Группа администрирования бота (Админка)
+$admin_group = $admin_group_market;
+
+// Канал, где появляются новые лоты
+$channel = $channel_market;
+
+$tg->sendMessage($admin_group, "йээ");
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
