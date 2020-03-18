@@ -20,6 +20,6 @@
 		<p>
 			<input type="submit" name="submit" value="Зарегистрироваться">
 		</p>
-		<br>
+		<br><br>
 	</form>
 </article>		
