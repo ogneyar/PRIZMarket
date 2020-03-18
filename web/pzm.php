@@ -1,22 +1,22 @@
 ﻿<?php	
 // Подключаем библиотеку с классом Bot
-//include_once 'myBotApi/Bot.php';
+include_once 'myBotApi/Bot.php';
 //exit('ok');
 $token = $tokenMARKET;
 // Создаем объект бота
-//$bot = new \myBotApi\Bot($token);
+$bot = new Bot($token);
 
-$tg = new \TelegramBot\Api\BotApi($token);
+//$tg = new \TelegramBot\Api\BotApi($token);
 
 $id_bota = strstr($token, ':', true);	
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-//include 'myBotApi/Variables.php';
+include 'myBotApi/Variables.php';
 
 $admin_group = $admin_group_market;
 
-//$bot->sendMessage($admin_group, "йээээээээээээээ");
+$bot->sendMessage($admin_group, "йэээeeeeeeeeee");
 
-$tg->sendMessage($admin_group, "йээээээээээээээ");
+//$tg->sendMessage($admin_group, "йээээээээээээээ");
 
 /*
 $mysqli = new mysqli($host, $username, $password, $dbname);
