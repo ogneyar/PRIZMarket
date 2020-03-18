@@ -1,6 +1,6 @@
 <?php
-include_once '../../../vendor/autoload.php';	
-include_once '../../a_conect.php';
+//include_once '../../../vendor/autoload.php';	
+//include_once '../../a_conect.php';
 //include_once '../pzmarket.php';
 
 include_once '../../pzm.php';
