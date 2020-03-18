@@ -1,4 +1,4 @@
-<article>
+<article id="vhod">
 	<?php// session_start(); ?>
 	
 <form action="/site_pzm/vhod/testreg.php" method="post">
