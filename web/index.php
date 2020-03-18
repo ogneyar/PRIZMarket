@@ -2,7 +2,7 @@
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
 include_once 'site_pzm/pzmarket.php';
-include_once 'phpmailer.php';
+//include_once 'phpmailer.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
