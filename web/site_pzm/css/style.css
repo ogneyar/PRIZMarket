@@ -147,17 +147,17 @@ header span#contact a:hover {
 
 @media (max-width: 1299px) {
 nav {
-	width: 98%;
+	width: 86%;
 	float: left;
 	background-color: #ffffff;
-	padding: 0 1% 0.7% 1%;
+	padding: 0 7% 0.7% 7%;
 }}
 @media (min-width: 1300px) {
 nav {
-	width: 80%;
+	width: 70%;
 	float: left;
 	background-color: #ffffff;
-	padding: 0 10% 0.7% 10%;
+	padding: 0 15% 0.7% 15%;
 }}
 
 
