@@ -6,17 +6,13 @@ $token = $tokenMARKET;
 // Создаем объект бота
 $bot = new Bot($token);
 
-//$tg = new \TelegramBot\Api\BotApi($token);
-
 $id_bota = strstr($token, ':', true);	
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 include 'myBotApi/Variables.php';
 
 $admin_group = $admin_group_market;
 
-$bot->sendMessage($admin_group, "йэээeeeeeeeeee");
-
-//$tg->sendMessage($admin_group, "йээээээээээээээ");
+if ($_POST['st'] == 'zero') $bot->sendMessage($admin_group, "йуу");
 
 /*
 $mysqli = new mysqli($host, $username, $password, $dbname);
