@@ -3,6 +3,18 @@ include_once '../vendor/autoload.php';
 include_once 'a_conect.php';
 include_once 'site_pzm/pzmarket.php';
 //include_once 'phpmailer.php';
+
+$client  = @$_SERVER['HTTP_CLIENT_IP'];
+$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+$remote  = @$_SERVER['REMOTE_ADDR'];
+ 
+if(filter_var($client, FILTER_VALIDATE_IP)) $ip = $client;
+elseif(filter_var($forward, FILTER_VALIDATE_IP)) $ip = $forward;
+else $ip = $remote;
+ 
+echo $ip;
+
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
