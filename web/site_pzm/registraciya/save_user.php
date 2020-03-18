@@ -2,10 +2,17 @@
 echo $_POST['login'];
 echo '<br />';
 echo $_POST['password'];
+$password = $_POST['password'];
 echo '<br />';
 echo $_POST['replay_pass'];
 echo '<br />';
 echo $_POST['e_mail'];
+echo '<br />';
+echo '<br />';
+$password    = md5($password);//шифруем пароль          
+$password    = strrev($password);// для надежности добавим реверс          
+$password    = $password."b3p6f";
+echo $password;
 ?>
 
 <?php/*
