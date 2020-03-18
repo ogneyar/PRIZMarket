@@ -539,6 +539,13 @@ body {
 	color: red;
 }
 
+#registr p{
+	text-align: center;
+}
+#vhod p{
+	text-align: center;
+}
+
 @media (min-width: 700px) {
 #wrapper #leftCol {
 	width: 65%;
