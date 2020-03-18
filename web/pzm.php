@@ -12,7 +12,7 @@ include 'myBotApi/Variables.php';
 
 $admin_group = $admin_group_market;
 
-if ($_POST['st'] == 'zero') $bot->sendMessage($admin_group, "йуу");
+if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "йуу");
 
 /*
 $mysqli = new mysqli($host, $username, $password, $dbname);
