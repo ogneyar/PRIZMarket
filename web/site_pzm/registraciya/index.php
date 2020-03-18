@@ -15,7 +15,7 @@ include '../../myBotApi/Variables.php';
 
 $admin_group = $admin_group_market;
 
-if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться!");
+if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться на сайте!");
 
 ?>
 <!DOCTYPE html>
