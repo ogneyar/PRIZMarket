@@ -3,8 +3,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-//include_once '../vendor/autoload.php';
-//include_once 'a_conect.php';
+include_once '../vendor/autoload.php';
+include_once 'a_conect.php';
 
 
 $mail = new PHPMailer;
