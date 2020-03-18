@@ -16,7 +16,7 @@ $admin_group = $admin_group_market;
 // Канал, где появляются новые лоты
 $channel = $channel_market;
 
-$tg->sendMessage($admin_group, "йээ");
+//$tg->sendMessage($admin_group, "йээ");
 
 ?>
 <!DOCTYPE html>
