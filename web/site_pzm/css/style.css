@@ -290,8 +290,9 @@ nav a:hover, nav#fixed a:hover {
 #wrapper {
 	width: 86%;
 	max-width: 766px;
-	margin-left: 7%;
-	float: left;
+	display: inline-block;
+/*	margin-left: 7%;
+	float: left;*/
 }
 
 /* Для фиксации футера в подвале */
