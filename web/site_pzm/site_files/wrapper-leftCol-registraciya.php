@@ -1,5 +1,6 @@
 <article id="registr">
 	<form action="/site_pzm/registraciya/save_user.php" method="post">    
+		<br>
 		<p>
 			<label>Введите логин:<br></label>
 			<input name="login" type="text" size="15" maxlength="15">
@@ -19,5 +20,6 @@
 		<p>
 			<input type="submit" name="submit" value="Зарегистрироваться">
 		</p>
+		<br>
 	</form>
 </article>		
