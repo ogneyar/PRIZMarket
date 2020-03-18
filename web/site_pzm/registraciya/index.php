@@ -12,16 +12,6 @@
 	<style type="text/css"></style>
 </head>
 <body>
-	<p id="nameUser"></p>
-<script>
-  var nameUser = prompt ("Введите своё имя?");
-  if (nameUser) {
-    document.getElementById("nameUser").innerHTML = nameUser +", добро пожаловать на сайт!";
-  }
-  else {
-    document.getElementById("nameUser").innerHTML = "Гость, добро пожаловать на сайт!";
-  }
-</script>
 	<header>
 		<?include_once '../site_files/header.php';?>
 	</header>
