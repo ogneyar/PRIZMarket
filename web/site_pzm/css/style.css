@@ -287,15 +287,19 @@ nav a:hover, nav#fixed a:hover {
 		Основная часть сайта
 ----------------------------------*/
 
+@media (max-width: 1299px) {
 #wrapper {
 	width: 86%;
-	max-width: 766px;
-/*	margin-left: 7%;
-	float: left;*/
-	
-	display: flex;
-	justify-content: center;
-}
+/*	max-width: 766px;*/
+	margin-left: 7%;
+	float: left;
+}}
+@media (min-width: 1300px) {
+#wrapper {
+	width: 70%;
+	margin-left: 15%;
+	float: left;
+}}
 
 /* Для фиксации футера в подвале */
 body {
