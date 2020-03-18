@@ -1,13 +1,13 @@
 ﻿<?php	
 // Подключаем библиотеку с классом Bot
-include_once 'myBotApi/Bot.php';
+include_once '/myBotApi/Bot.php';
 //exit('ok');
 $token = $tokenMARKET;
 // Создаем объект бота
 $bot = new \myBotApi\Bot($token);
 $id_bota = strstr($token, ':', true);	
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-include 'myBotApi/Variables.php';
+include '/myBotApi/Variables.php';
 
 $admin_group = $admin_group_market;
 
