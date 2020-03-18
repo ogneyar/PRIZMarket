@@ -1,9 +1,26 @@
 <?php
 //include_once '../../../vendor/autoload.php';	
-//include_once '../../a_conect.php';
+include_once '../../a_conect.php';
 //include_once '../pzmarket.php';
 
-include_once '../../pzm.php';
+//include_once '../../pzm.php';
+
+
+// Подключаем библиотеку с классом Bot
+include_once '../../myBotApi/Bot.php';
+//exit('ok');
+$token = $tokenMARKET;
+// Создаем объект бота
+$bot = new Bot($token);
+
+$id_bota = strstr($token, ':', true);	
+// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
+include '../../myBotApi/Variables.php';
+
+$admin_group = $admin_group_market;
+
+if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "йхххх");
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
