@@ -2,6 +2,8 @@
 //include_once '../../../vendor/autoload.php';	
 //include_once '../../a_conect.php';
 //include_once '../pzmarket.php';
+
+$tg->sendMessage($admin_group, "йээ");
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
