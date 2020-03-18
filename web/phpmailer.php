@@ -28,6 +28,7 @@ $mail->Body    = 'Testing some Mailgun awesomness';
 if(!$mail->send()) {
     echo 'Не смог отправить сообщение.';
     echo 'Ошибка: ' . $mail->ErrorInfo;
+	exit('ok');
 } else {
     echo 'Сообщение отправлено!</br></br>';
 	exit('ok');
