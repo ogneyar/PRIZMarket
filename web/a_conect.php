@@ -36,5 +36,13 @@
 	$channel_info = getenv('CHANNEL_INFO');
 	$channel_podrobno = getenv('CHANEL_PODROBNO');
 	$channel_media_market = getenv('CHANNEL_MEDIA_MARKET');
+		
+	$mail_api_key = getenv("MAILGUN_API_KEY");
+	$mail_domain = getenv("MAILGUN_DOMAIN");
+	$mail_public_key = getenv("MAILGUN_PUBLIC_KEY");
+	$mail_smtp_login = getenv("MAILGUN_SMTP_LOGIN");
+	$mail_smtp_pass = getenv("MAILGUN_SMTP_PASSWORD");
+	$mail_smtp_port = getenv("MAILGUN_SMTP_PORT");
+	$mail_smtp_server = getenv("MAILGUN_SMTP_SERVER");
 	
 ?>
