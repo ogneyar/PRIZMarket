@@ -18,6 +18,9 @@
 			<input type="text" placeholder="Ваш e-mail" name="email" id="email" size="15" maxlength="30">
 		</p>
 		<p>
+			<div id="warning"></div>
+		</p>
+		<p>
 			<input type="button" name="done" id="done" value="Зарегистрироваться">
 		</p>
 		<br><br>

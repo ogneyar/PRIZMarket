@@ -1,32 +1,23 @@
 <?php
 //include_once '../../../vendor/autoload.php';	
 include_once '../../a_conect.php';
-
 // Подключаем библиотеку с классом Bot
 include_once '../../myBotApi/Bot.php';
 //exit('ok');
 $token = $tokenMARKET;
 // Создаем объект бота
 $bot = new Bot($token);
-
 $id_bota = strstr($token, ':', true);	
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 include '../../myBotApi/Variables.php';
-
 $admin_group = $admin_group_market;
-
-
 $client  = @$_SERVER['HTTP_CLIENT_IP'];
 $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
-$remote  = @$_SERVER['REMOTE_ADDR'];
- 
+$remote  = @$_SERVER['REMOTE_ADDR']; 
 if(filter_var($client, FILTER_VALIDATE_IP)) $ip = $client;
 elseif(filter_var($forward, FILTER_VALIDATE_IP)) $ip = $forward;
 else $ip = $remote;
-
-
 if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться на сайте!\nего IP: {$ip}");
-
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,6 +26,30 @@ if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то жела
 	<title>Регистрация на PRIZMarket!</title>
 	<?include_once '../site_files/head.php';?>
 	<style type="text/css"></style>
+	
+	<script>
+		$(document).ready (function (){
+			$("#done").click (function (){
+				$('#warning').hide ();
+				var login = $("#login").();
+				var password = $("#password").();
+				var password2 = $("#password2").();
+				var email = $("#email").();
+				var fail = "";
+				if (login.length < 4) fail = "Логин не менее 4х символов";
+				else if (password.length < 4) fail = "Пароль не менее 4х символов";
+				else if (password != password2) fail = "Не верен повторно введённый пароль";
+				else if (email.split ('@').length - 1 == 0 || email.split ('.').length - 1 == 0) 
+					fail = "Вы ввели некорректный email";
+				if (fail != "") {
+					$('#warning').html (fail + "<div class='clear'><br></div>");
+					$('#warning').show ();
+					return false;
+				}
+			});
+		});
+	</script>
+	
 </head>
 <body>
 	<header>
