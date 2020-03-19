@@ -25,6 +25,9 @@ $mail->WordWrap = 50;                 // автоматический перен
 $mail->Subject = 'Hello';
 $mail->Body    = 'Testing some Mailgun awesomness';
 
+if ($логин) $bot->sendMessage($admin_group, $логин);
+
+
 if(!$mail->send()) {
     echo 'Не смог отправить сообщение.';
     echo 'Ошибка: ' . $mail->ErrorInfo;
