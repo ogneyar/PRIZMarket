@@ -46,6 +46,17 @@ if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то жела
 					$('#warning').show ();
 					return false;
 				}
+				$.ajax ({
+					url: '/site_pzm/registraciya/save_user.php',
+					type: 'POST',
+					cache: false,
+					data: {'login': login, 'password': password, 'email': email},
+					dataType: 'html',
+					succes: function (data) {
+						$('#warning').html (data  + "<br>");
+						$('#warning').show ();
+					}
+				});
 			});
 		});
 	</script>
