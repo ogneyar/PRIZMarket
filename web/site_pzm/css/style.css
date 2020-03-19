@@ -536,10 +536,11 @@ body {
 	text-align: center;
 }
 #registr input{
-	color: rgba(210,210,210); 
+	color: rgba(230,230,230); 
 }
 #registr #warning div{
-	color: red;
+	color: white;
+	text-align: center;
 }
 
 #vhod p{
