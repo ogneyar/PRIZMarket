@@ -538,13 +538,17 @@ body {
 #registr input{
 	color: rgba(190,190,190); 
 }
-
-#warning {
+#registr #warning {
 	color: red;
 }
 
 #vhod p{
 	text-align: center;
+}
+
+#leftCol input#done:hover {
+	border: 2px solid #f8d881;
+	cursor: pointer;
 }
 
 @media (min-width: 700px) {
