@@ -1,8 +1,7 @@
 <?
 echo $_POST['email'];
 
-
-include '../phpmailer.php';
+include 'phpmailer.php';
 
 include_once '../../a_conect.php';
 include_once '../../myBotApi/Bot.php';
