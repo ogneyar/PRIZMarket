@@ -25,7 +25,7 @@ session_start();
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">		
-			<?include_once '../site_files/wrapper-leftCol-vhod.php';?>
+			<?include_once 'wrapper-leftCol-vhod.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
