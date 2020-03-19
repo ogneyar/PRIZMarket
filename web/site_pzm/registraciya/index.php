@@ -49,7 +49,7 @@ if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то жела
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">		
-			<?include_once '../site_files/wrapper-leftCol-registraciya.php';?>
+			<?include_once 'wrapper-leftCol-registraciya.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
