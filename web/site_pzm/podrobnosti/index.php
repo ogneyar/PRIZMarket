@@ -31,7 +31,7 @@ include_once '../pzmarket.php';
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">
-			<?include_once '../site_files/wrapper-leftCol-podrobnosti.php';?>
+			<?include_once 'wrapper-leftCol-podrobnosti.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
