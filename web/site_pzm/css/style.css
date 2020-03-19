@@ -237,11 +237,11 @@ nav a:hover, nav#fixed a:hover {
   margin-right: 0;
 }
 .topmenu a {
-  display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-  outline: none;
-  transition: .5s linear;
+	display: block;
+	padding: 10px 0;
+	text-decoration: none;
+	outline: none;
+	transition: .5s linear;
 }
 .submenu {
 	position: absolute;
@@ -255,6 +255,7 @@ nav a:hover, nav#fixed a:hover {
 }
 .submenu li a {
 	border-bottom: 1px solid #8c8c8c;
+	padding: 10px 15px;
 	color: #8c8c8c;
 	margin-left: 0;
 	float: left;
