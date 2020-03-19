@@ -9,32 +9,34 @@ echo '<br />';
 echo $_POST['e_mail'];
 echo '<br />';
 echo '<br />';
-$password    = md5($password);//шифруем пароль          
+$password    = md5($password, true);//шифруем пароль          
 $password    = strrev($password);// для надежности добавим реверс          
-$password    = $password."b3p6f";
+$password    = $password."Y1a3th";
 echo $password;
 ?>
 
 <?php/*
 
+//заносим введенный пользователем логин в переменную $login, если он пустой, то уничтожаем переменную
 if (isset($_POST['login'])) { 
 	$login = $_POST['login']; 
 	if ($login == '') { 
 		unset($login);
 	} 
 } 
-//заносим введенный пользователем логин в переменную $login, если он пустой, то уничтожаем переменную
+
+//заносим введенный пользователем пароль в переменную $password, если он пустой, то уничтожаем переменную
 if (isset($_POST['password'])) { 
 	$password=$_POST['password']; 
 	if ($password =='') { 
 		unset($password);
 	} 
 }
-//заносим введенный пользователем пароль в переменную $password, если он пустой, то уничтожаем переменную
 if (empty($login) or empty($password)) {
 	//если пользователь не ввел логин или пароль, то выдаем ошибку и останавливаем скрипт
     exit ("Вы ввели не всю информацию, вернитесь назад и заполните все поля!");
 }
+
 //если логин и пароль введены, то обрабатываем их, чтобы теги и скрипты не работали, мало ли что люди могут ввести
 $login = stripslashes($login);
 $login = htmlspecialchars($login);
