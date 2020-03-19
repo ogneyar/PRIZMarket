@@ -31,7 +31,7 @@
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">		
-			<?include_once '../site_files/wrapper-leftCol-reklama.php';?>
+			<?include_once 'wrapper-leftCol-reklama.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
