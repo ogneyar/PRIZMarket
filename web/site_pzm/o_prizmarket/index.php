@@ -31,7 +31,7 @@ include_once '../../a_conect.php';
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">		
-			<?include_once '../site_files/wrapper-leftCol-o_prizmarket.php';?>
+			<?include_once 'wrapper-leftCol-o_prizmarket.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
