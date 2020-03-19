@@ -31,10 +31,10 @@ if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то жела
 		$(document).ready (function (){
 			$("#done").click (function (){
 				$('#warning').hide ();
-				var login = $("#login").();
-				var password = $("#password").();
-				var password2 = $("#password2").();
-				var email = $("#email").();
+				var login = $("#login").val ();
+				var password = $("#password").val ();
+				var password2 = $("#password2").val ();
+				var email = $("#email").val ();
 				var fail = "";
 				if (login.length < 4) fail = "Логин не менее 4х символов";
 				else if (password.length < 4) fail = "Пароль не менее 4х символов";
