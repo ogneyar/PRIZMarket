@@ -1,4 +1,6 @@
 <?
+echo $_POST['email'];
+
 $логин = htmlspecialchars($_POST['login']);
 $пароль = htmlspecialchars($_POST['password']);
 $емаил = htmlspecialchars($_POST['email']);

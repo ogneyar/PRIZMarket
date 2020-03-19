@@ -30,7 +30,7 @@ if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то жела
 	<script>
 		$(document).ready (function (){
 			$("#done").click (function (){
-				$('#warning').html ("<br>");
+				$('#warning').html ('lhlhlh' + "<br>");
 				$('#warning').show ();
 				var login = $("#login").val ();
 				var password = $("#password").val ();
