@@ -1,4 +1,6 @@
 ﻿<?php
+echo 'Cмог';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -6,6 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 include_once '../../vendor/autoload.php';
 include_once '../a_conect.php';
 
+if ($логин) $bot->sendMessage($admin_group, $логин);
 
 $mail = new PHPMailer;
 
@@ -24,9 +27,6 @@ $mail->WordWrap = 50;                 // автоматический перен
 
 $mail->Subject = 'Hello';
 $mail->Body    = 'Testing some Mailgun awesomness';
-
-if ($логин) $bot->sendMessage($admin_group, $логин);
-
 
 if(!$mail->send()) {
     echo 'Не смог отправить сообщение.';
