@@ -29,11 +29,11 @@ $mail->Body    = 'Testing some Mailgun awesomness';
 if(!$mail->send()) {	
     echo 'Не смог отправить сообщение.';
     echo 'Ошибка: ' . $mail->ErrorInfo;
-	//$bot->sendMessage($admin_group, "Не смог отправить сообщение.");
+	$bot->sendMessage($admin_group, "Не смог отправить сообщение.");
 	//exit('ok');
 } else {
     echo 'Сообщение отправлено!';
-	//$bot->sendMessage($admin_group, "Сообщение отправлено!");
+	$bot->sendMessage($admin_group, "Сообщение отправлено!");
 }
 
 ?>

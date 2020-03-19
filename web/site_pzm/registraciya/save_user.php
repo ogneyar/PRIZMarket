@@ -1,8 +1,4 @@
 <?
-echo $_POST['email'];
-
-include 'phpmailer.php';
-
 include_once '../../a_conect.php';
 include_once '../../myBotApi/Bot.php';
 //exit('ok');
@@ -22,6 +18,9 @@ $емаил = htmlspecialchars($_POST['email']);
 $логин = trim($логин);
 $пароль = trim($пароль);
 $емаил = trim($емаил);
+
+include 'phpmailer.php';
+
 
 
 ?>
