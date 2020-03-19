@@ -19,8 +19,6 @@
 		</p>
 		<p>
 			<label id="warning"><br></label>
-		</p>
-		<p>
 			<input type="button" name="done" id="done" value="Зарегистрироваться">
 		</p>
 		<br><br>
