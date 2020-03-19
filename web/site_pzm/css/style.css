@@ -144,8 +144,14 @@ header span#contact a:hover {
 	color: #e0e0e0;
 }
 
-
-@media (max-width: 1299px) {
+@media (max-width: 699px) {
+nav {
+	width: 90%;
+	float: left;
+	background-color: #ffffff;
+	padding: 0 5% 0.7% 5%;
+}}
+@media (max-width: 1299px) and (min-width: 700px) {
 nav {
 	width: 86%;
 	float: left;
@@ -162,31 +168,17 @@ nav {
 
 
 @media (min-width: 837px){
-nav a:first-child, nav#fixed a:first-child {
-/*	margin-left: 12%; */
-}
 nav a, nav#fixed a {
 	border-top: 5px solid rgba(255,255,255,0);
-	padding: 0.5% 1% 0 1%;
-	float: left;
-/*	margin-right: 4%;*/
-	font-family: Times New Roman, sans-serif;
-	font-size: 1.4em;
-	color: #686869;
 }}
 
-@media (max-width: 836px){
-nav a:first-child, nav#fixed a:first-child {
-/*	margin-left: 3%; 	*/
-}
 nav a, nav#fixed a {	
 	padding: 0.5% 1% 0 1%;
 	float: left;
-/*	margin-right: 4%;*/
 	font-family: Times New Roman, sans-serif;
 	font-size: 1.4em;
 	color: #686869;
-}}
+}
 
 nav#fixed {
 	position: fixed;

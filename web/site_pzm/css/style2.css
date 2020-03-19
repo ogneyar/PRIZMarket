@@ -144,40 +144,41 @@ header span#contact a:hover {
 	color: #e0e0e0;
 }
 
-
+@media (max-width: 699px) {
 nav {
-	width: 98%;
+	width: 90%;
 	float: left;
 	background-color: #ffffff;
-	padding: 0 1% 0.7% 1%;
-}
-
-@media (min-width: 837px){
-nav a:first-child, nav#fixed a:first-child {
-/*	margin-left: 12%; */
-}
-nav a, nav#fixed a {
-	border-top: 5px solid rgba(255,255,255,0);
-	padding: 0.5% 1% 0 1%;
+	padding: 0 5% 0.7% 5%;
+}}
+@media (max-width: 1299px) and (min-width: 700px) {
+nav {
+	width: 86%;
 	float: left;
-/*	margin-right: 4%;*/
-	font-family: Times New Roman, sans-serif;
-	font-size: 1.4em;
-	color: #686869;
+	background-color: #ffffff;
+	padding: 0 7% 0.7% 7%;
+}}
+@media (min-width: 1300px) {
+nav {
+	width: 70%;
+	float: left;
+	background-color: #ffffff;
+	padding: 0 15% 0.7% 15%;
 }}
 
-@media (max-width: 836px){
-nav a:first-child, nav#fixed a:first-child {
-/*	margin-left: 3%; 	*/
-}
+
+@media (min-width: 837px){
+nav a, nav#fixed a {
+	border-top: 5px solid rgba(255,255,255,0);
+}}
+
 nav a, nav#fixed a {	
 	padding: 0.5% 1% 0 1%;
 	float: left;
-/*	margin-right: 4%;*/
 	font-family: Times New Roman, sans-serif;
 	font-size: 1.4em;
 	color: #686869;
-}}
+}
 
 nav#fixed {
 	position: fixed;
@@ -287,11 +288,19 @@ nav a:hover, nav#fixed a:hover {
 		Основная часть сайта
 ----------------------------------*/
 
+@media (max-width: 1299px) {
 #wrapper {
 	width: 86%;
+/*	max-width: 766px;*/
 	margin-left: 7%;
 	float: left;
-}
+}}
+@media (min-width: 1300px) {
+#wrapper {
+	width: 70%;
+	margin-left: 15%;
+	float: left;
+}}
 
 /* Для фиксации футера в подвале */
 body {
@@ -520,6 +529,13 @@ body {
 }
 #o_prizmarket h3 b{
 	color: red;
+}
+
+#registr p{
+	text-align: center;
+}
+#vhod p{
+	text-align: center;
 }
 
 @media (min-width: 700px) {
