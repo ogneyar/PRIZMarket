@@ -536,9 +536,9 @@ body {
 	text-align: center;
 }
 #registr input{
-	color: rgba(190,190,190); 
+	color: rgba(210,210,210); 
 }
-#registr #warning {
+#registr #warning div{
 	color: red;
 }
 
@@ -549,6 +549,7 @@ body {
 #leftCol input#done:hover {
 	border: 2px solid #f8d881;
 	cursor: pointer;
+	padding: 5px; 
 }
 
 @media (min-width: 700px) {
