@@ -42,7 +42,7 @@ if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то жела
 				else if (email.split ('@').length - 1 == 0 || email.split ('.').length - 1 == 0) 
 					fail = "Вы ввели некорректный email";
 				if (fail != "") {
-					$('#warning').html (fail);
+					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
 					return false;
 				}
