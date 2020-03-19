@@ -535,6 +535,14 @@ body {
 #registr p{
 	text-align: center;
 }
+#registr input{
+	color: rgba(190,190,190); 
+}
+
+#warning {
+	color: red;
+}
+
 #vhod p{
 	text-align: center;
 }
