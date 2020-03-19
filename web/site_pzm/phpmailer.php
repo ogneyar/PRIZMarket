@@ -1,7 +1,7 @@
 ﻿<?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+use \PHPMailer\PHPMailer\PHPMailer;
+use \PHPMailer\PHPMailer\SMTP;
+use \PHPMailer\PHPMailer\Exception;
 
 echo 'Cообщение.<br>';
 
@@ -26,14 +26,14 @@ $mail->WordWrap = 50;                 // автоматический перен
 $mail->Subject = 'Hello';
 $mail->Body    = 'Testing some Mailgun awesomness';
 
-if(!$mail->send()) {
-	$bot->sendMessage($admin_group, "Не смог отправить сообщение.");
+if(!$mail->send()) {	
     echo 'Не смог отправить сообщение.';
     echo 'Ошибка: ' . $mail->ErrorInfo;
+	$bot->sendMessage($admin_group, "Не смог отправить сообщение.");
 	//exit('ok');
 } else {
-	$bot->sendMessage($admin_group, "Сообщение отправлено!");
     echo 'Сообщение отправлено!';
+	$bot->sendMessage($admin_group, "Сообщение отправлено!");
 }
 
 ?>
