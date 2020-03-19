@@ -546,10 +546,12 @@ body {
 	text-align: center;
 }
 
+#leftCol input#done {
+	padding: 5px; 
+}
 #leftCol input#done:hover {
 	border: 2px solid #f8d881;
 	cursor: pointer;
-	padding: 5px; 
 }
 
 @media (min-width: 700px) {
