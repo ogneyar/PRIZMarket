@@ -32,7 +32,7 @@ if(!$mail->send()) {
 	$bot->sendMessage($admin_group, "Не смог отправить сообщение.");
 	//exit('ok');
 } else {
-    echo 'Сообщение отправлено!';
+    echo "Сообщение отправлено!";
 	$bot->sendMessage($admin_group, "Сообщение отправлено!");
 }
 
