@@ -82,6 +82,7 @@ header #logo {
 	color: rgba(255,235,59);
 	float: left;
 	width: 25%;
+	padding-top: 10px;
 }
 
 @media (min-width: 640px){
