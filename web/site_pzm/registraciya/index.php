@@ -53,11 +53,14 @@ if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то жела
 					cache: false,
 					data: {'login': login, 'password': password, 'email': email},
 					dataType: 'html',
-					succes: function (data) {
+					<!-- succes: function (data) {
 						$('#warning').html ("отправил" + "<br>");
 						$('#warning').show ();
-					}
-				});
+					}-->
+				}).done (function (data) {
+						$('#warning').html ("отправил" + "<br>");
+						$('#warning').show ();
+					});
 			});
 		});
 	</script>
