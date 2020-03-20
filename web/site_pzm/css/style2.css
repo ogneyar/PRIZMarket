@@ -82,6 +82,7 @@ header #logo {
 	color: rgba(255,235,59);
 	float: left;
 	width: 25%;
+	padding-top: 10px;
 }
 
 @media (min-width: 640px){
@@ -130,7 +131,7 @@ header a#logo {
 
 header span#contact a {
 	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
-	font-family: 'mr_InsulaG';
+/*	font-family: 'mr_InsulaG';*/
 	color: rgba(76,0,164);
 /*	color: rgba(255,235,59); */
 	float: right;
@@ -534,11 +535,13 @@ body {
 #registr p{
 	text-align: center;
 }
+#registr {padding-bottom: 20px}
+
 /*
 #registr input{
 	color: rgba(230,230,230); 
 }*/
-#warning, #registr span {
+#warning {
 	color: white;
 	text-align: center;
 }
@@ -546,6 +549,7 @@ body {
 #vhod p{
 	text-align: center;
 }
+#vhod {padding-bottom: 20px}
 
 #leftCol input#done {
 	padding: 5px; 

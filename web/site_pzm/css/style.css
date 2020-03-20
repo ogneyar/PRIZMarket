@@ -535,7 +535,6 @@ body {
 #registr p{
 	text-align: center;
 }
-
 #registr {padding-bottom: 20px}
 
 /*
@@ -550,6 +549,7 @@ body {
 #vhod p{
 	text-align: center;
 }
+#vhod {padding-bottom: 20px}
 
 #leftCol input#done {
 	padding: 5px; 
