@@ -1,5 +1,5 @@
 <a href="/" id="logo">
-	<span>PRIZMarket</span>
+	<b><span>PRIZMarket</span></b>
 </a>
 <span id="contact">
     <a href="/site_pzm/vhod/index.php">Вход</a>
