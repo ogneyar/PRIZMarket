@@ -15,9 +15,9 @@ $mail->Username = $mail_smtp_login;   // SMTP username
 $mail->Password = $mail_smtp_pass;    // SMTP password
 $mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accepted
 
-$mail->From = 'sup@pzmarket.ru';
+$mail->From = 'support@prizmarket.ru';
 $mail->FromName = 'PRIZMarket';
-$mail->addAddress('ya13th@mail.ru');  // добавить получателя
+$mail->addAddress('{$емаил}');  // добавить получателя
 
 $mail->WordWrap = 50;                 // автоматический перенос символов
 
