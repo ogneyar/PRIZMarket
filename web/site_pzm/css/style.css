@@ -538,7 +538,7 @@ body {
 #registr input{
 	color: rgba(230,230,230); 
 }*/
-#warning, #registr span {
+#warning {
 	color: white;
 	text-align: center;
 }
