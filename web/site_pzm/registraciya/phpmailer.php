@@ -15,7 +15,7 @@ $mail->Username = $mail_smtp_login;   // SMTP username
 $mail->Password = $mail_smtp_pass;    // SMTP password
 $mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accepted
 
-$mail->From = 'support@prizmarket.ru';
+$mail->From = 'app163591274@heroku.com';
 $mail->FromName = 'PRIZMarket';
 $mail->addAddress($емаил);  // добавить получателя
 
