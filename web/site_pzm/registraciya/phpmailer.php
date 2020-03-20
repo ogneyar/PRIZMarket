@@ -15,23 +15,23 @@ $mail->Username = $mail_smtp_login;   // SMTP username
 $mail->Password = $mail_smtp_pass;    // SMTP password
 $mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accepted
 
-$mail->From = 'app163591274@heroku.com';
+$mail->From = 'support@prizmarket.ru';
 $mail->FromName = 'PRIZMarket';
 $mail->addAddress($емаил);  // добавить получателя
 
 $mail->WordWrap = 50;                 // автоматический перенос символов
 
-$mail->Subject = 'Hello';
-$mail->Body    = 'Testing some Mailgun awesomness';
+$mail->Subject = 'Регистрация';
+$mail->Body    = "Здравствуйте {$логин}, это письмо отправлено Вам для продолжения регистрации на сайте PRIZMarket. На это письмо отвечать не нужно. Просто перейдите по ссылке ниже.";
 
 if(!$mail->send()) {	
     echo 'Не смог отправить сообщение.';
     echo 'Ошибка: ' . $mail->ErrorInfo;
-	$bot->sendMessage($admin_group, "Не смог отправить сообщение.");
+	$bot->sendMessage($admin_group, "Не смог отправить сообщение на почту.");
 	//exit('ok');
 } else {
-    echo "Сообщение отправлено!";
-	$bot->sendMessage($admin_group, "Сообщение отправлено!");
+    echo "Сообщение отправлено!<br><br>Проверьте почту, перейдите по присланной Вам ссылке для окончания регистрации. Если письмо не пришло проверьте папку СПАМ.<br><br>После окончания регистрации зайдите в личный кабинет.";
+	$bot->sendMessage($admin_group, "Сообщение отправлено на почту!");
 }
 
 ?>
