@@ -16,6 +16,7 @@ $mail->Password = $mail_smtp_pass;    // SMTP password
 $mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accepted
 
 $mail->CharSet = "utf-8";
+$mail->IsHTML(true); 
 
 $mail->From = 'support@prizmarket.ru';
 $mail->FromName = 'PRIZMarket';
