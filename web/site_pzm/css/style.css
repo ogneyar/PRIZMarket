@@ -130,7 +130,7 @@ header a#logo {
 
 header span#contact a {
 	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
-	font-family: 'mr_InsulaG';
+/*	font-family: 'mr_InsulaG';*/
 	color: rgba(76,0,164);
 /*	color: rgba(255,235,59); */
 	float: right;
@@ -535,7 +535,7 @@ body {
 	text-align: center;
 }
 
-#registr p:last-child {margin-bottom: 20px}
+#registr p:last-child {padding-bottom: 20px}
 
 /*
 #registr input{
