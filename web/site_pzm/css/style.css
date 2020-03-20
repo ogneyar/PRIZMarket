@@ -534,6 +534,9 @@ body {
 #registr p{
 	text-align: center;
 }
+
+#registr p:last-child {margin-bottom: 20px}
+
 /*
 #registr input{
 	color: rgba(230,230,230); 
