@@ -535,7 +535,7 @@ body {
 	text-align: center;
 }
 
-#registr p:last-child {padding-bottom: 20px}
+#registr {padding-bottom: 20px}
 
 /*
 #registr input{
