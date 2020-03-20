@@ -54,8 +54,8 @@ if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то жела
 					data: {'login': login, 'password': password, 'email': email},
 					dataType: 'html',
 					success: function (data) {
-						$('#warning').html (data + "<br>");
-						$('#warning').show ();
+						$('#leftCol').html (data + "<br>");
+						$('#leftCol').show ();
 					}
 				});
 			});
