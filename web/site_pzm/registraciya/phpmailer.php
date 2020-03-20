@@ -17,7 +17,7 @@ $mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accept
 
 $mail->From = 'support@prizmarket.ru';
 $mail->FromName = 'PRIZMarket';
-$mail->addAddress('{$емаил}');  // добавить получателя
+$mail->addAddress($емаил);  // добавить получателя
 
 $mail->WordWrap = 50;                 // автоматический перенос символов
 
