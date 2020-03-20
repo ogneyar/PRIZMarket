@@ -12,7 +12,8 @@
     <input name="password" type="password" size="15" maxlength="15">
 </p>
 <p>
-    <input type="submit" name="submit" value="Войти">
+	<label id="warning"><br></label>
+    <input type="submit" name="submit" id="submit" value="Войти">
 	<br><br>
 	
 	<a href="/site_pzm/registraciya/index.php">Зарегистрироваться</a> 
