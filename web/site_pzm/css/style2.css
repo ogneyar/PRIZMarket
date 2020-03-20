@@ -77,7 +77,7 @@ header #logo {
 /*	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
 	font-family: 'mr_InsulaG';
 	color: rgba(76,0,164);*/
-	text-shadow: 1px 1px 2px red, 0 0 2em red;
+	text-shadow: 2px 2px 4px red, -2px 2px 4px red, 2px -2px 4px red, -2px -2px 4px red;
 	font-family: Times New Roman, sans-serif;
 	color: rgba(255,235,59);
 	float: left;
@@ -538,7 +538,7 @@ body {
 #registr input{
 	color: rgba(230,230,230); 
 }*/
-#warning {
+#warning, #registr {
 	color: white;
 	text-align: center;
 }
