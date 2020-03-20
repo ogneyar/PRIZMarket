@@ -74,11 +74,12 @@ header a#logo span {
 }*/
 
 header #logo {
-	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
+/*	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
 	font-family: 'mr_InsulaG';
-/*	color: white;*/
-/*	color: rgba(102,41,214);*/
-	color: rgba(76,0,164);
+	color: rgba(76,0,164);*/
+	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em red;
+	font-family: Times New Roman, sans-serif;
+	color: rgba(255,235,59);
 	float: left;
 	width: 25%;
 }
@@ -88,7 +89,6 @@ header span#contact {
 	float: right;
 	width: 40%;
 	margin-right: 20%;
-	font-family: Times New Roman, sans-serif
 }
 header a#logo {
 	font-size: 2em;
@@ -100,7 +100,6 @@ header span#contact {
 	float: right;
 	width: 40%;
 	margin-right: 8%;
-	font-family: Times New Roman, sans-serif
 }
 header a#logo {
 	font-size: 1.7em;
@@ -112,7 +111,6 @@ header span#contact {
 	float: right;
 	width: 40%;
 	margin-right: 5%;
-	font-family: Times New Roman, sans-serif
 }
 header a#logo {
 	font-size: 1.7em;
@@ -124,7 +122,6 @@ header span#contact {
 	float: right;
 	width: 40%;
 	margin-right: 2%;
-	font-family: Times New Roman, sans-serif
 }
 header a#logo {
 	font-size: 1.7em;
@@ -132,8 +129,10 @@ header a#logo {
 }}
 
 header span#contact a {
-/*	color: yellow;*/
-	color: rgba(255,235,59); 
+	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
+	font-family: 'mr_InsulaG';
+	color: rgba(76,0,164);
+/*	color: rgba(255,235,59); */
 	float: right;
 	margin-left: 10%;
 	font-size: 1.4em;
