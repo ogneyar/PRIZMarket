@@ -3,8 +3,6 @@ use \PHPMailer\PHPMailer\PHPMailer;
 use \PHPMailer\PHPMailer\SMTP;
 use \PHPMailer\PHPMailer\Exception;
 
-echo 'Cообщение.<br>';
-
 include_once '../../../vendor/autoload.php';
 include_once '../../a_conect.php';
 
