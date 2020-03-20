@@ -57,8 +57,8 @@ if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то жела
 						$('#warning').html ("отправил" + "<br>");
 						$('#warning').show ();
 					}-->
-				}).done (function (data) {
-						$('#warning').html ("отправил" + "<br>");
+				}).done (function (msg) {
+						$('#warning').html (msg + "<br>");
 						$('#warning').show ();
 					});
 			});
