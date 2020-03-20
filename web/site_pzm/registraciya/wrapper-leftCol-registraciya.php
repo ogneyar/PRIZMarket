@@ -1,7 +1,7 @@
 <article id="registr">
 <!--	<form action="/site_pzm/registraciya/save_user.php" method="post">    -->
 		<br>
-		<span id="otvet"><p></p></span>
+		<span id="otvet"></span>
 		<p>
 			<label>Введите логин:<br></label>
 			<input type="text" placeholder="Ваш логин" name="login" id="login" size="15" maxlength="15">
