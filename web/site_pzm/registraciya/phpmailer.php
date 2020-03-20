@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 use \PHPMailer\PHPMailer\PHPMailer;
 use \PHPMailer\PHPMailer\SMTP;
 use \PHPMailer\PHPMailer\Exception;
@@ -15,6 +15,8 @@ $mail->Username = $mail_smtp_login;   // SMTP username
 $mail->Password = $mail_smtp_pass;    // SMTP password
 $mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accepted
 
+$mail->CharSet = "utf-8";
+
 $mail->From = 'support@prizmarket.ru';
 $mail->FromName = 'PRIZMarket';
 $mail->addAddress($емаил);  // добавить получателя
@@ -22,7 +24,7 @@ $mail->addAddress($емаил);  // добавить получателя
 $mail->WordWrap = 50;                 // автоматический перенос символов
 
 $mail->Subject = 'Регистрация';
-$mail->Body    = "Здравствуйте {$логин}, это письмо отправлено Вам для продолжения регистрации на сайте PRIZMarket. На это письмо отвечать не нужно. Просто перейдите по ссылке ниже.";
+$mail->Body    = "Здравствуйте {$логин}, это письмо отправлено Вам для продолжения регистрации на сайте PRIZMarket. На это письмо отвечать не нужно. Просто перейдите по ссылке ниже.<br><br>DA da eto kakaya-to hernya.";
 
 if(!$mail->send()) {	
     echo 'Не смог отправить сообщение.';
