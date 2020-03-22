@@ -19,7 +19,7 @@ $mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accept
 $mail->CharSet = "utf-8";
 $mail->IsHTML(true); 
 
-$mail->From = 'prizmarket@rambler.ru';
+$mail->From = 'prizmarket@mail.ru';
 $mail->FromName = 'PRIZMarket';
 $mail->addAddress($емаил);  // добавить получателя
 
