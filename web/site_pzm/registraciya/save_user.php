@@ -21,7 +21,7 @@ $запрос = "SHOW TABLES";
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 
-	$bot->sendMessage($admin_group, "ДА");
+	//$bot->sendMessage($admin_group, "ДА");
 	
 /*	$количество = $результат->num_rows;	
 	if($количество > 0) $массивРезульт = $результат->fetch_all(MYSQLI_ASSOC);		
