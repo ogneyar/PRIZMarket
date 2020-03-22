@@ -39,7 +39,7 @@ if(filter_var($client, FILTER_VALIDATE_IP)) $ip = $client;
 elseif(filter_var($forward, FILTER_VALIDATE_IP)) $ip = $forward;
 else $ip = $remote;
 if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться на сайте!\nего IP: {$ip}");
-if ($_GET['registration'] == '1') $bot->sendMessage($admin_group, "ЕЕЕ"); 
+//if ($_GET['registration'] == '1') $bot->sendMessage($admin_group, "ЕЕЕ"); 
 
 // закрываем подключение 
 $mysqli->close();
@@ -109,7 +109,13 @@ function exception_handler($exception) {
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">		
-			<?include_once 'wrapper-leftCol-registraciya.php';?>
+			<?
+			if ($_GET['registration'] == '1') {
+				include_once 'wrapper-leftCol-podtverjdenie.php';
+			}else {
+				include_once 'wrapper-leftCol-registraciya.php';
+			}
+			?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
