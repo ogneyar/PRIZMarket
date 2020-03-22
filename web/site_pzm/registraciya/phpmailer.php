@@ -8,13 +8,15 @@ include_once '../../a_conect.php';
 
 $mail = new PHPMailer;
 
-$mail_smtp_server = "smtp.rambler.ru";
-$port = 465;
+$mail_smtp_server = "ssl://smtp.rambler.ru";
 $mail_smtp_login = "prizmarket@rambler.ru";
 $mail_smtp_pass = "Qwrtui_13"; 
 
 $mail->isSMTP();                      // Set mailer to use SMTP
 $mail->Host = $mail_smtp_server;      // Specify main and backup SMTP servers
+
+$mail->Port = 465;
+
 $mail->SMTPAuth = true;               // Enable SMTP authentication
 $mail->Username = $mail_smtp_login;   // SMTP username
 $mail->Password = $mail_smtp_pass;    // SMTP password
@@ -23,7 +25,7 @@ $mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accept
 $mail->CharSet = "utf-8";
 $mail->IsHTML(true); 
 
-$mail->From = 'support@prizmarket.ru';
+$mail->From = 'prizmarket@rambler.ru';
 $mail->FromName = 'PRIZMarket';
 $mail->addAddress($емаил);  // добавить получателя
 
