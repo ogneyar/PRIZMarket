@@ -18,6 +18,8 @@ if(filter_var($client, FILTER_VALIDATE_IP)) $ip = $client;
 elseif(filter_var($forward, FILTER_VALIDATE_IP)) $ip = $forward;
 else $ip = $remote;
 if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться на сайте!\nего IP: {$ip}");
+
+$путь_сервера = $_SERVER['SCRIPT_FILENAME'];
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
