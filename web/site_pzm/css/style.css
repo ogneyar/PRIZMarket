@@ -532,10 +532,11 @@ body {
 	color: red;
 }
 
-#registr p{
+#registr p, #podtverjdenie p{
 	text-align: center;
+	font-size: 2em;
 }
-#registr {padding-bottom: 20px}
+#registr, #podtverjdenie {padding-bottom: 20px}
 
 /*
 #registr input{

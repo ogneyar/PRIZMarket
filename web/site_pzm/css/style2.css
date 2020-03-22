@@ -532,10 +532,11 @@ body {
 	color: red;
 }
 
-#registr p{
+#registr p, #podtverjdenie p{
 	text-align: center;
+	font-size: 2em;
 }
-#registr {padding-bottom: 20px}
+#registr, #podtverjdenie {padding-bottom: 20px}
 
 /*
 #registr input{
@@ -551,13 +552,14 @@ body {
 }
 #vhod {padding-bottom: 20px}
 
-#leftCol input#done {
+#leftCol input#done, #leftCol input#submit {
 	padding: 5px; 
 }
-#leftCol input#done:hover {
+#leftCol input#done:hover, #leftCol input#submit:hover {
 	border: 2px solid #f8d881;
 	cursor: pointer;
 }
+
 
 @media (min-width: 700px) {
 #wrapper #leftCol {
