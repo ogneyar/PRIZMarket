@@ -8,7 +8,18 @@ $id_bota = strstr($token, ':', true);
 include '../../myBotApi/Variables.php';
 $admin_group = $admin_group_market;
 
-if ($_POST['email']) $bot->sendMessage($admin_group, $_POST['email']);
+//if ($_POST['email']) $bot->sendMessage($admin_group, $_POST['email']);
+
+$запрос = "SHOW TABLES"; 
+$результат = $mysqli->query($запрос);
+if ($результат)	{
+
+	$bot->sendMessage($admin_group, "ДА");
+	
+/*	$количество = $результат->num_rows;	
+	if($количество > 0) $массивРезульт = $результат->fetch_all(MYSQLI_ASSOC);		
+	else throw new Exception('Таблица пуста.. (работа сайта)');	*/
+}else throw new Exception('Не смог проверить таблицу `pzm`.. (работа сайта)');	
 
 $логин = htmlspecialchars($_POST['login']);
 $пароль = htmlspecialchars($_POST['password']);

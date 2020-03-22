@@ -11,6 +11,27 @@ $id_bota = strstr($token, ':', true);
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 include '../../myBotApi/Variables.php';
 $admin_group = $admin_group_market;
+
+$mysqli = new mysqli($host, $username, $password, $dbname);
+// проверка подключения 
+if (mysqli_connect_errno()) {
+	throw new Exception('Чёт не выходит подключиться к MySQL');	
+	exit('ok');
+}
+// Обработчик исключений
+set_exception_handler('exception_handler');
+
+/*
+$запрос = "SELECT * FROM pzmarkt"; 
+$результат = $mysqli->query($запрос);
+if ($результат)	{
+	$i = $результат->num_rows;
+}else throw new Exception('Не смог проверить таблицу `pzm`.. (работа сайта)');	
+
+if($i>0) $arrS = $результат->fetch_all();		
+else throw new Exception('Таблица пуста.. (работа сайта)');
+*/
+
 $client  = @$_SERVER['HTTP_CLIENT_IP'];
 $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
 $remote  = @$_SERVER['REMOTE_ADDR']; 
@@ -19,6 +40,17 @@ elseif(filter_var($forward, FILTER_VALIDATE_IP)) $ip = $forward;
 else $ip = $remote;
 if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться на сайте!\nего IP: {$ip}");
 if ($_GET['registration'] == '1') $bot->sendMessage($admin_group, "ЕЕЕ"); 
+
+// закрываем подключение 
+$mysqli->close();
+
+// при возникновении исключения вызывается эта функция
+function exception_handler($exception) {
+	global $mysqli, $bot, $admin_group;
+	$bot->sendMessage($admin_group, "Ошибка! ".$exception->getCode()." ".$exception->getMessage();	  
+	$mysqli->close();		
+	exit('ok');  	
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
