@@ -21,7 +21,7 @@ $емаил = trim($емаил);
 
 $пароль_md5 = md5($пароль);
 
-$путь_сервера = $_SERVER['SERVER_NAME']."/site_pzm/registraciya/index.php";
+$путь_сервера = "https://" . $_SERVER['SERVER_NAME']."/site_pzm/registraciya/index.php";
 
 $ссылка_подтверждения = $путь_сервера . "?registration=1&login=" . $логин . "&pass=" . $пароль_md5;
 
