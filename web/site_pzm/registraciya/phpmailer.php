@@ -14,12 +14,12 @@ $mail->Port = $smtp_port;
 $mail->SMTPAuth = true;               // Enable SMTP authentication
 $mail->Username = $smtp_login;   // SMTP username
 $mail->Password = $smtp_pass;    // SMTP password
-$mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accepted
+$mail->SMTPSecure = 'starttls';            // Enable encryption, only 'tls' is accepted
 
 $mail->CharSet = "utf-8";
 $mail->IsHTML(true); 
 
-$mail->From = 'prizmarket@mail.ru';
+$mail->From = 'prizmarket@sibnet.ru';
 $mail->FromName = 'PRIZMarket';
 $mail->addAddress($емаил);  // добавить получателя
 
