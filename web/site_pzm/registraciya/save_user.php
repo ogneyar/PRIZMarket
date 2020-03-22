@@ -19,7 +19,7 @@ if ($результат)	{
 /*	$количество = $результат->num_rows;	
 	if($количество > 0) $массивРезульт = $результат->fetch_all(MYSQLI_ASSOC);		
 	else throw new Exception('Таблица пуста.. (работа сайта)');	*/
-}else throw new Exception('Не смог проверить таблицу `pzm`.. (работа сайта)');	
+}else $bot->sendMessage($admin_group, 'Не смог проверить таблицу `pzm`.. (работа сайта)');	
 
 $логин = htmlspecialchars($_POST['login']);
 $пароль = htmlspecialchars($_POST['password']);
