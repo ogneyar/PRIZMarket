@@ -47,7 +47,7 @@ $mysqli->close();
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
 	global $mysqli, $bot, $admin_group;
-	$bot->sendMessage($admin_group, "Ошибка! ".$exception->getCode()." ".$exception->getMessage();	  
+	$bot->sendMessage($admin_group, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
 	$mysqli->close();		
 	exit('ok');  	
 }
