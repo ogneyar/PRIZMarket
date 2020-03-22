@@ -14,7 +14,7 @@ $mail->Port = $smtp_port;
 $mail->SMTPAuth = true;               // Enable SMTP authentication
 $mail->Username = $smtp_login;   // SMTP username
 $mail->Password = $smtp_pass;    // SMTP password
-$mail->SMTPSecure = 'starttls';            // Enable encryption, only 'tls' is accepted
+$mail->SMTPSecure = 'tls';            // Enable encryption, only 'tls' is accepted
 
 $mail->CharSet = "utf-8";
 $mail->IsHTML(true); 
