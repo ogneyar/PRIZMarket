@@ -20,6 +20,8 @@ function exception_handler($exception) {
 function _старт_СайтБота() {		
 	global $bot, $table_users, $chat_id, $callback_from_first_name, $from_first_name, $HideKeyboard;	
 	
+	if (!$callback_from_first_name) $callback_from_first_name = $from_first_name;
+	
 	$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", markdown, $HideKeyboard);	
 	exit('ok');	
 }
