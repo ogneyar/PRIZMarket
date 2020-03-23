@@ -86,7 +86,7 @@ function exception_handler($exception) {
 				<?
 				if ($результМассив) {
 					foreach ($результМассив as $строка) {
-						if ($строка == ?>login<?) {
+						if ($строка == '?>login<?') {
 							?>fail = "Такой логин уже существует";
 						<?}
 					}
