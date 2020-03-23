@@ -2,11 +2,11 @@
 include_once '../../a_conect.php';
 include_once '../../myBotApi/Bot.php';
 //exit('ok');
-$token = $tokenMARKET;
+$token = $tokenSite;
 $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
 include '../../myBotApi/Variables.php';
-$admin_group = $admin_group_market;
+$admin_group = $admin_group_Site;
 
 //if ($_POST['email']) $bot->sendMessage($admin_group, $_POST['email']);
 
