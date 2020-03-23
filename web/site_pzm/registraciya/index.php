@@ -21,16 +21,29 @@ if (mysqli_connect_errno()) {
 // Обработчик исключений
 set_exception_handler('exception_handler');
 
-/*
-$запрос = "SELECT * FROM pzmarkt"; 
+$запрос = "SELECT * FROM `site_users`"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
-	$i = $результат->num_rows;
-}else throw new Exception('Не смог проверить таблицу `pzm`.. (работа сайта)');	
+	$количество = $результат->num_rows;	
+	if($количество > 0) {
+		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);	
+		//$json = json_encode($результМассив);
+	}else {
+		$результМассив = null;
+		//$json = null;
+	}
+}else throw new Exception('Не смог проверить таблицу `site_users`.. (работа сайта)');	
 
-if($i>0) $arrS = $результат->fetch_all();		
-else throw new Exception('Таблица пуста.. (работа сайта)');
-*/
+if (($_GET['registration'] == '1')&&($результМассив)) {	
+	foreach ($результМассив as $строка) {
+		if ($строка['login'] == $_GET['login']) {
+			$логин = $строка['login'];
+			$запрос = "UPDATE `site_users` SET podtverjdenie='true' WHERE login='{$логин}'"; 
+			$результат = $mysqli->query($запрос);
+			if (!$результат) throw new Exception('Не смог изменить таблицу `site_users`.. (работа сайта)');	
+		}
+	}	
+}
 
 $client  = @$_SERVER['HTTP_CLIENT_IP'];
 $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -38,8 +51,8 @@ $remote  = @$_SERVER['REMOTE_ADDR'];
 if(filter_var($client, FILTER_VALIDATE_IP)) $ip = $client;
 elseif(filter_var($forward, FILTER_VALIDATE_IP)) $ip = $forward;
 else $ip = $remote;
-if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться на сайте!\nего IP: {$ip}");
-//if ($_GET['registration'] == '1') $bot->sendMessage($admin_group, "ЕЕЕ"); 
+//if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться на сайте!\nего IP: {$ip}");
+
 
 // закрываем подключение 
 $mysqli->close();
@@ -70,6 +83,13 @@ function exception_handler($exception) {
 				var password2 = $("#password2").val ();
 				var email = $("#email").val ();
 				var fail = "";
+				<?
+				if ($результМассив) {
+					foreach ($результМассив as $строка) {
+						if ($строка == ?>login<?) ?>fail = "Такой логин уже существует";<?
+					}
+				}
+				?>
 				if (login.length < 4) fail = "Логин не менее 4х символов";
 				else if (password.length < 4) fail = "Пароль не менее 4х символов";
 				else if (password != password2) fail = "Не верен повторно введённый пароль";

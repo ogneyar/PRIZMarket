@@ -17,19 +17,6 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }
 
-$запрос = "SHOW TABLES"; 
-$результат = $mysqli->query($запрос);
-if ($результат)	{
-
-	//$bot->sendMessage($admin_group, "ДА");
-	
-/*	$количество = $результат->num_rows;	
-	if($количество > 0) $массивРезульт = $результат->fetch_all(MYSQLI_ASSOC);		
-	else throw new Exception('Таблица пуста.. (работа сайта)');	*/
-}else $bot->sendMessage($admin_group, 'Не смог проверить таблицу `pzm`.. (работа сайта)');	
-
-// закрываем подключение 
-$mysqli->close();
 
 $логин = htmlspecialchars($_POST['login']);
 $пароль = htmlspecialchars($_POST['password']);
@@ -44,10 +31,27 @@ $пароль_md5 = md5($пароль);
 
 $путь_сервера = "https://" . $_SERVER['SERVER_NAME']."/site_pzm/registraciya/index.php";
 
-$ссылка_подтверждения = $путь_сервера . "?registration=1&login=" . $логин . "&pass=" . $пароль_md5;
+$ссылка_подтверждения = $путь_сервера . "?registration=1&login=" . $логин;
+
+$время = time();
+
+$запрос = "INSERT INTO `site_users` (
+		  `login`,
+		  `password`,
+		  `email`,
+		  `podtverjdenie`,
+		  `vremya`
+	) VALUES ('{$логин}', '{$пароль}', '{$емаил}', 'null', {$время})"; 
+$результат = $mysqli->query($запрос);
+
+// закрываем подключение 
+$mysqli->close();
+
+if (!$результат) {
+	$bot->sendMessage($admin_group, 'Не смог добавить клиента `site_users`.. (работа сайта)');	
+	exit('ok');
+}
 
 include 'phpmailer.php';
-
-
 
 ?>
