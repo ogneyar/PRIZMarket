@@ -148,11 +148,11 @@ CHANGE `caption5` `username` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_gene
 	
 }elseif ($text == 'креат') {
 	
-	$query = "CREATE TABLE IF NOT EXISTS `variables` (
-		  `id_bota` bigint(20) DEFAULT NULL,
-		  `nazvanie` varchar(100) DEFAULT NULL,
-		  `soderjimoe` varchar(200) DEFAULT NULL,
-		  `opisanie` varchar(500) DEFAULT NULL,
+	$query = "CREATE TABLE IF NOT EXISTS `site_users` (
+		  `login` varchar(100) DEFAULT NULL,
+		  `password` varchar(100) DEFAULT NULL,
+		  `email` varchar(200) DEFAULT NULL,
+		  `podtverjdenie` varchar(10) DEFAULT NULL,
 		  `vremya` bigint(20) DEFAULT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 	
