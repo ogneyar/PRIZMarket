@@ -90,7 +90,7 @@ function exception_handler($exception) {
 						?>stroka = <?=$строка?>;
 						if (login == stroka) fail = "Такой логин уже существует";
 						<?
-						$bot->sendMessage($admin_group, $строка);
+						$bot->sendMessage($admin_group, $строка."nnnnn");
 					}
 				}
 				?>
