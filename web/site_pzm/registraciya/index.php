@@ -4,13 +4,13 @@ include_once '../../a_conect.php';
 // Подключаем библиотеку с классом Bot
 include_once '../../myBotApi/Bot.php';
 //exit('ok');
-$token = $tokenMARKET;
+$token = $tokenSite;
 // Создаем объект бота
 $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
 // ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 include '../../myBotApi/Variables.php';
-$admin_group = $admin_group_market;
+$admin_group = $admin_group_Site;
 
 $mysqli = new mysqli($host, $username, $password, $dbname);
 // проверка подключения 
@@ -51,7 +51,7 @@ $remote  = @$_SERVER['REMOTE_ADDR'];
 if(filter_var($client, FILTER_VALIDATE_IP)) $ip = $client;
 elseif(filter_var($forward, FILTER_VALIDATE_IP)) $ip = $forward;
 else $ip = $remote;
-//if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться на сайте!\nего IP: {$ip}");
+if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает зарегаться на сайте!\nего IP: {$ip}");
 
 
 // закрываем подключение 
@@ -83,12 +83,13 @@ function exception_handler($exception) {
 				var password2 = $("#password2").val ();
 				var email = $("#email").val ();
 				var fail = "";
+				var stroka = "";
 				<?
 				if ($результМассив) {
-					foreach ($результМассив as $строка) {
-						if ($строка == ?>login;<?) {
-							?>fail = "Такой логин уже существует";
-						<?}
+					foreach ($результМассив as $строка) {?>		
+						stroka = <?echo $строка;?>;
+						if (login == stroka) fail = "Такой логин уже существует";
+						<?
 					}
 				}
 				?>
