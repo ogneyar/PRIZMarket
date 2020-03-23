@@ -12,6 +12,12 @@ if ($text == 'база') {
 		$bot->output_table($table_users);		
 	}	
 	
+}elseif ($text == 'удали') {
+	$query = "DELETE FROM {$table_users} WHERE login=". $id;				
+	if ($result = $mysqli->query($query)) {					
+		$bot->sendMessage($admin_group, "Удаление из БД совершенно!");
+	}else $bot->sendMessage($admin_group, "Не получается удалить строку из БД");	
+	
 }
 
 
