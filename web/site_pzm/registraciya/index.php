@@ -27,10 +27,11 @@ if ($результат)	{
 	$количество = $результат->num_rows;	
 	if($количество > 0) {
 		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);	
-		//$json = json_encode($результМассив);
+		$json = json_encode($результМассив);
+		$bot->sendMessage($admin_group, $json);
 	}else {
 		$результМассив = null;
-		//$json = null;
+		$json = null;
 	}
 }else throw new Exception('Не смог проверить таблицу `site_users`.. (работа сайта)');	
 
@@ -83,17 +84,10 @@ function exception_handler($exception) {
 				var password2 = $("#password2").val ();
 				var email = $("#email").val ();
 				var fail = "";
-				var stroka = "";
-				<?
-				if ($результМассив) {
-					foreach ($результМассив as $строка) {
-						?>stroka = "<?php echo $строка['login']; ?>";
-						if (login == stroka) fail = "Такой логин уже существует";
-						<?
-						$bot->sendMessage($admin_group, $строка['login']." ");
-					}
+				var stroka = <?=$json; ?>;
+				for (var key in stroka) {
+					if (login == key) fail = "Такой логин уже существует";
 				}
-				?>
 				if (login.length < 4) fail = "Логин не менее 4х символов";
 				else if (password.length < 4) fail = "Пароль не менее 4х символов";
 				else if (password != password2) fail = "Не верен повторно введённый пароль";
