@@ -20,6 +20,7 @@
 	$tokenAvtoZakaz = getenv('TOKEN_AVTOZAKAZ');
 	$tokenTimer = getenv('TOKEN_TIMER');
 	$tokenTimer2 = getenv('TOKEN_TIMER_2');
+	$tokenSite = getenv('TOKEN_SITE');
 	
 	$cmc_api_key = getenv('CMC_PRO_API_KEY');
 	$tokenTGraph = getenv('TOKEN_TELEGRAPH');
@@ -31,6 +32,7 @@
 	$admin_group_Info = getenv('ADMIN_GROUP_INFO');
 	$admin_group_Zakaz = getenv('ADMIN_GROUP_ZAKAZ');
 	$admin_group_AvtoZakaz = getenv('ADMIN_GROUP_AVTOZAKAZ');	
+	$admin_group_Site = getenv('ADMIN_GROUP_SITE');
 	$test_group = getenv('TEST_GROUP');
 	$channel_market = getenv('CHANNEL_MARKET');
 	$channel_info = getenv('CHANNEL_INFO');
