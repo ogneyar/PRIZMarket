@@ -21,7 +21,7 @@ if (mysqli_connect_errno()) {
 // Обработчик исключений
 set_exception_handler('exception_handler');
 
-$запрос = "SELECT * FROM `site_users`"; 
+$запрос = "SELECT login FROM `site_users`"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$количество = $результат->num_rows;	
