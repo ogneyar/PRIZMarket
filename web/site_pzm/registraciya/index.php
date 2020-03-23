@@ -85,15 +85,13 @@ function exception_handler($exception) {
 				var email = $("#email").val ();
 				var fail = "";
 				var stroka = <?=$json; ?>;
+				fail = <?=$json; ?>;
 				for (var key in stroka) {
 					if (login == key) fail = "Такой логин уже существует";
 				}
-				<?$bot->sendMessage($admin_group, ?>stroka;<?."+++");?>
-				if (login.length < 4) fail = "Логин не менее 4х символов";
-				else if (password.length < 4) fail = "Пароль не менее 4х символов";
-				else if (password != password2) fail = "Не верен повторно введённый пароль";
-				else if (email.split ('@').length - 1 == 0 || email.split ('.').length - 1 == 0) 
-					fail = "Вы ввели некорректный email";
+				
+				<!--if (login.length < 4) fail = "Логин не менее 4х символов";				else if (password.length < 4) fail = "Пароль не менее 4х символов";				else if (password != password2) fail = "Не верен повторно введённый пароль";				else if (email.split ('@').length - 1 == 0 || email.split ('.').length - 1 == 0) 					fail = "Вы ввели некорректный email";
+				-->
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
