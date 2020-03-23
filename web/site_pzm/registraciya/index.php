@@ -84,11 +84,13 @@ function exception_handler($exception) {
 				var password2 = $("#password2").val ();
 				var email = $("#email").val ();
 				var fail = "";
-				var stroka = <?=$json; ?>;
-				fail = <?=$json; ?>;
+				var stroka = <?=$json; ?>;			
+				
 				for (var key in stroka) {
+					fail = fail + " " + key;
 					if (login == key) fail = "Такой логин уже существует";
 				}
+				fail = fail + " " + login;
 				
 				<!--if (login.length < 4) fail = "Логин не менее 4х символов";				else if (password.length < 4) fail = "Пароль не менее 4х символов";				else if (password != password2) fail = "Не верен повторно введённый пароль";				else if (email.split ('@').length - 1 == 0 || email.split ('.').length - 1 == 0) 					fail = "Вы ввели некорректный email";
 				-->
