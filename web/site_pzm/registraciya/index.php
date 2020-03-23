@@ -86,9 +86,9 @@ function exception_handler($exception) {
 				var fail = "";
 				var stroka = <?=$json; ?>;			
 				
-				for (var value in stroka) {
-					fail = fail + " " + value;
-					if (login == value) fail = "Такой логин уже существует";
+				for (var key in stroka) {
+					fail = fail + " " + stroka[key];
+					if (login == key) fail = "Такой логин уже существует";
 				}
 				fail = fail + " " + login;
 				
