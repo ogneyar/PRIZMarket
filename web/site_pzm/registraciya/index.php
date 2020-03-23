@@ -28,7 +28,7 @@ if ($результат)	{
 	if($количество > 0) {
 		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);	
 		$json = json_encode($результМассив);
-		$bot->sendMessage($admin_group, $json);
+		//$bot->sendMessage($admin_group, $json);
 	}else {
 		$результМассив = null;
 		$json = null;
