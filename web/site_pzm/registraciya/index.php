@@ -87,10 +87,10 @@ function exception_handler($exception) {
 				<?
 				if ($результМассив) {
 					foreach ($результМассив as $строка) {
-						?>stroka = <?=$строка?>;
+						?>stroka = <?=$строка['login']?>;
 						if (login == stroka) fail = "Такой логин уже существует";
 						<?
-						$bot->sendMessage($admin_group, $строка."nnnnn");
+						$bot->sendMessage($admin_group, $строка['login']);
 					}
 				}
 				?>
