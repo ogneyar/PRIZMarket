@@ -3,7 +3,7 @@
 		<br>
 		<p>
 			<label>Регистрация пройдена успешно!<br></label>			
-			<input type="button" value="Вход">
+			<input type="submit" value="Вход">
 		</p>
 	</form>
 </article>		
