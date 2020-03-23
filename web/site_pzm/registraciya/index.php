@@ -88,7 +88,7 @@ function exception_handler($exception) {
 				for (var key in stroka) {
 					if (login == key) fail = "Такой логин уже существует";
 				}
-				<?$bot->sendMessage($admin_group, ?>stroka<?."+++");?>
+				<?$bot->sendMessage($admin_group, ?>stroka;<?."+++");?>
 				if (login.length < 4) fail = "Логин не менее 4х символов";
 				else if (password.length < 4) fail = "Пароль не менее 4х символов";
 				else if (password != password2) fail = "Не верен повторно введённый пароль";
