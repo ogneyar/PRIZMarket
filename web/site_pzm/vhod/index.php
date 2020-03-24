@@ -1,8 +1,58 @@
 <?php
-session_start();
 //include_once '../../../vendor/autoload.php';	
-//include_once '../../a_conect.php';
-//include_once '../pzmarket.php';
+include_once '../../a_conect.php';
+// Подключаем библиотеку с классом Bot
+include_once '../../myBotApi/Bot.php';
+//exit('ok');
+$token = $tokenSite;
+// Создаем объект бота
+$bot = new Bot($token);
+$id_bota = strstr($token, ':', true);	
+// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
+include '../../myBotApi/Variables.php';
+$admin_group = $admin_group_Site;
+
+$mysqli = new mysqli($host, $username, $password, $dbname);
+// проверка подключения 
+if (mysqli_connect_errno()) {
+	throw new Exception('Чёт не выходит подключиться к MySQL');	
+	exit('ok');
+}
+// Обработчик исключений
+set_exception_handler('exception_handler');
+
+$запрос = "SELECT login, password FROM `site_users`"; 
+$результат = $mysqli->query($запрос);
+if ($результат)	{
+	$количество = $результат->num_rows;	
+	if($количество > 0) {
+		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);	
+		$json = json_encode($результМассив);
+		//$bot->sendMessage($admin_group, $json);
+	}else {
+		$результМассив = null;
+		$json = null;
+	}
+}else throw new Exception('Не смог проверить таблицу `site_users`.. (работа сайта)');	
+
+$client  = @$_SERVER['HTTP_CLIENT_IP'];
+$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+$remote  = @$_SERVER['REMOTE_ADDR']; 
+if(filter_var($client, FILTER_VALIDATE_IP)) $ip = $client;
+elseif(filter_var($forward, FILTER_VALIDATE_IP)) $ip = $forward;
+else $ip = $remote;
+if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает войти на сайт!\nего IP: {$ip}");
+
+// закрываем подключение 
+$mysqli->close();
+
+// при возникновении исключения вызывается эта функция
+function exception_handler($exception) {
+	global $mysqli, $bot, $admin_group;
+	$bot->sendMessage($admin_group, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
+	$mysqli->close();		
+	exit('ok');  	
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,6 +61,60 @@ session_start();
 	<title>Вход в PRIZMarket!</title>
 	<?include_once '../site_files/head.php';?>
 	<style type="text/css"></style>
+	
+	<script>
+		$(document).ready (function (){
+			$("#submit").click (function (){
+				$('#warning').html (' ' + "<br>");
+				$('#warning').show ();
+				var login = $("#login").val ();
+				var password = $("#password").val ();
+				var fail = "";
+				var veren_login = false;
+				var veren_pass = false;
+				var stroka = <?=$json; ?>;	
+				
+				if (login.length < 1) fail = "Вы не ввели логин";				
+				else if (login.length < 4) fail = "Логин не бывает менее 4х символов";
+				else if (password.length < 1) fail = "Вы не ввели пароль";
+				else if (password.length < 4) fail = "Пароль не бывает менее 4х символов";
+				
+				for (var key in stroka) {
+					var str = stroka[key];
+					for (var k in str) {
+						if (k == 'login') {
+							if (login == str[k]) {
+								veren_login = true;
+								if (str['password'] == password) veren_pass = true;
+							}
+						}
+					}
+				}
+				
+				if (!veren_login) fail = "Не верно введён логин";
+				else if (!veren_pass) fail = "Не верно введён пароль";
+				
+				if (fail != "") {
+					$('#warning').html (fail  + "<br>");
+					$('#warning').show ();
+					return false;
+				}
+				
+				$.ajax ({
+					url: '/site_pzm/vhod/vhod.php',
+					type: 'POST',
+					cache: false,
+					data: {'login': login},
+					dataType: 'html',
+					success: function (data) {
+						$('#vhod').html ("<br><p>" + data + "</p><br>");
+						$('#vhod').show ();						
+					}
+				});
+			});
+		});
+	</script>
+	
 </head>
 <body>
 	<header>
