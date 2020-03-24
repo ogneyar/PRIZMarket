@@ -16,7 +16,6 @@ else $ip = $remote;
 if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
 else $вывод = $ip;
 
-$vivod = "oooooo";
 ?>
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml">
@@ -34,7 +33,7 @@ $vivod = "oooooo";
 	
 	<script>
 	$(document).ready (function (){
-		$('#login').html ("mm");
+		$('#login').html ("login");
 		$('#login').show ();
 	});
 	</script>
