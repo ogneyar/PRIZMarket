@@ -553,7 +553,7 @@ body {
 #vhod {padding-bottom: 20px}
 
 #leftCol input#done, #leftCol input#submit, #leftCol input#submit_podtv {
-	padding: 5px, 10px, 5px, 10px; 
+	padding: 5px 10px 5px 10px; 
 }
 #leftCol input#done:hover, #leftCol input#submit:hover {
 	border: 2px solid #f8d881;
