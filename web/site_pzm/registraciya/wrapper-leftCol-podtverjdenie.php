@@ -4,7 +4,7 @@
 		<p>
 			<label>Регистрация пройдена успешно!</label>
 			<br><br>
-			<input type="submit" value="Вход">
+			<input type="submit" name="submit_podtv" id="submit_podtv"  value="Вход">
 		</p>
 	</form>
 </article>		
