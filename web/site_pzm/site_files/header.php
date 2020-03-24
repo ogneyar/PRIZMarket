@@ -6,4 +6,4 @@
 	<a href="/site_pzm/registraciya/index.php?st=zero">Регистрация</a>
 	<!--  onclick="alert('Эта функция ещё не подключена!')" -->
 </span>
-<label id="login">hfghfhh</label>
+<label id="login"></label>
