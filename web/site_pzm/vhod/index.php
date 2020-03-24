@@ -28,20 +28,11 @@ if ($результат)	{
 	if($количество > 0) {
 		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);	
 		$json = json_encode($результМассив);
-		//$bot->sendMessage($admin_group, $json);
 	}else {
 		$результМассив = null;
 		$json = null;
 	}
 }else throw new Exception('Не смог проверить таблицу `site_users`.. (работа сайта)');	
-
-$client  = @$_SERVER['HTTP_CLIENT_IP'];
-$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
-$remote  = @$_SERVER['REMOTE_ADDR']; 
-if(filter_var($client, FILTER_VALIDATE_IP)) $ip = $client;
-elseif(filter_var($forward, FILTER_VALIDATE_IP)) $ip = $forward;
-else $ip = $remote;
-if ($_GET['st'] == 'zero') $bot->sendMessage($admin_group, "Кто-то желает войти на сайт!\nего IP: {$ip}");
 
 // закрываем подключение 
 $mysqli->close();
