@@ -35,7 +35,7 @@ $vivod = "oooooo";
 	<script>
 	$(document).ready (function (){
 		var vivod = <?=$vivod; ?>;
-		$('#login').html (vivod + "vvv");
+		$('#login').html ("vvv");
 		$('#login').show ();
 	});
 	</script>
