@@ -116,7 +116,6 @@ function exception_handler($exception) {
 	</nav>
 	<div id="slideMenu">Моё детище, а не просто сайт!</div>
 	<div id="wrapper">
-		<img src="/site_pzm/img/fon/temnyj-fon.jpg" alt="">
 		<div id="TopCol">		
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
