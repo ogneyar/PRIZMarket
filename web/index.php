@@ -33,7 +33,8 @@ else $вывод = $ip;
 	
 	<script>
 	$(document).ready (function (){
-		$('#login').html (<?=$вывод; ?>);
+		var vivod = <?=$вывод; ?>;
+		$('#login').html (vivod);
 		$('#login').show ();
 	});
 	</script>
