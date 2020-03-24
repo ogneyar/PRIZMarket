@@ -2,7 +2,6 @@
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
 include_once 'site_pzm/pzmarket.php';
-//include_once 'phpmailer.php';
 
 $client  = @$_SERVER['HTTP_CLIENT_IP'];
 $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -14,6 +13,8 @@ else $ip = $remote;
  
 //echo $ip;
 
+if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
+else $вывод = $ip;
 
 ?>
 <!DOCTYPE html>
@@ -29,6 +30,13 @@ else $ip = $remote;
 			border-top: 5px solid rgba(255,235,59);
 		}} 
 	</style>
+	
+	<script>
+	$(document).ready (function (){
+		$('.login').html (<?=$вывод; ?>);
+		$('.login').show ();
+	});
+	</script>
 	
 </head>
 <body>
