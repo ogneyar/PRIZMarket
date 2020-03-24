@@ -13,4 +13,4 @@
 			<li><a href="/site_pzm/o_prizmarket/index.php">О_нас</a></li>
 		</ul>
 </ul>
-<label id="login></label>
+<!--<label id="login></label>-->
