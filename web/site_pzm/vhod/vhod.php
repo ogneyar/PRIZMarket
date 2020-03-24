@@ -1,6 +1,6 @@
 <?php
 
-setcookie("login", $_POST['логин']);
+setcookie("login", $_POST['login']);
 
 if ($_COOKIE['login']) echo "Добро пожаловать ". $_COOKIE['login'];
 
