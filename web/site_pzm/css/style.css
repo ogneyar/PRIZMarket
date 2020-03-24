@@ -273,7 +273,7 @@ nav a:hover, nav#fixed a:hover {
   padding-left: 10px;
 }
 
-.login {
+#login {
 	float: right;
 }
 
