@@ -30,9 +30,9 @@ else $вывод = $ip;
 			border-top: 5px solid rgba(255,235,59);
 		}} 
 	</style>
-	
+	<?//=$вывод; ?>
 	<script>
-		$('#login').html (<?=$вывод; ?>);
+		$('#login').html ("qqq");
 		$('#login').show ();
 	</script>
 	
