@@ -144,6 +144,12 @@ header span#contact a:hover {
 	color: #e0e0e0;
 }
 
+#login {
+	float: right;
+	color: white;
+}
+
+
 @media (max-width: 699px) {
 nav {
 	width: 90%;
@@ -271,10 +277,6 @@ nav a:hover, nav#fixed a:hover {
   font-family: "FontAwesome";
   color: inherit;
   padding-left: 10px;
-}
-
-#login {
-	float: right;
 }
 
 
