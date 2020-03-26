@@ -45,6 +45,7 @@ $login_json = json_encode($вывод);
 	<header>
 		<?include_once 'site_pzm/site_files/header.php';?>
 	</header>
+<div id="client"></div>
 	<nav>
 		<?include_once 'site_pzm/site_files/nav.php';?>
 	</nav>
