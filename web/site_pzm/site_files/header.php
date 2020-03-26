@@ -1,4 +1,4 @@
-<label id="login"></label>
+<span id="login"></span>
 <a href="/" id="logo">
 	<b><span>PRIZMarket</span></b>
 </a>
