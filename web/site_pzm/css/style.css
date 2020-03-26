@@ -164,8 +164,10 @@ header span#contact a:hover {
 }}
 #client:hover {
 /*	color: red;	*/
-	text-shadow: 2px 2px 4px red, -2px 2px 4px red, 2px -2px 4px red, -2px -2px 4px red;
-	border: 4px double red;
+	text-shadow: 0 0 5px red;
+/*	border: 4px double red;*/
+	box-shadow: 0 0 10px red;
+	cursor: pointer;
 }
 
 
