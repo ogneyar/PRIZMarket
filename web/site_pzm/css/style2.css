@@ -144,6 +144,14 @@ header span#contact a:hover {
 	color: #e0e0e0;
 }
 
+header #client {
+	float: right;
+	color: white;
+	margin-top: 3px;
+	margin-right: 5px;
+}
+
+
 @media (max-width: 699px) {
 nav {
 	width: 90%;
@@ -553,7 +561,7 @@ body {
 #vhod {padding-bottom: 20px}
 
 #leftCol input#done, #leftCol input#submit, #leftCol input#submit_podtv {
-	padding: 5px 10px 5px 10px; 
+	padding: 3px 10px 3px 10px; 
 }
 #leftCol input#done:hover, #leftCol input#submit:hover {
 	border: 2px solid #f8d881;

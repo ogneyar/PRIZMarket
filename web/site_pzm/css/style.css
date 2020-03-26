@@ -144,9 +144,11 @@ header span#contact a:hover {
 	color: #e0e0e0;
 }
 
-#login {
+header #client {
 	float: right;
 	color: white;
+	margin-top: 3px;
+	margin-right: 5px;
 }
 
 
