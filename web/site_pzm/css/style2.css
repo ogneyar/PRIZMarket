@@ -137,18 +137,33 @@ header span#contact a {
 	float: right;
 	margin-left: 10%;
 	font-size: 1.4em;
-	line-height: 50px;
+	line-height: 40px;
 }
 
 header span#contact a:hover {
 	color: #e0e0e0;
 }
 
+#lk {
+	background-color: rgba(20,17,45);
+	margin-top: -10px;
+}
 #client {
 	float: right;
-	color: white;
-	margin-top: 3px;
-	margin-right: 5px;
+	color: white;	
+	border: 4px double white;
+	padding: 5px 10px 5px 10px;
+}
+@media (max-width: 1299px) {
+#client {
+	margin: 5px 7% 5px 10px;
+}}
+@media (min-width: 1300px) {
+#client {
+	margin: 5px 15% 5px 10px;
+}}
+#client:hover {
+	color: red;	
 }
 
 
