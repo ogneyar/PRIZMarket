@@ -35,8 +35,8 @@ $login_json = json_encode($вывод);
 	
 	<script>
 	$(document).ready (function (){				
-		$('#login').html (<?echo $login_json;?>);
-		$('#login').show ();
+		$('#client').html (<?echo $login_json;?>);
+		$('#client').show ();
 	});
 	</script>
 	
