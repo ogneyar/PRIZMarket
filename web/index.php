@@ -35,6 +35,8 @@ $vivod = "хз";
 	<script>
 	$(document).ready (function (){
 		var rrttrr = "хз";
+		rrttrr = <?echo 'ДДТ';?>;
+		if (rrttrr == '') rrttrr = "зх";
 		$('#login').html (rrttrr);
 		$('#login').show ();
 	});
