@@ -13,10 +13,10 @@ else $ip = $remote;
  
 //echo $ip;
 
-$вывод = "";
+$вывод = "логин";
 if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
 
-$json = json_encode($вывод);
+$login_json = json_encode($вывод);
 
 ?>
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ $json = json_encode($вывод);
 	
 	<script>
 	$(document).ready (function (){				
-		$('#login').html (<?echo $json;?>);
+		$('#login').html (<?echo $login_json;?>);
 		$('#login').show ();
 	});
 	</script>
