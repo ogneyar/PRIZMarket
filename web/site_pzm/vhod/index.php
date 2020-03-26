@@ -44,6 +44,12 @@ function exception_handler($exception) {
 	$mysqli->close();		
 	exit('ok');  	
 }
+
+$вывод = "логин";
+if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
+
+$login_json = json_encode($вывод);
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,6 +61,8 @@ function exception_handler($exception) {
 	
 	<script>
 		$(document).ready (function (){
+			$('#login').html (<?echo $login_json;?>);
+			$('#login').show ();
 			$("#submit").click (function (){
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
