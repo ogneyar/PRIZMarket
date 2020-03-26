@@ -1,12 +1,9 @@
 <?php
 if ($_POST['login']) {
 	
-	setcookie("login", $_POST['login'], time()+30, '/');
+	setcookie("login", $_POST['login'], time()+300, '/');
 	
-	sleep(2);
+	echo "Добро пожаловать ". $_COOKIE['login'] ."!";	
 	
-	if ($_COOKIE['login']) echo "Добро пожаловать ". $_COOKIE['login'] ."!";
-	else echo "Не получилось войти(";
-	
-}
+}else echo "Не получилось войти(";
 ?>
