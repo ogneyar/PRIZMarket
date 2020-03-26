@@ -156,11 +156,11 @@ header span#contact a:hover {
 }
 @media (max-width: 1299px) {
 #client {
-	margin: -20px; 7% 5px 10px;
+	margin: -20px 7% 5px 10px;
 }}
 @media (min-width: 1300px) {
 #client {
-	margin: -20px; 15% 5px 10px;
+	margin: -20px 15% 5px 10px;
 }}
 
 
