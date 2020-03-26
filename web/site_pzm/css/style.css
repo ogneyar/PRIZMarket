@@ -152,6 +152,7 @@ header span#contact a:hover {
 	float: right;
 	color: white;
 	margin: 5px 10px 5px 10px;
+	border: 2px double white;
 }
 
 
