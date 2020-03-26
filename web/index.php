@@ -13,11 +13,6 @@ else $ip = $remote;
  
 //echo $ip;
 
-$вывод = "";
-if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
-
-$login_json = json_encode($вывод);
-
 ?>
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml">
@@ -31,21 +26,15 @@ $login_json = json_encode($вывод);
 		nav a:first-child, nav#fixed a:first-child {
 			border-top: 5px solid rgba(255,235,59);
 		}} 
-	</style>
-	
-	<script>
-	$(document).ready (function (){				
-		$('#client').html (<?echo $login_json;?>);
-		$('#client').show ();
-	});
-	</script>
-	
+	</style>	
 </head>
 <body>
 	<header>
 		<?include_once 'site_pzm/site_files/header.php';?>
 	</header>
-<div id="lk"><label id="client"></label></div>
+	<div id="lk">
+		<?include_once 'site_pzm/lk/lk.php';?>		
+	</div>
 	<nav>
 		<?include_once 'site_pzm/site_files/nav.php';?>
 	</nav>
