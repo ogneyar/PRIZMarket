@@ -17,6 +17,8 @@ if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
 else $вывод = $ip;
 
 $vivod = "хз";
+
+$json = json_encode($vivod);
 ?>
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml">
@@ -35,7 +37,7 @@ $vivod = "хз";
 	<script>
 	$(document).ready (function (){
 		var rrttrr = "хз";
-		rrttrr = <?echo 'ДДТ';?>;
+		rrttrr = <?echo $json;?>;
 		if (rrttrr == '') rrttrr = "зх";
 		$('#login').html (rrttrr);
 		$('#login').show ();
