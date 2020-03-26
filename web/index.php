@@ -35,7 +35,7 @@ $vivod = "хз";
 	<script>
 	$(document).ready (function (){
 		var rrttrr = <?=$vivod; ?>;
-		$('#login').html (rrttrr + "хз");
+		$('#login').html ("хз");
 		$('#login').show ();
 	});
 	</script>
