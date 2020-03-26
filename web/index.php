@@ -16,6 +16,7 @@ else $ip = $remote;
 if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
 else $вывод = $ip;
 
+$вывод = "хз";
 ?>
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml">
