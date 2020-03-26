@@ -16,9 +16,8 @@ else $ip = $remote;
 if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
 else $вывод = $ip;
 
-$vivod = "TTTTTTTTTTTTTTTTTTTTTTT";
+$json = json_encode($вывод);
 
-$json = json_encode($vivod);
 ?>
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml">
@@ -35,11 +34,8 @@ $json = json_encode($vivod);
 	</style>
 	
 	<script>
-	$(document).ready (function (){
-		var rrttrr = "хз";
-		rrttrr = <?echo $json;?>;
-		if (rrttrr == '') rrttrr = "зх";
-		$('#login').html (rrttrr);
+	$(document).ready (function (){				
+		$('#login').html (<?echo $json;?>);
 		$('#login').show ();
 	});
 	</script>
