@@ -16,7 +16,7 @@ else $ip = $remote;
 if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
 else $вывод = $ip;
 
-$vivod = "хз";
+$vivod = "TTTTTTTTTTTTTTTTTTTTTTT";
 
 $json = json_encode($vivod);
 ?>
