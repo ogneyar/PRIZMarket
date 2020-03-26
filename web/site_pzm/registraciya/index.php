@@ -119,9 +119,9 @@ function exception_handler($exception) {
 	<header>
 		<?include_once '../site_files/header.php';?>
 	</header>
-	<div id="lk">
+<!--	<div id="lk">
 		<?//include_once '../lk/lk.php';?>		
-	</div>
+	</div> -->
 	<nav>
 		<?include_once '../site_files/nav.php';?>
 	</nav>
