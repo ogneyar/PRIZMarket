@@ -1,4 +1,4 @@
-<label id="client"></label>
+<!--<label id="client"></label>-->
 <a href="/" id="logo">
 	<b><span>PRIZMarket</span></b>
 </a>
