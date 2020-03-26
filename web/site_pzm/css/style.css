@@ -147,8 +147,7 @@ header span#contact a:hover {
 #client {
 	float: right;
 	color: white;
-	margin-top: 3px;
-	margin-right: 5px;
+	margin: 5px 10px 5px 10px;
 }
 
 
