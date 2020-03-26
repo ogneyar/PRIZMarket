@@ -144,6 +144,10 @@ header span#contact a:hover {
 	color: #e0e0e0;
 }
 
+#lk {
+        background-color: rgba(20,17,45);
+}
+
 #client {
 	float: right;
 	color: white;
