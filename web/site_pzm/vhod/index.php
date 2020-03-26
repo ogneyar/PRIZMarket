@@ -45,7 +45,7 @@ function exception_handler($exception) {
 	exit('ok');  	
 }
 
-$вывод = "логин";
+$вывод = "";
 if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
 
 $login_json = json_encode($вывод);
@@ -61,8 +61,8 @@ $login_json = json_encode($вывод);
 	
 	<script>
 		$(document).ready (function (){
-			$('#login').html (<?=$login_json;?>);
-			$('#login').show ();
+			$('#client').html (<?=$login_json;?>);
+			$('#client').show ();
 			$("#submit").click (function (){
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
