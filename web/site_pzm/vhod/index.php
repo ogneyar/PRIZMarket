@@ -61,7 +61,7 @@ $login_json = json_encode($вывод);
 	
 	<script>
 		$(document).ready (function (){
-			$('#login').html (<?echo $login_json;?>);
+			$('#login').html (<?=$login_json;?>);
 			$('#login').show ();
 			$("#submit").click (function (){
 				$('#warning').html (' ' + "<br>");
