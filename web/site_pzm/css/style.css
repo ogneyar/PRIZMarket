@@ -145,16 +145,23 @@ header span#contact a:hover {
 }
 
 #lk {
-        background-color: rgba(20,17,45);
+	background-color: rgba(20,17,45);
+	margin-top: -20px;
 }
-
 #client {
 	float: right;
-	color: white;
-	margin: 5px 5% 5px 10px;
+	color: white;	
 	border: 4px double white;
 	padding: 5px 10px 5px 10px;
 }
+@media (max-width: 1299px) {
+#client {
+	margin: 5px 7% 5px 10px;
+}}
+@media (min-width: 1300px) {
+#client {
+	margin: 5px 15% 5px 10px;
+}}
 
 
 @media (max-width: 699px) {
