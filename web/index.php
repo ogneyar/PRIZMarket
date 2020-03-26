@@ -13,8 +13,8 @@ else $ip = $remote;
  
 //echo $ip;
 
+$вывод = "";
 if ($_COOKIE['login']) $вывод = $_COOKIE['login'];
-else $вывод = $ip;
 
 $json = json_encode($вывод);
 
