@@ -163,7 +163,9 @@ header span#contact a:hover {
 	margin: -10px 15% 5px 10px;
 }}
 #client:hover {
-	color: red;	
+/*	color: red;	*/
+	text-shadow: 2px 2px 4px red, -2px 2px 4px red, 2px -2px 4px red, -2px -2px 4px red;
+	border: 4px double red;
 }
 
 
