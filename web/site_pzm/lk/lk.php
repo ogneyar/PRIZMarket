@@ -7,11 +7,13 @@ $login_json = json_encode($вывод);
 <script>
 	$(document).ready (function (){		
 
-var login = <?=$login_json;?>;
-if (login != "") $('#contact').hide ();
+                var login = <?=$login_json;?>;
+                if (login != "") {
+                        $('#contact').hide ();
 		
-		$('#client').html (login);
-		$('#client').show ();
+		        $('#client').html (login);
+	        	$('#client').show ();
+                }else $('#lk').hide ();
 	});
 </script>
 
