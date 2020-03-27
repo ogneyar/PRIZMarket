@@ -17,7 +17,10 @@ $login_json = json_encode($вывод);
 	});
 </script>
 
-<ul class="lk_topmenu"><label id="client"></label>
+<ul class="lk_topmenu">
+<a href="exit.php">
+<label id="client"></label>
+</a>
 	<li id="lk_mini-menu">
 		<ul class="lk_submenu">	
 			<li><a href="exit.php">Выход</a></li>			
