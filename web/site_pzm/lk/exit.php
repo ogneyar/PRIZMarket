@@ -1,4 +1,4 @@
 ﻿<?
-setcookie("login", "", time()-10);
+setcookie("login", "", time()+10, '/');
 //header();
 ?>
