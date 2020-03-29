@@ -614,7 +614,7 @@ body {
 	color: red;
 }
 
-#registr p, #podtverjdenie p{
+#registr p label, #podtverjdenie p label{
 	text-align: center;
 	font-size: 2em;
 }
