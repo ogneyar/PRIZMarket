@@ -164,13 +164,12 @@ header span#contact a:hover {
 #client {
 	margin: -10px 15% 5px 10px;
 }}
-/*
 #client:hover {
 	text-shadow: 2px 2px 5px red, -2px 2px 5px red, 2px -2px 5px red, -2px -2px 5px red;
 	border: 4px double red;
 	box-shadow: 0 0 20px red;
 	cursor: pointer;
-}*/
+}
 
 .lk_topmenu ul {
   list-style: none; 
@@ -180,7 +179,7 @@ header span#contact a:hover {
 .lk_topmenu  li {
 	display: inline-block;
 	margin-right: 20px;
-	float: left;
+	float: right;
 	position: relative;
 }
 .lk_topmenu  li:last-child {
@@ -208,7 +207,7 @@ header span#contact a:hover {
 	padding: 10px 15px;
 	color: #8c8c8c;
 	margin-left: 0;
-	float: left;
+	float: right;
 }
 .lk_submenu {
 	display: block;
@@ -216,9 +215,6 @@ header span#contact a:hover {
 }
 .lk_topmenu li:hover .lk_submenu {
 	display: block;
-}
-.lk_topmenu {
-	cursor: pointer;
 }
 
 
