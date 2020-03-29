@@ -179,7 +179,7 @@ header span#contact a:hover {
 .lk_topmenu  li {
 	display: inline-block;
 	margin-right: 20px;
-	float: right;
+	float: left;
 	position: relative;
 }
 .lk_topmenu  li:last-child {
@@ -211,7 +211,7 @@ header span#contact a:hover {
 }
 .lk_submenu {
 	display: none;
-	background: grey;
+	background: rgba(226,226,226);
 }
 .lk_topmenu li:hover .lk_submenu {
 	display: block;
