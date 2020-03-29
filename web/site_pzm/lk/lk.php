@@ -19,18 +19,10 @@ $login_json = json_encode($вывод);
 
 <ul class="lk_topmenu">
 	<li id="lk_mini-menu">
-		<a href="#"> <!--<a href="/site_pzm/lk/exit.php"> --> <label id="client"></label></a>
+		<a href="#"><label id="client"></label></a>
 		
 		<ul class="lk_submenu">	
-			<li><a href="/site_pzm/lk/exit.php">ЛК</a></li>
-			<li><a href="/site_pzm/lk/exit.php">Выход</a></li>			
-		</ul>
-		
-	</li>
-	<li>
-		<a href="#"><label>hhhhhhh</label></a>
-		
-		<ul class="lk_submenu">	
+			<li><a href="#">Личный Кабинет</a></li>
 			<li><a href="/site_pzm/lk/exit.php">Выход</a></li>			
 		</ul>
 		
