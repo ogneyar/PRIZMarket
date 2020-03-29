@@ -162,14 +162,14 @@ header span#contact a:hover {
 	float: right;
 	position: relative;
 }
-
+/*
 .lk_topmenu  li:last-child {
   margin-left: -20px;
 }
-
+*/
 .lk_topmenu a {
 	display: block;
-	padding: 10px 0;
+/*	padding: 10px 0;*/
 	text-decoration: none;
 	outline: none;
 	transition: .5s linear;
@@ -188,7 +188,7 @@ header span#contact a:hover {
 	border-bottom: 1px solid #8c8c8c;
 	padding: 10px 15px 10px 15px;
 	color: #8c8c8c;
-	margin: 10px 15px 10px 15px;
+/*	margin: 10px 15px 10px 15px;*/
 	float: left;
 }
 .lk_submenu li a:hover {
