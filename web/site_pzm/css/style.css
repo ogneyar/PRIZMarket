@@ -167,7 +167,7 @@ header span#contact a:hover {
 }
 .lk_topmenu a {
 	display: block;
-	padding: 10px 0;
+/*	padding: 10px 0;*/
 	text-decoration: none;
 	outline: none;
 	transition: .5s linear;
@@ -191,6 +191,7 @@ header span#contact a:hover {
 }
 .lk_submenu li a:hover {
 	text-shadow: 1px 1px 3px red, -1px 1px 3px red, 1px -1px 3px red, -1px -1px 3px red;
+	color: red;
 }
 .lk_submenu {
 	display: none;
