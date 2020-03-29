@@ -164,13 +164,13 @@ header span#contact a:hover {
 #client {
 	margin: -10px 15% 5px 10px;
 }}
+/*
 #client:hover {
-/*	color: red;	*/
 	text-shadow: 2px 2px 5px red, -2px 2px 5px red, 2px -2px 5px red, -2px -2px 5px red;
 	border: 4px double red;
 	box-shadow: 0 0 20px red;
 	cursor: pointer;
-}
+}*/
 
 .lk_topmenu ul {
   list-style: none; 
