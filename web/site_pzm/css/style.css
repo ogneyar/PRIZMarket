@@ -197,7 +197,7 @@ header span#contact a:hover {
 }
 .lk_submenu {	
 	display: none;
-	background: rgba(226,226,226);
+	background: rgba(230,230,230);
 }
 .lk_topmenu li:hover .lk_submenu {
 	display: block;
