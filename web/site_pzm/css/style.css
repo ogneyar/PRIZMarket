@@ -207,11 +207,11 @@ header span#contact a:hover {
 	padding: 5px 10px 5px 10px;
 }
 @media (max-width: 1299px) {
-.lk_topmenu li#client {
+.lk_topmenu li {
 	margin: -10px 7% 5px 10px;
 }}
 @media (min-width: 1300px) {
-.lk_topmenu li#client {
+.lk_topmenu li {
 	margin: -10px 15% 5px 10px;
 }}
 #client:hover {
