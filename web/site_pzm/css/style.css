@@ -210,7 +210,7 @@ header span#contact a:hover {
 	float: right;
 }
 .lk_submenu {
-	display: block;
+	display: none;
 	background: white;
 }
 .lk_topmenu li:hover .lk_submenu {
