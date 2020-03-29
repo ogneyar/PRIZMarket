@@ -196,7 +196,7 @@ header span#contact a:hover {
 	color: red;
 }
 .lk_submenu {
-	padding: 10px 15px 10px 15px;
+	padding: 0;
 	display: none;
 	background: rgba(226,226,226);
 }
@@ -613,21 +613,12 @@ body {
 #o_prizmarket h3 b{
 	color: red;
 }
-/*
-#leftCol #registr p, #leftCol #podtverjdenie p, #leftCol #vhod p {
-	text-align: center;
-}
-#registr p label, #podtverjdenie p label, #vhod p label {
-	font-size: 1.5em;
-}
-#registr, #podtverjdenie, #vhod {padding-bottom: 20px}
-*/
 
 #leftCol #registr p, #leftCol #podtverjdenie p, #leftCol #vhod p {
 	text-align: center;
 }
 #leftCol p label {
-	font-size: 1.2em;
+	font-size: 1.3em;
 }
 #leftCol {padding-bottom: 20px}
 
