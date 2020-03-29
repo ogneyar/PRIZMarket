@@ -614,11 +614,13 @@ body {
 	color: red;
 }
 
-#registr p label, #podtverjdenie p label{
+#registr p, #podtverjdenie p, #vhod p {
 	text-align: center;
-	font-size: 2em;
 }
-#registr, #podtverjdenie {padding-bottom: 20px}
+#registr p label, #podtverjdenie p label, #vhod p label {
+	font-size: 1.5em;
+}
+#registr, #podtverjdenie, #vhod {padding-bottom: 20px}
 
 /*
 #registr input{
@@ -628,11 +630,6 @@ body {
 	color: white;
 	text-align: center;
 }
-
-#vhod p{
-	text-align: center;
-}
-#vhod {padding-bottom: 20px}
 
 #leftCol input#done, #leftCol input#submit, #leftCol input#submit_podtv {
 	padding: 3px 10px 3px 10px; 
