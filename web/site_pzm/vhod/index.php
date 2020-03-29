@@ -100,12 +100,13 @@ function exception_handler($exception) {
 					dataType: 'html',
 					success: function (data) {
 						$('#vhod').html ("<br><p>" + data + "</p><br>");
-						$('#vhod').show ();						
+						$('#vhod').show ();		
+						setTimeout(function(){
+							location.reload();
+						}, 3000);
 					}
 				});
-				setTimeout(function(){
-					location.reload();
-				}, 3000);
+				
 			});
 		});
 	</script>
