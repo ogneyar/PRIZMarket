@@ -146,6 +146,8 @@ header span#contact a:hover {
 
 #lk {
 	background-color: rgba(20,17,45);
+}
+.lk_topmenu {
 	margin-top: -20px;
 }
 #client {
