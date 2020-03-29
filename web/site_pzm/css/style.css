@@ -179,7 +179,7 @@ header span#contact a:hover {
 .lk_topmenu  li {
 	display: inline-block;
 	margin-right: 20px;
-	float: left;
+/*	float: left;*/
 	position: relative;
 }
 .lk_topmenu  li:last-child {
