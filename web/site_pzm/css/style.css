@@ -162,11 +162,11 @@ header span#contact a:hover {
 	float: right;
 	position: relative;
 }
-/*
+
 .lk_topmenu  li:last-child {
-  margin-right: 0;
+  margin-left: 0;
 }
-*/
+
 .lk_topmenu a {
 	display: block;
 	padding: 10px 0;
