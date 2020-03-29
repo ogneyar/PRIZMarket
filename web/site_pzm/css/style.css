@@ -613,7 +613,7 @@ body {
 #o_prizmarket h3 b{
 	color: red;
 }
-
+/*
 #registr p, #podtverjdenie p, #vhod p {
 	text-align: center;
 }
@@ -621,6 +621,16 @@ body {
 	font-size: 1.5em;
 }
 #registr, #podtverjdenie, #vhod {padding-bottom: 20px}
+*/
+
+#leftCol p {
+	text-align: center;
+}
+#leftCol p label {
+	font-size: 1.5em;
+}
+#leftCol {padding-bottom: 20px}
+
 
 /*
 #registr input{
@@ -683,7 +693,7 @@ body {
 }
 
 #leftCol article p {
-	font-size: 1em;
+	font-size: 1.5em;
 	font-family: Times New Roman, sans-serif;
 /*	color: #3e3e3f;*/
 	color: rgba(172,172,183); 
