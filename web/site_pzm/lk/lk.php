@@ -18,9 +18,7 @@ $login_json = json_encode($вывод);
 </script>
 
 <ul class="lk_topmenu">
-<a href="/site_pzm/lk/exit.php">
-<label id="client"></label>
-</a>
+	<a href="/site_pzm/lk/exit.php"><label id="client"></label></a>
 	<li id="lk_mini-menu">
 		<ul class="lk_submenu">	
 			<li><a href="exit.php">Выход</a></li>			

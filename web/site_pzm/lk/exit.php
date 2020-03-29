@@ -1,4 +1,5 @@
 ﻿<?
 setcookie("login", "", time()+10, '/');
-//header();
+header("Location: /index.php");
+exit;
 ?>
