@@ -190,7 +190,7 @@ header span#contact a:hover {
 	float: right;
 }
 .lk_submenu li a:hover {
-	text-shadow: 2px 2px 5px red, -2px 2px 5px red, 2px -2px 5px red, -2px -2px 5px red;
+	text-shadow: 1px 1px 3px red, -1px 1px 3px red, 1px -1px 3px red, -1px -1px 3px red;
 }
 .lk_submenu {
 	display: none;
@@ -207,11 +207,11 @@ header span#contact a:hover {
 	padding: 5px 10px 5px 10px;
 }
 @media (max-width: 1299px) {
-#client {
+.lk_topmenu li#client {
 	margin: -10px 7% 5px 10px;
 }}
 @media (min-width: 1300px) {
-#client {
+.lk_topmenu li#client {
 	margin: -10px 15% 5px 10px;
 }}
 #client:hover {
