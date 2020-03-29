@@ -188,7 +188,7 @@ header span#contact a:hover {
 	border-bottom: 1px solid #8c8c8c;
 	padding: 10px 15px 10px 15px;
 	color: #8c8c8c;
-/*	margin: 10px 15px 10px 15px;*/
+	margin-top: 10px;
 	float: left;
 }
 .lk_submenu li a:hover {
