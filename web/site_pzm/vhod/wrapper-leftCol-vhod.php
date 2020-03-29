@@ -1,4 +1,9 @@
 <article id="vhod">
+<?if ($_COOKIE['login']) {
+	
+	echo "Вы вошли как {$_COOKIE['login']}!\n\nМожете зайти в личный кабинет, а если необходимо зайти под другим аккаунтом нажмите выход на значке с Вашим ником справа вверху сайта.";
+	
+}else {?>
 <!--<form action="/site_pzm/vhod/testreg.php" method="post">-->
 <br>
 <p>
@@ -17,5 +22,6 @@
 	<a href="/site_pzm/registraciya/index.php">Зарегистрироваться</a> 
 </p>
 <!--</form>-->
+<?}?>
 <br>
 </article>
