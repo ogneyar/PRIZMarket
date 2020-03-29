@@ -164,7 +164,7 @@ header span#contact a:hover {
 }
 
 .lk_topmenu  li:last-child {
-  margin-left: 0;
+  margin-left: -20px;
 }
 
 .lk_topmenu a {
