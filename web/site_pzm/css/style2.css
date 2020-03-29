@@ -162,9 +162,11 @@ header span#contact a:hover {
 	float: right;
 	position: relative;
 }
-.lk_topmenu  li:last-child {
-/*  margin-right: 0;*/
+/*
+.lk_topmenu li:last-child {
+  margin-left: -20px;
 }
+*/
 .lk_topmenu a {
 	display: block;
 /*	padding: 10px 0;*/
@@ -184,17 +186,18 @@ header span#contact a:hover {
 }
 .lk_submenu li a {
 	border-bottom: 1px solid #8c8c8c;
-	padding: 10px 15px;
+	padding: 10px 15px 10px 15px;
 	color: #8c8c8c;
-	margin-left: 0;
-	float: right;
+	margin: 10px;
+	float: left;
 }
 .lk_submenu li a:hover {
-	text-shadow: 1px 1px 3px red, -1px 1px 3px red, 1px -1px 3px red, -1px -1px 3px red;
+	text-shadow: 1px 1px 3px white, -1px 1px 3px white, 1px -1px 3px white, -1px -1px 3px white;
+	color: red;
 }
-.lk_submenu {
+.lk_submenu {	
 	display: none;
-	background: rgba(226,226,226);
+	background: rgba(230,230,230);
 }
 .lk_topmenu li:hover .lk_submenu {
 	display: block;
@@ -207,11 +210,11 @@ header span#contact a:hover {
 	padding: 5px 10px 5px 10px;
 }
 @media (max-width: 1299px) {
-.lk_topmenu li#client {
+.lk_topmenu li {
 	margin: -10px 7% 5px 10px;
 }}
 @media (min-width: 1300px) {
-.lk_topmenu li#client {
+.lk_topmenu li {
 	margin: -10px 15% 5px 10px;
 }}
 #client:hover {
@@ -610,11 +613,14 @@ body {
 	color: red;
 }
 
-#registr p, #podtverjdenie p{
+#leftCol #registr p, #leftCol #podtverjdenie p, #leftCol #vhod p {
 	text-align: center;
-	font-size: 2em;
 }
-#registr, #podtverjdenie {padding-bottom: 20px}
+#leftCol p label {
+	font-size: 1.3em;
+}
+#leftCol {padding-bottom: 20px}
+
 
 /*
 #registr input{
@@ -624,11 +630,6 @@ body {
 	color: white;
 	text-align: center;
 }
-
-#vhod p{
-	text-align: center;
-}
-#vhod {padding-bottom: 20px}
 
 #leftCol input#done, #leftCol input#submit, #leftCol input#submit_podtv {
 	padding: 3px 10px 3px 10px; 
