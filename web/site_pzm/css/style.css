@@ -189,13 +189,14 @@ header span#contact a:hover {
 	padding: 10px 15px 10px 15px;
 	color: #8c8c8c;
 	margin-left: 0;
-	float: right;
+	float: left;
 }
 .lk_submenu li a:hover {
 	text-shadow: 1px 1px 3px white, -1px 1px 3px white, 1px -1px 3px white, -1px -1px 3px white;
 	color: red;
 }
 .lk_submenu {
+	padding: 10px 15px 10px 15px;
 	display: none;
 	background: rgba(226,226,226);
 }
