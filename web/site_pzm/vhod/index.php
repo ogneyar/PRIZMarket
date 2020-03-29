@@ -103,6 +103,9 @@ function exception_handler($exception) {
 						$('#vhod').show ();						
 					}
 				});
+				setTimeout(function(){
+					location.reload();
+				}, 3000);
 			});
 		});
 	</script>
