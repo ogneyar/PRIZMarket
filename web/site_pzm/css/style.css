@@ -150,26 +150,6 @@ header span#contact a:hover {
 .lk_topmenu {
 	margin-top: -20px;
 }
-#client {
-	float: right;
-	color: white;	
-	border: 4px double white;
-	padding: 5px 10px 5px 10px;
-}
-@media (max-width: 1299px) {
-#client {
-	margin: -10px 7% 5px 10px;
-}}
-@media (min-width: 1300px) {
-#client {
-	margin: -10px 15% 5px 10px;
-}}
-#client:hover {
-	text-shadow: 2px 2px 5px red, -2px 2px 5px red, 2px -2px 5px red, -2px -2px 5px red;
-	border: 4px double red;
-	box-shadow: 0 0 20px red;
-	cursor: pointer;
-}
 
 .lk_topmenu ul {
   list-style: none; 
@@ -178,8 +158,8 @@ header span#contact a:hover {
 }
 .lk_topmenu  li {
 	display: inline-block;
-	margin-right: 20px;
-/*	float: left;*/
+/*	margin-right: 20px;*/
+	float: right;
 	position: relative;
 }
 .lk_topmenu  li:last-child {
@@ -215,6 +195,27 @@ header span#contact a:hover {
 }
 .lk_topmenu li:hover .lk_submenu {
 	display: block;
+}
+
+#client {
+	float: right;
+	color: white;	
+	border: 4px double white;
+	padding: 5px 10px 5px 10px;
+}
+@media (max-width: 1299px) {
+#client {
+	margin: -10px 7% 5px 10px;
+}}
+@media (min-width: 1300px) {
+#client {
+	margin: -10px 15% 5px 10px;
+}}
+#client:hover {
+	text-shadow: 2px 2px 5px red, -2px 2px 5px red, 2px -2px 5px red, -2px -2px 5px red;
+	border: 4px double red;
+	box-shadow: 0 0 20px red;
+	cursor: pointer;
 }
 
 
