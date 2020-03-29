@@ -211,11 +211,14 @@ header span#contact a:hover {
 	float: left;
 }
 .lk_submenu {
-	display: none;
+	display: block;
 	background: white;
 }
 .lk_topmenu li:hover .lk_submenu {
-  display: block;
+	display: block;
+}
+.lk_topmenu {
+	cursor: pointer;
 }
 
 
