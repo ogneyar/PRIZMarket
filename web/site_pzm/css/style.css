@@ -211,7 +211,7 @@ header span#contact a:hover {
 }
 .lk_submenu {
 	display: none;
-	background: white;
+	background: grey;
 }
 .lk_topmenu li:hover .lk_submenu {
 	display: block;
