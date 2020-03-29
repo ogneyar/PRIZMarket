@@ -614,7 +614,7 @@ body {
 	color: red;
 }
 /*
-#registr p, #podtverjdenie p, #vhod p {
+#leftCol #registr p, #leftCol #podtverjdenie p, #leftCol #vhod p {
 	text-align: center;
 }
 #registr p label, #podtverjdenie p label, #vhod p label {
@@ -623,11 +623,11 @@ body {
 #registr, #podtverjdenie, #vhod {padding-bottom: 20px}
 */
 
-#leftCol p {
+#leftCol #registr p, #leftCol #podtverjdenie p, #leftCol #vhod p {
 	text-align: center;
 }
 #leftCol p label {
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 #leftCol {padding-bottom: 20px}
 
