@@ -120,7 +120,7 @@ header a#logo {
 	float: right;
 	margin-left: 10%;
 	font-size: 1.4em;
-	line-height: 40px;
+/*	line-height: 40px;*/
 }
 
 #lk_menu span#contact a:hover {
@@ -128,7 +128,8 @@ header a#logo {
 }
 
 #lk_menu {
-	background-color: rgba(20,17,45);
+/*	background-color: rgba(20,17,45);*/
+	background-color: rgba(220,17,45);
 }
 .lk_topmenu {
 	margin-top: -20px;
