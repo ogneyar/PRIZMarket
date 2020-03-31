@@ -114,8 +114,7 @@ header a#logo {
 }
 
 #lk_menu {
-/*	background-color: rgba(20,17,45);*/
-	background-color: rgba(220,17,45);
+	background-color: rgba(20,17,45);
 }
 
 #lk_menu span#contact, .lk_topmenu {
