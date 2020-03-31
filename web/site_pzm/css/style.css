@@ -70,55 +70,41 @@ header #logo {
 	padding-top: 10px;
 }
 
-@media (min-width: 640px){
-#lk_menu span#contact {
-	float: right;
-	width: 40%;
-	margin-right: 20%;
+@media (min-width: 1300px) {
+header a#logo {
+	font-size: 1.7em;
+	margin: 10px 10px 5px 15%;
 }
+#lk_menu span#contact, .lk_topmenu li {
+	margin: -10px 15% 5px 10px;
+}}
+@media (max-width: 1299px) {
 header a#logo {
 	font-size: 2em;
-	margin-left: 15%;
+	margin: 10px 10px 5px 7%;
+}
+#lk_menu span#contact, .lk_topmenu li {
+	margin: -10px 7% 5px 10px;
 }}
+
+
+@media (min-width: 640px){
+}
 
 @media (max-width: 639px) and (min-width: 350px){
-#lk_menu span#contact {
-	float: right;
-	width: 40%;
-	margin-right: 8%;
 }
-header a#logo {
-	font-size: 1.7em;
-	margin-left: 8%;
-}}
 
 @media (max-width: 349px) and (min-width: 311px){
-#lk_menu span#contact {
-	float: right;
-	width: 40%;
-	margin-right: 5%;
 }
-header a#logo {
-	font-size: 1.7em;
-	margin-left: 5%;
-}}
 
 @media (max-width: 310px){
-#lk_menu span#contact {
-	float: right;
-	width: 40%;
-	margin-right: 2%;
 }
-header a#logo {
-	font-size: 1.7em;
-	margin-left: 2%;
-}}
 
 #lk_menu span#contact a {
 	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
 	color: rgba(76,0,164);
 	float: right;
-	margin-left: 10%;
+/*	margin-left: 10%;*/
 	font-size: 1.4em;
 /*	line-height: 40px;*/
 }
@@ -128,11 +114,14 @@ header a#logo {
 }
 
 #lk_menu {
-	background-color: rgba(20,17,45);	
+/*	background-color: rgba(20,17,45);*/
+	background-color: rgba(220,17,45);
 }
-.lk_topmenu, #lk_menu span#contact {
+
+#lk_menu span#contact, .lk_topmenu {
 	margin-top: -20px;
 }
+
 
 .lk_topmenu ul {
   list-style: none; 
@@ -192,14 +181,7 @@ header a#logo {
 	border: 4px double white;
 	padding: 5px 10px 5px 10px;
 }
-@media (max-width: 1299px) {
-.lk_topmenu li {
-	margin: -10px 7% 5px 10px;
-}}
-@media (min-width: 1300px) {
-.lk_topmenu li {
-	margin: -10px 15% 5px 10px;
-}}
+
 #client:hover {
 	text-shadow: 2px 2px 5px red, -2px 2px 5px red, 2px -2px 5px red, -2px -2px 5px red;
 	border: 4px double red;
