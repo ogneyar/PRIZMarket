@@ -128,10 +128,9 @@ header a#logo {
 }
 
 #lk_menu {
-/*	background-color: rgba(20,17,45);*/
-	background-color: rgba(220,17,45);
+	background-color: rgba(20,17,45);	
 }
-.lk_topmenu {
+.lk_topmenu, #lk_menu span#contact {
 	margin-top: -20px;
 }
 
