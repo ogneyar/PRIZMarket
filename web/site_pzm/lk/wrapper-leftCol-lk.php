@@ -1,4 +1,4 @@
-﻿<article id="registr">
+﻿<article id="lk">
 		<br>
 		<p>
 			<label>Здарофф)<br></label>		
