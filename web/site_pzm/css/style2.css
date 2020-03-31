@@ -1,12 +1,12 @@
 @charset "utf-8";
 
 @font-face {
-    font-family: 'mr_InsulaG'; /* font name */
-    src: url('/site_pzm/fonts/mr_InsulaG.ttf'); /* URL to font */
+    font-family: 'mr_InsulaG'; 
+    src: url('/site_pzm/fonts/mr_InsulaG.ttf'); 
 }
 @font-face {
-	font-family: 'RussianSuvenir'; /* font name */
-    src: url('/site_pzm/fonts/RussianSuvenir.ttf'); /* URL to font */
+	font-family: 'RussianSuvenir'; 
+    src: url('/site_pzm/fonts/RussianSuvenir.ttf'); 
 }
 
 * {
@@ -38,7 +38,6 @@ a, *:hover {
 }
 
 body {
-/*	background-color: #ececee;*/
 	background-color: rgba(172,172,183); 
 	width: 100%;
 	float: left;
@@ -58,25 +57,11 @@ body {
 header {
 	width: 98%;
 	float: left;
-/*	background-color: #3e3e3f;*/
 	background-color: rgba(20,17,45);
-	padding: 0.5% 1%;
-	
-/*	border-width: 5px;
-	border-style: solid; 
-	border-color: green;*/
-	
-/*	border-bottom: 5px solid #525252;*/
+	padding: 0.5% 1%;	
 }
-/*
-header a#logo span {
-	font-size: 1.3em;
-}*/
 
 header #logo {
-/*	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
-	font-family: 'mr_InsulaG';
-	color: rgba(76,0,164);*/
 	text-shadow: 2px 2px 4px red, -2px 2px 4px red, 2px -2px 4px red, -2px -2px 4px red;
 	font-family: Times New Roman, sans-serif;
 	color: rgba(255,235,59);
@@ -86,7 +71,7 @@ header #logo {
 }
 
 @media (min-width: 640px){
-header span#contact {
+#lk_menu span#contact {
 	float: right;
 	width: 40%;
 	margin-right: 20%;
@@ -97,7 +82,7 @@ header a#logo {
 }}
 
 @media (max-width: 639px) and (min-width: 350px){
-header span#contact {
+#lk_menu span#contact {
 	float: right;
 	width: 40%;
 	margin-right: 8%;
@@ -108,7 +93,7 @@ header a#logo {
 }}
 
 @media (max-width: 349px) and (min-width: 311px){
-header span#contact {
+#lk_menu span#contact {
 	float: right;
 	width: 40%;
 	margin-right: 5%;
@@ -119,7 +104,7 @@ header a#logo {
 }}
 
 @media (max-width: 310px){
-header span#contact {
+#lk_menu span#contact {
 	float: right;
 	width: 40%;
 	margin-right: 2%;
@@ -129,18 +114,16 @@ header a#logo {
 	margin-left: 2%;
 }}
 
-header span#contact a {
+#lk_menu span#contact a {
 	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
-/*	font-family: 'mr_InsulaG';*/
 	color: rgba(76,0,164);
-/*	color: rgba(255,235,59); */
 	float: right;
 	margin-left: 10%;
 	font-size: 1.4em;
 	line-height: 40px;
 }
 
-header span#contact a:hover {
+#lk_menu span#contact a:hover {
 	color: #e0e0e0;
 }
 
