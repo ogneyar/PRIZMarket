@@ -1,9 +1,7 @@
-﻿<?
-if ($показ_одного_лота) {
-	echo $показ_одного_лота;
-}else {
-	foreach($лот as $публикация) {
-		echo $публикация;
-	}
-}	
-?>	
+﻿<article id="registr">
+		<br>
+		<p>
+			<label>Здарофф)<br></label>		
+		</p>
+		<br><br>
+</article>
