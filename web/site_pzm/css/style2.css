@@ -613,13 +613,15 @@ body {
 	color: red;
 }
 
-#leftCol #registr p, #leftCol #podtverjdenie p, #leftCol #vhod p {
+#leftCol #registr p, #leftCol #podtverjdenie p, #leftCol #vhod p, #leftCol #lk p {
 	text-align: center;
 }
 #leftCol p label {
-	font-size: 1em;
+	font-size: 1.2em;
 }
-#leftCol {padding-bottom: 20px}
+#leftCol #registr, #leftCol #podtverjdenie, #leftCol #vhod, #leftCol #lk {
+	padding-bottom: 20px
+}
 
 
 /*
