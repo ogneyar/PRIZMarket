@@ -75,7 +75,7 @@ header a#logo {
 	font-size: 2.5em;
 	margin: 8px 10px 7px 15%;
 }
-#lk_menu span#contact, .lk_topmenu li {
+#lk_menu span#contact a, .lk_topmenu li {
 	margin: -10px 15% 5px 10px;
 }}
 @media (max-width: 1299px) {
@@ -83,7 +83,7 @@ header a#logo {
 	font-size: 2em;
 	margin: 8px 10px 7px 7%;
 }
-#lk_menu span#contact, .lk_topmenu li {
+#lk_menu span#contact a, .lk_topmenu li {
 	margin: -10px 7% 5px 10px;
 }}
 
@@ -104,7 +104,7 @@ header a#logo {
 	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
 	color: rgba(76,0,164);
 	float: right;
-	margin-left: 10%;
+/*	margin-left: 10%;*/
 	font-size: 1.4em;
 /*	line-height: 40px;*/
 }
