@@ -22,7 +22,7 @@ $login_json = json_encode($вывод);
 		<a href="#"><label id="client"></label></a>
 		
 		<ul class="lk_submenu">	
-			<li><a href="#">Личный Кабинет</a></li>
+			<li><a href="/site_pzm/lk/index.php">Личный Кабинет</a></li>
 			<li><a href="/site_pzm/lk/exit.php">Выход</a></li>			
 		</ul>
 		
