@@ -17,6 +17,11 @@ $login_json = json_encode($вывод);
 	});
 </script>
 
+<span id="contact">
+    <a href="/site_pzm/vhod/index.php">Вход</a>
+	<a href="/site_pzm/registraciya/index.php?st=zero">Регистрация</a>
+</span>
+
 <ul class="lk_topmenu">
 	<li id="lk_mini-menu">
 		<a href="#"><label id="client"></label></a>
