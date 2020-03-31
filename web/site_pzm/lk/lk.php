@@ -13,7 +13,7 @@ $login_json = json_encode($вывод);
 		
 		        $('#client').html (login);
 	        	$('#client').show ();
-                }else $('#lk_menu').hide ();
+                }else $('#lk_topmenu').hide ();
 	});
 </script>
 
