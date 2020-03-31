@@ -14,8 +14,7 @@ $login_json = json_encode($вывод);
 		        $('#client').html (login);
 	        	$('#client').show ();
                 }else {
-					$('#lk_topmenu').hide ();
-					$('#client').hide ();
+					$('.lk_topmenu').hide ();
 				}
 	});
 </script>
