@@ -118,7 +118,7 @@ header a#logo {
 	margin-top: 0;
 }
 
-#lk_menu span#contact, .lk_topmenu #lk_mini-menu a {
+#lk_menu span#contact, .lk_topmenu #lk_mini-menu a label#client {
 	margin-top: -20px;
 }
 
