@@ -15,7 +15,7 @@ include_once '../pzmarket.php';
 		<?include_once '../site_files/header.php';?>
 	</header>
 	<div id="lk_menu">
-		<?include_once 'site_pzm/lk/lk.php';?>
+		<?include_once '/site_pzm/lk/lk.php';?>
 	</div>
 	<nav>
 		<?include_once '../site_files/nav.php';?>
