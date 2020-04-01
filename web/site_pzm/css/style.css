@@ -162,7 +162,7 @@ header a#logo {
 	margin: 10px;
 	float: left;
 }
-.lk_submenu li a:first-child {
+.lk_submenu li:first-child {
 	padding: 10px 10px 0 0;
 }
 .lk_submenu li a:hover {
