@@ -157,7 +157,7 @@ header a#logo {
 }
 .lk_submenu li a {
 	border-bottom: 1px solid #8c8c8c;
-	padding: 10px 15px 10px 15px;
+	padding: 10px 15px 0 5px;
 	color: #8c8c8c;
 	margin: 10px;
 	float: left;
