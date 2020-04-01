@@ -115,9 +115,10 @@ header a#logo {
 
 #lk_menu {
 	background-color: rgba(20,17,45);
+	margin-top: 0;
 }
 
-#lk_menu span#contact, .lk_topmenu #lk_mini-menu {
+#lk_menu span#contact, .lk_topmenu #lk_mini-menu a {
 	margin-top: -20px;
 }
 
@@ -162,7 +163,7 @@ header a#logo {
 	margin: 10px;
 	float: left;
 }
-.lk_submenu li:first-child {
+.lk_submenu:first-child {
 	padding: 10px 10px 0 0;
 }
 .lk_submenu li a:hover {
