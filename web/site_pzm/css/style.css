@@ -120,12 +120,13 @@ header a#logo {
 	margin-top: -20px;
 }
 
-
+.lk_topmenu {
+	font-size: 1.2em;
+}
 .lk_topmenu ul {
 	list-style: none; 
 	margin: 0;
 	padding: 0;
-	font-size: 1.2em;
 }
 .lk_topmenu  li#lk_mini-menu {
 	display: inline-block;
@@ -154,8 +155,8 @@ header a#logo {
 	margin: 10px;
 	float: left;
 }
-.lk_submenu:first-child {
-	padding: 10px 10px 0 0;
+.lk_submenu li:first-child {
+	padding: 100px 10px 0 0;
 }
 .lk_submenu li a:hover {
 	text-shadow: 1px 1px 3px white, -1px 1px 3px white, 1px -1px 3px white, -1px -1px 3px white;
