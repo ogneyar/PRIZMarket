@@ -104,9 +104,7 @@ header a#logo {
 	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
 	color: rgba(76,0,164);
 	float: right;
-/*	margin-left: 10%;*/
 	font-size: 1.4em;
-/*	line-height: 40px;*/
 }
 
 #lk_menu span#contact a:hover {
@@ -115,7 +113,7 @@ header a#logo {
 
 #lk_menu {
 	background-color: rgba(20,17,45);
-	margin-top: 0;
+	margin-top: -1px;
 }
 
 #lk_menu span#contact, .lk_topmenu #lk_mini-menu a label#client {
@@ -124,24 +122,18 @@ header a#logo {
 
 
 .lk_topmenu ul {
-  list-style: none; 
-  margin: 0;
-  padding: 0;
+	list-style: none; 
+	margin: 0;
+	padding: 0;
+	font-size: 1.2em;
 }
 .lk_topmenu  li#lk_mini-menu {
 	display: inline-block;
-/*	margin-right: 20px;*/
 	float: right;
 	position: relative;
 }
-/*
-.lk_topmenu li:last-child {
-  margin-left: -20px;
-}
-*/
 .lk_topmenu a {
 	display: block;
-/*	padding: 10px 0;*/
 	text-decoration: none;
 	outline: none;
 	transition: .5s linear;
@@ -158,7 +150,6 @@ header a#logo {
 }
 .lk_submenu li a {
 	border-bottom: 1px solid #8c8c8c;
-/*	padding: 10px 15px 0 5px;*/
 	color: #8c8c8c;
 	margin: 10px;
 	float: left;
