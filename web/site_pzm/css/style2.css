@@ -117,7 +117,7 @@ header a#logo {
 	background-color: rgba(20,17,45);
 }
 
-#lk_menu span#contact, .lk_topmenu {
+#lk_menu span#contact, .lk_topmenu li#lk_mini-menu a {
 	margin-top: -20px;
 }
 
@@ -157,7 +157,7 @@ header a#logo {
 }
 .lk_submenu li a {
 	border-bottom: 1px solid #8c8c8c;
-	padding: 10px 15px 0 5px;
+/*	padding: 10px 15px 0 5px;*/
 	color: #8c8c8c;
 	margin: 10px;
 	float: left;
