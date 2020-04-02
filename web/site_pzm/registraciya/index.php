@@ -35,6 +35,8 @@ if ($результат)	{
 	}
 }else throw new Exception('Не смог проверить таблицу `site_users`.. (работа сайта)');	
 
+$json_login = null;
+
 if (($_GET['registration'] == '1')&&($результМассив)) {	
 	foreach ($результМассив as $строка) {
 		if ($строка['login'] == $_GET['login']) {
@@ -121,7 +123,7 @@ function exception_handler($exception) {
 			});			
 			
 			$("#telegram").click (function (){			
-				var login = "hz";
+				var login = <?=$json_login; ?>;
 				$.ajax ({
 					url: '/site_pzm/registraciya/index.php',
 					type: 'POST',
