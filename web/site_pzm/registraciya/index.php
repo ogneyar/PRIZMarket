@@ -121,7 +121,6 @@ function exception_handler($exception) {
 			});			
 			
 			$("#telegram").click (function (){			
-				var log = <?=$json_login; ?>;
 				
 			});
 			
