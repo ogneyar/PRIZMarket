@@ -35,7 +35,7 @@ if ($результат)	{
 	}
 }else throw new Exception('Не смог проверить таблицу `site_users`.. (работа сайта)');	
 
-$json_login = null;
+$json_login = json_encode(null);
 
 if (($_GET['registration'] == '1')&&($результМассив)) {	
 	foreach ($результМассив as $строка) {
