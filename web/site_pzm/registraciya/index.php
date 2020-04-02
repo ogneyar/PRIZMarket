@@ -129,11 +129,7 @@ function exception_handler($exception) {
 					type: 'GET',
 					cache: false,
 					data: {'registration': '2', 'login': login, 'svyazi': 'telegram'},
-					dataType: 'html',
-					success: function (data) {
-						$('#registr').html ("<br><p>" + data + "</p><br>");
-						$('#registr').show ();
-					}
+					dataType: 'html'
 				});
 			});
 			
