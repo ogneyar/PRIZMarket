@@ -120,17 +120,13 @@ function exception_handler($exception) {
 				});
 			});			
 			
-			
-		});
-		
-		$(document).ready (function (){
 			$("#telegram").click (function (){			
-				var login = <?=$json_login; ?>;
+				var log = <?=$json_login; ?>;
 				$.ajax ({
 					url: '/site_pzm/registraciya/index.php',
 					type: 'POST',
 					cache: false,
-					data: {'registration': '2', 'login': login, 'svyazi': 'telegram'},
+					data: {'registration': '2', 'login': log, 'svyazi': 'telegram'},
 					dataType: 'html',
 					success: function (data) {
 						$('#registr').html ("<br><p>" + data + "</p><br>");
@@ -138,7 +134,8 @@ function exception_handler($exception) {
 					}
 				});
 			});
-		});
+			
+		});		
 	</script>
 	
 </head>
