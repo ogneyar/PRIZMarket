@@ -120,6 +120,50 @@ function exception_handler($exception) {
 				});
 			});			
 			
+			
+			$("#telegram").click (function (){			
+				var login = <?=$json_login; ?>;
+				$.ajax ({
+					url: '/site_pzm/registraciya/index.php',
+					type: 'GET',
+					cache: false,
+					data: {'registration': '2', 'login': login, 'svyazi': 'telegram'},
+					dataType: 'html',
+					success: function (data) {
+						$('#registr').html ("<br><p>" + data + "</p><br>");
+						$('#registr').show ();
+					}
+				});
+			});
+			$("#whatsup").click (function (){			
+				var login = <?=$json_login; ?>;
+				$.ajax ({
+					url: '/site_pzm/registraciya/index.php',
+					type: 'GET',
+					cache: false,
+					data: {'registration': '2', 'login': login, 'svyazi': 'whatsup'},
+					dataType: 'html',
+					success: function (data) {
+						$('#registr').html ("<br><p>" + data + "</p><br>");
+						$('#registr').show ();
+					}
+				});
+			});
+			$("#wiber").click (function (){			
+				var login = <?=$json_login; ?>;
+				$.ajax ({
+					url: '/site_pzm/registraciya/index.php',
+					type: 'GET',
+					cache: false,
+					data: {'registration': '2', 'login': login, 'svyazi': 'wiber'},
+					dataType: 'html',
+					success: function (data) {
+						$('#registr').html ("<br><p>" + data + "</p><br>");
+						$('#registr').show ();
+					}
+				});
+			});
+			
 		});
 	</script>
 	
