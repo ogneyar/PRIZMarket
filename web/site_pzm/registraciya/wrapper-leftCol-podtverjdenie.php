@@ -1,10 +1,19 @@
-<article id="podtverjdenie">	
-	<form action="/site_pzm/vhod/index.php">
+<article id="podtverjdenie">		
+	<br>
+	<p>
+		<label>Для окончания регистрации выберите один из вариантов как клиенты смогут с Вами связаться!</label>
+		<br><br>
+	</p>
+<!--	<form action="/site_pzm/registraciya/index.php?registration=2&login="> -->
 		<br>
 		<p>
-			<label>Регистрация пройдена успешно!</label>
-			<br><br>
-			<input type="submit" name="submit_podtv" id="submit_podtv"  value="Вход">
+			<input type="button" name="telegram" id="telegram"  value="Telegram">
 		</p>
-	</form>
+<!--	</form> -->
+		<p>
+			<input type="button" name="whatsup" id="whatsup"  value="Whatsup">
+		</p>
+		<p>
+			<input type="button" name="wiber" id="wiber"  value="Wiber">
+		</p>
 </article>		
