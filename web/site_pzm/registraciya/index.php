@@ -120,21 +120,6 @@ function exception_handler($exception) {
 				});
 			});			
 			
-			function vvod_svyazi(var svyazi){			
-				var login = <?=$json_login; ?>;
-				$.ajax ({
-					url: '/site_pzm/registraciya/index.php',
-					type: 'GET',
-					cache: false,
-					data: {'registration': '2', 'login': login, 'svyazi': svyazi},
-					dataType: 'html',
-					success: function (data) {}
-				});
-			}
-			$("#telegram").click (vvod_svyazi('telegram'));
-			$("#whatsup").click (vvod_svyazi('whatsup'));
-			$("#wiber").click (vvod_svyazi('wiber'));
-			
 		});
 	</script>
 	
