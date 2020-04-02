@@ -2,6 +2,8 @@
 //include_once '../../../vendor/autoload.php';	
 include_once '../../a_conect.php';
 include_once '../pzmarket.php';
+
+if (!$_COOKIE['login']) header('Location: /index.php');
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
