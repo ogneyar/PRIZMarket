@@ -121,7 +121,18 @@ function exception_handler($exception) {
 			});			
 			
 			$("#telegram").click (function (){			
-				
+				var login = "hz";
+				$.ajax ({
+					url: '/site_pzm/registraciya/index.php',
+					type: 'POST',
+					cache: false,
+					data: {'registration': '2', 'login': login, 'svyazi': 'telegram'},
+					dataType: 'html',
+					success: function (data) {
+						$('#registr').html ("<br><p>" + data + "</p><br>");
+						$('#registr').show ();
+					}
+				});
 			});
 			
 		});		
