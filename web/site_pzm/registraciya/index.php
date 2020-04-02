@@ -126,7 +126,7 @@ function exception_handler($exception) {
 				var login = <?=$json_login; ?>;
 				$.ajax ({
 					url: '/site_pzm/registraciya/index.php',
-					type: 'POST',
+					type: 'GET',
 					cache: false,
 					data: {'registration': '2', 'login': login, 'svyazi': 'telegram'},
 					dataType: 'html',
