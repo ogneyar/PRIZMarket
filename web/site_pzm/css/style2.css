@@ -593,7 +593,7 @@ body {
 	text-align: center;
 }
 
-#leftCol input#done, #leftCol input#submit, #leftCol input#submit_podtv {
+#leftCol input#done, #leftCol input#submit, #leftCol #podtverjdenie input {
 	padding: 3px 10px 3px 10px; 
 }
 #leftCol input#done:hover, #leftCol input#submit:hover {
