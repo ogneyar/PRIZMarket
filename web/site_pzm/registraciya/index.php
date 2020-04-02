@@ -120,12 +120,6 @@ function exception_handler($exception) {
 				});
 			});			
 			
-			$("#telegram").click (vvod_svyazi('telegram'));
-			$("#whatsup").click (vvod_svyazi('whatsup'));
-			$("#wiber").click (vvod_svyazi('wiber'));
-			
-		});
-		
 			function vvod_svyazi(var svyazi){			
 				var login = <?=$json_login; ?>;
 				$.ajax ({
@@ -133,9 +127,15 @@ function exception_handler($exception) {
 					type: 'GET',
 					cache: false,
 					data: {'registration': '2', 'login': login, 'svyazi': svyazi},
-					dataType: 'html'
+					dataType: 'html',
+					success: function (data) {}
 				});
 			}
+			$("#telegram").click (vvod_svyazi('telegram'));
+			$("#whatsup").click (vvod_svyazi('whatsup'));
+			$("#wiber").click (vvod_svyazi('wiber'));
+			
+		});
 	</script>
 	
 </head>
