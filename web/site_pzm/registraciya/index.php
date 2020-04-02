@@ -122,17 +122,7 @@ function exception_handler($exception) {
 			
 			$("#telegram").click (function (){			
 				var log = <?=$json_login; ?>;
-				$.ajax ({
-					url: '/site_pzm/registraciya/index.php',
-					type: 'POST',
-					cache: false,
-					data: {'registration': '2', 'login': log, 'svyazi': 'telegram'},
-					dataType: 'html',
-					success: function (data) {
-						$('#registr').html ("<br><p>" + data + "</p><br>");
-						$('#registr').show ();
-					}
-				});
+				
 			});
 			
 		});		
