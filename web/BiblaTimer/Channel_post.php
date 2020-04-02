@@ -44,7 +44,7 @@ if ($запуск == 'старт') {
 	}
 	$bot->sendMessage($channel_info, "?");		
 	exit('ok');
-}
+}else exit('ok');
 
 
 ?>
