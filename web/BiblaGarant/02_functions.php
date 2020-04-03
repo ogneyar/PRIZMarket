@@ -621,6 +621,26 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 	return $est_li_v_gruppe; 
 }
 
+
+
+	function _проверка_БАНа($таблица, $айди_клиента) { 
+
+		global $chat_id, $mysqli;
+		
+		$query = "SELECT * FROM {$таблица} WHERE 'status'='ban' AND 'id_client'={$айди_клиента}";
+		if ($result = $mysqli->query($query)) {	
+			if ($result->num_rows > 0) {
+				
+				$tehPodderjka = "[тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88\n\n";
+
+				$tg->sendMessage($chat_id, "Ваш аккаунт попал в БАН!\n\nДля того чтобы узнать причину обратитесь в {$tehPodderjka}.", markdown);	
+				
+				exit('ok');
+			}			
+		}else throw new Exception("Не смог изменить таблицу `variables`");		
 	
+		return false;
+		
+	}
 	
 ?>
