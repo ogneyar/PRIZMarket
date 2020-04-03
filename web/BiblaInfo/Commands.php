@@ -27,11 +27,17 @@ if ($text == 'база') {
 	$query = "UPDATE ".$table_users." SET status='ban' WHERE user_name='{$id}'";
 	if ($result = $mysqli->query($query)) {	
 
-            if ($result->num_rows>0) {
+		if ($result->num_rows>0) {
 
-		$bot->sendMessage($master, "Всё отлично!");	
+			$bot->sendMessage($master, "Всё отлично!");	
 
-            }else $bot->sendMessage($master, "Таких нет... ");
+		}else {
+			
+			$json = json_encode($result);
+			
+			$bot->sendMessage($master, "Таких нет... \n\n{$json}");
+			
+		}
 
 	}else throw new Exception("Не смог изменить таблицу {$table_users}");		
 		
@@ -39,11 +45,11 @@ if ($text == 'база') {
 	$query = "UPDATE ".$table_users." SET status='client' WHERE user_name='{$id}'";
 	if ($result = $mysqli->query($query)) {	
 
-            if ($result->num_rows>0) {
+		if ($result->num_rows>0) {
 
-		$bot->sendMessage($master, "Всё отлично!");	
+			$bot->sendMessage($master, "Всё отлично!");	
 
-            }else $bot->sendMessage($master, "Таких нет... ");		
+		}else $bot->sendMessage($master, "Таких нет... ");		
 
 	}else throw new Exception("Не смог изменить таблицу {$table_users}");		
 		
