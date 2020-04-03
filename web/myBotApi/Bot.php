@@ -977,7 +977,7 @@ class Bot
 
 		global $chat_id, $master, $mysqli;
 		
-		$query = "SELECT * FROM {$таблица} WHERE 'status'='ban' AND 'id_client'={$айди_клиента}";
+		$query = "SELECT * FROM {$таблица} WHERE 'status'='ban' AND 'id_client'='{$айди_клиента}'";
 		if ($result = $mysqli->query($query)) {	
 			if ($result->num_rows > 0) {
 				
