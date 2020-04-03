@@ -36,6 +36,8 @@ if (mysqli_connect_errno()) {
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
 	
+	$bot->_проверка_БАНа('info_users', $chat_id);
+	
 	//$text = str_replace ("@TesterBotoffBot", "", $text);	
 	
 	//$this_admin = _this_admin();

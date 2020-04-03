@@ -43,6 +43,8 @@ if (mysqli_connect_errno()) {
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ФУНКЦИЙ
 	include 'BiblaMarket/bot_03_func.php';
 	
+	_проверка_БАНа('info_users', $chat_id);
+	
 	if ($_GET['kurs']=='pzm'||$_GET['kurs']=='PZM'||$_GET['kurs']=='Prizm'||$_GET['kurs']=='PRIZM'||$_GET['kurs']=='Pzm'||$_GET['kurs']=='пзм'||$_GET['kurs']=='Пзм'||$_GET['kurs']=='ПЗМ'||$_GET['kurs']=='призм'||$_GET['kurs']=='Призм'||$_GET['kurs']=='ПРИЗМ') $_GET['kurs']='prizm';
 	
 	if ($_GET['kurs']=='prizm') echo _kurs_PZM();

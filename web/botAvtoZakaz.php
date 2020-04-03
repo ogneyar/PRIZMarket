@@ -48,6 +48,8 @@ if (mysqli_connect_errno()) {
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
 	
+	$bot->_проверка_БАНа('info_users', $chat_id);	
+	
 	if ($chat_type == 'private' && !$from_is_bot) $bot->add_to_database($table_users);
 	
 	if (!$from_username && $chat_type == 'private') {

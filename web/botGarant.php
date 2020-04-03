@@ -27,6 +27,8 @@ if (mysqli_connect_errno()) {
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ФУНКЦИЙ
 	include 'BiblaGarant/02_functions.php';
 	
+	_проверка_БАНа('info_users', $chat_id);
+	
 	$this_admin = _this_admin();
 
         
