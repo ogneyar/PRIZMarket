@@ -637,7 +637,7 @@ function _proverka_zakaza($zakaz = null) { // функция проверки е
 				
 				exit('ok');
 			}			
-		}else throw new Exception("Не смог изменить таблицу `variables`");		
+		}else throw new Exception("Не смог проверить БАН лист (_проверка_БАНа)");		
 	
 		return false;
 		
