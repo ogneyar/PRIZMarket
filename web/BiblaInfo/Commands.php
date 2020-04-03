@@ -34,8 +34,8 @@ if ($text == 'база') {
 			if ($result = $mysqli->query($query)) {						
 				$bot->sendMessage($master, "Бан клиенту обеспечен!\n\nЕго id: {$айди_клиента}");	
 			}else throw new Exception("Не смог изменить таблицу {$table_users}");		
-		}
-	}
+		}else $bot->sendMessage($master, "Нет таких..");
+	}else throw new Exception("Не смог узнать айди клиента {$table_users}");
 	
 		
 }elseif ($text == 'унбан') {	
@@ -46,10 +46,10 @@ if ($text == 'база') {
 			$айди_клиента = $результМассив[0]['id_client'];			
 			$query = "UPDATE ".$table_users." SET status='client' WHERE id_client='{$айди_клиента}'";
 			if ($result = $mysqli->query($query)) {						
-				$bot->sendMessage($master, "Бан клиенту обеспечен!\n\nЕго id: {$айди_клиента}");	
+				$bot->sendMessage($master, "Бан с клиент снят!\n\nЕго id: {$айди_клиента}");	
 			}else throw new Exception("Не смог изменить таблицу {$table_users}");	
-		}
-	}		
+		}else $bot->sendMessage($master, "Нет таких..");
+	}else throw new Exception("Не смог узнать айди клиента {$table_users}");
 		
 }elseif ($text == 'обнова') {
 		
