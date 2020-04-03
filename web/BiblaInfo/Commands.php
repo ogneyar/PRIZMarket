@@ -24,34 +24,32 @@ if ($text == 'база') {
 
 
 }elseif ($text == 'бан') {	
-	$query = "UPDATE ".$table_users." SET status='ban' WHERE user_name='{$id}'";
-	if ($result = $mysqli->query($query)) {	
 
-		if ($result->num_rows>0) {
-
-			$bot->sendMessage($master, "Всё отлично!");	
-
-		}else {
-			
-			$json = json_encode($result);
-			
-			$bot->sendMessage($master, "Таких нет... \n\n{$json}");
-			
+	$query = "SELECT id_client FROM {$table_users} WHERE user_name='{$id}'"; 
+	if ($result = $mysqli->query($query)) {
+		if ($result->num_rows > 0) {
+			$результМассив = $result->fetch_all(MYSQLI_ASSOC);			
+			$айди_клиента = $результМассив[0]['id_client'];			
+			$query = "UPDATE ".$table_users." SET status='ban' WHERE id_client='{$айди_клиента}'";
+			if ($result = $mysqli->query($query)) {						
+				$bot->sendMessage($master, "Бан клиенту обеспечен!\n\nЕго id: {$айди_клиента}");	
+			}else throw new Exception("Не смог изменить таблицу {$table_users}");		
 		}
-
-	}else throw new Exception("Не смог изменить таблицу {$table_users}");		
+	}
+	
 		
 }elseif ($text == 'унбан') {	
-	$query = "UPDATE ".$table_users." SET status='client' WHERE user_name='{$id}'";
-	if ($result = $mysqli->query($query)) {	
-
-		if ($result->num_rows>0) {
-
-			$bot->sendMessage($master, "Всё отлично!");	
-
-		}else $bot->sendMessage($master, "Таких нет... ");		
-
-	}else throw new Exception("Не смог изменить таблицу {$table_users}");		
+	$query = "SELECT id_client FROM {$table_users} WHERE user_name='{$id}'"; 	
+	if ($result = $mysqli->query($query)) {
+		if ($result->num_rows > 0) {
+			$результМассив = $result->fetch_all(MYSQLI_ASSOC);			
+			$айди_клиента = $результМассив[0]['id_client'];			
+			$query = "UPDATE ".$table_users." SET status='client' WHERE id_client='{$айди_клиента}'";
+			if ($result = $mysqli->query($query)) {						
+				$bot->sendMessage($master, "Бан клиенту обеспечен!\n\nЕго id: {$айди_клиента}");	
+			}else throw new Exception("Не смог изменить таблицу {$table_users}");	
+		}
+	}		
 		
 }elseif ($text == 'обнова') {
 		
