@@ -846,17 +846,17 @@ try{
 }
 
 
-	function _проверка_БАНа($таблица, $айди_клиента) { 
+	function _проверка_БАНа() { 
 
 		global $chat_id, $mysqli;
 		
-		$query = "SELECT * FROM {$таблица} WHERE 'status'='ban' AND 'id_client'={$айди_клиента}";
+		$query = "SELECT * FROM info_users WHERE status='ban' AND id_client='{$chat_id}'";
 		if ($result = $mysqli->query($query)) {	
 			if ($result->num_rows > 0) {
 				
-				$tehPodderjka = "[тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88\n\n";
+				$tehPodderjka = "[тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88";
 
-				$tg->sendMessage($chat_id, "Ваш аккаунт попал в БАН!\n\nДля того чтобы узнать причину обратитесь в {$tehPodderjka}.", markdown);	
+				$tg->sendMessage($chat_id, "Ваш аккаунт попал в БАН!\n\nДля того чтобы узнать причину обратитесь в {$tehPodderjka}", markdown);	
 				
 				exit('ok');
 			}			
