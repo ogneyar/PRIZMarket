@@ -848,7 +848,7 @@ try{
 
 	function _проверка_БАНа() { 
 
-		global $chat_id, $mysqli;
+		global $chat_id, $mysqli, $tg;
 		
 		$query = "SELECT * FROM info_users WHERE status='ban' AND id_client='{$chat_id}'";
 		if ($result = $mysqli->query($query)) {	
