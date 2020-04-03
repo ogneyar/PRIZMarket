@@ -30,7 +30,7 @@ if ($text == 'база') {
 	}else throw new Exception("Не смог изменить таблицу {$table_users}");		
 		
 }elseif ($text == 'унбан') {	
-	$query = "UPDATE ".$table_users." SET status='client' WHERE user_name=".$id;
+	$query = "UPDATE ".$table_users." SET status='client' WHERE user_name='{$id}'";
 	if ($result = $mysqli->query($query)) {	
 		$bot->sendMessage($master, "Всё отлично!");		
 	}else throw new Exception("Не смог изменить таблицу {$table_users}");		
