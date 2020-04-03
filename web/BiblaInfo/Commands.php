@@ -26,13 +26,25 @@ if ($text == 'база') {
 }elseif ($text == 'бан') {	
 	$query = "UPDATE ".$table_users." SET status='ban' WHERE user_name='{$id}'";
 	if ($result = $mysqli->query($query)) {	
-		$bot->sendMessage($master, "Всё отлично!");		
+
+            if ($result->num_rows>0) {
+
+		$bot->sendMessage($master, "Всё отлично!");	
+
+            }else $bot->sendMessage($master, "Таких нет... ");
+
 	}else throw new Exception("Не смог изменить таблицу {$table_users}");		
 		
 }elseif ($text == 'унбан') {	
 	$query = "UPDATE ".$table_users." SET status='client' WHERE user_name='{$id}'";
 	if ($result = $mysqli->query($query)) {	
-		$bot->sendMessage($master, "Всё отлично!");		
+
+            if ($result->num_rows>0) {
+
+		$bot->sendMessage($master, "Всё отлично!");	
+
+            }else $bot->sendMessage($master, "Таких нет... ");		
+
 	}else throw new Exception("Не смог изменить таблицу {$table_users}");		
 		
 }elseif ($text == 'обнова') {
