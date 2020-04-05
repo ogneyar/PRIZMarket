@@ -26,7 +26,11 @@ $json = json_encode($для_связи);
 				var fail = "";				
 				var svyazi = <?=$json; ?>;				
 				
-				if (number.length < 4) fail = "Номер не менее 11 символов";
+				if (svyazi == 'Telegram') {
+					if (number.length < 4) fail = "хз";
+				}else {
+					if (number.length < 11) fail = "Не менее 11 символов";
+				}
 				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
