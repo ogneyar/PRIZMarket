@@ -10,11 +10,11 @@
 	
 		<input type="hidden" name="login" value="<?=$логин;?>">
 		
-		<input type="submit" name="svyazi" id="telegram"  value="Telegram">
+		<input type="submit" class="button" name="svyazi" id="telegram"  value="Telegram">
 		&nbsp;&nbsp;
-		<input type="submit" name="svyazi" id="whatsup"  value="Whatsup">
+		<input type="submit" class="button" name="svyazi" id="whatsup"  value="Whatsup">
 		&nbsp;&nbsp;
-		<input type="submit" name="svyazi" id="wiber"  value="Wiber">
+		<input type="submit" class="button" name="svyazi" id="wiber"  value="Wiber">
 	</form>
 	</p>
 </article>		
