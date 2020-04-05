@@ -6,6 +6,7 @@ if ($_GET['svyazi'] == 'Telegram') {
 }elseif ($_GET['svyazi'] == 'Wiber') {
 	$для_связи = "Wiber";
 }
+$json = json_encode($для_связи);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,7 +19,20 @@ if ($_GET['svyazi'] == 'Telegram') {
 	<script>
 		$(document).ready (function (){			
 			$("#done_svyazi").click (function (){			
-				$("#done_svyazi").attr('disabled', true);
+				$("#done_svyazi").attr('disabled', true);		
+				$('#warning').html (' ' + "<br>");
+				$('#warning').show ();
+				var number = $("#number").val ();				
+				var fail = "";				
+				var svyazi = <?=$json; ?>;				
+				
+				if (number.length < 4) fail = "Логин не менее 4х символов";
+				
+				if (fail != "") {
+					$('#warning').html (fail  + "<br>");
+					$('#warning').show ();
+					return false;
+				}
 				
 			});
 		});		
