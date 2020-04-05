@@ -122,7 +122,7 @@ function exception_handler($exception) {
 					}
 				});
 			});			
-			
+			/*
 			$("#telegram").click (function (){			
 				$("#telegram").attr('disabled', true);
 				var login = <?=$json_login; ?>;
@@ -134,7 +134,7 @@ function exception_handler($exception) {
 					dataType: 'html'
 				});
 			});
-			
+			*/
 		});		
 	</script>
 	

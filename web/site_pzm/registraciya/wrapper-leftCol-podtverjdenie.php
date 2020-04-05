@@ -6,10 +6,10 @@
 	</p>
 	<br>
 	<p>
-		<input type="button" name="telegram" id="telegram"  value="Telegram">
+		<form action="/site_pzm/registraciya/input_svyazi.php"><input type="button" name="telegram" id="telegram"  value="Telegram"></form>
 		&nbsp;&nbsp;
-		<input type="button" name="whatsup" id="whatsup"  value="Whatsup">
+		<form action="/site_pzm/registraciya/input_svyazi.php"><input type="button" name="whatsup" id="whatsup"  value="Whatsup"></form>
 		&nbsp;&nbsp;
-		<input type="button" name="wiber" id="wiber"  value="Wiber">
+		<form action="/site_pzm/registraciya/input_svyazi.php"><input type="button" name="wiber" id="wiber"  value="Wiber"></form>
 	</p>
 </article>		
