@@ -3,7 +3,7 @@
 include_once '../../a_conect.php';
 include_once '../pzmarket.php';
 
-if (!$_COOKIE['login']) header('Location: /index.php');
+if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
