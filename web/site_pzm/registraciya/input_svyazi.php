@@ -26,7 +26,7 @@ $json = json_encode($для_связи);
 				var fail = "";				
 				var svyazi = <?=$json; ?>;				
 				
-				if (number.length < 4) fail = "Логин не менее 4х символов";
+				if (number.length < 4) fail = "Номер не менее 11 символов";
 				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
