@@ -574,12 +574,14 @@ body {
 }
 
 .button {
+	padding: 3px 10px 3px 10px;
 	background-color: #ffe; 
     color: #930; 
 }
 .button:hover {
 	background-color: grey; 
     color: white; 
+	border: 2px solid #f8d881;
 	cursor: pointer;
 }
 
@@ -590,20 +592,12 @@ body {
 	font-size: 1.2em;
 }
 #leftCol article {
-	padding-bottom: 20px
+	padding-bottom: 20px;
 }
 
 #warning {
 	color: white;
 	text-align: center;
-}
-
-#leftCol input#done, #leftCol input#submit, #leftCol #podtverjdenie input, #leftCol input#done_svyazi {
-	padding: 3px 10px 3px 10px;
-}
-#leftCol input#done:hover, #leftCol input#submit:hover, #leftCol input#done_svyazi:hover, #leftCol #podtverjdenie input:hover {
-	border: 2px solid #f8d881;
-	cursor: pointer;
 }
 
 
