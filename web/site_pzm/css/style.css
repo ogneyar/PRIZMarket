@@ -572,17 +572,11 @@ body {
 #o_prizmarket h3 b{
 	color: red;
 }
-/*
-#leftCol #registr p, #leftCol #podtverjdenie p, #leftCol #vhod p, #leftCol #lk p {
-	text-align: center;
+
+.button {
+	background-color: #ffe; 
+    color: #930; 
 }
-#leftCol p label {
-	font-size: 1.2em;
-}
-#leftCol #registr, #leftCol #podtverjdenie, #leftCol #vhod, #leftCol #lk {
-	padding-bottom: 20px
-}
-*/
 
 #leftCol article p {
 	text-align: center;
