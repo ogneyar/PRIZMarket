@@ -602,7 +602,7 @@ body {
 #leftCol input#done, #leftCol input#submit, #leftCol #podtverjdenie input, #leftCol input#done_svyazi {
 	padding: 3px 10px 3px 10px; 
 }
-#leftCol input#done:hover, #leftCol input#submit:hover, #leftCol input#done_svyazi:hover {
+#leftCol input#done:hover, #leftCol input#submit:hover, #leftCol input#done_svyazi:hover, #leftCol #podtverjdenie input:hover {
 	border: 2px solid #f8d881;
 	cursor: pointer;
 }
