@@ -13,7 +13,7 @@
 		
 		<p>
 			<label id="warning"><br></label>
-			<input type="button" name="done_svyazi" id="done_svyazi" value="Ввод">
+			<input type="button" class="button" name="done_svyazi" id="done_svyazi" value="Ввод">
 		</p>
 		<br><br>
 </article>

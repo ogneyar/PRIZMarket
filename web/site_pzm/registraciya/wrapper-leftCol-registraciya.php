@@ -19,7 +19,7 @@
 		</p>
 		<p>
 			<label id="warning"><br></label>
-			<input type="button" name="done" id="done" value="Зарегистрироваться">
+			<input type="button" class="button" name="done" id="done" value="Зарегистрироваться">
 		</p>
 		<br><br>
 <!--	</form>-->
