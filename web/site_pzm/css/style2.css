@@ -572,7 +572,7 @@ body {
 #o_prizmarket h3 b{
 	color: red;
 }
-
+/*
 #leftCol #registr p, #leftCol #podtverjdenie p, #leftCol #vhod p, #leftCol #lk p {
 	text-align: center;
 }
@@ -582,21 +582,27 @@ body {
 #leftCol #registr, #leftCol #podtverjdenie, #leftCol #vhod, #leftCol #lk {
 	padding-bottom: 20px
 }
+*/
 
+#leftCol article p {
+	text-align: center;
+}
+#leftCol p label {
+	font-size: 1.2em;
+}
+#leftCol article {
+	padding-bottom: 20px
+}
 
-/*
-#registr input{
-	color: rgba(230,230,230); 
-}*/
 #warning {
 	color: white;
 	text-align: center;
 }
 
-#leftCol input#done, #leftCol input#submit, #leftCol #podtverjdenie input {
+#leftCol input#done, #leftCol input#submit, #leftCol #podtverjdenie input, #leftCol input#svyazi {
 	padding: 3px 10px 3px 10px; 
 }
-#leftCol input#done:hover, #leftCol input#submit:hover {
+#leftCol input#done:hover, #leftCol input#submit:hover, #leftCol input#svyazi:hover {
 	border: 2px solid #f8d881;
 	cursor: pointer;
 }
