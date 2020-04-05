@@ -18,8 +18,7 @@ $json = json_encode($для_связи);
 	
 	<script>
 		$(document).ready (function (){			
-			$("#done_svyazi").click (function (){			
-				$("#done_svyazi").attr('disabled', true);		
+			$("#done_svyazi").click (function (){	
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
 				var number = $("#number").val ();				
@@ -32,13 +31,11 @@ $json = json_encode($для_связи);
 					if (number.length < 11) fail = "Не менее 11 символов";
 				}
 				
-				if (number.length == 1) fail = "";
-				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
 					return false;
-				}
+				}else $("#done_svyazi").attr('disabled', true);
 				
 			});
 		});		

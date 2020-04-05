@@ -81,8 +81,7 @@ function exception_handler($exception) {
 	
 	<script>
 		$(document).ready (function (){
-			$("#done").click (function (){
-				$(this).attr('disabled', true);
+			$("#done").click (function (){				
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
 				var login = $("#login").val ();
@@ -109,7 +108,8 @@ function exception_handler($exception) {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
 					return false;
-				}
+				}else $("#done").attr('disabled', true);
+				
 				$.ajax ({
 					url: '/site_pzm/registraciya/save_user.php',
 					type: 'POST',
