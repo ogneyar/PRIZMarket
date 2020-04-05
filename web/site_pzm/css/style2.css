@@ -577,6 +577,11 @@ body {
 	background-color: #ffe; 
     color: #930; 
 }
+.button:hover {
+	background-color: grey; 
+    color: white; 
+	cursor: pointer;
+}
 
 #leftCol article p {
 	text-align: center;
