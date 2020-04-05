@@ -1,5 +1,4 @@
 <article id="svyazi">
-<!--	<form action="/site_pzm/registraciya/index.php?registration=2&login=" method="get"> -->
 		<br>
 		<p>
 		<?if ($для_связи == 'telegram') {?>
@@ -15,5 +14,4 @@
 			<input type="button" name="done_svyazi" id="done_svyazi" value="Ввод">
 		</p>
 		<br><br>
-<!--	</form> -->
 </article>
