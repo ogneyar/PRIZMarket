@@ -8,7 +8,7 @@
 	<p>
 	<form action="/site_pzm/registraciya/input_svyazi.php" align="center">
 	
-		<input type="hidden" name="login" value="kuchi">
+		<input type="hidden" name="login" value="<?=$логин;?>">
 		
 		<input type="submit" name="svyazi" id="telegram"  value="Telegram">
 		&nbsp;&nbsp;
