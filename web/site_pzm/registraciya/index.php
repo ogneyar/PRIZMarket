@@ -124,6 +124,7 @@ function exception_handler($exception) {
 			});			
 			
 			$("#telegram").click (function (){			
+				$("#telegram").attr('disabled', true);
 				var login = <?=$json_login; ?>;
 				$.ajax ({
 					url: '/site_pzm/registraciya/index.php',
