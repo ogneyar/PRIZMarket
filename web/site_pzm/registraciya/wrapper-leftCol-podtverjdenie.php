@@ -6,7 +6,7 @@
 	</p>
 	<br>
 	<p>
-	<form action="/site_pzm/registraciya/input_svyazi.php" align="center">
+	<form action="/site_pzm/registraciya/input_svyazi.php?login=<?$логин?>" align="center">
 		<input type="submit" name="svyazi" id="telegram"  value="Telegram">
 		&nbsp;&nbsp;
 		<input type="submit" name="svyazi" id="whatsup"  value="Whatsup">

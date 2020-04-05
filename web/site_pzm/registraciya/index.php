@@ -47,13 +47,6 @@ if (($_GET['registration'] == '1')&&($результМассив)) {
 			$json_login = json_encode($логин);
 		}
 	}	
-}elseif ($_GET['registration'] == '2') {
-	if ($_GET['login']) {
-		$логин = $строка['login'];
-		if ($_GET['svyazi']) {
-			$для_связи = $_GET['svyazi'];
-		}
-	}
 }
 
 include_once '../ip_client.php';
@@ -158,8 +151,6 @@ function exception_handler($exception) {
 			<?
 			if ($_GET['registration'] == '1') {
 				include_once 'wrapper-leftCol-podtverjdenie.php';
-			}elseif ($_GET['registration'] == '2') {
-				include_once 'wrapper-leftCol-svyazi.php';
 			}else {
 				include_once 'wrapper-leftCol-registraciya.php';
 			}
