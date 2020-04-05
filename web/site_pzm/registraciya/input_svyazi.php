@@ -32,6 +32,8 @@ $json = json_encode($для_связи);
 					if (number.length < 11) fail = "Не менее 11 символов";
 				}
 				
+				if (number.length == 1) fail = "";
+				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
