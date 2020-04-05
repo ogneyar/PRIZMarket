@@ -82,6 +82,7 @@ function exception_handler($exception) {
 	<script>
 		$(document).ready (function (){
 			$("#done").click (function (){
+				$(this).attr('disabled', true);
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
 				var login = $("#login").val ();
