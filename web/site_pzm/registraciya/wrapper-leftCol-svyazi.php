@@ -1,9 +1,9 @@
-<article id="svyazi">
+<article id="registr">
 		<br>
 		<p>
-		<?if ($для_связи == 'telegram') {?>
+		<?if ($для_связи == 'Telegram') {?>
 			<label>Введите логин:<br></label>
-		<?}elseif (($для_связи == 'whatsup') || ($для_связи == 'wiber')) {?>
+		<?}elseif (($для_связи == 'Whatsup') || ($для_связи == 'Wiber')) {?>
 			<label>Введите номер:<br></label>
 		<?}?>
 			<input type="text" name="number" id="number" size="15" maxlength="20">
