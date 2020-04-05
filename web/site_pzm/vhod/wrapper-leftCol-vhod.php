@@ -16,7 +16,7 @@
 </p>
 <p>
 	<label id="warning"><br></label>
-    <input type="submit" name="submit" id="submit" value="Войти">
+    <input type="submit" class="button" name="submit" id="submit" value="Войти">
 	<br><br>
 	
 	<a href="/site_pzm/registraciya/index.php">Зарегистрироваться</a> 
