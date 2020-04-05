@@ -1,4 +1,4 @@
-<article id="registr">
+<article id="svyazi">
 		<br>
 		<p>
 		<?if ($для_связи == 'Telegram') {?>
