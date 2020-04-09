@@ -160,15 +160,13 @@ if ($text == 'база') {
 	
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `pzmarkt` ADD 
-		  `svyazi` varchar(100) NULL DEFAULT NULL,
-		  `svyazi_data` varchar(100) NULL DEFAULT NULL";
+	$query = "ALTER TABLE `site_users` ADD `svyazi` varchar(100) DEFAULT NULL, `svyazi_data` varchar(100) DEFAULT NULL";
 	
 	if ($result = $mysqli->query($query)) {
 	
 		$bot->sendMessage($master, "Всё отлично!");
 		
-	}else throw new Exception("Не смог изменить таблицу {$table_users}");	
+	}else throw new Exception("Не смог изменить таблицу site_users");	
 	
 	
 	
