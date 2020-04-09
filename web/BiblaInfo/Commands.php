@@ -160,11 +160,9 @@ if ($text == 'база') {
 	
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `pzmarkt` CHANGE `caption1` `kuplu_prodam` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
-CHANGE `caption2` `nazvanie` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
-CHANGE `caption3` `valuta` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
-CHANGE `caption4` `gorod` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
-CHANGE `caption5` `username` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
+	$query = "ALTER TABLE `pzmarkt` ADD 
+		  `svyazi` varchar(100) NULL DEFAULT NULL,
+		  `svyazi_data` varchar(100) NULL DEFAULT NULL";
 	
 	if ($result = $mysqli->query($query)) {
 	
