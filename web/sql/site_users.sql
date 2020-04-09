@@ -7,5 +7,7 @@ CREATE TABLE IF NOT EXISTS `site_users` (
 		  `password` varchar(100) DEFAULT NULL,
 		  `email` varchar(200) DEFAULT NULL,
 		  `podtverjdenie` varchar(10) DEFAULT NULL,
-		  `vremya` bigint(20) DEFAULT NULL
+		  `vremya` bigint(20) DEFAULT NULL,
+		  `svyazi` varchar(100) DEFAULT NULL,
+		  `svyazi_data` varchar(100) DEFAULT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8";
