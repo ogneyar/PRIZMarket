@@ -19,6 +19,9 @@ $логин = htmlspecialchars($_POST['login']);
 $связь = htmlspecialchars($_POST['svyazi']);
 $данные_связи = htmlspecialchars($_POST['svyazi_data']);
 
+$bot->sendMessage($admin_group, $логин);	
+
+
 //удаляем лишние пробелы
 $логин = trim($логин);
 $связь = trim($связь);
