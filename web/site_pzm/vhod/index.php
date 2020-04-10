@@ -98,7 +98,7 @@ function exception_handler($exception) {
 					data: {'login': login},
 					dataType: 'html',
 					success: function (data) {
-						$('#vhod').html ("<br><h4><p>" + data + "</p></h4><br>");
+						$('#vhod').html ("<br><h4>" + data + "</h4><br>");
 						$('#vhod').show ();		
 						setTimeout(function(){
 							location.reload();
