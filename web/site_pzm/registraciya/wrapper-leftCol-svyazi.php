@@ -3,8 +3,8 @@
 		<p>
 		<?if ($для_связи == 'Telegram') {?>
 			<label>Введите Ваш юзернейм (@username):<br></label>
-		<?}elseif ($для_связи == 'Whatsup') {?>
-			<label>Введите номер Whatsup (+7(777)777-77-77):<br></label>
+		<?}elseif ($для_связи == 'WhatsApp') {?>
+			<label>Введите номер WhatsApp (+7(777)777-77-77):<br></label>
 		<?}elseif ($для_связи == 'Wiber') {?>
 			<label>Введите номер Wiber (+5(555)555-55-55):<br></label>
 		<?}?>

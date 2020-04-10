@@ -3,8 +3,8 @@ $json_login = json_encode($_GET['login']);
 
 if ($_GET['svyazi'] == 'Telegram') {
 	$для_связи = "Telegram";
-}elseif ($_GET['svyazi'] == 'Whatsup') {
-	$для_связи = "Whatsup";
+}elseif ($_GET['svyazi'] == 'WhatsApp') {
+	$для_связи = "WhatsApp";
 }elseif ($_GET['svyazi'] == 'Wiber') {
 	$для_связи = "Wiber";
 }
