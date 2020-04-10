@@ -588,10 +588,13 @@ body {
 #leftCol article h4 {
 	text-align: center;
 	color: rgba(172,172,183); 
+	font-size: 1.2em;
+	font-family: Times New Roman, sans-serif;
+	width: 86%;
+	margin: 2% 7%;
 }
 #leftCol p label {
 	font-size: 1.2em;
-	text-align: center;
 }
 #leftCol article {
 	padding-bottom: 20px;
@@ -620,7 +623,6 @@ body {
 
 #leftCol article {
 	width: 100%;
-/*	background-color: #fff;*/
 	background-color: rgba(20,17,45);
 	margin-bottom: 20px;
 	float: left;
@@ -638,7 +640,6 @@ body {
 
 #leftCol article h2 {
 	font-size: 1em;
-/*	color: #3e3e3f;*/
 	color: rgba(172,172,183); 
 	width: 90%;
 	margin-left: 5%;
@@ -648,7 +649,6 @@ body {
 #leftCol article p {
 	font-size: 1em;
 	font-family: Times New Roman, sans-serif;
-/*	color: #3e3e3f;*/
 	color: rgba(172,172,183); 
 	width: 86%;
 	margin: 2% 7%;
