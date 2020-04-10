@@ -26,12 +26,11 @@ $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$количество = $результат->num_rows;	
 	if($количество > 0) {
-		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);	
-		$json = json_encode($результМассив);
+		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
 	}else {
 		$результМассив = null;
-		$json = null;
 	}
+	$json = json_encode($результМассив);
 }else throw new Exception('Не смог проверить таблицу `site_users`.. (работа сайта)');	
 
 // закрываем подключение 
