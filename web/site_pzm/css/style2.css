@@ -587,6 +587,11 @@ body {
 
 #leftCol article h4 {
 	text-align: center;
+	font-size: 1em;
+	font-family: Times New Roman, sans-serif;
+	color: rgba(172,172,183); 
+	width: 86%;
+	margin: 2% 7%;
 }
 #leftCol p label {
 	font-size: 1.2em;
