@@ -39,8 +39,8 @@ $json_svyazi = json_encode($для_связи);
 					$('#warning').show ();
 					return false;
 				}else {
-					$("#done_svyazi").attr('disabled', true);
-					$('#svyazi').html ("Ожидайте..");
+					/*$("#done_svyazi").attr('disabled', true);*/
+					$('#svyazi').html ("<br><p>Ожидайте..</p><br>");
 					$('#svyazi').show ();		
 				}
 				

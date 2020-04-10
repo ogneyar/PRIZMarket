@@ -101,7 +101,11 @@ function exception_handler($exception) {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
 					return false;
-				}else $("#done").attr('disabled', true);
+				}else {
+					/*$("#done").attr('disabled', true);*/
+					$('#registr').html ("<br><p>Ожидайте..</p><br>");
+					$('#registr').show ();		
+				}				
 				
 				$.ajax ({
 					url: '/site_pzm/registraciya/save_user.php',
