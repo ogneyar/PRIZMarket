@@ -29,7 +29,8 @@ $json_svyazi = json_encode($для_связи);
 				var svyazi = <?=$json_svyazi; ?>;
 				
 				if (svyazi == 'Telegram') {
-					if(number.indexOf('@') == 0 ) fail = "Необходим символ '@'";
+					/*if(number.indexOf('@') == 0 ) fail = "Необходим символ '@' "+number.indexOf('@');*/
+					fail = number.indexOf('@');
 				}else {
 					if (number.length < 11) fail = "Не менее 11 символов";
 				}
