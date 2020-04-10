@@ -2,8 +2,7 @@
 <h4>
 	<br>	
 	<label>&nbsp;&nbsp;<b><?=$логин;?></b>, для окончания регистрации выберите один из возможных вариантов, каким образом клиенты смогут с Вами в дальнейшем связязываться!</label>
-	<br>	
-	<br>
+	<br><br>
 	
 	<form action="/site_pzm/registraciya/input_svyazi.php" align="center">
 	

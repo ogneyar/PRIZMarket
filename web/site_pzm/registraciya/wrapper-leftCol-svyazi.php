@@ -10,7 +10,7 @@
 			<label>Введите номер Wiber (+5(555)555-55-55):<br></label>
 		<?}?>
 			<input type="text" name="number" id="number" size="15" maxlength="20">		
-		
+		<br><br>
 			<label id="warning"><br></label>
 			<input type="button" class="button" name="done_svyazi" id="done_svyazi" value="Ввод">
 		<br>
