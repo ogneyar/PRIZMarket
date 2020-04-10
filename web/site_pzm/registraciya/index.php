@@ -26,13 +26,12 @@ $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$количество = $результат->num_rows;	
 	if($количество > 0) {
-		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);	
-		$json = json_encode($результМассив);
-		//$bot->sendMessage($admin_group, $json);
+		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
 	}else {
 		$результМассив = null;
-		$json = null;
 	}
+	$json = json_encode($результМассив);
+	
 }else throw new Exception('Не смог проверить таблицу `site_users`.. (работа сайта)');	
 
 $json_login = json_encode(null);
@@ -119,19 +118,7 @@ function exception_handler($exception) {
 					}
 				});
 			});			
-			/*
-			$("#telegram").click (function (){			
-				$("#telegram").attr('disabled', true);
-				var login = <?=$json_login; ?>;
-				$.ajax ({
-					url: '/site_pzm/registraciya/index.php',
-					type: 'GET',
-					cache: false,
-					data: {'registration': '2', 'login': login, 'svyazi': 'telegram'},
-					dataType: 'html'
-				});
-			});
-			*/
+			
 		});		
 	</script>
 	
