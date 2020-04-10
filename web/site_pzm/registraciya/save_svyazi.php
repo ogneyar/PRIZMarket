@@ -30,7 +30,7 @@ $данные_связи = str_replace('(', '', $данные_связи);
 $данные_связи = str_replace(')', '', $данные_связи);	
 $данные_связи = str_replace('-', '', $данные_связи);
 
-$запрос = "UPDATE `site_users` SET svyazi='{$связь}', svyazi_data='{$данные_связи}'"; 
+$запрос = "UPDATE `site_users` SET svyazi='{$связь}', svyazi_data='{$данные_связи}' WHERE login='{$логин}'"; 
 
 $результат = $mysqli->query($запрос);
 
