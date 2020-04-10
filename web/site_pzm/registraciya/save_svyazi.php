@@ -45,12 +45,7 @@ $результат = $mysqli->query($запрос);
 if ($результат->num_rows > 0) {
 	$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 	$емаил = $результМассив[0]['email'];
-}else $емаил = "хз";
-
-
-$bot->sendMessage($admin_group, $емаил);	
-
-
+}
 
 // закрываем подключение 
 $mysqli->close();
