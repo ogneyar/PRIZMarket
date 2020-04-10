@@ -585,7 +585,7 @@ body {
 	cursor: pointer;
 }
 
-#leftCol article p {
+#leftCol article h4 {
 	text-align: center;
 }
 #leftCol p label {
