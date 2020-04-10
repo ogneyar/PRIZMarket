@@ -102,7 +102,7 @@ function exception_handler($exception) {
 					return false;
 				}else {
 					
-					$('#registr').html ("<br><h4>Ожидайте..</h4><br>");
+					$('#registr').html ("<br><h4>Ожидайте..</h4>");
 					$('#registr').show ();		
 				}				
 				
@@ -113,7 +113,7 @@ function exception_handler($exception) {
 					data: {'login': login, 'password': password, 'email': email},
 					dataType: 'html',
 					success: function (data) {
-						$('#registr').html ("<br><h4>" + data + "</h4><br>");
+						$('#registr').html ("<br><h4>" + data + "</h4>");
 						$('#registr').show ();						
 					}
 				});

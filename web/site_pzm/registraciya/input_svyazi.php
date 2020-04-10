@@ -42,7 +42,7 @@ $json_svyazi = json_encode($для_связи);
 					return false;
 				}else {
 					/*$("#done_svyazi").attr('disabled', true);*/
-					$('#svyazi').html ("<br><h4>Ожидайте..</h4><br>");
+					$('#svyazi').html ("<br><h4>Ожидайте..</h4>");
 					$('#svyazi').show ();		
 				}
 				
@@ -53,7 +53,7 @@ $json_svyazi = json_encode($для_связи);
 					data: {'login': login, 'svyazi': svyazi, 'svyazi_data': number},
 					dataType: 'html',
 					success: function (data) {
-						$('#svyazi').html ("<br><h4>" + data + "</h4><br>");
+						$('#svyazi').html ("<br><h4>" + data + "</h4>");
 						$('#svyazi').show ();						
 					}
 				});
