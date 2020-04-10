@@ -1,4 +1,5 @@
 <article id="svyazi">
+	<h4>
 		<br>
 		<p>
 		<?if ($для_связи == 'Telegram') {?>
@@ -16,4 +17,5 @@
 			<input type="button" class="button" name="done_svyazi" id="done_svyazi" value="Ввод">
 		</p>
 		<br><br>
+	</h4>
 </article>

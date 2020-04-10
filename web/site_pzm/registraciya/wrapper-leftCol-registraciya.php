@@ -1,5 +1,5 @@
 <article id="registr">
-<!--	<form action="/site_pzm/registraciya/save_user.php" method="post">    -->
+	<h4>
 		<br>
 		<p>
 			<label>Введите логин:<br></label>
@@ -22,5 +22,5 @@
 			<input type="button" class="button" name="done" id="done" value="Зарегистрироваться">
 		</p>
 		<br><br>
-<!--	</form>-->
+	</h4>
 </article>		

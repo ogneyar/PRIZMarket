@@ -1,5 +1,6 @@
 <article id="podtverjdenie">		
-	<br>
+	<h4>
+	<br>	
 	<p>
 		<label>&nbsp;&nbsp;<b><?=$логин;?></b>, для окончания регистрации выберите один из возможных вариантов, каким образом клиенты смогут с Вами в дальнейшем связязываться!</label>
 		<br><br>
@@ -17,4 +18,5 @@
 		<input type="submit" class="button" name="svyazi" id="wiber"  value="Wiber">
 	</form>
 	</p>
+	</h4>
 </article>		
