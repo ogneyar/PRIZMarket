@@ -12,7 +12,7 @@
 		
 		<input type="submit" class="button" name="svyazi" id="telegram"  value="Telegram">
 		&nbsp;&nbsp;
-		<input type="submit" class="button" name="svyazi" id="whatsup"  value="Whatsup">
+		<input type="submit" class="button" name="svyazi" id="whatsapp"  value="WhatsApp">
 		&nbsp;&nbsp;
 		<input type="submit" class="button" name="svyazi" id="wiber"  value="Wiber">
 	</form>
