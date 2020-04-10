@@ -1,4 +1,6 @@
 <?
+$json_login = json_encode($_GET['login']);
+
 if ($_GET['svyazi'] == 'Telegram') {
 	$для_связи = "Telegram";
 }elseif ($_GET['svyazi'] == 'Whatsup') {
@@ -6,7 +8,7 @@ if ($_GET['svyazi'] == 'Telegram') {
 }elseif ($_GET['svyazi'] == 'Wiber') {
 	$для_связи = "Wiber";
 }
-$json = json_encode($для_связи);
+$json_svyazi = json_encode($для_связи);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,8 +24,9 @@ $json = json_encode($для_связи);
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
 				var number = $("#number").val ();				
-				var fail = "";				
-				var svyazi = <?=$json; ?>;				
+				var fail = "";
+				var login = <?=$json_login; ?>;
+				var svyazi = <?=$json_svyazi; ?>;
 				
 				if (svyazi == 'Telegram') {
 					if(number.indexOf('@') == 0 ) fail = "Необходим символ '@'";
@@ -35,13 +38,17 @@ $json = json_encode($для_связи);
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
 					return false;
-				}else $("#done_svyazi").attr('disabled', true);
+				}else {
+					$("#done_svyazi").attr('disabled', true);
+					$('#svyazi').html ("Ожидайте..");
+					$('#svyazi').show ();		
+				}
 				
 				$.ajax ({
 					url: '/site_pzm/registraciya/save_svyazi.php',
 					type: 'POST',
 					cache: false,
-					data: {'login': login, 'svyazi': svyazi, 'svyazi_data': svyazi_data},
+					data: {'login': login, 'svyazi': svyazi, 'svyazi_data': number},
 					dataType: 'html',
 					success: function (data) {
 						$('#svyazi').html ("<br><p>" + data + "</p><br>");
