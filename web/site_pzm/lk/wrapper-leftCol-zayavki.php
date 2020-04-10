@@ -1,7 +1,7 @@
 ﻿<article id="lk">
 		<br>
-		<p>
+		<h4>
 			<label>Пусто тута)<br></label>		
-		</p>
+		</h4>
 		<br><br>
 </article>
