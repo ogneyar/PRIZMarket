@@ -26,7 +26,11 @@ $json = json_encode($для_связи);
 				var svyazi = <?=$json; ?>;				
 				
 				if (svyazi == 'Telegram') {
-					if (number.length < 4) fail = "хз";
+					if(number.indexOf('@') > 0 ){
+					  fail = "есть";
+					} else {
+					  fail = "нет";
+					}
 				}else {
 					if (number.length < 11) fail = "Не менее 11 символов";
 				}
@@ -36,6 +40,18 @@ $json = json_encode($для_связи);
 					$('#warning').show ();
 					return false;
 				}else $("#done_svyazi").attr('disabled', true);
+				
+				$.ajax ({
+					url: '/site_pzm/registraciya/save_svyazi.php',
+					type: 'POST',
+					cache: false,
+					data: {'login': login, 'svyazi': svyazi, 'svyazi_data': svyazi_data},
+					dataType: 'html',
+					success: function (data) {
+						$('#svyazi').html ("<br><p>" + data + "</p><br>");
+						$('#svyazi').show ();						
+					}
+				});
 				
 			});
 		});		
