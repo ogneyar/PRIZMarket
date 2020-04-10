@@ -89,6 +89,9 @@ function exception_handler($exception) {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
 					return false;
+				}else {
+					$('#vhod').html ("<br><h4>Ожидайте..</h4>");
+					$('#vhod').show ();
 				}
 				
 				$.ajax ({
@@ -98,7 +101,7 @@ function exception_handler($exception) {
 					data: {'login': login},
 					dataType: 'html',
 					success: function (data) {
-						$('#vhod').html ("<br><h4>" + data + "</h4><br>");
+						$('#vhod').html ("<br><h4>" + data + "</h4>");
 						$('#vhod').show ();		
 						setTimeout(function(){
 							location.reload();
