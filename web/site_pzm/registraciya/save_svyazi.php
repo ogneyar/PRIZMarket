@@ -19,9 +19,6 @@ $логин = htmlspecialchars($_POST['login']);
 $связь = htmlspecialchars($_POST['svyazi']);
 $данные_связи = htmlspecialchars($_POST['svyazi_data']);
 
-$bot->sendMessage($admin_group, $логин);	
-
-
 //удаляем лишние пробелы
 $логин = trim($логин);
 $связь = trim($связь);
@@ -41,14 +38,18 @@ if (!$результат) {
 	exit('ok');
 }
 
-$запрос = "SELECT email FROM `site_users` WHERE login={$логин}"; 
+$запрос = "SELECT `email` FROM `site_users` WHERE `login`='{$логин}'"; 
 
 $результат = $mysqli->query($запрос);
 
 if ($результат->num_rows > 0) {
 	$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 	$емаил = $результМассив[0]['email'];
-}
+}else $емаил = "хз";
+
+
+$bot->sendMessage($admin_group, $емаил);	
+
 
 
 // закрываем подключение 
