@@ -102,7 +102,7 @@ function exception_handler($exception) {
 					$('#warning').show ();
 					return false;
 				}else {
-					/*$("#done").attr('disabled', true);*/
+					
 					$('#registr').html ("<br><p>Ожидайте..</p><br>");
 					$('#registr').show ();		
 				}				
