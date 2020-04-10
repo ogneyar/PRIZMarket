@@ -656,9 +656,11 @@ body {
 }
 
 #leftCol article a {
-/*	color: #6accd7; */
 	color: rgba(255,235,59);
-	font-size: 1.2em
+	font-size: 1.2em;
+}
+#leftCol article h4 a {
+	font-size: 1em;
 }
 #leftCol article a:hover {color: #647f82}
 
