@@ -37,11 +37,12 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";*/
 												
 				$("#photo").on('change', function(){
-					//files = this.files[0];
+					files = this.files[0];
 					//alert(`File name: ${files.name}`);					
 				});
 				
 				files = $("#photo").files[0];
+				alert(`File name: ${files.name}`);
 				
 				if (typeof files == 'undefined') {
 					fail = "Не выбран файл";					
