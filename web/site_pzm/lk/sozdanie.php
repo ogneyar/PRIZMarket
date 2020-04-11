@@ -71,7 +71,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				
 				// создадим данные файлов в подходящем для отправки формате
 				var data = new FormData();
-				$.each(files, function(key, value){
+				$.each(file, function(key, value){
 					data.append(key, value);
 				});
 
