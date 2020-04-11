@@ -36,7 +36,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (currency.length < 4) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";*/
 								
-				file = $("#file").files;				
+				file = $("#file").file();				
 				alert(`File name: ${file.name}`);
 				
 				if (file.name == 'undefined') {
