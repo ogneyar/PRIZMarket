@@ -45,7 +45,7 @@ else $json_login = json_encode($_COOKIE['login']);
 					files = $("#photo").files[0];
 					alert(`File name: ${files.name}`);
 					fail = "";
-				)else fail = "Не выбран файл";
+				}else fail = "Не выбран файл";
 				
 				if (fail == "") {
 					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
