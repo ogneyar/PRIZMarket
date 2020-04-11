@@ -14,20 +14,15 @@ else $json_login = json_encode($_COOKIE['login']);
 	<?include_once '../site_files/head.php';?>		
 	
 	<script>
-		$(document).ready (function (){	
-		
-			var file;
-		
+		$(document).ready (function (){			
+			var file;		
 			$("#file").on('change', function(){
-				file = this.files[0];
-				alert(`File name: ${file.name}`);					
-			});
-		
-			$("#done").click (function ( event ){	
-
+				file = this.files[0];			
+			});		
+			$("#done").click (function ( event ){
 				event.stopPropagation(); // остановка всех текущих JS событий
 				event.preventDefault();  // остановка дефолтного события для текущего элемента
-			
+				
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
 				var login = <?=$json_login;?>;
@@ -46,7 +41,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (hesh_kateg.length < 4) fail = "Категория не менее 4х символов";
 				else if (currency.length < 4) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";	
-				else if (file == 'undefined') fail = "Не выбран файл";			
+				else if (typeof file == 'undefined') fail = "Не выбран файл";			
 				else if (opisanie.length < 4) fail = "Описание не менее 4х символов";
 				
 				//alert(`File name: ${file.name}`);
