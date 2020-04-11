@@ -88,8 +88,8 @@ else $json_login = json_encode($_COOKIE['login']);
 					processData: false,
 					// отключаем установку заголовка типа запроса
 					contentType: false,					
-					success: function (data2) {
-						$('#lk').html ("<br><h4>" + data2 + "</h4>");
+					success: function (data) {
+						$('#lk').html ("<br><h4>" + data + "</h4>");
 						$('#lk').show ();						
 					}
 				});			
