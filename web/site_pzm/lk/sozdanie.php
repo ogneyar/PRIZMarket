@@ -38,10 +38,10 @@ else $json_login = json_encode($_COOKIE['login']);
 												
 				$("#photo").on('change', function(){
 					files = this.files[0];
-					//alert(`File name: ${files.name}`);					
+					alert(`File name: ${files.name}`);					
 				});
 				
-				files = $("#photo").files[0];
+				//files = $("#photo").files[0];
 				alert(`File name: ${files.name}`);
 				
 				if (typeof files == 'undefined') {
