@@ -42,7 +42,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				});
 				
 				//file = $("#file").files[0];
-				alert(`File name: `);
+				alert(`File name: ${file.name}`);
 				/*
 				if (file.name == 'undefined') {
 					fail = "Не выбран файл";					
