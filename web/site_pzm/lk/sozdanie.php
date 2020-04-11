@@ -37,9 +37,9 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";*/
 								
 				file = $("#file").val();				
-				alert(`File name: ${file}`);
+				alert(`File name: ${file.name}`);
 				
-				if (file === 'undefined') {
+				if (file.name === 'undefined') {
 					fail = "Не выбран файл";
 					alert(`File name: ${file.name}`);					
 				}else if (opisanie.length < 4) fail = "Описание не менее 4х символов";
