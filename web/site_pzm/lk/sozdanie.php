@@ -41,7 +41,7 @@ else $json_login = json_encode($_COOKIE['login']);
 					//alert(`File name: ${files.name}`);					
 				});
 				
-				if ($("#photo").files[0].name != undefined) {
+				if ($("#photo").files[0].name != "undefined") {
 					files = $("#photo").files[0];
 					alert(`File name: ${files.name}`);
 					fail = "";
