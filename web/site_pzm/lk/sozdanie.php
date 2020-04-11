@@ -41,13 +41,15 @@ else $json_login = json_encode($_COOKIE['login']);
 					//alert(`File name: ${files.name}`);					
 				});
 				
+				files = $("#photo").files[0];
 				
-				
-				if ($("#photo").on.files[0].name != 'undefined') {
+				if (typeof files == 'undefined') {
+					fail = "Не выбран файл";					
+				}else {
 					files = $("#photo").files[0];
 					alert(`File name: ${files.name}`);
 					fail = "";
-				}else fail = "Не выбран файл";
+				}
 				
 				if (fail == "") {
 					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
