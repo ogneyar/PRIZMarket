@@ -46,10 +46,10 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (hesh_kateg.length < 4) fail = "Категория не менее 4х символов";
 				else if (currency.length < 4) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";	
-				else if(typeof file == 'undefined') fail = "Не выбран файл";			
+				else if (file == 'undefined') fail = "Не выбран файл";			
 				else if (opisanie.length < 4) fail = "Описание не менее 4х символов";
 				
-				alert(`File name: ${file.name}`);
+				//alert(`File name: ${file.name}`);
 				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
