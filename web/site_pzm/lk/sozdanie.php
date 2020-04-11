@@ -14,8 +14,20 @@ else $json_login = json_encode($_COOKIE['login']);
 	<?include_once '../site_files/head.php';?>		
 	
 	<script>
-		$(document).ready (function (){			
-			$("#done").click (function (){				
+		$(document).ready (function (){	
+		
+			var file;
+		
+			$("#file").on('change', function(){
+				file = this.files[0];
+				alert(`File name: ${file.name}`);					
+			});
+		
+			$("#done").click (function ( event ){	
+
+				event.stopPropagation(); // остановка всех текущих JS событий
+				event.preventDefault();  // остановка дефолтного события для текущего элемента
+			
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
 				var login = <?=$json_login;?>;
@@ -25,7 +37,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				var hesh_kateg = $("#hesh_kateg").val ();
 				var currency = $("#currency").val ();
 				var hesh_city = $("#hesh_city").val ();
-				var file = "undefined";
+				/*var file = "undefined";*/
 				var opisanie = $("#opisanie").val ();
 				var fail = "";		
 				
@@ -35,14 +47,13 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (hesh_kateg.length < 4) fail = "Категория не менее 4х символов";
 				else if (currency.length < 4) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";*/
-								
-				file = $("#file").event.target.files[0];				
-				alert(`File name: ${file.name}`);
 				
-				if (file.name == 'undefined') {
-					fail = "Не выбран файл";
-					alert(`File name: ${file.name}`);					
-				}else if (opisanie.length < 4) fail = "Описание не менее 4х символов";
+				if( typeof file == 'undefined' ) {
+					fail = "Не выбран файл";					
+				}else {					
+					alert(`File name: ${file.name}`);
+					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
+				}
 				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
@@ -64,14 +75,7 @@ else $json_login = json_encode($_COOKIE['login']);
 						$('#lk').show ();						
 					}
 				});
-			});
-			
-											
-			$("#file").on('change', function(){
-				file = this.files[0];
-				alert(`File name: ${file.name}`);					
-			});
-			
+			});			
 		});		
 	</script>
 	
