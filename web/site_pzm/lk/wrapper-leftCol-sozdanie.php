@@ -1,9 +1,8 @@
 ﻿<article id="lk">
 	<h4>
 		<br>		
-			<label>Выберите действие:<br></label>
-			<!--<input type="text" placeholder="продам или куплю" name="hesh_pk" id="hesh_pk" size="15" maxlength="20">-->
-			<select name="hesh_pk" id="hesh_pk" size="15">			
+			<label>Выберите действие:<br></label>			
+			<select name="hesh_pk" id="hesh_pk">			
 				<option value="hesh_p" id="hesh_p" selected>#продаю</option>
 				<option value="hesh_k" id="hesh_k">#куплю</option>
 			</select>
