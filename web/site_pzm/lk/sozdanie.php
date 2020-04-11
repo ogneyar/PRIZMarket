@@ -25,7 +25,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				var hesh_kateg = $("#hesh_kateg").val ();
 				var currency = $("#currency").val ();
 				var hesh_city = $("#hesh_city").val ();
-				var file;
+				var file = "undefined";
 				var opisanie = $("#opisanie").val ();
 				var fail = "";		
 				
