@@ -41,7 +41,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				}
 				$("#photo").on('change', function(){
 					files = this.files;
-					alert(`File name: ${files.name}`);
+					alert(`File path: ${files.value}`);
 				});
 					
 				if (fail == "") {
