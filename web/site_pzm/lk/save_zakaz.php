@@ -3,10 +3,10 @@
 echo "qqqqqqq<br><br>";
 
 foreach( $_FILES as $file ){
-	echo "ttttttt<br><br>"; //.$file['tmp_name']
+	echo "ttttttt<br><br>" . $file['tmp_name']; 
 }
 
-echo "zzzzzzz<br><br>";
+echo "zzzzzzz";
 
 /*
 // Подключение к Амазон
