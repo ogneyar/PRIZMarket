@@ -38,7 +38,7 @@ else $json_login = json_encode($_COOKIE['login']);
 								
 				file = $("#file").val();				
 				
-				if (file.name == 'undefined') {
+				if (file == 'undefined') {
 					fail = "Не выбран файл";
 					alert(`File name: ${file.name}`);					
 				}else if (opisanie.length < 4) fail = "Описание не менее 4х символов";
