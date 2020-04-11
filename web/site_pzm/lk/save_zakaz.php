@@ -1,5 +1,8 @@
 <?
-echo $_FILES['file']['tmp_name'];
+foreach( $_FILES as $file ){
+	echo "ttt  -  ".$file['tmp_name'];
+}
+
 
 /*
 // Подключение к Амазон
