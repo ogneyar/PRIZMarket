@@ -24,14 +24,14 @@
 		<br><br>
 		
 			<label>Загрузите фото:<br></label>
-			<input type="file" name="photo" id="photo">	
+			<input type="file" name="photo" id="photo" accept=".jpg, .jpeg, .png">	
 		<br><br>
 		
 			<label>Введите описание:<br></label>
 			<textarea name="opisanie" id="opisanie" maxlength="500" rows="7" cols="25" required></textarea>
 		<br><br>
 		
-		<!--<input type="file" id="files" name="files" multiple> ДОП ФОТО-->
+		<!--<input type="file" id="files" name="files" multiple accept="image/*"> ДОП ФОТО-->
 		
 			<label id="warning"><br></label>
 			<input type="button" class="button" name="done" id="done" value="Применить">
