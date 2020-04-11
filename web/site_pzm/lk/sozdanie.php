@@ -35,14 +35,14 @@ else $json_login = json_encode($_COOKIE['login']);
 				var opisanie = $("#opisanie").val ();
 				var fail = "";		
 				
-				if (hesh_pk.length < 4) fail = "Хеш не менее 4х символов";
-				else if (name.length < 4) fail = "Название не менее 4х символов";
-				else if (link_name.length < 4) fail = "Ссылка не менее 4х символов";
-				else if (hesh_kateg.length < 4) fail = "Категория не менее 4х символов";
-				else if (currency.length < 4) fail = "Валюта не менее 4х символов";		
-				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";	
+				if (hesh_pk.length < 0) fail = "Хеш не менее 4х символов";
+				else if (name.length < 0) fail = "Название не менее 4х символов";
+				else if (link_name.length < 0) fail = "Ссылка не менее 4х символов";
+				else if (hesh_kateg.length < 0) fail = "Категория не менее 4х символов";
+				else if (currency.length < 0) fail = "Валюта не менее 4х символов";		
+				else if (hesh_city.length < 0) fail = "Хештеги не менее 4х символов";	
 				else if (typeof file == 'undefined') fail = "Не выбран файл";			
-				else if (opisanie.length < 4) fail = "Описание не менее 4х символов";
+				else if (opisanie.length < 0) fail = "Описание не менее 4х символов";
 				
 				//alert(`File name: ${file.name}`);
 				
@@ -53,8 +53,9 @@ else $json_login = json_encode($_COOKIE['login']);
 				}else {					
 					$('#lk').html ("<br><h4>Ожидайте..</h4>");
 					$('#lk').show ();		
-				}				
+				}		
 				
+				/*
 				$.ajax ({
 					url: '/site_pzm/lk/save_zakaz.php',
 					type: 'POST',
@@ -66,6 +67,33 @@ else $json_login = json_encode($_COOKIE['login']);
 						$('#lk').show ();						
 					}
 				});
+				*/
+				
+				// создадим данные файлов в подходящем для отправки формате
+				var data = new FormData();
+				$.each(files, function(key, value){
+					data.append(key, value);
+				});
+
+				// добавим переменную
+				data.append('login', login);
+
+				$.ajax({
+					url: '/site_pzm/lk/save_zakaz.php',
+					type: 'POST',
+					data: data,
+					cache: false,
+					dataType: 'json',
+					// отключаем обработку передаваемых данных
+					processData: false,
+					// отключаем установку заголовка типа запроса
+					contentType: false,					
+					success: function (data2) {
+						$('#lk').html ("<br><h4>" + data2 + "</h4>");
+						$('#lk').show ();						
+					}
+				});			
+	
 			});			
 		});		
 	</script>
