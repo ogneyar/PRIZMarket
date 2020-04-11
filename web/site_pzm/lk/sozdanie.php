@@ -70,18 +70,18 @@ else $json_login = json_encode($_COOKIE['login']);
 				*/
 				
 				// создадим данные файлов в подходящем для отправки формате
-				//var data = new FormData();
+				var data = new FormData();
 				/*$.each(file, function(key, value){
 					data.append(key, value);
 				});*/
 
 				// добавим переменную
-				//data.append('login', login);
+				data.append('login', login);
 
 				$.ajax({
 					url: '/site_pzm/lk/save_zakaz.php',
 					type: 'POST',
-					data: {'login': login},
+					data: data,
 					cache: false,
 					dataType: 'html',
 					// отключаем обработку передаваемых данных
