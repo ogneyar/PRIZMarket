@@ -25,7 +25,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				var hesh_kateg = $("#hesh_kateg").val ();
 				var currency = $("#currency").val ();
 				var hesh_city = $("#hesh_city").val ();
-				var files;
+				var file;
 				var opisanie = $("#opisanie").val ();
 				var fail = "";		
 				
@@ -36,26 +36,18 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (currency.length < 4) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";*/
 												
-				$("#photo").on('change', function(){
-					files = this.files[0];
-					alert(`File name: ${files.name}`);					
+				$("#file").on('change', function(){
+					file = this.files[0];
+					alert(`File name: ${file.name}`);					
 				});
 				
-				//files = $("#photo").files[0];
-				alert(`File name: ${files.name}`);
+				//file = $("#file").files[0];
+				//alert(`File name: ${file.name}`);
 				
-				if (typeof files == 'undefined') {
+				if (file.name == 'undefined') {
 					fail = "Не выбран файл";					
-				}else {
-					files = $("#photo").files[0];
-					alert(`File name: ${files.name}`);
-					fail = "";
-				}
-				
-				if (fail == "") {
-					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
-				}				
-				
+				}else if (opisanie.length < 4) fail = "Описание не менее 4х символов";
+								
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();

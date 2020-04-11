@@ -24,7 +24,7 @@
 		<br><br>
 		
 			<label>Загрузите фото:<br></label>
-			<input type="file" name="photo" id="photo" accept=".jpg, .jpeg, .png">	
+			<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
 		<br><br>
 		
 			<label>Введите описание:<br></label>
