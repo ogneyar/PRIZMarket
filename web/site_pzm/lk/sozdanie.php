@@ -40,11 +40,11 @@ else $json_login = json_encode($_COOKIE['login']);
 					fail = "Не выбран файл";				
 				}
 				$("#photo").on('change', function(){
-					files = this.files;
-					alert(`File path: ${files.value}`);
+					files = this.files[0];
+					alert(`File path: ${files.name}`);
 				});
 				
-				if ($("#photo").value) fail = "";
+				if ($("#photo").name) fail = "";
 					
 				if (fail == "") {
 					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
