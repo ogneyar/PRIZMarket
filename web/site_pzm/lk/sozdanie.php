@@ -29,20 +29,25 @@ else $json_login = json_encode($_COOKIE['login']);
 				var opisanie = $("#opisanie").val ();
 				var fail = "";		
 				
-				$("#photo").on('change', function(){
-					files = this.files;
-				});
-				
-				if (files) fail = "ttttttttttttttt";
-				
 			/*	if (hesh_pk.length < 4) fail = "Хеш не менее 4х символов";
 				else if (name.length < 4) fail = "Название не менее 4х символов";
 				else if (link_name.length < 4) fail = "Ссылка не менее 4х символов";
 				else if (hesh_kateg.length < 4) fail = "Категория не менее 4х символов";
-				else if (currency.length < 4) fail = "Валюта не менее 4х символов";
-				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";
-				else if (opisanie.length < 4) fail = "Описание не менее 4х символов";*/
-								
+				else if (currency.length < 4) fail = "Валюта не менее 4х символов";		
+				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";*/
+				
+				if (fail == "") {
+					fail = "Не выбран файл";
+				
+					$("#photo").on('change', function(){
+						files = this.files;
+						fail = "";
+					});
+				}
+				if (fail == "") {
+					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
+				}				
+				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
