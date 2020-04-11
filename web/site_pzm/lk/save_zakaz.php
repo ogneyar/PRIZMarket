@@ -1,8 +1,12 @@
 <?
+
+echo "qqqqqqq<br><br>";
+
 foreach( $_FILES as $file ){
 	echo "ttt  -  ".$file['tmp_name'];
 }
 
+echo "zzzzzzz<br><br>";
 
 /*
 // Подключение к Амазон
@@ -61,5 +65,5 @@ $upload = $s3->putObject([
 
 if(!$upload) echo "Не смог загрузить файл";
 else echo "Файл загружен на Амазон";
-	
+	*/
 ?>
