@@ -35,15 +35,17 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (hesh_kateg.length < 4) fail = "Категория не менее 4х символов";
 				else if (currency.length < 4) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";*/
-				
-				if (fail == "") {
-					fail = "Не выбран файл";				
-				}
+												
 				$("#photo").on('change', function(){
-					files = this.files[0];
-					//alert(`File path: ${files.name}`);
-					fail = "";
+					//files = this.files[0];
+					//alert(`File name: ${files.name}`);					
 				});
+				
+				if ($("#photo").files[0]) {
+					files = $("#photo").files[0];
+					alert(`File name: ${files.name}`);
+					fail = "";
+				)else fail = "Не выбран файл";
 				
 				if (fail == "") {
 					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
