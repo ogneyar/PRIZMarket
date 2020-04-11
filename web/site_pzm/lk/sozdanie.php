@@ -37,23 +37,19 @@ else $json_login = json_encode($_COOKIE['login']);
 				var hesh_kateg = $("#hesh_kateg").val ();
 				var currency = $("#currency").val ();
 				var hesh_city = $("#hesh_city").val ();
-				/*var file = "undefined";*/
 				var opisanie = $("#opisanie").val ();
 				var fail = "";		
 				
-			/*	if (hesh_pk.length < 4) fail = "Хеш не менее 4х символов";
+				if (hesh_pk.length < 4) fail = "Хеш не менее 4х символов";
 				else if (name.length < 4) fail = "Название не менее 4х символов";
 				else if (link_name.length < 4) fail = "Ссылка не менее 4х символов";
 				else if (hesh_kateg.length < 4) fail = "Категория не менее 4х символов";
 				else if (currency.length < 4) fail = "Валюта не менее 4х символов";		
-				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";*/
+				else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";	
+				else if(typeof file == 'undefined') fail = "Не выбран файл";			
+				else if (opisanie.length < 4) fail = "Описание не менее 4х символов";
 				
-				if( typeof file == 'undefined' ) {
-					fail = "Не выбран файл";					
-				}else {					
-					alert(`File name: ${file.name}`);
-					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
-				}
+				alert(`File name: ${file.name}`);
 				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
