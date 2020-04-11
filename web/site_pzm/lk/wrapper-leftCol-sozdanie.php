@@ -28,7 +28,7 @@
 		<br><br>
 		
 			<label>Введите описание:<br></label>
-			<textarea name="opisanie" id="opisanie" maxlength="500" rows="7" cols="25" required></textarea>
+			<textarea name="opisanie" id="opisanie" maxlength="500" rows="7" cols="25"></textarea>
 		<br><br>
 		
 		<!--<input type="file" id="files" name="files" multiple accept="image/*"> ДОП ФОТО-->

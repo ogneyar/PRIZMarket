@@ -42,12 +42,12 @@ else $json_login = json_encode($_COOKIE['login']);
 				});
 				
 				//file = $("#file").files[0];
-				//alert(`File name: ${file.name}`);
-				
+				alert(`File name: `);
+				/*
 				if (file.name == 'undefined') {
 					fail = "Не выбран файл";					
 				}else if (opisanie.length < 4) fail = "Описание не менее 4х символов";
-								
+				*/
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
