@@ -12,8 +12,6 @@ else $json_login = json_encode($_COOKIE['login']);
 	<meta charset="utf-8" />
 	<title>Ваши заявки на PRIZMarket!</title>
 	<?include_once '../site_files/head.php';?>	
-
-	<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
 	
 	<script>
 		$(document).ready (function (){			
@@ -78,7 +76,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				});
 
 				// добавим переменную
-				data.append('login', login);
+				//data.append('login', login);
 
 				$.ajax({
 					url: '/site_pzm/lk/save_zakaz.php',
@@ -90,8 +88,8 @@ else $json_login = json_encode($_COOKIE['login']);
 					processData: false,
 					// отключаем установку заголовка типа запроса
 					contentType: false,					
-					success: function (data) {
-						$('#lk').html ("<br><h4>" + data + "</h4>");
+					success: function (data2) {
+						$('#lk').html ("<br><h4>" + data2 + "</h4>");
 						$('#lk').show ();						
 					}
 				});			
