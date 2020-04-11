@@ -11,7 +11,9 @@ else $json_login = json_encode($_COOKIE['login']);
 <head>
 	<meta charset="utf-8" />
 	<title>Ваши заявки на PRIZMarket!</title>
-	<?include_once '../site_files/head.php';?>		
+	<?include_once '../site_files/head.php';?>	
+
+	<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
 	
 	<script>
 		$(document).ready (function (){			
