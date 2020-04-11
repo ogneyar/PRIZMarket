@@ -31,6 +31,8 @@
 			<textarea name="opisanie" id="opisanie" maxlength="500" rows="7" cols="25" required></textarea>
 		<br><br>
 		
+		<!--<input type="file" id="files" name="files" multiple> ДОП ФОТО-->
+		
 			<label id="warning"><br></label>
 			<input type="button" class="button" name="done" id="done" value="Применить">
 		<br>
