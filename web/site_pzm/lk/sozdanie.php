@@ -1,6 +1,6 @@
 <?php
-include_once '../../../vendor/autoload.php';	
-include_once '../../a_conect.php';
+//include_once '../../../vendor/autoload.php';	
+//include_once '../../a_conect.php';
 
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 else $json_login = json_encode($_COOKIE['login']);

@@ -1,5 +1,7 @@
 <?
+echo $_FILES['file']['tmp_name'];
 
+/*
 // Подключение к Амазон
 $credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
 	
@@ -41,7 +43,7 @@ $s3 = new Aws\S3\S3Client([
     die( json_encode( $data ) );
 */	
 	
-	
+	/*
 $key = "TEMP001.jpg";
 	
 $file = file_get_contents($_FILES['file']['tmp_name']);
