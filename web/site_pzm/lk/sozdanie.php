@@ -15,6 +15,11 @@ else $json_login = json_encode($_COOKIE['login']);
 	
 	<script>
 		$(document).ready (function (){
+			var files;
+			$("#photo").on('change', function(){
+				files = this.files;
+				alert(`File name: ${files.name}`);
+			});
 			$("#done").click (function (){				
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
@@ -25,7 +30,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				var hesh_kateg = $("#hesh_kateg").val ();
 				var currency = $("#currency").val ();
 				var hesh_city = $("#hesh_city").val ();
-				var files;
+				
 				var opisanie = $("#opisanie").val ();
 				var fail = "";		
 				
@@ -39,10 +44,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				if (fail == "") {
 					fail = "Не выбран файл";				
 				}
-					$("#photo").on('change', function(){
-						files = this.files;
-						fail = "";
-					});
+					
 				if (fail == "") {
 					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
 				}				
