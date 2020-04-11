@@ -42,8 +42,9 @@ else $json_login = json_encode($_COOKIE['login']);
 				$("#photo").on('change', function(){
 					files = this.files;
 					alert(`File path: ${files.value}`);
-					fail = "";
 				});
+				
+				if ($("#photo").value) fail = "";
 					
 				if (fail == "") {
 					if (opisanie.length < 4) fail = "Описание не менее 4х символов";
