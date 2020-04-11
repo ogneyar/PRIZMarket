@@ -1,8 +1,12 @@
 ﻿<article id="lk">
 	<h4>
 		<br>		
-			<label>Введите действие:<br></label>
-			<input type="text" placeholder="продам или куплю" name="hesh_pk" id="hesh_pk" size="15" maxlength="20">
+			<label>Выберите действие:<br></label>
+			<!--<input type="text" placeholder="продам или куплю" name="hesh_pk" id="hesh_pk" size="15" maxlength="20">-->
+			<select name="hesh_pk" id="hesh_pk" size="15">			
+				<option value="hesh_p" id="hesh_p" selected>#продаю</option>
+				<option value="hesh_k" id="hesh_k">#куплю</option>
+			</select>
 		<br><br>		
 			<label>Введите название товара/услуги:<br></label>
 			<input type="text" placeholder="Название" name="name" id="name" size="15" maxlength="20">
@@ -18,6 +22,14 @@
 		<br><br>
 			<label>Хештеги местонахождения:<br></label>
 			<input type="text" placeholder="Хештеги города" name="hesh_city" id="hesh_city" size="15" maxlength="20">
+		<br><br>
+		
+			<label>Загрузите фото:<br></label>
+			<input type="file" name="photo" id="photo">	
+		<br><br>
+		
+			<label>Введите описание:<br></label>
+			<textarea name="opisanie" id="opisanie" maxlength="500" rows="7" cols="45" required></textarea>
 		<br><br>
 		
 			<label id="warning"><br></label>
