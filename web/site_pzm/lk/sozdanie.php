@@ -83,7 +83,7 @@ else $json_login = json_encode($_COOKIE['login']);
 					type: 'POST',
 					data: {'login': login},
 					cache: false,
-					dataType: 'json',
+					dataType: 'html',
 					// отключаем обработку передаваемых данных
 					//processData: false,
 					// отключаем установку заголовка типа запроса
