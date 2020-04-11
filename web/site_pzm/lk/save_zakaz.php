@@ -1,6 +1,5 @@
 <?
-include_once '../../../vendor/autoload.php';	
-include_once '../../a_conect.php';
+
 // Подключение к Амазон
 $credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
 	
@@ -45,7 +44,7 @@ $s3 = new Aws\S3\S3Client([
 	
 $key = "TEMP001.jpg";
 	
-$file = file_get_contents($_FILES);
+$file = file_get_contents($_FILES['file']['tmp_name']);
   
 $upload = $s3->putObject([
 	'Bucket' => $aws_bucket,
