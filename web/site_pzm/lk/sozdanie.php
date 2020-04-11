@@ -41,7 +41,7 @@ else $json_login = json_encode($_COOKIE['login']);
 					alert(`File name: ${file.name}`);					
 				});
 				
-				//file = $("#file").files[0];
+				file = $("#file").files[0];
 				alert(`File name: ${file.name}`);
 				/*
 				if (file.name == 'undefined') {
