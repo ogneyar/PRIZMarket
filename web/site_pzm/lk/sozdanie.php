@@ -92,13 +92,13 @@ else $json_login = json_encode($_COOKIE['login']);
 							$('#lk').html ("<br><h4>Файлы загружены.</h4>");
 							$('#lk').show ();	
 						}else {
-							$('#lk').html ('ОШИБКА: ' + respond.error );
+							$('#lk').html ("<br><h4>ОШИБКА: " + respond.error + "</h4>" );
 							$('#lk').show ();	
 						}
 					},
 					// функция ошибки ответа сервера
 					error: function( jqXHR, status, errorThrown ){
-						$('#lk').html ( 'ОШИБКА AJAX запроса: ' + status, jqXHR );
+						$('#lk').html ("<br><h4>ОШИБКА AJAX запроса: " + status + "</h4>", jqXHR );
 						$('#lk').show ();	
 					}
 				});			
