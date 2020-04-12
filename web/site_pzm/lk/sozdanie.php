@@ -83,8 +83,8 @@ else $json_login = json_encode($_COOKIE['login']);
 					url: '/site_pzm/lk/save_zakaz.php',
 					type: 'POST',
 					data: data,
-					cache: false,
-					//dataType: 'text',
+					//cache: false,
+					dataType: 'JSON',
 					// отключаем обработку передаваемых данных
 					processData: false,
 					// отключаем установку заголовка типа запроса
