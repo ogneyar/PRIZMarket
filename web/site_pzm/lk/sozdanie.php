@@ -82,14 +82,24 @@ else $json_login = json_encode($_COOKIE['login']);
 					type: 'POST',
 					data: data,
 					cache: false,
-					dataType: 'html',
+					dataType: 'json',
 					// отключаем обработку передаваемых данных
 					processData: false,
 					// отключаем установку заголовка типа запроса
 					contentType: false,					
-					success: function (data2) {
-						$('#lk').html ("<br><h4>" + data2 + "</h4>");
-						$('#lk').show ();						
+					success: function( respond, status, jqXHR ){
+						if( typeof respond.error === 'undefined' ){
+							$('#lk').html ("<br><h4>Файлы загружены.</h4>");
+							$('#lk').show ();	
+						}else {
+							$('#lk').html ('ОШИБКА: ' + respond.error );
+							$('#lk').show ();	
+						}
+					},
+					// функция ошибки ответа сервера
+					error: function( jqXHR, status, errorThrown ){
+						$('#lk').html ( 'ОШИБКА AJAX запроса: ' + status, jqXHR );
+						$('#lk').show ();	
 					}
 				});			
 	
