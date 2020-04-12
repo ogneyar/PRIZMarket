@@ -77,14 +77,14 @@ else $json_login = json_encode($_COOKIE['login']);
 				// добавим переменную
 				data.append('login', login);
 				
-				var json = JSON.stringify(data);
+				//var json = JSON.stringify(data);
 				
 				$.ajax({
 					url: '/site_pzm/lk/save_zakaz.php',
 					type: 'POST',
-					data: json,
+					data: data,
 					cache: false,
-					dataType: 'json',
+					dataType: 'jsonp',
 					// отключаем обработку передаваемых данных
 					processData: false,
 					// отключаем установку заголовка типа запроса
