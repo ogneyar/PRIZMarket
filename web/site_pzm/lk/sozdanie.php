@@ -84,13 +84,13 @@ else $json_login = json_encode($_COOKIE['login']);
 					type: 'POST',
 					data: data,
 					cache: false,
-					dataType: 'text',
+					//dataType: 'text',
 					// отключаем обработку передаваемых данных
 					processData: false,
 					// отключаем установку заголовка типа запроса
 					contentType: false,					
 					success: function (data2) {
-						$('#lk').html ("<h4>" + data2 + "</h4>");
+						$('#lk').html ("<br><h4>" + data2 + "</h4>");
 						$('#lk').show ();						
 					}
 					/*
