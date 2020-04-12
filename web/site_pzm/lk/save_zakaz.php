@@ -6,7 +6,8 @@ foreach( $_FILES as $file ){
 	echo "ttttttt<br><br>";// . $file['tmp_name']; 
 }
 
-echo "zzzzzzz";
+echo $_POST['login'].", идёт загрузка файла";
+
 
 /*
 // Подключение к Амазон
