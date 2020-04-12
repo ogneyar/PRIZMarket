@@ -89,7 +89,12 @@ else $json_login = json_encode($_COOKIE['login']);
 					processData: false,
 					// отключаем установку заголовка типа запроса
 					contentType: false,					
-					success: function( respond, status, jqXHR ){
+					success: function (data2) {
+						$('#lk').html ("<h4>" + data2 + "</h4>");
+						$('#lk').show ();						
+					}
+					/*
+					function( respond, status, jqXHR ){
 						if( typeof respond.error === 'undefined' ){
 							$('#lk').html ("<br><h4>Файлы загружены.</h4>");
 							$('#lk').show ();	
@@ -97,12 +102,13 @@ else $json_login = json_encode($_COOKIE['login']);
 							$('#lk').html ("<br><h4>ОШИБКА: " + respond.error + "</h4>" );
 							$('#lk').show ();	
 						}
-					},
-					// функция ошибки ответа сервера
+					},					
 					error: function( jqXHR, status, errorThrown ){
 						$('#lk').html ("<br><h4>ОШИБКА AJAX запроса: " + status + "</h4>", jqXHR );
 						$('#lk').show ();	
 					}
+					*/
+					
 				});			
 	
 			});			
