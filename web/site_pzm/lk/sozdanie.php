@@ -13,16 +13,14 @@ else $json_login = json_encode($_COOKIE['login']);
 	<?include_once '../site_files/head.php';?>	
 	
 	<script>
-		$(document).ready (function (){			
-			/*
+		$(document).ready (function (){						
 			var file;		
 			$("#file").on('change', function(){
 				file = this.files[0];			
-			});		
-			*/
+			});					
 			$("#done").click (function ( event ){
 				event.stopPropagation(); // остановка всех текущих JS событий
-				event.preventDefault();  // остановка дефолтного события для текущего элемента
+				//event.preventDefault();  // остановка дефолтного события
 				
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
@@ -42,7 +40,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (hesh_kateg.length < 0) fail = "Категория не менее 4х символов";
 				else if (currency.length < 0) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 0) fail = "Хештеги не менее 4х символов";	
-				/*else if (typeof file == 'undefined') fail = "Не выбран файл";			*/
+				else if (typeof file == 'undefined') fail = "Не выбран файл";
 				else if (opisanie.length < 0) fail = "Описание не менее 4х символов";
 				
 				//alert(`File name: ${file.name}`);
@@ -50,13 +48,14 @@ else $json_login = json_encode($_COOKIE['login']);
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
 					$('#warning').show ();
+					event.preventDefault();  // остановка загрузки формы
 					return false;
 				}else {					
 					$('#lk').html ("<br><h4>Ожидайте..</h4>");
 					$('#lk').show ();		
 				}		
 				
-				
+				/*
 				$.ajax ({
 					url: '/site_pzm/lk/save_zakaz.php',
 					type: 'POST',
@@ -68,44 +67,7 @@ else $json_login = json_encode($_COOKIE['login']);
 						$('#lk').show ();						
 					}
 				});
-				
-				
-				
-				/*
-				// создадим данные файлов в подходящем для отправки формате
-				var data = new FormData();
-				$.each(file, function(key, value){
-					data.append(key, value);
-				});
-
-				// добавим переменную
-				data.append('login', login);
-				
-				//var json = JSON.stringify(data);
-				
-				$.ajax({
-					url: '/site_pzm/lk/save_zakaz.php',
-					type: 'POST',
-					data: data,
-					cache: false,
-					dataType: 'JSON',					
-					processData: false, // отключаем обработку передаваемых данных					
-					contentType: false,	// отключаем установку заголовка типа запроса
-					success: function( respond, status, jqXHR ){
-						if( typeof respond.error === 'undefined' ){
-							$('#lk').html ("<br><h4>Файлы загружены.</h4>");
-							$('#lk').show ();	
-						}else {
-							$('#lk').html ("<br><h4>ОШИБКА: " + respond.error + "</h4>" );
-							$('#lk').show ();	
-						}
-					},					
-					error: function( jqXHR, status, errorThrown ){
-						$('#lk').html ("<br><h4>ОШИБКА AJAX запроса: " + status + "</h4>", jqXHR );
-						$('#lk').show ();	
-					}					
-				});			
-				*/
+				*/				
 	
 			});			
 		});		
