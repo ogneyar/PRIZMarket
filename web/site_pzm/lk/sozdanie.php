@@ -1,9 +1,8 @@
 <?php
-//include_once '../../../vendor/autoload.php';	
-//include_once '../../a_conect.php';
+include_once '../../../vendor/autoload.php';	
+include_once '../../a_conect.php';
 
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
-else $json_login = json_encode($_COOKIE['login']);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +25,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
-				var login = <?=$json_login;?>;
+				
 				var hesh_pk = $("#hesh_pk").val ();
 				var name = $("#name").val ();
 				var link_name = $("#link_name").val ();
@@ -61,7 +60,6 @@ else $json_login = json_encode($_COOKIE['login']);
 					type: 'POST',
 					cache: false,
 					data: {
-						'login': login,
 						'hesh_pk': hesh_pk,
 						'name': name,
 						'link_name': link_name,
@@ -98,7 +96,11 @@ else $json_login = json_encode($_COOKIE['login']);
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">
-			<?include_once 'wrapper-leftCol-sozdanie.php';?>
+			<?
+			if ($_POST['photo']) {
+				include_once 'wrapper-leftCol-save_photo.php';
+			}else include_once 'wrapper-leftCol-sozdanie.php';
+			?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
