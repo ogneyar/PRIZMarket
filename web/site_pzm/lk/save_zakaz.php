@@ -1,6 +1,8 @@
 <?
 
 ?>
+<article id="lk">
+<h4>
 <!--
 <form action="/site_pzm/lk/sozdanie.php" method="post" enctype="multipart/form-data">
 -->
@@ -21,12 +23,14 @@
 <!--
 </form>
 -->
+</h4>
+</article>
 
-	<script>
-	$(document).ready (function (){	
-		$("#done_files").click (function (){
-			$('#lk').html ("<br><h4>Идёт загрузка..</h4>");
-			$('#lk').show ();
-		});
+<script>
+$(document).ready (function (){	
+	$("#done_files").click (function (){
+		$('#lk').html ("<br><h4>Идёт загрузка..</h4>");
+		$('#lk').show ();
 	});
-	</script>
+});
+</script>
