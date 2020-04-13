@@ -56,7 +56,7 @@ $(document).ready (function (){
 		$.ajax ({
 			url: '/site_pzm/lk/wrapper-leftCol-save_photo.php',
 			type: 'POST',
-			data: {'file': "file"},
+			data: {'filet': "file"},
 			cache: false,
 			dataType: 'html',
 			contentType: false,
