@@ -19,6 +19,7 @@
 	<input type="file" id="files_opt" name="files_opt" multiple accept=".jpg, .jpeg, .png">
 	<br><br><br>
 	
+	<label id="warning"><br></label>
 	<input type="submit" class="button" name="done_files" id="done_files" value="Применить">
 <!--
 </form>
@@ -28,7 +29,23 @@
 
 <script>
 $(document).ready (function (){	
-	$("#done_files").click (function (){
+	var file;		
+	$("#file").change(function(){
+		file = this.files;			
+	});		
+	$("#done_files").click (function (event){
+		event.stopPropagation(); // остановка всех текущих JS событий
+		event.preventDefault();  // остановка дефолтного события		
+		$('#warning').html (' ' + "<br>");
+		$('#warning').show ();		
+		var fail = "";
+		if (typeof file == 'undefined') fail = "Не выбран файл";		
+		if (fail != "") {
+			$('#warning').html (fail  + "<br>");
+			$('#warning').show ();										
+			return false;
+		}
+		
 		$('#lk').html ("<br><h4>Идёт загрузка..</h4>");
 		$('#lk').show ();
 	});
