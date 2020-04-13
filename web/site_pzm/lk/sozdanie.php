@@ -14,10 +14,12 @@ else $json_login = json_encode($_COOKIE['login']);
 	
 	<script>
 		$(document).ready (function (){			
+			/*
 			var file;		
 			$("#file").on('change', function(){
 				file = this.files[0];			
 			});		
+			*/
 			$("#done").click (function ( event ){
 				event.stopPropagation(); // остановка всех текущих JS событий
 				event.preventDefault();  // остановка дефолтного события для текущего элемента
@@ -40,7 +42,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (hesh_kateg.length < 0) fail = "Категория не менее 4х символов";
 				else if (currency.length < 0) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 0) fail = "Хештеги не менее 4х символов";	
-				else if (typeof file == 'undefined') fail = "Не выбран файл";			
+				/*else if (typeof file == 'undefined') fail = "Не выбран файл";			*/
 				else if (opisanie.length < 0) fail = "Описание не менее 4х символов";
 				
 				//alert(`File name: ${file.name}`);
@@ -54,7 +56,7 @@ else $json_login = json_encode($_COOKIE['login']);
 					$('#lk').show ();		
 				}		
 				
-				/*
+				
 				$.ajax ({
 					url: '/site_pzm/lk/save_zakaz.php',
 					type: 'POST',
@@ -66,8 +68,10 @@ else $json_login = json_encode($_COOKIE['login']);
 						$('#lk').show ();						
 					}
 				});
-				*/
 				
+				
+				
+				/*
 				// создадим данные файлов в подходящем для отправки формате
 				var data = new FormData();
 				$.each(file, function(key, value){
@@ -84,15 +88,10 @@ else $json_login = json_encode($_COOKIE['login']);
 					type: 'POST',
 					data: data,
 					cache: false,
-					//dataType: 'JSON',					
+					dataType: 'JSON',					
 					processData: false, // отключаем обработку передаваемых данных					
 					contentType: false,	// отключаем установку заголовка типа запроса
-					success: function (data2) {
-						$('#lk').html ("<br><h4>" + data2 + "</h4>");
-						$('#lk').show ();						
-					}
-					/*
-					function( respond, status, jqXHR ){
+					success: function( respond, status, jqXHR ){
 						if( typeof respond.error === 'undefined' ){
 							$('#lk').html ("<br><h4>Файлы загружены.</h4>");
 							$('#lk').show ();	
@@ -104,10 +103,9 @@ else $json_login = json_encode($_COOKIE['login']);
 					error: function( jqXHR, status, errorThrown ){
 						$('#lk').html ("<br><h4>ОШИБКА AJAX запроса: " + status + "</h4>", jqXHR );
 						$('#lk').show ();	
-					}
-					*/
-					
+					}					
 				});			
+				*/
 	
 			});			
 		});		
