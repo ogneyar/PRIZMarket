@@ -13,7 +13,7 @@ else $json_login = json_encode($_COOKIE['login']);
 	<?include_once '../site_files/head.php';?>	
 	
 	<script>
-		$(document).ready (function (){						
+	/*	$(document).ready (function (){						
 			var file;		
 			$("#file").on('change', function(){
 				file = this.files[0];			
@@ -68,10 +68,10 @@ else $json_login = json_encode($_COOKIE['login']);
 						$('#lk').show ();						
 					}
 				});
-				*/				
+							
 	
 			});			
-		});		
+		});		*/
 	</script>
 	
 </head>
