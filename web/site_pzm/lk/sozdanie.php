@@ -75,13 +75,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 					}
 				});	
 	
-			});		
-
-			$("#done_files").click (function (){
-				$('#lk').html ("<br><h4>Идёт загрузка..</h4>");
-				$('#lk').show ();
 			});
-			
 		});		
 	</script>
 	
@@ -114,6 +108,6 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 	</div>
 	<footer>
 		<?include_once '../site_files/footer.php';?>
-	</footer>
+	</footer>	
 </body>
 </html>

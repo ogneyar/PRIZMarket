@@ -17,3 +17,12 @@
 	
 	<input type="submit" class="button" name="done_files" id="done_files" value="Применить">
 </form>
+
+	<script>
+	(function (){	
+		$("#done_files").click (function (){
+			$('#lk').html ("<br><h4>Идёт загрузка..</h4>");
+			$('#lk').show ();
+		});
+	}) (jQuery)
+	</script>
