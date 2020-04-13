@@ -8,7 +8,7 @@ echo $логин . ", выберите фото";
 	<br><br>
 	<input type="hidden" name="photo" value="1">
 	<!--<label>Загрузите фото:<br></label>-->
-	<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
+	<input type="file" name="file" id="file">	
 	<br><br><br>
 	<input type="submit" class="button" name="done" id="done" value="Применить">
 </form>
