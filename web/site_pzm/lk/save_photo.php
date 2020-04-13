@@ -1,13 +1,15 @@
 <?
+include_once '../../../vendor/autoload.php';	
+include_once '../../a_conect.php';
 
-echo $_POST['login'].", идёт загрузка файла";
+echo $_COOKIE['login'].", идёт загрузка файла";
 
 foreach( $_FILES as $file ){
-	echo "<br><br>". $file['tmp_name'];
+	$путь_к_фото = $file['tmp_name'];
+	echo "<br><br>". $путь_к_фото;
 }
 
 
-/*
 // Подключение к Амазон
 $credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
 	
@@ -16,9 +18,6 @@ $s3 = new Aws\S3\S3Client([
     'version'  => 'latest',
     'region'   => $aws_region
 ]);
-
-//echo $_POST['login'].", идёт загрузка файла";
-
 
 // отправка файла на Амазон		
 /*	
@@ -49,10 +48,10 @@ $s3 = new Aws\S3\S3Client([
     die( json_encode( $data ) );
 */	
 	
-	/*
+
 $key = "TEMP001.jpg";
 	
-$file = file_get_contents($_FILES['file']['tmp_name']);
+$file = file_get_contents($путь_к_фото);
   
 $upload = $s3->putObject([
 	'Bucket' => $aws_bucket,
@@ -64,5 +63,5 @@ $upload = $s3->putObject([
 
 if(!$upload) echo "Не смог загрузить файл";
 else echo "Файл загружен на Амазон";
-	*/
+
 ?>

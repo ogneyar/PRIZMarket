@@ -8,6 +8,6 @@ echo $_POST['login'].", выберите фото";
 <br><br>
 <!--<label>Загрузите фото:<br></label>-->
 	<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
-<br><br>
+<br><br><br>
 <input type="submit" class="button" name="done" id="done" value="Применить">
 </form>
