@@ -13,13 +13,13 @@ else $json_login = json_encode($_COOKIE['login']);
 	<?include_once '../site_files/head.php';?>	
 	
 	<script>
-	/*	$(document).ready (function (){						
+		$(document).ready (function (){						
 			var file;		
 			$("#file").on('change', function(){
 				file = this.files[0];			
 			});					
 			$("#done").click (function ( event ){
-				//event.stopPropagation(); // остановка всех текущих JS событий
+				event.stopPropagation(); // остановка всех текущих JS событий
 				//event.preventDefault();  // остановка дефолтного события
 				
 				$('#warning').html (' ' + "<br>");
@@ -47,9 +47,8 @@ else $json_login = json_encode($_COOKIE['login']);
 				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
-					$('#warning').show ();
-					event.stopPropagation(); // остановка всех текущих JS событий
-					event.preventDefault();  // остановка загрузки формы
+					$('#warning').show ();					
+					//event.preventDefault();  // остановка загрузки формы
 					return false;
 				}else {					
 					$('#lk').html ("<br><h4>Ожидайте..</h4>");
@@ -68,10 +67,10 @@ else $json_login = json_encode($_COOKIE['login']);
 						$('#lk').show ();						
 					}
 				});
-							
+				*/			
 	
 			});			
-		});		*/
+		});		
 	</script>
 	
 </head>
