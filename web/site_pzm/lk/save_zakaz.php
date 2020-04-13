@@ -48,6 +48,24 @@ $(document).ready (function (){
 		
 		$('#lk').html ("<br><h4>Идёт загрузка..</h4>");
 		$('#lk').show ();
+		
+		let Data = new FormData();
+		
+		$(file).each(function(index, fil) {
+			Data.append('file', fil);
+		});
+   
+		$.ajax ({
+			url: '/site_pzm/lk/wrapper-leftCol-save_photo.php',
+			type: 'POST',
+			data: Data,
+			contentType: false,
+			processData: false,
+			success: function (data) {
+				$('#lk').html ("<br><h4>" + data + "</h4>");
+				$('#lk').show ();						
+			}
+		});	
 	});
 });
 </script>
