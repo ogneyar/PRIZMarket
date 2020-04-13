@@ -51,9 +51,7 @@ $(document).ready (function (){
 		
 		let Data = new FormData();
 		
-		$(file).each(function(index, fil) {
-			Data.append('file', fil);
-		});
+		Data.append('file', file);
    
 		$.ajax ({
 			url: '/site_pzm/lk/wrapper-leftCol-save_photo.php',
@@ -64,7 +62,11 @@ $(document).ready (function (){
 			success: function (data) {
 				$('#lk').html ("<br><h4>" + data + "</h4>");
 				$('#lk').show ();						
-			}
+			},
+			error: function(){
+				$('#lk').html ("<br><h4>Ошибка отправки запроса..</h4>");
+				$('#lk').show ();
+			}			
 		});	
 	});
 });
