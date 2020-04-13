@@ -5,7 +5,7 @@ echo $_POST['login'].", выберите основное фото";
 
 
 ?>
-<form action="save_photo.php" method="post">
+<form action="save_photo.php" method="post" enctype="multipart/form-data">
 	<br><br>
 	<label>Загрузите фото:<br></label>
 		<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
