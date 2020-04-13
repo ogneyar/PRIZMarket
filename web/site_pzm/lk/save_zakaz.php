@@ -57,6 +57,8 @@ $(document).ready (function (){
 			url: '/site_pzm/lk/wrapper-leftCol-save_photo.php',
 			type: 'POST',
 			data: Data,
+			cache: false,
+			//dataType: 'html',
 			contentType: false,
 			processData: false,
 			success: function (data) {
