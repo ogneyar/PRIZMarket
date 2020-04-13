@@ -1,6 +1,6 @@
 ﻿<article id="lk">
 	<h4>
-		<form action="save_zakaz.php" method="post" enctype="multipart/form-data">
+		<!--<form action="save_zakaz.php" method="post" enctype="multipart/form-data">-->
 		<br>		
 			<label>Выберите действие:<br></label>			
 			<select name="hesh_pk" id="hesh_pk">			
@@ -23,11 +23,11 @@
 			<label>Хештеги местонахождения:<br></label>
 			<input type="text" placeholder="Хештеги города" name="hesh_city" id="hesh_city" size="15" maxlength="20">
 		<br><br>
-		
+		<!--
 			<label>Загрузите фото:<br></label>
 			<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
 		<br><br>
-		
+		-->
 			<label>Введите описание:<br></label>
 			<textarea name="opisanie" id="opisanie" maxlength="500" rows="7" cols="25"></textarea>
 		<br><br>
@@ -37,6 +37,6 @@
 			<label id="warning"><br></label>
 			<input type="submit" class="button" name="done" id="done" value="Применить">
 		<br>
-		</form>
+		<!--</form>-->
 	</h4>
 </article>

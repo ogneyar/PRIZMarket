@@ -14,13 +14,15 @@ else $json_login = json_encode($_COOKIE['login']);
 	
 	<script>
 		$(document).ready (function (){						
+			/*
 			var file;		
 			$("#file").on('change', function(){
 				file = this.files[0];			
-			});					
+			});		
+			*/
 			$("#done").click (function ( event ){
-				//event.stopPropagation(); // остановка всех текущих JS событий
-				//event.preventDefault();  // остановка дефолтного события
+				event.stopPropagation(); // остановка всех текущих JS событий
+				event.preventDefault();  // остановка дефолтного события
 				
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
@@ -40,34 +42,40 @@ else $json_login = json_encode($_COOKIE['login']);
 				else if (hesh_kateg.length < 0) fail = "Категория не менее 4х символов";
 				else if (currency.length < 0) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 0) fail = "Хештеги не менее 4х символов";	
-				else if (typeof file == 'undefined') fail = "Не выбран файл";
+				/*else if (typeof file == 'undefined') fail = "Не выбран файл";*/
 				else if (opisanie.length < 0) fail = "Описание не менее 4х символов";
 				
 				//alert(`File name: ${file.name}`);
 				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
-					$('#warning').show ();					
-					//event.preventDefault();  // остановка загрузки формы
+					$('#warning').show ();										
 					return false;
 				}else {					
 					$('#lk').html ("<br><h4>Ожидайте..</h4>");
 					$('#lk').show ();		
 				}		
-				
-				/*
+								
 				$.ajax ({
 					url: '/site_pzm/lk/save_zakaz.php',
 					type: 'POST',
 					cache: false,
-					data: {'login': login},
+					data: {
+						'login': login,
+						'hesh_pk': hesh_pk,
+						'name': name,
+						'link_name': link_name,
+						'hesh_kateg': hesh_kateg,
+						'currency': currency,
+						'hesh_city': hesh_city,
+						'opisanie': opisanie
+					},
 					dataType: 'html',
 					success: function (data) {
 						$('#lk').html ("<br><h4>" + data + "</h4>");
 						$('#lk').show ();						
 					}
-				});
-				*/			
+				});	
 	
 			});			
 		});		
