@@ -51,7 +51,7 @@ $(document).ready (function (){
 		
 		let Data = new FormData();
 		
-		Data.append('file', file);
+		Data.append('file', "1");
    
 		$.ajax ({
 			url: '/site_pzm/lk/wrapper-leftCol-save_photo.php',
