@@ -19,7 +19,7 @@ else $json_login = json_encode($_COOKIE['login']);
 				file = this.files[0];			
 			});					
 			$("#done").click (function ( event ){
-				event.stopPropagation(); // остановка всех текущих JS событий
+				//event.stopPropagation(); // остановка всех текущих JS событий
 				//event.preventDefault();  // остановка дефолтного события
 				
 				$('#warning').html (' ' + "<br>");
