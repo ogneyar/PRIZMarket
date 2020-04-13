@@ -2,13 +2,7 @@
 <br>
 <h4>
 <?
-//include_once '../../../vendor/autoload.php';	
-//include_once '../../a_conect.php';
-/*
-foreach( $_FILES as $file ){
-	$путь_к_фото = $file['tmp_name'];
-}
-*/
+
 $путь_к_фото = $_FILES['file']['tmp_name'];
 
 // Подключение к Амазон

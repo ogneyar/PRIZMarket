@@ -1,14 +1,19 @@
 <?
-$логин = $_COOKIE['login'];
-echo $логин . ", выберите фото";
-
 
 ?>
 <form action="/site_pzm/lk/sozdanie.php" method="post" enctype="multipart/form-data">
-	<br><br>
 	<input type="hidden" name="photo" value="1">
-	<!--<label>Загрузите фото:<br></label>-->
+	<br><br>	
+	
+	<label>Загрузите главное фото:</label>
+	<br><br>
 	<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
 	<br><br><br>
-	<input type="submit" class="button" name="done" id="done" value="Применить">
+	
+	<label>Загрузите доп. фото:</label>
+	<br><br>
+	<input type="file" id="files_opt" name="files_opt" multiple accept=".jpg, .jpeg, .png">
+	<br><br><br>
+	
+	<input type="submit" class="button" name="done_files" id="done_files" value="Применить">
 </form>
