@@ -1,7 +1,9 @@
 <?
 
 ?>
+<!--
 <form action="/site_pzm/lk/sozdanie.php" method="post" enctype="multipart/form-data">
+-->
 	<input type="hidden" name="photo" value="1">
 	<br><br>	
 	
@@ -16,13 +18,15 @@
 	<br><br><br>
 	
 	<input type="submit" class="button" name="done_files" id="done_files" value="Применить">
+<!--
 </form>
+-->
 
 	<script>
-	(function (){	
+	$(document).ready (function (){	
 		$("#done_files").click (function (){
 			$('#lk').html ("<br><h4>Идёт загрузка..</h4>");
 			$('#lk').show ();
 		});
-	}) (jQuery)
+	});
 	</script>
