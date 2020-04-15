@@ -51,6 +51,8 @@ $(document).ready (function (){
 		
 		var Data = new FormData();
 		
+		Data.append('filet', file);
+		
 		Data.append('file', "1");
 			
 		$.ajax ({
