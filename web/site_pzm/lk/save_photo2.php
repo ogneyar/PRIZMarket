@@ -1,3 +1,3 @@
 <?
-echo "qqqccchhh";
+echo $_POST['file'];
 ?>
