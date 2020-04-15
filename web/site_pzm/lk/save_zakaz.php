@@ -58,9 +58,9 @@ $(document).ready (function (){
 			type: 'POST',
 			cache: false,
 			data: {'file': "file"},			
-			dataType: 'html',
-			//contentType: false,
-			//processData: false,
+			//dataType: 'html',
+			contentType: false,
+			processData: false,
 			success: function (data) {
 				$('#lk').html ("<br><h4>" + data + "</h4>");
 				$('#lk').show ();						
