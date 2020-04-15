@@ -2,6 +2,7 @@
 <br>
 <h4>
 <?
+if ($_FILES['file']) echo "Файл: ".$_FILES['file']['tmp_name'];
 
 $путь_к_фото = $_FILES['file']['tmp_name'];
 
