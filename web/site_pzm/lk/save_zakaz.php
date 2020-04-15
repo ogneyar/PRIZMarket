@@ -49,7 +49,7 @@ $(document).ready (function (){
 		$('#lk').html ("<br><h4>Идёт загрузка..</h4>");
 		$('#lk').show ();
 		
-		let Data = new FormData();
+		var Data = new FormData();
 		
 		Data.append('file', "1");
 			
@@ -59,8 +59,8 @@ $(document).ready (function (){
 			cache: false,
 			data: Data, //	{'file': "file"}, //
 			//dataType: 'json',
-			//contentType: false,
-			//processData: false,
+			contentType: false,
+			processData: false,
 			success: function (data) {
 				$('#lk').html ("<br><h4>" + data + "</h4>");
 				$('#lk').show ();						
