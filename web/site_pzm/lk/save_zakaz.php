@@ -57,8 +57,8 @@ $(document).ready (function (){
 			url: '/site_pzm/lk/save_photo2.php',
 			type: 'POST',
 			cache: false,
-			data: Data, //{'file': "file"},			
-			dataType: 'html',
+			data: {'file': "file"}, //Data, //	
+			dataType: 'json',
 			//contentType: false,
 			//processData: false,
 			success: function (data) {
