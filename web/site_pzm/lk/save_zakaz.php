@@ -59,7 +59,7 @@ $(document).ready (function (){
 			cache: false,
 			data: {'file': "file"},			
 			dataType: 'html',
-			contentType: false,
+			//contentType: false,
 			//processData: false,
 			success: function (data) {
 				$('#lk').html ("<br><h4>" + data + "</h4>");
