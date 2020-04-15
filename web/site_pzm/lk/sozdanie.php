@@ -98,7 +98,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 		<div id="leftCol">
 			<?
 			if ($_POST['photo']) {
-				include_once 'wrapper-leftCol-save_photo.php';
+				include_once 'save_photo.php';
 			}else include_once 'wrapper-leftCol-sozdanie.php';
 			?>
 		</div>

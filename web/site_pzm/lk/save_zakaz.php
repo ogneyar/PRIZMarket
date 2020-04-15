@@ -56,11 +56,11 @@ $(document).ready (function (){
 		$.ajax ({
 			url: '/site_pzm/lk/wrapper-leftCol-save_photo.php',
 			type: 'POST',
-			data: {'filet': "file"},
 			cache: false,
+			data: {'filet': "file"},			
 			dataType: 'html',
-			contentType: false,
-			processData: false,
+			//contentType: false,
+			//processData: false,
 			success: function (data) {
 				$('#lk').html ("<br><h4>" + data + "</h4>");
 				$('#lk').show ();						
@@ -69,7 +69,7 @@ $(document).ready (function (){
 				$('#lk').html ("<br><h4>Ошибка отправки запроса..</h4>");
 				$('#lk').show ();
 			}			
-		});	
+		});			
 	});
 });
 </script>
