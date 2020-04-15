@@ -3,7 +3,7 @@
 <h4>
 <?
 if ($_FILES['file']) echo "Файл: ".$_FILES['file']['tmp_name'];
-
+/*
 $путь_к_фото = $_FILES['file']['tmp_name'];
 
 // Подключение к Амазон
@@ -33,7 +33,7 @@ else {
 	$ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;
 	echo "<br><br>" . $ссылка_на_амазон;
 }
-
+*/
 ?>
 </h4>
 </article>
