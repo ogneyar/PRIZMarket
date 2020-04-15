@@ -3,6 +3,7 @@ include_once '../../../vendor/autoload.php';
 include_once '../../a_conect.php';
 
 //if ($_FILES['file']) echo "Файл: ".$_FILES['file']['tmp_name']."<br><br>";
+if ($_POST['name']) echo "Наименование: ".$_POST['name']."<br><br>";
 
 $путь_к_фото = $_FILES['file']['tmp_name'];
 

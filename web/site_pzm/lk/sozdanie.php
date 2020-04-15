@@ -31,7 +31,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 				var fail = "";		
 				
 				if (hesh_pk.length < 0) fail = "Хеш не менее 4х символов";
-				else if (name.length < 0) fail = "Название не менее 4х символов";
+				else if (name.length < 4) fail = "Название не менее 4х символов";
 				else if (link_name.length < 0) fail = "Ссылка не менее 4х символов";
 				else if (hesh_kateg.length < 0) fail = "Категория не менее 4х символов";
 				else if (currency.length < 0) fail = "Валюта не менее 4х символов";		
@@ -49,20 +49,18 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 					$('#lk').html ("<br><h4>Ожидайте..</h4>");
 					$('#lk').show ();		
 				}		
-				
-				
-				
+								
 				var Data = new FormData();
 		
 				Data.append('file', file);
 				
-				//Data.append('file', "1");
+				Data.append('name', name);
 					
 				$.ajax ({
 					url: '/site_pzm/lk/save_zakaz.php',
 					type: 'POST',
 					cache: false,
-					data: Data, //	{'file': "file"}, //
+					data: Data,
 					//dataType: 'json',
 					contentType: false,
 					processData: false,
@@ -75,14 +73,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 						$('#lk').show ();
 					}			
 				});			
-				
-				
-				
-				
-				
-				
-				
-				
+			
 			/*	
 				$.ajax ({
 					url: '/site_pzm/lk/save_zakaz.php',
@@ -126,11 +117,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">
-			<?
-			if ($_POST['photo']) {
-				include_once 'save_photo.php';
-			}else include_once 'wrapper-leftCol-sozdanie.php';
-			?>
+			<?include_once 'wrapper-leftCol-sozdanie.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
