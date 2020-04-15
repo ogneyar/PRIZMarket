@@ -23,11 +23,11 @@
 			<label>Хештеги местонахождения:<br></label>
 			<input type="text" placeholder="Хештеги города" name="hesh_city" id="hesh_city" size="15" maxlength="20">
 		<br><br>
-		<!--
+		
 			<label>Загрузите фото:<br></label>
 			<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
 		<br><br>
-		-->
+		
 			<label>Введите описание:<br></label>
 			<textarea name="opisanie" id="opisanie" maxlength="500" rows="7" cols="25"></textarea>
 		<br><br>

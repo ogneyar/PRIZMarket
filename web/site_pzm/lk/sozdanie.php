@@ -1,7 +1,4 @@
 <?php
-include_once '../../../vendor/autoload.php';	
-include_once '../../a_conect.php';
-
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 ?>
 <!DOCTYPE html>
@@ -13,12 +10,10 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 	
 	<script>
 		$(document).ready (function (){						
-			/*
 			var file;		
 			$("#file").on('change', function(){
 				file = this.files[0];			
-			});		
-			*/
+			});					
 			$("#done").click (function ( event ){
 				event.stopPropagation(); // остановка всех текущих JS событий
 				event.preventDefault();  // остановка дефолтного события
@@ -41,7 +36,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 				else if (hesh_kateg.length < 0) fail = "Категория не менее 4х символов";
 				else if (currency.length < 0) fail = "Валюта не менее 4х символов";		
 				else if (hesh_city.length < 0) fail = "Хештеги не менее 4х символов";	
-				/*else if (typeof file == 'undefined') fail = "Не выбран файл";*/
+				else if (typeof file == 'undefined') fail = "Не выбран файл";
 				else if (opisanie.length < 0) fail = "Описание не менее 4х символов";
 				
 				//alert(`File name: ${file.name}`);
@@ -54,7 +49,41 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 					$('#lk').html ("<br><h4>Ожидайте..</h4>");
 					$('#lk').show ();		
 				}		
-								
+				
+				
+				
+				var Data = new FormData();
+		
+				Data.append('file', file);
+				
+				//Data.append('file', "1");
+					
+				$.ajax ({
+					url: '/site_pzm/lk/save_zakaz.php',
+					type: 'POST',
+					cache: false,
+					data: Data, //	{'file': "file"}, //
+					//dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: function (data) {
+						$('#lk').html ("<br><h4>" + data + "</h4>");
+						$('#lk').show ();						
+					},
+					error: function(){
+						$('#lk').html ("<br><h4>Ошибка отправки запроса..</h4>");
+						$('#lk').show ();
+					}			
+				});			
+				
+				
+				
+				
+				
+				
+				
+				
+			/*	
 				$.ajax ({
 					url: '/site_pzm/lk/save_zakaz.php',
 					type: 'POST',
@@ -74,6 +103,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 						$('#lk').show ();						
 					}
 				});	
+			*/	
 	
 			});
 		});		

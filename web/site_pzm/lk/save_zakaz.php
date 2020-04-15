@@ -1,80 +1,37 @@
 <?
+include_once '../../../vendor/autoload.php';	
+include_once '../../a_conect.php';
+
+//if ($_FILES['file']) echo "Файл: ".$_FILES['file']['tmp_name']."<br><br>";
+
+$путь_к_фото = $_FILES['file']['tmp_name'];
+
+// Подключение к Амазон
+$credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
+	
+$s3 = new Aws\S3\S3Client([
+	'credentials' => $credentials, 
+    'version'  => 'latest',
+    'region'   => $aws_region
+]);
+
+$key = "TEMP-".$_COOKIE['login'].".jpg";
+	
+$file = file_get_contents($путь_к_фото);
+  
+$upload = $s3->putObject([
+	'Bucket' => $aws_bucket,
+	'Key'    => $key, 
+	'Body'   => $file,	
+	'ACL'    => 'public-read'
+]);			
+// ---------------------------			
+
+if(!$upload) echo "Не смог загрузить файл";
+else {
+	echo "Файл загружен на Амазон";
+	$ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;
+	echo "<br><br>" . $ссылка_на_амазон;
+}
 
 ?>
-<!--
-<article id="lk">
-<h4>
--->
-<!--
-<form action="/site_pzm/lk/sozdanie.php" method="post" enctype="multipart/form-data">
--->
-	<input type="hidden" name="photo" value="1">	
-	
-	<label>Загрузите главное фото:</label>
-	<br><br>
-	<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
-	<br><br><br>
-	
-	<label>Загрузите доп. фото:</label>
-	<br><br>
-	<input type="file" id="files_opt" name="files_opt" multiple accept=".jpg, .jpeg, .png">
-	<br><br><br>
-	
-	<label id="warning"><br></label>
-	<input type="submit" class="button" name="done_files" id="done_files" value="Применить">
-<!--
-</form>
--->
-<!--
-</h4>
-</article>
--->
-
-<script>
-$(document).ready (function (){	
-	var file;		
-	$("#file").change(function(){
-		file = this.files[0];			
-	});		
-	$("#done_files").click (function (event){
-		event.stopPropagation(); // остановка всех текущих JS событий
-		event.preventDefault();  // остановка дефолтного события		
-		$('#warning').html (' ' + "<br>");
-		$('#warning').show ();		
-		var fail = "";
-		if (typeof file == 'undefined') fail = "Не выбран файл";		
-		if (fail != "") {
-			$('#warning').html (fail  + "<br>");
-			$('#warning').show ();										
-			return false;
-		}
-		
-		$('#lk').html ("<br><h4>Идёт загрузка..</h4>");
-		$('#lk').show ();
-		
-		var Data = new FormData();
-		
-		Data.append('file', file);
-		
-		//Data.append('file', "1");
-			
-		$.ajax ({
-			url: '/site_pzm/lk/save_photo.php',
-			type: 'POST',
-			cache: false,
-			data: Data, //	{'file': "file"}, //
-			//dataType: 'json',
-			contentType: false,
-			processData: false,
-			success: function (data) {
-				$('#lk').html ("<br><h4>" + data + "</h4>");
-				$('#lk').show ();						
-			},
-			error: function(){
-				$('#lk').html ("<br><h4>Ошибка отправки запроса..</h4>");
-				$('#lk').show ();
-			}			
-		});			
-	});
-});
-</script>
