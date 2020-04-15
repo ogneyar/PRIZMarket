@@ -54,7 +54,7 @@ $(document).ready (function (){
 		Data.append('file', "1");
    
 		$.ajax ({
-			url: '/site_pzm/lk/save_photo.php',
+			url: '/site_pzm/lk/save_photo2.php',
 			type: 'POST',
 			cache: false,
 			data: {'filet': "file"},			
