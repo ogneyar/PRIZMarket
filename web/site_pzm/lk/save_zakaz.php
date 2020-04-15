@@ -51,13 +51,13 @@ $(document).ready (function (){
 		
 		let Data = new FormData();
 		
-		Data.append('file', "1");
-   
+		{'file': "file"}.append('file', "1");
+			
 		$.ajax ({
 			url: '/site_pzm/lk/save_photo2.php',
 			type: 'POST',
 			cache: false,
-			data: {'file': "file"},			
+			data: Data, //{'file': "file"},			
 			dataType: 'html',
 			//contentType: false,
 			//processData: false,
