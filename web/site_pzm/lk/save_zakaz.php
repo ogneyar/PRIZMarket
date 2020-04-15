@@ -31,7 +31,7 @@
 $(document).ready (function (){	
 	var file;		
 	$("#file").change(function(){
-		file = this.files;			
+		file = this.files[0];			
 	});		
 	$("#done_files").click (function (event){
 		event.stopPropagation(); // остановка всех текущих JS событий
