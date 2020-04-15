@@ -54,7 +54,13 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 		
 				Data.append('file', file);
 				
+				Data.append('hesh_pk', hesh_pk);
 				Data.append('name', name);
+				Data.append('link_name', link_name);
+				Data.append('hesh_kateg', hesh_kateg);
+				Data.append('currency', currency);
+				Data.append('hesh_city', hesh_city);
+				Data.append('opisanie', opisanie);
 					
 				$.ajax ({
 					url: '/site_pzm/lk/save_zakaz.php',

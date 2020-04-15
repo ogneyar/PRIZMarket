@@ -3,7 +3,13 @@ include_once '../../../vendor/autoload.php';
 include_once '../../a_conect.php';
 
 //if ($_FILES['file']) echo "Файл: ".$_FILES['file']['tmp_name']."<br><br>";
+if ($_POST['hesh_pk']) echo "К/П: ".$_POST['hesh_pk']."<br><br>";
 if ($_POST['name']) echo "Наименование: ".$_POST['name']."<br><br>";
+if ($_POST['link_name']) echo "Ссылка: ".$_POST['link_name']."<br><br>";
+if ($_POST['hesh_kateg']) echo "Категория: ".$_POST['hesh_kateg']."<br><br>";
+if ($_POST['currency']) echo "Валюта: ".$_POST['currency']."<br><br>";
+if ($_POST['hesh_city']) echo "Местонахождение: ".$_POST['hesh_city']."<br><br>";
+if ($_POST['opisanie']) echo "Описание: ".$_POST['opisanie']."<br><br>";
 
 $путь_к_фото = $_FILES['file']['tmp_name'];
 
