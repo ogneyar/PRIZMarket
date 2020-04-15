@@ -58,7 +58,7 @@ $(document).ready (function (){
 			type: 'POST',
 			cache: false,
 			data: {'file': "file"}, //Data, //	
-			dataType: 'json',
+			//dataType: 'json',
 			//contentType: false,
 			//processData: false,
 			success: function (data) {
