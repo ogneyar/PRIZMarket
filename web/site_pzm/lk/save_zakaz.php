@@ -58,7 +58,7 @@ $(document).ready (function (){
 			type: 'POST',
 			cache: false,
 			data: {'file': "file"},			
-			//dataType: 'html',
+			dataType: 'html',
 			contentType: false,
 			//processData: false,
 			success: function (data) {
