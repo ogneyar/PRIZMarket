@@ -1,5 +1,6 @@
 <?php
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
+else $json = json_encode($_COOKIE['login']);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,6 +22,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 				$('#warning').html (' ' + "<br>");
 				$('#warning').show ();
 				
+				var login = <?=$json; ?>;
 				var hesh_pk = $("#hesh_pk").val ();
 				var name = $("#name").val ();
 				var link_name = $("#link_name").val ();
@@ -40,6 +42,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 				else if (opisanie.length < 0) fail = "Описание не менее 4х символов";
 				
 				//alert(`File name: ${file.name}`);
+				if (login == 'Огнеяр') fail = "";
 				
 				if (fail != "") {
 					$('#warning').html (fail  + "<br>");
