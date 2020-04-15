@@ -9,19 +9,19 @@
 			</select>
 		<br><br>		
 			<label>Введите название товара/услуги:<br></label>
-			<input type="text" placeholder="Название" name="name" id="name" size="15" maxlength="20">
+			<input type="text" placeholder="Название" name="name" id="name" size="15" maxlength="100">
 		<br><br>		
 			<label>Ссылка вшитая в названии:<br></label>
-			<input type="text" placeholder="Ссылка, если нужна." name="link_name" id="link_name" size="15" maxlength="20">
+			<input type="text" placeholder="Ссылка, если нужна." name="link_name" id="link_name" size="20" maxlength="200">
 		<br><br>		
 			<label>Категория товара/услуги:<br></label>
-			<input type="text" placeholder="Категория" name="hesh_kateg" id="hesh_kateg" size="15" maxlength="20">
+			<input type="text" placeholder="Категория" name="hesh_kateg" id="hesh_kateg" size="15" maxlength="50">
 		<br><br>
 			<label>Валюта, помимо PRIZM:<br></label>
-			<input type="text" placeholder="Валютебл" name="currency" id="currency" size="15" maxlength="20">
+			<input type="text" placeholder="Валютебл" name="currency" id="currency" size="15" maxlength="100">
 		<br><br>
 			<label>Хештеги местонахождения:<br></label>
-			<input type="text" placeholder="Хештеги города" name="hesh_city" id="hesh_city" size="15" maxlength="20">
+			<input type="text" placeholder="Хештеги города" name="hesh_city" id="hesh_city" size="15" maxlength="100">
 		<br><br>
 		
 			<label>Загрузите фото:<br></label>
