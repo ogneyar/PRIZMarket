@@ -4,8 +4,8 @@
 		<br>		
 			<label>Выберите действие:<br></label>			
 			<select name="hesh_pk" id="hesh_pk">			
-				<option value="hesh_p" id="hesh_p" selected>#продаю</option>
-				<option value="hesh_k" id="hesh_k">#куплю</option>
+				<option value="продаю" id="hesh_p" selected>#продаю</option>
+				<option value="куплю" id="hesh_k">#куплю</option>
 			</select>
 		<br><br>		
 			<label>Введите название товара/услуги:<br></label>
