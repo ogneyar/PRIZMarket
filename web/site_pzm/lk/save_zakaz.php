@@ -8,8 +8,7 @@
 <!--
 <form action="/site_pzm/lk/sozdanie.php" method="post" enctype="multipart/form-data">
 -->
-	<input type="hidden" name="photo" value="1">
-	<br><br>	
+	<input type="hidden" name="photo" value="1">	
 	
 	<label>Загрузите главное фото:</label>
 	<br><br>
@@ -55,12 +54,12 @@ $(document).ready (function (){
 		
 		var Data = new FormData();
 		
-		Data.append('filet', file);
+		Data.append('file', file);
 		
-		Data.append('file', "1");
+		//Data.append('file', "1");
 			
 		$.ajax ({
-			url: '/site_pzm/lk/save_photo2.php',
+			url: '/site_pzm/lk/save_photo.php',
 			type: 'POST',
 			cache: false,
 			data: Data, //	{'file': "file"}, //
