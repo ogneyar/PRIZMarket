@@ -34,6 +34,8 @@
  *
  * answerInlineQuery
  *
+ * setMyCommands
+ *
  *
  * -----------------------------
  * функции работы с базой данных
@@ -645,6 +647,33 @@ class Bot
 		
 		return $response;
 	}
+	
+	
+	
+	/*
+	** Установка команд бота
+	**	
+	** @param array obj $commands
+	**
+	**
+	** @return array
+	*/
+	public function setMyCommands($commands) {
+		$response = $this->call("setMyCommands", [
+			'commands' => json_encode($commands),
+		]);
+		
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+		
+		return $response;
+	}
+	
+	
+	
 	
 	
 	
