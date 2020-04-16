@@ -2,6 +2,8 @@
 	<h4>
 		<!--<form action="save_zakaz.php" method="post" enctype="multipart/form-data">-->
 		<br>		
+			<input type="hidden" name="login" value="<?=$_COOKIE['login'];?>">
+			
 			<label>Выберите действие:<br></label>			
 			<select name="hesh_pk" id="hesh_pk">			
 				<option value="#продаю" id="hesh_p" selected>#продаю</option>

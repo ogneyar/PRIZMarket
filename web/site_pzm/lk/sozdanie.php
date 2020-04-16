@@ -1,6 +1,6 @@
 <?php
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
-else $json = json_encode($_COOKIE['login']);
+//else $json = json_encode($_COOKIE['login']);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

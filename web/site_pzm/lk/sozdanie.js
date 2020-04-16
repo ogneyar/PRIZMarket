@@ -10,7 +10,8 @@ $(document).ready (function (){
 		$('#warning').html (' ' + "<br>");
 		$('#warning').show ();
 				
-		var login = <?=$json; ?>;
+		//var login = <?=$json; ?>;
+		var login = $("#login").val ();
 		var hesh_pk = $("#hesh_pk").val ();
 		var name = $("#name").val ();
 		var link_name = $("#link_name").val ();
