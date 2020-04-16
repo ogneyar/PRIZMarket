@@ -36,10 +36,10 @@
 			
 		<br><br>
 			<label>Валюта, помимо PRIZM:<br></label>
-			<input type="text" placeholder="Напр: Рубль, Доллар" name="currency" id="currency" size="15" maxlength="100">
+			<input type="text" placeholder="Напр: Рубль, Доллар" name="currency" id="currency" size="20" maxlength="100">
 		<br><br>
 			<label>Хештеги местонахождения: <font color="red">*</font><br></label>
-			<input type="text" placeholder="Напр: #Россия #ВесьМир" name="hesh_city" id="hesh_city" size="15" maxlength="100">
+			<input type="text" placeholder="Напр: #Россия #ВесьМир" name="hesh_city" id="hesh_city" size="20" maxlength="100">
 		<br><br>
 		
 			<label>Загрузите фото: <font color="red">*</font><br></label>
