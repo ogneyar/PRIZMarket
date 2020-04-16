@@ -10,7 +10,7 @@
 				<option value="#куплю" id="hesh_k">#куплю</option>
 			</select>
 		<br><br>		
-			<label>Введите название товара/услуги: <span color="red">*</span><br></label>
+			<label>Введите название товара/услуги: <i color="red">*</i><br></label>
 			<input type="text" placeholder="Название" name="name" id="name" size="15" maxlength="100">
 		<br><br>		
 			<label>Ссылка вшитая в названии:<br></label>
