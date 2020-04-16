@@ -6,7 +6,7 @@ include_once '../../myBotApi/Bot.php';
 $token = $tokenSite;
 $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
-include '../../myBotApi/Variables.php';
+include_once '../../myBotApi/Variables.php';
 $admin_group = $admin_group_Site;
 $админка = $admin_group;
 $мастер = $master;
@@ -43,12 +43,14 @@ $upload = $s3->putObject([
 ]);			
 // ---------------------------			
 
-if(!$upload) echo "Не смог загрузить файл";
-else {
+if(!$upload) {
+	echo "Не смог загрузить файл";
+	//$bot->setMyCommands($BotCommand);
+}else {
 	echo "Файл загружен на Амазон";
 	$ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;
 	echo "<br><br>" . $ссылка_на_амазон;
-	$bot->sendMessage($мастер, "Привеееет");
+	//$bot->sendMessage($мастер, "Привеееет");	
 }
 
 ?>
