@@ -4,7 +4,7 @@
 		<br>		
 			<input type="hidden" name="login" id="login" value="<?=$_COOKIE['login'];?>">
 			
-			<label>Выберите действие: <font color="red">*</font><br></label>			
+			<label>Выберите действие:<br></label>			
 			<select name="hesh_pk" id="hesh_pk">			
 				<option value="#продаю" id="hesh_p" selected>#продаю</option>
 				<option value="#куплю" id="hesh_k">#куплю</option>
@@ -16,7 +16,7 @@
 			<label>Ссылка вшитая в названии:<br></label>
 			<input type="text" placeholder="Введите, если нужна" name="link_name" id="link_name" size="20" maxlength="200">
 		<br><br>		
-			<label>Категория товара/услуги: <font color="red">*</font><br></label>
+			<label>Категория товара/услуги:</font><br></label>
 			<select name="hesh_kateg" id="hesh_kateg">			
 				<option value="#недвижимость">#недвижимость</option>
 				<option value="#работа">#работа</option>
