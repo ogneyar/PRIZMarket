@@ -11,10 +11,10 @@
 			</select>
 		<br><br>		
 			<label>Введите название товара/услуги: <font color="red">*</font><br></label>
-			<input type="text" placeholder="Название" name="name" id="name" size="15" maxlength="100">
+			<input type="text" placeholder="Введите название..." name="name" id="name" size="15" maxlength="100">
 		<br><br>		
 			<label>Ссылка вшитая в названии:<br></label>
-			<input type="text" placeholder="Ссылка, если нужна." name="link_name" id="link_name" size="20" maxlength="200">
+			<input type="text" placeholder="Введите, если нужна" name="link_name" id="link_name" size="20" maxlength="200">
 		<br><br>		
 			<label>Категория товара/услуги: <font color="red">*</font><br></label>
 			<select name="hesh_kateg" id="hesh_kateg">			
@@ -36,10 +36,10 @@
 			
 		<br><br>
 			<label>Валюта, помимо PRIZM:<br></label>
-			<input type="text" placeholder="Валютебл" name="currency" id="currency" size="15" maxlength="100">
+			<input type="text" placeholder="Напр: Рубль, Доллар" name="currency" id="currency" size="15" maxlength="100">
 		<br><br>
 			<label>Хештеги местонахождения: <font color="red">*</font><br></label>
-			<input type="text" placeholder="Хештеги города" name="hesh_city" id="hesh_city" size="15" maxlength="100">
+			<input type="text" placeholder="Напр: #Россия #ВесьМир" name="hesh_city" id="hesh_city" size="15" maxlength="100">
 		<br><br>
 		
 			<label>Загрузите фото: <font color="red">*</font><br></label>
@@ -47,7 +47,7 @@
 		<br><br>
 		
 			<label>Введите описание: <font color="red">*</font><br></label>
-			<textarea name="opisanie" id="opisanie" maxlength="500" rows="7" cols="25"></textarea>
+			<textarea placeholder="Опишите подробно Ваш товар/услугу" name="opisanie" id="opisanie" maxlength="500" rows="7" cols="25"></textarea>
 		<br><br>
 		
 		<!--<input type="file" id="files" name="files" multiple accept="image/*"> ДОП ФОТО-->
