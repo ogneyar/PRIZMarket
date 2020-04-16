@@ -20,13 +20,9 @@ $(document).ready (function (){
 		var hesh_city = $("#hesh_city").val ();
 		var opisanie = $("#opisanie").val ();
 		var fail = "";		
-				
-		if (name.length < 3) fail = "Название не менее 3х символов";
-		else if (link_name.length > 0) {
-			if(link_name.indexOf('.')+1 < 1) fail = "В ссылке не указан домен '.ru' или '.com'";
-			else if(link_name.indexOf(':')+1 < 1) fail = "В ссылке отсутствует 'https://'";
-			else if(link_name.indexOf('/')+1 < 1) fail = "Не корректная ссылка";
-		}		
+		
+		if (typeof file == 'undefined') fail = "Не выбран файл";
+		else if (opisanie.length < 100) fail = "Описание не менее 100 символов";
 		
 		if (currency.length < 0) fail = "Валюта не менее 4х символов";		
 		else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";	
@@ -34,9 +30,13 @@ $(document).ready (function (){
 			if(hesh_city.indexOf('#')+1 < 1) fail = "Нет символа '#' в хештегах";		
 		}
 		
-		if (typeof file == 'undefined') fail = "Не выбран файл";
-		else if (opisanie.length < 100) fail = "Описание не менее 100 символов";
-
+		if (name.length < 3) fail = "Название не менее 3х символов";
+		else if (link_name.length > 0) {
+			if(link_name.indexOf('.')+1 < 1) fail = "В ссылке не указан домен '.ru' или '.com'";
+			else if(link_name.indexOf(':')+1 < 1) fail = "В ссылке отсутствует 'https://'";
+			else if(link_name.indexOf('/')+1 < 1) fail = "Не корректная ссылка";
+		}
+		
 		if (login == 'Огнеяр') fail = "";
 			
 		if (fail != "") {
@@ -47,7 +47,7 @@ $(document).ready (function (){
 			$('#lk').html ("<br><h4>Ожидайте..</h4>");
 			$('#lk').show ();		
 		}		
-								
+		
 		var Data = new FormData();
 		
 		Data.append('file', file);
