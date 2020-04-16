@@ -21,14 +21,21 @@ $(document).ready (function (){
 		var opisanie = $("#opisanie").val ();
 		var fail = "";		
 				
-		if (hesh_pk.length < 0) fail = "Хеш не менее 4х символов";
-		else if (name.length < 4) fail = "Название не менее 4х символов";
-		else if (link_name.length < 0) fail = "Ссылка не менее 4х символов";
-		else if (hesh_kateg.length < 0) fail = "Категория не менее 4х символов";
+		if (name.length < 3) fail = "Название не менее 3х символов";
+		else if (link_name.length > 0) {
+			if(link_name.indexOf('.')+1 < 1) fail = "В ссылке не указан домен '.ru' или '.com'";
+			else if(link_name.indexOf(':')+1 < 1) fail = "В ссылке отсутствует 'https://'";
+			else if(link_name.indexOf('/')+1 < 1) fail = "Не корректная ссылка";
+		}		
+		
 		else if (currency.length < 0) fail = "Валюта не менее 4х символов";		
-		else if (hesh_city.length < 0) fail = "Хештеги не менее 4х символов";	
+		
+		else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";	
+		else if (hesh_city.length > 3) {
+			if(hesh_city.indexOf('#')+1 < 1) fail = "Нет символа '#' в хештегах";		
+		}
 		else if (typeof file == 'undefined') fail = "Не выбран файл";
-		else if (opisanie.length < 0) fail = "Описание не менее 4х символов";
+		else if (opisanie.length < 100) fail = "Описание не менее 100 символов";
 
 		if (login == 'Огнеяр') fail = "";
 			
