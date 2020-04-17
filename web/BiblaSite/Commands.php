@@ -35,8 +35,8 @@ if ($text == 'база') {
 }elseif ($text == 'сенд') {	
 	//$фото = "https://i.ibb.co/YZVdQrH/file-108.jpg";
 	$фото = "https://i.gifer.com/72Sz.gif";
-	$file = file_get_contents($фото);
-	$результат = $bot->sendDocument($chat_id, $file);
+	//$file = file_get_contents($фото);
+	$результат = $bot->sendDocument($chat_id, $фото);
 	if ($результат) {					
 		$bot->sendMessage($chat_id, "Кууль.");
 	}else $bot->sendMessage($chat_id, "Не кууль.");
