@@ -33,7 +33,7 @@ if ($text == 'база') {
 	}else $bot->sendMessage($chat_id, "Не получается установить команды.");
 	
 }elseif ($text == 'сенд') {	
-	$фото = "https://boxbuket.s3.eu-west-3.amazonaws.com/TEMP-Огнеяр.jpg";
+	$фото = "https://i.ibb.co/YZVdQrH/file-108.jpg";
 	$file = file_get_contents($фото);
 	$результат = $bot->sendPhoto($chat_id, $file);
 	if ($результат) {					
