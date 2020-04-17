@@ -19,12 +19,14 @@ if ($text == 'база') {
 	}else $bot->sendMessage($chat_id, "Не получается удалить строку из БД");
 	
 }elseif ($text == 'сетком') {
-	$command = "test";
-	$description = "тестовое описание команды";
 	$BotCommand = [
 		[
-			'command' => '',
-			'description' => ''
+			'command' => "start",
+			'description' => "Старт бота"
+		],
+		[
+			'command' => "help",
+			'description' => "Помощь"
 		]
 	];
 	$bot->sendMessage($chat_id, "Вот.");
