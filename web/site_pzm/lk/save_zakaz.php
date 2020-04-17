@@ -1,7 +1,7 @@
 <?
 include_once '../../../vendor/autoload.php';	
 include_once '../../a_conect.php';
-/*include_once '../../myBotApi/Bot.php';
+include_once '../../myBotApi/Bot.php';
 //exit('ok');
 $token = $tokenSite;
 $bot = new Bot($token);
@@ -9,7 +9,7 @@ $id_bota = strstr($token, ':', true);
 include_once '../../myBotApi/Variables.php';
 $admin_group = $admin_group_Site;
 $админка = $admin_group;
-$мастер = $master;*/
+$мастер = $master;
 
 //if ($_FILES['file']) echo "Файл: ".$_FILES['file']['tmp_name']."<br><br>";
 if ($_POST['hesh_pk']) echo "К/П: ".$_POST['hesh_pk']."<br><br>";
@@ -45,12 +45,12 @@ $upload = $s3->putObject([
 
 if(!$upload) {
 	echo "Не смог загрузить файл";
-	//$bot->setMyCommands($BotCommand);
+	$bot->setMyCommands($BotCommand);
 }else {
 	echo "Файл загружен на Амазон";
 	$ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;
-	echo "<br><br>" . $ссылка_на_амазон;
-	//$bot->sendMessage($мастер, "Привеееет");	
+	echo "<br><br>" . $ссылка_на_амазон;	
+	$bot->sendMessage($мастер, "Привеееет");	
 }
 
 ?>
