@@ -49,7 +49,8 @@ if(!$upload) {
 	echo "Файл загружен на Амазон";
 	$ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;
 	echo "<br><br>" . $ссылка_на_амазон;	
-	$bot->setMyCommands($BotCommand);
+	$bot->sendMessage($мастер, "Файл загружен на Амазон");
+	//$bot->setMyCommands($BotCommand);
 }
 
 ?>
