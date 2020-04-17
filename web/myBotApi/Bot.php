@@ -24,6 +24,8 @@
  *
  * sendVideo
  *
+ * sendDocument
+ *
  * sendMediaGroup
  *
  * answerCallbackQuery
@@ -486,6 +488,54 @@ class Bot
 		return $response;
 	}
 	
+	
+	
+	/*
+	**  функция отправки документов 
+	**
+	**  @param int $chat_id
+ 	**  @param str $document
+	**  @param str $caption
+	**  @param str $parse_mode
+	**  @param array $reply_markup
+	**  @param int $reply_to_message_id	
+	**  @param str $thumb
+	**  @param bool $disable_notification
+	**  
+	**  @return array
+	*/
+    public function sendDocument(
+		$chat_id, 
+		$document,			
+		$caption = null,		
+		$parse_mode = null,		
+		$reply_markup = null,
+		$reply_to_message_id = null,	
+		$thumb = null,		
+		$disable_notification = false
+	) {
+		
+		if ($reply_markup) $reply_markup = json_encode($reply_markup);
+		
+		$response = $this->call("sendDocument", [
+			'chat_id' => $chat_id,
+			'document' => $document,
+			'thumb' => $thumb,
+			'caption' => $caption,
+			'parse_mode' => $parse_mode,
+			'disable_notification' => $disable_notification,
+			'reply_to_message_id' => $reply_to_message_id,
+			'reply_markup' => $reply_markup
+		]);	
+				
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+		
+		return $response;
+	}
 	
 	
 	
