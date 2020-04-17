@@ -1,8 +1,8 @@
 <?php
 include_once '../../a_conect.php';
-/*include_once '../../myBotApi/Bot.php';
+include_once '../../myBotApi/Bot.php';
 //exit('ok');
-$token = $tokenSite;
+/*$token = $tokenSite;
 $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
 include '../../myBotApi/Variables.php';
