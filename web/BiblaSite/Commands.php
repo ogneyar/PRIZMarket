@@ -23,8 +23,8 @@ if ($text == 'база') {
 	$description = "тестовое описание команды";
 	$BotCommand = [
 		[
-			'command' => $command,
-			'description' => $description
+			'command' => '',
+			'description' => ''
 		]
 	];
 	$bot->sendMessage($chat_id, "Вот.");
