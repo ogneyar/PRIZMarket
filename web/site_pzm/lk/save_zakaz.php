@@ -44,13 +44,12 @@ $upload = $s3->putObject([
 // ---------------------------			
 
 if(!$upload) {
-	echo "Не смог загрузить файл";
-	$bot->setMyCommands($BotCommand);
+	echo "Не смог загрузить файл";	
 }else {
 	echo "Файл загружен на Амазон";
 	$ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;
 	echo "<br><br>" . $ссылка_на_амазон;	
-	$bot->sendMessage($мастер, "Привеееет");	
+	$bot->setMyCommands($BotCommand);
 }
 
 ?>
