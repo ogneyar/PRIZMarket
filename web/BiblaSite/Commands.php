@@ -22,11 +22,7 @@ if ($text == 'база') {
 	$BotCommand = [
 		[
 			'command' => "start",
-			'description' => "Старт бота"
-		],
-		[
-			'command' => "help",
-			'description' => "Помощь"
+			'description' => "Главное меню"
 		]
 	];
 	$bot->sendMessage($chat_id, "Вот.");
