@@ -29,6 +29,20 @@ if ($text == 'соо') {
 	}	
 
 
+}elseif ($text == 'сетком') {
+	$BotCommand = [
+		[
+			'command' => "start",
+			'description' => "Главное меню"
+		]
+	];
+	$bot->sendMessage($chat_id, "Вот.");
+	$bot->sendMessage($chat_id, $BotCommand);
+	$result = $bot->setMyCommands($BotCommand);	
+	if ($result) {					
+		$bot->sendMessage($chat_id, "Установил команды.");
+	}else $bot->sendMessage($chat_id, "Не получается установить команды.");
+	
 }elseif ($text == 'изи') {
 	
 	$query = "CREATE TABLE IF NOT EXISTS `avtozakaz_pzmarket` (
