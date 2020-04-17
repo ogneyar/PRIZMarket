@@ -18,6 +18,14 @@ if ($text == 'база') {
 		$bot->sendMessage($chat_id, "Удаление из БД совершенно!");
 	}else $bot->sendMessage($chat_id, "Не получается удалить строку из БД");
 	
+}elseif ($text == 'сетком') {
+	$bot->sendMessage($chat_id, "Вот.");
+	$bot->sendMessage($chat_id, $BotCommand);
+	$result = $bot->setMyCommands($BotCommand);	
+	if ($result) {					
+		$bot->sendMessage($chat_id, "Установил команды.");
+	}else $bot->sendMessage($chat_id, "Не получается установить команды.");
+	
 }
 
 
