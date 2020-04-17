@@ -33,9 +33,10 @@ if ($text == 'база') {
 	}else $bot->sendMessage($chat_id, "Не получается установить команды.");
 	
 }elseif ($text == 'сенд') {	
-	$фото = "https://i.ibb.co/YZVdQrH/file-108.jpg";
+	//$фото = "https://i.ibb.co/YZVdQrH/file-108.jpg";
+	$фото = "https://i.gifer.com/72Sz.gif";
 	$file = file_get_contents($фото);
-	$результат = $bot->sendPhoto($chat_id, $file);
+	$результат = $bot->sendDocument($chat_id, $file);
 	if ($результат) {					
 		$bot->sendMessage($chat_id, "Кууль.");
 	}else $bot->sendMessage($chat_id, "Не кууль.");
