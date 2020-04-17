@@ -500,13 +500,16 @@ $InlineQueryResultVideo = [
 ];
 
 
-// переменные для установки команд бота
-$command = "test";
-$description = "описание команды";
-
+// переменная для установки команд бота - $bot->setMyCommands($BotCommand);	
 $BotCommand = [
-	'command' => $command,
-	'description' => $description
+	[
+		'command' => "start",
+		'description' => "Старт бота"
+	],
+	[
+		'command' => "help",
+		'description' => "Помощь"
+	]
 ];
 
 
