@@ -502,7 +502,7 @@ $InlineQueryResultVideo = [
 
 // переменные для установки команд бота
 $command = "test";
-$description "описание команды";
+$description = "описание команды";
 
 $BotCommand = [
 	'command' => $command,
