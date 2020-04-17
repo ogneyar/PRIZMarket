@@ -7,10 +7,10 @@ $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
 include_once '../../myBotApi/Variables.php';
 $admin_group = $admin_group_Site;
-$админка = $admin_group;
-$мастер = $master;
+//$админка = $admin_group;
+//$мастер = $master;
 
-$bot->sendMessage($мастер, "Привеееет");	
+$bot->sendMessage($admin_group, "Привеееет");	
 
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 //else $json = json_encode($_COOKIE['login']);
