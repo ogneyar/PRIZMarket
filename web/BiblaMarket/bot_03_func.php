@@ -563,7 +563,7 @@ function _start_PZMarket_bota($this_admin=false) { // функция старт�
 
 	$keyB=$keyboard;
 	if ($this_admin==true) $keyB=$keyboardAdmin;
-	elseif (($chat_id=='630509100')||($chat_id==$master)) $keyB=$keyboardMax;
+	if (($chat_id=='630509100')||($chat_id==$master)) $keyB=$keyboardMax;
 	
 	_est_li_v_base();
 	
