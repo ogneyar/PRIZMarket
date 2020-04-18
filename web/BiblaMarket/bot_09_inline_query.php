@@ -9,10 +9,15 @@
 */
 if ($arr['inline_query']) {	
 	
-	$reply = _kurs_PZM();
+	//$reply = _kurs_PZM();
+	$kurs_PZM = _kurs_PZM();
+	$курс_РКАЦ = _курс_РКАЦ();
 	
-	$reply = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)",
-		"CoinMarketCap.com", $reply);
+	
+	$kurs_PZM = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)",
+		"CoinMarketCap.com", $kurs_PZM);
+		
+	$reply = $курс_РКАЦ . $kurs_PZM;
 	
 	$title = "Курс PRIZM.";
 	
