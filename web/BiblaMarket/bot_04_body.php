@@ -2,7 +2,8 @@
 
 $est=strpos($text, "t.me/prizm_market");
 
-if (($chat_id=='')||($chat_id==$master)) $result = _ожидание_ввода();
+$result = null;
+if (($chat_id=='630509100')||($chat_id==$master)) $result = _ожидание_ввода();
 
 //ОСНОВНАЯ РАБОТА БОТА, ВЫПОЛНЕНИЕ КОМАНД (РЕАКЦИЯ НА РЕПЛИКИ ПОЛЬЗОВАТЕЛЯ)
 
@@ -22,7 +23,8 @@ if ($est!==false){
 	
 	if ($result['ojidanie'] == 'курсРКАЦ') {
 		_курс_РКАЦ($text);
-		_очистка_таблицы_ожидание();			
+		_очистка_таблицы_ожидание();		
+		$tg->sendMessage($chat_id, "Принял.");
 	}
 		
     //    $tg->sendMessage($chat_id, $reply, markdown, false);	
