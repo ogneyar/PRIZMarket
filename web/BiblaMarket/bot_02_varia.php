@@ -168,17 +168,23 @@ $knopa07 = "Разместить объявление в *Категориях*"
 $knopa08 = ""; 
 $knopa09 = "";
 $knopka_adminka = "ДЛЯ АДМИНИСТРАЦИИ";
+$кнопка_Макса = "ЗАДАТЬ КУРС PRIZM!";
 //ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК KeybordReply ГЛАВНОГО меню
 $stroka1 = [$knopa01, $knopa02, $knopa03];
 $stroka2 = [$knopa04, $knopa05, $knopa06];
 $stroka3 = [$knopa07, $knopa08, $knopa09];	
 $stroka_adminka = [$knopka_adminka];
+$сторока_Макса = [$кнопка_Макса];
+
 $menuPZMbot	= [$stroka1, $stroka2, $stroka3];
 //СОЗДАНИЕ КЛАВИАТУРЫ KeybordReply ГЛАВНОГО меню
 $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($menuPZMbot, false, true);  
 
 $menuAdmin	= [$stroka1, $stroka2, $stroka3, $stroka_adminka];
 $keyboardAdmin = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($menuAdmin, false, true);  
+
+$менюМакса = [$stroka1, $stroka2, $stroka3, $сторока_Макса];
+$keyboardMax = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($менюМакса, false, true); 
 
 
 $ep= new \TelegramBot\Api\Types\ReplyKeyboardHide(true);

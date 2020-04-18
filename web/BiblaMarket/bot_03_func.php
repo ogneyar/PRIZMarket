@@ -559,10 +559,11 @@ function vibor_otdela($text) { // функция выбора отдела в к
 
 function _start_PZMarket_bota($this_admin=false) { // функция старта PZMarketBota
 
-	global $first_name, $tg, $chat_id, $tehPodderjka, $keyboard, $keyboardAdmin;
+	global $first_name, $tg, $chat_id, $master, $tehPodderjka, $keyboard, $keyboardAdmin, $keyboardMax;
 
 	$keyB=$keyboard;
 	if ($this_admin==true) $keyB=$keyboardAdmin;
+	elseif (($chat_id=='630509100')||($chat_id==$master)) $keyB=$keyboardMax;
 	
 	_est_li_v_base();
 	
