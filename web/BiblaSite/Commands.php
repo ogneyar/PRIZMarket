@@ -43,11 +43,11 @@ if ($text == 'база') {
 	
 }elseif ($text == 'сендФото') {	
 	$фото = "https://i.ibb.co/YZVdQrH/file-108.jpg";	
-	//$file = file_get_contents($фото);	
+	$file = file_get_contents($фото);	
 	$InputMediaPhoto = [
 		[
 			'type' => 'photo',
-			'media' => $фото
+			'media' => $file
 		]
 	];	
 	$InputMediaPhoto = json_encode($InputMediaPhoto);
