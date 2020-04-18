@@ -30,6 +30,8 @@ $table5='pzmarkt';
 $table6='chat_garant';
 
 $таблица_переменных = 'variables';
+$таблица_ожидание = 'market_ojidanie';
+
 
 
 $Key_VES = [[['text' => 'Перейти..', 'url' => 'http://t.me/PRIZM_world_bot?start=']]];
