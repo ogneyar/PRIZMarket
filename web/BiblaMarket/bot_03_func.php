@@ -317,17 +317,18 @@ function _курс_РКАЦ($курс=null){
 	global $mysqli, $id_bota, $таблица_переменных;	
 	$ответ = false;		
 	
-	$запрос = "SELECT soderjimoe FROM {$таблица_переменных} WHERE id_bota={$id_bota} AND nazvanie='курс РКАЦ'";	 
+	$запрос = "SELECT soderjimoe FROM {$таблица_переменных} WHERE id_bota='{$id_bota}' AND nazvanie='курс РКАЦ'";	 
 	$результат = $mysqli->query($запрос);	
 	if ($результат->num_rows > 0) {			
 		if ($курс) {
-			$query = "UPDATE {$таблица_переменных} SET soderjimoe='{$курс}' WHERE id_bota={$id_bota}";		
+			$query = "UPDATE {$таблица_переменных} SET soderjimoe='{$курс}' WHERE id_bota='{$id_bota}'";		
 			$результат = $mysqli->query($запрос);			
 			if (!$результат) throw new Exception("Не смог обновить запись в таблице {$таблица_переменных} (_задать_курс_РКАЦ)");			
 			$ответ = true;			
 		}else {
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
-			$ответ = "*Рекомендованый* Курс PRIZM\n\n1PZM = ".$результМассив[0]['soderjimoe']." \xE2\x82\xBD\n\n";
+			
+			$ответ = "*Рекомендованый* Курс PRIZM\n+------------------+\n|  1PZM = ".$результМассив[0]['soderjimoe']." \xE2\x82\xBD  |\n+------------------+\n";
 		}
 	}else {			
 		if ($курс) {
