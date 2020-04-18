@@ -41,7 +41,9 @@ if ($est!==false){
 			
 	$kurs_PZM = _kurs_PZM();
 	$курс_РКАЦ = _курс_РКАЦ();
-	$reply = $курс_РКАЦ ."___________________________\n". $kurs_PZM;
+	
+	$reply = $курс_РКАЦ . $kurs_PZM;
+	
 	// КНОПКА Репост
 	$inLine10_but1=["text"=>"Репост","switch_inline_query"=>"курс"];
 	$inLine10_str1=[$inLine10_but1];
