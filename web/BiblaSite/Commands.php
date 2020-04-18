@@ -48,6 +48,7 @@ if ($text == 'база') {
 		'type' => 'photo',
 		'media' => $фото
 	];	
+	$InputMediaPhoto = json_encode($InputMediaPhoto);
 	$результат = $bot->sendPhoto($chat_id, $InputMediaPhoto);
 	if ($результат) {					
 		$bot->sendMessage($chat_id, "Кууль.");
