@@ -23,7 +23,7 @@ if ($est!==false){
         $tg->sendMessage($chat_id, $reply, markdown, false);	
 		
 			
-}elseif ($text == $knopa03||($id_bota != '1066944801'&&$id_bota != '1037491432'&&($text == "курс"||$text == "Курс"||$text == "rehc"||$text == "Rehc"))) {  // Курс PRIZM
+}elseif ($text == $knopa03||($id_bota != '1066944801'&&$id_bota != '1037491432'&&($text == "курс"||$text == "Курс"||$text == "rehc"||$text == "Rehc"||$text == "цена"||$text == "Цена"))) {  // Курс PRIZM
 			
 	$reply = _kurs_PZM();
 	
@@ -157,6 +157,11 @@ if ($est!==false){
 	}else throw new Exception("Не получилось подключиться к таблице {$table5}");		
 		
 			
+}elseif (($text=="ЗАДАТЬ КУРС PRIZM!")&&($chat_id=='630509100')||($text=="ЗАДАТЬ КУРС PRIZM!")&&($chat_id==$master)) {
+	
+	$tg->sendMessage($chat_id, "Куууль");		
+	
+	
 }elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&&$text!=="C"&&$text !== "Старт"&&$text !== "старт") {
 
 	if (($this_admin==true)||($from_id==$master)) {
