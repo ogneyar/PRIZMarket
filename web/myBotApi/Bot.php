@@ -26,6 +26,8 @@
  *
  * sendDocument
  *
+ * sendAnimation
+ *
  * sendMediaGroup
  *
  * answerCallbackQuery
@@ -520,6 +522,64 @@ class Bot
 		$response = $this->call("sendDocument", [
 			'chat_id' => $chat_id,
 			'document' => $document,
+			'thumb' => $thumb,
+			'caption' => $caption,
+			'parse_mode' => $parse_mode,
+			'disable_notification' => $disable_notification,
+			'reply_to_message_id' => $reply_to_message_id,
+			'reply_markup' => $reply_markup
+		]);	
+				
+		$response = json_decode($response, true);
+		
+		if ($response['ok']) {
+			$response = $response['result'];
+		}else $response = false;
+		
+		return $response;
+	}
+	
+		
+	
+	/*
+	**  функция отправки анимаций
+	**
+	**  @param int $chat_id
+ 	**  @param str $animation
+	**  @param str $caption
+	**  @param str $parse_mode
+	**  @param array $reply_markup
+	**  @param int $reply_to_message_id	
+	**  @param int $duration
+	**  @param int $width
+	**  @param int $height
+	**  @param str $thumb
+	**  @param bool $disable_notification
+	**  
+	**  @return array
+	*/
+    public function sendAnimation(
+		$chat_id, 
+		$animation,		
+		$caption = null,
+		$parse_mode = null,
+		$reply_markup = null,
+		$reply_to_message_id = null,		
+		$duration = null,
+		$width = null,
+		$height = null,
+		$thumb = null,
+		$disable_notification = false
+	) {
+		
+		if ($reply_markup) $reply_markup = json_encode($reply_markup);
+		
+		$response = $this->call("sendAnimation", [
+			'chat_id' => $chat_id,
+			'animation' => $animation,
+			'duration' => $duration,
+			'width' => $width,
+			'height' => $height,
 			'thumb' => $thumb,
 			'caption' => $caption,
 			'parse_mode' => $parse_mode,
