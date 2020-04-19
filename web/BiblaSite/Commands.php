@@ -41,17 +41,12 @@ if ($text == 'база') {
 		$bot->sendMessage($chat_id, "Кууль.");
 	}else $bot->sendMessage($chat_id, "Не кууль.");
 	
-}elseif ($text == 'сендФото') {	
+}elseif ($text == 'сенд') {	
 	$фото = "https://i.ibb.co/YZVdQrH/file-108.jpg";	
-	$file = file_get_contents($фото);	
-	$InputMediaPhoto = [
-		[
-			'type' => 'photo',
-			'media' => $file
-		]
-	];	
-	$InputMediaPhoto = json_encode($InputMediaPhoto);
-	$результат = $bot->sendPhoto($chat_id, $InputMediaPhoto);
+	//$file = file_get_contents($фото);	
+	//$InputMediaPhoto = [ ['type' => 'photo', 'media' => $file] ];	
+	//$InputMediaPhoto = json_encode($InputMediaPhoto);
+	$результат = $bot->sendAnimation($chat_id, $фото);
 	if ($результат) {					
 		$bot->sendMessage($chat_id, "Кууль.");
 	}else $bot->sendMessage($chat_id, "Не кууль.");
