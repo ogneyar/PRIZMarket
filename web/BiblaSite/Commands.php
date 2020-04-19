@@ -50,7 +50,16 @@ if ($text == 'база') {
 	if ($результат) {					
 		//$bot->sendMessage($chat_id, "Кууль.");
 		//$bot->sendMessage($chat_id, $bot->PrintArray($результат));
-		$bot->sendPhoto($chat_id, $результат['document']['file_id'], "текст");
+		//$bot->sendPhoto($chat_id, $результат['document']['file_id'], "текст");
+		$медиа = $результат['document']['file_id'];	
+		$тип = 'photo';			
+		$файл_медиа = [					
+				[ 'type' => $тип, 'media' => $медиа	],
+				[ 'type' => $тип, 'media' => $медиа	]
+		]);		
+		$результат = $bot->sendMediaGroup($chat_id, $файл_медиа);	
+		
+		
 	}else $bot->sendMessage($chat_id, "Не кууль.");
 	
 }
