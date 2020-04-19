@@ -49,7 +49,7 @@ if ($text == 'база') {
 	$результат = $bot->sendAnimation($chat_id, $фото);
 	if ($результат) {					
 		$bot->sendMessage($chat_id, "Кууль.");
-		$bot->sendMessage($chat_id, gettype($результат));
+		$bot->sendMessage($chat_id, json_encode($результат));
 	}else $bot->sendMessage($chat_id, "Не кууль.");
 	
 }
