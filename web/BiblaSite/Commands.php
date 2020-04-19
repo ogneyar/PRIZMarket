@@ -46,7 +46,7 @@ if ($text == 'база') {
 	//$file = file_get_contents($фото);	
 	//$InputMediaPhoto = [ ['type' => 'photo', 'media' => $file] ];	
 	//$InputMediaPhoto = json_encode($InputMediaPhoto);
-	$результат = $bot->sendAnimation($chat_id, $фото);
+	$результат = $bot->sendDocument($chat_id, $фото);
 	if ($результат) {					
 		$bot->sendMessage($chat_id, "Кууль.");
 		$bot->sendMessage($chat_id, json_encode($результат));
