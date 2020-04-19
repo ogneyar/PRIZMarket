@@ -50,7 +50,7 @@ if ($text == 'база') {
 	if ($результат) {					
 		//$bot->sendMessage($chat_id, "Кууль.");
 		//$bot->sendMessage($chat_id, $bot->PrintArray($результат));
-		$bot->sendMessage($chat_id, $результат['document']['file_id']);
+		$bot->sendPhoto($chat_id, $результат['document']['file_id'], "текст");
 	}else $bot->sendMessage($chat_id, "Не кууль.");
 	
 }
