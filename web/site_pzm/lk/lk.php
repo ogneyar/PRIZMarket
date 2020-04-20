@@ -32,6 +32,7 @@ $login_json = json_encode($вывод);
 			<li><a href="/site_pzm/lk/index.php">Личный кабинет</a></li>
 			<li><a href="/site_pzm/lk/sozdanie.php">Создать заявку</a></li>
 			<li><a href="/site_pzm/lk/zayavki.php">Ваши заявки</a></li>
+			<li><a href="/site_pzm/lk/test.php">Тест</a></li>
 			<li><a href="/site_pzm/lk/exit.php">Выход</a></li>			
 		</ul>
 			
