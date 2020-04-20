@@ -27,7 +27,7 @@ $(document).ready (function (){
 		Data.append('name', name);
 		
 		$.ajax ({
-			url: 'http://f0430377.xsph.ru',
+			url: 'https://f0430377.xsph.ru',
 			type: 'POST',
 			cache: false,
 			data: Data,
