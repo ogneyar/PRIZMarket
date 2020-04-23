@@ -184,7 +184,7 @@ function _kurs_PZM(){
 	
 			$Date_PricePZM = gmdate('d.m.Y H:i', $время + 3*3600);
 	
-			$Round_PricePZM_in_USD=round($PricePZM_in_USD, 2);
+			$Round_PricePZM_in_USD=round($PricePZM_in_USD, 4);
 			$Round_PricePZM_in_RUB=round($PricePZM_in_RUB, 2);
 	//		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
 	//		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
@@ -343,7 +343,7 @@ function _курс_РКАЦ($курс=null){
 			
 			$округлённый_курс=round($курс_РК, 2);
 			
-			$ответ = "Курс *ЧАТА*\n   -----------------------\n|  1PZM = ".$округлённый_курс." \xE2\x82\xBD  |  КМК+".$процент."%\n   -----------------------\n";
+			$ответ = "Курс *ЧАТА* = КМК+".$процент."%\n   -----------------------\n|  1PZM = ".$округлённый_курс." \xE2\x82\xBD  |\n   -----------------------\n";
 			
 		}
 	}else {			
