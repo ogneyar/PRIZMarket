@@ -3,7 +3,7 @@
 $est=strpos($text, "t.me/prizm_market");
 
 $result = null;
-if (($chat_id=='630509100')||($chat_id==$master)) $result = _ожидание_ввода();
+if (($chat_id==$Макс_гарант)||($chat_id==$master)) $result = _ожидание_ввода();
 
 //ОСНОВНАЯ РАБОТА БОТА, ВЫПОЛНЕНИЕ КОМАНД (РЕАКЦИЯ НА РЕПЛИКИ ПОЛЬЗОВАТЕЛЯ)
 
@@ -40,9 +40,12 @@ if ($est!==false){
 }elseif ($text == $knopa03||($id_bota != '1066944801'&&$id_bota != '1037491432'&&($text == "курс"||$text == "Курс"||$text == "rehc"||$text == "Rehc"||$text == "цена"||$text == "Цена"))) {  // Курс PRIZM
 			
 	$kurs_PZM = _kurs_PZM();
-	$курс_РКАЦ = _курс_РКАЦ();
-	
-	$reply = $курс_РКАЦ . $kurs_PZM;
+	if (($chat_id==$Макса_группа)||($chat_id==$admin_group)) {
+		$курс_РКАЦ = _курс_РКАЦ();	
+		$reply = $курс_РКАЦ . $kurs_PZM;
+	}else {
+		$reply = $kurs_PZM;
+	}
 	
 	// КНОПКА Репост
 	$inLine10_but1=["text"=>"Репост","switch_inline_query"=>"курс"];
@@ -174,11 +177,11 @@ if ($est!==false){
 	}else throw new Exception("Не получилось подключиться к таблице {$table5}");		
 		
 			
-}elseif (($text=="ЗАДАТЬ КУРС PRIZM!")&&($chat_id=='630509100')||($text=="ЗАДАТЬ КУРС PRIZM!")&&($chat_id==$master)) {
+}elseif (($text=="ЗАДАТЬ КУРС PRIZM!")&&($chat_id==$Макс_гарант)||($text=="ЗАДАТЬ КУРС PRIZM!")&&($chat_id==$master)) {
 	
 	_ожидание_ввода('курсРКАЦ');
 	
-	$tg->sendMessage($chat_id, $first_name.", задавай курс в рублях, через '.'\n\nНапример: 13.72\n\nБез каких либо букв, пробела и дополнительных символов\n\nЖДУ ВВОДА...");		
+	$tg->sendMessage($chat_id, $first_name.", задай процент\n\nНапример: 3\n\nБез каких либо букв, пробела и дополнительных символов\n\nЖДУ ВВОДА...");		
 	
 	
 }elseif ($text!=="/start"&&$text!=="s"&&$text!=="S"&&$text!=="с"&&$text!=="С"&&$text!=="c"&&$text!=="C"&&$text !== "Старт"&&$text !== "старт") {
