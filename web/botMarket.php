@@ -14,6 +14,9 @@ $admin_group = $admin_group_market;
 // Канал, где появляются новые лоты
 $channel = $channel_market;
 
+$Макс_гарант = '630509100';
+$Макса_группа = '-1001387747179';
+
 if ($_GET['privet']) {
 	$tg->sendMessage($obsujdaem_bot_group, $_GET['privet']);
 	echo "Сообщение {$_GET['privet']} отправленно в группу!";
