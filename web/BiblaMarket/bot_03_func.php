@@ -193,9 +193,9 @@ function _kurs_PZM(){
 			
 			_запись_переменной_курса('курс PZM', $Round_PricePZM_in_RUB, 'RUB', $время);
 					
-			$reply="Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n1PZM = ".
-				$Round_PricePZM_in_USD." $\n1PZM = ".$Round_PricePZM_in_RUB.
-				" \xE2\x82\xBD\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
+			$reply="Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n\n\t\t1PZM = ".
+				$Round_PricePZM_in_USD." $\n\t\t1PZM = ".$Round_PricePZM_in_RUB.
+				" \xE2\x82\xBD\n\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
 			$reply.="на ".$Date_PricePZM." МСК";			
 			
 	}
