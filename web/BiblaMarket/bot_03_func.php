@@ -238,8 +238,8 @@ function _дай_курс_PZM(){
 
                 $Date_PricePZM = gmdate('d.m.Y H:i', $время + 3*3600);
 		
-		$ответ = "Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n1PZM = ".
-		$курсPZM_USD." $\n1PZM = ".$курсPZM_RUB." \xE2\x82\xBD\nна ".$Date_PricePZM." МСК";	
+		$ответ = "Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n\n\t\t1PZM = ".
+		$курсPZM_USD." $\n\t\t1PZM = ".$курсPZM_RUB." \xE2\x82\xBD\n\nна ".$Date_PricePZM." МСК";	
 		
 	}	
 
