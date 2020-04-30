@@ -10,9 +10,9 @@
 	
 	<link rel="stylesheet" href="/site_pzm/font-awesome/css/font-awesome.min.css">
 	
-	<!-- Here we add libs for jQuery, Ajax... 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
-	<script type="text/javascript" src="/site_pzm/site_files/jquery-3.3.1.min.js"></script>
+	<!-- Here we add libs for jQuery, Ajax... -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
+	<!-- <script type="text/javascript" src="/site_pzm/site_files/jquery-3.3.1.min.js"></script> -->
 	
 	<script type="text/javascript">
 		if(screen.width > 800) { // Animate navigation
