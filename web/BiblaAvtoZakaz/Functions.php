@@ -78,7 +78,7 @@ function _инфо_автоЗаказБота() {
 	$клавиатура = [
 		[ [		
 			'text' => 'Правила',
-			'url' => 'https://t.me/podrobno_s_PZP/562'		
+			'url' => 'https://t.me/podrobno_s_PZP/1370'		
 		] ],
 		[ [		
 			'text' => 'Создать заявку',
