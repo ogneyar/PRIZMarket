@@ -21,6 +21,9 @@
 	$tokenTimer = getenv('TOKEN_TIMER');
 	$tokenTimer2 = getenv('TOKEN_TIMER_2');
 	$tokenSite = getenv('TOKEN_SITE');
+	$tokenICQnew = getenv('TOKEN_ICQNEW');
+	
+	$ICQtoken = getenv('ICQ_TOKEN');
 	
 	$cmc_api_key = getenv('CMC_PRO_API_KEY');
 	$tokenTGraph = getenv('TOKEN_TELEGRAPH');
