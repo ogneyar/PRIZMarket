@@ -216,13 +216,23 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				$text = str_replace('&', '', $text);
 				$text = str_replace('$', '', $text);
 				$text = str_replace('^', '', $text);
-				$text = str_replace('\\', '', $text);				
-				$количество = substr_count($text, '#');				
-				if ($количество == 0) {					
+				$text = str_replace('\\', '', $text);
+
+                                $text = str_replace('-', '_', $text);
+                                $text = str_replace(10, ' ', $text);
+				
+				$количество_хештегов = substr_count($text, '#');	
+
+                                $количество_пробелов = substr_count($text, ' ');	
+			
+				if ($количество_хештегов == 0) {					
 					$bot->sendMessage($chat_id, "Повторите ввод, но только теперь, обязательно поставьте хештег - #.");					
 					$bot->deleteMessage($chat_id, $message_id);							
-				}elseif ($количество>3) {					
+				}elseif ($количество_хештегов > 3) {					
 					$bot->sendMessage($chat_id, "Повторите ввод, но, не больше трёх - #.");					
+					$bot->deleteMessage($chat_id, $message_id);						
+				}elseif ($количество_хештегов > ($количество_пробелов+1)) {					
+					$bot->sendMessage($chat_id, "Повторите ввод, но теперь поставьте между хештегами пробел, как в примере выше.");					
 					$bot->deleteMessage($chat_id, $message_id);						
 				}else {					
 					// тут можно по entities достать только хештеги					
