@@ -153,7 +153,8 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 						_запись_в_таблицу_маркет(null, 'url_tgraph', $text, $номер);	
 					}else _запись_в_таблицу_маркет($номер, 'url_tgraph', $imgBB_url);	
 				}else throw new Exception("Не смог сделать imgBB_url");					
-			}						
+			}		
+				
 		// Если ожидается ввод названия
 		}elseif ($result['ojidanie'] == 'nazvanie') {			
 			if ($text) {												
@@ -185,6 +186,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				_ссылка_в_названии();							
 				
 			}else $bot->deleteMessage($chat_id, $message_id);	
+
 		// Если ожидается ввод ссылки, вшиваемой в название
 		}elseif ($result['ojidanie'] == 'url_nazv') {			
 			if ($text) {														
@@ -196,7 +198,8 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				
 				_выбор_категории();					
 				
-			}else $bot->deleteMessage($chat_id, $message_id);	
+			}else $bot->deleteMessage($chat_id, $message_id);
+	
 		// Если ожидается ввод хештегов местонахождения клиента
 		}elseif ($result['ojidanie'] == 'gorod') {		
 			if ($text) {
@@ -219,7 +222,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				$text = str_replace('\\', '', $text);
 
                                 $text = str_replace('-', '_', $text);
-                                $text = str_replace('10', '', $text);
+                                $text = str_replace('\n', '', $text);
 				$text = str_replace(' ', '', $text);
 
 				$text = str_replace('#', ' #', $text);
