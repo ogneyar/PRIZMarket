@@ -1,7 +1,7 @@
 <?php
 
 /**----------+
- * Class Bot |
+ * Class ICQnewBot |
  * ----------+
  *
  * init
@@ -21,7 +21,7 @@
  *
  */
 
-class Bot
+class ICQnewBot
 {
     // $token - созданный токен для нашего бота 
     public $token = null;
