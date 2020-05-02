@@ -222,7 +222,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				$text = str_replace('\\', '', $text);
 
                                 $text = str_replace('-', '_', $text);
-                                $text = str_replace(13, '', $text);
+                                $text = preg_replace('/[\r\n]{1,}/s', ' ', $text);
 				$text = str_replace(' ', '', $text);
 
 				$text = str_replace('#', ' #', $text);
