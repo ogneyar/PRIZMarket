@@ -37,7 +37,8 @@ if (mysqli_connect_errno()) {
 			//include_once 'BiblaICQnew/Callback_query.php';						
 		}elseif ($data['channel_post']) {			
 			if ($text){					
-				$number = stripos($text, '?');					
+				$number = stripos($text, '?');
+				if ($number===false) $number = stripos($text, '!');
 				if ($number!==false&&$number == '0') {					
 					$text = substr($text, 1);				
 					if ($text == '') include_once 'BiblaICQnew/Channel_post.php';		
