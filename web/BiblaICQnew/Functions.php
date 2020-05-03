@@ -35,7 +35,7 @@ function _событие($событие = null) {
 function _в_ожидании($команда = null) {	
 	global $mysqli;	
 	$ответ = false;
-	$запрос = "SELECT soderjimoe FROM `variables` WHERE id_bota='11' AND nazvanie='ожидание'";	
+	$запрос = "SELECT soderjimoe, vremya FROM `variables` WHERE id_bota='11' AND nazvanie='ожидание'";	
 	$результат = $mysqli->query($запрос);	
 	if ($результат) {		
 		$количество = $результат->num_rows;		
@@ -44,17 +44,25 @@ function _в_ожидании($команда = null) {
 				$запрос = "DELETE FROM `variables` WHERE id_bota='11' AND nazvanie='ожидание'";				
 				$результат = $mysqli->query($запрос);
 				if ($результат) $ответ = true;				
-			}elseif ($команда == 'есть') {				
-				$запрос = "UPDATE `variables` SET soderjimoe='есть' WHERE id_bota='11' AND nazvanie='ожидание'";				
+			}elseif ($команда == 'есть') {
+				$UNIXtime_Moscow = time() + $три_часа;
+				$запрос = "UPDATE `variables` SET soderjimoe='есть', vremya='{$UNIXtime_Moscow}' WHERE id_bota='11' AND nazvanie='ожидание'";				
 				$результат = $mysqli->query($запрос);				
-				if ($результат) $ответ = true;			
+				if ($результат) $ответ = true;	
 			}else {			
 				$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
 				$ответ = $результМассив[0]['soderjimoe'];				
+				$UNIXtime_Moscow = time() + $три_часа;
+				if ($ответ == 'есть') {
+					$время_ожидания = $результМассив[0]['vremya'];
+					$разница = $UNIXtime_Moscow - $время_ожидания;
+					if (($разница > 20)||($время_ожидания == '')) $ответ = false;
+				}
 			}		
 		}else {			
-			if ($команда == 'есть') {				
-				$запрос = "INSERT INTO `variables` VALUES ('11', 'ожидание', 'есть', 'ожидание отклика бота', '')";				
+			if ($команда == 'есть') {
+				$UNIXtime_Moscow = time() + $три_часа;
+				$запрос = "INSERT INTO `variables` VALUES ('11', 'ожидание', 'есть', 'ожидание отклика бота', '{$UNIXtime_Moscow}')";				
 				$результат = $mysqli->query($запрос);				
 				if ($результат) $ответ = true;				
 			}			
