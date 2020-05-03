@@ -1,4 +1,17 @@
 <?
+$UNIXtime = time();
+$UNIXtime_Moscow = $UNIXtime + $три_часа;	/*
+$дата_и_время = date("d.m.Y H:i:s", $UNIXtime_Moscow);
+$дата = date("d.m.Y", $UNIXtime_Moscow);
+$время = date("H:i:s", $UNIXtime_Moscow);
+$час = date("H", $UNIXtime_Moscow);
+$минута = date("i", $UNIXtime_Moscow);*/
+$секунда = date("s", $UNIXtime_Moscow);
+
+$ожидание = _в_ожидании();
+if ($ожидание == 'есть') exit('ok');
+_в_ожидании('есть');
+
 $eventId = _событие();
 if (!$eventId) {
 	$eventId = 0;
@@ -7,9 +20,17 @@ if (!$eventId) {
 
 //$bot_icq->sendText("@Ogneyar_", "Начало положено.");
 
-$события = $bot_icq->getEvents($eventId,20);
+if ($секунда >= 40) {
+	$ожидание = 59 - $секунда; 
+}elseif ($секунда >= 20) {
+	$ожидание = 39 - $секунда;
+}else {
+	$ожидание = 19 - $секунда; 
+}	
 
-if ($события != []) {
+$события = $bot_icq->getEvents($eventId, $ожидание);
+
+if ($события != []) {	
 	foreach($события as $event) {
 		$eventId = $event['eventId'];		
 		$payload = $event['payload'];
@@ -32,16 +53,21 @@ if ($события != []) {
 		$реплика = "Здравствуй ".$firstName."\n\nПопробуй команду /help";
 		$bot_icq->sendText($chatId, $реплика);
 	}elseif ($text=='/help') {
+	
 		/*if ($nick == 'Ogneyar_') {
 			$реплика = "Список понимаемых мною команд:\n\nё\nПривет\nКак дела?\nеее\nуфь\n\n/exit";
-		}else */$реплика = "Список понимаемых мною команд:\n\nё\nПривет\nКак дела?\nеее\nуфь";
-			$bot_icq->sendText($chatId, $реплика);
-	}/*elseif ($text=='/exit') {
+		}else */
+		
+		$реплика = "Список понимаемых мною команд:\n\nё\nПривет\nКак дела?\nеее\nуфь";
+		$bot_icq->sendText($chatId, $реплика);
+	
+	/*}elseif ($text=='/exit') {
 		if ($nick == 'Ogneyar_') {
 			$события = $bot_icq->getEvents($eventId,0);
 			break;
-		}
-	}*/elseif ($text=='Привет') {
+		}*/
+	
+	}elseif ($text=='Привет') {
 		$реплика = "Сам ты привет. И брат твой привет. И сестра твоя привет.";
 		$bot_icq->sendText($chatId, $реплика);
 	}elseif ($text=='Как дела?') {
@@ -57,7 +83,12 @@ if ($события != []) {
 	
 	_событие($eventId);
 	
-}
+	_в_ожидании('нет');
+			
+	$bot_timer = new Bot($tokenTimer);
+	$bot_timer->sendMessage($channel_info, "!");
+	
+}else _в_ожидании('нет');
 
 //$bot_icq->sendText("@Ogneyar_", "Цикл окончен.");
 
