@@ -47,26 +47,14 @@ if ($события != []) {
 		$type = $event['type'];
 	}	
 		
-	if ($text=='ё') {
+	if ($text=='/ё') {
 		$bot_icq->sendText($chatId, "клмн");
 	}elseif ($text=='/start') {
 		$реплика = "Здравствуй ".$firstName."\n\nПопробуй команду /help";
 		$bot_icq->sendText($chatId, $реплика);
 	}elseif ($text=='/help') {
-	
-		/*if ($nick == 'Ogneyar_') {
-			$реплика = "Список понимаемых мною команд:\n\nё\nПривет\nКак дела?\nеее\nуфь\n\n/exit";
-		}else */
-		
-		$реплика = "Список понимаемых мною команд:\n\nё\nПривет\nКак дела?\nеее\nуфь";
-		$bot_icq->sendText($chatId, $реплика);
-	
-	/*}elseif ($text=='/exit') {
-		if ($nick == 'Ogneyar_') {
-			$события = $bot_icq->getEvents($eventId,0);
-			break;
-		}*/
-	
+		$реплика = "Список понимаемых мною команд:\n\n/ё\nПривет\nКак дела?\nеее\nуфь";
+		$bot_icq->sendText($chatId, $реплика);	
 	}elseif ($text=='Привет') {
 		$реплика = "Сам ты привет. И брат твой привет. И сестра твоя привет.";
 		$bot_icq->sendText($chatId, $реплика);
