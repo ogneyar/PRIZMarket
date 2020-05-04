@@ -1,12 +1,8 @@
 <?php
 
-/**----------+
- * Class ICQnewBot |
- * ----------+
- *
- * init
- *
- * getData
+/**-------------+
+ * Class ICQnew |
+ * -------------+
  *
  * call
  *
@@ -39,29 +35,9 @@ class ICQnew
         $this->token = $token;
     }    
     
-	/*
-	** @param JSON $data_php
-	** @return array
-	*/
-    public function init($data_php)
-    {
-        // создаем массив из пришедших данных от API Telegram
-        $data = $this->getData($data_php);         
-        return $data;        
-    }
-	
-	/*
-    ** @param JSON $data
-    ** @return array
-    */
-    private function getData($data)
-    {
-        return json_decode(file_get_contents($data), TRUE);
-    }
-    
     
     /* 
-	** Отправляем запрос в Телеграмм
+	** Отправляем запрос в ICQ
 	**
     ** @param str $method
     ** @param array $data    
@@ -211,13 +187,13 @@ class ICQnew
 		
 		$response = $this->call("/messages/sendFile", [
 			'token' => $this->token,
-			'chatId' => $chatId,
-			'file' => new CURLFile($file/*,'image/jpeg','img'*/),
-			'text' => $text,
+			'chatId' => $chatId,			
+			'caption' => $caption,
 			'replyMsgId' => $replyMsgId,			
 			'forwardChatId' => $forwardChatId,				
 			'forwardMsgId' => $forwardMsgId,			
-			'inlineKeyboardMarkup' => $inlineKeyboardMarkup
+			'inlineKeyboardMarkup' => $inlineKeyboardMarkup,
+			'file' => new CURLFile($file/*,'image/jpeg','img'*/)
 		]);	
 				
 		$response = json_decode($response, true);
