@@ -7,6 +7,7 @@ include_once '../../myBotApi/Bot.php';
 $bot = new Bot($tokenSite);
 $id_bota = strstr($tokenSite, ':', true);	
 include_once '../../myBotApi/Variables.php';
+include_once '../../BiblaSite/Functions.php';
 $admin_group = $admin_group_Site;
 $админка = $admin_group;
 $мастер = $master;
@@ -16,7 +17,7 @@ if (mysqli_connect_errno()) {
 	echo "Чёт не выходит подключиться к MySQL<br><br>";	
 	exit('ok');
 }else { // начало
-
+	
 	//if ($_FILES['file']) echo "Файл: ".$_FILES['file']['tmp_name']."<br><br>";
 	if ($_POST['hesh_pk']) echo "К/П: ".$_POST['hesh_pk']."<br><br>";
 	if ($_POST['name']) echo "Наименование: ".$_POST['name']."<br><br>";
@@ -71,7 +72,11 @@ if (mysqli_connect_errno()) {
 			)";							
 			$result = $mysqli->query($query);			
 			if (!$result) echo "Не смог сделать запись в таблицу {$table_market} (save_zakaz.php)";	
-			$bot->sendMessage($channel_market, "Данные с сайта записаны в БД.");
+			
+			$bot->sendMessage($admin_group_AvtoZakaz, "Данные с сайта записаны в БД.");
+			
+			_отправка_лота_админам();
+			
 		}else echo "Не смог удалить запись в таблице {$table_market} (_запись_в_таблицу_маркет)";		
 		
 	}
