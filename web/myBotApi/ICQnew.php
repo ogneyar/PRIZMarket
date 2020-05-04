@@ -205,13 +205,14 @@ class ICQnew
 		$forwardChatId = null,
 		$forwardMsgId = null
 	) {
+		//$image_mime = image_type_to_mime_type(exif_imagetype($file));
 		
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 		
 		$response = $this->call("/messages/sendFile", [
 			'token' => $this->token,
 			'chatId' => $chatId,
-			'file' => new CURLFile($file,'image/jpeg','img'),
+			'file' => new CURLFile($file/*,'image/jpeg','img'*/),
 			'text' => $text,
 			'replyMsgId' => $replyMsgId,			
 			'forwardChatId' => $forwardChatId,				
