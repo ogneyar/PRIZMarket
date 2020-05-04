@@ -12,6 +12,11 @@ if ($text == 'база') {
 		$bot->output_table($table_users);		
 	}	
 	
+}elseif ($text == 'заявки') {
+	$заявки = _проверка_заявок();
+	if ($заявки) $bot->sendMessage($chat_id, $bot->PrintArray($заявки));
+	else  $bot->sendMessage($chat_id, "Заявок нет.");
+
 }elseif ($text == 'удали') {
 	$query = "DELETE FROM {$table_users} WHERE login='{$id}'";				
 	if ($result = $mysqli->query($query)) {					
