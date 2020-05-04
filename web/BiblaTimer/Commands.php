@@ -16,5 +16,5 @@ if ($text == 'таймер') {
 		}	
 	}	
 	$bot->sendMessage($master, $ответ);	
-}elseif ($text == 'марк') {}
+}
 ?>
