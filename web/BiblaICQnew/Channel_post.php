@@ -47,6 +47,7 @@ if ($события != []) {
 		$type = $event['type'];
 	}	
 	
+	include_once 'ICQ_Functions.php';
 	if ($text){					
 		$number = stripos($text, '%');					
 		if ($number!==false&&$number == '0') {						

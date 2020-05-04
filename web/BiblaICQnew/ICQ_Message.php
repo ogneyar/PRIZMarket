@@ -1,7 +1,6 @@
 ﻿<?
 if ($text=='/start') {
-	$реплика = "Здравствуй ".$firstName."\n\nПопробуй команду /help";
-	$bot_icq->sendText($chatId, $реплика);
+	_старт();
 }elseif ($text=='/help') {
 	$реплика = "Список понимаемых мною команд: \n\n/Privet \n/KakDela \n/eee \n/uf";
 	$bot_icq->sendText($chatId, $реплика);	
