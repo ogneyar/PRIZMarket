@@ -68,14 +68,14 @@ if (mysqli_connect_errno()) {
 			  `gorod`, `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, 
 			  `status`, `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
 			) VALUES (
-			  '7', '', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$_POST['currency']}', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', '', '', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '', ''
+			  '7', '', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$_POST['currency']} / PZM', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', '', '', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '', ''
 			)";							
 			$result = $mysqli->query($query);			
 			if (!$result) echo "Не смог сделать запись в таблицу {$table_market} (save_zakaz.php)";	
 			
-			$bot->sendMessage($admin_group_AvtoZakaz, "Данные с сайта записаны в БД.");
+			//$bot->sendMessage($admin_group_AvtoZakaz, "Данные с сайта записаны в БД.");
 			
-			_отправка_лота_админам();
+			_отправка_лота_админам(); // BiblaSite/Functions.php
 			
 		}else echo "Не смог удалить запись в таблице {$table_market} (_запись_в_таблицу_маркет)";		
 		
