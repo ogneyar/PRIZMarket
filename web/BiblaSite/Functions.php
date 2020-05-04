@@ -7,6 +7,7 @@
 ** _старт_СайтБота
 ** ----------------------
 **
+** _проверка_заявок
 */
 
 // при возникновении исключения вызывается эта функция
@@ -25,7 +26,20 @@ function _старт_СайтБота() {
 	$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", markdown, $HideKeyboard);	
 	exit('ok');	
 }
-
+// функция проверки заявок клиентов на сайте
+function _проверка_заявок() {	
+	global $mysqli;	
+	$ответ = false;
+	$запрос = "SELECT * FROM `avtozakaz_pzmarket` WHERE id_bota='7'";	
+	$результат = $mysqli->query($запрос);	
+	if ($результат) {		
+		$количество = $результат->num_rows;		
+		if ($количество > 0) {			
+			$ответ = $результат->fetch_all(MYSQLI_ASSOC);
+		}
+	}	
+	return $ответ;	
+}
 
 
 ?>
