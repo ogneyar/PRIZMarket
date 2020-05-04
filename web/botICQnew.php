@@ -1,6 +1,6 @@
 <?
 include_once 'myBotApi/Bot.php';
-include_once 'icqNew-BotApi-php/ICQnewBot.php';
+include_once 'myBotApi/ICQnew.php';
 include_once 'a_conect.php';
 //exit('ok');
 $token = $tokenICQnew;
@@ -9,7 +9,7 @@ $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
 
 // Создаем объект ICQnew бота
-$bot_icq = new ICQnewBot($ICQtoken);
+$bot_icq = new ICQnew($ICQtoken);
 $id_icq_bota = substr(strstr($ICQtoken, ':'), 1);	
 
 // Подключение БД
