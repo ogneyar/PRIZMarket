@@ -65,6 +65,8 @@ if ($события != []) {
 	}elseif ($text=='/uf') {
 		$реплика = "Эт ты на каком языке? Уууфь, нет такой буквы в алфавите!";
 		$bot_icq->sendText($chatId, $реплика);
+	}elseif ($text=='дай айди чата') {		
+		$bot_icq->sendText($chatId, $chatId);
 	}elseif ($text) $bot_icq->sendText($chatId, "я не понимаю(");
 	
 	_событие($eventId);
