@@ -76,7 +76,7 @@ class ICQnew
             curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method);
             curl_setopt ($ch, CURLOPT_POST, count($data));
             curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt ($ch, CURLOPT_SAFE_UPLOAD, false);
+			//curl_setopt ($ch, CURLOPT_SAFE_UPLOAD, false);
             curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
             $result = curl_exec($ch);
             curl_close($ch);
@@ -211,7 +211,7 @@ class ICQnew
 		$response = $this->call("/messages/sendFile", [
 			'token' => $this->token,
 			'chatId' => $chatId,
-			'file' => json_encode($file),
+			'file' => new CURLFile($file,'image/jpeg','img'),
 			'text' => $text,
 			'replyMsgId' => $replyMsgId,			
 			'forwardChatId' => $forwardChatId,				
