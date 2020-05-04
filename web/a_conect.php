@@ -21,9 +21,7 @@
 	$tokenTimer = getenv('TOKEN_TIMER');
 	$tokenTimer2 = getenv('TOKEN_TIMER_2');
 	$tokenSite = getenv('TOKEN_SITE');
-	$tokenICQnew = getenv('TOKEN_ICQNEW');
-	
-	$ICQtoken = getenv('ICQ_TOKEN');
+	$tokenICQnew = getenv('TOKEN_ICQNEW');	
 	
 	$cmc_api_key = getenv('CMC_PRO_API_KEY');
 	$tokenTGraph = getenv('TOKEN_TELEGRAPH');
@@ -46,5 +44,8 @@
 	$smtp_pass = getenv("SMTP_PASSWORD");
 	$smtp_port = getenv("SMTP_PORT");
 	$smtp_server = getenv("SMTP_SERVER");
+	
+	$ICQtoken = getenv('ICQ_TOKEN');
+	$ICQ_channel_market = getenv('ICQ_CHANNEL_MARKET');
 	
 ?>
