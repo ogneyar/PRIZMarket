@@ -193,7 +193,7 @@ class ICQnew
 			'forwardChatId' => $forwardChatId,				
 			'forwardMsgId' => $forwardMsgId,			
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup,
-			'file' => new CURLFile($file,'image/jpeg','img')
+			'file' => $file //new CURLFile($file,'image/jpeg','img')
 		]);	
 				
 		$response = json_decode($response, true);
