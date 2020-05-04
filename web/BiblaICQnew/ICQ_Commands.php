@@ -11,9 +11,9 @@ if ($text == 'сенд') {
 	$bot_icq->sendText($chatId, "Вот - {$chatId}\nтип чата - {$chatType}");
 	
 }elseif ($text=='сендФ') {
-	$файл = $file_get_contents("https://i.ibb.co/YZVdQrH/file-108.jpg");
+	//$файл = $file_get_contents("https://i.ibb.co/YZVdQrH/file-108.jpg");
 	//$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
-	$bot_icq->sendFile($chatId, $файл);
-	
+	//$bot_icq->sendFile($chatId, $файл);
+	include_once "../myBotApi/test.php";
 }
 ?>
