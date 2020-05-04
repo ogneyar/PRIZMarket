@@ -46,6 +46,7 @@
 	$smtp_server = getenv("SMTP_SERVER");
 	
 	$ICQtoken = getenv('ICQ_TOKEN');
+	$ICQmaster = getenv('ICQ_MASTER');
 	$ICQ_channel_market = getenv('ICQ_CHANNEL_MARKET');
 	
 ?>
