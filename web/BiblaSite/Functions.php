@@ -30,7 +30,7 @@ function _старт_СайтБота() {
 function _проверка_заявок() {	
 	global $mysqli;	
 	$ответ = false;
-	$запрос = "SELECT * FROM `avtozakaz_pzmarket` WHERE id_bota='7'";	
+	$запрос = "SELECT * FROM `avtozakaz_pzmarket` WHERE id_client='7'";	
 	$результат = $mysqli->query($запрос);	
 	if ($результат) {		
 		$количество = $результат->num_rows;		
