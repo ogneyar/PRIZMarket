@@ -12,8 +12,10 @@ if ($text == 'сенд') {
 	
 }elseif ($text=='сендФ') {
 	//$файл = $file_get_contents("https://i.ibb.co/YZVdQrH/file-108.jpg");
-	//$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
-	//$bot_icq->sendFile($chatId, $файл);
-	include_once "../myBotApi/test.php";
+	$url = "https://i.ibb.co/YZVdQrH/file-108.jpg";
+	$файл = new CURLFile($url, 'image/jpeg', 'test_file');
+	$bot_icq->sendFile($chatId, $файл);
+	
+	//include_once "../myBotApi/test.php";
 }
 ?>
