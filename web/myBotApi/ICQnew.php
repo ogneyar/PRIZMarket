@@ -211,7 +211,7 @@ class ICQnew
 		$response = $this->call("/messages/sendFile", [
 			'token' => $this->token,
 			'chatId' => $chatId,
-			'file' => "@".$file,
+			'file' => $file,
 			'text' => $text,
 			'replyMsgId' => $replyMsgId,			
 			'forwardChatId' => $forwardChatId,				
