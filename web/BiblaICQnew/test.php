@@ -22,15 +22,15 @@ $file = new oFile($файл, $image_mime, $content);
 $post = BodyPost::Get(array(
 	'token' => "001.2839288818.3919878723:752122979",
 	'chatId' => "752067062", 
-	'text' => "Какой либо текст..."
-	//'file'=>$file
+	//'text' => "Какой либо текст...",
+	'file' => $file
 	), $delimiter);
 
 // Инициализируем  CURL
 $ch = curl_init();
 
 // Указываем на какой ресурс передаем файл
-curl_setopt($ch, CURLOPT_URL, "https://api.icq.net/bot/v1/messages/sendText");
+curl_setopt($ch, CURLOPT_URL, "https://api.icq.net/bot/v1/messages/sendFile");
 // Указываем, что будет осуществляться POST запрос
 curl_setopt($ch, CURLOPT_POST, 1);
 // Передаем тело POST запроса
