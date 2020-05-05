@@ -1,8 +1,8 @@
 ﻿<?
 $bot_icq->sendText($chatId, "Это САМОЕ начало.");
 
-include_once "class.ofile.php";
-include_once "class.bodypost.php";
+//include_once "class.ofile.php";
+//include_once "class.bodypost.php";
 
 $bot_icq->sendText($chatId, "Это начало.");
 
