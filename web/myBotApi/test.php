@@ -1,4 +1,4 @@
-﻿<?
+<?
 $bot_icq->sendText($chatId, "Это САМОЕ начало.");
 
 //include_once "class.ofile.php";
