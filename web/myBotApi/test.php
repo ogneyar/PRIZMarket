@@ -45,6 +45,6 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data; b
 
 // Отправляем POST запрос на удаленный Web сервер
 curl_exec($ch);
-
+*/
 $bot_icq->sendText($chatId, "Это конец.");
 ?>
