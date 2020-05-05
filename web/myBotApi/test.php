@@ -35,10 +35,11 @@ curl_setopt($ch, CURLOPT_POST, 1);
 // Передаем тело POST запроса
 curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 
-/* Указываем дополнительные данные для заголовка:
-     Content-Type - тип содержимого, 
-     boundary - разделитель и 
-     Content-Length - длина тела сообщения */
+// Указываем дополнительные данные для заголовка:
+//     Content-Type - тип содержимого, 
+//     boundary - разделитель и 
+//     Content-Length - длина тела сообщения 
+
 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data; boundary=' . $delimiter,
 'Content-Length: ' . strlen($post)));
 
