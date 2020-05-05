@@ -44,23 +44,15 @@ class ICQnew
 	**
     ** @return mixed
     */
-    public function call($method, $data, $photo=false)
+    public function call($method, $data)
     {
         $result = null;
         if (is_array($data)) {
             $ch = curl_init();
             curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method);
-            if ($photo) {
-				curl_setopt ($ch, CURLOPT_POST, 1 /*count($data)*/);
-				//curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	 
-				curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));				
-				curl_setopt ($ch, CURLOPT_POSTFIELDS, $photo); //http_build_query($data));
-			
-			}else {
-				curl_setopt ($ch, CURLOPT_POST, count($data));
-				curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
-				curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-			}
+          	curl_setopt ($ch, CURLOPT_POST, count($data));
+			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
+			curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
             $result = curl_exec($ch);
             curl_close($ch);
         }
@@ -200,8 +192,8 @@ class ICQnew
 			'forwardChatId' => $forwardChatId,				
 			'forwardMsgId' => $forwardMsgId,			
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup,
-			
-		], json_encode(['file' => $file]));	
+			'file' => $file 
+		]);	
 		
 		$response = json_decode($response, true);
 		
