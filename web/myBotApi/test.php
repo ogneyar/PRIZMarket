@@ -2,6 +2,8 @@
 include_once "class.ofile.php";
 include_once "class.bodypost.php";
 
+$bot_icq->sendText($chatId, "Это начало.");
+
 // Генерируем уникальную строку для разделения частей POST запроса
 $delimiter = '-------------'.uniqid();
 
