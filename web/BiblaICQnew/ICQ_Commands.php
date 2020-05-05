@@ -18,7 +18,6 @@ if ($text == 'сенд') {
 	$файл = new CURLFile($url, 'image/jpeg', 'file-108.jpg');
 	$bot_icq->sendFile($chatId, $файл);*/
 
-	//include_once '../myBotApi/test.php';
 	include_once 'test.php';
 	$bot_icq->sendText($chatId, "Х.З.");
 }

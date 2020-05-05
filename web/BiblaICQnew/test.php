@@ -1,9 +1,9 @@
 ﻿<?
 $bot_icq->sendText($chatId, "Это САМОЕ начало.");
 
-//include_once "class.ofile.php";
-//include_once "class.bodypost.php";
-/*
+include_once "class.ofile.php";
+include_once "class.bodypost.php";
+
 $bot_icq->sendText($chatId, "Это начало.");
 
 // Генерируем уникальную строку для разделения частей POST запроса
@@ -45,6 +45,6 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data; b
 
 // Отправляем POST запрос на удаленный Web сервер
 curl_exec($ch);
-*/
+
 $bot_icq->sendText($chatId, "Это конец.");
 ?>
