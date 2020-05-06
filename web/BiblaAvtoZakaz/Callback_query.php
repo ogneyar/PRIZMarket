@@ -80,21 +80,35 @@ if ($callback_data=='создать'){
 	
 }elseif ($callback_data=='опубликовать') {	
 	_очистка_таблицы_ожидание();
-	_вывод_лота_на_каналы($id);	
+	if (strpos($id, ".")!==false) {				
+		$bot->sendMessage($callback_chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+		//exit('ok');
+	}else _вывод_лота_на_каналы($id);	
 	
 }elseif ($callback_data=='применить') {	
 	_очистка_таблицы_ожидание();
-	_редакт_лота_на_канале_подробности($id);		
-	_отправка_лота($callback_from_id, $id, true);	
+	if (strpos($id, ".")!==false) {				
+		$bot->sendMessage($callback_chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+		//exit('ok');
+	}else {
+		_редакт_лота_на_канале_подробности($id);		
+		_отправка_лота($callback_from_id, $id, true);	
+	}
 	
 }elseif ($callback_data=='доверяет') {		
-	if (_есть_ли_лот($id)) {
+	if (strpos($id, ".")!==false) {				
+		$bot->sendMessage($callback_chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+		exit('ok');
+	}elseif (_есть_ли_лот($id)) {
 		_запись_в_таблицу_маркет(null, 'doverie', '1', $id);	
 	}else _запись_в_таблицу_маркет($id, 'doverie', '1');	
 	$bot->answerCallbackQuery($callback_query_id, "Хорошо, отмечен доверием!");	
 	
 }elseif ($callback_data=='не_доверяет') {	
-	if (_есть_ли_лот($id)) {
+	if (strpos($id, ".")!==false) {				
+		$bot->sendMessage($callback_chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+		exit('ok');
+	}elseif (_есть_ли_лот($id)) {
 		_запись_в_таблицу_маркет(null, 'doverie', '0', $id);	
 	}else _запись_в_таблицу_маркет($id, 'doverie', '0');	
 	$bot->answerCallbackQuery($callback_query_id, "ОТМЕНА отметки доверием!");	
@@ -116,13 +130,18 @@ if ($callback_data=='создать'){
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст подробностей.");	
 	
 }elseif ($callback_data=='редактировать_фото') {		
-	_ожидание_ввода('замена_фото', $id);	
-	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.");	
+	if (strpos($id, ".")!==false) {				
+		$bot->sendMessage($callback_chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+	}else {
+		_ожидание_ввода('замена_фото', $id);	
+		$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.");	
+	}
 	
 	
-	
-}elseif ($callback_data=='отказать') {		
-	_отказать($id);	
+}elseif ($callback_data=='отказать') {	
+	if (strpos($id, ".")!==false) {				
+		$bot->sendMessage($callback_chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+	}else _отказать($id);	
 	
 }elseif ($callback_data=='отказанно') {			
 	$bot->answerCallbackQuery($callback_query_id, "Отказанно!");		
@@ -147,7 +166,9 @@ if ($callback_data=='создать'){
 
 // вывод на экран выбранного лота с предложением потвердить удаление  
 }elseif ($callback_data=='удаление') {		
-	_удаление($id);		
+	if (strpos($id, ".")!==false) {				
+		$bot->sendMessage($callback_chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+	}else _удаление($id);		
 
 // удаление с базы выбранного лота
 }elseif ($callback_data=='удалить_выбранный_лот') {		
