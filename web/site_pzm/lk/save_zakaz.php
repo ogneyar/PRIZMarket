@@ -60,7 +60,8 @@ if (mysqli_connect_errno()) {
 					],
 				]);
 				
-				if ($result['@metadata']['statusCode'] != '200') echo "Чего то не получается удалить лот {$key} из Amazon";	
+				if ($result['@metadata']['statusCode'] == '200') $bot->sendMessage($мастер, "Старый Файл {$key} удалён с Амазон");
+				else echo "Чего то не получается удалить лот {$key} из Amazon";	
 				
 			}
 		}		
