@@ -37,7 +37,7 @@ if (mysqli_connect_errno()) {
 		'version'  => 'latest',
 		'region'   => $aws_region
 	]);
-	
+/*	
 	// поиск уникального номера файла (uniqid)
 	$запрос = "SELECT file_id FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";		
 		
@@ -69,7 +69,7 @@ if (mysqli_connect_errno()) {
 	$uniqid = 777;
 
 	$key = "TEMP-{$логин}-{$uniqid}.jpg";
-		
+*/		$key = "TEMP-{$логин}.jpg";
 	$file = file_get_contents($путь_к_фото);
 	  
 	$upload = $s3->putObject([
