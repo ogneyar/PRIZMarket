@@ -95,7 +95,11 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 			if ($text) {				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace("`", "\`", $text);
-				if (_есть_ли_лот($номер)) {
+				if (strpos($номер, ".")!==false) {
+					_очистка_таблицы_ожидание();				
+					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+					exit('ok');
+				}elseif (_есть_ли_лот($номер)) {
 					_запись_в_таблицу_маркет(null, 'nazvanie', $text, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'nazvanie', $text);				
 				_очистка_таблицы_ожидание();				
@@ -105,7 +109,11 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 		}elseif ($result['ojidanie'] == 'замена_ссылки') {			
 			$номер = $result['last'];			
 			if ($text) {			
-				if (_есть_ли_лот($номер)) {
+				if (strpos($номер, ".")!==false) {
+					_очистка_таблицы_ожидание();				
+					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+					exit('ok');
+				}elseif (_есть_ли_лот($номер)) {
 					_запись_в_таблицу_маркет(null, 'url_nazv', $text, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'url_nazv', $text);				
 				_очистка_таблицы_ожидание();				
@@ -115,7 +123,11 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 		}elseif ($result['ojidanie'] == 'замена_хештегов') {			
 			$номер = $result['last'];			
 			if ($text) {			
-				if (_есть_ли_лот($номер)) {
+				if (strpos($номер, ".")!==false) {
+					_очистка_таблицы_ожидание();				
+					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+					exit('ok');
+				}elseif (_есть_ли_лот($номер)) {
 					_запись_в_таблицу_маркет(null, 'gorod', $text, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'gorod', $text);				
 				_очистка_таблицы_ожидание();				
@@ -127,7 +139,11 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 			if ($text) {				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace("`", "\`", $text);			
-				if (_есть_ли_лот($номер)) {
+				if (strpos($номер, ".")!==false) {
+					_очистка_таблицы_ожидание();				
+					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+					exit('ok');
+				}elseif (_есть_ли_лот($номер)) {
 					_запись_в_таблицу_маркет(null, 'podrobno', $text, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'podrobno', $text);				
 				_очистка_таблицы_ожидание();				
@@ -138,7 +154,11 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 			$номер = $result['last'];			
 			if ($photo) {	
 				$есть_ли_лот = _есть_ли_лот($номер);
-				if ($есть_ли_лот) {
+				if (strpos($номер, ".")!==false) {
+					_очистка_таблицы_ожидание();				
+					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+					exit('ok');
+				}elseif ($есть_ли_лот) {
 					_запись_в_таблицу_маркет(null, 'file_id', $text, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'file_id', $file_id);			
 				_очистка_таблицы_ожидание();				
@@ -246,6 +266,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 					
 				}				
 			}else $bot->deleteMessage($chat_id, $message_id);		
+			
 		// Если ожидается ввод основного фото/видео
 		}elseif ($result['ojidanie'] == 'format_file') {						
 			if ($photo||$video) {
@@ -267,6 +288,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				_нужен_ли_фотоальбом();			
 				
 			}else $bot->deleteMessage($chat_id, $message_id);		
+			
 		// Если ожидается ввод фотоальбома
 		}elseif ($result['ojidanie'] == 'foto_album') {									
 			if ($формат_файла) {			
@@ -281,6 +303,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 					$bot->deleteMessage($chat_id, $message_id);						
 				}				
 			}else $bot->deleteMessage($chat_id, $message_id);	
+			
 		// Если ожидается ввод текста с подробным описанием товара/услуги
 		}elseif ($result['ojidanie'] == 'podrobno') {		
 			if ($text) {				
