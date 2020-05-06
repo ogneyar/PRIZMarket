@@ -74,7 +74,7 @@ function _отправка_лота_админам_с_сайта() {
 				}else $текст = "{$хештеги}{$название_для_подробностей}{$текст}";
 				
 				$реплика = "[_________]({$фото_с_амазон}) Лот из сайта https://PRIZMarket.ru\n{$текст}";
-				$КаналИнфо = $bot->sendMessage($admin_group_AvtoZakaz, $реплика, markdown, $inLine);			
+				$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);			
 				
 				if (!$КаналИнфо) echo "<br><br>Не смог опубликовать лот в админке";				
 			}					
