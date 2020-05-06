@@ -37,7 +37,7 @@ if (mysqli_connect_errno()) {
 		'version'  => 'latest',
 		'region'   => $aws_region
 	]);
-/*	
+	
 	// поиск уникального номера файла (uniqid)
 	$запрос = "SELECT file_id FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";		
 		
@@ -66,9 +66,9 @@ if (mysqli_connect_errno()) {
 		}		
 	}
 	
-	$uniqid = 777;
+	//$uniqid = 777;
 	
-*/ 	$uniqid = uniqid();	
+ 	$uniqid = uniqid();	
 
 	$key = "TEMP-{$логин}-{$uniqid}.jpg";
 
@@ -102,7 +102,7 @@ if (mysqli_connect_errno()) {
 			  `gorod`, `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, 
 			  `status`, `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
 			) VALUES (
-			  '7', '0', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$_POST['currency']} / PZM', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', 'фото_амазон', '{$uniqid}', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '', ''
+			  '7', '0', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$_POST['currency']} / PZM', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', 'фото_ам', '{$uniqid}', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '', ''
 			)";							
 			$result = $mysqli->query($query);			
 			if (!$result) {
