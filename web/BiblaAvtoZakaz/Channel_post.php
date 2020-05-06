@@ -18,7 +18,7 @@ if ($number !== false && $number == '0') {
 
 }else {
 
-	if ($text != '?') {
+	if ($text != '?' && $text != '!') {
 			
 		foreach ($entities as $ent) {			
 			if ($ent['type'] == 'text_mention') $user = $ent['user'];			
