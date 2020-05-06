@@ -46,7 +46,7 @@ if (mysqli_connect_errno()) {
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
 			$uniqid = $результМассив[0]['file_id'];
 			if ($uniqid) {
-				/*
+				
 				$key = "TEMP-{$логин}-{$uniqid}.jpg";
 				
 				$result = $s3->deleteObjects([
@@ -60,19 +60,15 @@ if (mysqli_connect_errno()) {
 					],
 				]);
 				
-				if ($result['@metadata']['statusCode'] != '200') echo "Чего то не получается удалить лот {$key} из Amazon");	
-				*/
+				if ($result['@metadata']['statusCode'] != '200') echo "Чего то не получается удалить лот {$key} из Amazon";	
+				
 			}
 		}		
 	}
-	
-	//$uniqid = 777;
-	
+		
  	$uniqid = uniqid();	
 
 	$key = "TEMP-{$логин}-{$uniqid}.jpg";
-
-//	$key = "TEMP-{$логин}.jpg";
 
 	$file = file_get_contents($путь_к_фото);
 	  
@@ -92,8 +88,7 @@ if (mysqli_connect_errno()) {
 		echo "<br><br>" . $ссылка_на_амазон;	
 		$bot->sendMessage($мастер, "Файл загружен на Амазон");
 		//$bot->setMyCommands($BotCommand);
-		
-		
+				
 		
 		$query = "DELETE FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";		
 		if ($mysqli->query($query)) {			
