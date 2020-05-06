@@ -65,8 +65,8 @@ if (mysqli_connect_errno()) {
 			}
 		}		
 	}
-	$uniqid = uniqid();	
-	
+	//$uniqid = uniqid();	
+	$uniqid = 777;
 
 	$key = "TEMP-{$логин}-{$uniqid}.jpg";
 		
