@@ -27,7 +27,7 @@ if (mysqli_connect_errno()) {
 	if ($_POST['hesh_city']) echo "Местонахождение: ".$_POST['hesh_city']."<br><br>";
 	if ($_POST['opisanie']) echo "Описание: ".$_POST['opisanie']."<br><br>";
 
-	$путь_к_фото = $_FILES['file']['tmp_name'];
+	$путь_к_фото = $_FILES['file']['tmp_name'];	
 
 	// Подключение к Амазон
 	$credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
@@ -37,8 +37,38 @@ if (mysqli_connect_errno()) {
 		'version'  => 'latest',
 		'region'   => $aws_region
 	]);
+	
+	// поиск уникального номера файла (uniqid)
+	$запрос = "SELECT file_id FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";		
+		
+	if ($результат = $mysqli->query($запрос)) {		
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
+			$uniqid = $результМассив[0]['file_id'];
+			if ($uniqid) {
+				
+				$key = "TEMP-".$логин."-{$uniqid}.jpg";
+				
+				$result = $s3->deleteObjects([
+					'Bucket' => $aws_bucket,			
+					'Delete' => [
+						'Objects' => [
+							[
+								'Key' => $key,						
+							],            
+						],				
+					],
+				]);
+				
+				if ($result['@metadata']['statusCode'] != '200') echo "Чего то не получается удалить лот {$key} из Amazon");	
+				
+			}
+		}		
+	}
+	$uniqid = uniqid();	
+	
 
-	$key = "TEMP-".$логин.".jpg";
+	$key = "TEMP-{$логин}-{$uniqid}.jpg";
 		
 	$file = file_get_contents($путь_к_фото);
 	  
@@ -68,7 +98,7 @@ if (mysqli_connect_errno()) {
 			  `gorod`, `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, 
 			  `status`, `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
 			) VALUES (
-			  '7', '0', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$_POST['currency']} / PZM', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', '', '', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '', ''
+			  '7', '0', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$_POST['currency']} / PZM', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', 'фото_амазон', '{$uniqid}', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '', ''
 			)";							
 			$result = $mysqli->query($query);			
 			if (!$result) {
