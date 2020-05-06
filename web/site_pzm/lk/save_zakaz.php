@@ -46,7 +46,7 @@ if (mysqli_connect_errno()) {
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
 			$uniqid = $результМассив[0]['file_id'];
 			if ($uniqid) {
-				
+				/*
 				$key = "TEMP-{$логин}-{$uniqid}.jpg";
 				
 				$result = $s3->deleteObjects([
@@ -61,7 +61,7 @@ if (mysqli_connect_errno()) {
 				]);
 				
 				if ($result['@metadata']['statusCode'] != '200') echo "Чего то не получается удалить лот {$key} из Amazon");	
-				
+				*/
 			}
 		}		
 	}
