@@ -71,13 +71,13 @@ if ($text == 'сенд') {
 	$chatId = "752067062";
 	$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
 	$file = file_get_contents($файл);
-	//$fileContents = stream_get_contents($file);
+	$fileContents = stream_get_contents($file);
 	
 	$headers = stream_context_create([
 		'http' => [
 			'method' => 'POST',
 			'header' => 'Content-Type: multipart/form-data' . PHP_EOL,
-			'content' => ['file' => $file]
+			'content' => ['file' => $fileContents]
 		],
 	]);
  
