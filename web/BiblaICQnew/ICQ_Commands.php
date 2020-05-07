@@ -71,6 +71,7 @@ if ($text == 'сенд') {
 	$chatId = "752067062";
 	$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
 	$file = file_get_contents($файл);
+	$fileContents = stream_get_contents($file);
 	
 	$headers = stream_context_create([
 		'http' => [
@@ -79,7 +80,7 @@ if ($text == 'сенд') {
 			'content' => http_build_query([
 				'token' => $token,
 				'chatId' => $chatId,
-				'file' => $file
+				'file' => $fileContents
 			])
 		],
 	]);
