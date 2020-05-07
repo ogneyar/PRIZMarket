@@ -18,7 +18,7 @@ $Макс_гарант = '630509100';
 $Макса_группа = '-1001387747179';
 
 if ($_GET['privet']) {
-	$tg->sendMessage($obsujdaem_bot_group, $_GET['privet']);
+	$tg->sendMessage($admin_group, $_GET['privet']);
 	echo "Сообщение {$_GET['privet']} отправленно в группу!";
 }
 
