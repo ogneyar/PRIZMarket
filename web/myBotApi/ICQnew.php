@@ -194,6 +194,8 @@ class ICQnew
 		
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 		
+		$curl_file = curl_file_create($file, mime_content_type($file), "file-108.jpg");
+		
 		$response = $this->call("/messages/sendFile", [
 			'token' => $this->token,
 			'chatId' => $chatId,			
@@ -202,7 +204,7 @@ class ICQnew
 			'forwardChatId' => $forwardChatId,				
 			'forwardMsgId' => $forwardMsgId,			
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup,
-			'file' => curl_file_create($file) //$file
+			'file' =>  $curl_file
 		], true);	
 		
 		$response = json_decode($response, true);
