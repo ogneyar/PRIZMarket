@@ -51,7 +51,7 @@ if ($text == 'сенд') {
 		'http' => [
 			'method' => 'POST',
 			'header' => 'Content-Type: application/x-www-form-urlencoded' . PHP_EOL,
-			'content' => [
+			'content' => http_build_query([
 				'token' => $token,
 				'chatId' => $chatId,
 				'text' => $text//,
@@ -59,7 +59,7 @@ if ($text == 'сенд') {
 				//'forwardChatId' => $forwardChatId,				
 				//'forwardMsgId' => $forwardMsgId,			
 				//'inlineKeyboardMarkup' => $inlineKeyboardMarkup
-			]
+			])
 		],
 	]);
  
