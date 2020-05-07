@@ -1,4 +1,7 @@
 ﻿<?
+if ($chatType == 'private') {
+//------------------------------------------
+
 if ($text=='/start') {
 	_старт();
 }elseif ($text=='/help') {
@@ -18,4 +21,6 @@ if ($text=='/start') {
 	$bot_icq->sendText($chatId, $реплика);
 }elseif ($text) $bot_icq->sendText($chatId, "я не понимаю(");
 
+//------------------------------------------
+}
 ?>
