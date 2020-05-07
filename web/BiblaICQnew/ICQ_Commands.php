@@ -41,7 +41,33 @@ if ($text == 'сенд') {
 	
 	$bot_icq->sendText($chatId, "Вот\n\n{$файл}", $кнопа);
 	
+}elseif ($text == 'file_get_contents') {		
+	
+	$token = "001.2839288818.3919878723:752122979";
+	$chatId = "752067062";
+	$text = "TTTTtttt";
+	
+	$headers = stream_context_create([
+		'http' => [
+			'method' => 'POST',
+			'header' => 'Content-Type: application/x-www-form-urlencoded' . PHP_EOL,
+			'content' => [
+				'token' => $token,
+				'chatId' => $chatId,
+				'text' => $text//,
+				//'replyMsgId' => $replyMsgId,			
+				//'forwardChatId' => $forwardChatId,				
+				//'forwardMsgId' => $forwardMsgId,			
+				//'inlineKeyboardMarkup' => $inlineKeyboardMarkup
+			]
+		],
+	]);
+ 
+	file_get_contents('https://api.icq.net/bot/v1/messages/sendText', false, $headers);
+	
 }
+
+
 
 
 ?>
