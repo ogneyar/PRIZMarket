@@ -48,5 +48,6 @@
 	$ICQtoken = getenv('ICQ_TOKEN');
 	$ICQmaster = getenv('ICQ_MASTER');
 	$ICQ_channel_market = getenv('ICQ_CHANNEL_MARKET');
+	$ICQ_channel_podrobno = getenv('ICQ_CHANEL_PODROBNO');
 	
 ?>
