@@ -77,15 +77,13 @@ if ($text == 'сенд') {
 		'http' => [
 			'method' => 'POST',
 			'header' => 'Content-Type: multipart/form-data' . PHP_EOL,
-			'content' => http_build_query([
-				'token' => $token,
-				'chatId' => $chatId,
-				'file' => $fileContents
-			])
+			'content' => ['file' => $fileContents]
 		],
 	]);
  
-	file_get_contents('https://api.icq.net/bot/v1/messages/sendFile', false, $headers);
+	file_get_contents("https://api.icq.net/bot/v1/messages/sendFile?token={$token}&chatId={$chatId}", false, $headers);
+	
+	$bot_icq->sendText($chatId, "Х.З.");
 	
 }
 
