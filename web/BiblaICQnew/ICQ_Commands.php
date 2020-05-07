@@ -71,17 +71,17 @@ if ($text == 'сенд') {
 	$chatId = "752067062";
 	$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
 	$file = file_get_contents($файл);
-	$fileContents = stream_get_contents($file);
+	//$fileContents = stream_get_contents($file);
 	
 	$headers = stream_context_create([
 		'http' => [
 			'method' => 'POST',
 			'header' => 'Content-Type: multipart/form-data' . PHP_EOL,
-			'content' => $fileContents
+			'content' => http_build_query(['file' => $file])
 		],
 	]);
  
-	file_get_contents("https://api.icq.net/bot/v1/messages/sendFile?token={$token}&chatId={$chatId}&file=", false, $headers);
+	file_get_contents("https://api.icq.net/bot/v1/messages/sendFile?token={$token}&chatId={$chatId}", false, $headers);
 	
 	$bot_icq->sendText($chatId, "Х.З.");
 	
