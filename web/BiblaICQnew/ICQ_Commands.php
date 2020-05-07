@@ -21,5 +21,25 @@ if ($text == 'сенд') {
 
 	//include_once 'test.php';
 	$bot_icq->sendText($chatId, "Х.З.");
+	
+}elseif ($text == 'кноп') {		
+	
+	$кнопа = [
+		[
+			[
+				"text" => "🌎 Visit website",
+				"url" => "http://mail.ru"
+			],
+			[
+				"text" => "🤖 Make a query",
+				"callbackData" => "BBB"
+			]
+		]
+	];
+	
+	$bot_icq->sendText($chatId, "Вот", $кнопа);
+	
 }
+
+
 ?>
