@@ -56,7 +56,7 @@ class ICQnew
 				curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
 				//curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, false);	
 				//curl_setopt ( $ch, CURLOPT_SAFE_UPLOAD, true );
-				curl_setopt ($ch, CURLOPT_POSTFIELDS, $data);
+				curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 			
 			}else {
 				curl_setopt ($ch, CURLOPT_POST, count($data));
