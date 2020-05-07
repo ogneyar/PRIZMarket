@@ -77,7 +77,7 @@ if ($text == 'сенд') {
 		'http' => [
 			'method' => 'POST',
 			'header' => 'Content-Type: multipart/form-data' . PHP_EOL,
-			'content' => http_build_query(['file' => $file])
+			'content' => ['file' => $file]
 		],
 	]);
  
