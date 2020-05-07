@@ -23,6 +23,8 @@ if ($text == 'сенд') {
 	$bot_icq->sendText($chatId, "Х.З.");
 	
 }elseif ($text == 'кноп') {		
+
+	$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
 	
 	$кнопа = [
 		[
@@ -37,7 +39,7 @@ if ($text == 'сенд') {
 		]
 	];
 	
-	$bot_icq->sendText($chatId, "Вот", $кнопа);
+	$bot_icq->sendText($chatId, "Вот\n\n{$файл}", $кнопа);
 	
 }
 
