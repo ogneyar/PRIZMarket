@@ -44,15 +44,24 @@ class ICQnew
 	**
     ** @return mixed
     */
-    public function call($method, $data)
+    public function call($method, $data, $photo=false)
     {
         $result = null;
         if (is_array($data)) {
             $ch = curl_init();
             curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method);
-          	curl_setopt ($ch, CURLOPT_POST, count($data));
-			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
-			curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+            if ($photo) {				
+				curl_setopt ($ch, CURLOPT_POST, count($data));
+				curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+				curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, false);	
+				curl_setopt ($ch, CURLOPT_HEADER, false);
+				//curl_setopt ( $ch, CURLOPT_SAFE_UPLOAD, true );
+			}else {
+				curl_setopt ($ch, CURLOPT_POST, count($data));
+				curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
+				curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+			}
             $result = curl_exec($ch);
             curl_close($ch);
         }
@@ -184,6 +193,8 @@ class ICQnew
 		
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 		
+		$curl_file = curl_file_create($file, mime_content_type($file), "file-108.jpg");
+		
 		$response = $this->call("/messages/sendFile", [
 			'token' => $this->token,
 			'chatId' => $chatId,			
@@ -192,8 +203,8 @@ class ICQnew
 			'forwardChatId' => $forwardChatId,				
 			'forwardMsgId' => $forwardMsgId,			
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup,
-			'file' => $file 
-		]);	
+			'file' =>  $curl_file
+		], true);	
 		
 		$response = json_decode($response, true);
 		
