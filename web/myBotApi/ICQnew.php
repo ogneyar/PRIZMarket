@@ -51,10 +51,12 @@ class ICQnew
             $ch = curl_init();
             curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method);
             if ($photo) {
-				curl_setopt ($ch, CURLOPT_POST, 1 /*count($data)*/);
-				//curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	 
-				curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));				
-				curl_setopt ($ch, CURLOPT_POSTFIELDS, $photo); //http_build_query($data));
+				curl_setopt ($ch, CURLOPT_HEADER, false);
+				curl_setopt ($ch, CURLOPT_POST, 1);
+				curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, false);	
+				//curl_setopt ( $ch, CURLOPT_SAFE_UPLOAD, true );
+				curl_setopt ($ch, CURLOPT_POSTFIELDS, $data);
 			
 			}else {
 				curl_setopt ($ch, CURLOPT_POST, count($data));
@@ -200,8 +202,8 @@ class ICQnew
 			'forwardChatId' => $forwardChatId,				
 			'forwardMsgId' => $forwardMsgId,			
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup,
-			
-		], ['file' => $file]);	
+			'file' => curl_file_create($file) //$file
+		], true);	
 		
 		$response = json_decode($response, true);
 		
