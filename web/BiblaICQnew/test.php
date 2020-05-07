@@ -23,7 +23,7 @@ $post = BodyPost::Get(array(
 	'token' => "001.2839288818.3919878723:752122979",
 	'chatId' => "752067062", 
 	//'text' => "Какой либо текст...",
-	'file' => $file
+	'file' => $file //curl_file_create($файл) 
 	), $delimiter);
 
 // Инициализируем  CURL
