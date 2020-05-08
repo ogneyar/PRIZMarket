@@ -13,7 +13,7 @@
 function _отправка_лота_админам_с_сайта() {	
 	global $table_market, $bot, $mysqli, $admin_group, $логин;
 	
-	$запрос = "SELECT * FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND id_zakaz=0";
+	$запрос = "SELECT * FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";
 	
 	$id = "7.".$логин;
 	$кнопки = [ [ [ 'text' => 'Опубликовать',
