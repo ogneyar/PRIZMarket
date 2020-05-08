@@ -160,9 +160,7 @@ if ($text == 'база') {
 	
 }elseif ($text == 'изи') {
 	
-	$query = "ALTER TABLE `site_users` 
-		ADD `svyazi` varchar(100) DEFAULT NULL, 
-		ADD `svyazi_data` varchar(100) DEFAULT NULL";
+	$query = "AALTER TABLE `avtozakaz_pzmarket` CHANGE `id_zakaz` `id_zakaz` VARCHAR( 50 ) NULL DEFAULT NULL";
 	
 	if ($result = $mysqli->query($query)) {
 	
