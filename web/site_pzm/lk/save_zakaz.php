@@ -89,7 +89,7 @@ if (mysqli_connect_errno()) {
 		echo "<br><br>" . $ссылка_на_амазон;	
 		$bot->sendMessage($мастер, "Файл загружен на Амазон");
 		//$bot->setMyCommands($BotCommand);
-				
+		
 		
 		$query = "DELETE FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";		
 		if ($mysqli->query($query)) {			
@@ -108,7 +108,27 @@ if (mysqli_connect_errno()) {
 				
 				_отправка_лота_админам_с_сайта(); 
 			}
-		}else echo "Не смог удалить запись в таблице {$table_market} (_запись_в_таблицу_маркет)";		
+		}else echo "Не смог удалить запись в таблице {$table_market} (_запись_в_таблицу_маркет)";	
+
+
+		$array = [
+			'login'   => $логин,
+			'file' => $ссылка_на_амазон
+		];		
+		 
+		$ch = curl_init('http://f0430377.xsph.ru');
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $array); 
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_HEADER, false);
+		$html = curl_exec($ch);
+		curl_close($ch);	
+		 
+		echo $html;
+
+
+		
 		
 	}
 
