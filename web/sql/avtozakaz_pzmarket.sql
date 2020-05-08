@@ -1,9 +1,10 @@
+
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `avtozakaz_pzmarket` (
   `id_client` bigint(20) DEFAULT NULL,
-  `id_zakaz` int(20) DEFAULT NULL,
+  `id_zakaz` varchar(50) DEFAULT NULL,
   `kuplu_prodam` varchar(100) DEFAULT NULL,
   `nazvanie` varchar(500) DEFAULT NULL,
   `url_nazv` varchar(200) DEFAULT NULL,
