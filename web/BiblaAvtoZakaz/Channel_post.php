@@ -16,6 +16,19 @@ if ($number !== false && $number == '0') {
 //	$bot->sendMessage($master, "еее");
 	_ожидание_публикации();
 
+}elseif (isset($photo)) {
+
+	if (stripos($caption, ':') !== false) {
+		if (strstr($caption, ':', true) == "Логин") {
+			$логин = substr(strrchr($caption, ":"), 1);	
+			$query ="UPDATE {$table_market} SET file_id='{$file_id}' WHERE id_client='7' AND username='{$логин}' AND status=''";
+			$result = $mysqli->query($query);		
+			if ($result) {
+				$bot->sendMessage($admin_group, "Записал в базу file_id этого фото.");
+			}
+		}
+	}
+
 }else {
 
 	if ($text != '?' && $text != '!') {
