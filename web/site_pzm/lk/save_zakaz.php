@@ -47,7 +47,7 @@ if (mysqli_connect_errno()) {
 			$uniqid = $результМассив[0]['file_id'];
 			if ($uniqid) {
 				
-				$key = "TEMP-{$логин}-{$uniqid}.jpg";
+				$key = "temp{$uniqid}.jpg"; //{$логин}-
 				
 				$result = $s3->deleteObjects([
 					'Bucket' => $aws_bucket,			
@@ -69,7 +69,8 @@ if (mysqli_connect_errno()) {
 		
  	$uniqid = uniqid();	
 
-	$key = "TEMP-{$логин}-{$uniqid}.jpg";
+	//$key = "TEMP-{$логин}-{$uniqid}.jpg";
+	$key = "temp{$uniqid}.jpg";
 
 	$file = file_get_contents($путь_к_фото);
 	  
