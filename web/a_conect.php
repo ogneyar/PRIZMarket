@@ -28,6 +28,7 @@
 	$api_key = getenv('API_KEY_IMGBB');
 	
 	$master = getenv('MASTER');
+	$tester = getenv('TESTER');
 	$admin_group_market = getenv('ADMIN_GROUP_MARKET');
 	$admin_group_garant = getenv('ADMIN_GROUP_GARANT');		
 	$admin_group_Info = getenv('ADMIN_GROUP_INFO');
