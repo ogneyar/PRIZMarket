@@ -160,13 +160,14 @@ if ($text == 'база') {
 	
 }elseif ($text == 'изи') {
 	
-	$query = "AALTER TABLE `avtozakaz_pzmarket` CHANGE `id_zakaz` `id_zakaz` VARCHAR( 50 ) NULL DEFAULT NULL";
+	$query = "ALTER TABLE `avtozakaz_pzmarket` CHANGE `id_zakaz` `id_zakaz` VARCHAR( 50 ) NULL DEFAULT NULL";
 	
 	if ($result = $mysqli->query($query)) {
 	
 		$bot->sendMessage($master, "Всё отлично!");
 		
-	}else throw new Exception("Не смог изменить таблицу site_users");	
+	}else throw new Exception("Не смог изменить таблицу avtozakaz_pzmarket");	
+		
 	
 	
 	
