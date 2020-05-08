@@ -115,7 +115,9 @@ if (mysqli_connect_errno()) {
 		$array = [
 			'login'   => $логин,
 			'file' => $ссылка_на_амазон
-		];		
+		];	
+		
+		if ($tester) $array = array_merge($array, [ 'tester' => $tester ]);
 		 
 		$ch = curl_init('http://f0430377.xsph.ru');
 		curl_setopt($ch, CURLOPT_POST, 1);
