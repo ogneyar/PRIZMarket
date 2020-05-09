@@ -1,12 +1,12 @@
 <?php
-use \PHPMailer\PHPMailer\PHPMailer;
+/*use \PHPMailer\PHPMailer\PHPMailer;
 use \PHPMailer\PHPMailer\SMTP;
-use \PHPMailer\PHPMailer\Exception;
+use \PHPMailer\PHPMailer\Exception;*/
 
 include_once '../../vendor/autoload.php';
 include_once '../a_conect.php';
 
-$mail = new PHPMailer;
+$mail = new PHPMailer\PHPMailer\PHPMailer;
 
 $mail->isSMTP();                      // Set mailer to use SMTP
 $mail->Host = $smtp_server;      // Specify main and backup SMTP servers
@@ -25,8 +25,8 @@ $mail->addAddress($емаил);  // добавить получателя
 
 $mail->WordWrap = 50;                 // автоматический перенос символов
 
-$mail->Subject = 'Регистрация';
-$mail->Body    = $body;
+$mail->Subject = 'Информация';
+$mail->Body    = $сообщение;
 
 if(!$mail->send()) {	
     echo 'Не смог отправить сообщение.';
@@ -34,7 +34,7 @@ if(!$mail->send()) {
 	$bot->sendMessage($admin_group, "Не смог отправить сообщение на почту.");
 	//exit('ok');
 } else {
-    echo $ответное_сообщение;
+    //echo $ответное_сообщение;
 	$bot->sendMessage($admin_group, "Сообщение отправлено на {$емаил}!");
 }
 
