@@ -78,10 +78,10 @@ if ($callback_data=='создать'){
 	_старт_АвтоЗаказБота();	
 	
 	
-}elseif ($callback_data=='опубликовать') {	
-	_очистка_таблицы_ожидание();
-	if (strpos($id, ".")!==false) {				
-		$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+}elseif ($callback_data=='опубликовать') {		
+	if (strpos($id, ".")!==false) {
+		_вывод_на_каналы_с_сайта($id);
+		//$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
 		//exit('ok');
 	}else _вывод_лота_на_каналы($id);	
 	
