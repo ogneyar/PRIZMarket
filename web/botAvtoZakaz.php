@@ -1,4 +1,5 @@
 <?
+include_once '../vendor/autoload.php';
 // Подключаем библиотеку с классом Bot
 include_once 'myBotApi/Bot.php';
 // Подключаем библиотеку с классом Tgraph
@@ -27,6 +28,15 @@ $таблица_медиагруппа = 'avtozakaz_mediagroup';
 
 // Группа администрирования бота (Админка)
 $admin_group = $admin_group_AvtoZakaz;
+
+// Подключение к Амазон
+$credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
+
+$s3 = new Aws\S3\S3Client([
+	'credentials' => $credentials, 
+	'version'  => 'latest',
+	'region'   => $aws_region
+]);
 
 // Подключение БД
 $mysqli = new mysqli($host, $username, $password, $dbname);
