@@ -96,7 +96,7 @@ function _отправка_лота_админам_с_сайта() {
 }
 
 // Функция для записи данных в таблицу маркет
-function _запись_в_маркет_с_сайта($номер_клиента = null, $имя_столбца = null, $действие = null, $номер_лота = null) {
+function _запись_в_маркет_с_сайта() {
 /*	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;	
 	if (!$callback_from_id) $callback_from_id = $from_id;			
 	if (!$callback_from_username) $callback_from_username = $from_username;	
@@ -125,7 +125,7 @@ function _запись_в_маркет_с_сайта($номер_клиента 
 
 // вывод на канал подробности уже готового лота (кнопка у админов ОПУБЛИКОВАТЬ)
 function _вывод_на_каналы_с_сайта($команда) {
-	global $table_market, $bot, $s3, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
+	global $table_market, $bot, $s3, $aws_bucket, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
 	global $таблица_медиагруппа, $channel_media_market, $master, $message_id, $admin_group, $три_часа;
 	
 	_очистка_таблицы_ожидание();
