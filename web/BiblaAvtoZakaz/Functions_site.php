@@ -178,8 +178,8 @@ function _вывод_на_каналы_с_сайта($команда) {
 				if ($фото_с_амазон) {								
 					$реплика = "Эта заявка сформирована на нашем сайте - prizmarket.ru\n[_________]({$фото_с_амазон})\n{$текст}";					
 				}else $реплика = $текст;			
-				$ссылка_на_клиента = $строка['url_info_bot']; // https://wa.me/79518233753				
-				if (!$ссылка_на_клиента) $ссылка_на_клиента = "https://wa.me/79518233753";				
+				$ссылка_на_клиента = $строка['url_info_bot']; // https://wa.me/ххххххххххх				
+				if (!$ссылка_на_клиента) $ссылка_на_клиента = "https://wa.me";				
 				$кнопки = [
 					[
 						[ 'text' => 'КЛИЕНТ', 'url' => $ссылка_на_клиента ],
@@ -213,10 +213,12 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown, $inLine);				
 			}			
 			if ($КаналИнфо) {									
-				$uniqid = $строка['id_zakaz'];		
-				$key = "temp{$uniqid}.jpg";				
+				//$uniqid = $строка['id_zakaz'];		
+				//$key = "temp{$uniqid}.jpg";		
+				
 				$id_zakaz = $КаналИнфо['message_id'];
-				$new_key = "{$id_zakaz}.jpg";				
+				
+/*				$new_key = "{$id_zakaz}.jpg";				
 				$upload = $s3->copyObject([
 					'Bucket'     => $aws_bucket,
 					'Key'        => $new_key,
@@ -225,7 +227,8 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$result = $s3->deleteObjects([
 					'Bucket' => $aws_bucket,			
 					'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
-				]);				
+				]);	
+*/				
 /*			
 				if ($ссылка_на_канал_медиа) {				
 					_запись_в_таблицу_медиагрупа($id_client, $id_zakaz, $ссылка_на_канал_медиа);			
