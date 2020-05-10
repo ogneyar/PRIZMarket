@@ -618,7 +618,11 @@ function _отправка_сообщений_инфоботу() {
 
 // Если клиенту отказанно в публикации лота (кнопка у админов ОТКАЗ)
 function _отказать($id) {
-	global $bot, $callback_query_id, $chat_id, $message_id, $mysqli, $table_market;
+	global $bot, $master, $callback_query_id, $chat_id, $message_id, $mysqli, $table_market;
+
+        $bot->sendMessage($master, "Вам отказанно {$id}");
+        $bot->sendMessage($id, "Вам отказанно");
+
 	$bot->sendMessage($id, "Вам отказанно. [Читайте правила](https://t.me/podrobno_s_PZP/1370).\n\n/start 👈🏻 в главное меню!", markdown, true);	
 	$query = "DELETE FROM ".$table_market." WHERE id_client=".$id." AND id_zakaz=''";
 	if ($mysqli->query($query)) {		
