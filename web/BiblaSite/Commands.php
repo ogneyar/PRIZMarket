@@ -67,6 +67,11 @@ if ($text == 'база') {
 		
 	}else $bot->sendMessage($chat_id, "Не кууль.");
 	
+}elseif ($text == 'сенок') {		
+	$фото = "https://i.gifer.com/72Sz.gif";
+	$путь_к_файлу = pathinfo($фото, PATHINFO_DIRNAME);	
+	$bot->sendMessage($chat_id, $фото . "\n\n" . $путь_к_файлу);
+	
 }
 
 
