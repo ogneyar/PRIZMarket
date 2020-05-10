@@ -456,7 +456,7 @@ function _удалить_выбранный_лот($номер_лота) {
 
 
 // вывод на канал подробности уже готового лота (кнопка у админов ОПУБЛИКОВАТЬ)
-function _вывод_лота_на_каналы($id_client, $номер_лота = 0) {
+function _вывод_лота_на_каналы($id_client, $номер_лота = '') {
 	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
 	global $таблица_медиагруппа, $channel_media_market, $master, $message_id, $admin_group, $три_часа;
 	_очистка_таблицы_ожидание();	
