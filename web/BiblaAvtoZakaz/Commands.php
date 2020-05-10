@@ -21,6 +21,12 @@ if ($text == 'база') {
 }elseif ($text == 'варя') {	
 	$bot->output_table('variables');		
 		
+}elseif ($text == 'удалиЭу') {	
+	$query = "DELETE FROM `variables` WHERE id_bota='1011417080' AND soderjimoe<'125'";		
+	if ($result = $mysqli->query($query)) {	
+		$bot->sendMessage($master, "Всё отлично!");		
+	}else throw new Exception("Не смог изменить таблицу `variables`");		
+	
 }elseif ($text == 'удали очередь') {	
 	$query = "DELETE FROM `variables` WHERE id_bota='1011417080'";		
 	if ($result = $mysqli->query($query)) {	
