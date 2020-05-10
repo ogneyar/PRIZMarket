@@ -21,6 +21,21 @@
 ** _очистка_таблицы_ожидание
 **
 **
+** num_keybord
+** udalenie_starih_zapisey
+** kuplu_prodam_vibor
+** vibor_valut
+** vibor_banka
+** vibor_otdela
+** _start_PZMarket_bota
+** _start_PZMgarant_bota
+** _est_li_v_base
+** _est_li_BAN
+** _this_admin
+** _pechat
+** _pechat_lotov
+** _проверка_БАНа
+**
 */
 
 /*      ---------------------------
@@ -659,7 +674,6 @@ function vibor_otdela($text) { // функция выбора отдела в к
 }
 
 
-
 function _start_PZMarket_bota($this_admin=false) { // функция старта PZMarketBota
 
 	global $first_name, $tg, $chat_id, $master, $tehPodderjka, $keyboard, $keyboardAdmin, $keyboardMax;
@@ -728,69 +742,52 @@ function _start_PZMgarant_bota($this_admin=false) {		// функция стар�
 }
 
 
-
 function _est_li_v_base() { // функция проверки есть ли юзер в базе 
-
-	global $table, $from_id, $first_name, $mysqli, $tg, $admin_group;
-	
-	$est_li_v_base=false;
-	
+	global $table, $from_id, $first_name, $mysqli, $tg, $admin_group;	
+	$est_li_v_base=false;	
 	$query = "SELECT id_client FROM ". $table; 
 	if ($result = $mysqli->query($query)) {					
 		if($result->num_rows>0){
 			$arrStrok = $result->fetch_all();				
 			foreach($arrStrok as $arrS){						
-				foreach($arrS as $stroka) if ($stroka==$from_id) $est_li_v_base=true;				
+				foreach($arrS as $stroka) if ($stroka==$from_id) $est_li_v_base=true;
 			}												
 		}
 		$last_id = $result->num_rows;				
-	}				
-		
+	}						
 	if ($est_li_v_base==false) {	
-
-$first_name = str_replace("'", "\'", $first_name);
-			
+		$first_name = str_replace("'", "\'", $first_name);			
 		$query = "INSERT INTO ".$table." VALUES ('". ++$last_id ."', '". $from_id ."' , '" . $first_name . "', 'client', '0')";
 		if ($result = $mysqli->query($query)) {		
 			$tg->sendMessage($admin_group, 'Добавлен новый клиент');
 			$est_li_v_base=true;	
 		}else $tg->sendMessage($admin_group, 'Не смог добавить нового клиента');
 	}				
-
 	return $est_li_v_base;
 }
 
 
 function _est_li_BAN() { // функция проверки есть ли у юзера БАН
-
 	global $table, $chat_id, $mysqli;
-
 	$query = "SELECT flag FROM ".$table." WHERE id_client=" . $chat_id;
 	if ($result = $mysqli->query($query)) {					
 		if($result->num_rows>0){
 			$arrStrok = $result->fetch_all();
 			foreach($arrStrok as $arrS){
-				foreach($arrS as $stroka) $flag_client=$stroka;								
+				foreach($arrS as $stroka) $flag_client=$stroka;							
 			}								
 		}						
-	}else throw new Exception("Не смог проверить есть ли БАН у юзера ".$chat_id);	
-	
+	}else throw new Exception("Не смог проверить есть ли БАН у юзера ".$chat_id);		
 	return $flag_client;
-			
 }
 
 
-
 function _this_admin() { // функция проверки есть ли у юзера БАН
-
-	global $table, $chat_id, $mysqli, $tg, $from_id, $callback_from_id;
-	
-	$this_admin = false;
-	
+	global $table, $chat_id, $mysqli, $tg, $from_id, $callback_from_id;	
+	$this_admin = false;	
 	// узнаю список администраторов бота и пополняю им массив $admin
 	$query = "SELECT id_client FROM ".$table." WHERE status='admin'";
-	if ($result = $mysqli->query($query)) {		
-	
+	if ($result = $mysqli->query($query)) {			
 		$kolS=$result->num_rows;
 		if($kolS>0){
 			$arrStrok = $result->fetch_all();						
@@ -799,136 +796,86 @@ function _this_admin() { // функция проверки есть ли у ю�
 			}						
 		}	
 	}else $tg->sendMessage($chat_id, 'Чего то не получается узнать администраторов бота');	
-
-
 	// Проверяю, кто пишет - админ/юзер
-	foreach($admin as $value) if ($from_id==$value||$callback_from_id==$value) $this_admin = true;
-	
-	return $this_admin;
-	
+	foreach($admin as $value) if ($from_id==$value||$callback_from_id==$value) $this_admin = true;	
+	return $this_admin;	
 }
 
 
-
 function _pechat($text=null, $max_kol_s = 4000) { // функция печати (разбивание сообщения на части)
-
-	global $chat_id, $tg;
-	
-	$str=null;	
-		
-	$kol = strlen ($text) ;
-	
-	if ($kol > 1){
-	
-		if ($kol<=$max_kol_s){				
-
-			$результат = null;
-				
-				while (!$результат && $kol > 1) {
-					
+	global $chat_id, $tg;	
+	$str=null;			
+	$kol = strlen ($text) ;	
+	if ($kol > 1){	
+		if ($kol<=$max_kol_s){			
+			$результат = null;				
+				while (!$результат && $kol > 1) {					
 					$результат = $tg->sendMessage($chat_id, $text, null, true);	
-
                     if (!$результат) {
-
 						$text = substr($text, 1);
-
-                        $kol = strlen($text);
-						
-						$результат = $tg->sendMessage($chat_id, $text, null, true);	
-					   
-						if (!$результат && $kol > 2) {
-					   
-							$text = substr($text, 1, -1);	
-						   
-							$kol = strlen($text);	
-						
-						}
-                        
-                    }
-               
-				}
-			
-		}else{					
-		
-			$len_str=strlen($text);			
-			
-			$kolich=$len_str-$max_kol_s;
-			
-			$str = substr($text, 0, -$kolich);
-			
+                        $kol = strlen($text);						
+						$результат = $tg->sendMessage($chat_id, $text, null, true);	   
+						if (!$результат && $kol > 2) {					   
+							$text = substr($text, 1, -1);							   
+							$kol = strlen($text);							
+						}                        
+                    }               
+				}			
+		}else{							
+			$len_str=strlen($text);						
+			$kolich=$len_str-$max_kol_s;			
+			$str = substr($text, 0, -$kolich);			
 			$результат = null;
-
-			$kol=strlen($str);	
-			
-			while (!$результат && $kol > 1) {
-				
+			$kol=strlen($str);				
+			while (!$результат && $kol > 1) {				
 				$результат = $tg->sendMessage($chat_id, $str, null, true);
-
-				if (!$результат) {
-					   
-					$str = substr($str, 0, -1);	
-					   
-					$kol = strlen($str);	
-					   
-					$результат = $tg->sendMessage($chat_id, $str, null, true);
-					   
-					if (!$результат && $kol > 2) {
-					   
-						$str = substr($str, 1, -1);	
-						   
-						$kol = strlen($str);	
-						   
-					}
-					   
+				if (!$результат) {					   
+					$str = substr($str, 0, -1);						   
+					$kol = strlen($str);						   
+					$результат = $tg->sendMessage($chat_id, $str, null, true);		   
+					if (!$результат && $kol > 2) {					   
+						$str = substr($str, 1, -1);							   
+						$kol = strlen($str);							   
+					}					   
 				}
-
-			}
-			
-			$str = substr($text, $kol);		
-			
+			}			
+			$str = substr($text, $kol);	
 			_pechat($str, $max_kol_s);
-
-		}		
-		
+		}
 	}
-	
-	return true;
-	
+	return true;	
 }
 	
 
 function _pechat_lotov($chatId, $arrS, $kol, $max) { // функция вывода лотов на экране
-
-	global $tg, $master;
-	
-	$i = $max;
-	
+	global $tg, $master;	
+	$i = $max;	
 	for ($schetchik=$kol; $schetchik<=$max; $schetchik++){
 		
-		$otdel=$arrS[$i][1];
-		$format=$arrS[$i][2];
-		$file_id=$arrS[$i][3];
-		$url=$arrS[$i][4];
-		$caption1=$arrS[$i][5];
-		$caption2=$arrS[$i][6];
-		$caption3=$arrS[$i][7];
-		$caption4=$arrS[$i][8];
-		$caption5=$arrS[$i][9];
-		$doverie=$arrS[$i][10];
-		$podrobno_url=$arrS[$i][11];
+		$номер_лота = $arrS[$i][0]; // номер лота
+		$otdel=$arrS[$i][1];		// категория
+		$format=$arrS[$i][2];		// формат файла	
+		$file_id=$arrS[$i][3];		// файл айди
+		$url=$arrS[$i][4];			// ссылка в названии
+		$kuplu_prodam=$arrS[$i][5];	// хештег куплю/продам
+		$nazvanie=$arrS[$i][6];		// название
+		$valuta=$arrS[$i][7];		// валюта
+		$gorod=$arrS[$i][8];		// хештег местоположения
+		$username=$arrS[$i][9];		// @username))
+		$doverie=$arrS[$i][10];		// НАШЕ доварие клиенту
+		$podrobno_url=$arrS[$i][11];// ссылка на подробности
 		
 		$otdel = str_replace('_', '\_', $otdel);
-		$caption1 = str_replace('_', '\_', $caption1);
-		$caption2 = str_replace('_', '\_', $caption2);
-		$caption3 = str_replace('_', '\_', $caption3);
-		$caption4 = str_replace('_', '\_', $caption4);
-		$caption5 = str_replace('_', '\_', $caption5);
-		//$doverie = str_replace('_', '\_', $doverie);
-					
-		$caption="{$caption1}\n\n{$otdel}\n[{$caption2}]({$url})\n".
-			"{$caption3}\n️{$caption4}\n️{$caption5}";  					
-					
-		if ($doverie!=='0') $caption.= "\n\n{$doverie}";
+		$kuplu_prodam = str_replace('_', '\_', $kuplu_prodam);
+		$nazvanie = str_replace('_', '\_', $nazvanie);
+		$valuta = str_replace('_', '\_', $valuta);
+		$gorod = str_replace('_', '\_', $gorod);
+		$username = str_replace('_', '\_', $username);
+		
+		$caption="{$kuplu_prodam}\n\n{$otdel}\n[{$nazvanie}]({$url})\n".
+			"{$valuta}\n️{$gorod}\n️{$username}\nлот {$номер_лота}";  					
+		
+		if ($doverie!=='0') $caption.= "\n{$doverie}";
 				
 		$inLineBut1=["text"=>"Подробнее","url"=>$podrobno_url];
 		$inLineStr1=[$inLineBut1];
@@ -950,25 +897,18 @@ try{
 }
 
 
-	function _проверка_БАНа() { 
-
-		global $chat_id, $mysqli, $tg;
-		
-		$query = "SELECT * FROM info_users WHERE status='ban' AND id_client='{$chat_id}'";
-		if ($result = $mysqli->query($query)) {	
-			if ($result->num_rows > 0) {
-				
-				$tehPodderjka = "[тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88";
-
-				$tg->sendMessage($chat_id, "Ваш аккаунт попал в БАН!\n\nДля того чтобы узнать причину обратитесь в {$tehPodderjka}", markdown);	
-				
-				exit('ok');
-			}			
-		}else throw new Exception("Не смог проверить БАН лист (_проверка_БАНа)");		
-	
-		return false;
-		
-	}
+function _проверка_БАНа() { 
+	global $chat_id, $mysqli, $tg;		
+	$query = "SELECT * FROM info_users WHERE status='ban' AND id_client='{$chat_id}'";
+	if ($result = $mysqli->query($query)) {	
+		if ($result->num_rows > 0) {
+			$tehPodderjka = "[тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88";
+			$tg->sendMessage($chat_id, "Ваш аккаунт попал в БАН!\n\nДля того чтобы узнать причину обратитесь в {$tehPodderjka}", markdown);					
+			exit('ok');
+		}			
+	}else throw new Exception("Не смог проверить БАН лист (_проверка_БАНа)");	
+	return false;
+}
 	
 	
 	
