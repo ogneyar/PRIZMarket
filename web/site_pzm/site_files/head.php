@@ -10,6 +10,8 @@
 	
 	<link rel="stylesheet" href="/site_pzm/font-awesome/css/font-awesome.min.css">
 	
+	<link rel="shortcut icon" href="/site_pzm/img/favicon.png" type="image/png">
+	
 	<!-- Here we add libs for jQuery, Ajax... -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
 	<!-- <script type="text/javascript" src="/site_pzm/site_files/jquery-3.3.1.min.js"></script> -->
