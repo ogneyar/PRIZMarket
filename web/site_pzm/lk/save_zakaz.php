@@ -122,7 +122,7 @@ if (mysqli_connect_errno()) {
 			'file' => $ссылка_на_амазон
 		];	
 
-		echo "Заявка отправлена РАЙминистрации.<br><br>";
+		echo "Заявка отправлена РАЙминистрации.";
 		
 		if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);
 		 
