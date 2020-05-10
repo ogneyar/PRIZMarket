@@ -12,7 +12,7 @@
 	
 	<!--<link rel="shortcut icon" href="/site_pzm/img/favicon.png" type="image/png">-->
 	
-	<link rel="shortcut icon" href="/site_pzm/favicon/favicon.ico" type="image/x-icon">
+	<!--<link rel="shortcut icon" href="/site_pzm/favicon/favicon.ico" type="image/x-icon">-->
 	<link rel="icon" href="/site_pzm/favicon/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" sizes="180x180" href="/site_pzm/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/site_pzm/favicon/favicon-32x32.png">
