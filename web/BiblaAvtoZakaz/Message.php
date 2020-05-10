@@ -326,7 +326,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				$bot->sendMessage($chat_id, "Принял.", null, $HideKeyboard);	
 				$bot->sendMessage($chat_id, $text);
 				
-				_отправка_лота($chat_id, 0, false, true);
+				_отправка_лота($chat_id, '', false, true);
 				
 			}else $bot->deleteMessage($chat_id, $message_id);					
 		}		
