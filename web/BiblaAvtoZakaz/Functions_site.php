@@ -180,8 +180,8 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$new_key = "podrobno{$uniqid}.jpg";				
 				$upload = $s3->copyObject([
 					'Bucket'     => $aws_bucket,
-					'Key'        => $new_key,
-					'CopySource' => "{$aws_bucket}/{$key}"
+					'Key'        => $key,
+					'CopySource' => "{$aws_bucket}/{$new_key}"
 				]);				
 				$result = $s3->deleteObjects([
 					'Bucket' => $aws_bucket,			
@@ -231,23 +231,8 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$inLine = ['inline_keyboard' => $кнопки];						
 				$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown, $inLine);				
 			}			
-			if ($КаналИнфо) {									
-				//$uniqid = $строка['id_zakaz'];		
-				//$key = "temp{$uniqid}.jpg";		
-				
-				$id_zakaz = $КаналИнфо['message_id'];
-				
-/*				$new_key = "{$id_zakaz}.jpg";				
-				$upload = $s3->copyObject([
-					'Bucket'     => $aws_bucket,
-					'Key'        => $new_key,
-					'CopySource' => "{$aws_bucket}/{$key}"
-				]);				
-				$result = $s3->deleteObjects([
-					'Bucket' => $aws_bucket,			
-					'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
-				]);	
-*/				
+			if ($КаналИнфо) {
+				$id_zakaz = $КаналИнфо['message_id'];				
 /*			
 				if ($ссылка_на_канал_медиа) {				
 					_запись_в_таблицу_медиагрупа($id_client, $id_zakaz, $ссылка_на_канал_медиа);			
