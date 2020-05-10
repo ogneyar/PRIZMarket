@@ -10,7 +10,7 @@
 	
 	<link rel="stylesheet" href="/site_pzm/font-awesome/css/font-awesome.min.css">
 	
-	<link rel="shortcut icon" href="/site_pzm/img/favicon.png" type="image/png">
+	<link rel="shortcut icon" href="/site_pzm/img/favicon2.png" type="image/png">
 	
 	<!--<link rel="shortcut icon" href="/site_pzm/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/site_pzm/favicon/favicon.ico" type="image/x-icon">
