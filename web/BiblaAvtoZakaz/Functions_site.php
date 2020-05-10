@@ -22,6 +22,38 @@ function _дай_емаил($имя_клиента) {
 	return $ответ;
 }
 
+function _дай_связь($имя_клиента) {	
+	global $mysqli;
+	$ответ = false;
+	$запрос = "SELECT svyazi, svyazi_data FROM site_users WHERE login='{$имя_клиента}'";
+	$результат = $mysqli->query($запрос);
+	if ($результат) {
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			$связь = $результМассив[0]['svyazi'];
+			$данные = $результМассив[0]['svyazi_data'];
+			if ($связь == 'Telegram') {
+				if (strpos($данные, "@")!==false) {		
+					$ник = substr(strrchr($данные, "@"), 1);
+					$ответ = "https://teleg.link/{$ник}";
+				}else $ответ = "https://teleg.link/{$данные}";
+			}elseif ($связь == 'WhatsApp') {
+				if (strpos($данные, "+")!==false) {		
+					$ник = substr(strrchr($данные, "+"), 1);
+					$ответ = "https://wa.me/{$ник}";
+				}else $ответ = "https://wa.me/{$данные}";
+			}elseif ($связь == 'Wiber') {
+				if (strpos($данные, "+")!==false) {		
+					$ник = substr(strrchr($данные, "+"), 1);
+					$ответ = "https://wb.me/{$ник}";
+				}else $ответ = "https://wb.me/{$данные}";
+			}
+		}
+	}
+	return $ответ;
+}
+
+
 // отправка лота администрации на проверку и редактирование
 function _отправка_лота_админам_с_сайта() {	
 	global $table_market, $bot, $mysqli, $admin_group, $логин;
