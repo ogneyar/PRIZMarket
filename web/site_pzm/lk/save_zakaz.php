@@ -92,6 +92,7 @@ if (mysqli_connect_errno()) {
 		$bot->sendMessage($мастер, "Файл загружен на Амазон");
 		//$bot->setMyCommands($BotCommand);
 		
+		$связь = _дай_связь($логин);
 		
 		$query = "DELETE FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";		
 		if ($mysqli->query($query)) {			
@@ -100,7 +101,7 @@ if (mysqli_connect_errno()) {
 			  `gorod`, `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, 
 			  `status`, `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
 			) VALUES (
-			  '7', '{$uniqid}', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$_POST['currency']} / PZM', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', 'фото', '', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '', ''
+			  '7', '{$uniqid}', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$_POST['currency']} / PZM', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', 'фото', '', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '{$связь}', ''
 			)";							
 			$result = $mysqli->query($query);			
 			if (!$result) {
