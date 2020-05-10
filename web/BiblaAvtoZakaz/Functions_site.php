@@ -175,20 +175,29 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$текст .= "\n\n{$подробности}"; 								
 				$текст = "{$хештеги}{$название_для_подробностей}{$текст}";	
 				
-				$uniqid = $строка['id_zakaz'];		
-				$key = "temp{$uniqid}.jpg";
+				$uniqid = $строка['id_zakaz'];	
 				$new_key = "podrobno{$uniqid}.jpg";				
+				$фото_с_амазон = $строка['url_tgraph'];
+				$file = file_get_contents($фото_с_амазон);  
+				$upload = $s3->putObject([
+					'Bucket' => $aws_bucket,
+					'Key'    => $new_key, 
+					'Body'   => $file,	
+					'ACL'    => 'public-read'
+				]);
+/*				
 				$upload = $s3->copyObject([
 					'Bucket'     => $aws_bucket,
-					'Key'        => $key,
-					'CopySource' => "{$aws_bucket}/{$new_key}"
-				]);				
+					'Key'        => $new_key,
+					'CopySource' => "{$aws_bucket}/{$key}"
+				]);		
+*/
+				$key = "temp{$uniqid}.jpg";
 				$result = $s3->deleteObjects([
 					'Bucket' => $aws_bucket,			
 					'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
 				]);
 				
-				$фото_с_амазон = $строка['url_tgraph'];	
 				$путь_к_файлу = pathinfo($фото_с_амазон, PATHINFO_DIRNAME);				
 				
 				$фото_с_амазон = "{$путь_к_файлу}/{$new_key}";
