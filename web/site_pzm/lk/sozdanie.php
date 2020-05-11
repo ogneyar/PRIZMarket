@@ -1,6 +1,7 @@
 <?php
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 //else $json = json_encode($_COOKIE['login']);
+include_once "../site_files/functions.php";
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,7 +29,11 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">
-			<?include_once 'wrapper-leftCol-sozdanie.php';?>
+		<?
+			$давно = _последняя_публикация_на_сайте($_COOKIE['login']);	
+			if ($давно) { include_once 'wrapper-leftCol-sozdanie.php';	
+			}else include_once 'wrapper-leftCol-sozdanie-net.php';	
+		?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
