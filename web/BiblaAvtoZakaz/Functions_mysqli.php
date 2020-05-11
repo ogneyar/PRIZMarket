@@ -269,7 +269,7 @@ function _есть_ли_лот($номер_лота) {
 function _последняя_публикация() {	
 	global $mysqli, $from_id, $callback_from_id, $table_market;	
 	if (!$callback_from_id) $callback_from_id = $from_id;		
-    $resonse = false;	
+    $response = false;	
 	$query = "SELECT date FROM {$table_market} WHERE id_client={$callback_from_id}";	
 	$result = $mysqli->query($query);	
 	if ($result) {	
