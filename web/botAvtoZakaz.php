@@ -2,6 +2,8 @@
 include_once '../vendor/autoload.php';
 // Подключаем библиотеку с классом Bot
 include_once 'myBotApi/Bot.php';
+// бот для ICQnew
+include_once 'myBotApi/ICQnew.php';
 // Подключаем библиотеку с классом Tgraph
 include_once 'myBotApi/Tgraph.php';
 // Подключаем библиотеку с классом ImgBB
@@ -14,11 +16,13 @@ $token = $tokenAvtoZakaz;
 
 // Создаем объект бота
 $bot = new Bot($token);
-
 $id_bota = strstr($token, ':', true);	
 
-$Tgraph = new Tgraph($tokenTGraph);
+// Создаем объект ICQnew бота
+$bot_icq = new ICQnew($ICQtoken);
+$id_icq_bota = substr(strstr($ICQtoken, ':'), 1);	
 
+$Tgraph = new Tgraph($tokenTGraph);
 $imgBB = new ImgBB($api_key);
 
 $table_market = 'avtozakaz_pzmarket';
