@@ -97,6 +97,8 @@ if (mysqli_connect_errno()) {
 		if ($_POST['currency']) $валюта = $_POST['currency']." / PZM";
 		else $валюта = "PZM";
 		
+		$время = time();
+		
 		$query = "DELETE FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";		
 		if ($mysqli->query($query)) {			
 			$query = "INSERT INTO {$table_market} (
@@ -104,7 +106,7 @@ if (mysqli_connect_errno()) {
 			  `gorod`, `username`, `doverie`, `otdel`, `format_file`, `file_id`, `url_podrobno`, 
 			  `status`, `podrobno`, `url_tgraph`, `foto_album`, `url_info_bot`, `date`
 			) VALUES (
-			  '7', '{$uniqid}', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$валюта}', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', 'фото', '', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '{$связь}', ''
+			  '7', '{$uniqid}', '{$_POST['hesh_pk']}', '{$_POST['name']}', '{$_POST['link_name']}', '{$валюта}', '{$_POST['hesh_city']}', '{$логин}', '0', '{$_POST['hesh_kateg']}', 'фото', '', '', '', '{$_POST['opisanie']}', '{$ссылка_на_амазон}', '', '{$связь}', '{$время}'
 			)";							
 			$result = $mysqli->query($query);			
 			if (!$result) {
