@@ -1,6 +1,7 @@
 ﻿<?php	
 // Подключаем библиотеку с классом Bot
 include_once '../myBotApi/Bot.php';
+include_once '../../a_conect.php';
 //exit('ok');
 $token = $tokenMARKET;
 // Создаем объект бота
