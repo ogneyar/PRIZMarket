@@ -1,11 +1,11 @@
 ﻿<article id="lk">
-	<article>
+	<article id="zayavki">
 		<a href='' title=''>
 			<img src="/site_pzm/img/art/PRIZM.png" />
 		</a>
-		<h3><span>Здесь может быть Ваша реклама!</span></h3>
+		<h3>Здесь может быть Ваша реклама!</h3>
 	</article>
-</article>-->
+</article>
 
 <!--<article id="lk">
 		<br>
