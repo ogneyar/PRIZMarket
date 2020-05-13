@@ -657,22 +657,22 @@ body {
 
 @media (min-width: 640px){
 #leftCol #lk #zayavki h4 {
-	font-size: 0.8em;	
+	font-size: 1.2em;	
 }}
 
 @media (max-width: 639px) and (min-width: 350px){
 #leftCol #lk #zayavki h4 {
-	font-size: 0.7em;	
+	font-size: 1em;	
 }}
 
 @media (max-width: 349px) and (min-width: 311px){
 #leftCol #lk #zayavki h4 {
-	font-size: 0.6em;	
+	font-size: 0.8em;	
 }}
 
 @media (max-width: 310px){
 #leftCol #lk #zayavki h4 {
-	font-size: 0.5em;	
+	font-size: 0.7em;	
 }}
 /*----------------------------------*/
 
