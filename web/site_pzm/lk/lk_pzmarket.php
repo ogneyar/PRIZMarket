@@ -50,6 +50,11 @@ if($количество > 0) {
 		$лот[$номер] = "<article id='zayavki'>
 				<a href=''><img src='{$ссыль_на_фото}' alt='' title=''/></a>
 				{$текст_лота}
+				<form action='/site_pzm/lk/zayavki_delete.php'>
+					<input type='hidden' name='login' value='<?=$логин;?>'>					
+					<h4><input type='submit' class='button' name='delete' id='delete'  value='delete_<?=$id_lota;?>'></h4>					
+					<h4><input type='submit' class='button' name='repeat' id='repeat'  value='repeat_<?=$id_lota;?>'></h4>
+				</form>
 			</article>";		
 		$номер++;
 	}
