@@ -84,6 +84,7 @@ function exception_handler($exception) {
 				var stroka = <?=$json; ?>;				
 				
 				if (login.length < 4) fail = "Логин не менее 4х символов";
+				else if (login.split ('@').length - 1 == 0 ) fail = "Логин не должен содержать символ '@'";
 				else if (password.length < 4) fail = "Пароль не менее 4х символов";
 				else if (password != password2) fail = "Не верен повторно введённый пароль";
 				else if (email.split ('@').length - 1 == 0 || email.split ('.').length - 1 == 0)
