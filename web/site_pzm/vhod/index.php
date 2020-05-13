@@ -95,7 +95,7 @@ function exception_handler($exception) {
 				}
 				
 				$.ajax ({
-					url: '/site_pzm/vhod/vhod.php',
+					url: '/site_pzm/vhod/index-vhod.php',
 					type: 'POST',
 					cache: false,
 					data: {'login': login},
@@ -119,7 +119,7 @@ function exception_handler($exception) {
 		<?include_once '../site_files/header.php';?>
 	</header>
 	<div id="lk_menu">
-		<?include_once '../lk/lk.php';?>		
+		<?include_once '../lk/index-lk_menu.php';?>		
 	</div>
 	<nav>
 		<?include_once '../site_files/nav.php';?>
@@ -130,7 +130,7 @@ function exception_handler($exception) {
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">		
-			<?include_once 'wrapper-leftCol-vhod.php';?>
+			<?include_once 'index-leftCol.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
