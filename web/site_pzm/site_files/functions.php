@@ -1,6 +1,6 @@
 ﻿<?
-include_once '../../a_conect.php';
-$mysqli = new mysqli($host, $username, $password, $dbname);
+include_once '../../a_mysqli.php';
+//$mysqli = new mysqli($host, $username, $password, $dbname);
 
 /*
 ** 	Функции для работы сайта
