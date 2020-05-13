@@ -3,7 +3,7 @@
 		<a href='' title=''>
 			<img src="/site_pzm/img/art/PRIZM.png" />
 		</a>
-		<p>Здесь может быть Ваша реклама!</p>
+		<h4>Здесь может быть Ваша реклама!</h4>
 	</article>
 </article>
 
