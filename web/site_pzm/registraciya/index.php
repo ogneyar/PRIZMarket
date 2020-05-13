@@ -21,7 +21,7 @@ if (mysqli_connect_errno()) {
 // Обработчик исключений
 set_exception_handler('exception_handler');
 
-$запрос = "SELECT login, token FROM `site_users`"; 
+$запрос = "SELECT login, email, token FROM `site_users`"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$количество = $результат->num_rows;	
@@ -97,6 +97,7 @@ function exception_handler($exception) {
 					var str = stroka[key];
 					for (var k in str) {
 						if (login == str[k]) fail = "Такой логин уже существует";
+						else if (email == str[k]) fail = "Такой email уже используется";
 					}
 				}
 				
