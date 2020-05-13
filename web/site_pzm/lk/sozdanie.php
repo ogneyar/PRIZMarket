@@ -31,8 +31,8 @@ include_once "../site_files/functions.php";
 		<div id="leftCol">
 		<?
 			$давно = _последняя_публикация_на_сайте($_COOKIE['login']);	
-			if ($давно) { include_once 'wrapper-leftCol-sozdanie.php';	
-			}else include_once 'wrapper-leftCol-sozdanie-net.php';	
+			if ($давно) { include_once 'sozdanie-leftCol.php';	
+			}else include_once 'sozdanie-net-leftCol.php';	
 		?>
 		</div>
 		<div id="rightCol">
