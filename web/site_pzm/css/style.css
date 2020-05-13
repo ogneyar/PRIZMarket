@@ -638,9 +638,9 @@ body {
 
 
 
-#leftCol #lk #zayavki a img {
+#leftCol #zayavki a img {
 	width: 50%;
-	height: 50%;
+	/*height: 50%;*/
 	/*float: left;*/
 	margin-bottom: 10px;
 }
@@ -684,9 +684,6 @@ body {
 	color: #7c7c7c;
 }
 
-#zayavki {
-	width: 50%;
-}
 
 /* -------------------------------
 		Правая часть сайта
