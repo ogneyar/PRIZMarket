@@ -26,6 +26,14 @@ if($количество > 0) {
 	$лот = [];
 	foreach ($результМассив as $строка) {
 		$id_lota = $строка['id_zakaz'];			
+		
+		$запрос = "SELECT nazvanie FROM pzmarkt WHERE id='{$id_lota}'"; 
+		$результат = $mysqli->query($запрос);
+		if ($результат)	{
+			$количество = $результат->num_rows;
+			if ($количество == 0) break;
+		}
+		
 		$название = $строка['nazvanie'];
 		//$куплю_или_продам = $строка['kuplu_prodam'];						
 		//$валюта = $строка['valuta'];				
