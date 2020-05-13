@@ -45,7 +45,7 @@ if($количество > 0) {
 			</article>";		
 		$номер++;
 	}
-}else $лот[0] = "<article id='zayavki'><h1>{$_COOKIE['login']}, у Вас нет опубликованных лотов.</h1></article>";
+}else $лот[0] = "<article id='zayavki'><h4>{$_COOKIE['login']}, у Вас нет опубликованных лотов.</h4></article>";
 
 // закрываем подключение 
 $mysqli->close();
