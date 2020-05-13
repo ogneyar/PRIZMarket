@@ -21,7 +21,7 @@ if (mysqli_connect_errno()) {
 // Обработчик исключений
 set_exception_handler('exception_handler');
 
-$запрос = "SELECT login FROM `site_users`"; 
+$запрос = "SELECT login, token FROM `site_users`"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$количество = $результат->num_rows;	
@@ -36,9 +36,12 @@ if ($результат)	{
 
 $json_login = json_encode(null);
 
-if (($_GET['registration'] == '1')&&($результМассив)) {	
+$подтверждение = false;
+
+if (($_GET['token'])&&($результМассив)) {	
 	foreach ($результМассив as $строка) {
-		if ($строка['login'] == $_GET['login']) {
+		if (($строка['login'] == $_GET['login'])&&($строка['token'] == $_GET['token'])) {
+			$подтверждение = true;
 			$логин = $строка['login'];
 			$запрос = "UPDATE `site_users` SET podtverjdenie='true' WHERE login='{$логин}'"; 
 			$результат = $mysqli->query($запрос);
@@ -141,8 +144,10 @@ function exception_handler($exception) {
 		</div>
 		<div id="leftCol">		
 			<?
-			if ($_GET['registration'] == '1') {
+			if ($подтверждение) {
 				include_once 'index-podtverjdenie-leftCol.php';
+			}elseif ($_GET['token']) {
+				include_once 'index-podtverjdenie-net-leftCol.php';
 			}else {
 				include_once 'index-registraciya-leftCol.php';
 			}

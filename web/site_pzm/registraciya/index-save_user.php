@@ -27,11 +27,13 @@ $логин = trim($логин);
 $пароль = trim($пароль);
 $емаил = trim($емаил);
 
+$uniqid = uniqid();
+
 $пароль_md5 = md5($пароль);
 
 $путь_сервера = "https://" . $_SERVER['SERVER_NAME']."/site_pzm/registraciya/index.php";
 
-$ссылка_подтверждения = $путь_сервера . "?registration=1&login=" . $логин;
+$ссылка_подтверждения = $путь_сервера . "?login={$логин}&token={$uniqid}";
 
 $время = time();
 
@@ -42,8 +44,9 @@ $запрос = "INSERT INTO `site_users` (
 		  `podtverjdenie`,
 		  `vremya`,
 		  `svyazi`,
-		  `svyazi_data`
-	) VALUES ('{$логин}', '{$пароль}', '{$емаил}', 'null', '{$время}', 'null', 'null')"; 
+		  `svyazi_data`,
+		  `token`
+	) VALUES ('{$логин}', '{$пароль}', '{$емаил}', 'null', '{$время}', 'null', 'null', '{$uniqid}')"; 
 $результат = $mysqli->query($запрос);
 
 // закрываем подключение 
