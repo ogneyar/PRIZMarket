@@ -637,14 +637,15 @@ body {
 #leftCol article:last-child {margin-bottom: 0}
 
 
-
+/*----------------------------------*/
+/* В личном кабинете заявки клиента */
+/*----------------------------------*/
 #leftCol #lk #zayavki a img {
 	width: 50%;
 	/*height: 50%;*/
 	/*float: left;*/
 	margin: 5px;
 }
-
 #leftCol #lk #zayavki h4 {
 	/*font-size: 1em;*/
 	font-family: Times New Roman, sans-serif;
@@ -654,7 +655,13 @@ body {
 	/*float: left;*/
 	/*margin-bottom: 10px;*/
 }
-
+#leftCol #lk h1 {
+	/*font-size: 1em;*/
+	font-family: Times New Roman, sans-serif;
+	color: rgba(172,172,183); 	
+	margin: 2% 7%;
+}
+/*----------------------------------*/
 
 
 
