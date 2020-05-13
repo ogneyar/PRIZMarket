@@ -636,6 +636,17 @@ body {
 
 #leftCol article:last-child {margin-bottom: 0}
 
+
+
+#leftCol #lk #zayavki a img {
+	width: 50%;
+	height: 50%;
+	/*float: left;*/
+	margin-bottom: 10px;
+}
+
+
+
 #leftCol article img {
 	width: 100%;
 	float: left;
