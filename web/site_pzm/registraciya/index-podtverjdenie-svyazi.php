@@ -47,7 +47,7 @@ $json_svyazi = json_encode($для_связи);
 				}
 				
 				$.ajax ({
-					url: '/site_pzm/registraciya/save_svyazi.php',
+					url: '/site_pzm/registraciya/index-podtverjdenie-svyazi-save.php',
 					type: 'POST',
 					cache: false,
 					data: {'login': login, 'svyazi': svyazi, 'svyazi_data': number},
@@ -68,7 +68,7 @@ $json_svyazi = json_encode($для_связи);
 		<?include_once '../site_files/header.php';?>
 	</header>
 	<div id="lk_menu">
-		<?include_once '../lk/lk.php';?>		
+		<?include_once '../lk/index-lk_menu.php';?>		
 	</div>
 	<nav>
 		<?include_once '../site_files/nav.php';?>
@@ -79,7 +79,7 @@ $json_svyazi = json_encode($для_связи);
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">		
-			<?include_once 'wrapper-leftCol-svyazi.php';?>
+			<?include_once 'index-podtverjdenie-svyazi-leftCol.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
