@@ -108,7 +108,7 @@ function exception_handler($exception) {
 				}				
 				
 				$.ajax ({
-					url: '/site_pzm/registraciya/save_user.php',
+					url: '/site_pzm/registraciya/index-save_user.php',
 					type: 'POST',
 					cache: false,
 					data: {'login': login, 'password': password, 'email': email},
