@@ -14,7 +14,9 @@ set_exception_handler('exception_handler');
 
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
 
-$запрос = "SELECT * FROM avtozakaz_pzmarket WHERE username='{$_COOKIE['login']}' AND id_client='7' AND status='одобрен'"; 
+$логин = $_COOKIE['login'];
+
+$запрос = "SELECT * FROM avtozakaz_pzmarket WHERE username='{$логин}' AND id_client='7' AND status='одобрен'"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$количество = $результат->num_rows;
@@ -50,15 +52,19 @@ if($количество > 0) {
 		$лот[$номер] = "<article id='zayavki'>
 				<a href=''><img src='{$ссыль_на_фото}' alt='' title=''/></a>
 				{$текст_лота}
-				<form action='/site_pzm/lk/zayavki_delete.php'>
+				<form action='/site_pzm/lk/repeat_delete.php'>
 					<input type='hidden' name='login' value='<?=$логин;?>'>					
-					<h4><input type='submit' class='button' name='delete' id='delete'  value='delete_<?=$id_lota;?>'></h4>					
-					<h4><input type='submit' class='button' name='repeat' id='repeat'  value='repeat_<?=$id_lota;?>'></h4>
+					<input type='hidden' name='id_lota' value='<?=$id_lota;?>'>
+					
+					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>
+					
+					<h4><input type='submit' class='button' name='repeat_delete' id='delete'  value='Удалить'></h4>
+					
 				</form>
 			</article>";		
 		$номер++;
 	}
-}else $лот[0] = "<br><h4>{$_COOKIE['login']}, у Вас нет опубликованных лотов.</h4>";
+}else $лот[0] = "<br><h4>{$логин}, у Вас нет опубликованных лотов.</h4>";
 
 // закрываем подключение 
 $mysqli->close();
