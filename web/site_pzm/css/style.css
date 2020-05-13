@@ -649,7 +649,8 @@ body {
 	color: rgba(172,172,183); 
 }
 #leftCol #lk #zayavki {
-	margin-bottom: -20px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 }
 #leftCol #lk {
 	/*margin-bottom: -20px;*/
@@ -667,12 +668,12 @@ body {
 
 @media (max-width: 349px) and (min-width: 311px){
 #leftCol #lk #zayavki h4 {
-	font-size: 0.8em;	
+	font-size: 0.7em;	
 }}
 
 @media (max-width: 310px){
 #leftCol #lk #zayavki h4 {
-	font-size: 0.7em;	
+	font-size: 0.6em;	
 }}
 /*----------------------------------*/
 
