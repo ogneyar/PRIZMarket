@@ -4,7 +4,7 @@
 	<label>&nbsp;&nbsp;<b><?=$логин;?></b>, для окончания регистрации выберите один из вариантов, как клиенты смогут с Вами связаться!</label>
 	<br><br><br>
 	
-	<form action="/site_pzm/registraciya/input_svyazi.php" align="center">
+	<form action="/site_pzm/registraciya/index-podtverjdenie-leftCol-svyazi.php" align="center">
 	
 		<input type="hidden" name="login" value="<?=$логин;?>">
 		
