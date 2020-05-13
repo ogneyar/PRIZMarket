@@ -165,15 +165,15 @@ function _отправка_лота($куда, $номер_лота, $админ
 					if ($inICQ && $id_client!='7') {
 						$фото_на_imgBB = $строка['url_tgraph'];
 						//$фото_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $номер_лота.".jpg";
-						
+						/*
 						$кнопа =  [ [ [
 									"text" => "Наш телеграм-канал",
 									"url" => "https://teleg.link/prizm_market" ] ] ];
-						/*
+						*/
 						$кнопа = [ [ [
 									"text" => "Посетите наш сайт",
 									"url" => "https://prizmarket.ru" ] ] ];
-						*/
+						
 						if (strpos($юзера_имя, "@")!==false) {							
 							$ссыль_на_телегу = "https://teleg.link/".substr($юзера_имя, 1);	
 						}else $ссыль_на_телегу = "https://t.me/".$юзера_имя;
