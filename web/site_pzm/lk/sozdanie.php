@@ -3,18 +3,10 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 //else $json = json_encode($_COOKIE['login']);
 $логин = $_COOKIE['login'];
 include_once "../site_files/functions.php";
-include_once '../../a_conect.php';
-
-$mysqli = new mysqli($host, $username, $password, $dbname);
-// проверка подключения 
-if (mysqli_connect_errno()) {	
-	echo "Ошибка! Нет подключения к БД.\n";	 
-	//$mysqli->close();		
-	exit('ok');  	
-}
+include_once '../../a_mysqli.php';
 
 $подтверждён = false;
-$запрос = "SELECT token FROM `site_users` WHERE login={$логин} AND podtverjdenie='true'"; 
+$запрос = "SELECT * FROM `site_users` WHERE login='{$логин}' AND podtverjdenie='true'"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$количество = $результат->num_rows;	
@@ -22,8 +14,8 @@ if ($результат)	{
 		$подтверждён = true;			
 	}
 }else {
-       echo 'Не смог проверить наличие клиента в базе...\n';	
-       exit('ok');
+       echo 'Не смог проверить наличие клиента в базе...';	
+       exit;
 } 
 
 // закрываем подключение 
