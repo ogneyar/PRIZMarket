@@ -655,6 +655,13 @@ body {
 	/*float: left;*/
 	/*margin-bottom: 10px;*/
 }
+#leftCol #lk #zayavki {
+	margin-bottom: -20px;
+}
+#leftCol #lk {
+	margin-bottom: -20px;
+}
+
 @media (min-width: 640px){
 }
 
