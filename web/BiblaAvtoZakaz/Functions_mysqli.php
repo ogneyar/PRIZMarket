@@ -162,7 +162,7 @@ function _отправка_лота($куда, $номер_лота, $админ
 				if ($формат_файла == 'фото') {					
 					$публикация = $bot->sendPhoto($куда, $файлАйди, $текст, markdown, $inLine);	
 					
-					if ($inICQ && $id_client!='7') {
+					if ($inICQ) {
 						$фото_на_imgBB = $строка['url_tgraph'];
 						//$фото_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $номер_лота.".jpg";
 						/*
