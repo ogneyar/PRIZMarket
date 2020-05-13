@@ -655,11 +655,22 @@ body {
 	/*float: left;*/
 	/*margin-bottom: 10px;*/
 }
-#leftCol #lk h1 {
+#leftCol #lk #zayavki h1 {
 	/*font-size: 1em;*/
 	font-family: Times New Roman, sans-serif;
 	color: rgba(172,172,183); 	
 	margin: 2% 7%;
+}
+@media (min-width: 640px){
+}
+
+@media (max-width: 639px) and (min-width: 350px){
+}
+
+@media (max-width: 349px) and (min-width: 311px){
+}
+
+@media (max-width: 310px){
 }
 /*----------------------------------*/
 
