@@ -52,7 +52,7 @@ $mysqli->close();
 				$давно = _последняя_публикация_на_сайте($_COOKIE['login']);	
 				if ($давно) { 
                                          include_once 'sozdanie-leftCol.php';	
-				}else include_once 'sozdanie-net-leftCol.php';	
+				}else include_once 'sozdanie-leftCol.php';	
 			}else {
 				include_once 'sozdanie-nepodtv-leftCol.php';
 			}
