@@ -61,7 +61,7 @@ $(document).ready (function (){
 		Data.append('opisanie', opisanie);
 					
 		$.ajax ({
-			url: '/site_pzm/lk/save_zakaz.php',
+			url: '/site_pzm/lk/sozdanie-save_zakaz.php',
 			type: 'POST',
 			cache: false,
 			data: Data,
