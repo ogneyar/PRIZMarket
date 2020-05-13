@@ -1,5 +1,5 @@
 <?
-include_once "Functions_site.php";
+//include_once "Functions_site.php";
 /*  Список функций для работы с таблицами MYSQL
 **
 ** _запись_в_таблицу_маркет	-	// функция для записи данных в таблицу маркет
