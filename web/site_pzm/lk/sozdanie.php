@@ -1,7 +1,22 @@
 <?php
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 //else $json = json_encode($_COOKIE['login']);
+$логин = $_COOKIE['login'];
 include_once "../site_files/functions.php";
+include_once '../../a_mysqli.php';
+
+$подтверждён = false;
+$запрос = "SELECT token FROM `site_users` WHERE login={$логин} AND podtverjdenie='true'"; 
+$результат = $mysqli->query($запрос);
+if ($результат)	{
+	$количество = $результат->num_rows;	
+	if($количество > 0) {
+		$подтверждён = true;			
+	}
+}else echo 'Не смог проверить наличие клиента в базе...';	
+
+// закрываем подключение 
+$mysqli->close();
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,9 +45,13 @@ include_once "../site_files/functions.php";
 		</div>
 		<div id="leftCol">
 		<?
-			$давно = _последняя_публикация_на_сайте($_COOKIE['login']);	
-			if ($давно) { include_once 'sozdanie-leftCol.php';	
-			}else include_once 'sozdanie-net-leftCol.php';	
+			if ($подтверждён) {
+				$давно = _последняя_публикация_на_сайте($_COOKIE['login']);	
+				if ($давно) { include_once 'sozdanie-leftCol.php';	
+				}else include_once 'sozdanie-net-leftCol.php';	
+			}else {
+				include_once 'sozdanie-nepodtv-leftCol.php';
+			}
 		?>
 		</div>
 		<div id="rightCol">
