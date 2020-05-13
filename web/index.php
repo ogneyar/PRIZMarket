@@ -23,7 +23,7 @@ include_once 'site_pzm/pzmarket.php';
 		<?include_once 'site_pzm/site_files/header.php';?>
 	</header>
 	<div id="lk_menu">
-		<?include_once 'site_pzm/lk/lk.php';?>		
+		<?include_once 'site_pzm/lk/index-lk_menu.php';?>		
 	</div>
 	<nav>
 		<?include_once 'site_pzm/site_files/nav.php';?>
