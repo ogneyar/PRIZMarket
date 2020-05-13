@@ -17,7 +17,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 		<?include_once '../site_files/header.php';?>
 	</header>
 	<div id="lk_menu">
-		<?include_once 'lk.php';?>
+		<?include_once 'index-lk_menu.php';?>
 	</div>
 	<nav>
 		<?include_once '../site_files/nav.php';?>
