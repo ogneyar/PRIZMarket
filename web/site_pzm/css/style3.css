@@ -641,10 +641,10 @@ body {
 /* В личном кабинете заявки клиента */
 /*----------------------------------*/
 #leftCol #lk #zayavki a img {
-	/*width: 50%;*/
+	width: 50%;
 	/*height: 50%;*/
 	/*float: left;*/
-	margin-top: 5px;
+	margin: 10px;
 }
 #leftCol #lk #zayavki h4 {
 	/*font-size: 1em;*/
