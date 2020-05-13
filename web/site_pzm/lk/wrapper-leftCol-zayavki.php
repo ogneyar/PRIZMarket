@@ -1,4 +1,4 @@
-﻿<article id="lk">
+﻿<article id="lk_z">
 <?
 foreach($лот as $публикация) {
 	echo $публикация;
