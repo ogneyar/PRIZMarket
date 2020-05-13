@@ -642,37 +642,38 @@ body {
 /*----------------------------------*/
 #leftCol #lk #zayavki a img {
 	width: 50%;
-	/*height: 50%;*/
-	/*float: left;*/
 	margin: 10px;
 }
 #leftCol #lk #zayavki h4 {
-	/*font-size: 1em;*/
 	font-family: Times New Roman, sans-serif;
 	color: rgba(172,172,183); 
-	/*width: 40%;*/
-	/*margin: 2% 7%;*/
-	/*float: left;*/
-	/*margin-bottom: 10px;*/
 }
 #leftCol #lk #zayavki {
 	margin-bottom: -20px;
 }
 #leftCol #lk {
-	margin-bottom: -20px;
+	/*margin-bottom: -20px;*/
 }
 
 @media (min-width: 640px){
-}
+#leftCol #lk #zayavki h4 {
+	font-size: 1.2em;	
+}}
 
 @media (max-width: 639px) and (min-width: 350px){
-}
+#leftCol #lk #zayavki h4 {
+	font-size: 1em;	
+}}
 
 @media (max-width: 349px) and (min-width: 311px){
-}
+#leftCol #lk #zayavki h4 {
+	font-size: 0.8em;	
+}}
 
 @media (max-width: 310px){
-}
+#leftCol #lk #zayavki h4 {
+	font-size: 0.7em;	
+}}
 /*----------------------------------*/
 
 
