@@ -41,11 +41,11 @@ $подтверждение = false;
 if (($_GET['token'])&&($результМассив)) {	
 	foreach ($результМассив as $строка) {
 		if (($строка['login'] == $_GET['login'])&&($строка['token'] == $_GET['token'])) {
-			$подтверждение = true;
+			$подтверждение = true
 			$логин = $строка['login'];
-			$запрос = "UPDATE `site_users` SET podtverjdenie='true' WHERE login='{$логин}'"; 
+			/*$запрос = "UPDATE `site_users` SET podtverjdenie='true' WHERE login='{$логин}'"; 
 			$результат = $mysqli->query($запрос);
-			if (!$результат) throw new Exception('Не смог изменить таблицу `site_users`.. (работа сайта)');	
+			if (!$результат) throw new Exception('Не смог изменить таблицу `site_users`.. (работа сайта)');	*/
 			$json_login = json_encode($логин);
 		}
 	}	
