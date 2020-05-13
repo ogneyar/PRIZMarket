@@ -638,12 +638,22 @@ body {
 
 
 
-#leftCol #zayavki a img {
+#leftCol #lk #zayavki a img {
 	width: 50%;
 	/*height: 50%;*/
 	/*float: left;*/
 	margin-bottom: 10px;
 }
+
+#leftCol #lk #zayavki p {
+	/*font-size: 1em;*/
+	font-family: Times New Roman, sans-serif;
+	color: rgba(172,172,183); 
+	width: 40%;
+	margin: 2% 7%;
+	/*float: left;*/
+}
+
 
 
 

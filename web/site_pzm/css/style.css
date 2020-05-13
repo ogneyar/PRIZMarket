@@ -645,6 +645,16 @@ body {
 	margin-bottom: 10px;
 }
 
+#leftCol #lk #zayavki p {
+	/*font-size: 1em;*/
+	font-family: Times New Roman, sans-serif;
+	color: rgba(172,172,183); 
+	width: 40%;
+	margin: 2% 7%;
+	/*float: left;*/
+}
+
+
 
 
 #leftCol article img {
