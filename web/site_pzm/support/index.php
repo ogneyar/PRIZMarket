@@ -23,7 +23,7 @@ include_once '../../a_conect.php';
 		<?include_once '../site_files/header.php';?>
 	</header>
 	<div id="lk_menu">
-		<?include_once '../lk/lk.php';?>		
+		<?include_once '../lk/index-lk_menu.php';?>		
 	</div>
 	<nav>
 		<?include_once '../site_files/nav.php';?>
@@ -34,7 +34,7 @@ include_once '../../a_conect.php';
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">		
-			<?include_once 'wrapper-leftCol-support.php';?>
+			<?include_once 'index-leftCol.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
