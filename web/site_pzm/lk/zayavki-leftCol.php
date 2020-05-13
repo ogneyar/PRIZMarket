@@ -1,11 +1,22 @@
-﻿<article id="lk_z">
-<?
-foreach($лот as $публикация) {
-	echo $публикация;
-}	
+﻿<?
+if (is_array($лот)) {
 ?>
-</article>
-
+	<article id="lk_z">
+	<?
+	foreach($лот as $публикация) {
+		echo $публикация;
+	}	
+	?>
+	</article>
+<?
+}else {
+?>
+	<article id="lk">
+		<?=$лот;?>
+	</article>
+<?
+}
+?>
 
 <!--<article id="lk">
 	<article id="zayavki">

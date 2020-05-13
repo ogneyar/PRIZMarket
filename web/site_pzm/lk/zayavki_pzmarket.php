@@ -25,7 +25,7 @@ if ($результат)	{
 if($количество > 0) {
 	$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 	$номер = 0;
-	$лот = [];
+	//$лот = [];
 	foreach ($результМассив as $строка) {
 		$id_lota = $строка['id_zakaz'];			
 		
@@ -58,13 +58,12 @@ if($количество > 0) {
 					
 					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>
 					
-					<h4><input type='submit' class='button' name='repeat_delete' id='delete'  value='Удалить'></h4>
-					
+					<h4><input type='submit' class='button' name='repeat_delete' id='delete'  value='Удалить'></h4>					
 				</form>
 			</article>";		
 		$номер++;
 	}
-}else $лот[0] = "<br><h4>{$логин}, у Вас нет опубликованных лотов.</h4>";
+}else $лот = "<br><h4>{$логин}, у Вас нет опубликованных лотов.</h4>";
 
 // закрываем подключение 
 $mysqli->close();
