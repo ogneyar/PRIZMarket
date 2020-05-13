@@ -28,7 +28,7 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">
-			<?include_once 'wrapper-leftCol-lk.php';?>
+			<?include_once 'index-leftCol.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
