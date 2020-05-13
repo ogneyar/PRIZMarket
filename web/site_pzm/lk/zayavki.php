@@ -2,7 +2,7 @@
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 
 include_once '../../a_conect.php';
-include_once 'lk_pzmarket.php';
+include_once 'zayavki_pzmarket.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -27,7 +27,7 @@ include_once 'lk_pzmarket.php';
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">
-			<?include_once 'wrapper-leftCol-zayavki.php';?>
+			<?include_once 'zayavki-leftCol.php';?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
