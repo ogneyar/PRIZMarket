@@ -129,7 +129,7 @@ function exception_handler($exception) {
 		<?include_once '../site_files/header.php';?>
 	</header>
 	<div id="lk_menu">
-		<?include_once '../lk/lk.php';?>		
+		<?include_once '../lk/index-lk_menu.php';?>		
 	</div>
 	<nav>
 		<?include_once '../site_files/nav.php';?>
@@ -142,9 +142,9 @@ function exception_handler($exception) {
 		<div id="leftCol">		
 			<?
 			if ($_GET['registration'] == '1') {
-				include_once 'wrapper-leftCol-podtverjdenie.php';
+				include_once 'index-podtverjdenie-leftCol.php';
 			}else {
-				include_once 'wrapper-leftCol-registraciya.php';
+				include_once 'index-registraciya-leftCol.php';
 			}
 			?>
 		</div>
