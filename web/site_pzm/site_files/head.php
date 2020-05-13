@@ -6,6 +6,8 @@
 	<!-- Adopt website to current screen -->
 	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	
+	<meta http-equiv="Cache-Control" content="no-cache">
+	
 	<link rel="stylesheet" href="/site_pzm/css/s-style.css">
 	
 	<link rel="stylesheet" href="/site_pzm/font-awesome/css/font-awesome.min.css">
