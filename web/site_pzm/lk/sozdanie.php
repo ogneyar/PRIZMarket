@@ -3,20 +3,10 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 //else $json = json_encode($_COOKIE['login']);
 $логин = $_COOKIE['login'];
 include_once "../site_files/functions.php";
-include_once '../../a_mysqli.php';
+//include_once '../../a_mysqli.php';
 
-$подтверждён = false;
-$запрос = "SELECT * FROM `site_users` WHERE login='{$логин}' AND podtverjdenie='true'"; 
-$результат = $mysqli->query($запрос);
-if ($результат)	{
-	$количество = $результат->num_rows;	
-	if($количество > 0) {
-		$подтверждён = true;			
-	}
-}else {
-       echo 'Не смог проверить наличие клиента в базе...';	
-       exit;
-} 
+$подтверждён = _подтверждён_ли_клиент($логин);
+$давно = _последняя_публикация_на_сайте($логин);
 
 // закрываем подключение 
 $mysqli->close();
@@ -48,8 +38,7 @@ $mysqli->close();
 		</div>
 		<div id="leftCol">
 		<?
-			if ($подтверждён) {
-				$давно = _последняя_публикация_на_сайте($_COOKIE['login']);	
+			if ($подтверждён) {					
 				if ($давно) { 
 					include_once 'sozdanie-leftCol.php';	
 				}else include_once 'sozdanie-net-leftCol.php';	
