@@ -287,6 +287,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 function _отказать_с_сайта($имя_клиента) {
 	global $bot, $master, $callback_query_id, $chat_id, $message_id, $mysqli, $table_market;
 	
+	$id = '7';
 	if (strpos($имя_клиента, ".")!==false) {
 		$id = strstr($имя_клиента, '.', true);		
 		$имя_клиента = substr(strrchr($имя_клиента, "."), 1);

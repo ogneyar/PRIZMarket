@@ -132,7 +132,7 @@ if ($callback_data=='создать'){
 	
 }elseif ($callback_data=='отказать') {	
 	if (strpos($id, ".")!==false) {				
-		$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
+		_отказать_с_сайта($id);
 	}else _отказать($id);	
 	
 }elseif ($callback_data=='отказанно') {			
