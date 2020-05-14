@@ -80,9 +80,7 @@ if ($callback_data=='создать'){
 	
 }elseif ($callback_data=='опубликовать') {		
 	if (strpos($id, ".")!==false) {
-		_вывод_на_каналы_с_сайта($id);
-		//$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-		//exit('ok');
+		_вывод_на_каналы_с_сайта($id);		
 	}else _вывод_лота_на_каналы($id);	
 	
 }elseif ($callback_data=='применить') {	
