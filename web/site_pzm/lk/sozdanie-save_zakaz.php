@@ -124,7 +124,9 @@ if (mysqli_connect_errno()) {
 			'file' => $ссылка_на_амазон
 		];	
 
-		echo "Заявка отправлена РАЙминистрации.";
+		echo "Заявка отправлена РАЙминистрации.<br><br>";
+		echo "Сообщение о решении будет отправленно Вам на email.<br><br>";
+		echo "Все вопросы в <a href='https://teleg.link/Prizm_market_supportbot'>тех.поддержку.</a>";
 		
 		if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);
 		 
