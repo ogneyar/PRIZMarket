@@ -97,9 +97,7 @@ if ($callback_data=='создать'){
 	
 }elseif ($callback_data=='доверяет') {		
 	if (strpos($id, ".")!==false) {	
-		_запись_в_маркет_с_сайта($id, 'doverie', 1);
-		//$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-		//exit('ok');
+		_запись_в_маркет_с_сайта($id, 'doverie', 1);		
 	}elseif (_есть_ли_лот($id)) {
 		_запись_в_таблицу_маркет(null, 'doverie', '1', $id);	
 	}else _запись_в_таблицу_маркет($id, 'doverie', '1');	
@@ -107,8 +105,7 @@ if ($callback_data=='создать'){
 	
 }elseif ($callback_data=='не_доверяет') {	
 	if (strpos($id, ".")!==false) {				
-		$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-		exit('ok');
+		_запись_в_маркет_с_сайта($id, 'doverie', 0);
 	}elseif (_есть_ли_лот($id)) {
 		_запись_в_таблицу_маркет(null, 'doverie', '0', $id);	
 	}else _запись_в_таблицу_маркет($id, 'doverie', '0');	
