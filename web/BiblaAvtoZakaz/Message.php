@@ -95,10 +95,8 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 			if ($text) {				
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace("`", "\`", $text);
-				if (strpos($номер, ".")!==false) {
-					_очистка_таблицы_ожидание();				
-					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-					exit('ok');
+				if (strpos($номер, ".")!==false) {			
+					_запись_в_маркет_с_сайта($номер, 'nazvanie', $text);
 				}elseif (_есть_ли_лот($номер)) {
 					_запись_в_таблицу_маркет(null, 'nazvanie', $text, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'nazvanie', $text);				
@@ -109,10 +107,8 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 		}elseif ($result['ojidanie'] == 'замена_ссылки') {			
 			$номер = $result['last'];			
 			if ($text) {			
-				if (strpos($номер, ".")!==false) {
-					_очистка_таблицы_ожидание();				
-					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-					exit('ok');
+				if (strpos($номер, ".")!==false) {			
+					_запись_в_маркет_с_сайта($номер, 'url_nazv', $text);
 				}elseif (_есть_ли_лот($номер)) {
 					_запись_в_таблицу_маркет(null, 'url_nazv', $text, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'url_nazv', $text);				
@@ -124,9 +120,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 			$номер = $result['last'];			
 			if ($text) {			
 				if (strpos($номер, ".")!==false) {
-					_очистка_таблицы_ожидание();				
-					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-					exit('ok');
+					_запись_в_маркет_с_сайта($номер, 'gorod', $text);
 				}elseif (_есть_ли_лот($номер)) {
 					_запись_в_таблицу_маркет(null, 'gorod', $text, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'gorod', $text);				
@@ -140,9 +134,7 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				$text = str_replace("'", "\'", $text);
 				$text = str_replace("`", "\`", $text);			
 				if (strpos($номер, ".")!==false) {
-					_очистка_таблицы_ожидание();				
-					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-					exit('ok');
+					_запись_в_маркет_с_сайта($номер, 'podrobno', $text);
 				}elseif (_есть_ли_лот($номер)) {
 					_запись_в_таблицу_маркет(null, 'podrobno', $text, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'podrobno', $text);				
@@ -155,11 +147,9 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 			if ($photo) {	
 				$есть_ли_лот = _есть_ли_лот($номер);
 				if (strpos($номер, ".")!==false) {
-					_очистка_таблицы_ожидание();				
-					$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-					exit('ok');
+					_запись_в_маркет_с_сайта($номер, 'file_id', $file_id);
 				}elseif ($есть_ли_лот) {
-					_запись_в_таблицу_маркет(null, 'file_id', $text, $номер);	
+					_запись_в_таблицу_маркет(null, 'file_id', $file_id, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'file_id', $file_id);			
 				_очистка_таблицы_ожидание();				
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
@@ -169,8 +159,10 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				$результат = $imgBB->upload($ссыль);									
 				if ($результат) {								
 					$imgBB_url = $результат['url'];		
-					if ($есть_ли_лот) {
-						_запись_в_таблицу_маркет(null, 'url_tgraph', $text, $номер);	
+					if (strpos($номер, ".")!==false) {
+						_запись_в_маркет_с_сайта($номер, 'url_tgraph', $imgBB_url);
+					}elseif ($есть_ли_лот) {
+						_запись_в_таблицу_маркет(null, 'url_tgraph', $imgBB_url, $номер);	
 					}else _запись_в_таблицу_маркет($номер, 'url_tgraph', $imgBB_url);	
 				}else throw new Exception("Не смог сделать imgBB_url");					
 			}		

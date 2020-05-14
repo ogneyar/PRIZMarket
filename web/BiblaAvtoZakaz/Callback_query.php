@@ -127,13 +127,9 @@ if ($callback_data=='создать'){
 	_ожидание_ввода('замена_подробностей', $id);	
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст подробностей.");	
 	
-}elseif ($callback_data=='редактировать_фото') {		
-	if (strpos($id, ".")!==false) {				
-		$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-	}else {
-		_ожидание_ввода('замена_фото', $id);	
-		$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.");	
-	}
+}elseif ($callback_data=='редактировать_фото') {
+	_ожидание_ввода('замена_фото', $id);	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новое фото.");		
 	
 	
 }elseif ($callback_data=='отказать') {	
