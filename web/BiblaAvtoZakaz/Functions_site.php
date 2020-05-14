@@ -2,8 +2,12 @@
 
 /* Список всех функций:
 **
-** 
+** _дай_емаил
+** _дай_связь
 ** _отправка_лота_админам  // отправка из сайта
+** _запись_в_маркет_с_сайта
+** _вывод_на_каналы_с_сайта
+**
 **
 **
 */
@@ -131,7 +135,12 @@ function _отправка_лота_админам_с_сайта() {
 function _запись_в_маркет_с_сайта($имя_клиента = null, $имя_столбца = null, $действие = null) {
 	global $table_market, $mysqli;	
 	
-	$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client='7' AND username='{$имя_клиента}' AND status=''";				
+	if (strpos($имя_клиента, ".")!==false) {
+	$id = strstr($имя_клиента, '.', true);		
+	$имя_клиента = substr(strrchr($имя_клиента, "."), 1);	
+}
+	
+	$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client='{$id}' AND username='{$имя_клиента}' AND status=''";				
 	
 	$result = $mysqli->query($query);			
 	if (!$result) throw new Exception("Не смог сделать запись в таблицу {$table_market} (_запись_в_маркет_с_сайта)");	
