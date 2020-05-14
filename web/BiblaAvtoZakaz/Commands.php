@@ -332,6 +332,16 @@ if ($text == 'база') {
 	$bot->editMessageText($admin_group, "22354", "Лот 1169 опубликован.
 https://t.me/prizm_market/4482", null, null, true);
 
+}elseif ($text == 'удали лот по имени') {
+	
+	$query = "DELETE FROM ".$table_market." WHERE username=".$id." AND status=''";
+	
+	if ($result = $mysqli->query($query)) {
+	
+		$bot->sendMessage($master, "Всё отлично!");
+		
+	}else throw new Exception("Не смог изменить таблицу {$table_market}");
+
 }
 
 
