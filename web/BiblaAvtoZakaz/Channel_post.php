@@ -2,18 +2,7 @@
 $number = stripos($text, '#');
 
 if ($number !== false && $number == '0') {
-/*
-	$UNIXtime = time();
-	$UNIXtime_Moscow = $UNIXtime + $три_часа;	
-	$дата_и_время = date("d.m.Y H:i:s", $UNIXtime_Moscow);
-	$дата = date("d.m.Y", $UNIXtime_Moscow);
-	$время = date("H:i:s", $UNIXtime_Moscow);
-	$час = date("H", $UNIXtime_Moscow);
-	$минута = date("i", $UNIXtime_Moscow);
-	$секунда = date("s", $UNIXtime_Moscow);
-*/	
 
-//	$bot->sendMessage($master, "еее");
 	_ожидание_публикации();
 
 }elseif (isset($photo)) {

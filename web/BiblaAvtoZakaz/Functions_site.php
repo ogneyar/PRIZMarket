@@ -190,40 +190,22 @@ function _вывод_на_каналы_с_сайта($команда) {
 				
 				$результат = $imgBB->upload($фото_с_амазон);
 				if ($результат) {								
-					$imgBB_url = $результат['url'];		
+					$imgBB_url = $результат['url'];	
+					_запись_в_маркет_с_сайта($имя_клиента, 'url_tgraph', $imgBB_url);
+					
+					$key = "temp{$uniqid}.jpg";
+					$result = $s3->deleteObjects([
+						'Bucket' => $aws_bucket,			
+						'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
+					]);
 				}
-
-/*
-				$file = file_get_contents($фото_с_амазон);  
-				$upload = $s3->putObject([
-					'Bucket' => $aws_bucket,
-					'Key'    => $new_key, 
-					'Body'   => $file,	
-					'ACL'    => 'public-read'
-				]);
-*/
-/*				
-				$upload = $s3->copyObject([
-					'Bucket'     => $aws_bucket,
-					'Key'        => $new_key,
-					'CopySource' => "{$aws_bucket}/{$key}"
-				]);		
-*/
-				$key = "temp{$uniqid}.jpg";
-				$result = $s3->deleteObjects([
-					'Bucket' => $aws_bucket,			
-					'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
-				]);
-				
-				//$путь_к_файлу = pathinfo($фото_с_амазон, PATHINFO_DIRNAME);				
-				
-				//$фото_с_амазон = "{$путь_к_файлу}/{$new_key}";
-
-				_запись_в_маркет_с_сайта($имя_клиента, 'url_tgraph', $imgBB_url);
 				
 				if ($imgBB_url) {								
+					$реплика = "Эта заявка с нашего сайта - www.prizmarket.ru\n[_________]({$imgBB_url})\n{$текст}";					
+				}elseif ($фото_с_амазон) {								
 					$реплика = "Эта заявка с нашего сайта - www.prizmarket.ru\n[_________]({$фото_с_амазон})\n{$текст}";					
-				}else $реплика = $текст;			
+				}else $реплика = $текст;	
+				
 				$ссылка_на_клиента = $строка['url_info_bot']; // https://wa.me/ххххххххххх				
 				if (!$ссылка_на_клиента) $ссылка_на_клиента = "https://wa.me";				
 				$кнопки = [
@@ -232,15 +214,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 						[ 'text' => 'ГАРАНТ', 'url' => 'https://t.me/podrobno_s_PZP/1044' ]
 					]
 				];				
-			/*	if ($строка['foto_album'] == '1') {	
-					$ссылка_на_канал_медиа = _публикация_на_канале_медиа($id_client);						
-					if ($ссылка_на_канал_медиа) {					
-						$кнопки = array_merge($кнопки, [ 
-							[ [ 'text' => 'Фото', 'url' => $ссылка_на_канал_медиа ] ]
-						]);
-					}				
-				}
-			*/			
+			
 				$кнопки = array_merge($кнопки, [
 					[
 						[   'text' => 'INSTAGRAM PRIZMarket',
@@ -260,18 +234,16 @@ function _вывод_на_каналы_с_сайта($команда) {
 			}			
 			if ($КаналИнфо) {
 				$id_zakaz = $КаналИнфо['message_id'];				
-/*			
-				if ($ссылка_на_канал_медиа) {				
-					_запись_в_таблицу_медиагрупа($id_client, $id_zakaz, $ссылка_на_канал_медиа);			
-				}	
-*/				
+				_запись_в_маркет_с_сайта($имя_клиента, 'id_zakaz', $id_zakaz);
+				
 				$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";			
-				_запись_в_маркет_с_сайта($имя_клиента, 'id_zakaz', $id_zakaz);				
+				_запись_в_маркет_с_сайта($имя_клиента, 'url_podrobno', $ссыль_на_подробности);
+				
 				if (!$ссыль_в_названии) {					
 					_запись_в_маркет_с_сайта($имя_клиента, 'url_nazv', $ссыль_на_подробности);
 					$ссыль_в_названии = $ссыль_на_подробности;						
 				}					
-				_запись_в_маркет_с_сайта($имя_клиента, 'url_podrobno', $ссыль_на_подробности);				
+				
 				_запись_в_маркет_с_сайта($имя_клиента, 'status', "одобрен");				
 				$время = _ожидание_публикации($id_zakaz);
 				$время_публикации = date("H:i", $время);				
@@ -300,8 +272,6 @@ function _отказать_с_сайта($имя_клиента) {
 		$id = strstr($имя_клиента, '.', true);		
 		$имя_клиента = substr(strrchr($имя_клиента, "."), 1);
 	}
-    //$bot->sendMessage($id, "Вам отказанно.\n\nЖмите /start.\n\nЧитайте правила.");
-
 	$query = "DELETE FROM ".$table_market." WHERE id_client=".$id." AND username='{$имя_клиента}'";
 	if ($mysqli->query($query)) {		
 		$inLine = [ 'inline_keyboard' => [
