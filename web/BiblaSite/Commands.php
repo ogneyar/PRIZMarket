@@ -23,6 +23,16 @@ if ($text == 'база') {
 		$bot->sendMessage($chat_id, "Удаление из БД совершенно!");
 	}else $bot->sendMessage($chat_id, "Не получается удалить строку из БД");
 	
+}elseif ($text == 'замени') {
+	if (strpos($id, ".")!==false) {
+		$имя = strstr($id, '.', true);		
+		$токен = substr(strrchr($id, "."), 1);			
+	}
+	$query = "UPDATE {$table_users} SET token='{$токен}' WHERE login='{$имя}'";				
+	if ($result = $mysqli->query($query)) {					
+		$bot->sendMessage($chat_id, "Заменил!");
+	}else $bot->sendMessage($chat_id, "Не получается заменить..");
+	
 }elseif ($text == 'сетком') {
 	$BotCommand = [
 		[
