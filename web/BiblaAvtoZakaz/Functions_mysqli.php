@@ -264,7 +264,10 @@ function _есть_ли_лоты() {
 // Проверка наличия лота в базе
 function _есть_ли_лот($номер_лота) {	
 	global $mysqli, $table_market;		
-    $ответ = false;	
+    $ответ = false;		
+	if (strpos($номер_лота, ".")!==false) {
+		return $ответ;
+	}	
 	$query = "SELECT * FROM {$table_market} WHERE id_zakaz={$номер_лота}";	
 	$result = $mysqli->query($query);	
 	if ($result) {	

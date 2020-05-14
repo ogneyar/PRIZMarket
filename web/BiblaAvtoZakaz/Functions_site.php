@@ -136,9 +136,9 @@ function _запись_в_маркет_с_сайта($имя_клиента = nu
 	global $table_market, $mysqli;	
 	
 	if (strpos($имя_клиента, ".")!==false) {
-	$id = strstr($имя_клиента, '.', true);		
-	$имя_клиента = substr(strrchr($имя_клиента, "."), 1);	
-}
+		$id = strstr($имя_клиента, '.', true);		
+		$имя_клиента = substr(strrchr($имя_клиента, "."), 1);	
+	}
 	
 	$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client='{$id}' AND username='{$имя_клиента}' AND status=''";				
 	
