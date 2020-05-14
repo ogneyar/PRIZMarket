@@ -148,15 +148,11 @@ function _отправка_лота_админам_с_сайта() {
 
 // Функция для записи данных в таблицу маркет
 function _запись_в_маркет_с_сайта($имя_клиента = null, $имя_столбца = null, $действие = null) {
-	global $table_market, $mysqli;	
-	
-	if (strpos($имя_клиента, ".")!==false) {
-		$id = strstr($имя_клиента, '.', true);		
-		$имя_клиента = substr(strrchr($имя_клиента, "."), 1);	
-	}
-	
-	$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client='{$id}' AND username='{$имя_клиента}' AND status=''";				
-	
+	global $table_market, $mysqli;		
+	if (strpos($имя_клиента, ".")!==false) {	
+		$имя_клиента = substr(strrchr($имя_клиента, "."), 1);
+	}	
+	$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client='7' AND username='{$имя_клиента}' AND status=''";	
 	$result = $mysqli->query($query);			
 	if (!$result) throw new Exception("Не смог сделать запись в таблицу {$table_market} (_запись_в_маркет_с_сайта)");	
 }
@@ -271,7 +267,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$сообщение = "&nbsp;&nbsp;{$имя_клиента}, Вашему лоту присвоен номер {$id_zakaz}.<br>Публикация в {$время_публикации} мск.<br><br>&nbsp;&nbsp;На это письмо отвечать не нужно.";				
 				// ОТПРАВИТЬ
 				include 'phpmailer.php';			
-				$сообщение_райминам = "{$имя_клиента}  лот {$id_zakaz}\nПубликация в {$время_публикации} мск";	
+				$сообщение_райминам = "{$имя_клиента} (сайт) лот {$id_zakaz}\nПубликация в {$время_публикации} мск";	
 				$bot->sendMessage($chat_id, $сообщение_райминам);				
 			}else throw new Exception("Не отправился лот на канал Подробности.. (_вывод_на_каналы_с_сайта)");	
 		}else throw new Exception("Или нет заказа или больше одного.. (_вывод_на_каналы_с_сайта)");				
