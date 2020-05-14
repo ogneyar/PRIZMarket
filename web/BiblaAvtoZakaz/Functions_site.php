@@ -285,14 +285,14 @@ function _вывод_на_каналы_с_сайта($команда) {
 
 // Если клиенту отказанно в публикации лота (кнопка у админов ОТКАЗ)
 function _отказать_с_сайта($имя_клиента) {
-	global $bot, $master, $callback_query_id, $chat_id, $message_id, $mysqli, $table_market;
+	global $bot, $admin_group, $master, $callback_query_id, $chat_id, $message_id, $mysqli, $table_market;
 	
 	$id = '7';
 	if (strpos($имя_клиента, ".")!==false) {
 		$id = strstr($имя_клиента, '.', true);		
 		$имя_клиента = substr(strrchr($имя_клиента, "."), 1);
 	}
-	$query = "DELETE FROM ".$table_market." WHERE id_client=".$id." AND username='{$имя_клиента}'";
+	$query = "DELETE FROM ".$table_market." WHERE id_client='{$id}' AND username='{$имя_клиента}' AND status=''";
 	if ($mysqli->query($query)) {		
 		$inLine = [ 'inline_keyboard' => [
 				[ [ 'text' => 'Отказанно', 'callback_data' => 'отказанно' ] ] 
