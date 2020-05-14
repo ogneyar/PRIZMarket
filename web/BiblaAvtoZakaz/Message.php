@@ -163,8 +163,8 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 					$result = $s3->deleteObjects([
 							'Bucket' => $aws_bucket,			
 							'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
-						]);
-					}
+					]);
+					
 					_запись_в_маркет_с_сайта($номер, 'id_zakaz', 'net');
 				}
 				
