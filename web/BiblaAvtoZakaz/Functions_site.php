@@ -285,7 +285,8 @@ function _вывод_на_каналы_с_сайта($команда) {
 
 // Если клиенту отказанно в публикации лота (кнопка у админов ОТКАЗ)
 function _отказать_с_сайта($имя_клиента) {
-	global $bot, $admin_group, $master, $callback_query_id, $chat_id, $message_id, $mysqli, $table_market;
+	global $bot, $admin_group, $master, $callback_query_id, $chat_id, $message_id, $mysqli, $table_market;	
+	global $smtp_server, $smtp_port, $smtp_login, $smtp_pass;	
 	
 	$id = '7';
 	if (strpos($имя_клиента, ".")!==false) {
