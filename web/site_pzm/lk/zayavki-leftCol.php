@@ -1,4 +1,5 @@
-﻿<?
+﻿<? 
+// данные из файла zayavki_pzmarket.php
 if (is_array($лот)) {
 ?>
 	<article id="lk_z">
