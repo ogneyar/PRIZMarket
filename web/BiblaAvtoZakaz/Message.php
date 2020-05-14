@@ -152,7 +152,22 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 					_запись_в_таблицу_маркет(null, 'file_id', $file_id, $номер);	
 				}else _запись_в_таблицу_маркет($номер, 'file_id', $file_id);			
 				_очистка_таблицы_ожидание();				
-				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);	
+				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);
+				
+				if (strpos($номер, ".")!==false) {
+					$имя_клиента = substr(strrchr($номер, "."), 1);
+					$uniqid = _дай_номер_заказа($имя_клиента);
+					
+					$key = "temp{$uniqid}.jpg";
+					
+					$result = $s3->deleteObjects([
+							'Bucket' => $aws_bucket,			
+							'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
+						]);
+					}
+					_запись_в_маркет_с_сайта($номер, 'id_zakaz', 'net');
+				}
+				
 				$Объект_файла = $bot->getFile($file_id);			
 				$ссыль_на_файл = $bot->fileUrl . $bot->token;						
 				$ссыль = $ссыль_на_файл . "/" . $Объект_файла['file_path'];				

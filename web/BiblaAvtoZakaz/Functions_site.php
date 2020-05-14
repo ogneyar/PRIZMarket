@@ -4,6 +4,7 @@
 **
 ** _дай_емаил
 ** _дай_связь
+** _дай_номер_заказа
 ** _отправка_лота_админам  // отправка из сайта
 ** _запись_в_маркет_с_сайта
 ** _вывод_на_каналы_с_сайта
@@ -52,6 +53,20 @@ function _дай_связь($имя_клиента) {
 					$ответ = "https://wb.me/{$ник}";
 				}else $ответ = "https://wb.me/{$данные}";
 			}
+		}
+	}
+	return $ответ;
+}
+
+function _дай_номер_заказа($имя_клиента) {	
+	global $mysqli;
+	$ответ = false;
+	$запрос = "SELECT id_zakaz FROM avtozakaz_pzmarket WHERE id_client='7' AND username='{$имя_клиента}' AND status=''";
+	$результат = $mysqli->query($запрос);
+	if ($результат) {
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			$ответ = $результМассив[0]['id_zakaz'];
 		}
 	}
 	return $ответ;
@@ -185,25 +200,28 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$текст = "{$хештеги}{$название_для_подробностей}{$текст}";	
 				
 				$uniqid = $строка['id_zakaz'];	
-				$new_key = "podrobno{$uniqid}.jpg";				
-				$фото_с_амазон = $строка['url_tgraph'];
 				
-				$результат = $imgBB->upload($фото_с_амазон);
-				if ($результат) {								
-					$imgBB_url = $результат['url'];	
-					_запись_в_маркет_с_сайта($имя_клиента, 'url_tgraph', $imgBB_url);
+				// Если была замена фото, то $uniqid будет равен 'net'
+				if ($uniqid != 'net') {
+					$фото_с_амазон = $строка['url_tgraph'];
 					
-					$key = "temp{$uniqid}.jpg";
-					$result = $s3->deleteObjects([
-						'Bucket' => $aws_bucket,			
-						'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
-					]);
-				}
+					$результат = $imgBB->upload($фото_с_амазон);
+					if ($результат) {								
+						$imgBB_url = $результат['url'];	
+						_запись_в_маркет_с_сайта($имя_клиента, 'url_tgraph', $imgBB_url);
+						
+						$key = "temp{$uniqid}.jpg";
+						$result = $s3->deleteObjects([
+							'Bucket' => $aws_bucket,			
+							'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
+						]);
+					}
+				}else $imgBB_url = $строка['url_tgraph'];
 				
-				if ($imgBB_url) {								
-					$реплика = "Эта заявка с нашего сайта - www.prizmarket.ru\n[_________]({$imgBB_url})\n{$текст}";					
+				if ($imgBB_url) {
+					$реплика = "Эта заявка с нашего сайта - www.prizmarket.ru\n[_________]({$imgBB_url})\n{$текст}";
 				}elseif ($фото_с_амазон) {								
-					$реплика = "Эта заявка с нашего сайта - www.prizmarket.ru\n[_________]({$фото_с_амазон})\n{$текст}";					
+					$реплика = "Эта заявка с нашего сайта - www.prizmarket.ru\n[_________]({$фото_с_амазон})\n{$текст}";
 				}else $реплика = $текст;	
 				
 				$ссылка_на_клиента = $строка['url_info_bot']; // https://wa.me/ххххххххххх				
