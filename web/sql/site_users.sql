@@ -9,5 +9,6 @@ CREATE TABLE IF NOT EXISTS `site_users` (
 		  `podtverjdenie` varchar(10) DEFAULT NULL,
 		  `vremya` bigint(20) DEFAULT NULL,
 		  `svyazi` varchar(100) DEFAULT NULL,
-		  `svyazi_data` varchar(100) DEFAULT NULL
+		  `svyazi_data` varchar(100) DEFAULT NULL,
+		  `token` varchar(100) DEFAULT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8";
