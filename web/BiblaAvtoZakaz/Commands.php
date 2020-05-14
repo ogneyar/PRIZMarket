@@ -334,7 +334,7 @@ https://t.me/prizm_market/4482", null, null, true);
 
 }elseif ($text == 'удали лот по имени') {
 	
-	$query = "DELETE FROM ".$table_market." WHERE username=".$id." AND status=''";
+	$query = "DELETE FROM ".$table_market." WHERE id_client='7' AND username='{$id}' AND status=''";
 	
 	if ($result = $mysqli->query($query)) {
 	
