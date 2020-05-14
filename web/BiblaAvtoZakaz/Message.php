@@ -155,7 +155,8 @@ if (($reply_to_message && $chat_id == $admin_group) || ($reply_to_message && $ch
 				$bot->sendMessage($chat_id, "Принял. Заменил.", null, $HideKeyboard);
 				
 				if (strpos($номер, ".")!==false) {
-					$имя_клиента = substr(strrchr($номер, "."), 1);
+					$дата_токен = substr(strrchr($номер, "."), 1);
+					$имя_клиента = _дай_имя($дата_токен);
 					$uniqid = _дай_номер_заказа($имя_клиента);
 					
 					$key = "temp{$uniqid}.jpg";

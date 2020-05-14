@@ -85,13 +85,8 @@ if ($callback_data=='создать'){
 	
 }elseif ($callback_data=='применить') {	
 	_очистка_таблицы_ожидание();
-	if (strpos($id, ".")!==false) {				
-		$bot->sendMessage($chat_id, "Извините, пока не работает эта возможность.", null, $HideKeyboard);
-		//exit('ok');
-	}else {
-		_редакт_лота_на_канале_подробности($id);		
-		_отправка_лота($callback_from_id, $id, true);	
-	}
+	_редакт_лота_на_канале_подробности($id);		
+	_отправка_лота($callback_from_id, $id, true);		
 	
 }elseif ($callback_data=='доверяет') {		
 	if (strpos($id, ".")!==false) {	

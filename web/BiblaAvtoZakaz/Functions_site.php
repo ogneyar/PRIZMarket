@@ -2,6 +2,8 @@
 
 /* Список всех функций:
 **
+** _дай_имя
+** _дай_дату
 ** _дай_емаил
 ** _дай_связь
 ** _дай_номер_заказа
@@ -12,6 +14,34 @@
 **
 **
 */
+
+function _дай_имя($дата) {	
+	global $mysqli;
+	$ответ = false;
+	$запрос = "SELECT login FROM site_users WHERE vremya='{$дата}'";
+	$результат = $mysqli->query($запрос);
+	if ($результат) {
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			$ответ = $результМассив[0]['login'];
+		}
+	}
+	return $ответ;
+}
+
+function _дай_дату($логин) {	
+	global $mysqli;
+	$ответ = false;
+	$запрос = "SELECT vremya FROM site_users WHERE login='{$логин}'";
+	$результат = $mysqli->query($запрос);
+	if ($результат) {
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			$ответ = $результМассив[0]['vremya'];
+		}
+	}
+	return $ответ;
+}
 
 function _дай_емаил($имя_клиента) {	
 	global $mysqli;
@@ -77,9 +107,9 @@ function _дай_номер_заказа($имя_клиента) {
 function _отправка_лота_админам_с_сайта() {	
 	global $table_market, $bot, $mysqli, $admin_group, $логин;
 	
-	$запрос = "SELECT * FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";
+	$дата_токен = _дай_дату($логин);
 	
-	$id = "7.".$логин;
+	$id = "7.".$дата_токен;
 	$кнопки = [ [ [ 'text' => 'Опубликовать',
 		'callback_data' => 'опубликовать:'.$id ] ], ];
 	
@@ -91,6 +121,7 @@ function _отправка_лота_админам_с_сайта() {
 		[ [ 'text' => 'Редактировать название',
 			'callback_data' => 'редактировать_название:'.$id ] ],
 	]);				
+	$запрос = "SELECT * FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";
 	$результат = $mysqli->query($запрос);	
 	if ($результат) {		
 		if ($результат->num_rows == 1) {		
@@ -138,11 +169,6 @@ function _отправка_лота_админам_с_сайта() {
 				}else $текст = "{$хештеги}{$название_для_подробностей}{$текст}";
 				
 				$реплика = "[_________]({$фото_с_амазон}) Лот с сайта https://PRIZMarket.ru\n{$текст}";
-
-
- //$bot->sendMessage($admin_group, $юзера_имя), markdown, $inLine);			
-				
-
 				$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);			
 				
 				if (!$КаналИнфо) {
@@ -157,8 +183,9 @@ function _отправка_лота_админам_с_сайта() {
 // Функция для записи данных в таблицу маркет
 function _запись_в_маркет_с_сайта($имя_клиента = null, $имя_столбца = null, $действие = null) {
 	global $table_market, $mysqli;		
-	if (strpos($имя_клиента, ".")!==false) {	
-		$имя_клиента = substr(strrchr($имя_клиента, "."), 1);
+	if (strpos($имя_клиента, ".")!==false) {
+		$дата_токен = substr(strrchr($имя_клиента, "."), 1);
+		$имя_клиента = _дай_имя($дата_токен);
 	}	
 	$query ="UPDATE {$table_market} SET {$имя_столбца}='{$действие}' WHERE id_client='7' AND username='{$имя_клиента}' AND status=''";	
 	$result = $mysqli->query($query);			
@@ -172,7 +199,10 @@ function _вывод_на_каналы_с_сайта($команда) {
 	global $таблица_медиагруппа, $channel_media_market, $master, $message_id, $admin_group, $три_часа;
 	global $smtp_server, $smtp_port, $smtp_login, $smtp_pass;	
 	_очистка_таблицы_ожидание();
-	$имя_клиента = substr(strrchr($команда, "."), 1);	
+	
+	$дата_токен = substr(strrchr($команда, "."), 1);
+	$имя_клиента = _дай_имя($дата_токен);	
+
 	$запрос = "SELECT * FROM {$table_market} WHERE id_client='7' AND username='{$имя_клиента}' AND status=''";
 	$результат = $mysqli->query($запрос);
 	if ($результат) {	
@@ -295,8 +325,9 @@ function _отказать_с_сайта($имя_клиента) {
 	
 	$id = '7';
 	if (strpos($имя_клиента, ".")!==false) {
-		$id = strstr($имя_клиента, '.', true);		
-		$имя_клиента = substr(strrchr($имя_клиента, "."), 1);
+		$id = strstr($имя_клиента, '.', true);				
+		$дата_токен = substr(strrchr($имя_клиента, "."), 1);
+		$имя_клиента = _дай_имя($дата_токен);
 	}
 	$query = "DELETE FROM ".$table_market." WHERE id_client='{$id}' AND username='{$имя_клиента}' AND status=''";
 	if ($mysqli->query($query)) {		
