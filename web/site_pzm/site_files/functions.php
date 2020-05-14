@@ -37,5 +37,22 @@ function _последняя_публикация_на_сайте($логин) {
     return $ответ;
 }
 
+function _подтверждён_ли_клиент($логин) {
+	global $mysqli;	
+	
+	$ответ = false;
+	$запрос = "SELECT vremya FROM `site_users` WHERE login='{$логин}' AND podtverjdenie='true'"; 
+	$результат = $mysqli->query($запрос);
+	if ($результат)	{
+		$количество = $результат->num_rows;	
+		if($количество > 0) {
+			$ответ = true;			
+		}
+	}else {
+		   echo 'Не смог проверить наличие клиента в базе...';	
+		   exit;
+	} 
+	return $ответ;
+}
 
 ?>
