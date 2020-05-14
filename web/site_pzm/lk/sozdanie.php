@@ -3,14 +3,12 @@ if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
 //else $json = json_encode($_COOKIE['login']);
 $логин = $_COOKIE['login'];
 include_once "../site_files/functions.php";
-//include_once '../../a_mysqli.php';
+// Открыл базу данных, в конце обязательно надо закрыть
+include_once '../../a_mysqli.php';
 
 $подтверждён = _подтверждён_ли_клиент($логин);
 if ($подтверждён) $давно = _последняя_публикация_на_сайте($логин);
 else $давно = false;
-
-// закрываем подключение 
-$mysqli->close();
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -57,3 +55,7 @@ $mysqli->close();
 	</footer>	
 </body>
 </html>
+<?
+// закрываем подключение 
+$mysqli->close();
+?>
