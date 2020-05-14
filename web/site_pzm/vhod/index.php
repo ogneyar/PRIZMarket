@@ -105,7 +105,7 @@ function exception_handler($exception) {
 						$('#vhod').show ();		
 						setTimeout(function(){
 							location.reload();
-						}, 1500);
+						}, 500);
 					}
 				});
 				
