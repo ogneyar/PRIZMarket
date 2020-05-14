@@ -138,6 +138,11 @@ function _отправка_лота_админам_с_сайта() {
 				}else $текст = "{$хештеги}{$название_для_подробностей}{$текст}";
 				
 				$реплика = "[_________]({$фото_с_амазон}) Лот с сайта https://PRIZMarket.ru\n{$текст}";
+
+
+ $bot->sendMessage($admin_group, $юзера_имя); //, markdown, $inLine);			
+				
+
 				$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);			
 				
 				if (!$КаналИнфо) {
