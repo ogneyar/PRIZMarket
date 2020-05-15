@@ -21,7 +21,7 @@ if (mysqli_connect_errno()) {
 // Обработчик исключений
 set_exception_handler('exception_handler');
 
-$запрос = "SELECT login, password FROM `site_users`"; 
+$запрос = "SELECT login, password, token FROM `site_users`"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$количество = $результат->num_rows;	
@@ -64,6 +64,7 @@ function exception_handler($exception) {
 				var veren_login = false;
 				var veren_pass = false;
 				var stroka = <?=$json; ?>;	
+				var token = "";
 				
 				if (login.length < 1) fail = "Вы не ввели логин";				
 				else if (login.length < 4) fail = "Логин не бывает менее 4х символов";
@@ -76,7 +77,10 @@ function exception_handler($exception) {
 						if (k == 'login') {
 							if (login == str[k]) {
 								veren_login = true;
-								if (str['password'] == password) veren_pass = true;
+								if (str['password'] == password) {
+									veren_pass = true;
+									token = str['token'];
+								}
 							}
 						}
 					}
@@ -98,7 +102,7 @@ function exception_handler($exception) {
 					url: '/site_pzm/vhod/index-vhod.php',
 					type: 'POST',
 					cache: false,
-					data: {'login': login},
+					data: {'login': login, 'token': token},
 					dataType: 'html',
 					success: function (data) {
 						$('#vhod').html ("<br><h4>" + data + "</h4>");
