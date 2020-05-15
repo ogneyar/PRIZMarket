@@ -25,8 +25,7 @@
 	
 	$cmc_api_key = getenv('CMC_PRO_API_KEY');
 	$tokenTGraph = getenv('TOKEN_TELEGRAPH');
-	$api_key = getenv('API_KEY_IMGBB');
-	$api_key_vk = getenv('API_KEY_VK');
+	$api_key = getenv('API_KEY_IMGBB');	
 	
 	$master = getenv('MASTER');
 	$tester = getenv('TESTER');
@@ -51,5 +50,8 @@
 	$ICQmaster = getenv('ICQ_MASTER');
 	$ICQ_channel_market = getenv('ICQ_CHANNEL_MARKET');
 	$ICQ_channel_podrobno = getenv('ICQ_CHANEL_PODROBNO');
+	
+	$vk_api_version = getenv('VK_API_VERSION');
+	$vk_access_token = getenv('VK_API_ACCESS_TOKEN');
 	
 ?>
