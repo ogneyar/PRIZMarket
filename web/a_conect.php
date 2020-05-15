@@ -26,6 +26,7 @@
 	$cmc_api_key = getenv('CMC_PRO_API_KEY');
 	$tokenTGraph = getenv('TOKEN_TELEGRAPH');
 	$api_key = getenv('API_KEY_IMGBB');
+	$api_key_vk = getenv('API_KEY_VK');
 	
 	$master = getenv('MASTER');
 	$tester = getenv('TESTER');
