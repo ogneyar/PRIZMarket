@@ -66,3 +66,7 @@ include_once '../../a_conect.php';
 	</footer>
 </body>
 </html>
+<?
+// закрываем подключение 
+$mysqli->close();
+?>
