@@ -1,6 +1,8 @@
 <?php
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
-
+if (!$_COOKIE['token']) header('Location: /site_pzm/vhod/index.php');
+$логин = $_COOKIE['login'];
+$токен = $_COOKIE['token'];
 include_once '../../a_conect.php';
 //include_once 'lk_pzmarket.php';
 ?>
@@ -10,6 +12,32 @@ include_once '../../a_conect.php';
 	<meta charset="utf-8" />
 	<title>Ваши заявки на PRIZMarket!</title>
 	<?include_once '../site_files/head.php';?>	
+	
+	<script>
+		$(document).ready (function (){
+			$("#done").click (function (){				
+				var login = $("#login").val ();
+				var token = $("#token").val ();	
+				var id_lota = $("#id_lota").val ();
+				
+				$.ajax ({
+					url: '/site_pzm/lk/zayavki-repeat_delete-delete.php',
+					type: 'POST',
+					cache: false,
+					data: {'login': login, 'token': token, 'id_lota': id_lota},
+					dataType: 'html',
+					success: function (data) {
+						$('#repeat_delete').html ("<br><h4>" + data + "</h4>");
+						$('#repeat_delete').show ();						
+					}
+				});
+			});			
+			
+			
+			
+		});		
+	</script>
+	
 </head>
 <body>
 	<header>

@@ -1,7 +1,15 @@
 <?php
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
+if (!$_COOKIE['token']) header('Location: /site_pzm/vhod/index.php');
+$логин = $_COOKIE['login'];
+$токен = $_COOKIE['token'];
+include_once "../site_files/functions.php";
+// Открыл базу данных, в конце обязательно надо закрыть
 
-include_once '../../a_conect.php';
+// сходятся ли логин и токен
+$всё_норм = _сравни_токен_и_логин($логин, $токен);
+if (!$всё_норм) include_once 'exit.php';
+
 include_once 'zayavki_pzmarket.php';
 ?>
 <!DOCTYPE html>
@@ -38,3 +46,7 @@ include_once 'zayavki_pzmarket.php';
 	</footer>
 </body>
 </html>
+<?
+// закрываем подключение 
+$mysqli->close();
+?>

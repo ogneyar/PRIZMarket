@@ -1,10 +1,16 @@
 <?php
 if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
-//else $json = json_encode($_COOKIE['login']);
+if (!$_COOKIE['token']) header('Location: /site_pzm/vhod/index.php');
 $логин = $_COOKIE['login'];
+$токен = $_COOKIE['token'];
+
 include_once "../site_files/functions.php";
 // Открыл базу данных, в конце обязательно надо закрыть
 include_once '../../a_mysqli.php';
+
+// сходятся ли логин и токен
+$всё_норм = _сравни_токен_и_логин($логин, $токен);
+if (!$всё_норм) include_once 'exit.php';
 
 $подтверждён = _подтверждён_ли_клиент($логин);
 if ($подтверждён) $давно = _последняя_публикация_на_сайте($логин);
