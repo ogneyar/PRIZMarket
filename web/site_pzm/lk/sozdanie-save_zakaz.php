@@ -110,13 +110,14 @@ if (mysqli_connect_errno()) {
 			)";							
 			$result = $mysqli->query($query);			
 			if (!$result) {
-				echo "Не смог сделать запись в таблицу {$table_market} (save_zakaz.php)";	
+				echo "Не смог сделать запись в таблицу  (sozdanie-save_zakaz.php)";	
+				exit;
 			}else {
 				//$bot->sendMessage($admin_group_AvtoZakaz, "Данные с сайта записаны в БД.");
 				
 				_отправка_лота_админам_с_сайта(); 
 			}
-		}else echo "Не смог удалить запись в таблице {$table_market} (_запись_в_таблицу_маркет)";	
+		}else echo "Не смог удалить запись в таблице (sozdanie-save_zakaz.php)";	
 
 
 		$array = [
