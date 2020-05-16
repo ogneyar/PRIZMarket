@@ -15,7 +15,7 @@ if ($повтор_или_удаление == 'Повторить') {
 	<input type='hidden' name='id_lota' id='id_lota' value='<?=$id_lota?>'>
 
 	<h4>
-	<label>Вы уверены что хотите удалить лот <?=$id_lota?>?</label><br>
+	<label>Вы уверены что хотите удалить лот <?=$id_lota?>?</label><br><br>
 	<input type='button' class='button' name='done' id='done'  value='Да'>	
 	<input type='button' class='button' name='non' id='non'  value='Нет'>
 	</h4>				
