@@ -157,14 +157,14 @@ function _ожидание_публикации($номер_лота) {
 
 // функция проверки наличия лотов в ожидании, если есть, то показывает время последнего в очереди
 function _выбор_времени_публикации() {
-	global $tokenAvtoZakaz, $mysqli, $три_часа;
+	global $tokenAvtoZakaz, $mysqli;
 	
 	$id_bota = strstr($tokenAvtoZakaz, ':', true);
 	
 	$ответ = false;
 	
 	$UNIXtime = time();
-	$UNIXtime_Moscow = $UNIXtime + $три_часа;	
+	$UNIXtime_Moscow = $UNIXtime + 10800;	
 	$время = _обнулить_секунды($UNIXtime_Moscow);
 	
 	$запрос ="SELECT vremya FROM `variables` WHERE id_bota={$id_bota} AND nazvanie='номер_лота'";			
