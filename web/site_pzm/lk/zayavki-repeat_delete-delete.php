@@ -13,13 +13,9 @@ if ($всё_норм) {
 		$всё_норм = _удали_лот($номер_лота);
 		if ($всё_норм) {
 			echo "Ваш лот {$номер_лота} удалён.";
-		}echo "Не смог удалить лот {$номер_лота}.<br><br>Обратитесь в <a href='https://teleg.link/Prizm_market_supportbot' target='_blank'>тех.поддержку</a>";
-	}
-}else {
-	echo "{$логин} {$токен} {$номер_лота} {$всё_норм}<br><br>";
-	
-	echo "Несоответствие Вашего логина с токеном.<br><br>Обратитесь в <a href='https://teleg.link/Prizm_market_supportbot' target='_blank'>тех.поддержку</a>";
-}
+		}else echo "Не смог удалить лот {$номер_лота}.<br><br>Обратитесь в <a href='https://teleg.link/Prizm_market_supportbot' target='_blank'>тех.поддержку</a>";
+	}else echo "Несоответствие Вашего логина с номером заявки.<br><br>Обратитесь в <a href='https://teleg.link/Prizm_market_supportbot' target='_blank'>тех.поддержку</a>";
+}else echo "Несоответствие Вашего логина с токеном.<br><br>Обратитесь в <a href='https://teleg.link/Prizm_market_supportbot' target='_blank'>тех.поддержку</a>";
 
 
 ?>
