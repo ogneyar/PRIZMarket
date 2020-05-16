@@ -17,7 +17,10 @@ if ($повтор_или_удаление == 'Повторить') {
 	<h4><br>
 	<label>Вы уверены что хотите удалить лот <?=$номер_лота;?>?</label><br><br>
 	<input type='button' class='button' name='done' id='done'  value='Да'>	
-	<input type='button' class='button' name='non' id='non'  value='Нет'>
+	
+	<form action='/site_pzm/lk/zayavki.php'>
+	<input type='submit' class='button' name='non' id='non'  value='Нет'>
+	</form>
 	</h4>				
 <?	
 	
