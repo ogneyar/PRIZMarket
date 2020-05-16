@@ -1,4 +1,6 @@
 ﻿<? 
+include_once 'zayavki_pzmarket.php';
+
 // данные из файла zayavki_pzmarket.php
 if (is_array($лот)) {
 ?>

@@ -10,7 +10,6 @@ include_once "../site_files/functions.php";
 $всё_норм = _сравни_токен_и_логин($логин, $токен);
 if (!$всё_норм) include_once 'exit.php';
 
-include_once 'zayavki_pzmarket.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,7 +34,15 @@ include_once 'zayavki_pzmarket.php';
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">
-			<?include_once 'zayavki-leftCol.php';?>
+			<?
+			if ($_POST['repeat_delete'] == "Повторить") {
+				include_once 'zayavki-repeat.php';
+			}elseif ($_POST['repeat_delete'] == "Удалить") {
+				include_once 'zayavki-delete_yes_no.php';
+			}elseif ($_POST['done'] == "Да") {
+				include_once 'zayavki-delete.php';
+			}else include_once 'zayavki-leftCol.php';
+			?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>

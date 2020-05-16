@@ -13,9 +13,6 @@ set_exception_handler('exception_handler');
 
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
 
-$логин = $_COOKIE['login'];
-$token = $_COOKIE['token'];
-
 $запрос = "SELECT * FROM avtozakaz_pzmarket WHERE username='{$логин}' AND id_client='7' AND status='одобрен'"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
@@ -25,20 +22,7 @@ if ($результат)	{
 if($количество > 0) {
 	$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 	$номер = 0;
-	//$лот = [];
-	
-/*	
-	$запрос = "SELECT token FROM site_users WHERE login='{$логин}'"; 
-	$результат = $mysqli->query($запрос);
-	if ($результат)	{
-		$количество = $результат->num_rows;
-	}else throw new Exception('Не смог проверить таблицу `pzm`.. (lk_pzmarket)');	
-
-	if($количество > 0) {
-		$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
-	}
-*/	
-	
+	//$лот = [];	
 	foreach ($результМассив as $строка) {
 		$id_lota = $строка['id_zakaz'];			
 		
@@ -64,13 +48,9 @@ if($количество > 0) {
 		$лот[$номер] = "<article id='zayavki'>
 				<a href=''><img src='{$ссыль_на_фото}' alt='' title=''/></a>
 				{$текст_лота}
-				<form action='/site_pzm/lk/zayavki-repeat_delete.php' method='post'>
-					<input type='hidden' name='login' value='{$логин}'>					
-					<input type='hidden' name='id_lota' value='{$id_lota}'>
-					<input type='hidden' name='token' value='{$token}'>
-					
-					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>
-					
+				<form action='/site_pzm/lk/zayavki-repeat_delete.php' method='post'>					
+					<input type='hidden' name='id_lota' value='{$id_lota}'>					
+					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>					
 					<h4><input type='submit' class='button' name='repeat_delete' id='delete'  value='Удалить'></h4>					
 				</form>
 			</article>";		
