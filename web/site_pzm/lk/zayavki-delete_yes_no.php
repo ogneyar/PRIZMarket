@@ -4,7 +4,7 @@
 
 		<h4><br>
 		<label>Вы уверены что хотите удалить лот <?=$_POST['id_lota'];?>?</label><br><br>
-		<input type='button' class='button' name='done' id='done'  value='Да'>
+		<input type='submit' class='button' name='done' id='done'  value='Да'>
 		<input type='submit' class='button' name='done' id='none'  value='Нет'>
 		</h4>
 	</form>
