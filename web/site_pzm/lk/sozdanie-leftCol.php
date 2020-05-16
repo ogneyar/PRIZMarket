@@ -47,7 +47,7 @@
 		<br><br>
 		
 			<label>Введите описание: <font color="red">*</font><br></label>
-			<textarea placeholder="Опишите подробно Ваш товар/услугу" name="opisanie" id="opisanie" maxlength="500" rows="7" cols="25"></textarea>
+			<textarea placeholder="Опишите подробно Ваш товар/услугу" name="opisanie" id="opisanie" maxlength="1500" rows="10" cols="30"></textarea>
 		<br><br>
 		
 		<!--<input type="file" id="files" name="files" multiple accept="image/*"> ДОП ФОТО-->
