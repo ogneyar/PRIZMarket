@@ -10,12 +10,12 @@ if ($повтор_или_удаление == 'Повторить') {
 	//echo "<h4>Ещё не работает эта функция</h4>"; 
 	
 ?>	
-	<input type='hidden' name='login' id='login' value='<?$логин;?>'>					
-	<input type='hidden' name='token' id='token' value='<?$token;?>'>
-	<input type='hidden' name='id_lota' id='id_lota' value='<?$id_lota;?>'>
+	<input type='hidden' name='login' id='login' value='<?=$логин;?>'>					
+	<input type='hidden' name='token' id='token' value='<?=$токен;?>'>
+	<input type='hidden' name='id_lota' id='id_lota' value='<?=$номер_лота;?>'>
 
 	<h4>
-	<label>Вы уверены что хотите удалить лот <?$id_lota;?>?</label><br><br>
+	<label>Вы уверены что хотите удалить лот <?=$номер_лота;?>?</label><br><br>
 	<input type='button' class='button' name='done' id='done'  value='Да'>	
 	<input type='button' class='button' name='non' id='non'  value='Нет'>
 	</h4>				
