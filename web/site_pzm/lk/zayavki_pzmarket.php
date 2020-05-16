@@ -48,7 +48,7 @@ if($количество > 0) {
 		$лот[$номер] = "<article id='zayavki'>
 				<a href=''><img src='{$ссыль_на_фото}' alt='' title=''/></a>
 				{$текст_лота}
-				<form action='/site_pzm/lk/zayavki-repeat_delete.php' method='post'>					
+				<form action='/site_pzm/lk/zayavki.php' method='post'>					
 					<input type='hidden' name='id_lota' value='{$id_lota}'>					
 					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>					
 					<h4><input type='submit' class='button' name='repeat_delete' id='delete'  value='Удалить'></h4>					
