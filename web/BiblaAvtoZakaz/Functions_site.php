@@ -237,10 +237,10 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$текст .= "\n\n{$подробности}"; 								
 				$текст = "{$хештеги}{$название_для_подробностей}{$текст}";	
 				
-				//$uniqid = $строка['id_zakaz'];	
+				$uniqid = $строка['id_zakaz'];	
 				
 				// Если была замена фото, то $uniqid будет равен 'net'
-				/*if ($uniqid != 'net') {
+				if ($uniqid != 'net') {
 					$фото_с_амазон = $строка['url_tgraph'];
 					
 					$результат = $imgBB->upload($фото_с_амазон);
@@ -254,10 +254,12 @@ function _вывод_на_каналы_с_сайта($команда) {
 							'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
 						]);
 					}
-				}else */$imgBB_url = $строка['url_tgraph'];
+				}else $imgBB_url = $строка['url_tgraph'];
 				
 				if ($imgBB_url) {
 					$реплика = "Эта заявка с - www.prizmarket.ru\n[_________]({$imgBB_url})\n{$текст}";
+				}elseif ($фото_с_амазон) {
+					$реплика = "Эта заявка с - www.prizmarket.ru\n[_________]({$фото_с_амазон})\n{$текст}";
 				}else $реплика = $текст;	
 				
 				$кнопки = [
@@ -318,7 +320,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 
 // Если клиенту отказанно в публикации лота (кнопка у админов ОТКАЗ)
 function _отказать_с_сайта($имя_клиента) {
-	global $bot, $admin_group, $master, $callback_query_id, $chat_id, $message_id, $mysqli, $table_market;	
+	global $bot, $s3, $aws_bucket, $admin_group, $master, $chat_id, $message_id, $mysqli, $table_market;	
 	global $smtp_server, $smtp_port, $smtp_login, $smtp_pass;	
 	
 	$id = '7';
@@ -327,6 +329,27 @@ function _отказать_с_сайта($имя_клиента) {
 		$дата_токен = substr(strrchr($имя_клиента, "."), 1);
 		$имя_клиента = _дай_имя($дата_токен);
 	}
+	
+	$запрос = "SELECT id_zakaz FROM {$table_market} WHERE id_client='7' AND username='{$имя_клиента}' AND status=''";	
+	if ($результат = $mysqli->query($запрос)) {		
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
+			$uniqid = $результМассив[0]['id_zakaz'];
+			if ($uniqid) {				
+				$key = "temp{$uniqid}.jpg"; //{$логин}-				
+				$result = $s3->deleteObjects([
+					'Bucket' => $aws_bucket,			
+					'Delete' => [ 'Objects' => [ [ 'Key' => $key,	], ], ],
+				]);				
+				if ($result['@metadata']['statusCode'] == '200') {
+					$bot->sendMessage($admin_group, "Старый Файл {$key} удалён с Амазон");
+				}else {
+					$bot->sendMessage($admin_group, "Чего то не получается удалить фото {$key} из Amazon");		
+				}				
+			}
+		}		
+	}
+	
 	$query = "DELETE FROM ".$table_market." WHERE id_client='{$id}' AND username='{$имя_клиента}' AND status=''";
 	if ($mysqli->query($query)) {		
 		$inLine = [ 'inline_keyboard' => [
