@@ -51,6 +51,7 @@ if (mysqli_connect_errno()) {
 		exit;
 	}else {		
 		$ссылка_на_фото = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;	
+		$bot->sendMessage($master, "Файл {$key} загружен на Амазон");
 		
 		
 		$array = [ 'login' => $логин, 'file' => $ссылка_на_фото ];		
@@ -68,8 +69,6 @@ if (mysqli_connect_errno()) {
 		
 		echo "<br>ЧЕГО ТУТ - ".$html." - А?<br>";
 		
-		
-		$bot->sendMessage($master, "Файл {$key} загружен на Амазон");		
 		
 		$связь = _дай_связь($логин);
 		
