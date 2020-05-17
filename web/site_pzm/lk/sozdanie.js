@@ -72,8 +72,8 @@ $(document).ready (function (){
 				$('#lk').html ("<br><h4>" + data + "</h4>");
 				$('#lk').show ();						
 			},
-			error: function(){
-				$('#lk').html ("<br><h4>Ошибка отправки запроса ajax..</h4>");
+			error: function(data){
+				$('#lk').html ("<br><h4>Ошибка отправки запроса ajax..<br>" + data + "</h4>");
 				$('#lk').show ();
 			}			
 		});	
