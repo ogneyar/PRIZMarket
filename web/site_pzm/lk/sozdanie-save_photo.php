@@ -19,7 +19,7 @@ if ($_FILES['file']['type'] != 'image/jpeg') {
 	//exit;
 	//echo $_FILES['file']['type']."<br>";
 }
-
+﻿﻿
 $mysqli = new mysqli($host, $username, $password, $dbname);
 if (mysqli_connect_errno()) {
 	echo "Чёт не выходит подключиться к MySQL";	
@@ -104,11 +104,13 @@ if (mysqli_connect_errno()) {
 			echo "Не смог удалить запись в таблице (sozdanie-save_zakaz.php)";	
 			exit;
 		}
-				
+		
+		*/
+		
 		echo "Заявка отправлена РАЙминистрации.<br><br>";
 		echo "Сообщение о решении будет отправленно Вам на email.<br><br>";
 		echo "Все вопросы в <a href='https://teleg.link/Prizm_market_supportbot'>тех.поддержку.</a>";
-		*/	
+			
 		
 	}
 
