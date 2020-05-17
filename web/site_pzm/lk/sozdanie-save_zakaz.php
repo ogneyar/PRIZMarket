@@ -74,7 +74,7 @@ if (mysqli_connect_errno()) {
 				echo "Не смог сделать запись в таблицу  (sozdanie-save_zakaz.php)";	
 				exit;
 			}else {
-							
+			/*	
 				$array = [ 'login' => $логин, 'file' => $ссылка_на_фото ];		
 				// инфа о том с какого сайта (тестового или оригинала) идёт посылка
 				if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);		
@@ -87,7 +87,7 @@ if (mysqli_connect_errno()) {
 				curl_setopt($ch, CURLOPT_HEADER, false);
 				$html = curl_exec($ch);
 				curl_close($ch);	
-		
+			*/
 			
 				_отправка_лота_админам_с_сайта(); 
 			}
