@@ -14,9 +14,11 @@ include_once '../../a_mysqli.php';
 $всё_норм = _сравни_токен_и_логин($логин, $токен);
 if (!$всё_норм) include_once 'exit.php';
 
-$подтверждён = _подтверждён_ли_клиент($логин);
-if ($подтверждён) $давно = _последняя_публикация_на_сайте($логин);
-else $давно = false;
+if (!isset($_POST['save_photo'])) {
+	$подтверждён = _подтверждён_ли_клиент($логин);
+	if ($подтверждён) $давно = _последняя_публикация_на_сайте($логин);
+	else $давно = false;
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,8 +54,9 @@ $(document).ready (function (){
 		var opisanie = $("#opisanie").val ();
 		var fail = "";		
 		
-		if (typeof file == 'undefined') fail = "Не выбран файл";
-		else if (opisanie.length < 100) fail = "Описание не менее 100 символов";
+		//if (typeof file == 'undefined') fail = "Не выбран файл";
+		//else 
+		if (opisanie.length < 100) fail = "Описание не менее 100 символов";
 		
 		if (currency.length < 0) fail = "Валюта не менее 4х символов";		
 		else if (hesh_city.length < 4) fail = "Хештеги не менее 4х символов";	
@@ -79,45 +82,26 @@ $(document).ready (function (){
 			$('#lk').show ();		
 		}		
 		
-		var Data = new FormData();
-		
-		Data.append('file', file);
-		
-		Data.append('hesh_pk', hesh_pk);
-		Data.append('name', name);
-		Data.append('link_name', link_name);
-		Data.append('hesh_kateg', hesh_kateg);
-		Data.append('currency', currency);
-		Data.append('hesh_city', hesh_city);
-		Data.append('opisanie', opisanie);
-					
 		$.ajax ({
 			url: '/site_pzm/lk/sozdanie-save_zakaz.php',
 			type: 'POST',
 			cache: false,
-			data: Data,
-			//dataType: 'json',
-			contentType: false,
-			processData: false,
+			data: {
+				'hesh_pk': hesh_pk, 
+				'name': name, 
+				'link_name': link_name,
+				'hesh_kateg': hesh_kateg, 
+				'currency': currency, 
+				'hesh_city': hesh_city,
+				'opisanie': opisanie
+			},
+			dataType: 'html',
 			success: function (data) {
 				$('#lk').html ("<br><h4>" + data + "</h4>");
 				$('#lk').show ();						
-			},
-			error: function(data){
-      
-                                var tata = "";
-
-                                for (var key in data) {
-					tata = tata + key + " - " + data[key] + "<br>";
-					
-				}
-
-
-				$('#lk').html ("<br><h4>Ошибка отправки запроса ajax..<br>" + tata + "</h4>");
-				$('#lk').show ();
-			}			
-		});	
-	
+			}
+		});
+		
 	});
 });	
 
@@ -145,6 +129,9 @@ $(document).ready (function (){
 		</div>
 		<div id="leftCol">
 		<?
+		if (isset($_POST['save_photo'])) {
+			include_once 'sozdanie-save_photo.php';
+		}else {
 			if ($подтверждён) {					
 				if ($давно) { 
 					include_once 'sozdanie-leftCol.php';	
@@ -152,6 +139,7 @@ $(document).ready (function (){
 			}else {
 				include_once 'sozdanie-nepodtv-leftCol.php';
 			}
+		}
 		?>
 		</div>
 		<div id="rightCol">

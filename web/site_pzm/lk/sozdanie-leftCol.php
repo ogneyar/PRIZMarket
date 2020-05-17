@@ -42,9 +42,11 @@
 			<input type="text" placeholder="Напр: #Россия #ВесьМир" name="hesh_city" id="hesh_city" size="20" maxlength="100">
 		<br><br>
 		
+		<!--
 			<label>Загрузите фото: <font color="red">*</font><br></label>
 			<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
-		<br><br>
+		<br><br> 
+		-->
 		
 			<label>Введите описание: <font color="red">*</font><br></label>
 			<textarea placeholder="Опишите подробно Ваш товар/услугу" name="opisanie" id="opisanie" maxlength="1500" rows="10" cols="30"></textarea>
