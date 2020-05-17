@@ -24,7 +24,8 @@ if ($_FILES['file']['type'] != 'image/jpeg') {
 	//exit;
 	//echo $_FILES['file']['type']."<br>";
 }
-﻿﻿
+
+
 $mysqli = new mysqli($host, $username, $password, $dbname);
 if (mysqli_connect_errno()) {
 	echo "Чёт не выходит подключиться к MySQL";	
