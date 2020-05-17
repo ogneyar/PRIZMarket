@@ -20,9 +20,9 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }else { // начало
 		
-	//$путь_к_фото = "https://prizmarket.online/app/web".$_FILES['file']['tmp_name'];	
+	$путь_к_фото = "https://prizmarket.online/site_pzm/lk/app/web".$_FILES['file']['tmp_name'];	
 	
-	$путь_к_фото = "https://dashboard.heroku.com/apps/naherokubot/app/web".$_FILES['file']['tmp_name'];	
+	//$путь_к_фото = "https://dashboard.heroku.com/apps/naherokubot/app/web".$_FILES['file']['tmp_name'];	
 	
 
 	// Подключение к Амазон
@@ -89,8 +89,21 @@ if (mysqli_connect_errno()) {
 
 	if(!$upload) {
 		echo "Не смог загрузить файл на imgBB";	
-		echo "<br>".$путь_к_фото;
+		echo "<br>".$путь_к_фото;		
 		
+		echo "<br><br>SERVER_SIGNATURE";
+		echo "<br>".$_SERVER['SERVER_SIGNATURE'];
+		
+		echo "<br><br>PATH_TRANSLATED";
+		echo "<br>".$_SERVER['PATH_TRANSLATED'];
+		
+		echo "<br><br>REQUEST_URI";
+		echo "<br>".$_SERVER['REQUEST_URI'];
+		
+		echo "<br><br>HTTP_REFERER";
+		echo "<br>".$_SERVER['HTTP_REFERER'];
+		
+		/*
 		echo "<br><br>SERVER_ADDR";
 		echo "<br>".$_SERVER['SERVER_ADDR'];
 		
@@ -102,7 +115,7 @@ if (mysqli_connect_errno()) {
 		
 		echo "<br><br>SERVER_ADMIN";
 		echo "<br>".$_SERVER['SERVER_ADMIN'];
-		
+		*/
 		/*
 		echo "<br><br>SERVER_SOFTWARE";
 		echo "<br>".$_SERVER['SERVER_SOFTWARE'];
