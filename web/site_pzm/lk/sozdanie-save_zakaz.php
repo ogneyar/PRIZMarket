@@ -26,34 +26,6 @@ if (mysqli_connect_errno()) {
 		'region'   => $aws_region
 	]);
 	
-	// поиск уникального номера файла (uniqid)
-/*	$запрос = "SELECT id_zakaz FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";	
-	if ($результат = $mysqli->query($запрос)) {		
-		if ($результат->num_rows == 1) {		
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
-			$uniqid = $результМассив[0]['id_zakaz'];
-			if ($uniqid) {				
-				$key = "temp{$uniqid}.jpg"; //{$логин}-				
-				$result = $s3->deleteObjects([
-					'Bucket' => $aws_bucket,			
-					'Delete' => [
-						'Objects' => [
-							[
-								'Key' => $key,						
-							],            
-						],				
-					],
-				]);				
-				if ($result['@metadata']['statusCode'] == '200') {
-					$bot->sendMessage($master, "Старый Файл {$key} удалён с Амазон");
-				}else {
-					echo "Чего то не получается удалить лот {$key} из Amazon";	
-					//exit;
-				}				
-			}
-		}		
-	}
-*/		
  	$uniqid = uniqid();	
 	
 	$key = "temp{$uniqid}.jpg";
@@ -104,20 +76,12 @@ if (mysqli_connect_errno()) {
 			echo "Не смог удалить запись в таблице (sozdanie-save_zakaz.php)";	
 			exit;
 		}
-
 		
-		echo "Заявка отправлена РАЙминистрации.<br><br>";
-		echo "Сообщение о решении будет отправленно Вам на email.<br><br>";
-		echo "Все вопросы в <a href='https://teleg.link/Prizm_market_supportbot'>тех.поддержку.</a>";
-	
-	
-		$array = [
-			'login'   => $логин,
-			'file' => $ссылка_на_фото
-		];	
 		
-		if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);
-		 
+		$array = [ 'login' => $логин, 'file' => $ссылка_на_фото ];		
+		// инфа о том с какого сайта (тестового или оригинала) идёт посылка
+		if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);		
+		// отправка madeLine фото для публикации её в телеге
 		$ch = curl_init('http://f0430377.xsph.ru');
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $array); 
@@ -126,9 +90,15 @@ if (mysqli_connect_errno()) {
 		curl_setopt($ch, CURLOPT_HEADER, false);
 		$html = curl_exec($ch);
 		curl_close($ch);	
-		 
+		
 		//echo $html;
+		
+		
+		echo "Заявка отправлена РАЙминистрации.<br><br>";
+		echo "Сообщение о решении будет отправленно Вам на email.<br><br>";
+		echo "Все вопросы в <a href='https://teleg.link/Prizm_market_supportbot'>тех.поддержку.</a>";
 	
+		
 	}
 
 
