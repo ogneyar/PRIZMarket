@@ -20,7 +20,10 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }else { // начало
 		
-	$путь_к_фото = "https://prizmarket.online/app/web".$_FILES['file']['tmp_name'];	
+	//$путь_к_фото = "https://prizmarket.online/app/web".$_FILES['file']['tmp_name'];	
+	
+	$путь_к_фото = "https://dashboard.heroku.com/app/web".$_FILES['file']['tmp_name'];	
+	
 
 	// Подключение к Амазон
 /*	$credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
@@ -87,6 +90,8 @@ if (mysqli_connect_errno()) {
 	if(!$upload) {
 		echo "Не смог загрузить файл на imgBB";	
 		echo "<br>".$путь_к_фото;
+		
+		echo "<br>".$_SERVER['SERVER_NAME'];
 		
 		// одно и тоже, ЭТО 
 		//echo "<br>".__FILE__;
