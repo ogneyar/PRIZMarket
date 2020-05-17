@@ -104,7 +104,7 @@ if (mysqli_connect_errno()) {
 			<input type='hidden' name='save_photo' value='сохрани'>
 		
 			<label>Загрузите фото: <font color="red">*</font><br></label>
-			<input type="file" name="file" id="file" accept="image/*,image/jpeg">	
+			<input type="file" name="file" id="file" accept=".jpeg, .jpg, .png">	
 			<br><br>
 			<input type="submit" class="button" name="dalee" id="dalee" value="Далее">
 		</form>
