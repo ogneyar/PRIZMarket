@@ -16,11 +16,13 @@ $table_market = 'avtozakaz_pzmarket';
 
 if (empty($_FILES['file'])) {
 	echo "Ошибка! Не выбран файл.";	
+	echo "</h4></article>";
 	exit;
 }
 
 if ($_FILES['file']['type'] != 'image/jpeg') {
 	//echo "Ошибка! Формат файла должен быть .jpg";	
+	//echo "</h4></article>";
 	//exit;
 	//echo $_FILES['file']['type']."<br>";
 }
@@ -28,6 +30,7 @@ if ($_FILES['file']['type'] != 'image/jpeg') {
 $mysqli = new mysqli($host, $username, $password, $dbname);
 if (mysqli_connect_errno()) {
 	echo "Чёт не выходит подключиться к MySQL";	
+	echo "</h4></article>";
 	exit;
 }else { // начало	
 	// Подключение к Амазон
@@ -55,7 +58,8 @@ if (mysqli_connect_errno()) {
 	]);	
 
 	if(!$upload) {
-		echo "Не смог загрузить файл на Амазон";			
+		echo "Не смог загрузить файл на Амазон";	
+		echo "</h4></article>";
 		exit;
 	}else {		
 		$ссылка_на_фото = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;	
