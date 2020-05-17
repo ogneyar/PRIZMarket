@@ -315,6 +315,17 @@ if ($text == 'база') {
 	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
 		
 		
+}elseif ($text == "обн") {		
+		
+	$query = "UPDATE ".$table_market." SET date='0' WHERE username='{$id}' AND id_client='7'";
+	
+	if ($result = $mysqli->query($query)) {
+	
+		$bot->sendMessage($master, "Всё отлично!");
+		
+	}else throw new Exception("Не смог изменить таблицу {$table_market}");	
+		
+		
 }elseif ($text == "измени хеш продам") {		
 		
 	$результат = _редакт_таблицы_маркет($id, 'kuplu_prodam', '#продам');
