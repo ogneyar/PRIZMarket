@@ -15,14 +15,12 @@ $admin_group = $admin_group_AvtoZakaz;
 $table_market = 'avtozakaz_pzmarket';
 
 if (empty($_FILES['file'])) {
-	echo "Ошибка! Не выбран файл.";	
-	echo "</h4></article>";
-	exit;
+	echo "Ошибка! Не выбран файл.";		
+	//exit;
 }
 
 if ($_FILES['file']['type'] != 'image/jpeg') {
-	//echo "Ошибка! Формат файла должен быть .jpg";	
-	//echo "</h4></article>";
+	//echo "Ошибка! Формат файла должен быть .jpg";		
 	//exit;
 	//echo $_FILES['file']['type']."<br>";
 }
@@ -30,8 +28,7 @@ if ($_FILES['file']['type'] != 'image/jpeg') {
 $mysqli = new mysqli($host, $username, $password, $dbname);
 if (mysqli_connect_errno()) {
 	echo "Чёт не выходит подключиться к MySQL";	
-	echo "</h4></article>";
-	exit;
+	//exit;
 }else { // начало	
 	// Подключение к Амазон
 	$credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
@@ -58,9 +55,8 @@ if (mysqli_connect_errno()) {
 	]);	
 
 	if(!$upload) {
-		echo "Не смог загрузить файл на Амазон";	
-		echo "</h4></article>";
-		exit;
+		echo "Не смог загрузить файл на Амазон";
+		//exit;
 	}else {		
 		$ссылка_на_фото = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;	
 		$bot->sendMessage($master, "Файл {$key} загружен на Амазон");		
