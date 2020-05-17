@@ -20,7 +20,7 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }else { // начало
 		
-	$путь_к_фото = "https://prizmarket.online/site_pzm/lk".$_FILES['file']['tmp_name'];	// /app/web
+	$путь_к_фото = "https://prizmarket.online/app/web/site_pzm/lk".$_FILES['file']['tmp_name'];	// 
 	
 	//$путь_к_фото = "https://dashboard.heroku.com/apps/naherokubot/app/web".$_FILES['file']['tmp_name'];	
 	
