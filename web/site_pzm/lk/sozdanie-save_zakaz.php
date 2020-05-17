@@ -8,7 +8,7 @@ include_once '../../a_conect.php';
 //$bot = new Bot($tokenAvtoZakaz);
 //$id_bota = strstr($tokenAvtoZakaz, ':', true);	
 //include_once '../../myBotApi/Variables.php';
-//include_once '../../BiblaAvtoZakaz/Functions_site.php';
+include_once '../../BiblaAvtoZakaz/Functions_site.php';
 //$admin_group = $admin_group_AvtoZakaz;
 
 $table_market = 'avtozakaz_pzmarket';
