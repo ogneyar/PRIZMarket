@@ -104,7 +104,16 @@ $(document).ready (function (){
 				$('#lk').show ();						
 			},
 			error: function(data){
-				$('#lk').html ("<br><h4>Ошибка отправки запроса ajax..<br>" + data + "</h4>");
+      
+                                var tata = "";
+
+                                for (var key in data) {
+					tata = tata + key + " - " + data[key] + "<br>";
+					
+				}
+
+
+				$('#lk').html ("<br><h4>Ошибка отправки запроса ajax..<br>" + tata + "</h4>");
 				$('#lk').show ();
 			}			
 		});	
