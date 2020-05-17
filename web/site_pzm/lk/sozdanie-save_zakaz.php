@@ -20,7 +20,7 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }else { // начало
 		
-	$путь_к_фото = "https://prizmarket.online/app/web/site_pzm/lk/sozdanie-save_zakaz.php".$_FILES['file']['tmp_name'];	
+	$путь_к_фото = "https://prizmarket.online/app/web/".$_FILES['file']['tmp_name'];	
 
 	// Подключение к Амазон
 /*	$credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
@@ -87,10 +87,15 @@ if (mysqli_connect_errno()) {
 	if(!$upload) {
 		echo "Не смог загрузить файл на imgBB";	
 		echo "<br>".$путь_к_фото;
-		echo "<br>".__FILE__;
 		
-		echo "<br>".$_SERVER['DOCUMENT_ROOT'];
-		echo "<br>".$_SERVER['SCRIPT_FILENAME'];
+		// одно и тоже, ЭТО 
+		//echo "<br>".__FILE__;
+		// и ЭТО
+		//echo "<br>".$_SERVER['SCRIPT_FILENAME'];
+		
+		// в данном случае выдаст /app/web
+		//echo "<br>".$_SERVER['DOCUMENT_ROOT'];
+		
 		exit;
 	}else {		
 		//$ссылка_на_фото = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;
