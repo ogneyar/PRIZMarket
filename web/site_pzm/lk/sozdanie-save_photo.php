@@ -16,8 +16,8 @@ $table_market = 'avtozakaz_pzmarket';
 
 if (empty($_FILES['file'])) {
 	echo "Ошибка! Не выбран файл.";	
-	exit;
-}
+	//exit;
+}else {
 
 if ($_FILES['file']['type'] != 'image/jpeg') {
 	//echo "Ошибка! Формат файла должен быть .jpg";	
@@ -121,6 +121,7 @@ if (mysqli_connect_errno()) {
 
 } // конец
 
+}
 ?>
 </h4>
 </article>
