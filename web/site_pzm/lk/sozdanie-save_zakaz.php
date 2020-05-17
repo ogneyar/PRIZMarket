@@ -52,7 +52,24 @@ if (mysqli_connect_errno()) {
 	}else {		
 		$ссылка_на_фото = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;	
 		
-		$bot->sendMessage($master, "Файл загружен на Амазон");		
+		
+		$array = [ 'login' => $логин, 'file' => $ссылка_на_фото ];		
+		// инфа о том с какого сайта (тестового или оригинала) идёт посылка
+		if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);		
+		// отправка madeLine фото для публикации её в телеге
+		$ch = curl_init('http://f0430377.xsph.ru');
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($array)); 
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_HEADER, false);
+		$html = curl_exec($ch);
+		curl_close($ch);	
+		
+		echo "<br>ЧЕГО ТУТ - ".$html." - А?<br>";
+		
+		
+		$bot->sendMessage($master, "Файл {$key} загружен на Амазон");		
 		
 		$связь = _дай_связь($логин);
 		
@@ -81,31 +98,12 @@ if (mysqli_connect_errno()) {
 			echo "Не смог удалить запись в таблице (sozdanie-save_zakaz.php)";	
 			exit;
 		}
-		
-		
-		$array = [ 'login' => $логин, 'file' => $ссылка_на_фото ];		
-		// инфа о том с какого сайта (тестового или оригинала) идёт посылка
-		if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);		
-		// отправка madeLine фото для публикации её в телеге
-		$ch = curl_init('http://f0430377.xsph.ru');
-		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $array); 
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_HEADER, false);
-		$html = curl_exec($ch);
-		curl_close($ch);	
-		
-		//echo $html;
-		
-		
+				
 		echo "Заявка отправлена РАЙминистрации.<br><br>";
 		echo "Сообщение о решении будет отправленно Вам на email.<br><br>";
 		echo "Все вопросы в <a href='https://teleg.link/Prizm_market_supportbot'>тех.поддержку.</a>";
-	
-		
+			
 	}
-
 
 } // конец
 
