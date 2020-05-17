@@ -16,7 +16,7 @@ $table_market = 'avtozakaz_pzmarket';
 
 if (empty($_FILES['file'])) {
 	echo "Ошибка! Не выбран файл.";		
-	//exit;
+	exit;
 }
 
 if ($_FILES['file']['type'] != 'image/jpeg') {
