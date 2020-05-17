@@ -14,6 +14,11 @@ include_once '../../BiblaAvtoZakaz/Functions_site.php';
 $admin_group = $admin_group_AvtoZakaz;
 $table_market = 'avtozakaz_pzmarket';
 
+if (empty($_FILES['file'])) {
+	echo "Ошибка! Не выбран файл.";	
+	exit;
+}
+
 if ($_FILES['file']['type'] != 'image/jpeg') {
 	//echo "Ошибка! Формат файла должен быть .jpg";	
 	//exit;
