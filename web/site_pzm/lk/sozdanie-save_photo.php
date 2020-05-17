@@ -14,7 +14,7 @@ include_once '../../BiblaAvtoZakaz/Functions_site.php';
 $admin_group = $admin_group_AvtoZakaz;
 $table_market = 'avtozakaz_pzmarket';
 
-if (empty($_FILES['file'])) {
+if ($_FILES['file']['tmp_name'] == "") {
 	echo "Ошибка! Не выбран файл.";		
 	//exit;
 }else {
