@@ -195,10 +195,12 @@ function _запись_в_маркет_с_сайта($имя_клиента = nu
 
 // вывод на канал подробности уже готового лота (кнопка у админов ОПУБЛИКОВАТЬ)
 function _вывод_на_каналы_с_сайта($команда) {
-	global $table_market, $bot, $s3, $aws_bucket, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
+	global $table_market, $bot, $callback_query_id, $s3, $aws_bucket, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
 	global $таблица_медиагруппа, $channel_media_market, $master, $tester, $message_id, $admin_group, $три_часа;
 	global $smtp_server, $smtp_port, $smtp_login, $smtp_pass;	
 	_очистка_таблицы_ожидание();
+	
+	$bot->answerCallbackQuery($callback_query_id, "Ожидайте! Идёт загрузка фото, это длительный процесс..", true);
 	
 	$дата_токен = substr(strrchr($команда, "."), 1);
 	$имя_клиента = _дай_имя($дата_токен);	
