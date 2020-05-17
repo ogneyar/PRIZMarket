@@ -4,6 +4,8 @@ if (!$_COOKIE['token']) header('Location: /site_pzm/vhod/index.php');
 $логин = $_COOKIE['login'];
 $токен = $_COOKIE['token'];
 
+include_once '../../../vendor/autoload.php';
+
 include_once "../site_files/functions.php";
 // Открыл базу данных, в конце обязательно надо закрыть
 include_once '../../a_mysqli.php';
