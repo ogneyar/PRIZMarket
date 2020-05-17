@@ -21,6 +21,8 @@ include_once '../../a_mysqli.php';
 function _последняя_публикация_на_сайте($логин) {	
 	global $mysqli;	
 	
+	if ($логин == 'Огнеяр' || $логин == 'Otrad_ya' || $логин == 'Логин') return true;
+	
     $ответ = false;	
 	$query = "SELECT date FROM `avtozakaz_pzmarket` WHERE id_client='7' AND username='{$логин}'";	
 	$result = $mysqli->query($query);	
