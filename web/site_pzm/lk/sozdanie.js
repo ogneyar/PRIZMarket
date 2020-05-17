@@ -33,8 +33,8 @@ $(document).ready (function (){
 		if (name.length < 3) fail = "Название не менее 3х символов";
 		else if (link_name.length > 0) {
 			if(link_name.indexOf('.')+1 < 1) fail = "В ссылке не указан домен '.ru' или '.com'";
-			else if(link_name.indexOf(':')+1 < 1) fail = "В ссылке отсутствует 'https://'";
-			else if(link_name.indexOf('/')+1 < 1) fail = "Не корректная ссылка";
+			//else if(link_name.indexOf(':')+1 < 1) fail = "В ссылке отсутствует 'https://'";
+			//else if(link_name.indexOf('/')+1 < 1) fail = "Не корректная ссылка";
 		}
 		
 		if (login == 'Огнеяр') fail = "";
@@ -51,7 +51,7 @@ $(document).ready (function (){
 		var Data = new FormData();
 		
 		Data.append('file', file);
-				
+		
 		Data.append('hesh_pk', hesh_pk);
 		Data.append('name', name);
 		Data.append('link_name', link_name);
@@ -73,7 +73,7 @@ $(document).ready (function (){
 				$('#lk').show ();						
 			},
 			error: function(){
-				$('#lk').html ("<br><h4>Ошибка отправки запроса..</h4>");
+				$('#lk').html ("<br><h4>Ошибка отправки запроса ajax..</h4>");
 				$('#lk').show ();
 			}			
 		});	
