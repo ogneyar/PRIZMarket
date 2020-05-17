@@ -87,6 +87,7 @@ if (mysqli_connect_errno()) {
 	if(!$upload) {
 		echo "Не смог загрузить файл на imgBB";	
 		echo "<br>".$путь_к_фото;
+		echo "<br>".__FILE__;
 		exit;
 	}else {		
 		//$ссылка_на_фото = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;
