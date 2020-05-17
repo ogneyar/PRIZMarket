@@ -91,6 +91,19 @@ if (mysqli_connect_errno()) {
 		echo "Не смог загрузить файл на imgBB";	
 		echo "<br>".$путь_к_фото;
 		
+		echo "<br><br>SERVER_ADDR";
+		echo "<br>".$_SERVER['SERVER_ADDR'];
+		
+		echo "<br><br>SERVER_PROTOCOL";
+		echo "<br>".$_SERVER['SERVER_PROTOCOL'];
+		
+		echo "<br><br>REQUEST_METHOD";
+		echo "<br>".$_SERVER['REQUEST_METHOD'];
+		
+		echo "<br><br>SERVER_ADMIN";
+		echo "<br>".$_SERVER['SERVER_ADMIN'];
+		
+		/*
 		echo "<br><br>SERVER_SOFTWARE";
 		echo "<br>".$_SERVER['SERVER_SOFTWARE'];
 		
@@ -102,6 +115,7 @@ if (mysqli_connect_errno()) {
 		
 		echo "<br><br>PATH_INFO";
 		echo "<br>".$_SERVER['PATH_INFO'];
+		*/
 		
 		// одно и тоже, ЭТО 
 		//echo "<br>".__FILE__;
