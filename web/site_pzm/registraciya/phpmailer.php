@@ -29,9 +29,9 @@ $mail->Subject = 'Регистрация';
 $mail->Body    = $body;
 
 if(!$mail->send()) {	
-    echo 'Не смог отправить сообщение.';
+    echo 'Не смог отправить сообщение на почту.';
     echo 'Ошибка: ' . $mail->ErrorInfo;
-	$bot->sendMessage($admin_group, "Не смог отправить сообщение на почту.");
+	$bot->sendMessage($admin_group, "Не смог отправить сообщение на {$емаил}.");
 	//exit('ok');
 } else {
     echo $ответное_сообщение;
