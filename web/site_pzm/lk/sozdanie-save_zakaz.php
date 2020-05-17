@@ -20,7 +20,7 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }else { // начало
 		
-	$путь_к_фото = "https://prizmarket.online/site_pzm/lk/sozdanie-save_zakaz.php".$_FILES['file']['tmp_name'];	
+	$путь_к_фото = "https://prizmarket.online/app/web/site_pzm/lk/sozdanie-save_zakaz.php".$_FILES['file']['tmp_name'];	
 
 	// Подключение к Амазон
 /*	$credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
