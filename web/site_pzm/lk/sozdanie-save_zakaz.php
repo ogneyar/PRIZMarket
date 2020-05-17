@@ -1,6 +1,6 @@
 <?
 $логин = $_COOKIE['login'];
-//include_once '../../../vendor/autoload.php';	
+include_once '../../../vendor/autoload.php';	
 include_once '../../a_conect.php';
 include_once '../../myBotApi/Bot.php';
 //exit('ok');
@@ -10,8 +10,13 @@ $id_bota = strstr($tokenAvtoZakaz, ':', true);
 include_once '../../myBotApi/Variables.php';
 include_once '../../BiblaAvtoZakaz/Functions_site.php';
 $admin_group = $admin_group_AvtoZakaz;
-
 $table_market = 'avtozakaz_pzmarket';
+
+if ($_FILES['file']['type'] != 'image/jpeg') {
+	echo "Ошибка! Формат файла должен быть .jpg";	
+	exit;
+}
+
 $mysqli = new mysqli($host, $username, $password, $dbname);
 if (mysqli_connect_errno()) {
 	echo "Чёт не выходит подключиться к MySQL";	
