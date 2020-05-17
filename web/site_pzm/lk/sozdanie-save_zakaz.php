@@ -19,8 +19,10 @@ if (mysqli_connect_errno()) {
 	echo "Чёт не выходит подключиться к MySQL<br><br>";	
 	exit('ok');
 }else { // начало
-		
-	$путь_к_фото = "https://prizmarket.online/app/web/site_pzm/lk".$_FILES['file']['tmp_name'];	// 
+	
+	$путь_к_фото = "/app/web".$_FILES['file']['tmp_name'];
+	
+	//$путь_к_фото = "https://prizmarket.online/app/web/site_pzm/lk".$_FILES['file']['tmp_name'];
 	
 	//$путь_к_фото = "https://dashboard.heroku.com/apps/naherokubot/app/web".$_FILES['file']['tmp_name'];	
 	
