@@ -22,7 +22,7 @@ if (mysqli_connect_errno()) {
 		
 	//$путь_к_фото = "https://prizmarket.online/app/web".$_FILES['file']['tmp_name'];	
 	
-	$путь_к_фото = "https://dashboard.heroku.com/app/web".$_FILES['file']['tmp_name'];	
+	$путь_к_фото = "https://dashboard.heroku.com/apps/naherokubot/app/web".$_FILES['file']['tmp_name'];	
 	
 
 	// Подключение к Амазон
