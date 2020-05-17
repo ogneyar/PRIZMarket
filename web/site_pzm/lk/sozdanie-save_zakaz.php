@@ -100,7 +100,7 @@ if (mysqli_connect_errno()) {
 		echo "Все вопросы в <a href='https://teleg.link/Prizm_market_supportbot'>тех.поддержку.</a>";
 		*/
 ?>
-		<form action="sozdanie-save_photo.php" method="post" enctype="multipart/form-data">
+		<form action="sozdanie.php" method="post" enctype="multipart/form-data">
 			<input type='hidden' name='save_photo' value='сохрани'>
 		
 			<label>Загрузите фото: <font color="red">*</font><br></label>
