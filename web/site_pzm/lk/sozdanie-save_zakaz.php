@@ -13,8 +13,9 @@ $admin_group = $admin_group_AvtoZakaz;
 $table_market = 'avtozakaz_pzmarket';
 
 if ($_FILES['file']['type'] != 'image/jpeg') {
-	echo "Ошибка! Формат файла должен быть .jpg";	
-	exit;
+	//echo "Ошибка! Формат файла должен быть .jpg";	
+	//exit;
+echo $_FILES['file']['type']."<br>";
 }
 
 $mysqli = new mysqli($host, $username, $password, $dbname);
