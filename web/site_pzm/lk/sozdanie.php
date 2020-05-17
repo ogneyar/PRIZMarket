@@ -27,6 +27,7 @@ else $давно = false;
 	
 	<!-- <script type="text/javascript" src="sozdanie.js"></script>	-->
 
+<script>
 
 $(document).ready (function (){						
 	var file;		
@@ -111,7 +112,7 @@ $(document).ready (function (){
 	});
 });	
 
-
+</script>
 
 
 
