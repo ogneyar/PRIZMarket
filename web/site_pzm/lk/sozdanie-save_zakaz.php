@@ -3,7 +3,7 @@ $логин = $_COOKIE['login'];
 //include_once '../../../vendor/autoload.php';	
 include_once '../../a_conect.php';
 include_once '../../myBotApi/Bot.php';
-include_once 'myBotApi/ImgBB.php';
+include_once '../../myBotApi/ImgBB.php';
 $imgBB = new ImgBB($api_key);
 //exit('ok');
 
