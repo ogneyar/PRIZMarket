@@ -20,7 +20,7 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }else { // начало
 		
-	$путь_к_фото = $_FILES['file']['tmp_name'];	
+	$путь_к_фото = "https://prizmarket.online".$_FILES['file']['tmp_name'];	
 
 	// Подключение к Амазон
 /*	$credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
