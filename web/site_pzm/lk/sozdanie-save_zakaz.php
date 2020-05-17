@@ -20,7 +20,7 @@ if (mysqli_connect_errno()) {
 	exit('ok');
 }else { // начало
 		
-	$путь_к_фото = "https://prizmarket.online/site_pzm/lk/app/web".$_FILES['file']['tmp_name'];	
+	$путь_к_фото = "https://prizmarket.online/site_pzm/lk".$_FILES['file']['tmp_name'];	// /app/web
 	
 	//$путь_к_фото = "https://dashboard.heroku.com/apps/naherokubot/app/web".$_FILES['file']['tmp_name'];	
 	
@@ -90,7 +90,7 @@ if (mysqli_connect_errno()) {
 	if(!$upload) {
 		echo "Не смог загрузить файл на imgBB";	
 		echo "<br>".$путь_к_фото;		
-		
+		/*
 		echo "<br><br>SERVER_SIGNATURE";
 		echo "<br>".$_SERVER['SERVER_SIGNATURE'];
 		
@@ -102,7 +102,7 @@ if (mysqli_connect_errno()) {
 		
 		echo "<br><br>HTTP_REFERER";
 		echo "<br>".$_SERVER['HTTP_REFERER'];
-		
+		*/
 		/*
 		echo "<br><br>SERVER_ADDR";
 		echo "<br>".$_SERVER['SERVER_ADDR'];
