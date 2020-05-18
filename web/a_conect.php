@@ -29,8 +29,8 @@
 	
 	$master = getenv('MASTER');
 	$tester = getenv('TESTER');
-        $Макс_гарант = getenv('MAKS_GARANT');
-        $Макса_группа = getenv('MAKS_GROUP');
+	$Макс_гарант = getenv('MAKS_GARANT');
+	$Макса_группа = getenv('MAKS_GROUP');
 	$admin_group_market = getenv('ADMIN_GROUP_MARKET');
 	$admin_group_garant = getenv('ADMIN_GROUP_GARANT');		
 	$admin_group_Info = getenv('ADMIN_GROUP_INFO');
