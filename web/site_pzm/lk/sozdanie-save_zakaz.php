@@ -1,15 +1,10 @@
 <?
 $логин = $_COOKIE['login'];
-//include_once '../../../vendor/autoload.php';	
 include_once '../../a_conect.php';
-//include_once '../../myBotApi/Bot.php';
+
 //exit('ok');
 
-//$bot = new Bot($tokenAvtoZakaz);
-//$id_bota = strstr($tokenAvtoZakaz, ':', true);	
-//include_once '../../myBotApi/Variables.php';
 include_once '../../BiblaAvtoZakaz/Functions_site.php';
-//$admin_group = $admin_group_AvtoZakaz;
 
 $table_market = 'avtozakaz_pzmarket';
 
@@ -18,46 +13,13 @@ if (mysqli_connect_errno()) {
 	echo "Чёт не выходит подключиться к MySQL";	
 	exit;
 }else { // начало	
-	// Подключение к Амазон
-/*	$credentials = new Aws\Credentials\Credentials($aws_key_id, $aws_secret_key);
-		
-	$s3 = new Aws\S3\S3Client([
-		'credentials' => $credentials, 
-		'version'  => 'latest',
-		'region'   => $aws_region
-	]);
 	
- 	$uniqid = uniqid();	
-	
-	$key = "temp{$uniqid}.jpg";
-
-	$путь_к_фото = $_FILES['file']['tmp_name'];
-	
-	$file = file_get_contents($путь_к_фото);
-	  
-	$upload = $s3->putObject([
-		'Bucket' => $aws_bucket,
-		'Key'    => $key, 
-		'Body'   => $file,	
-		'ACL'    => 'public-read'
-	]);	
-
-	if(!$upload) {
-		echo "Не смог загрузить файл на Амазон";			
-		exit;
-	}else {		
-*/	
-		//$ссылка_на_фото = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/" . $key;	
-		//$bot->sendMessage($master, "Файл {$key} загружен на Амазон");		
-		
 		$связь = _дай_связь($логин);
 		
 		if ($_POST['currency']) $валюта = $_POST['currency']." / PZM";
 		else $валюта = "PZM";
 		
 		$время = time();
-		
-		// {$uniqid}{$ссылка_на_фото}
 		
 		$query = "DELETE FROM {$table_market} WHERE id_client='7' AND username='{$логин}' AND status=''";		
 		if ($mysqli->query($query)) {			
@@ -72,36 +34,13 @@ if (mysqli_connect_errno()) {
 			if (!$result) {
 				echo "Не смог сделать запись в таблицу  (sozdanie-save_zakaz.php)";	
 				exit;
-			}//else {
-			/*	
-				$array = [ 'login' => $логин, 'file' => $ссылка_на_фото ];		
-				// инфа о том с какого сайта (тестового или оригинала) идёт посылка
-				if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);		
-				// отправка madeLine фото для публикации её в телеге
-				$ch = curl_init("http://f0430377.xsph.ru"."?".http_build_query($array));
-				//curl_setopt($ch, CURLOPT_POST, 1);
-				//curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($array)); 
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-				curl_setopt($ch, CURLOPT_HEADER, false);
-				$html = curl_exec($ch);
-				curl_close($ch);	
-			*/
-			
-				//_отправка_лота_админам_с_сайта(); 
-			//}
+			}
 		}else {
 			echo "Не смог удалить запись в таблице (sozdanie-save_zakaz.php)";	
 			exit;
 		}
-		/*		
-		echo "Заявка отправлена РАЙминистрации.<br><br>";
-		echo "Сообщение о решении будет отправленно Вам на email.<br><br>";
-		echo "Все вопросы в <a href='https://teleg.link/Prizm_market_supportbot'>тех.поддержку.</a>";
-		*/
-?>
-		<!--<form action="sozdanie.php" method="post" enctype="multipart/form-data">-->
 		
+?>
 		<form action="http://f0430377.xsph.ru/saveimage.php" method="post" enctype="multipart/form-data">
 			<input type='hidden' name='save_photo' value='сохрани'>
 		
@@ -111,8 +50,7 @@ if (mysqli_connect_errno()) {
 			<input type="submit" class="button" name="dalee" id="dalee" value="Далее">
 		</form>
 <?
-	
-//	}
+
 
 } // конец
 
