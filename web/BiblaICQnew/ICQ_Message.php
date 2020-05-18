@@ -1,6 +1,7 @@
 ﻿<?
 include_once "../BiblaMarket/bot_03_func.php";
-
+$таблица_переменных = 'variables';
+$таблица_ожидание = 'market_ojidanie';
 
 if ($chatType == 'private') {
 //------------------------------------------
