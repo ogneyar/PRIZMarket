@@ -42,8 +42,12 @@ if (mysqli_connect_errno()) {
 		
 ?>
 		<form action="http://f0430377.xsph.ru/saveimage.php" method="post" enctype="multipart/form-data">
-			<input type='hidden' name='save_photo' value='сохрани'>
-		
+			<input type='hidden' name='login' value='<?=$логин;?>'>
+			
+			<?if ($tester == 'да') {?>
+				<input type='hidden' name='tester' value='да'>
+			<?}?>
+			
 			<label>Загрузите фото: <font color="red">*</font><br></label>
 			<input type="file" name="file" id="file" accept=".jpeg, .jpg, .png">	
 			<br><br>

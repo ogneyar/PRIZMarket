@@ -4,21 +4,21 @@ if (!$_COOKIE['token']) header('Location: /site_pzm/vhod/index.php');
 $логин = $_COOKIE['login'];
 $токен = $_COOKIE['token'];
 
-//include_once '../../../vendor/autoload.php';
-
 include_once "../site_files/functions.php";
 // Открыл базу данных, в конце обязательно надо закрыть
 include_once '../../a_mysqli.php';
 
-// сходятся ли логин и токен
-$всё_норм = _сравни_токен_и_логин($логин, $токен);
-if (!$всё_норм) include_once 'exit.php';
-
-if (!isset($_POST['save_photo'])) {
+if (!isset($_GET['url'])) {	
+	// сходятся ли логин и токен
+	$всё_норм = _сравни_токен_и_логин($_GET['логин'], $токен);	
+	
 	$подтверждён = _подтверждён_ли_клиент($логин);
 	if ($подтверждён) $давно = _последняя_публикация_на_сайте($логин);
 	else $давно = false;
-}
+	
+}else $всё_норм = _сравни_токен_и_логин($логин, $токен);
+
+if (!$всё_норм) include_once 'exit.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -117,7 +117,7 @@ $(document).ready (function (){
 		</div>
 		<div id="leftCol">
 		<?
-		if (isset($_POST['save_photo'])) {
+		if (isset($_GET['url'])) {
 			include_once 'sozdanie-save_photo.php';
 		}else {
 			if ($подтверждён) {					
