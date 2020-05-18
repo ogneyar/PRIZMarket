@@ -1,4 +1,5 @@
 <? 
+$tester = getenv('TESTER');
 if ($tester == 'да') {
 ?>
 <a href="/" id="logo">
