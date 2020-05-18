@@ -1,6 +1,9 @@
 <article id="lk">
 <h4><br>
 <?
+
+echo "ЭЭЭЭЭЭЭЭЭЭЭЭЭЭЭЭ";
+
 include_once '../../myBotApi/Bot.php';
 include_once '../../myBotApi/Variables.php';
 include_once '../../BiblaAvtoZakaz/Functions_site.php';
