@@ -5,8 +5,7 @@ if ($chatType == 'private') {
 if ($text=='/start') {
 	_старт();
 }elseif ($text=='/help') {
-	$реплика = "Список понимаемых мною команд: \n\n/Privet \n/KakDela \n/eee \n/uf";
-	$bot_icq->sendText($chatId, $реплика);	
+		
 }elseif ($text=='/Privet') {
 	$реплика = "Сам ты привет. И брат твой привет. И сестра твоя привет.";
 	$bot_icq->sendText($chatId, $реплика);
