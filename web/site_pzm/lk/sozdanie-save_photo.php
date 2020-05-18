@@ -12,7 +12,7 @@ $id_bota = strstr($tokenAvtoZakaz, ':', true);
 $admin_group = $admin_group_AvtoZakaz;
 $table_market = 'avtozakaz_pzmarket';
 
-if (empty($_GET['url'])) {
+if ($_GET['url'] == "") {
 	echo "Ошибка! Не выбран файл.";		
 	//exit;
 }else {
