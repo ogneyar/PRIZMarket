@@ -14,7 +14,7 @@ $table_market = 'avtozakaz_pzmarket';
 
 if (empty($_GET['url'])) {
 	echo "Ошибка! Не выбран файл.";		
-	exit;
+	//exit;
 }else {
 	/*	
 	$bot->sendMessage($master, "Файл {$_GET['url']} загружен на SprintHost");		
