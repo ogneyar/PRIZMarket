@@ -8,6 +8,8 @@ $token = $tokenICQnew;
 $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
 
+$таблица_переменных = 'variables';
+
 // Создаем объект ICQnew бота
 $bot_icq = new ICQnew($ICQtoken);
 $id_icq_bota = substr(strstr($ICQtoken, ':'), 1);	
