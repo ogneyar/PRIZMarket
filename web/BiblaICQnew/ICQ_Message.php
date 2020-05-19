@@ -14,6 +14,8 @@ if ($text=='/start') {
 		
 }elseif ($text=='/kurs' || $text=='курс' || $text=='Курс') {
         $курс = _kurs_PZM();
+        $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)",
+		"CoinMarketCap.com", $курс);
 	$bot_icq->sendText($chatId, $курс);
 }elseif ($text=='/privet' || $text=='привет' || $text=='Привет') {
 	$реплика = "Сам ты привет. И брат твой привет. И сестра твоя привет.";
