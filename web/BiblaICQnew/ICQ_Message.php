@@ -1,9 +1,9 @@
 ﻿<?
-include_once "../BiblaMarket/bot_03_func.php";
-$таблица_переменных = 'variables';
+//include_once "../BiblaMarket/bot_03_func.php";
+
 //$таблица_ожидание = 'market_ojidanie';
-$id_bota = strstr($tokenMarket, ':', true);
-$tg = $bot;	
+
+//$id_bota = strstr($tokenMarket, ':', true);
 
 if ($chatType == 'private') {
 //------------------------------------------
