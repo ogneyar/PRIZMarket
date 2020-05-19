@@ -1,11 +1,6 @@
 ﻿<?
-//include_once "../BiblaMarket/bot_03_func.php";
 
-//$таблица_ожидание = 'market_ojidanie';
-
-//$id_bota = strstr($tokenMarket, ':', true);
-
-if ($chatType == 'private') {
+if ($chatType == 'private' || $text=='/kurs' || $text=='курс' || $text=='Курс') {
 //------------------------------------------
 
 if ($text=='/start') {
@@ -14,15 +9,10 @@ if ($text=='/start') {
 		
 }elseif ($text=='/kurs' || $text=='курс' || $text=='Курс') {
 
-$bot_icq->sendText($chatId, "кз");
-
-
         $курс = _kurs_PZM();
         $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)",
 		"CoinMarketCap.com", $курс);
 	$bot_icq->sendText($chatId, $курс);
-
-$bot_icq->sendText($chatId, "хз");
 
 }elseif ($text=='/privet' || $text=='привет' || $text=='Привет') {
 	$реплика = "Сам ты привет. И брат твой привет. И сестра твоя привет.";
