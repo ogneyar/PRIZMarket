@@ -101,9 +101,9 @@ function _kurs_PZM(){
 // функция вывода из таблицы данных о курсе
 function _дай_курс_PZM(){	
 	
-	global $mysqli, $tokenMarket, $таблица_переменных;
+	global $mysqli, $tokenMARKET, $таблица_переменных;
 
-        $id_bota = strstr($tokenMarket, ':', true);
+        $id_bota = strstr($tokenMARKET, ':', true);
 
 	$ответ = false;
 	
@@ -145,9 +145,9 @@ function _дай_курс_PZM(){
 // запись в таблицу для переменных
 function _запись_переменной_курса($название, $содержимое, $описание, $время){	
 	
-	global $mysqli, $tokenMarket, $таблица_переменных;
+	global $mysqli, $tokenMARKET, $таблица_переменных;
 	
-        $id_bota = strstr($tokenMarket, ':', true);
+        $id_bota = strstr($tokenMARKET, ':', true);
 	
 	$запрос = "SELECT nazvanie FROM {$таблица_переменных} WHERE id_bota='{$id_bota}' AND nazvanie='{$название}' AND opisanie='{$описание}'";
 	 
@@ -177,9 +177,9 @@ function _запись_переменной_курса($название, $со�
 // проверка последней записи курса
 function _время_записи_курса(){	
 	
-	global $mysqli, $tokenMarket, $таблица_переменных;
+	global $mysqli, $tokenMARKET, $таблица_переменных;
 	
-        $id_bota = strstr($tokenMarket, ':', true);
+        $id_bota = strstr($tokenMARKET, ':', true);
 
 	$ответ = false;
 		
