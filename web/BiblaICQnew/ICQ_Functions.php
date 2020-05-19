@@ -53,51 +53,7 @@ function _CoinMarketCap($id){
 	return $response;
 
 }
-
-// временно не используется --------------------
-function _PricePZM_in_Monet($symbol){
-		
-	if ($symbol=="\xE2\x82\xBD"){ 
-		$CMCid='2806'; // 2806 это рубль
-	}elseif ($symbol=="ETH"){
-		$CMCid='2';
-	}elseif ($symbol=="BTC"){
-		$CMCid='1';
-	}elseif ($symbol=="$"){
-		$CMCid='1681'; // 1681 это PZM, стоимость всегда в дорлларах
-	}	
 	
-	$arrayCMC=json_decode(_CoinMarketCap($CMCid), true); 	
-	$PriceMonet_in_USD=$arrayCMC['data'][$CMCid]['quote']['USD']['price'];	// заданная Монета в долларах
-	
-	$PriceUSD_in_Monet=1/$PriceMonet_in_USD;	// 1 доллар в заданной Монете
-	
-	$arrayCMC_PZM=json_decode(_CoinMarketCap('1681'), true); // PRIZM
-	$PricePZM_in_USD=$arrayCMC_PZM['data']['1681']['quote']['USD']['price'];
-	
-	if ($CMCid=='1681'){
-		$PricePZM_in_Monet=$PriceMonet_in_USD;
-	}else $PricePZM_in_Monet=$PriceUSD_in_Monet*$PricePZM_in_USD;	
-	
-	$Date_PricePZM=$arrayCMC_PZM['data']['1681']['quote']['USD']['last_updated'];
-	
-	$unixDate=strtotime($Date_PricePZM);
-	$Date_PricePZM = gmdate('d.m.Y H:i:s', $unixDate + 3*3600);
-	
-	if ($CMCid=='1'){
-		$PricePZM_in_Monet=number_format($PricePZM_in_Monet, 8, ".", "");
-	}elseif ($CMCid=='2'){
-		$PricePZM_in_Monet=number_format($PricePZM_in_Monet, 6, ".", "");
-	}elseif (($CMCid=='1681')||($CMCid=='2806')){
-		$PricePZM_in_Monet=number_format($PricePZM_in_Monet, 2, ".", "");
-	}	
-	
-	$response="(1 PZM = ".$PricePZM_in_Monet." ".$symbol." на ".$Date_PricePZM.")";
-	
-	return $response;
-	
-}	
-
 
 function _kurs_PZM(){	
 	
@@ -185,9 +141,6 @@ function _дай_курс_PZM(){
 	return $ответ;
 
 }
-
-
-
 
 // запись в таблицу для переменных
 function _запись_переменной_курса($название, $содержимое, $описание, $время){	
