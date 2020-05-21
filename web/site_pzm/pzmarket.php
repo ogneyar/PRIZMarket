@@ -206,8 +206,8 @@ if ($лот[0] == "") {
 	
 	$лот[$a] = "<article>
 		<h3><br>
-		<form action='/' method='post' enctype='multipart/form-data' id='form_nazad'></form>
-		<form action='/' method='post' enctype='multipart/form-data' id='form_dalee'></form>
+		<form action='/' method='get' id='form_nazad'></form>
+		<form action='/' method='get' id='form_dalee'></form>
 		<center>			
 				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}' form='form_nazad'>
 				<input type='{$тип_кн_назад}' class='button' name='nazad' id='nazad' value='&lt&lt Назад' form='form_nazad'>
