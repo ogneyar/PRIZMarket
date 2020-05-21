@@ -1,6 +1,8 @@
 ﻿<?php	
 
-if (isset($_GET['last_lot'])) echo "<article><p>jhgfgjhfgk</p></article>";
+if (isset($_GET['last_lot'])) echo "<article><p>ГЕТ работает</p></article>";
+
+echo "<article><p>jhgfgjhfgk</p></article>";
 
 // Подключаем библиотеку с классом Bot
 include_once '../myBotApi/Bot.php';
