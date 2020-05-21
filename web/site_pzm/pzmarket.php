@@ -217,7 +217,7 @@ if ($лот[0] == "") {
 
 
 ?>		
-<script>
+<script type="text/javascript">
 	$(document).ready (function (){
 		$(<?=$json_button_id;?>).click (function (){				
 			$(<?=$json_article_id;?>).html (' ' + "<br>");
