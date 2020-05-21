@@ -2,8 +2,6 @@
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
 include_once 'site_pzm/pzmarket.php';
-//include_once 'BiblaAvtoZakaz/Functions_site.php';
-//include_once 'site_pzm/ip_client.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml">
