@@ -3,7 +3,7 @@
 include_once '../myBotApi/Bot.php';
 include_once '../a_conect.php';
 
-include_once '../BiblaAvtoZakaz/Functions_site.php';
+//include_once '../BiblaAvtoZakaz/Functions_site.php';
 
 //exit('ok');
 $id_bota = strstr($tokenMARKET, ':', true);	
@@ -74,7 +74,7 @@ while ($a<5){
 			$юникс_дата_публикации = $arrS[$i][12] + 10800;
 			$дата_публикации[$a] = date("d.m.Y H:i", $юникс_дата_публикации);
 			
-			if (strpos($юзера_имя, "@")!==false) {
+			if (strpos($юзера_имя, "@") !== false) {
 				$имя = substr(strrchr($юзера_имя, "@"), 1);
 				$связь = "https://teleg.link/{$имя}";		
 			}else {
@@ -137,6 +137,38 @@ function exception_handler($exception) {
 	echo "Ошибка! ".$exception->getCode()." ".$exception->getMessage();	  
 	$mysqli->close();		
 	exit;  	
+}
+
+
+function _дай_связь($имя_клиента) {	
+	global $mysqli;
+	$ответ = false;
+	$запрос = "SELECT svyazi, svyazi_data FROM site_users WHERE login='{$имя_клиента}'";
+	$результат = $mysqli->query($запрос);
+	if ($результат) {
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			$связь = $результМассив[0]['svyazi'];
+			$данные = $результМассив[0]['svyazi_data'];
+			if ($связь == 'Telegram') {
+				if (strpos($данные, "@")!==false) {		
+					$ник = substr(strrchr($данные, "@"), 1);
+					$ответ = "https://teleg.link/{$ник}";
+				}else $ответ = "https://teleg.link/{$данные}";
+			}elseif ($связь == 'WhatsApp') {
+				if (strpos($данные, "+")!==false) {		
+					$ник = substr(strrchr($данные, "+"), 1);
+					$ответ = "https://wa.me/{$ник}";
+				}else $ответ = "https://wa.me/{$данные}";
+			}elseif ($связь == 'Wiber') {
+				if (strpos($данные, "+")!==false) {		
+					$ник = substr(strrchr($данные, "+"), 1);
+					$ответ = "https://wb.me/{$ник}";
+				}else $ответ = "https://wb.me/{$данные}";
+			}
+		}
+	}
+	return $ответ;
 }
 
 $ссыль_на_канал_подробности = "https://teleg.link/podrobno_s_PZP";
