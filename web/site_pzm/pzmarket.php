@@ -118,7 +118,7 @@ while ($a<5){
 				
 			if ($_GET['podrobnosti'] == $id_lota) $показ_одного_лота = $лот[$a];
 			
-			if (isset($_POST['last_lot'])) echo $лот[$a];
+			if (isset($_POST['last_lot'])) echo "чёнить"; //echo $лот[$a];
 			
 		}
 		
