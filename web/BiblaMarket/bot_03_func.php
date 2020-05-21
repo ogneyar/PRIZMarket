@@ -858,19 +858,43 @@ function _pechat_lotov($chatId, $arrS, $kol, $max) { // функция выво�
 		$file_id=$arrS[$i][3];		// файл айди
 		$url=$arrS[$i][4];			// ссылка в названии
 		$kuplu_prodam=$arrS[$i][5];	// хештег куплю/продам
+		
 		$nazvanie=$arrS[$i][6];		// название
+		if (strpos($nazvanie, "▪️") === false) $nazvanie = "▪️".$nazvanie;
+		
 		$valuta=$arrS[$i][7];		// валюта
+		if (strpos($valuta, "▪️") === false) $valuta = "▪️".$valuta;
+		
 		$gorod=$arrS[$i][8];		// хештег местоположения
-		$username=$arrS[$i][9];		// @username))
+		if (strpos($gorod, "▪️") === false) $gorod = "▪️".$gorod;
+		
+		$username=$arrS[$i][9];		// @username))		
+		if (strpos($username, "▪️") === false) {
+			if (strpos($username, "@") === false) {
+				$связь = _дай_связь($username);
+				$username = "[▪️{$username}]({$связь})";
+			}else {
+				$username = str_replace('_', '\_', $username);
+				$username = "▪️".$username;
+			}
+		}else {
+			if (strpos($username, "@") === false) {
+				$имя = str_replace("▪️", "", $username);	
+				$связь = _дай_связь($имя);
+				$username = "[{$username}]({$связь})";
+			}else {
+				$username = str_replace('_', '\_', $username);
+			}
+		}
+		
 		$doverie=$arrS[$i][10];		// НАШЕ доварие клиенту
 		$podrobno_url=$arrS[$i][11];// ссылка на подробности
 		
 		$otdel = str_replace('_', '\_', $otdel);
 		$kuplu_prodam = str_replace('_', '\_', $kuplu_prodam);
-		$nazvanie = str_replace('_', '\_', $nazvanie);
+		//$nazvanie = str_replace('_', '\_', $nazvanie);
 		$valuta = str_replace('_', '\_', $valuta);
 		$gorod = str_replace('_', '\_', $gorod);
-		$username = str_replace('_', '\_', $username);
 		
 		$caption="{$kuplu_prodam}\n\n{$otdel}\n[{$nazvanie}]({$url})\n".
 			"{$valuta}\n️{$gorod}\n️{$username}\nлот {$номер_лота}";  					

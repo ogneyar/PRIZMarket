@@ -92,21 +92,21 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	$caption = substr($caption, $kol);	
 	
 	if ($nazvanie=='') exit('ok');
-	//$nazvanie = str_replace("▪️", "", $nazvanie);
+	$nazvanie = str_replace("▪️", "", $nazvanie);
 
 	$valuta = strstr($caption, 10, true);
 	$kol=strlen($valuta)+1;			
 	$caption = substr($caption, $kol);	
 	
 	if ($valuta=='') exit('ok');
-	//$valuta = str_replace("▪️", "", $valuta);
+	$valuta = str_replace("▪️", "", $valuta);
 	
 	$gorod = strstr($caption, 10, true);
 	$kol=strlen($gorod)+1;			
 	$caption = substr($caption, $kol);	
 	
 	if ($gorod=='') exit('ok');
-	//$gorod = str_replace("▪️", "", $gorod);	
+	$gorod = str_replace("▪️", "", $gorod);	
 	
 	
 	$pos = strpos($caption, 10);
@@ -134,7 +134,7 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 		}		
 		
 	}	
-	//$username = str_replace("▪️", "", $username);	
+	$username = str_replace("▪️", "", $username);	
 	
 	$est_li_v_base=false;
 	
