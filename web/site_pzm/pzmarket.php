@@ -44,8 +44,11 @@ $последний_лот = 0;
 if (isset($_POST['last_lot'])) $последний_лот = $_POST['last_lot'];
 if (isset($_GET['last_lot'])) $последний_лот = $_GET['last_lot'];
 
-if (isset($_POST['dalee']) || isset($_GET['dalee'])) $последний_лот = $последний_лот + $количество_лотов;
-if (isset($_POST['nazad']) || isset($_GET['nazad'])) $последний_лот = $последний_лот - $количество_лотов;
+//if (isset($_POST['dalee']) || isset($_GET['dalee'])) $последний_лот = $последний_лот + $количество_лотов;
+//if (isset($_POST['nazad']) || isset($_GET['nazad'])) $последний_лот = $последний_лот - $количество_лотов;
+
+if ($_POST['dalee_or_nazad'] == "&lt&lt Назад" || $_GET['dalee_or_nazad'] == "&lt&lt Назад") $последний_лот = $последний_лот + $количество_лотов;
+if ($_POST['dalee_or_nazad'] == "Вперёд &gt&gt" || $_GET['dalee_or_nazad'] == "Вперёд &gt&gt") $последний_лот = $последний_лот - $количество_лотов;
 
 if ($последний_лот) {
 	
@@ -209,10 +212,10 @@ if ($лот[0] == "") {
 	$лот[$a] = "<article>
 		<h3><br>
 		<center>		
-			<form action='/'>
+			<form action='/' method='post' enctype='multipart/form-data'>
 				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>
-				<input type='{$тип_кн_назад}' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>
-				<input type='submit' class='button' name='dalee' id='dalee'  value='Вперёд &gt&gt'>	
+				<input type='{$тип_кн_назад}' class='button' name='dalee_or_nazad' id='nazad' value='&lt&lt Назад'>
+				<input type='submit' class='button' name='dalee_or_nazad' id='dalee'  value='Вперёд &gt&gt'>	
 			</form>
 		</center>
 		</h3>
@@ -226,7 +229,7 @@ if ($лот[0] == "") {
 			<center>		
 				<form action='/' method='post' enctype='multipart/form-data'>
 					<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>
-					<input type='submit' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>					
+					<input type='submit' class='button' name='dalee_or_nazad' id='nazad' value='&lt&lt Назад'>					
 				</form>
 			</center>
 			</h3>
