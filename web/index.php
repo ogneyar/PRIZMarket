@@ -20,8 +20,8 @@ include_once 'site_pzm/pzmarket.php';
 	<script>
 		$(document).ready (function (){
 			$("#dalee").click (function (){				
-				$('#escho').html (' ' + "<br>");
-				$('#escho').show ();
+				$('#leftCol').html (' ' + "<br>");
+				$('#leftCol').show ();
 				
 				var last_lot = $("#last_lot").val ();
 				
@@ -32,8 +32,8 @@ include_once 'site_pzm/pzmarket.php';
 					data: {'last_lot': last_lot},
 					dataType: 'html',
 					success: function (data) {
-						$('#escho').html ( data );
-						$('#escho').show ();						
+						$('#leftCol').html ( data );
+						$('#leftCol').show ();						
 					}
 				});
 				
