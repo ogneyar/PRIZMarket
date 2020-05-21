@@ -19,7 +19,7 @@ include_once 'site_pzm/pzmarket.php';
 	
 	<script>
 		$(document).ready (function (){
-			$("#dalee").click (function (){				
+			$("#<?=$json_button_id;?>").click (function (){				
 				$('#<?=$json_article_id;?>').html (' ' + "<br>");
 				$('#<?=$json_article_id;?>').show ();
 				
