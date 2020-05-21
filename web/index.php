@@ -23,7 +23,9 @@ include_once 'site_pzm/pzmarket.php';
 				$('#leftCol').html (' ' + "<br>");
 				$('#leftCol').show ();
 				
-				var last_lot = $("#last_lot").val ();
+				//var last_lot = $("#last_lot").val ();
+				
+				var last_lot = <?=$json_last_lot; ?>;
 				
 				$.ajax ({
 					url: '/site_pzm/pzmarket.php',
