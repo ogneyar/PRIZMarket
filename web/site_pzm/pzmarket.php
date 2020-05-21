@@ -29,6 +29,8 @@ if ($результат)	{
 if($i>0) $arrS = $результат->fetch_all();		
 else throw new Exception('Таблица пуста.. (работа сайта)');
 		
+$количество_лотов = 10;		
+		
 $a=0;
 $дата_публикации = [];
 $текст_лота = [];
@@ -37,19 +39,28 @@ $лот = [];
 
 $i--;
 
-if (isset($_POST['last_lot'])) $последний_лот = $_POST['last_lot'];
-if (isset($_GET['last_lot'])) $последний_лот = $_GET['last_lot'];
-if (isset($последний_лот)) {
-	$id_lota=$arrS[$i][0];
+$последний_лот = 0;
+
+if ($_POST['last_lot']) $последний_лот = $_POST['last_lot'];
+if ($_GET['last_lot']) $последний_лот = $_GET['last_lot'];
+
+if ($_POST['dalee']) $последний_лот = $последний_лот + $количество_лотов;
+if ($_POST['nazad']) $последний_лот = $последний_лот - $количество_лотов;
+
+if ($последний_лот) {
+	
+	$i = $i - $количество_лотов;
+	
+	/*$id_lota=$arrS[$i][0];
 	while ($последний_лот != $id_lota){
 		$i--;
 		$id_lota=$arrS[$i][0];
 		if ($i < 0) break;
 	}
-	$i--;
+	$i--;*/
 }
 
-while ($a < 10){
+while ($a < $количество_лотов){
 	if($i >= 0){		
 		$format=$arrS[$i][2];
 		while (($format=='video')&&($i>0)) {
@@ -118,8 +129,6 @@ while ($a < 10){
 				
 			if ($_GET['podrobnosti'] == $id_lota) $показ_одного_лота = $лот[$a];
 			
-			//if (isset($_POST['last_lot'])) echo $лот[$a];
-			
 		}
 		
 		$i--;
@@ -176,7 +185,6 @@ $ссыль_на_канал_подробности = "https://teleg.link/podrobn
 
 $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
 
-//$json_last_lot = json_encode($id_lota);
 
 // ---------------------------------------
 // добавление кнопки "Далее" в конце лотов
@@ -189,31 +197,40 @@ if ($лот[0] == "") {
 			<label>Больше лотов нет.</label>
 		</h3>
 	</article>";
-	//if (isset($_POST['last_lot'])) echo $лот[0];
-}elseif ($лот[$a-1] != "")  { 
-
-	if (isset($_POST['last_lot'])) {
-		$article_id = "escho".$_POST['last_lot'];
-		$button_id = "dalee".$_POST['last_lot'];
-	}else {		
-		$article_id = "escho";
-		$button_id = "dalee";
-	}
 	
-	$лот[$a] = "<article id='{$article_id}'>
+}elseif ($лот[$a-1] != "")  { 
+	
+	if (!$последний_лот) {
+		$тип_кн_назад = 'hidden';		
+	}else $тип_кн_назад = 'submit';
+	
+	$лот[$a] = "<article>
 		<h3><br>
 		<center>		
 			<form action='/' method='post' enctype='multipart/form-data'>
-				<input type='hidden' name='last_lot' id='last_lot' value='{$id_lota}'>
-				<input type='submit' class='button' name='dalee' id='{$button_id}'  value='Ещё показать лоты.'>	
+				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>
+				<input type='{$тип_кн_назад}' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>
+				<input type='submit' class='button' name='dalee' id='dalee'  value='Вперёд &gt&gt'>	
 			</form>
 		</center>
 		</h3>
 	</article>";
-	//if (isset($_POST['last_lot'])) echo $лот[$a];
+		
+}else {
+	if ($последний_лот) {		
+		$последний_лот = $последний_лот - $количество_лотов;		
+		$лот[$a] = "<article>
+			<h3><br>
+			<center>		
+				<form action='/' method='post' enctype='multipart/form-data'>
+					<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>
+					<input type='submit' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>					
+				</form>
+			</center>
+			</h3>
+		</article>";		
+	}
 	
-	//$json_article_id = json_encode("#".$article_id);
-	//$json_button_id = json_encode("#".$button_id);
 	
 }
 
