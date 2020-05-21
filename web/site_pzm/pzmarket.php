@@ -1,4 +1,11 @@
 ﻿<?php	
+
+echo "jhgfgjhfgk";
+
+echo "<h3>jhgfgjhfgk</h3>";
+
+echo "<article><h3>jhgfgjhfgk</h3></article>";
+
 // Подключаем библиотеку с классом Bot
 include_once '../myBotApi/Bot.php';
 include_once '../a_conect.php';
