@@ -118,7 +118,7 @@ while ($a < 10){
 				
 			if ($_GET['podrobnosti'] == $id_lota) $показ_одного_лота = $лот[$a];
 			
-			if (isset($_POST['last_lot'])) echo $лот[$a];
+			//if (isset($_POST['last_lot'])) echo $лот[$a];
 			
 		}
 		
@@ -189,7 +189,7 @@ if ($лот[0] == "") {
 			<label>Больше лотов нет.</label>
 		</h3>
 	</article>";
-	if (isset($_POST['last_lot'])) echo $лот[0];
+	//if (isset($_POST['last_lot'])) echo $лот[0];
 }elseif ($лот[$a-1] != "")  { 
 
 	if (isset($_POST['last_lot'])) {
@@ -210,7 +210,7 @@ if ($лот[0] == "") {
 		</center>
 		</h3>
 	</article>";
-	if (isset($_POST['last_lot'])) echo $лот[$a];
+	//if (isset($_POST['last_lot'])) echo $лот[$a];
 	
 	//$json_article_id = json_encode("#".$article_id);
 	//$json_button_id = json_encode("#".$button_id);
