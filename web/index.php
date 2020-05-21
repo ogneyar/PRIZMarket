@@ -16,6 +16,33 @@ include_once 'site_pzm/pzmarket.php';
 			border-top: 5px solid rgba(255,235,59);
 		}} 
 	</style>	
+	
+	<script>
+	$(document).ready (function (){
+		$(<?=$json_button_id;?>).click (function (){				
+			$(<?=$json_article_id;?>).html (' ' + "<br>");
+			$(<?=$json_article_id;?>).show ();
+				
+			//var last_lot = $("#last_lot").val ();
+				
+			var last_lot = <?=$json_last_lot; ?>;
+				
+			$.ajax ({
+				url: '/site_pzm/pzmarket.php',
+				type: 'POST',
+				cache: false,
+				data: {'last_lot': last_lot},
+				dataType: 'html',
+				success: function (data) {
+					$(<?=$json_article_id;?>).html ( data );
+					$(<?=$json_article_id;?>).show ();						
+				}
+			});
+				
+		});			
+			
+	});		
+	</script>
 		
 </head>
 <body>
