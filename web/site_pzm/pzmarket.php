@@ -191,8 +191,14 @@ if ($лот[0] == "") {
 	</article>";
 	if (isset($_POST['last_lot'])) echo $лот[0];
 }elseif ($лот[$a-1] != "")  { 
-	$лот[$a] = "<article id='escho'>
-		<h3>
+
+	if (isset($_POST['last_lot'])) $article_id = "escho".$_POST['last_lot'];
+	else $article_id = "escho";
+	
+	$json_article_id = json_encode($article_id);
+	
+	$лот[$a] = "<article id='{$article_id}'>
+		<h3><br>
 		<center>			
 			<input type='button' class='button' name='dalee' id='dalee'  value='Ещё показать лоты.'>		
 		</center>
