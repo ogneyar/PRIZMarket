@@ -49,7 +49,7 @@ if (isset($последний_лот)) {
 	$i--;
 }
 
-while ($a<5){
+while ($a < 10){
 	if($i >= 0){		
 		$format=$arrS[$i][2];
 		while (($format=='video')&&($i>0)) {
@@ -176,7 +176,7 @@ $ссыль_на_канал_подробности = "https://teleg.link/podrobn
 
 $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
 
-$json_last_lot = json_encode($id_lota);
+//$json_last_lot = json_encode($id_lota);
 
 // ---------------------------------------
 // добавление кнопки "Далее" в конце лотов
@@ -202,17 +202,18 @@ if ($лот[0] == "") {
 	
 	$лот[$a] = "<article id='{$article_id}'>
 		<h3><br>
-		<center>			
-			<input type='button' class='button' name='dalee' id='{$button_id}'  value='Ещё показать лоты.'>		
+		<center>		
+			<form action='/' method='post' enctype='multipart/form-data'>
+				<input type='hidden' name='last_lot' id='last_lot' value='{$id_lota}'>
+				<input type='submit' class='button' name='dalee' id='{$button_id}'  value='Ещё показать лоты.'>	
+			</form>
 		</center>
 		</h3>
 	</article>";
 	if (isset($_POST['last_lot'])) echo $лот[$a];
 	
-	$json_article_id = json_encode("#".$article_id);
+	//$json_article_id = json_encode("#".$article_id);
 	//$json_button_id = json_encode("#".$button_id);
-	
-	$json_button_id = json_encode(".button");
 	
 }
 
