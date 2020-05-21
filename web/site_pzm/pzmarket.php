@@ -208,7 +208,7 @@ if ($лот[0] == "") {
 	
 	$лот[$a] = "<article>
 		<h3><br>
-		<center>		
+		<!--<center>-->
 			<form action='/' method='post' enctype='multipart/form-data' id='form_nazad'>
 				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>
 				<input type='{$тип_кн_назад}' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>				
@@ -217,7 +217,7 @@ if ($лот[0] == "") {
 				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>				
 				<input type='submit' class='button' name='dalee' id='dalee'  value='Вперёд &gt&gt'>	
 			</form>
-		</center>
+		<!--</center>-->
 		</h3>
 	</article>";
 		
