@@ -204,10 +204,13 @@ if ($лот[0] == "") {
 		$тип_кн_назад = 'hidden';		
 	}else $тип_кн_назад = 'submit';
 	
+	if ($_GET['podrobnosti'] == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+	else $action = '/';
+	
 	$лот[$a] = "<article>
 		<h3><br>
-		<form action='/' method='post' id='form_nazad'></form>
-		<form action='/' method='post' id='form_dalee'></form>
+		<form action='{$action}' method='post' id='form_nazad'></form>
+		<form action='{$action}' method='post' id='form_dalee'></form>
 		<center>			
 				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}' form='form_nazad'>
 				<input type='{$тип_кн_назад}' class='button' name='nazad' id='nazad' value='&lt&lt Назад' form='form_nazad'>
@@ -219,12 +222,14 @@ if ($лот[0] == "") {
 	</article>";
 		
 }else {
-	if ($последний_лот) {		
+	if ($последний_лот) {	
+		if ($_GET['podrobnosti'] == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+		else $action = '/';
 		$последний_лот = $последний_лот - $количество_лотов;		
 		$лот[$a] = "<article>
 			<h3><br>
 			<center>		
-				<form action='/' method='post'>
+				<form action='{$action}' method='post'>
 					<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>
 					<input type='submit' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>					
 				</form>
