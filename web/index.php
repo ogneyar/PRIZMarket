@@ -25,19 +25,19 @@ include_once 'site_pzm/pzmarket.php';
 				$('#escho').show ();
 				
 				var last_lot = $("#last_lot").val ();
-				/*
+				
 				$.ajax ({
-					url: '/site_pzm/registraciya/index-save_user.php',
+					url: '/site_pzm/pzmarket.php',
 					type: 'POST',
 					cache: false,
-					data: {'login': login, 'password': password, 'email': email},
+					data: {'last_lot': last_lot},
 					dataType: 'html',
 					success: function (data) {
-						$('#registr').html ("<br><h4>" + data + "</h4>");
-						$('#registr').show ();						
+						$('#escho').html ( data );
+						$('#escho').show ();						
 					}
 				});
-				*/
+				
 			});			
 			
 		});		
