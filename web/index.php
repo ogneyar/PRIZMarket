@@ -34,7 +34,7 @@ include_once 'site_pzm/pzmarket.php';
 					data: {'last_lot': last_lot},
 					dataType: 'html',
 					success: function (data) {
-						$('#leftCol').html ("<article><br><h4><p>" + last_lot + "</p></h4></article>" + data );
+						$('#leftCol').html ( data );
 						$('#leftCol').show ();						
 					}
 				});
