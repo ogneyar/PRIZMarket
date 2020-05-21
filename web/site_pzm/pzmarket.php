@@ -225,7 +225,7 @@ if ($лот[0] == "") {
 	if ($последний_лот) {	
 		if ($_GET['podrobnosti'] == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
 		else $action = '/';
-		$последний_лот = $последний_лот - $количество_лотов;		
+			
 		$лот[$a] = "<article>
 			<h3><br>
 			<center>		
