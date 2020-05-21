@@ -1,7 +1,6 @@
 ﻿<?php	
 
-//if (isset($_POST['last_lot'])) 
-echo "<article><p>jhgfgjhfgk</p></article>";
+if (isset($_POST['last_lot'])) echo "<article><p>jhgfgjhfgk</p></article>";
 
 // Подключаем библиотеку с классом Bot
 include_once '../myBotApi/Bot.php';
