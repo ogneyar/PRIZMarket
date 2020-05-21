@@ -36,6 +36,8 @@
 ** _pechat_lotov
 ** _проверка_БАНа
 **
+** _дай_связь // по имени клиента выдаёт связь из таблицы `site_users`
+** 
 */
 
 /*      ---------------------------
@@ -932,6 +934,38 @@ function _проверка_БАНа() {
 		}			
 	}else throw new Exception("Не смог проверить БАН лист (_проверка_БАНа)");	
 	return false;
+}
+
+
+function _дай_связь($имя_клиента) {	
+	global $mysqli;
+	$ответ = false;
+	$запрос = "SELECT svyazi, svyazi_data FROM site_users WHERE login='{$имя_клиента}'";
+	$результат = $mysqli->query($запрос);
+	if ($результат) {
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			$связь = $результМассив[0]['svyazi'];
+			$данные = $результМассив[0]['svyazi_data'];
+			if ($связь == 'Telegram') {
+				if (strpos($данные, "@")!==false) {		
+					$ник = substr(strrchr($данные, "@"), 1);
+					$ответ = "https://teleg.link/{$ник}";
+				}else $ответ = "https://teleg.link/{$данные}";
+			}elseif ($связь == 'WhatsApp') {
+				if (strpos($данные, "+")!==false) {		
+					$ник = substr(strrchr($данные, "+"), 1);
+					$ответ = "https://wa.me/{$ник}";
+				}else $ответ = "https://wa.me/{$данные}";
+			}elseif ($связь == 'Wiber') {
+				if (strpos($данные, "+")!==false) {		
+					$ник = substr(strrchr($данные, "+"), 1);
+					$ответ = "https://wb.me/{$ник}";
+				}else $ответ = "https://wb.me/{$данные}";
+			}
+		}
+	}
+	return $ответ;
 }
 	
 	
