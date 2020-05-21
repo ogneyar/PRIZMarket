@@ -75,7 +75,7 @@ while ($a<5){
 				$имя = substr(strrchr($юзера_имя, "@"), 1);
 				$связь = "https://teleg.link/{$имя}";		
 			}else {
-				if (strpos($юзера_имя, "▪️") !== false) {
+				if (strpos($юзера_имя, "▪") !== false) {
 					$связь = substr(strrchr($юзера_имя, "▪️"), 1);
 				}
 				$связь = _дай_связь($юзера_имя);
