@@ -189,14 +189,14 @@ if ($лот[0] == "") {
 	</article>";
 }elseif (($лот[$a-1] != "")&&(!$последний_лот))  { 
 
-	$лот[$a] = '<!--<article>--><div id="escho">
+	$лот[$a] = '<article id="escho"><!--<div id="escho">-->
 		<h3>
 		<center>
 			<input type="hidden" name="last_lot" id="last_lot" value="<?=$id_lota;?>">		
 			<input type="button" class="button" name="dalee" id="dalee"  value="Ещё показать лоты.">		
 		</center>
 		</h3>
-	</div><!--</article>-->';
+	<!--</div>--></article>';
 
 }
 
