@@ -27,7 +27,7 @@ include_once 'site_pzm/pzmarket.php';
 				
 				$.ajax ({
 					url: '/site_pzm/pzmarket.php',
-					type: 'GET',
+					type: 'POST',
 					cache: false,
 					data: {'last_lot': last_lot},
 					dataType: 'html',
