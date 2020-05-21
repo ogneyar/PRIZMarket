@@ -562,6 +562,10 @@ body {
 		Левая часть сайта
 ----------------------------------*/
 
+#leftCol {
+	background-color: rgba(172,172,183); 
+}
+
 #support div, #o_prizmarket div{
 	width: 90%;
 	margin: 5%;
