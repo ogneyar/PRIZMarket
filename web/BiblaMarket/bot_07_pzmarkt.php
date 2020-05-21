@@ -17,7 +17,10 @@ if ($arrayChannelOrMessage['photo']){
 $caption=$arrayChannelOrMessage['caption'];
 if($arrayChannelOrMessage['caption_entities']){
 	foreach ($arrayChannelOrMessage['caption_entities'] as $value) {
-		if ($value['type']=='text_link') $urlCaption=$value['url'];		
+		if ($value['type']=='text_link') {
+			$urlCaption=$value['url'];		
+			break;
+		}
 	}
 }	
 	
