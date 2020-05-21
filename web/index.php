@@ -18,7 +18,7 @@ include_once 'site_pzm/pzmarket.php';
 	</style>	
 	
 	<script>
-	$(document).ready (function (){
+	/*$(document).ready (function (){
 		$(<?=$json_button_id;?>).click (function (){				
 			$(<?=$json_article_id;?>).html (' ' + "<br>");
 			$(<?=$json_article_id;?>).show ();
@@ -41,7 +41,7 @@ include_once 'site_pzm/pzmarket.php';
 				
 		});			
 			
-	});		
+	});		*/
 	</script>
 		
 </head>
