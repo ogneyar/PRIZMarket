@@ -127,14 +127,14 @@ $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supp
 // добавление кнопки "Далее" в конце лотов
 // ---------------------------------------
 
-$лот[$a] = '<!--<article>-->
+$лот[$a] = '<!--<article>--><div id="escho">
 	<h3>
 	<center>
-		<input type="hidden" name="last_lot" value="<?=$id_lota;?>">		
-		<input type="button" class="button" name="dalee" id="dalee"  value="Далее">		
+		<input type="hidden" name="last_lot" id="last_lot" value="<?=$id_lota;?>">		
+		<input type="button" class="button" name="dalee" id="dalee"  value="Ещё показать лоты.">		
 	</center>
 	</h3>
-<!--</article>-->';
+</div><!--</article>-->';
 
 
 
