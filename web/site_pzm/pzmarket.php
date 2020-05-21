@@ -204,20 +204,17 @@ if ($лот[0] == "") {
 		$тип_кн_назад = 'hidden';		
 	}else $тип_кн_назад = 'submit';
 	
-	//$тип_кн_назад = 'submit';
-	
 	$лот[$a] = "<article>
 		<h3><br>
-		<!--<center>-->
-			<form action='/' method='post' enctype='multipart/form-data' id='form_nazad'>
-				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>
-				<input type='{$тип_кн_назад}' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>				
-			</form>
-			<form action='/' method='post' enctype='multipart/form-data' id='form_dalee'>
-				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>				
-				<input type='submit' class='button' name='dalee' id='dalee'  value='Вперёд &gt&gt'>	
-			</form>
-		<!--</center>-->
+		<form action='/' method='post' enctype='multipart/form-data' id='form_nazad'></form>
+		<form action='/' method='post' enctype='multipart/form-data' id='form_dalee'></form>
+		<center>			
+				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}' form='form_nazad'>
+				<input type='{$тип_кн_назад}' class='button' name='nazad' id='nazad' value='&lt&lt Назад' form='form_nazad'>
+			
+				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}' form='form_dalee'>				
+				<input type='submit' class='button' name='dalee' id='dalee'  value='Вперёд &gt&gt' form='form_dalee'>
+		</center>
 		</h3>
 	</article>";
 		
