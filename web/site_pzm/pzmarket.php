@@ -200,7 +200,7 @@ if ($лот[0] == "") {
 	else $лот[$a] = "<article id='escho'>
 		<h3>
 		<center>
-			<input type='hidden' name='last_lot' id='last_lot' value='".$id_lota."'>		
+			<input type='hidden' name='last_lot' id='last_lot' value='150'>		
 			<input type='button' class='button' name='dalee' id='dalee'  value='Ещё показать лоты.'>		
 		</center>
 		</h3>
