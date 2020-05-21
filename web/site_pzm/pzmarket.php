@@ -1,10 +1,4 @@
 ﻿<?php	
-
-if (isset($_GET['last_lot'])) echo "<article><p>ГЕТ работает</p></article>";
-if (isset($_POST['last_lot'])) echo "<article><p>ПОСТ работает</p></article>";
-
-echo "<article><p>jhgfgjhfgk</p></article>";
-
 // Подключаем библиотеку с классом Bot
 include_once '../myBotApi/Bot.php';
 include_once '../a_conect.php';
@@ -124,7 +118,7 @@ while ($a<5){
 				
 			if ($_GET['podrobnosti'] == $id_lota) $показ_одного_лота = $лот[$a];
 			
-			if (isset($_POST['last_lot'])) echo "<h3>чёнить</h3>"; //echo $лот[$a];
+			if (isset($_POST['last_lot'])) echo $лот[$a];
 			
 		}
 		
@@ -189,23 +183,22 @@ $json_last_lot = json_encode($id_lota);
 // ---------------------------------------
 
 
-if ($лот[0] == "") {
-	if (isset($_POST['last_lot'])) echo "<article><h3>ничёнет</h3></article>"; //echo $лот[$a];
-	else $лот[0] = "<article>
+if ($лот[0] == "") {	
+	$лот[0] = "<article>
 		<h3>
-			<label>Больше нет.</label>
+			<label>Больше лотов нет.</label>
 		</h3>
 	</article>";
-}elseif (($лот[$a-1] != "")&&(!$последний_лот))  { 
-	if (isset($_POST['last_lot'])) echo "<article><h3>ыууун</h3></article>"; //echo $лот[$a];
-	else $лот[$a] = "<article id='escho'>
+	if (isset($_POST['last_lot'])) echo $лот[0];
+}elseif ($лот[$a-1] != "")  { 
+	$лот[$a] = "<article id='escho'>
 		<h3>
-		<center>
-			<!--<input type='hidden' name='last_lot' id='last_lot' value='150'>-->
+		<center>			
 			<input type='button' class='button' name='dalee' id='dalee'  value='Ещё показать лоты.'>		
 		</center>
 		</h3>
 	</article>";
+	if (isset($_POST['last_lot'])) echo $лот[$a];
 }
 
 
