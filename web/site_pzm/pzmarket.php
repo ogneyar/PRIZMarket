@@ -2,9 +2,6 @@
 // Подключаем библиотеку с классом Bot
 include_once '../myBotApi/Bot.php';
 include_once '../a_conect.php';
-
-//include_once '../BiblaAvtoZakaz/Functions_site.php';
-
 //exit('ok');
 $id_bota = strstr($tokenMARKET, ':', true);	
 
@@ -78,6 +75,9 @@ while ($a<5){
 				$имя = substr(strrchr($юзера_имя, "@"), 1);
 				$связь = "https://teleg.link/{$имя}";		
 			}else {
+				if (strpos($юзера_имя, "▪️") !== false) {
+					$связь = substr(strrchr($юзера_имя, "▪️"), 1);
+				}
 				$связь = _дай_связь($юзера_имя);
 			}
 			
@@ -187,7 +187,7 @@ if ($лот[0] == "") {
 			<label>Больше нет.</label>
 		</h3>
 	</article>";
-}elseif ($лот[$a-1] != "")  { 
+}elseif (($лот[$a-1] != "")&&(!$последний_лот))  { 
 
 	$лот[$a] = '<!--<article>--><div id="escho">
 		<h3>
