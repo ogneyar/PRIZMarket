@@ -17,6 +17,32 @@ include_once 'site_pzm/pzmarket.php';
 			border-top: 5px solid rgba(255,235,59);
 		}} 
 	</style>	
+	
+	<script>
+		$(document).ready (function (){
+			$("#dalee").click (function (){				
+				$('#escho').html (' ' + "<br>");
+				$('#escho').show ();
+				
+				var last_lot = $("#last_lot").val ();
+				/*
+				$.ajax ({
+					url: '/site_pzm/registraciya/index-save_user.php',
+					type: 'POST',
+					cache: false,
+					data: {'login': login, 'password': password, 'email': email},
+					dataType: 'html',
+					success: function (data) {
+						$('#registr').html ("<br><h4>" + data + "</h4>");
+						$('#registr').show ();						
+					}
+				});
+				*/
+			});			
+			
+		});		
+	</script>
+	
 </head>
 <body>
 	<header>
