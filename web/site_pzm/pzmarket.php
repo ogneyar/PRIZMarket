@@ -41,7 +41,7 @@ if (isset($_POST['last_lot'])) $последний_лот = $_POST['last_lot'];
 if (isset($_GET['last_lot'])) $последний_лот = $_GET['last_lot'];
 if (isset($последний_лот)) {
 	$id_lota=$arrS[$i][0];
-	while ($_POST['last_lot'] != $id_lota){
+	while ($последний_лот != $id_lota){
 		$i--;
 		$id_lota=$arrS[$i][0];
 		if ($i < 0) break;
