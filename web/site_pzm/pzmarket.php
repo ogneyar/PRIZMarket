@@ -210,36 +210,13 @@ if ($лот[0] == "") {
 	if (isset($_POST['last_lot'])) echo $лот[$a];
 	
 	$json_article_id = json_encode("#".$article_id);
-	$json_button_id = json_encode("#".$button_id);
+	//$json_button_id = json_encode("#".$button_id);
+	
+	$json_button_id = json_encode(".button");
 	
 }
 
 
 
 ?>		
-<script type="text/javascript">
-	$(document).ready (function (){
-		$(<?=$json_button_id;?>).click (function (){				
-			$(<?=$json_article_id;?>).html (' ' + "<br>");
-			$(<?=$json_article_id;?>).show ();
-				
-			//var last_lot = $("#last_lot").val ();
-				
-			var last_lot = <?=$json_last_lot; ?>;
-				
-			$.ajax ({
-				url: '/site_pzm/pzmarket.php',
-				type: 'POST',
-				cache: false,
-				data: {'last_lot': last_lot},
-				dataType: 'html',
-				success: function (data) {
-					$(<?=$json_article_id;?>).html ( data );
-					$(<?=$json_article_id;?>).show ();						
-				}
-			});
-				
-		});			
-			
-	});		
-</script>
+
