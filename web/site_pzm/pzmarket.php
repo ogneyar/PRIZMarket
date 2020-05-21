@@ -1,6 +1,7 @@
 ﻿<?php	
 
 if (isset($_GET['last_lot'])) echo "<article><p>ГЕТ работает</p></article>";
+if (isset($_POST['last_lot'])) echo "<article><p>ПОСТ работает</p></article>";
 
 echo "<article><p>jhgfgjhfgk</p></article>";
 
@@ -199,7 +200,7 @@ if ($лот[0] == "") {
 	else $лот[$a] = '<article id="escho"><!--<div id="escho">-->
 		<h3>
 		<center>
-			<input type="hidden" name="last_lot" id="last_lot" value="<?=$id_lota;?>">		
+			<input type="hidden" name="last_lot" id="last_lot" value="{$id_lota}">		
 			<input type="button" class="button" name="dalee" id="dalee"  value="Ещё показать лоты.">		
 		</center>
 		</h3>
