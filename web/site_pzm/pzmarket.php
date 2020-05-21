@@ -197,14 +197,14 @@ if ($лот[0] == "") {
 	</article>";
 }elseif (($лот[$a-1] != "")&&(!$последний_лот))  { 
 	if (isset($_POST['last_lot'])) echo "<article><h3>ыууун</h3></article>"; //echo $лот[$a];
-	else $лот[$a] = '<article id="escho"><!--<div id="escho">-->
+	else $лот[$a] = "<article id='escho'>
 		<h3>
 		<center>
-			<input type="hidden" name="last_lot" id="last_lot" value="{$id_lota}">		
-			<input type="button" class="button" name="dalee" id="dalee"  value="Ещё показать лоты.">		
+			<input type='hidden' name='last_lot' id='last_lot' value='{$id_lota}'>		
+			<input type='button' class='button' name='dalee' id='dalee'  value='Ещё показать лоты.'>		
 		</center>
 		</h3>
-	<!--</div>--></article>';
+	</article>";
 }
 
 
