@@ -183,14 +183,15 @@ $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supp
 
 
 if ($лот[0] == "") {
-	$лот[0] = "<article>
+	if (isset($_POST['last_lot'])) echo "<article><h3>ничёнет</h3></article>"; //echo $лот[$a];
+	else $лот[0] = "<article>
 		<h3>
 			<label>Больше нет.</label>
 		</h3>
 	</article>";
 }elseif (($лот[$a-1] != "")&&(!$последний_лот))  { 
-
-	$лот[$a] = '<article id="escho"><!--<div id="escho">-->
+	if (isset($_POST['last_lot'])) echo "<article><h3>ыууун</h3></article>"; //echo $лот[$a];
+	else $лот[$a] = '<article id="escho"><!--<div id="escho">-->
 		<h3>
 		<center>
 			<input type="hidden" name="last_lot" id="last_lot" value="<?=$id_lota;?>">		
@@ -198,7 +199,6 @@ if ($лот[0] == "") {
 		</center>
 		</h3>
 	<!--</div>--></article>';
-
 }
 
 
