@@ -200,9 +200,6 @@ if ($лот[0] == "") {
 		$button_id = "dalee";
 	}
 	
-	$json_article_id = json_encode($article_id);
-	$json_button_id = json_encode($button_id);
-	
 	$лот[$a] = "<article id='{$article_id}'>
 		<h3><br>
 		<center>			
@@ -211,6 +208,10 @@ if ($лот[0] == "") {
 		</h3>
 	</article>";
 	if (isset($_POST['last_lot'])) echo $лот[$a];
+	
+	$json_article_id = json_encode("#".$article_id);
+	$json_button_id = json_encode("#".$button_id);
+	
 }
 
 
