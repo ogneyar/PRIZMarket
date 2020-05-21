@@ -94,11 +94,11 @@ while ($a<5){
 		}
 		
 		$лот[$a] = "<article>
-				<h3>
+			<h3>
 				<a href='' title=''><img src='{$ссыль_на_фото[$a]}' alt='' title=''/></a>{$текст_лота[$a]}		
 				{$кнопка_подробнее}
-				</h3>
-			</article>";
+			</h3>
+		</article>";
 			
 		if ($_GET['podrobnosti'] == $id_lota) $показ_одного_лота = $лот[$a];
 
@@ -121,5 +121,21 @@ function exception_handler($exception) {
 $ссыль_на_канал_подробности = "https://teleg.link/podrobno_s_PZP";
 
 $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
+
+
+// ---------------------------------------
+// добавление кнопки "Далее" в конце лотов
+// ---------------------------------------
+
+$лот[$a] = '<article>
+	<h3>
+		<input type="hidden" name="last_lot" value="<?=$id_lota;?>">		
+		<input type="button" class="button" name="dalee" id="dalee"  value="dalee">		
+	</h3>
+</article>';
+
+
+
+
 
 ?>		
