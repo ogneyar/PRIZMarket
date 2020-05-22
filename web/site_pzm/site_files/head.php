@@ -1,7 +1,13 @@
-﻿	
+﻿	<!-- имя автора документа -->
 	<meta name="author" content="Огънеяръ" />
+	<!-- управление роботами -->
 	<meta name="robots" content="all,index,follow" />
+	<!-- читательская аудитория документа (global - публичный документ) -->
 	<meta name="distribution" content="global" />
+	<!-- возрастной рейтинг (General - общая категория) -->
+	<meta name="Rating" content="General">
+	<!-- статус документа (Dynamic - для изменяющихся документов) -->
+	<meta name="Document-state" content="Dynamic">
 	
 	<!-- Adopt website to current screen -->
 	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0">
