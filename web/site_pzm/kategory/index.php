@@ -1,9 +1,17 @@
 <?php
 // здесь открывается mysqli и подключаются переменные
 include_once '../site_files/functions.php';
+
+$количество_лотов = 10;
 $категория = "";
 if ($_POST['kategory']) $категория = $_POST['kategory'];
 if ($_GET['kategory']) $категория = $_GET['kategory'];
+
+if ($_POST['last_lot']) $сколь_уже_показано = $_POST['last_lot'];
+if ($_GET['last_lot']) $сколь_уже_показано = $_GET['last_lot'];
+
+if ($_POST['dalee'] || $_GET['dalee']) $сколь_уже_показано = $сколь_уже_показано + $количество_лотов;
+if ($_POST['nazad'] || $_GET['nazad']) $сколь_уже_показано = $сколь_уже_показано - $количество_лотов;
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
