@@ -18,7 +18,7 @@ include_once '../../a_mysqli.php';
 ** _обнулить_секунды
 **
 ** _вывод_лотов_по_категории
-**
+** _дай_связь
 **
 */
 
@@ -246,27 +246,197 @@ function _нет_ли_брони($время) {		// если нет брОни, 
 
 
 // Вывод лотов по категорияи
-function _вывод_лотов_по_категории($категория) {	
-	global $mysqli;	
+function _вывод_лотов_по_категории(
+
+		$категория, 
+		$сколько_уже_показано = 0, 
+		$подробности = null, 
+		$сколько_показать = 10
+		
+) {	
+	global $mysqli, $aws_bucket, $aws_region;	
+   
+	$ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
+
+	$запрос = "SELECT * FROM pzmarkt WHERE otdel='{$категория}'"; 
+	$результат = $mysqli->query($запрос);
 	
-	if ($логин == 'Огнеяр' || $логин == 'Otrad_ya' || $логин == 'Логин') return true;
-	
-    $ответ = false;	
-	$query = "SELECT date FROM `avtozakaz_pzmarket` WHERE id_client='7' AND username='{$логин}'";	
-	$result = $mysqli->query($query);	
-	if ($result) {	
-		if ($result->num_rows>0) {        
-			$результат = $result->fetch_all(MYSQLI_ASSOC);			
-			$время = time()-80000; // примерно 22 часа, а точнее 22,22222222222			
-			$давно = true; // если публикация была давно			
-			foreach ($результат as $строка) {				
-				if ($строка['date']>$время) $давно = false;				
-			}		
-            if ($давно) $ответ = true;
-		}else $ответ = true;	
+	if ($результат)	{
+		$количество = $результат->num_rows;
+	}else throw new Exception('Не смог проверить таблицу `pzm`.. (_вывод_лотов_по_категории)');	
+
+	if($количество > 0) $результМассив = $результат->fetch_all(MYSQLI_ASSOC);		
+	else throw new Exception('Таблица пуста.. (_вывод_лотов_по_категории)');
+		
+	$номер = 0;
+
+	$лот = [];
+
+	$количество--;
+
+	if ($сколько_уже_показано) $количество = $количество - $сколько_уже_показано;
+
+	while ($номер < $сколько_показать){
+		
+		if($количество >= 0){		
+		
+			$формат_файла = $результМассив[$количество]['format'];
+			while (($формат_файла == 'video') && ($количество > 0)) {
+				$количество--;
+				$формат_файла = $результМассив[$количество]['format'];
+			}			
+			if ($формат_файла == 'photo') {
+				
+				$номер_лота = $результМассив[$количество]['id'];
+				//$категория = $результМассив[$количество]['otdel'];
+				
+				$ссылка = $результМассив[$количество]['url'];
+				$ссылка = str_replace("t.me", "teleg.link", $ссылка);
+				
+				$куплю_продам = $результМассив[$количество]['kuplu_prodam'];
+				$название = $результМассив[$количество]['nazvanie'];
+				$валюта = $результМассив[$количество]['valuta'];
+				$хештеги = $результМассив[$количество]['gorod'];
+				$юзера_имя = $результМассив[$количество]['username'];
+				//$доверие = $результМассив[$количество]['doverie'];
+				//$ссылка_на_подробности = $результМассив[$количество]['podrobno'];
+				
+				$юникс_дата_публикации = $результМассив[$количество]['time'] + 10800;
+				$дата_публикации = date("d.m.Y H:i", $юникс_дата_публикации);
+				
+				$юзера_имя = str_replace("▪️", "", $юзера_имя);
+				
+				if (strpos($юзера_имя, "@") !== false) {
+					$имя = str_replace("@", "", $юзера_имя);
+					$связь = "https://teleg.link/{$имя}";		
+				}else {
+					$связь = _дай_связь($юзера_имя);
+				}
+				
+				$текст_лота = "<p>{$куплю_продам}</p>
+					<p>{$категория}</p>
+					<p></p>
+					<p><a href={$ссылка}>{$название}</a></p>
+					<p>{$валюта}</p>
+					<p>{$хештеги}</p>
+					<p>для связи: <a href={$связь}>{$юзера_имя}</a></p><br /><br />";			
+					
+				$ссыль_на_фото = $ссылка_на_амазон . $номер_лота . ".jpg";		
+				
+				if ($подробности) {
+					$запрос = "SELECT podrobno FROM `avtozakaz_pzmarket` WHERE id_zakaz='{$номер_лота}'"; 
+					$результат = $mysqli->query($запрос);
+					if ($результат)	{
+						$количество = $результат->num_rows;
+					}else throw new Exception('Не смог проверить таблицу `avtozak`.. (_вывод_лотов_по_категории)');	
+					if($количество > 0) {
+						$результМассив = $результат->fetch_all(MYSQLI_ASSOC);		
+						$подробности = $результМассив[0]['podrobno'];
+					}else $подробности = "Нет информации..";						
+					$кнопка_подробнее = "<p>{$подробности}<span>{$дата_публикации}</span></p>";
+				}else {
+					$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$номер_лота}&last_lot={$сколько_уже_показано}&kategory={$категория}' title=''>Подробности</a><span>{$дата_публикации}</span></p>";		
+				}
+				
+				$лот[$номер] = "<article>
+					<h3>
+						<a href='' title=''><img src='{$ссыль_на_фото}' alt='' title=''/></a>{$текст_лота}		
+						{$кнопка_подробнее}
+					</h3>
+				</article>";
+					
+				if ($подробности == $номер_лота) return $лот[$номер];
+				
+			}
+			
+			$количество--;
+		}
+
+		$номер++;
 	}
-	//else throw new Exception("Не смог узнать наличие лота у клиента {$логин} (_последняя_публикация_на_сайте)");	
-    return $ответ;
+
+	if ($лот[0] == "") {	
+		$лот[0] = "<article>
+			<h3>
+				<label>Больше лотов нет.</label>
+			</h3>
+		</article>";
+		
+	}elseif ($лот[$номер-1] != "")  { 
+		
+		if (!$сколько_уже_показано) {
+			$тип_кн_назад = 'hidden';		
+		}else $тип_кн_назад = 'submit';
+		
+		$лот[$номер] = "<article>
+			<h3><br>
+			<form action='/' method='post' id='form_nazad'></form>
+			<form action='/' method='post' id='form_dalee'></form>
+			<center>			
+					<input type='hidden' name='last_lot' id='last_lot' value='{$сколько_уже_показано}' form='form_nazad'>
+					<input type='hidden' name='kategory' id='kategory' value='{$категория}' form='form_nazad'>
+					<input type='{$тип_кн_назад}' class='button' name='nazad' id='nazad' value='&lt&lt Назад' form='form_nazad'>
+				
+					<input type='hidden' name='last_lot' id='last_lot' value='{$сколько_уже_показано}' form='form_dalee'>
+					<input type='hidden' name='kategory' id='kategory' value='{$категория}' form='form_dalee'>
+					<input type='submit' class='button' name='dalee' id='dalee'  value='Вперёд &gt&gt' form='form_dalee'>
+			</center>
+			</h3>
+		</article>";
+			
+	}else {
+		if ($сколько_уже_показано) {	
+							
+			$лот[$номер] = "<article>
+				<h3><br>
+				<center>		
+					<form action='/' method='post'>
+						<input type='hidden' name='last_lot' id='last_lot' value='{$сколько_уже_показано}'>
+						<input type='hidden' name='kategory' id='kategory' value='{$категория}'>
+						<input type='submit' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>					
+					</form>
+				</center>
+				</h3>
+			</article>";		
+		}
+		
+		
+	}
+
+    return $лот;
 }
+
+
+function _дай_связь($имя_клиента) {	
+	global $mysqli;
+	$ответ = false;
+	$запрос = "SELECT svyazi, svyazi_data FROM site_users WHERE login='{$имя_клиента}'";
+	$результат = $mysqli->query($запрос);
+	if ($результат) {
+		if ($результат->num_rows == 1) {		
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
+			$связь = $результМассив[0]['svyazi'];
+			$данные = $результМассив[0]['svyazi_data'];
+			if ($связь == 'Telegram') {
+				if (strpos($данные, "@")!==false) {		
+					$ник = substr(strrchr($данные, "@"), 1);
+					$ответ = "https://teleg.link/{$ник}";
+				}else $ответ = "https://teleg.link/{$данные}";
+			}elseif ($связь == 'WhatsApp') {
+				if (strpos($данные, "+")!==false) {		
+					$ник = substr(strrchr($данные, "+"), 1);
+					$ответ = "https://wa.me/{$ник}";
+				}else $ответ = "https://wa.me/{$данные}";
+			}elseif ($связь == 'Wiber') {
+				if (strpos($данные, "+")!==false) {		
+					$ник = substr(strrchr($данные, "+"), 1);
+					$ответ = "https://wb.me/{$ник}";
+				}else $ответ = "https://wb.me/{$данные}";
+			}
+		}
+	}
+	return $ответ;
+}
+
 
 ?>
