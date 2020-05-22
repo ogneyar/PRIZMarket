@@ -1,7 +1,11 @@
 <?php
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
+
+$количество_лотов = 10;
+
 include_once 'site_pzm/pzmarket.php';
+
 ?>
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml">
