@@ -119,7 +119,7 @@ while ($a < $количество_лотов){
 				}else $подробности = "Нет информации..";						
 				$кнопка_подробнее = "<p>{$подробности}<span>{$дата_публикации[$a]}</span></p>";
 			}else {
-				$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}&last_lot={$последний_лот}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";				
+				$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";				
 			}
 			
 			$лот[$a] = "<article>
@@ -129,7 +129,7 @@ while ($a < $количество_лотов){
 				</h3>
 			</article>";
 				
-			if ($_GET['podrobnosti'] == $id_lota) $показ_одного_лота = $лот[$a];
+			if ($_GET['podrobnosti'] == $id_lota) {$показ_одного_лота = $лот[$a]; $a++; $a++; break;} 
 			
 		}
 		
@@ -195,9 +195,9 @@ $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supp
 
 if ($лот[0] == "") {	
 	$лот[0] = "<article>
-		<h3>
-			<label>Больше лотов нет.</label>
-		</h3>
+		<h3><br><center>
+			<p>Больше лотов нет.</p>
+		</center></h3>
 	</article>";
 	
 }elseif ($лот[$a-1] != "")  { 
