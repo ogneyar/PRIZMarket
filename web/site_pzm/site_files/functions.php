@@ -368,10 +368,13 @@ function _вывод_лотов_по_категории(
 			$тип_кн_назад = 'hidden';		
 		}else $тип_кн_назад = 'submit';
 		
+		if ($подробности == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+		else $action = '/site_pzm/kategory/index.php';
+		
 		$лот[$номер] = "<article>
 			<h3><br>
-			<form action='/' method='post' id='form_nazad'></form>
-			<form action='/' method='post' id='form_dalee'></form>
+			<form action='{$action}' method='post' id='form_nazad'></form>
+			<form action='{$action}' method='post' id='form_dalee'></form>
 			<center>			
 					<input type='hidden' name='last_lot' id='last_lot' value='{$сколько_уже_показано}' form='form_nazad'>
 					<input type='hidden' name='kategory' id='kategory' value='{$категория}' form='form_nazad'>
@@ -386,11 +389,14 @@ function _вывод_лотов_по_категории(
 			
 	}else {
 		if ($сколько_уже_показано) {	
-							
+		
+			if ($подробности == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+			else $action = '/site_pzm/kategory/index.php';	
+			
 			$лот[$номер] = "<article>
 				<h3><br>
 				<center>		
-					<form action='/' method='post'>
+					<form action='{$action}' method='post'>
 						<input type='hidden' name='last_lot' id='last_lot' value='{$сколько_уже_показано}'>
 						<input type='hidden' name='kategory' id='kategory' value='{$категория}'>
 						<input type='submit' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>					
