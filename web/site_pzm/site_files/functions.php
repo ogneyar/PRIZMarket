@@ -271,7 +271,7 @@ $лот = [];
                 $результМассив = $результат->fetch_all(MYSQLI_ASSOC);		
 	}else {
                 $лот[0] = "<article>
-			<h3><center>
+			<h3><br><center>
 				<p>В этой категории ещё нет товаров/услуг.</p>
 			</center></h3>
 		</article>";
@@ -365,7 +365,7 @@ $лот = [];
 
 	if ($лот[0] == "") {	
 		$лот[0] = "<article>
-			<h3><center>
+			<h3><br><center>
 				<p>Больше лотов нет.</p>
 			</center></h3>
 		</article>";
