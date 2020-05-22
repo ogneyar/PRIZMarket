@@ -1,4 +1,6 @@
 <?php
+// здесь открывается mysqli и подключаются переменные
+include_once '../site_files/functions.php';
 $категория = "";
 if ($_POST['kategory']) $категория = $_POST['kategory'];
 if ($_GET['kategory']) $категория = $_GET['kategory'];
@@ -49,3 +51,7 @@ if ($_GET['kategory']) $категория = $_GET['kategory'];
 	</footer>
 </body>
 </html>
+<?
+// закрывается подключение 
+$mysqli->close();
+?>
