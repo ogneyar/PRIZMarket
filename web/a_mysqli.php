@@ -1,5 +1,5 @@
 <?php
-include_once "https://".$_SERVER['HTTP_HOST'].'a_conect.php';
+include_once "http://".$_SERVER['SERVER_NAME'].'a_conect.php';
 
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
