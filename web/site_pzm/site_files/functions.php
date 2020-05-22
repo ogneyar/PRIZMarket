@@ -1,10 +1,11 @@
 ﻿<?
 include_once '../../a_mysqli.php';
-//$mysqli = new mysqli($host, $username, $password, $dbname);
 
 /*
 ** 	Функции для работы сайта
 ** 	------------------------
+**
+** exception_handler
 **
 ** _последняя_публикация_на_сайте
 ** _подтверждён_ли_клиент
@@ -15,7 +16,19 @@ include_once '../../a_mysqli.php';
 ** _ожидание_публикации
 ** _выбор_времени_публикации
 ** _обнулить_секунды
+**
+** _вывод_лотов_по_категории
+**
+**
 */
+
+// при возникновении исключения вызывается эта функция
+function exception_handler($exception) {
+	global $mysqli;
+	echo "Ошибка! ".$exception->getCode()." ".$exception->getMessage();	  
+	$mysqli->close();		
+	exit;  	
+}
 
 // Проверка давно ли была последняя публикация лота у данного клиента
 function _последняя_публикация_на_сайте($логин) {	
@@ -229,6 +242,31 @@ function _нет_ли_брони($время) {		// если нет брОни, 
 		if ($результат->num_rows == 0) $ответ = "свободно";
 	}else echo "<label>Не смог узнать наличие записи в таблице (_нет_ли_брони)</label>";		
 	return $ответ;	
+}
+
+
+// Вывод лотов по категорияи
+function _вывод_лотов_по_категории($категория) {	
+	global $mysqli;	
+	
+	if ($логин == 'Огнеяр' || $логин == 'Otrad_ya' || $логин == 'Логин') return true;
+	
+    $ответ = false;	
+	$query = "SELECT date FROM `avtozakaz_pzmarket` WHERE id_client='7' AND username='{$логин}'";	
+	$result = $mysqli->query($query);	
+	if ($result) {	
+		if ($result->num_rows>0) {        
+			$результат = $result->fetch_all(MYSQLI_ASSOC);			
+			$время = time()-80000; // примерно 22 часа, а точнее 22,22222222222			
+			$давно = true; // если публикация была давно			
+			foreach ($результат as $строка) {				
+				if ($строка['date']>$время) $давно = false;				
+			}		
+            if ($давно) $ответ = true;
+		}else $ответ = true;	
+	}
+	//else throw new Exception("Не смог узнать наличие лота у клиента {$логин} (_последняя_публикация_на_сайте)");	
+    return $ответ;
 }
 
 ?>
