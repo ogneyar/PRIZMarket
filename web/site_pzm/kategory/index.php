@@ -1,6 +1,7 @@
 <?php
-include_once '../../a_conect.php';
-include_once '../pzmarket.php';
+$категория = "";
+if ($_POST['kategory']) $категория = $_POST['kategory'];
+if ($_GET['kategory']) $категория = $_GET['kategory'];
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,7 +34,11 @@ include_once '../pzmarket.php';
 			<?include_once '../site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">
-			<?include_once 'index-leftCol.php';?>
+			<?
+			if ($категория) {
+				include_once 'index-output_kategory.php';
+			}else include_once 'index-leftCol.php';
+			?>
 		</div>
 		<div id="rightCol">
 			<?include_once '../site_files/wrapper-rightCol.php';?>
