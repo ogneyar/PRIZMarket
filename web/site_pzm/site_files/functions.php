@@ -250,7 +250,7 @@ function _вывод_лотов_по_категории(
 
 		$категория, 
 		$сколько_уже_показано = 0, 
-		$подробности = null, 
+		$подробно = null, 
 		$сколько_показать = 10
 		
 ) {	
@@ -331,7 +331,7 @@ $лот = [];
 					
 				$ссыль_на_фото = $ссылка_на_амазон . $номер_лота . ".jpg";		
 				
-				if ($подробности) {
+				if ($подробно) {
 					$запрос = "SELECT podrobno FROM `avtozakaz_pzmarket` WHERE id_zakaz='{$номер_лота}'"; 
 					$результат = $mysqli->query($запрос);
 					if ($результат)	{
@@ -353,7 +353,7 @@ $лот = [];
 					</h3>
 				</article>";
 					
-				if ($подробности == $номер_лота) return $лот[$номер];
+				if ($подробно == $номер_лота) return $лот[$номер];
 				
 			}
 			
@@ -376,7 +376,7 @@ $лот = [];
 			$тип_кн_назад = 'hidden';		
 		}else $тип_кн_назад = 'submit';
 		
-		if ($подробности == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+		if ($подробно == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
 		else $action = '/site_pzm/kategory/index.php';
 		
 		$лот[$номер] = "<article>
@@ -398,7 +398,7 @@ $лот = [];
 	}else {
 		if ($сколько_уже_показано) {	
 		
-			if ($подробности == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+			if ($подробно == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
 			else $action = '/site_pzm/kategory/index.php';	
 			
 			$лот[$номер] = "<article>
