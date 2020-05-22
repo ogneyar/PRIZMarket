@@ -20,8 +20,6 @@ $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazon
 
 $показ_одного_лота = '';
 
-if ($_GET['podrobnosti']) 
-
 $запрос = "SELECT * FROM pzmarkt"; 
 if ($_GET['podrobnosti']) {
 	$подробно = $_GET['podrobnosti'];
