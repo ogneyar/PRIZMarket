@@ -37,6 +37,13 @@ if ($est!==false){
         $tg->sendMessage($chat_id, $reply, markdown, true);	
 		
 			
+}elseif ($text == "Посетите наш сайт") {  
+		
+        $reply = "✅ *PRIZMarket*❗️ \n\nПосетите наш сайт www.prizmarket.ru\nПосетите наш сайт www.prizmarket.ru\nПосетите наш сайт www.prizmarket.ru\nПосетите наш сайт www.prizmarket.ru\nПосетите наш сайт www.prizmarket.ru\n ";
+		
+        $tg->sendMessage($chat_id, $reply, markdown, false);	
+		
+			
 }elseif ($text == $knopa03||($id_bota != '1066944801'&&$id_bota != '1037491432'&&($text == "курс"||$text == "Курс"||$text == "rehc"||$text == "Rehc"||$text == "цена"||$text == "Цена"))) {  // Курс PRIZM
 			
 	$kurs_PZM = _kurs_PZM();
