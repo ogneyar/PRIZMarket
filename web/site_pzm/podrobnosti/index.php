@@ -1,13 +1,14 @@
 <?php
 //include_once '../../../vendor/autoload.php';	
 //include_once '../../a_conect.php';
+include_once '../pzmarket.php';
 
 $количество_лотов = 10;
 $категория = "";
 if ($_POST['kategory']) $категория = $_POST['kategory'];
 if ($_GET['kategory']) $категория = $_GET['kategory'];
 
-if (!$категория) include_once '../pzmarket.php';
+//if (!$категория) include_once '../pzmarket.php';
 
 ?>
 <!DOCTYPE html>
