@@ -169,16 +169,18 @@ $knopa06 = "ВЭС";  // \xF0\x9F\x94\x97
 $knopa07 = "Разместить объявление в *Категориях*";  // \xE2\x9C\x8F 
 $knopa08 = ""; 
 $knopa09 = "";
+$кнопка_сайта = "Посетите наш сайт";
 $knopka_adminka = "ДЛЯ АДМИНИСТРАЦИИ";
 $кнопка_Макса = "ЗАДАТЬ КУРС PRIZM!";
 //ПОСТРОЧНОЕ ЗАПОЛНЕНИЕ КНОПОК KeybordReply ГЛАВНОГО меню
 $stroka1 = [$knopa01, $knopa02, $knopa03];
 $stroka2 = [$knopa04, $knopa05, $knopa06];
-$stroka3 = [$knopa07, $knopa08, $knopa09];	
+$stroka3 = [$knopa07, $knopa08, $knopa09];
+$строка_сайта = [$кнопка_сайта];	
 $stroka_adminka = [$knopka_adminka];
 $сторока_Макса = [$кнопка_Макса];
 
-$menuPZMbot	= [$stroka1, $stroka2, $stroka3];
+$menuPZMbot	= [$stroka1, $stroka2, $stroka3, $строка_сайта];
 //СОЗДАНИЕ КЛАВИАТУРЫ KeybordReply ГЛАВНОГО меню
 $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($menuPZMbot, false, true);  
 
