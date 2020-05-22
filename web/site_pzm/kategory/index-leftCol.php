@@ -1,17 +1,17 @@
 ﻿<article id="kategory">
 <h4><br>
-	<form action="index.php" method="post" id="nedvij"></form>
-	<form action="index.php" method="post" id="rabota"></form>
-	<form action="index.php" method="post" id="transport"></form>
-	<form action="index.php" method="post" id="uslugi"></form>
-	<form action="index.php" method="post" id="lich_veschi"></form>
-	<form action="index.php" method="post" id="dlya_doma"></form>
-	<form action="index.php" method="post" id="electro"></form>
-	<form action="index.php" method="post" id="jivotnie"></form>
-	<form action="index.php" method="post" id="hobbi"></form>
-	<form action="index.php" method="post" id="biznes"></form>
-	<form action="index.php" method="post" id="producti"></form>
-	<form action="index.php" method="post" id="krasota"></form>
+	<form action="/" method="post" id="nedvij"></form>
+	<form action="/" method="post" id="rabota"></form>
+	<form action="/" method="post" id="transport"></form>
+	<form action="/" method="post" id="uslugi"></form>
+	<form action="/" method="post" id="lich_veschi"></form>
+	<form action="/" method="post" id="dlya_doma"></form>
+	<form action="/" method="post" id="electro"></form>
+	<form action="/" method="post" id="jivotnie"></form>
+	<form action="/" method="post" id="hobbi"></form>
+	<form action="/" method="post" id="biznes"></form>
+	<form action="/" method="post" id="producti"></form>
+	<form action="/" method="post" id="krasota"></form>
 	
 	<label>Выберите категорию товара/услуги:<br><br></label>
 		
