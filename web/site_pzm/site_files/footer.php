@@ -9,7 +9,7 @@
 	</article>
 	<article>
 		<a href="https://icq.im/prizmarket" title="Канал в icq new" target="_blank">
-			<img src="/site_pzm/img/social/icq.png" alt="icq new PRIZMarket" />
+			<img src="/site_pzm/img/social/icq_orig.png" alt="icq new PRIZMarket" />
 		</a>
 	</article>
 	<article>
