@@ -12,7 +12,7 @@ include_once '../../a_conect.php';
 	
 	<style type="text/css">
 		@media (min-width: 700px) {
-		nav a:nth-child(3), nav#fixed a:nth-child(3) {
+		nav a:nth-child(4), nav#fixed a:nth-child(4) {
 			border-top: 5px solid rgba(255,235,59);
 		}} 
 	</style>
