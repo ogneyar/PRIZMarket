@@ -247,20 +247,19 @@ function _нет_ли_брони($время) {		// если нет брОни, 
 
 // Вывод лотов по категорияи
 function _вывод_лотов_по_категории(
-
 		$категория, 
 		$сколько_уже_показано = 0, 
 		$подробно = null, 
-		$сколько_показать = 10
-		
+		$сколько_показать = 10		
 ) {	
 	global $mysqli, $aws_bucket, $aws_region;	
    
 	$ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
 
-$лот = [];
+	$лот = [];
 
-	$запрос = "SELECT * FROM pzmarkt WHERE otdel='{$категория}'"; 
+	if ($подробно) $запрос = "SELECT * FROM pzmarkt WHERE id='{$подробно}'";
+	else $запрос = "SELECT * FROM pzmarkt WHERE otdel='{$категория}'"; 
 	$результат = $mysqli->query($запрос);
 	
 	if ($результат)	{
@@ -343,7 +342,7 @@ $лот = [];
 					}else $подробности = "Нет информации..";						
 					$кнопка_подробнее = "<p>{$подробности}<span>{$дата_публикации}</span></p>";
 				}else {
-                                        $категория_без_хештега = substr($категория, 1);
+                    $категория_без_хештега = substr($категория, 1);
 					$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$номер_лота}&last_lot={$сколько_уже_показано}&kategory={$категория_без_хештега}' title=''>Подробности</a><span>{$дата_публикации}</span></p>";		
 				}
 				
@@ -377,8 +376,7 @@ $лот = [];
 			$тип_кн_назад = 'hidden';		
 		}else $тип_кн_назад = 'submit';
 		
-		if ($подробно == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
-		else $action = '/site_pzm/kategory/index.php';
+		$action = '/site_pzm/kategory/index.php';
 		
 		$лот[$номер] = "<article>
 			<h3><br>
