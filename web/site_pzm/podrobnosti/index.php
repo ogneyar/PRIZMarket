@@ -6,7 +6,7 @@ include_once '../../a_conect.php';
 $количество_лотов = 10;
 $категория = "";
 if ($_POST['kategory']) $категория = $_POST['kategory'];
-if ($_GET['kategory']) $категория = "#".$_GET['kategory'];
+if ($_GET['kategory']) $категория = $_GET['kategory'];
 
 //if (!$категория) include_once '../pzmarket.php';
 
