@@ -1,5 +1,5 @@
 <?php
-include_once '/a_conect.php';
+include_once 'a_conect.php';
 
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
