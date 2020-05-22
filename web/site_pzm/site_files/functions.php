@@ -267,15 +267,15 @@ function _вывод_лотов_по_категории(
 	}else throw new Exception('Не смог проверить таблицу `pzm`.. (_вывод_лотов_по_категории)');	
 
 	if($количество > 0) {
-                $результМассив = $результат->fetch_all(MYSQLI_ASSOC);		
+        $результМассив = $результат->fetch_all(MYSQLI_ASSOC);		
 	}else {
-                $лот[0] = "<article>
-			<h3><br><center>
-				<p>В этой категории ещё нет товаров/услуг.</p>
-			</center></h3>
-		</article>";
-                return $лот;
-        } 
+        $лот[0] = "<article>
+				<h3><br><center>
+					<p>В этой категории ещё нет товаров/услуг.</p>
+				</center></h3>
+			</article>";
+		return $лот;
+	} 
 		
 	$номер = 0;
 
@@ -353,7 +353,7 @@ function _вывод_лотов_по_категории(
 					</h3>
 				</article>";
 					
-				if ($подробно == $номер_лота) return $лот[$номер];
+				if ($подробно == $номер_лота) return $лот;
 				
 			}
 			
@@ -397,8 +397,7 @@ function _вывод_лотов_по_категории(
 	}else {
 		if ($сколько_уже_показано) {	
 		
-			if ($подробно == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
-			else $action = '/site_pzm/kategory/index.php';	
+			$action = '/site_pzm/kategory/index.php';	
 			
 			$лот[$номер] = "<article>
 				<h3><br>
