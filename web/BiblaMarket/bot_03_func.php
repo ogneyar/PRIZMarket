@@ -691,9 +691,9 @@ function _start_PZMarket_bota($this_admin=false) { // функция старт�
 	$tg->sendMessage($chat_id, $reply);
 	
 	$reply  = "✅ *PRIZMarket* ❗️  www.prizmarket.ru\n\n▪️*PRIZMarket* - место где можно увидеть ".
-		"товары и услуги за PRIZM. {$zakaz}\n\n▪️*КАТЕГОРИИ товаров* - поиск нужного вам товара ".
-		"или услуги!\n\n▪️*Курс PRIZM* - Рекомендованный Курс и актуальная инфа с [CoinMarketCap]".
-		"(https://coinmarketcap.com/ru/currencies/prizm/)\n\n▪️*ВЭС* - ".
+		"товары и услуги за PRIZM. {$zakaz}\n\n▪️*Курс PRIZM* - Курс монеты PRIZM с [CoinMarketCap]".
+		"(https://coinmarketcap.com/ru/currencies/prizm/)\n\n▪️*КАТЕГОРИИ товаров* - поиск нужного вам товара ".
+		"или услуги!\n\n▪️*ВЭС* - ".
 		"для тех кто понятия не имеет о PRIZM {$tehPodderjka}";		
 		
 	$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyB);	
