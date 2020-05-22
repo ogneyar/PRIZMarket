@@ -113,11 +113,7 @@ while ($a < $количество_лотов){
 				}else $подробности = "Нет информации..";						
 				$кнопка_подробнее = "<p>{$подробности}<span>{$дата_публикации[$a]}</span></p>";
 			}else {
-				if (isset($последний_лот)) {
-					$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}&last_lot={$последний_лот}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";
-				}else {
-					$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";
-				}
+				$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}&last_lot={$последний_лот}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";				
 			}
 			
 			$лот[$a] = "<article>
