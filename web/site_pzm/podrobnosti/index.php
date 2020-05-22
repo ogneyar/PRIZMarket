@@ -1,7 +1,12 @@
 <?php
 //include_once '../../../vendor/autoload.php';	
-include_once '../../a_conect.php';
-include_once '../pzmarket.php';
+//include_once '../../a_conect.php';
+
+$количество_лотов = 10;
+$категория = "";
+if ($_POST['kategory']) $категория = $_POST['kategory'];
+if ($_GET['kategory']) $категория = $_GET['kategory'];
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
