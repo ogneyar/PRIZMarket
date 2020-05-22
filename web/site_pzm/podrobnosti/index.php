@@ -7,6 +7,8 @@ $категория = "";
 if ($_POST['kategory']) $категория = $_POST['kategory'];
 if ($_GET['kategory']) $категория = $_GET['kategory'];
 
+if (!$категория) include_once '../pzmarket.php';
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

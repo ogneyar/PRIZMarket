@@ -17,9 +17,7 @@ if ($категория) {
 	$mysqli->close();
 	
 }else {
-	
-	include_once '../pzmarket.php';
-	
+		
 	if ($показ_одного_лота) {
 		echo $показ_одного_лота;
 	}else {
