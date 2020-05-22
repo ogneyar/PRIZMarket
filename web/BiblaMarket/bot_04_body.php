@@ -34,7 +34,7 @@ if ($est!==false){
 		
         $reply = "✅ *PRIZMarket*❗️ {$PZMarket} \n\n{$zakaz}\n\nПосетите наш сайт www.prizmarket.ru {$tehPodderjka}";
 		
-        $tg->sendMessage($chat_id, $reply, markdown, false);	
+        $tg->sendMessage($chat_id, $reply, markdown, true);	
 		
 			
 }elseif ($text == $knopa03||($id_bota != '1066944801'&&$id_bota != '1037491432'&&($text == "курс"||$text == "Курс"||$text == "rehc"||$text == "Rehc"||$text == "цена"||$text == "Цена"))) {  // Курс PRIZM
