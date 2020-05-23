@@ -63,12 +63,12 @@ if($количество > 0) {
 $mysqli->close();
 
 // при возникновении исключения вызывается эта функция
-function exception_handler($exception) {
+/*function exception_handler($exception) {
 	global $mysqli;
 	echo "Ошибка! ".$exception->getCode()." ".$exception->getMessage();	  
 	$mysqli->close();		
 	exit('ok');  	
-}
+}*/
 
 $ссыль_на_канал_подробности = "https://teleg.link/podrobno_s_PZP";
 $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
