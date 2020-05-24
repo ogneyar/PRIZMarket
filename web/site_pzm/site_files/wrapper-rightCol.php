@@ -3,6 +3,7 @@
 		<img src="/site_pzm/img/art/PRIZM.png" />
 	</a>
 	<h3><span>Здесь может быть Ваша реклама!</span></h3>
+	<br>
 </article>
 <!--<article>
 	<h3><span>Поддержать проект:</span></h3>
