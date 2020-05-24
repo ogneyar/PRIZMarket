@@ -13,6 +13,7 @@
 <article>
 <center>
 
+	<br>
 	<h3><span>Поддержать проект:</span></h3><br>
 
 	<article class="tooltip">	
