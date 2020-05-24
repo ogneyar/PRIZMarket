@@ -54,9 +54,3 @@
 		}
 	</script>	
 	
-	<style>
-	input.tooltip {
-		background-color: rgba(20,17,45);
-		color: #7c7c7c;
-	}
-	</style>
