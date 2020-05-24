@@ -54,10 +54,8 @@
 		}
 	</script>	
 	
-	<style>
-	
+	<style>	
 	.tooltip input {
-		width: 95%;
-	}
-	
+		width: 90%;
+	}	
 	</style>
