@@ -17,7 +17,7 @@
 	
 	<meta http-equiv="Cache-Control" content="no-cache">
 	
-	<link rel="stylesheet" href="/site_pzm/css/style2.css">
+	<link rel="stylesheet" href="/site_pzm/css/style4.css">
 	
 	<link rel="stylesheet" href="/site_pzm/font-awesome/css/font-awesome.min.css">
 	
@@ -54,8 +54,8 @@
 		}
 	</script>	
 	
-	<style>	
+	<!--<style>	
 	.tooltip input {
 		width: 90%;
 	}	
-	</style>
+	</style>-->
