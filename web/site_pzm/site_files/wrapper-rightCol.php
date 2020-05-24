@@ -19,7 +19,7 @@
 		
 		<br><br>
 		
-		<input type="text" value="11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c" id="myInput2" onclick="myFunction('myInput2')" onmouseout="outFunc()">
+		<!--<input type="text" value="11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c" id="myInput2" onclick="myFunction('myInput2')" onmouseout="outFunc()">-->
 		<!--</h4>-->
 		
 		<span class="tooltiptext" id="myTooltip">Нажмите чтобы копировать текст в буфер</span>
