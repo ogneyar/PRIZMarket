@@ -17,12 +17,12 @@
 
 	<article class="tooltip">	
 		<!--<h4>-->
-		<h6>Кошелёк</h6>
+		<h5><span>Кошелёк</span></h5>
 		<input type="text" value="PRIZM-UFSC-9S49-ESJX-79N7S" id="myInput" onclick="myFunction('myInput')" onmouseout="outFunc()" readonly>
 		
 		<br><br>
 		
-		<h6>Публичный ключ</h6>
+		<h5><span>Публичный ключ</span></h5>
 		<input type="text" value="11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c" id="myInput2" onclick="myFunction('myInput2')" onmouseout="outFunc()" readonly>
 		<!--</h4>-->
 		
