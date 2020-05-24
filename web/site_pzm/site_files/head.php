@@ -17,7 +17,7 @@
 	
 	<meta http-equiv="Cache-Control" content="no-cache">
 	
-	<link rel="stylesheet" href="/site_pzm/css/style3.css">
+	<link rel="stylesheet" href="/site_pzm/css/style.css">
 	
 	<link rel="stylesheet" href="/site_pzm/font-awesome/css/font-awesome.min.css">
 	
@@ -53,3 +53,10 @@
 			});
 		}
 	</script>	
+	
+	<style>
+	.tooltip input {
+		background-color: rgba(20,17,45);
+		color: #7c7c7c;
+	}
+	</style>
