@@ -57,7 +57,7 @@
 	<style>
 	
 	.tooltip input {
-		width: 95%
+		width: 95%;
 	}
 	
 	</style>
