@@ -2,7 +2,7 @@
 <h4><br>
 <?
 include_once '../../myBotApi/Bot.php';
-/*include_once '../../BiblaAvtoZakaz/Functions_site.php';
+include_once '../../BiblaAvtoZakaz/Functions_site.php';
 //exit('ok');
 
 $bot = new Bot($tokenAvtoZakaz);
@@ -10,7 +10,7 @@ $id_bota = strstr($tokenAvtoZakaz, ':', true);
 
 $admin_group = $admin_group_AvtoZakaz;
 $table_market = 'avtozakaz_pzmarket';
-*/
+
 if (empty($_GET['url'])) {
 	echo "<br><h4>Ошибка! Не выбран файл.</h4>";		
 	exit;
