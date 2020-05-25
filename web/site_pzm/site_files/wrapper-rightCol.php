@@ -2,7 +2,9 @@
 	<a href='' title=''>
 		<img src="/site_pzm/img/art/PRIZM.png" />
 	</a>
+	<center>
 	<h3><span>Здесь может быть Ваша реклама!</span></h3>
+	</center>
 	<br>
 </article>
 <!--<article>
