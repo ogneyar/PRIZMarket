@@ -280,7 +280,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 					[
 						[   'text' => 'ICQ new PRIZMarket', 
 							'url' => 'https://icq.im/prizmarket' ],
-						[ 	'text' => 'САЙТ PRIZMarket',
+						[ 	'text' => '❗️САЙТ PRIZMarket❗️',
 							'url' => 'https://prizmarket.ru' ]
 					]
 				]);				
