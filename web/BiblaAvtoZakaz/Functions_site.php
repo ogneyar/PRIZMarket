@@ -357,7 +357,7 @@ function _отказать_с_сайта($имя_клиента) {
 				
 				$array = [ 'file' => $файл ];		
 				
-				$ch = curl_init("http://f0430377.xsph.ru");
+				$ch = curl_init("http://f0430377.xsph.ru/deleteimage.php");
 				curl_setopt($ch, CURLOPT_POST, 1);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($array)); 
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
