@@ -1,8 +1,8 @@
 <article id="lk">
 <h4><br>
-<?/*
+<?
 include_once '../../myBotApi/Bot.php';
-include_once '../../BiblaAvtoZakaz/Functions_site.php';
+/*include_once '../../BiblaAvtoZakaz/Functions_site.php';
 //exit('ok');
 
 $bot = new Bot($tokenAvtoZakaz);
