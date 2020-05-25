@@ -357,7 +357,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 	] ];	
 	$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
 }
-
+/*
 // Если клиенту отказанно в публикации лота (кнопка у админов ОТКАЗ)
 function _отказать_с_сайта($имя_клиента) {
 	global $bot, $s3, $aws_bucket, $admin_group, $master, $chat_id, $message_id, $mysqli, $table_market;	
@@ -404,7 +404,7 @@ function _отказать_с_сайта($имя_клиента) {
 	// ОТПРАВИТЬ
 	include 'phpmailer.php';
 }
-/*
+
 function _есть_ли_запись($логин, $запись) {	
 	global $mysqli;
 	$ответ = false;
