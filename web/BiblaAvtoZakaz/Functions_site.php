@@ -351,7 +351,7 @@ function _отказать_с_сайта($имя_клиента) {
 		if ($результат->num_rows == 1) {		
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
 			$ссылка = $результМассив[0]['url_tgraph'];
-			if ($uniqid) {				
+			if ($ссылка) {				
 				
 				$файл = substr(strrchr($ссылка, "/"), 1);
 				
@@ -364,7 +364,8 @@ function _отказать_с_сайта($имя_клиента) {
 				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 				curl_setopt($ch, CURLOPT_HEADER, false);
 				$html = curl_exec($ch);
-				curl_close($ch);		
+				curl_close($ch);					
+				
 			}
 		}		
 	}
