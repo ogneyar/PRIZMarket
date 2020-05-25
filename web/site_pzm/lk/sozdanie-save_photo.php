@@ -2,7 +2,7 @@
 <h4><br>
 <?
 include_once '../../myBotApi/Bot.php';
-//include_once '../../BiblaAvtoZakaz/Functions_site.php';
+include_once '../../BiblaAvtoZakaz/Functions_site.php';
 //exit('ok');
 
 $bot = new Bot($tokenAvtoZakaz);
@@ -15,7 +15,7 @@ if (empty($_GET['url'])) {
 	echo "<br><h4>Ошибка! Не выбран файл.</h4>";		
 	exit;
 }else {
-/*	
+
 	$есть = _есть_ли_запись($логин, 'url_tgraph');
 	
 	if ($есть) {
@@ -31,7 +31,7 @@ if (empty($_GET['url'])) {
 		_отправка_лота_админам_с_сайта(); 
 		
 	}
-*/	
+	
 	echo "Заявка отправлена РАЙминистрации.<br><br>";
 	echo "Сообщение о решении будет отправленно Вам на email.<br><br>";
 	echo "Все вопросы в <a href='https://teleg.link/Prizm_market_supportbot'>тех.поддержку.</a>";
