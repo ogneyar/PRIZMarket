@@ -251,24 +251,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 				//$uniqid = $строка['id_zakaz'];	
 				
 				$ссылка_на_фото = $строка['url_tgraph'];
-				
-				// Если была замена фото, то $uniqid будет равен 'net'
-				/*if ($uniqid != 'net') {
-					$фото_с_амазон = $строка['url_tgraph'];
-					
-					$результат = $imgBB->upload($фото_с_амазон);
-					if ($результат) {								
-						$imgBB_url = $результат['url'];	
-						_запись_в_маркет_с_сайта($имя_клиента, 'url_tgraph', $imgBB_url);
-						
-						$key = "temp{$uniqid}.jpg";
-						$result = $s3->deleteObjects([
-							'Bucket' => $aws_bucket,			
-							'Delete' => [ 'Objects' => [ [ 'Key' => $key, ], ], ],
-						]);
-					}
-				}else $imgBB_url = $строка['url_tgraph'];
-				*/
+								
 				if ($ссылка_на_фото) {
 					if ($tester == 'да') {
 						$реплика = "Эта заявка с - www.prizmarket.online\n[_________]({$ссылка_на_фото})\n{$текст}";
@@ -308,13 +291,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 			if ($КаналИнфо) {
 				$id_zakaz = $КаналИнфо['message_id'];				
 				_запись_в_маркет_с_сайта($имя_клиента, 'id_zakaz', $id_zakaz);
-				
-				
-				/*
-				if ($imgBB_url) $ссылка_на_фото = $imgBB_url;
-				else $ссылка_на_фото = $фото_с_амазон;
-				*/
-				
+								
 				$array = [ 'id_zakaz' => $id_zakaz, 'file' => $ссылка_на_фото ];		
 				// инфа о том с какого сайта (тестового или оригинала) идёт посылка
 				if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);		
@@ -327,8 +304,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 				curl_setopt($ch, CURLOPT_HEADER, false);
 				$html = curl_exec($ch);
 				curl_close($ch);	
-				
-				
+							
 				
 				$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";			
 				_запись_в_маркет_с_сайта($имя_клиента, 'url_podrobno', $ссыль_на_подробности);
@@ -404,7 +380,7 @@ function _отказать_с_сайта($имя_клиента) {
 	// ОТПРАВИТЬ
 	include 'phpmailer.php';
 }
-
+*/
 function _есть_ли_запись($логин, $запись) {	
 	global $mysqli;
 	$ответ = false;
