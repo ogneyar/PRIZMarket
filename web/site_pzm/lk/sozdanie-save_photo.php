@@ -12,7 +12,7 @@ $admin_group = $admin_group_AvtoZakaz;
 $table_market = 'avtozakaz_pzmarket';
 
 if (empty($_GET['url'])) {
-	echo "Ошибка! Не выбран файл.";		
+	echo "<br><h4>Ошибка! Не выбран файл.</h4>";		
 	exit;
 }else {
 	
