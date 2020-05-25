@@ -5,7 +5,7 @@ include_once '../../myBotApi/Bot.php';
 include_once '../../BiblaAvtoZakaz/Functions_site.php';
 //exit('ok');
 
-$bot = new Bot($tokenAvtoZakaz);
+//$bot = new Bot($tokenAvtoZakaz);
 $id_bota = strstr($tokenAvtoZakaz, ':', true);	
 
 $admin_group = $admin_group_AvtoZakaz;
