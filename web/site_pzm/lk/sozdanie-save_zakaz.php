@@ -14,7 +14,7 @@ if (mysqli_connect_errno()) {
 	exit;
 }else { // начало	
 	
-		$связь = _дай_связь($логин);
+		$связь = _дай_связь_сайт($логин);
 		
 		if ($_POST['currency']) $валюта = $_POST['currency']." / PZM";
 		else $валюта = "PZM";
