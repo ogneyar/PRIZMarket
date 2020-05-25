@@ -15,7 +15,7 @@
 ** _есть_ли_запись
 **
 */
-
+/*
 function _дай_имя($дата) {	
 	global $mysqli;
 	$ответ = false;
@@ -29,7 +29,7 @@ function _дай_имя($дата) {
 	}
 	return $ответ;
 }
-
+*/
 function _дай_дату($логин) {	
 	global $mysqli;
 	$ответ = false;
