@@ -199,7 +199,7 @@ function _запись_в_маркет_с_сайта($имя_клиента = nu
 	if (!$result) throw new Exception("Не смог сделать запись в таблицу {$table_market} (_запись_в_маркет_с_сайта)");	
 }
 
-
+/*
 // вывод на канал подробности уже готового лота (кнопка у админов ОПУБЛИКОВАТЬ)
 function _вывод_на_каналы_с_сайта($команда) {
 	global $table_market, $bot, $callback_query_id, $s3, $aws_bucket, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
@@ -357,7 +357,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 	] ];	
 	$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
 }
-/*
+
 // Если клиенту отказанно в публикации лота (кнопка у админов ОТКАЗ)
 function _отказать_с_сайта($имя_клиента) {
 	global $bot, $s3, $aws_bucket, $admin_group, $master, $chat_id, $message_id, $mysqli, $table_market;	
