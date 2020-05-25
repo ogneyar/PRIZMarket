@@ -540,6 +540,12 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 							'url' => 'https://t.me/Zakaz_prizm_bot' ],
 						[ 	'text' => 'Канал PRIZMarket',
 							'url' => 'https://t.me/prizm_market/' ]
+					],
+					[
+						[   'text' => 'ICQ new PRIZMarket', 
+							'url' => 'https://icq.im/prizmarket' ],
+						[ 	'text' => '❗️САЙТ PRIZMarket❗️',
+							'url' => 'https://prizmarket.ru' ]
 					]
 				]);				
 				$inLine = ['inline_keyboard' => $кнопки];						
