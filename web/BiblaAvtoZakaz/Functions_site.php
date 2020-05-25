@@ -346,22 +346,25 @@ function _отказать_с_сайта($имя_клиента) {
 		$имя_клиента = _дай_имя($дата_токен);
 	}
 	
-	$запрос = "SELECT id_zakaz FROM {$table_market} WHERE id_client='7' AND username='{$имя_клиента}' AND status=''";	
+	$запрос = "SELECT url_tgraph FROM {$table_market} WHERE id_client='7' AND username='{$имя_клиента}' AND status=''";	
 	if ($результат = $mysqli->query($запрос)) {		
 		if ($результат->num_rows == 1) {		
 			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
-			$uniqid = $результМассив[0]['id_zakaz'];
+			$ссылка = $результМассив[0]['url_tgraph'];
 			if ($uniqid) {				
-				$key = "temp{$uniqid}.jpg"; //{$логин}-				
-				$result = $s3->deleteObjects([
-					'Bucket' => $aws_bucket,			
-					'Delete' => [ 'Objects' => [ [ 'Key' => $key,	], ], ],
-				]);				
-				if ($result['@metadata']['statusCode'] == '200') {
-					$bot->sendMessage($admin_group, "Старый Файл {$key} удалён с Амазон");
-				}else {
-					$bot->sendMessage($admin_group, "Чего то не получается удалить фото {$key} из Amazon");		
-				}				
+				
+				$файл = substr(strrchr($ссылка, "/"), 1);
+				
+				$array = [ 'file' => $файл ];		
+				
+				$ch = curl_init("http://f0430377.xsph.ru");
+				curl_setopt($ch, CURLOPT_POST, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($array)); 
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_HEADER, false);
+				$html = curl_exec($ch);
+				curl_close($ch);		
 			}
 		}		
 	}
