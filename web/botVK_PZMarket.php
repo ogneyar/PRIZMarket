@@ -1,6 +1,6 @@
 <?
 // Подключаем библиотеку с классом Bot
-include_once 'myBotApi/Bot.php';
+//include_once 'myBotApi/Bot.php';
 
 // бот ВК
 include_once 'myBotApi/VK.php';
@@ -15,9 +15,17 @@ include_once 'a_conect.php';
 // Создаем объект VK бота
 $bot_vk = new VK($vk_token);
 
-
+$айди_вк_группы = "190150616";
 
 $data_vk = $bot_vk->init('php://input');
+
+if ($data_vk->type == "confirmation") exit($vk_api_response);
+
+
+
+
+
+
 
 
 
