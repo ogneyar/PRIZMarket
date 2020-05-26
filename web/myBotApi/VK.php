@@ -49,7 +49,7 @@ class VK
     public function init($data)
     {
         // создаем массив из пришедших данных от API
-        return json_decode(file_get_contents($data_php), TRUE); 
+        return json_decode(file_get_contents($data), true); 
     }
 	
 
