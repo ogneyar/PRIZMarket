@@ -27,7 +27,14 @@ elseif ($data_vk->object->body == "Прива") {
 
    //mesSend();
 
-  file_get_contents("https://api.vk.com/method/". "messages.send". "?access_token=". $vk_token. "&peer_id=". $data_vk->object->user_id. "&message=Ну да, здравствуй)&v=5.68");
+   $массив = [
+      "access_token" => $vk_token, 
+      "peer_id" => $data_vk->object->user_id, 
+      "message" => "Ну да, здравствуй)", 
+      "v" => $vk_api_version
+   ];
+
+  file_get_contents("https://api.vk.com/method/". "messages.send". http_bildquery($массив));
 
 
 } 
