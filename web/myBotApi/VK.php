@@ -38,8 +38,8 @@ class VK
 	*/
     public function __construct($token, $version = '5.68')
     {
-        $this->token = $token;
-		  $this->version = $version;
+		$this->token = $token;
+		$this->version = $version;
     }    
     
     
@@ -49,8 +49,7 @@ class VK
 	** @return array
 	*/
     public function init($data)
-    {
-        // создаем массив из пришедших данных от API
+    {        
         return json_decode(file_get_contents($data)); 
     }
 	
@@ -68,14 +67,14 @@ class VK
     {
         $response = null;		
 		
-         $data['access_token'] = $this->token;
+		$data['access_token'] = $this->token;
 	   	$data['v'] = $this->version;		
 		
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method);
-        //curl_setopt ($ch, CURLOPT_POST, count($data));
-		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
+		curl_setopt ($ch, CURLOPT_POST, 1);
 		curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($ch);
         curl_close($ch);
 		
