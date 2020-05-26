@@ -8,7 +8,6 @@
  *
  * call
  *
- * PrintArray
  *
  * ---------------
  * Список методов:
@@ -24,20 +23,23 @@
 
 class VK
 {
-    // $token - созданный токен для нашего бота 
+    // $token - токен бота 
     public $token = null;
+
 	// $version - версия vk api
     public $version = null;
+
     // адрес для запросов к API
     public $apiUrl = "https://api.vk.com/method/";
 	
+
 	/*
 	** @param str $token
 	*/
     public function __construct($token, $version = '5.68')
     {
         $this->token = $token;
-		$this->version = $version;
+		  $this->version = $version;
     }    
     
     
@@ -49,7 +51,7 @@ class VK
     public function init($data)
     {
         // создаем массив из пришедших данных от API
-        return json_decode(file_get_contents($data), true); 
+        return json_decode(file_get_contents($data)); 
     }
 	
 
@@ -66,20 +68,20 @@ class VK
     {
         $response = null;		
 		
-        $data['access_token'] = $this->token;
-		$data['v'] = $this->version;		
+         $data['access_token'] = $this->token;
+	   	$data['v'] = $this->version;		
 		
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method);
-        curl_setopt ($ch, CURLOPT_POST, count($data));
+        //curl_setopt ($ch, CURLOPT_POST, count($data));
 		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
 		curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
         $result = curl_exec($ch);
         curl_close($ch);
 		
-        $response = json_decode($result, true);
+        $response = json_decode($result);
 		
-        return $response['response'];
+        return $response;
     }
     
 
@@ -92,24 +94,8 @@ class VK
 	**
 	**  @return string
 	*/
-	public function PrintArray($mass, $i = 0) {		
-		global $flag;			
-		
-		$flag .= "\t\t\t\t";			
-		
-		foreach($mass as $key[$i] => $value[$i]) {				
-			if (is_array($value[$i])) {			
-					$response .= $flag . $key[$i] . " : \n";					
-					$response .= $this->PrintArray($value[$i], ++$i);					
-			}else $response .= $flag . $key[$i] . " : " . $value[$i] . "\n";			
-		}		
-		
-		$str = $flag;		
-		$flag = substr($str, 0, -4);		
-		
-		return $response;		
-	}
-	
+
+
 	
 //--------------------------------------
 //------------  МЕТОДЫ  ----------------
