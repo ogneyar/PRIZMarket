@@ -19,7 +19,7 @@ $айди_вк_группы = "190150616";
 
 $data_vk = $bot_vk->init('php://input');
 
-if ($data_vk->type == "confirmation") exit($vk_api_response);
+if ($data_vk['type'] == "confirmation") exit($vk_api_response);
 
 
 
@@ -29,7 +29,7 @@ if ($data_vk->type == "confirmation") exit($vk_api_response);
 
 
 
-$table_market = 'avtozakaz_pzmarket';
+//$table_market = 'avtozakaz_pzmarket';
 
 // Подключение БД
 //$mysqli = new mysqli($host, $username, $password, $dbname);
@@ -127,8 +127,8 @@ $table_market = 'avtozakaz_pzmarket';
 */
 
 // закрываем подключение 
-$mysqli->close();		
+//$mysqli->close();		
 
 
-exit('ok'); //Обязательно возвращаем "ok", чтобы телеграмм не подумал, что запрос не дошёл
+//exit('ok'); //Обязательно возвращаем "ok", чтобы телеграмм не подумал, что запрос не дошёл
 ?>
