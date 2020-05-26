@@ -1,14 +1,14 @@
 <?
-//include_once 'myBotApi/VK.php';
+include_once 'myBotApi/VK.php';
 include_once 'a_conect.php';
 
 // Создаем объект VK бота
-//$bot_vk = new VK($vk_token);
-//$data_vk = $bot_vk->init('php://input');
+$bot_vk = new VK($vk_token);
+$data_vk = $bot_vk->init('php://input');
 
 $айди_вк_группы = "190150616";
 
-$data_vk = json_decode(file_get_contents('php://input'));
+//$data_vk = json_decode(file_get_contents('php://input'));
 
 if ($data_vk->secret !== $vk_secret_key) {
 	echo "Ошибка!";
