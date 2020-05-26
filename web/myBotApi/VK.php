@@ -63,9 +63,10 @@ class VK
 	**
     ** @return mixed
     */
+
     public function call($method, $data = [])
     {
-        $response = null;		
+        //$response = null;		
 		
 		//$data['access_token'] = $this->token;
 	   	//$data['v'] = $this->version;		
@@ -81,11 +82,11 @@ class VK
         curl_close($ch);
 		*/
 
-       $result = file_get_contents($this->apiUrl . $method . "?". http_build_query($data));
+       file_get_contents($this->apiUrl . $method . "?". http_build_query($data));
 
-        $response = json_decode($result);
+        //$response = json_decode($result);
 		
-        return $response->response;
+      //  return $result;//$response->response;
     }
 
 
@@ -112,14 +113,14 @@ class VK
 		$message
 	) {				
 	
-		$response = $this->call("messages.send", [
+		$this->call("messages.send", [
         	'access_token' => $this->token, 
 			'peer_id' => $peer_id,
 			'message' => $message, 
          'v' => $this->version
 		]);	
 	
-		return $response;
+		//return $response;
 	}
 	
 
