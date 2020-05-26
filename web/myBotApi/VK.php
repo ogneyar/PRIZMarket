@@ -34,7 +34,7 @@ class VK
 	/*
 	** @param str $token
 	*/
-    public function __construct($token, $version = '5.67')
+    public function __construct($token, $version = '5.68')
     {
         $this->token = $token;
 		$this->version = $version;
@@ -127,7 +127,7 @@ class VK
 	**  
 	**  @return array 
 	*/
-    public function messagesSend(
+    public function mesSend(
 		$peer_id, 
 		$message
 	) {				
