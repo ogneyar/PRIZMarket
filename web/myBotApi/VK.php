@@ -1,8 +1,10 @@
 <?php
 
 /**-------------+
- *   Class vk   |
+ *   Class VK  |
  * -------------+
+ *
+ * init
  *
  * call
  *
@@ -20,7 +22,7 @@
  *
  */
 
-class vk
+class VK
 {
     // $token - созданный токен для нашего бота 
     public $token = null;
@@ -39,6 +41,19 @@ class vk
     }    
     
     
+
+	/*
+	** @param JSON $data
+	** @return array
+	*/
+    public function init($data)
+    {
+        // создаем массив из пришедших данных от API
+        return json_decode(file_get_contents($data_php), TRUE); 
+    }
+	
+
+
     /* 
 	** Отправляем запрос 
 	**
@@ -106,20 +121,20 @@ class vk
 	**
 	**  @param str $peer_id
  	**  @param str $message
+
+пока нет
 	**  @param array $attachment
 	**  
 	**  @return array 
 	*/
     public function messagesSend(
 		$peer_id, 
-		$message,
-		$attachment = []
+		$message
 	) {				
 	
 		$response = $this->call("messages.send", [
 			'peer_id' => $peer_id,
-			'message' => $message,
-			'attachment' => implode(',', $attachment)
+			'message' => $message
 		]);	
 	
 		return $response;
