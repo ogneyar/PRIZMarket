@@ -67,8 +67,8 @@ class VK
     {
         $response = null;		
 		
-		$data['access_token'] = $this->token;
-	   	$data['v'] = $this->version;		
+		//$data['access_token'] = $this->token;
+	   	//$data['v'] = $this->version;		
 		/*
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method. "?". http_build_query($data));
@@ -106,14 +106,17 @@ class VK
 	**  
 	**  @return array 
 	*/
+
     public function mesSend(
 		$peer_id, 
 		$message
 	) {				
 	
 		$response = $this->call("messages.send", [
+        	'access_token' => $this->token, 
 			'peer_id' => $peer_id,
-			'message' => $message
+			'message' => $message, 
+         'v' => $this->version
 		]);	
 	
 		return $response;
