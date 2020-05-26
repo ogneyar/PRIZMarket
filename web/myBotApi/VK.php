@@ -69,7 +69,7 @@ class VK
 		
 		$data['access_token'] = $this->token;
 	   	$data['v'] = $this->version;		
-		
+		/*
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method. "?". http_build_query($data));
 		  //curl_setopt ($ch, CURLOPT_POST, 1);
@@ -79,7 +79,10 @@ class VK
 			//curl_setopt($ch, CURLOPT_HEADER, false);
         $result = curl_exec($ch);
         curl_close($ch);
-		
+		*/
+
+       $result = file_get_contents($this->apiUrl . $method . "?". http_build_query($data));
+
         $response = json_decode($result);
 		
         return $response->response;
