@@ -37,9 +37,13 @@ elseif ($data_vk->object->body == "Прива") {
   file_get_contents("https://api.vk.com/method/". "messages.send?". http_build_query($массив));
 
 
+}elseif ($data_vk->type == "message_new") {
+
+   include_once "BiblaVK_PZM/Message.php"; 
+
 } 
 
-//($data_vk->type == "message_new") include_once "BiblaVK_PZM/Message.php";
+
 
 //($data_vk->object->body == "Прива") mesSend();
 
