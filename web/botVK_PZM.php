@@ -23,7 +23,18 @@ $data_vk = json_decode(file_get_contents('php://input'));
 
 if ($data_vk->type == "confirmation") echo $vk_api_response;
 
+elseif ($data_vk->object->body == "Прива") {
 
+   //mesSend();
+
+  file_get_contents("https://api.vk.com/method/". "messages.send". "?access_token=". $vk_token. "&peer_id=". $data_vk->object->user_id. "&message=zdravstvuj&v=5.68");
+
+
+} 
+
+//($data_vk->type == "message_new") include_once "BiblaVK_PZM/Message.php";
+
+//($data_vk->object->body == "Прива") mesSend();
 
 
 
