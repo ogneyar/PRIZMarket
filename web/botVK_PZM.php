@@ -34,7 +34,7 @@ elseif ($data_vk->object->body == "Прива") {
       "v" => $vk_api_version
    ];
 
-  file_get_contents("https://api.vk.com/method/". "messages.send". http_build_query($массив));
+  file_get_contents("https://api.vk.com/method/". "messages.send?". http_build_query($массив));
 
 
 } 
