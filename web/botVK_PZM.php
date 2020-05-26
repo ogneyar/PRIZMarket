@@ -3,7 +3,7 @@
 //include_once 'myBotApi/Bot.php';
 
 // бот ВК
-include_once 'myBotApi/VK.php';
+//include_once 'myBotApi/VK.php';
 
 include_once 'a_conect.php';
 //exit('ok');
@@ -13,13 +13,15 @@ include_once 'a_conect.php';
 //$id_bota = strstr($token, ':', true);	
 
 // Создаем объект VK бота
-$bot_vk = new VK($vk_token);
+//$bot_vk = new VK($vk_token);
 
 $айди_вк_группы = "190150616";
 
-$data_vk = $bot_vk->init('php://input');
+//$data_vk = $bot_vk->init('php://input');
 
-if ($data_vk['type'] == "confirmation") exit($vk_api_response);
+$data_vk = json_decode(file_get_contents('php://input'));
+
+if ($data_vk->type == "confirmation") echo $vk_api_response;
 
 
 
