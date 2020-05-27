@@ -73,9 +73,10 @@ class VK
 	   	$data['v'] = $this->version;		
 		
         $ch = curl_init();
-        curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method. "?". http_build_query($data));
-		  //curl_setopt ($ch, CURLOPT_POST, 1);
-		  //curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        //curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method. "?". http_build_query($data));
+        curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method);
+		  curl_setopt ($ch, CURLOPT_POST, 1);
+		  curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 		  curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
         //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			//curl_setopt($ch, CURLOPT_HEADER, false);
