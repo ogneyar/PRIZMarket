@@ -8,12 +8,11 @@
  *
  * call
  *
- *
  * ---------------
  * Список методов:
  * ---------------
  *
- * 
+ *  messagesSend
  *
  * 
  *
@@ -36,6 +35,7 @@ class VK
 	/*
 	** @param str $token
 	*/
+
     public function __construct($token, $version = '5.68')
     {
 		$this->token = $token;
@@ -48,9 +48,10 @@ class VK
 	** @param JSON $data
 	** @return array
 	*/
+
     public function init($data)
     {        
-        return json_decode(file_get_contents($data)); 
+        return json_decode(file_get_contents($data), true); 
     }
 	
 
@@ -66,11 +67,11 @@ class VK
 
     public function call($method, $data = [])
     {
-        //$response = null;		
+        $response = null;		
 		
-		//$data['access_token'] = $this->token;
-	   	//$data['v'] = $this->version;		
-		/*
+	   	$data['access_token'] = $this->token;
+	   	$data['v'] = $this->version;		
+		
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method. "?". http_build_query($data));
 		  //curl_setopt ($ch, CURLOPT_POST, 1);
@@ -80,13 +81,12 @@ class VK
 			//curl_setopt($ch, CURLOPT_HEADER, false);
         $result = curl_exec($ch);
         curl_close($ch);
-		*/
-
-       file_get_contents($this->apiUrl . $method . "?". http_build_query($data));
-
-        //$response = json_decode($result);
 		
-      //  return $result;//$response->response;
+       //file_get_contents($this->apiUrl . $method . "?". http_build_query($data));
+
+        $response = json_decode($result, true);
+		
+        return $response['response'];
     }
 
 
@@ -108,21 +108,24 @@ class VK
 	**  @return array 
 	*/
 
-    public function mesSend(
+    public function messagesSend(
 		$peer_id, 
 		$message
 	) {				
 	
-		$this->call("messages.send", [
-        	'access_token' => $this->token, 
+		$response = $this->call("messages.send", [
+        //	'access_token' => $this->token, 
 			'peer_id' => $peer_id,
 			'message' => $message, 
-         'v' => $this->version
+         //'v' => $this->version
 		]);	
 	
-		//return $response;
+		return $response;
 	}
+
+
 	
+} 
 
 
 ?>
