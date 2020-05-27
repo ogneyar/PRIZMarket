@@ -1,7 +1,21 @@
 ﻿<?
-//include_once "../myBotApi/VK.php";
 
-//$bot_vk = new VK($vk_token);
+if ($тело == "Прива") {
 
-$bot_vk->messagesSend($data_vk['object']['user_id'], "не пойму(");
+   $массив = [
+      "access_token" => $vk_token, 
+      "peer_id" => $user_id_vk, 
+      "message" => "Ну да, здравствуй)", 
+      "v" => $vk_api_version
+   ];
+
+  file_get_contents("https://api.vk.com/method/". "messages.send?". http_build_query($массив));
+
+
+}else {
+
+        $bot_vk->messagesSend($user_id_vk, "не пойму(");
+
+} 
+
 ?>
