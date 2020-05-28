@@ -10,12 +10,19 @@ $admin_group = $admin_group_Site;
 
 //if ($_POST['email']) $bot->sendMessage($admin_group, $_POST['email']);
 
+if (!$_POST['login'] || !$_POST['password'] || !$_POST['email']) {
+
+	exit "<center><br><br><br><br><br>Нет переданных данных.<br><br><br><br></center>";	
+
+}
+
 $mysqli = new mysqli($host, $username, $password, $dbname);
 // проверка подключения 
 if (mysqli_connect_errno()) {
 	$bot->sendMessage($admin_group, 'Чёт не выходит подключиться к MySQL');	
 	exit('ok');
 }
+
 
 
 $логин = htmlspecialchars($_POST['login']);
