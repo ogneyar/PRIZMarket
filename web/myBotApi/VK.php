@@ -176,7 +176,7 @@ class VK
     public function photosGetUploadServer(
 		$album_id, 
 		$group_id,
-		$version = '5.107'
+		$version = '5.00'
 	) {				
 	
 		$response = $this->call("photos.getUploadServer", [
@@ -217,7 +217,7 @@ class VK
 		$caption = null,
 		$latitude = 0,
 		$longitude = 0,		
-		$version = '5.107'
+		$version = '5.00'
 	) {				
 	
 		$response = $this->call("photos.save", [
