@@ -102,7 +102,11 @@ class VK
     {
         $response = null;		
 		
-		$data = ['file1' => "@".$file];
+		$curl_file = new CurlFile($file);
+		
+		//$curl_file = curl_file_create($file, 'mimetype' , 'image.png');
+		
+		$data = ['file1' => $curl_file];
 		
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $url);
@@ -142,10 +146,13 @@ class VK
     public function messagesSend(
 		$peer_id, 
 		$message,
-		$version = '5.68'
+		$version = '5.107'
 	) {				
-	
+		
+		$random_id = time();
+		
 		$response = $this->call("messages.send", [
+			'random_id' => $random_id,
 			'peer_id' => $peer_id,
 			'message' => $message, 
 			'v' => $version
