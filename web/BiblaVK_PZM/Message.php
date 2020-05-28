@@ -24,7 +24,9 @@ if ($тело == "Прива") {
 		
 		$результат = $bot_vk->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);
 		
-		echo "id фото: ".$результат['id'];
+		//echo "id фото: ".$результат['id'];
+		
+		$bot_vk->messagesSend($user_id_vk, "id фото: ".$результат['id']);
 
 }else {
 
