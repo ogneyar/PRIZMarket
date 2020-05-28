@@ -12,7 +12,8 @@ $admin_group = $admin_group_Site;
 
 if (!$_POST['login'] || !$_POST['password'] || !$_POST['email']) {
 
-	exit "<center><br><br><br><br><br>Нет переданных данных.<br><br><br><br></center>";	
+	echo "<center><br><br><br><br><br>Нет переданных данных.<br><br><br><br></center>";	
+	exit;
 
 }
 
