@@ -1,9 +1,12 @@
 ﻿<?
 
 if ($тело == "Прива") {
-
+	
+	$random_id = time();
+	
 	$массив = [
 		"access_token" => $vk_token, 
+		"random_id" => $random_id, 
 		"peer_id" => $user_id_vk, 
 		"message" => "Ну да, здравствуй)", 
 		"v" => $vk_api_version
