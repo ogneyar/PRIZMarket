@@ -19,6 +19,8 @@ if ($тело == "Прива") {
 	
 	$результат = $bot_vk->photosGetUploadServer($vk_album_id, $vk_group_id);
 	
+	$bot_vk->messagesSend($user_id_vk, "результат: ".print_r($результат));
+	
 	$bot_vk->messagesSend($user_id_vk, "upload_url: ".$результат['upload_url']);
 		
 	$результат = $bot_vk->upload($результат['upload_url'], "http://f0430377.xsph.ru/image/test5eccceaecbdc4.jpg");
