@@ -43,6 +43,8 @@ $object = $data['object'];
 	$message = $object['message'];
 		
 		$from_id = $message['from_id'];
+		
+		$peer_id = $message['peer_id'];
 
 		$text = $message['text'];
 	
