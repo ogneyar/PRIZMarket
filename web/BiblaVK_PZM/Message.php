@@ -15,10 +15,12 @@ if ($тело == "Прива") {
 }elseif ($тело == "загрузи") {
 
     //$результат = $bot_vk->photosGetUploadServer($vk_album_id, $vk_group_id);
+	
+	
 	$массив = [
 		"access_token" => $vk_token, 
-		"album_id" => $vk_album_id, 
-		"group_id" => $vk_group_id, 
+		"aid" => $vk_album_id, 
+		"gid" => $vk_group_id, 
 		"v" => '5.00'
 	];
 	$результат = file_get_contents("https://api.vk.com/method/". "photos.getUploadServer?". http_build_query($массив));
@@ -26,7 +28,8 @@ if ($тело == "Прива") {
 	$результат = json_decode($результат, true);
 	
 	$результат = $результат['response'];
-		
+	
+	
 	$bot_vk->messagesSend($user_id_vk, "upload_url: ".$результат['upload_url']);
 		
 	$результат = $bot_vk->upload($результат['upload_url'], "http://f0430377.xsph.ru/image/test5eccceaecbdc4.jpg");
