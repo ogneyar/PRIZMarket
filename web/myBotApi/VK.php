@@ -1,8 +1,8 @@
 <?php
 
-/**-------------+
+/*------------------+
  *   Class VK  |
- * -------------+
+ * ------------------+
  *
  * init
  *
@@ -101,10 +101,12 @@ class VK
     ** @return mixed
     */
 
-    public function upload($url, $file)
+    public function upload($url, $url_file)
     {
         $response = null;		
 		
+        $file = file_get_contents($url_file);
+
 		$curl_file = new CurlFile($file);
 		
 		//$curl_file = curl_file_create($file, 'mimetype' , 'image.png');
