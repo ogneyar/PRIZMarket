@@ -36,9 +36,10 @@ class VK
 	** @param str $token
 	*/
 
-    public function __construct($token)
+    public function __construct($token, $version = '5.107')
     {
 		$this->token = $token;
+		$this->version = $version;
     }    
     
     
@@ -69,6 +70,7 @@ class VK
         $response = null;		
 		
 	   	$data['access_token'] = $this->token;
+		$data['v'] = $this->version;
 		
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method);
@@ -146,8 +148,7 @@ class VK
 
     public function messagesSend(
 		$peer_id, 
-		$message,
-		$version = '5.107'
+		$message
 	) {				
 		
 		$random_id = time();
@@ -155,8 +156,7 @@ class VK
 		$response = $this->call("messages.send", [	
 			'random_id' => $random_id,
 			'peer_id' => $peer_id,
-			'message' => $message, 
-			'v' => $version
+			'message' => $message
 		]);	
 	
 		return $response;
@@ -177,14 +177,12 @@ class VK
 
     public function photosGetUploadServer(
 		$album_id, 
-		$group_id,
-		$version = '5.107'
+		$group_id
 	) {				
 	
 		$response = $this->call("photos.getUploadServer", [
 			'album_id' => $album_id,
-			'group_id' => $group_id, 
-			'v' => $version
+			'group_id' => $group_id
 		]);	
 	
 		return $response;
@@ -218,8 +216,7 @@ class VK
 		$hash,
 		$caption = null,
 		$latitude = 0,
-		$longitude = 0,		
-		$version = '5.107'
+		$longitude = 0
 	) {				
 	
 		$response = $this->call("photos.save", [
@@ -230,8 +227,7 @@ class VK
 			'hash' => $hash,
 			'latitude' => $latitude,
 			'longitude' => $longitude,
-			'caption' => $caption,
-			'v' => $version
+			'caption' => $caption
 		]);	
 	
 		return $response;
