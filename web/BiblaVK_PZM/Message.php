@@ -19,7 +19,7 @@ if ($тело == "Прива") {
 		"access_token" => $vk_token, 
 		"album_id" => $vk_album_id, 
 		"group_id" => $vk_group_id, 
-		"v" => '5.107'
+		"v" => '5.00'
 	];
 	$результат = file_get_contents("https://api.vk.com/method/". "photos.getUploadServer?". http_build_query($массив));
 	
