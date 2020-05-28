@@ -7,7 +7,8 @@ $bot_vk = new VK($vk_token);
 //$data_vk = $bot_vk->init('php://input');
 include_once 'myBotApi/VKvariables.php';
 
-$айди_вк_группы = "190150616";
+$vk_group_id = "190150616";
+$vk_album_id = "270858085";
 
 if ($секрет !== $vk_secret_key) {
 	 exit("Ошибка!");
