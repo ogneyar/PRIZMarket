@@ -12,6 +12,20 @@ if ($тело == "Прива") {
   file_get_contents("https://api.vk.com/method/". "messages.send?". http_build_query($массив));
 
 
+}elseif ($тело == "загрузи") {
+
+        $результат = $bot_vk->photosGetUploadServer($vk_album_id, $vk_group_id);
+		
+		$результат = $bot_vk->upload($результат['upload_url'], "http://f0430377.xsph.ru/image/test5eccceaecbdc4.jpg");
+		
+		$server = $результат['server'];
+		$photos_list = $результат['photos_list'];
+		$hash = $результат['hash'];
+		
+		$результат = $bot_vk->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);
+		
+		echo "id фото: ".$результат['id'];
+
 }else {
 
         $bot_vk->messagesSend($user_id_vk, "не пойму(");
