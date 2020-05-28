@@ -85,7 +85,8 @@ class VK
 
         $response = json_decode($result, true);
 		
-        return $response['response'];
+		if ($response['error']) return $response['error'];
+		else return $response['response'];
     }
 	
 	
@@ -146,7 +147,7 @@ class VK
     public function messagesSend(
 		$peer_id, 
 		$message,
-		$version = '5.68'
+		$version = '5.107'
 	) {				
 		
 		$random_id = time();
