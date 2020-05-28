@@ -150,8 +150,9 @@ class VK
 	) {				
 		
 		$random_id = time();
-		//'random_id' => $random_id,
-		$response = $this->call("messages.send", [			
+		
+		$response = $this->call("messages.send", [	
+			'random_id' => $random_id,
 			'peer_id' => $peer_id,
 			'message' => $message, 
 			'v' => $version
@@ -176,7 +177,7 @@ class VK
     public function photosGetUploadServer(
 		$album_id, 
 		$group_id,
-		$version = '5.00'
+		$version = '5.107'
 	) {				
 	
 		$response = $this->call("photos.getUploadServer", [
@@ -217,7 +218,7 @@ class VK
 		$caption = null,
 		$latitude = 0,
 		$longitude = 0,		
-		$version = '5.00'
+		$version = '5.107'
 	) {				
 	
 		$response = $this->call("photos.save", [
