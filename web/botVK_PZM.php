@@ -6,6 +6,8 @@ include_once 'a_conect.php';
 $vk = new VK($vk_token);
 include_once 'myBotApi/VKvariables.php';
 
+$vk2 = new VK($vk_token2);
+
 $vk_group_id = "190150616";
 $vk_album_id = "270858085";
 
