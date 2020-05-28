@@ -146,13 +146,12 @@ class VK
     public function messagesSend(
 		$peer_id, 
 		$message,
-		$version = '5.107'
+		$version = '5.68'
 	) {				
 		
 		$random_id = time();
-		
-		$response = $this->call("messages.send", [
-			'random_id' => $random_id,
+		//'random_id' => $random_id,
+		$response = $this->call("messages.send", [			
 			'peer_id' => $peer_id,
 			'message' => $message, 
 			'v' => $version
