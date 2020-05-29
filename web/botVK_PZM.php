@@ -1,6 +1,8 @@
 <?
+header("Content-Type: text/html; charset=utf-8");
+
 include_once 'myBotApi/VK.php';
-//include_once 'myBotApi/Bot.php';
+include_once 'myBotApi/Bot.php';
 include_once 'a_conect.php';
 
 // Создаем объект VK бота
@@ -9,7 +11,7 @@ include_once 'myBotApi/VKvariables.php';
 
 $vk2 = new VK($vk_token2);
 
-//$bot = new Bot($tokenSite);
+$bot = new Bot($tokenSite);
 
 if ($secret !== $vk_secret_key) {
 	echo "Ошибка!";
