@@ -20,8 +20,7 @@ if ($secret !== $vk_secret_key) {
 }
 
 if ($type == "confirmation") {
-	echo $vk_api_response;
-	exit;
+	exit($vk_api_response);
 }
 
 if ($type == "message_new") {
