@@ -73,10 +73,10 @@ class VK
 		$data['v'] = $this->version;
 		
         $ch = curl_init();
-        curl_setopt ($ch, CURLOPT_URL, $this->apiUrl . $method);
-		curl_setopt ($ch, CURLOPT_POST, 1);
-		curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $this->apiUrl . $method);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		//curl_setopt($ch, CURLOPT_HEADER, false);
@@ -109,17 +109,19 @@ class VK
 		$file_name = basename($file);
 		$curl_file = new CURLFile($file, $mimetype, $file_name);
 		
+		//, 'mimetype' , 'image.png'
 		//$curl_file = curl_file_create($file, 'mimetype' , 'image.png');
 		
 		$data = ['file1' => $curl_file];
 		
         $ch = curl_init();
-        curl_setopt ($ch, CURLOPT_URL, $url);
-		curl_setopt ($ch, CURLOPT_POST, 1);
-		curl_setopt ($ch, CURLOPT_POSTFIELDS, $data);
-		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+		curl_setopt($ch, CURLOPT_HEADER, false);
         $result = curl_exec($ch);
         curl_close($ch);
 		
