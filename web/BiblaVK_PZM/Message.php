@@ -36,13 +36,17 @@ if ($text == "Прива") {
 	}
 	
 	$server = $результат['server'];
-	$photos_list = $результат['photos_list'];
-	$json_photos_list = json_encode($photos_list);
+	$photos_list = $результат['photos_list'];	
+	$bot->sendMessage($master, "photos_list: ".$photos_list);
+	
+	$json_photos_list = json_encode($photos_list);	
+	$bot->sendMessage($master, "json_photos_list: ".$json_photos_list);
+	
 	$hash = $результат['hash'];
 		
 	$vk->messagesSend($peer_id, "server: {$server}, photos_list: {$json_photos_list}, hash: {$hash}");
 		
-	$результат = $vk2->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);
+	$результат = $vk2->photosSave($vk_album_id, $vk_group_id, $server, $json_photos_list, $hash);
 		
 	if ($результат['error_msg']) {		
 		$vk->messagesSend($peer_id, "Ошибка: ".$результат['error_msg']);
