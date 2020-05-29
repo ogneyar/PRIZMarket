@@ -1,4 +1,4 @@
-<?
+﻿<?
 include_once 'myBotApi/VK.php';
 include_once 'myBotApi/Bot.php';
 include_once 'a_conect.php';
@@ -20,7 +20,7 @@ if ($secret !== $vk_secret_key) {
 }
 
 if ($type == "confirmation") {
-	echo $vk_api_response;
+	echo 0;//$vk_api_response;
 	exit;
 }
 
