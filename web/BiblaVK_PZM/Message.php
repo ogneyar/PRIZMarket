@@ -51,8 +51,8 @@ if ($text == "Прива") {
 	//https://vk.com/photo-190150616_457239035	
 	$vk->messagesSend($peer_id, "https://vk.com/photo".$результат[0]['owner_id']."_".$результат[0]['id']);
 	
-	foreach($результат[0]['sizes'][0] as $key => $size) {		
-		foreach($size[$key] as $s) {		
+	foreach($результат[0]['sizes'][0] as $size) {		
+		foreach($size as $s) {		
 			$ссылка_на_фото = $s['url'];	
 		}
 	}	
