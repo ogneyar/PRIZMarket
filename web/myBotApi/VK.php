@@ -215,7 +215,9 @@ class VK
 		$server,
 		$photos_list,
 		$hash,
-		$caption = null
+		$caption = null,
+		$latitude = 0,
+		$longitude = 0
 	) {				
 	
 		$response = $this->call("photos.save", [
@@ -224,6 +226,8 @@ class VK
 			'server' => $server,
 			'photos_list' => $photos_list,
 			'hash' => $hash,
+			'latitude' => $latitude,
+			'longitude' => $longitude,
 			'caption' => $caption
 		]);	
 	
