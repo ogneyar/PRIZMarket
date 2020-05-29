@@ -57,5 +57,7 @@
 	$vk_token = getenv('VK_TOKEN');	$vk_token2 = getenv('VK_TOKEN2');
 	$vk_secret_key = getenv('VK_SECRET_KEY');
 	$vk_api_response = getenv('VK_API_RESPONSE');
+	$vk_group_id = getenv('VK_GROUP_ID');
+	$vk_album_id = getenv('VK_ALBUM_ID');
 	
 ?>
