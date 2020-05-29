@@ -127,7 +127,7 @@ class VK
 		
         $response = json_decode($result, true);
 		
-        return $response['response'];
+        return $response;
     }
 
 	
