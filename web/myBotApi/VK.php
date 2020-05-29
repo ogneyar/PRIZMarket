@@ -20,6 +20,7 @@
  *
  * photosSave
  * 
+ * wallPost
  *
  */
 
@@ -229,6 +230,75 @@ class VK
 			'latitude' => $latitude,
 			'longitude' => $longitude,
 			'caption' => $caption
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  функция сооздания записи на стене
+	**
+	**  @param int $owner_id
+ 	**  @param bool $friends_only
+	**  @param bool $from_group
+	**  @param str $message
+	**  @param str $attachments   список слов, разделенных через запятую
+	**  @param str $services
+	**  @param bool $signed
+	**  @param int $publish_date
+	**  @param real $lat
+	**  @param real $long
+	**  @param int $place_id
+	**  @param int $post_id
+	**  @param str $guid
+	**  @param bool $mark_as_ads
+	**  @param bool $close_comments
+	**  @param bool $mute_notifications
+	**  @param str $copyright
+	**  
+	**  
+	**  @return array 
+	*/
+
+    public function wallPost(
+		$owner_id,
+		$message,
+		$attachments,
+		$from_group = true,
+		$friends_only = false,
+		$services = null,
+		$signed = false,
+		$publish_date = null,
+		$lat = null,
+		$long = null,
+		$place_id = null,
+		$post_id = null,
+		$guid = null,
+		$mark_as_ads = false,
+		$close_comments = false,
+		$mute_notifications = false,
+		$copyright = null
+	) {				
+	
+		$response = $this->call("wall.post", [
+			'owner_id' => $owner_id,
+			'friends_only' => $friends_only,
+			'from_group' => $from_group,
+			'message' => $message,
+			'attachments' => $attachments,
+			'services' => $services,
+			'signed' => $signed,
+			'publish_date' => $publish_date,
+			'lat' => $lat,
+			'long' => $long,
+			'place_id' => $place_id,
+			'post_id' => $post_id,
+			'guid' => $guid,
+			'mark_as_ads' => $mark_as_ads,
+			'close_comments' => $close_comments,
+			'mute_notifications' => $mute_notifications,
+			'copyright' => $copyright
 		]);	
 	
 		return $response;
