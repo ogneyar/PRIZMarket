@@ -240,10 +240,10 @@ class VK
 	**  функция сооздания записи на стене
 	**
 	**  @param int $owner_id
- 	**  @param bool $friends_only
-	**  @param bool $from_group
 	**  @param str $message
 	**  @param str $attachments   список слов, разделенных через запятую
+	**  @param bool $from_group
+ 	**  @param bool $friends_only
 	**  @param str $services
 	**  @param bool $signed
 	**  @param int $publish_date
