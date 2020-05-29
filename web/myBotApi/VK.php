@@ -101,13 +101,13 @@ class VK
     ** @return mixed
     */
 
-    public function upload($url, $url_file)
+    public function upload($url, $file)
     {
         $response = null;		
 		
-        $file = file_get_contents($url_file);
-
-		$curl_file = new CurlFile($file);
+		$mimetype = mime_content_type($file);
+		$file_name = basename($file);
+		$curl_file = new CURLFile($file, $mimetype, $file_name);
 		
 		//$curl_file = curl_file_create($file, 'mimetype' , 'image.png');
 		
