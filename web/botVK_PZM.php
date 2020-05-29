@@ -1,4 +1,4 @@
-﻿<?
+<?
 include_once 'myBotApi/VK.php';
 include_once 'myBotApi/Bot.php';
 include_once 'a_conect.php';
@@ -7,7 +7,7 @@ include_once 'a_conect.php';
 $vk = new VK($vk_token);
 include_once 'myBotApi/VKvariables.php';
 
-//$vk2 = new VK($vk_token2);
+$vk2 = new VK($vk_token2);
 
 $bot = new Bot($tokenSite);
 
@@ -20,7 +20,7 @@ if ($secret !== $vk_secret_key) {
 }
 
 if ($type == "confirmation") {
-	echo 0;//$vk_api_response;
+	echo $vk_api_response;
 	exit;
 }
 
