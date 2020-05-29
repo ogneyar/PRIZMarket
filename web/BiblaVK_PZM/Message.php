@@ -54,7 +54,7 @@ if ($text == "Прива") {
 	
 	$ссылка_на_фото = $ссылка_на_фото_в_вк;
 	foreach($результат[0]['sizes'] as $size) {		
-		$ссылка_на_фото = $size['type'];			
+		$ссылка_на_фото = $size['url'];			
 	}	
 	
 	//https://sun9-68.userapi.com/c857324/v857324086/1a450e/cnPBYHc9Jq8.jpg	
