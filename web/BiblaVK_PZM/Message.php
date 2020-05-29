@@ -30,14 +30,14 @@ if ($text == "Прива") {
 		
 	$результат = $vk2->upload($результат['upload_url'], "http://f0430377.xsph.ru/image/test5eccceaecbdc4.jpg");
 	
-	if ($результат['error_msg']) {		
-		$vk->messagesSend($peer_id, "Ошибка: ".$результат['error_msg']);
-		exit;		
-	}
-	
 	$server = $результат['server'];
 	$photos_list = $результат['photos_list'];
 	$hash = $результат['hash'];
+	
+	if ($photos_list == []) {		
+		$vk->messagesSend($peer_id, "Ошибка: photos_list пуст");
+		exit;		
+	}
 		
 	$vk->messagesSend($peer_id, "server: {$server}, photos_list: {$photos_list}, hash: {$hash}");
 		
@@ -48,7 +48,9 @@ if ($text == "Прива") {
 		exit;		
 	}
 		
-	$vk->messagesSend($peer_id, "id фото: ".$результат['id']);
+	//$vk->messagesSend($peer_id, "id фото: ".$результат['id']);
+	
+	$vk->messagesSend($peer_id, "результат: ".print_r($результат));
 
 }else {
 
