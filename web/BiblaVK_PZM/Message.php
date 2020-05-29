@@ -61,7 +61,7 @@ if ($text == "Прива") {
 
 }elseif ($text == "Пост") {
 	
-	$vk2->wallPost(-$vk_group_id, "А ну ка лови ка))", "photo-190150616_457239042");
+	$vk2->wallPost(-$vk_group_id, "#куплю/n#еду за PRIZM/n#дорого", "photo-188536519_457239037");
 	 
 	$vk->messagesSend($peer_id, "Отправил");
 
