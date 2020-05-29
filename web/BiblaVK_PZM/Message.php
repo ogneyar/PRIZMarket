@@ -50,7 +50,7 @@ if ($text == "Прива") {
 		
 	//$vk->messagesSend($peer_id, "id фото: ".$результат['id']);
 	
-	$vk->messagesSend($peer_id, "результат: ".print_r($результат));
+	$vk->messagesSend($peer_id, "результат: ".print_r($результат[0]));
 
 }else {
 
