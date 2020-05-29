@@ -48,9 +48,9 @@ if ($text == "Прива") {
 		exit;		
 	}
 		
-	//$vk->messagesSend($peer_id, "id фото: ".$результат['id']);
+	$vk->messagesSend($peer_id, "id фото: ".$результат[0]['id']);
 	
-	$vk->messagesSend($peer_id, "результат: ".print_r($результат[0]));
+	//$vk->messagesSend($peer_id, "результат: ".print_r($результат[0]));
 
 }else {
 
