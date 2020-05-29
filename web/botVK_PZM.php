@@ -19,7 +19,7 @@ if ($secret !== $vk_secret_key) {
 }
 
 if ($type == "confirmation") {
-	//echo $vk_api_response;
+	echo $vk_api_response;
 	exit;
 }
 
