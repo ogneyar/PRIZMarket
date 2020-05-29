@@ -11,16 +11,13 @@ $vk2 = new VK($vk_token2);
 
 $bot = new Bot($tokenSite);
 
-$vk_group_id = "190150616";
-$vk_album_id = "270858085";
-
 if ($secret !== $vk_secret_key) {
 	echo "Ошибка!";
 	exit;
 }
 
 if ($type == "confirmation") {
-	echo $vk_api_response;
+	//echo $vk_api_response;
 	exit;
 }
 
