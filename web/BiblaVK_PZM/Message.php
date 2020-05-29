@@ -47,10 +47,16 @@ if ($text == "Прива") {
 		$vk->messagesSend($peer_id, "Ошибка: ".$результат['error_msg']);
 		exit;		
 	}
-		
-	$vk->messagesSend($peer_id, "id фото: ".$результат[0]['id']);
 	
-	//$vk->messagesSend($peer_id, "результат: ".print_r($результат[0]));
+	//https://vk.com/photo-190150616_457239035	
+	$vk->messagesSend($peer_id, "https://vk.com/photo".$результат[0]['owner_id']."_".$результат[0]['id']);
+	
+	foreach($результат[0]['sizes'][0] as $size) {		
+		$ссылка_на_фото = $size['url'];		
+	}	
+	
+	//https://sun9-68.userapi.com/c857324/v857324086/1a450e/cnPBYHc9Jq8.jpg	
+	$vk->messagesSend($peer_id, $ссылка_на_фото);
 
 }else {
 
