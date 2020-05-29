@@ -223,7 +223,7 @@ class VK
 			'group_id' => $group_id, 
 			'server' => $server,
 			'photos_list' => $photos_list,
-			'hash' => $hash
+			'hash' => $hash,
 			'caption' => $caption
 		]);	
 	
