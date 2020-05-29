@@ -109,9 +109,6 @@ class VK
 		$file_name = basename($file);
 		$curl_file = new CURLFile($file, $mimetype, $file_name);
 		
-		//, 'mimetype' , 'image.png'
-		//$curl_file = curl_file_create($file, 'mimetype' , 'image.png');
-		
 		$data = ['file1' => $curl_file];
 		
         $ch = curl_init();
