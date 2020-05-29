@@ -137,28 +137,73 @@ class VK
     /*
 	**  функция отправки сообщения 
 	**
-	**  @param str $peer_id
- 	**  @param str $message
-	**  @param str $version
-
-пока нет
+	**  @param int $user_id
+ 	**  @param int $random_id
+	**  @param int $peer_id
+	**  @param str $domain
+	**  @param int $chat_id
+	**  @param [int] $user_ids
+	**  @param str $message
+	**  @param real $lat
+	**  @param real $long
 	**  @param array $attachment
-	
+	**  @param int $reply_to
+	**  @param [int] $forward_messages
+	**  @param int $sticker_id
+	**  @param int $group_id
+	**  @param obj $keyboard
+	**  @param int $payload
+	**  @param bool $dont_parse_links
+	**  @param bool $disable_mentions
+	**  @param str $intent
 	**  
 	**  @return array 
 	*/
 
     public function messagesSend(
 		$peer_id, 
-		$message
+		$message,
+		$attachment = null,
+		$reply_to = null,
+		$forward_messages = null,
+		$keyboard = null,
+		$user_id = null,
+		$random_id = null,	
+		$domain = null,
+		$chat_id = null,
+		$user_ids = null,	
+		$lat = null,
+		$long = null,	
+		$sticker_id = null,
+		$group_id = null,		
+		$payload = null,
+		$dont_parse_links = false,
+		$disable_mentions = false,
+		$intent = null
 	) {				
 		
 		$random_id = time();
 		
-		$response = $this->call("messages.send", [	
+		$response = $this->call("messages.send", [				
+			'user_id' => $user_id,
 			'random_id' => $random_id,
 			'peer_id' => $peer_id,
-			'message' => $message
+			'domain' => $domain,
+			'chat_id' => $chat_id,
+			'user_ids' => $user_ids,
+			'message' => $message,
+			'lat' => $lat,
+			'long' => $long,
+			'attachment' => $attachment,
+			'reply_to' => $reply_to,
+			'forward_messages' => $forward_messages,
+			'sticker_id' => $sticker_id,
+			'group_id' => $group_id,
+			'keyboard' => $keyboard,
+			'payload' => $payload,
+			'dont_parse_links' => $dont_parse_links,
+			'disable_mentions' => $disable_mentions,
+			'intent' => $intent
 		]);	
 	
 		return $response;
