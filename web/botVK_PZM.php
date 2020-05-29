@@ -1,5 +1,6 @@
 <?
 include_once 'myBotApi/VK.php';
+include_once 'myBotApi/Bot.php';
 include_once 'a_conect.php';
 
 // Создаем объект VK бота
@@ -7,6 +8,8 @@ $vk = new VK($vk_token);
 include_once 'myBotApi/VKvariables.php';
 
 $vk2 = new VK($vk_token2);
+
+$bot = new Bot($tokenSite);
 
 $vk_group_id = "190150616";
 $vk_album_id = "270858085";
