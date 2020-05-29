@@ -26,7 +26,7 @@ if ($text == "Прива") {
 	
 	$vk->messagesSend($peer_id, "upload_url: ".$результат['upload_url']);
 	
-	$bot->sendMessage($master, "upload_url: ".$результат['upload_url']);
+	//$bot->sendMessage($master, "upload_url: ".$результат['upload_url']);
 		
 	$результат = $vk2->upload($результат['upload_url'], "http://f0430377.xsph.ru/image/test5eccceaecbdc4.jpg");
 	
