@@ -48,17 +48,21 @@ if ($text == "Прива") {
 		exit;		
 	}
 	
-	//https://vk.com/photo-190150616_457239035	
+	//https://vk.com/photo-190150616_457239042
 	$ссылка_на_фото_в_вк = "https://vk.com/photo".$результат[0]['owner_id']."_".$результат[0]['id'];
 	$vk->messagesSend($peer_id, $ссылка_на_фото_в_вк);
 	
-	$ссылка_на_фото = $ссылка_на_фото_в_вк;
 	foreach($результат[0]['sizes'] as $size) {		
 		$ссылка_на_фото = $size['url'];			
 	}	
 	
-	//https://sun9-68.userapi.com/c857324/v857324086/1a450e/cnPBYHc9Jq8.jpg	
+	//https://sun9-52.userapi.com/c857324/v857324167/19ed96/BiXlvgG5oNw.jpg
 	$vk->messagesSend($peer_id, $ссылка_на_фото);
+
+}elseif ($text == "Пост") {
+	
+	 $vk2->wallPost(-$vk_group_id, "А ну ка лови ка))", "photo-190150616_457239042");
+
 
 }else {
 
