@@ -12,7 +12,10 @@ if ($text == 'сенд') {
 	
 }elseif ($text == 'сендФ') {
 
-	$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
+	//$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
+
+        $файл = "http://f0430377.xsph.ru/video/video.mp4";
+
 	$bot_icq->sendFile($chatId, $файл, "а тут типа текст");
 
 	//$bot_icq->sendText($chatId, "Х.З.");
