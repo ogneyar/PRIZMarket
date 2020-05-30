@@ -1,21 +1,21 @@
 <?php
 
-/*   +----------------+
- *   |  Class ICQnew  |
- *   +----------------+
+/* +----------------+
+ * |  Class ICQnew  |
+ * +----------------+
  *
- * call
+ *  call
  *
  * 
- *   +--------------------+
- *   |  Список методов:   |
- *   +--------------------+
+ * +--------------------+
+ * |  Список методов:   |
+ * +--------------------+
  *
- * getEvents
+ *  getEvents
  *
- * sendText
+ *  sendText
  *
- * sendFile
+ *  sendFile
  *
  */
 
@@ -189,10 +189,10 @@ class ICQnew
 		$forwardChatId = null,
 		$forwardMsgId = null
 	) {
-/*			
+
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 
-		$pos = strpos($file, "://");
+		$pos = strpos($file, ":");
 		
 		if ($pos !== false) {
 
@@ -211,7 +211,7 @@ class ICQnew
 			
 			$response = $this->call("/messages/sendFile", [
 				'chatId' => $chatId,			
-				'file_id' =>  $file, 
+				'fileId' =>  $file, 
 				'caption' => $caption,
 				'replyMsgId' => $replyMsgId,			
 				'forwardChatId' => $forwardChatId,				
@@ -226,7 +226,7 @@ class ICQnew
 			return $response;
 		} 
 
-*/
+
 	}
 
 
