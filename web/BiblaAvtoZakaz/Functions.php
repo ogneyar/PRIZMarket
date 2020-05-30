@@ -394,7 +394,7 @@ function _отправка_лота_админам($номер_лота = null) 
 						$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);
 					}
 					
-				}else $КаналИнфо = $bot->sendMessage($callback_from_id, $текст, markdown, $inLine);				
+				}else $КаналИнфо = $bot->sendMessage($admin_group, $текст, markdown, $inLine);				
 				if (!$КаналИнфо) throw new Exception("Не смог опубликовать лот..");				
 			}					
 		}else throw new Exception("Или нет заказа или больше одного.. (_отправка_лота_админам)");	
