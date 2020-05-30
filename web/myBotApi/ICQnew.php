@@ -194,9 +194,9 @@ $response = false;
 
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 
-		$position = stripos($file, "://");
+		//$position = stripos($file, "://");
 		
-		if ($position !== false) {
+		if (strpos($file, ":")!==false) {
 
 			$response = $this->call("/messages/sendFile", [
 				'chatId' => $chatId,
