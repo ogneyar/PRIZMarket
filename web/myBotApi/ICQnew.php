@@ -17,6 +17,14 @@
  *
  *  sendFile
  *
+ *  sendVoice
+ *
+ *  editText
+ *
+ *  ​deleteMessages
+ *
+ *  ​answerCallbackQuery
+ *
  */
 
 class ICQnew
@@ -177,7 +185,7 @@ class ICQnew
 	**  @param str $forwardChatId
 	**  @param array $forwardMsgId
 	**  
-	**  @return int (msgId)
+	**  @return int or array
 	*/
 
 	public function sendFile(
@@ -226,7 +234,168 @@ $response = false;
 
 return $response;
 
+	}
 
+
+	
+	/*
+	**  функция отправки голосового сообщения
+	**
+	**  @param str $chatId
+	**  @param str $file or $file_id
+	**  @param array $inlineKeyboardMarkup
+	**  @param array $replyMsgId	
+	**  @param str $forwardChatId
+	**  @param array $forwardMsgId
+	**  
+	**  @return int or array 
+	*/
+
+	public function sendVoice(
+		$chatId, 
+		$file,
+		$inlineKeyboardMarkup = null,
+		$replyMsgId = null,
+		$forwardChatId = null,
+		$forwardMsgId = null
+	) {
+
+$response = false;
+
+		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
+		
+		if (strpos($file, "://")!==false) {
+
+			$response = $this->call("/messages​/sendVoice", [
+				'chatId' => $chatId,
+				'replyMsgId' => $replyMsgId,			
+				'forwardChatId' => $forwardChatId,				
+				'forwardMsgId' => $forwardMsgId,			
+				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
+			], $file);	
+			
+		}else {
+
+			$response = $this->call("/messages/sendFile", [
+				'chatId' => $chatId,			
+				'fileId' =>  $file, 
+				'replyMsgId' => $replyMsgId,			
+				'forwardChatId' => $forwardChatId,				
+				'forwardMsgId' => $forwardMsgId,			
+				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
+			]);	
+			
+			if ($response['ok']) {
+				$response = $response['msgId'];
+			}else $response = false;
+			
+		} 
+
+
+return $response;
+
+	}
+
+
+
+	/*
+	**  функция редактирования сообщения 
+	**
+	**  @param str $chatId
+**  @param int $msgId
+	**  @param str $text
+	**  @param array $inlineKeyboardMarkup
+	**  	
+	**
+	**  @return bool
+	*/
+
+	public function editText(
+		$chatId, 
+$msgId,
+		$text,
+		$inlineKeyboardMarkup = null
+	) {
+	
+		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
+			
+		$response = $this->call("/messages/editText", [
+			'chatId' => $chatId,
+	'msgId' => $msgId,		
+			'text' => $text,	
+			'inlineKeyboardMarkup' => $inlineKeyboardMarkup
+		]);	
+			
+		if ($response['ok']) {
+			$response = true;
+		}else $response = false;
+			
+		return $response;
+	}
+		
+
+
+/*
+	**  функция удаления сообщения 
+	**
+	**  @param str $chatId
+**  @param int $msgId
+	**  	
+	**
+	**  @return bool
+	*/
+
+	public function ​deleteMessages(
+		$chatId, 
+$msgId
+	) {
+	
+		$response = $this->call("/messages/deleteMessages", [
+			'chatId' => $chatId,
+	'msgId' => $msgId
+		]);	
+			
+		if ($response['ok']) {
+			$response = true;
+		}else $response = false;
+			
+		return $response;
+	}
+
+
+
+
+/*
+	**  функция ответа на событие callbackQuery 
+	**
+	**  @param str $queryId
+**  @param str $text
+**  @param bool $showAlert
+**  @param str $url
+	**  	
+	**
+	**  @return bool
+	*/
+
+	public function ​answerCallbackQuery(
+		$queryId, 
+$text = null, 
+$showAlert = false, 
+$url = null
+	) {
+	
+		$response = $this->call("/messages/answerCallbackQuery", [
+			'queryId' => $queryId,
+	'text' => $text, 
+	'showAlert' => $showAlert, 
+	'url' => $url
+		]);	
+			
+		if ($response['ok']) {
+			$response = true;
+		}else $response = false;
+			
+		return $response;
 	}
 
 
