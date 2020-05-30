@@ -191,7 +191,7 @@ class ICQnew
 	) {
 
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
-
+/*
 		$pos = strpos($file, ":");
 		
 		if ($pos !== false) {
@@ -208,7 +208,7 @@ class ICQnew
 			return $response;
 			
 		}else {
-			
+*/			
 			$response = $this->call("/messages/sendFile", [
 				'chatId' => $chatId,			
 				'fileId' =>  $file, 
@@ -224,7 +224,7 @@ class ICQnew
 			}else $response = false;
 			
 			return $response;
-		} 
+		//} 
 
 
 	}
