@@ -53,7 +53,7 @@ class ICQnew
 	) {
 		$result = null;
 
-		$data['token'] = $this->token;
+		//$data['token'] = $this->token;
 
 		if ($file == null) {
 
@@ -138,6 +138,7 @@ class ICQnew
 	) {
 		
 		$response = $this->call("/events/get", [
+			'token' => $this->token,
 			'lastEventId' => $lastEventId,
 			'pollTime' => $pollTime
 		]);	
@@ -177,6 +178,7 @@ class ICQnew
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 			
 		$response = $this->call("/messages/sendText", [
+			'token' => $this->token,
 			'chatId' => $chatId,
 			'text' => $text,
 			'replyMsgId' => $replyMsgId,			
@@ -225,6 +227,7 @@ class ICQnew
 		if ($pos !== false) {
 
 			$response = $this->call("/messages/sendFile", [
+				'token' => $this->token,
 				'chatId' => $chatId,
 				'caption' => $caption,
 				'replyMsgId' => $replyMsgId,			
@@ -238,6 +241,7 @@ class ICQnew
 		}else {
 			
 			$response = $this->call("/messages/sendFile", [
+				'token' => $this->token,
 				'chatId' => $chatId,			
 				'file_id' =>  $file, 
 				'caption' => $caption,
