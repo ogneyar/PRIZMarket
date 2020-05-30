@@ -14,7 +14,7 @@ if ($text == 'сенд') {
 
 	//$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
 
-        $файл = "http://f0430377.xsph.ru/video/video.mp4";
+        $файл = "http://f0430377.xsph.ru/video/video1.mp4";
 
 	$bot_icq->sendFile($chatId, $файл, "а тут типа текст");
 
