@@ -190,11 +190,13 @@ class ICQnew
 		$forwardMsgId = null
 	) {
 
+$response = false;
+
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
-/*
-		$pos = strpos($file, ":");
+
+		$position = strpos($file, "://");
 		
-		if ($pos !== false) {
+		if ($position !== false) {
 
 			$response = $this->call("/messages/sendFile", [
 				'chatId' => $chatId,
@@ -205,10 +207,10 @@ class ICQnew
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
 			
-			return $response;
+			//return $response;
 			
 		}else {
-*/			
+
 			$response = $this->call("/messages/sendFile", [
 				'chatId' => $chatId,			
 				'fileId' =>  $file, 
@@ -223,8 +225,10 @@ class ICQnew
 				$response = $response['msgId'];
 			}else $response = false;
 			
-			return $response;
-		//} 
+		} 
+
+
+return $response;
 
 
 	}
