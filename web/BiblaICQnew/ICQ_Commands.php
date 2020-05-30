@@ -13,7 +13,7 @@ if ($text == 'сенд') {
 }elseif ($text == 'сендФ') {
 
 	$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
-	$bot_icq->sendFile($chatId, $файл);
+	$bot_icq->sendFile($chatId, $файл, "а тут типа текст");
 
 	//$bot_icq->sendText($chatId, "Х.З.");
 	
