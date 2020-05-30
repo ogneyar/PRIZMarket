@@ -193,10 +193,8 @@ class ICQnew
 $response = false;
 
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
-
-		//$position = stripos($file, "://");
 		
-		if (strpos($file, ":")!==false) {
+		if (strpos($file, "://")!==false) {
 
 			$response = $this->call("/messages/sendFile", [
 				'chatId' => $chatId,
@@ -206,8 +204,6 @@ $response = false;
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
-			
-			//return $response;
 			
 		}else {
 
