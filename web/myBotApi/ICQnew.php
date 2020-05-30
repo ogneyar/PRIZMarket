@@ -223,7 +223,8 @@ class ICQnew
 		$forwardChatId = null,
 		$forwardMsgId = null
 	) {
-			
+
+/*		
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 
 		$pos = strpos($file, "://");
@@ -265,7 +266,7 @@ class ICQnew
 			
 			return $response;
 		} 
-
+*/
 
 	}
 
