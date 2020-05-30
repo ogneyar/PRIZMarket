@@ -88,9 +88,9 @@ class ICQnew
 
 		} 
 
-		$response = json_decode($result, true);
+		//$response = json_decode($result, true);
 
-		return $response;
+		return $result;//$response;
 		
 	}
 		
@@ -142,7 +142,9 @@ class ICQnew
 			'lastEventId' => $lastEventId,
 			'pollTime' => $pollTime
 		]);	
-			
+		
+		$response = json_decode($response, true);
+		
 		if ($response['ok']) {
 			$response = $response['events'];
 		}else $response = false;
@@ -186,7 +188,9 @@ class ICQnew
 			'forwardMsgId' => $forwardMsgId,			
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 		]);	
-			
+		
+		$response = json_decode($response, true);
+		
 		if ($response['ok']) {
 			$response = $response['msgId'];
 		}else $response = false;
@@ -236,6 +240,8 @@ class ICQnew
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
 			
+			$response = json_decode($response, true);
+			
 			return $response;
 			
 		}else {
@@ -250,6 +256,8 @@ class ICQnew
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			]);	
+			
+			$response = json_decode($response, true);
 			
 			if ($response['ok']) {
 				$response = $response['msgId'];
