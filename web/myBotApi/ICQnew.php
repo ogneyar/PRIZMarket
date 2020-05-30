@@ -194,7 +194,7 @@ $response = false;
 
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 
-	//	$position = strpos($file, "://");
+		$position = stripos($file, "://");
 		
 		if ($position !== false) {
 
