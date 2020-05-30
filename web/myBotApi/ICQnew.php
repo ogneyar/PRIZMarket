@@ -1,22 +1,21 @@
 <?php
 
-/* +----------------+
- * |  Class ICQnew  |
- * +----------------+
+/*   +----------------+
+ *   |  Class ICQnew  |
+ *   +----------------+
  *
- *  call
+ * call
  *
- *  PrintArray
  * 
- * +--------------------+
- * |  Список методов:   |
- * +--------------------+
+ *   +--------------------+
+ *   |  Список методов:   |
+ *   +--------------------+
  *
- *  getEvents
+ * getEvents
  *
- *  sendText
+ * sendText
  *
- *  sendFile
+ * sendFile
  *
  */
 
@@ -53,7 +52,7 @@ class ICQnew
 	) {
 		$result = null;
 
-		//$data['token'] = $this->token;
+		$data['token'] = $this->token;
 
 		if ($file == null) {
 
@@ -88,41 +87,14 @@ class ICQnew
 
 		} 
 
-		//$response = json_decode($result, true);
+		$response = json_decode($result, true);
 
-		return $result;//$response;
+		return $response;
 		
 	}
-		
-	
-	
-	/*
-	**  функция вывода на печать массива
-	**
-	**  @param array $mass
-	**  @param int $i
-	**  @param str $flag
-	**
-	**  @return string
-	*/
-	
-	public function PrintArray($mass, $i = 0) {		
-		global $flag;			
-		$flag .= "\t\t\t\t";						
-		foreach($mass as $key[$i] => $value[$i]) {				
-			if (is_array($value[$i])) {			
-				$response .= $flag . $key[$i] . " : \n";					
-				$response .= $this->PrintArray($value[$i], ++$i);					
-			}else $response .= $flag . $key[$i] . " : " . $value[$i] . "\n";			
-		}		
-		$str = $flag;		
-		$flag = substr($str, 0, -4);		
-		return $response;		
-	}
-	
-	
-		
-		
+
+
+
 	/*
 	**  функция получения событий
 	**
@@ -138,13 +110,10 @@ class ICQnew
 	) {
 		
 		$response = $this->call("/events/get", [
-			'token' => $this->token,
 			'lastEventId' => $lastEventId,
 			'pollTime' => $pollTime
 		]);	
-		
-		$response = json_decode($response, true);
-		
+			
 		if ($response['ok']) {
 			$response = $response['events'];
 		}else $response = false;
@@ -180,7 +149,6 @@ class ICQnew
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 			
 		$response = $this->call("/messages/sendText", [
-			'token' => $this->token,
 			'chatId' => $chatId,
 			'text' => $text,
 			'replyMsgId' => $replyMsgId,			
@@ -188,9 +156,7 @@ class ICQnew
 			'forwardMsgId' => $forwardMsgId,			
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 		]);	
-		
-		$response = json_decode($response, true);
-		
+			
 		if ($response['ok']) {
 			$response = $response['msgId'];
 		}else $response = false;
@@ -223,8 +189,7 @@ class ICQnew
 		$forwardChatId = null,
 		$forwardMsgId = null
 	) {
-
-/*		
+/*			
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 
 		$pos = strpos($file, "://");
@@ -232,7 +197,6 @@ class ICQnew
 		if ($pos !== false) {
 
 			$response = $this->call("/messages/sendFile", [
-				'token' => $this->token,
 				'chatId' => $chatId,
 				'caption' => $caption,
 				'replyMsgId' => $replyMsgId,			
@@ -241,14 +205,11 @@ class ICQnew
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
 			
-			$response = json_decode($response, true);
-			
 			return $response;
 			
 		}else {
 			
 			$response = $this->call("/messages/sendFile", [
-				'token' => $this->token,
 				'chatId' => $chatId,			
 				'file_id' =>  $file, 
 				'caption' => $caption,
@@ -258,16 +219,14 @@ class ICQnew
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			]);	
 			
-			$response = json_decode($response, true);
-			
 			if ($response['ok']) {
 				$response = $response['msgId'];
 			}else $response = false;
 			
 			return $response;
 		} 
-*/
 
+*/
 	}
 
 
