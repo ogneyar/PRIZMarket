@@ -4,6 +4,8 @@ include_once '../vendor/autoload.php';
 include_once 'myBotApi/Bot.php';
 // бот для ICQnew
 include_once 'myBotApi/ICQnew.php';
+// бот для ВКонтакте
+include_once 'myBotApi/VK.php';
 // Подключаем библиотеку с классом Tgraph
 include_once 'myBotApi/Tgraph.php';
 // Подключаем библиотеку с классом ImgBB
@@ -21,6 +23,9 @@ $id_bota = strstr($token, ':', true);
 // Создаем объект ICQnew бота
 $bot_icq = new ICQnew($ICQtoken);
 $id_icq_bota = substr(strstr($ICQtoken, ':'), 1);	
+
+// Создаем объект ICQnew бота
+$vk2 = new ICQnew($vk_token2);
 
 $Tgraph = new Tgraph($tokenTGraph);
 $imgBB = new ImgBB($api_key);
