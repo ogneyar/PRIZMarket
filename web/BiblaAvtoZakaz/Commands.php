@@ -50,6 +50,49 @@ if ($text == 'база') {
 		$bot->output_table($table_market);		
 	}			
 	
+}elseif ($text == 'где') {
+	
+	//$результат = $vk2->uploadAndGetUrl($vk_album_id, $vk_group_id, $ссылка_на_файл);
+	
+		$result = $vk2->photosGetUploadServer($album_id, $group_id);	
+		if ($result['error_msg']) {
+			$bot->sendMessage($master, "Ошибка: ".$result['error_msg']);		
+			exit;
+		}
+		$bot->sendMessage($master, "upload_url: ".$result['upload_url']);	
+		$result = $vk2->upload($result['upload_url'], $file);
+		$server = $result['server'];
+		$photos_list = $result['photos_list'];
+		$hash = $result['hash'];	
+		if ($photos_list == []) {
+			$bot->sendMessage($master, "photos_list пуст");		
+			exit;
+		}
+		$bot->sendMessage($master, "server: ".$result['server']);
+		$bot->sendMessage($master, "photos_list: ".$result['photos_list']);
+		$bot->sendMessage($master, "hash: ".$result['hash']);
+		$result = $vk2->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);
+		if ($result['error_msg']) {
+			$bot->sendMessage($master, "Ошибка: ".$result['error_msg']);		
+			exit;
+		}
+		$url_vk = "https://vk.com/photo".$result[0]['owner_id']."_".$result[0]['id'];
+		$vk_file = "photo".$result[0]['owner_id']."_".$result[0]['id'];
+		foreach($result[0]['sizes'] as $size) {		
+			$url = $size['url'];			
+		}				
+		$response['url_vk'] = $url_vk;
+		$response['vk_file'] = $vk_file;
+		$response['url'] = $url;	
+		
+		$bot->sendMessage($master, "url_vk: ".$response['url_vk']);
+		$bot->sendMessage($master, "vk_file: ".$response['vk_file']);
+		$bot->sendMessage($master, "url: ".$response['url']);
+	
+	
+	$bot->sendMessage($master, "Всё отлично!");		
+	
+	
 }elseif ($text == 'ма') {
 	
 	if ($id) {
