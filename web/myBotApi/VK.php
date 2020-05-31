@@ -159,12 +159,15 @@ class VK
 		//if ($photos_list == []) exit;		
 		$result = $this->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);
 		//if ($result['error_msg']) exit;
+		// 
 		$url_vk = "https://vk.com/photo".$result[0]['owner_id']."_".$result[0]['id'];
+		$vk_file = "photo".$result[0]['owner_id']."_".$result[0]['id'];
 		foreach($result[0]['sizes'] as $size) {		
 			$url = $size['url'];			
-		}	
-		$response['url'] = $url;		
+		}				
 		$response['url_vk'] = $url_vk;
+		$response['vk_file'] = $vk_file;
+		$response['url'] = $url;	
 		
 		return $response;
 	}
