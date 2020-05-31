@@ -200,8 +200,8 @@ function _отправка_лота($куда, $номер_лота, $админ
 						}
 						$отправка = $bot_icq->sendFile($ICQ_channel_market, $ссылка_на_файл, $текст_ICQ, $кнопа);
 
-if (!$отправка['ok']) $отправка = $bot_icq->sendFile($ICQ_channel_market, $ссылка_на_файл, $текст_ICQ, $кнопа);
-if (!$отправка['ok']) $отправка = $bot_icq->sendFile($ICQ_channel_market, $ссылка_на_файл, $текст_ICQ, $кнопа);
+if (!$отправка['ok']&&($формат_файла == 'фото')) $отправка = $bot_icq->sendText($ICQ_channel_market, $ссылка_на_файл . "\n" . $текст_ICQ, $кнопа);
+//if (!$отправка['ok']) $отправка = $bot_icq->sendFile($ICQ_channel_market, $ссылка_на_файл, $текст_ICQ, $кнопа);
 
 					}
 
