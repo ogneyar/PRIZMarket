@@ -129,6 +129,46 @@ class VK
     }
 
 	
+	
+	/* 
+	** Функция загружает файл на сервер ВК, сохраняет его и 
+	** возвращает ссылку на файл в ВК
+	**
+    ** @param str $album_id
+	** @param str $group_id
+    ** @param str $file    
+	**
+    ** @return mixed
+    */
+
+	public function uploadAndGetUrl(
+		$album_id, 
+		$group_id, 
+		$file
+	) {					
+		$response = false;
+		
+		$result = $this->photosGetUploadServer($album_id, $group_id);	
+		//if ($result['error_msg']) exit;
+		$result = $this->upload($result['upload_url'], $file);
+		$server = $result['server'];
+		$photos_list = $result['photos_list'];
+		$hash = $result['hash'];	
+		//if ($photos_list == []) exit;		
+		$result = $this->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);
+		//if ($result['error_msg']) exit;
+		//$fileUrl_VK = "https://vk.com/photo".$result[0]['owner_id']."_".$result[0]['id'];
+		foreach($result[0]['sizes'] as $size) {		
+			$fileUrl = $size['url'];			
+		}	
+		if ($fileUrl) $response = $fileUrl;
+		
+		return $response;
+	}
+
+	
+	
+	
 //--------------------------------------
 //------------  МЕТОДЫ  ----------------
 //--------------------------------------
