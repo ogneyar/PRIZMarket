@@ -54,6 +54,7 @@ if ($text == 'база') {
 	
 	//$результат = $vk2->uploadAndGetUrl($vk_album_id, $vk_group_id, $ссылка_на_файл);
 	
+	$file = "http://f0430377.xsph.ru/image/Дом.jpg";
 	$result = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
 	if ($result['error_msg']) {
 		$bot->sendMessage($master, "Ошибка: ".$result['error_msg']);		
