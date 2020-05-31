@@ -157,7 +157,7 @@ class VK
 		$photos_list = $result['photos_list'];
 		$hash = $result['hash'];	
 		//if ($photos_list == []) exit;		
-		$result = $this->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);
+		$result = $this->photosSave($album_id, $group_id, $server, $photos_list, $hash);
 		//if ($result['error_msg']) exit;
 		// 
 		$url_vk = "https://vk.com/photo".$result[0]['owner_id']."_".$result[0]['id'];
