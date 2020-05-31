@@ -10,6 +10,8 @@
  *
  * upload
  *
+ * uploadAndGetUrl
+ *
  * ---------------
  * Список методов:
  * ---------------
@@ -146,7 +148,7 @@ class VK
 		$group_id, 
 		$file
 	) {					
-		$response = false;
+		$response = [];
 		
 		$result = $this->photosGetUploadServer($album_id, $group_id);	
 		//if ($result['error_msg']) exit;
@@ -157,11 +159,12 @@ class VK
 		//if ($photos_list == []) exit;		
 		$result = $this->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);
 		//if ($result['error_msg']) exit;
-		//$fileUrl_VK = "https://vk.com/photo".$result[0]['owner_id']."_".$result[0]['id'];
+		$url_vk = "https://vk.com/photo".$result[0]['owner_id']."_".$result[0]['id'];
 		foreach($result[0]['sizes'] as $size) {		
-			$fileUrl = $size['url'];			
+			$url = $size['url'];			
 		}	
-		if ($fileUrl) $response = $fileUrl;
+		$response['url'] = $url;		
+		$response['url_vk'] = $url_vk;
 		
 		return $response;
 	}
