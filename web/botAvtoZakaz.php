@@ -25,7 +25,7 @@ $bot_icq = new ICQnew($ICQtoken);
 $id_icq_bota = substr(strstr($ICQtoken, ':'), 1);	
 
 // Создаем объект ICQnew бота
-$vk2 = new ICQnew($vk_token2);
+$vk2 = new VK($vk_token2);
 
 $Tgraph = new Tgraph($tokenTGraph);
 $imgBB = new ImgBB($api_key);
