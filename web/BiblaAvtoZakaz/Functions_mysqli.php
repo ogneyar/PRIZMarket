@@ -198,7 +198,11 @@ function _отправка_лота($куда, $номер_лота, $админ
 							$ссылка_телеграм = $bot->fileUrl . $bot->token;
 							$ссылка_на_файл = $ссылка_телеграм . "/" . $Объект_файла['file_path'];
 						}
-						$bot_icq->sendFile($ICQ_channel_market, $ссылка_на_файл, $текст_ICQ, $кнопа);
+						$отправка = $bot_icq->sendFile($ICQ_channel_market, $ссылка_на_файл, $текст_ICQ, $кнопа);
+
+if (!$отправка['ok']) $отправка = $bot_icq->sendFile($ICQ_channel_market, $ссылка_на_файл, $текст_ICQ, $кнопа);
+if (!$отправка['ok']) $отправка = $bot_icq->sendFile($ICQ_channel_market, $ссылка_на_файл, $текст_ICQ, $кнопа);
+
 					}
 
 				if ($формат_файла == 'фото') {					
