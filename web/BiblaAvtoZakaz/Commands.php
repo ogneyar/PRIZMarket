@@ -35,7 +35,7 @@ if ($text == 'база') {
 	
 }elseif ($text == 'лотывк') {
 	
-	$bot->output_table(`vk_url`);
+	$bot->output_table('vk_url');
 	
 	
 }elseif ($text == 'время') {
