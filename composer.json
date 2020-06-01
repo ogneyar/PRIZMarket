@@ -2,9 +2,8 @@
   "require" : {	
 	"php": "^7.4.0",
 	"telegram-bot/api": "^2.3",		
-	"phpmailer/phpmailer": "~6.1",
-	"aws/aws-sdk-php": "~3.0",
-	"memcachier/php-memcache-sasl": ">=1.0.1"
+	"phpmailer/phpmailer": "6.1.6",
+	"aws/aws-sdk-php": "~3.0"
   },
   "require-dev": {
     	"heroku/heroku-buildpack-php": "*"
