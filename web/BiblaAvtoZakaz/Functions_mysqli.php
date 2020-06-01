@@ -219,7 +219,7 @@ function _отправка_лота($куда, $номер_лота, $админ
 					}else $ссылка_подробностей_на_сайте = "https://prizmarket.ru/site_pzm/podrobnosti/index.php?podrobnosti=".$номер_лота;
 					$кнопа = [ [ [
 						"text" => "Подробности",
-						"url" => "https://prizmarket.ru/site_pzm/podrobnosti/index.php?podrobnosti=".$номер_лота ] ] ];
+						"url" => $ссылка_подробностей_на_сайте ] ] ];
 					if ($id_client == '7') {
 						$имя_icq = $связь;
 					}else {	
