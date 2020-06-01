@@ -33,6 +33,11 @@ if ($text == 'база') {
 		$bot->sendMessage($master, "Всё отлично!");		
 	}else throw new Exception("Не смог изменить таблицу `variables`");		
 	
+}elseif ($text == 'лотывк') {
+	
+	$bot->output_table(`vk_url`);
+	
+	
 }elseif ($text == 'время') {
 	$bot->sendMessage($chat_id, time());
 	
