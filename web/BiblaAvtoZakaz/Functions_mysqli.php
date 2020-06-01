@@ -58,6 +58,7 @@
 */
 
 
+
 // Функция для записи данных в таблицу маркет
 function _запись_в_таблицу_маркет($номер_клиента = null, $имя_столбца = null, $действие = null, $номер_лота = null) {
 	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;	
@@ -213,7 +214,7 @@ function _отправка_лота($куда, $номер_лота, $админ
 				$текст = "{$хештеги}[{$название}]({$ссыль_в_названии}){$текст_после_названия}";
 
 				if ($inICQ) {
-					if ($tester) {
+					if ($tester == 'да') {
 						$ссылка_подробностей_на_сайте = "https://prizmarket.online/site_pzm/podrobnosti/index.php?podrobnosti=".$номер_лота;
 					}else $ссылка_подробностей_на_сайте = "https://prizmarket.ru/site_pzm/podrobnosti/index.php?podrobnosti=".$номер_лота;
 					$кнопа = [ [ [
