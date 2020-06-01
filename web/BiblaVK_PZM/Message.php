@@ -65,10 +65,12 @@ if ($text == "Прива") {
 	 
 	$vk->messagesSend($peer_id, "Отправил");
 
-}else {
+}
 
+
+/*else {
     $vk->messagesSend($peer_id, "не пойму(");
+}*/
 
-} 
 
 ?>
