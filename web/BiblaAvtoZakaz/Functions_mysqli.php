@@ -215,11 +215,11 @@ function _отправка_лота($куда, $номер_лота, $админ
 
 				if ($inICQ) {
 					if ($tester) {
-						$ссылка_подробностей_на_сайте = "https://prizmarket.online/site_pzm/podrobnosti/index.php?podrobnosti=";
-					}else $ссылка_подробностей_на_сайте = "https://prizmarket.ru/site_pzm/podrobnosti/index.php?podrobnosti=";
+						$ссылка_подробностей_на_сайте = "https://prizmarket.online/site_pzm/podrobnosti/index.php?podrobnosti=".$номер_лота;
+					}else $ссылка_подробностей_на_сайте = "https://prizmarket.ru/site_pzm/podrobnosti/index.php?podrobnosti=".$номер_лота;
 					$кнопа = [ [ [
 						"text" => "Подробности",
-						"url" => $ссылка_подробностей_на_сайте ] ] ];
+						"url" => "https://prizmarket.ru/site_pzm/podrobnosti/index.php?podrobnosti=".$номер_лота ] ] ];
 					if ($id_client == '7') {
 						$имя_icq = $связь;
 					}else {	
