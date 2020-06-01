@@ -15,6 +15,13 @@ if ($text == "Прива") {
 	file_get_contents("https://api.vk.com/method/". "messages.send?". http_build_query($массив));
 
 
+}elseif ($text=='/kurs' || $text=='курс' || $text=='Курс') {
+	$таблица_переменных = 'variables';
+	include_once "../BiblaICQnew/ICQ_Functions.php";
+    $курс = _kurs_PZM();
+    $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
+	$vk->messagesSend($peer_id, $курс);
+
 }elseif ($text == "загрузи") {	
 	
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);
