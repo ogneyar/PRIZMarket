@@ -58,7 +58,6 @@
 */
 
 
-
 // Функция для записи данных в таблицу маркет
 function _запись_в_таблицу_маркет($номер_клиента = null, $имя_столбца = null, $действие = null, $номер_лота = null) {
 	global $table_market, $mysqli, $callback_from_id, $callback_from_username, $from_id, $from_username;	
