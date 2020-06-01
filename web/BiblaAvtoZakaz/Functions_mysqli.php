@@ -150,7 +150,7 @@ function _очистка_таблицы_медиа() {
 function _отправка_лота($куда, $номер_лота, $админ = false, $предпросмотр = false, $inICQ = false) {	
 	global $table_market, $callback_from_id, $from_id, $mysqli, $bot;	
 	global $bot_icq, $aws_bucket, $aws_region, $ICQ_channel_market;
-	global $vk2, $vk_album_id, $vk_group_id;
+	global $vk2, $vk_album_id, $vk_group_id, $tester;
 	if (!$callback_from_id) $callback_from_id = $from_id;
 	if ($админ) {		
 		$запрос = "SELECT * FROM {$table_market} WHERE id_zakaz='{$номер_лота}'";		
