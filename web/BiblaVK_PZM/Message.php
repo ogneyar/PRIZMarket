@@ -15,65 +15,46 @@ if ($text == "Прива") {
 	file_get_contents("https://api.vk.com/method/". "messages.send?". http_build_query($массив));
 
 
-}elseif ($text=='/kurs' || $text=='курс' || $text=='Курс') {
-	$таблица_переменных = 'variables';
-	include_once "../BiblaICQnew/ICQ_Functions.php";
+}elseif ($text=='курс' || $text=='Курс') {
     $курс = _kurs_PZM();
     $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$vk->messagesSend($peer_id, $курс);
 
-}elseif ($text == "загрузи") {	
-	
-	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);
-	
+}elseif ($text == "загрузи") {		
+	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
 	if ($результат['error_msg']) {		
 		$vk->messagesSend($peer_id, "Ошибка: ".$результат['error_msg']);
 		exit;		
-	}
-	
-	$vk->messagesSend($peer_id, "upload_url: ".$результат['upload_url']);
-	
-	//$bot->sendMessage($master, "upload_url: ".$результат['upload_url']);
-		
-	$результат = $vk2->upload($результат['upload_url'], "http://f0430377.xsph.ru/image/test5eccceaecbdc4.jpg");
-	
+	}	
+	$vk->messagesSend($peer_id, "upload_url: ".$результат['upload_url']);	
+	//$bot->sendMessage($master, "upload_url: ".$результат['upload_url']);		
+	$результат = $vk2->upload($результат['upload_url'], "http://f0430377.xsph.ru/image/test5eccceaecbdc4.jpg");	
 	$server = $результат['server'];
 	$photos_list = $результат['photos_list'];
-	$hash = $результат['hash'];
-	
+	$hash = $результат['hash'];	
 	if ($photos_list == []) {		
 		$vk->messagesSend($peer_id, "Ошибка: photos_list пуст");
 		exit;		
-	}
-		
-	$vk->messagesSend($peer_id, "server: {$server}, photos_list: {$photos_list}, hash: {$hash}");
-		
-	$результат = $vk2->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);
-		
+	}		
+	$vk->messagesSend($peer_id, "server: {$server}, photos_list: {$photos_list}, hash: {$hash}");		
+	$результат = $vk2->photosSave($vk_album_id, $vk_group_id, $server, $photos_list, $hash);		
 	if ($результат['error_msg']) {		
 		$vk->messagesSend($peer_id, "Ошибка: ".$результат['error_msg']);
 		exit;		
-	}
-	
+	}	
 	//https://vk.com/photo-190150616_457239042
 	$ссылка_на_фото_в_вк = "https://vk.com/photo".$результат[0]['owner_id']."_".$результат[0]['id'];
-	$vk->messagesSend($peer_id, $ссылка_на_фото_в_вк);
-	
+	$vk->messagesSend($peer_id, $ссылка_на_фото_в_вк);	
 	foreach($результат[0]['sizes'] as $size) {		
 		$ссылка_на_фото = $size['url'];			
-	}	
-	
+	}		
 	//https://sun9-52.userapi.com/c857324/v857324167/19ed96/BiXlvgG5oNw.jpg
 	$vk->messagesSend($peer_id, $ссылка_на_фото);
-
-}elseif ($text == "Пост") {
 	
-	$vk2->wallPost(-$vk_group_id, "#куплю\n\n#еду за PRIZM\n\n#дорого", "photo-188536519_457239037");
-	 
+}elseif ($text == "Пост") {	
+	$vk2->wallPost(-$vk_group_id, "#куплю\n\n#еду за PRIZM\n\n#дорого", "photo-188536519_457239037");	 
 	$vk->messagesSend($peer_id, "Отправил");
-
 }
-
 
 /*else {
     $vk->messagesSend($peer_id, "не пойму(");
