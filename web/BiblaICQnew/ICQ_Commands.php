@@ -11,14 +11,20 @@ if ($text == 'сенд') {
 	$bot_icq->sendText($chatId, "Вот - {$chatId}\nтип чата - {$chatType}");
 	
 }elseif ($text == 'админы') {		
+	
+	$bot_icq->sendText($chatId, "ищу...");
+	
 	$админы = $bot_icq->getAdmins($ICQ_channel_market);
 
 	$bot_icq->sendText($chatId, $админы[0]['chatId']);
 	
 }elseif ($text == 'экшн') {		
+	
+	$bot_icq->sendText($chatId, "typing");
+	
 	$bot_icq->sendActions($chatId, ["typing"]);
 
-	$bot_icq->sendText($chatId, "typing");
+	
 	
 }elseif ($text == 'сендФ') {
 
