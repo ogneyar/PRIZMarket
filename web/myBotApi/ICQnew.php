@@ -13,9 +13,9 @@
  *
  *  getEvents
  *
- *-----------------------
- * / messages /
- *-----------------------
+ *---------------------
+ *  messages 
+ *---------------------
  *
  *  sendText
  *
@@ -29,9 +29,9 @@
  *
  *  ​answerCallbackQuery
  *
- *----------------
- * / chats /
- *----------------
+ *-------------
+ *  chats 
+ *-------------
  *
  *  ​sendActions
  *
@@ -434,7 +434,7 @@ $url = null
 	**
 	**  @return bool
 	*/
-/*
+
 	public function ​sendActions(
 		$chatId, 
 $actions
@@ -452,7 +452,7 @@ $actions
 		return $response;
 	}
 
-*/
+
 
 
 /*
@@ -476,7 +476,7 @@ if ($response['ok']) {
 		return $response;
 }else return false;
 	}
-*/
+
 
 
 /*
@@ -487,7 +487,7 @@ if ($response['ok']) {
 	**
 	**  @return array[array] 
 	*/
-/*
+
 	public function ​​getAdmins(
 		$chatId
 	) {
@@ -501,7 +501,7 @@ if ($response['ok']) {
 }else return false;
 
 	}
-*/
+
 
 
 
