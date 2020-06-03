@@ -36,21 +36,26 @@ if ($события != []) {
 	foreach($события as $event) {
 		$eventId = $event['eventId'];		
 		$payload = $event['payload'];
+			$queryId = $payload['queryId'];
 			$chat = $payload['chat'];
 				$chatId = $chat['chatId'];
 				$chatType = $chat['type'];
+				$chatTitle = $chat['title'];
 			$from = $payload['from'];
 				$firstName = $from['firstName'];
+				$lastName = $from['lastName'];
 				$nick = $from['nick'];
 				$userId = $from['userId'];
+			$message = $payload['message']; // это массив
 			$msgId = $payload['msgId'];
 			$text = $payload['text'];
+			$callbackData = $payload['callbackData'];
 			$timestamp = $payload['timestamp'];
 		$type = $event['type'];
 	}	
 	
 	include_once 'ICQ_Functions.php';
-	if ($text){					
+	if ($type == "newMessage"){					
 		$number = stripos($text, '%');					
 		if ($number!==false&&$number == '0') {						
 			if ($userId == $ICQmaster) {						
@@ -58,7 +63,9 @@ if ($события != []) {
 				include_once 'ICQ_Commands.php';
 			}else include_once 'ICQ_Message.php';
 		}else include_once 'ICQ_Message.php';
-	}			
+	}elseif ($type == "callbackQuery"){
+		include_once 'ICQ_CallBackQuery.php.php';
+	}
 	
 	_событие($eventId);
 	

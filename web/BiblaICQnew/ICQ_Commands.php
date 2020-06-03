@@ -24,6 +24,8 @@ if ($text == 'сенд') {
 	$bot_icq->sendText($chatId, "сейчас");
 	$инфо = $bot_icq->getInfo($chatId);
 	$bot_icq->sendText($chatId, $инфо["firstName"]);
+	
+	
 }elseif ($text == 'сендФ') {
 
 	//$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
