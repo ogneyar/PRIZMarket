@@ -420,5 +420,86 @@ $url = null
 
 
 
+​
+/*
+	**  функция 
+	**
+	**  @param str $chatId
+**  @param arr[str] $actions
+	**  	
+	**
+	**  @return bool
+	*/
+
+	public function ​sendActions(
+		$chatId, 
+$actions
+	) {
+	
+		$response = $this->call("/chats/sandActions", [
+			'chatId' => $chatId,
+	'actions' => $actions
+		]);	
+			
+		if ($response['ok']) {
+			$response = true;
+		}else $response = false;
+			
+		return $response;
+	}
+
+
+
+
+/*
+	**  функция возвращает информацию о чате
+	**
+	**  @param str $chatId
+	**  	
+	**
+	**  @return array
+	*/
+/*
+	public function ​​getInfo(
+		$chatId
+	) {
+	
+		$response = $this->call("/chats​/getInfo", [
+			'chatId' => $chatId
+		]);	
+			
+if ($response['ok']) {
+		return $response;
+}else return false;
+	}
+*/
+
+
+/*
+	**  функция возвращает информацию об админах в чате
+	**
+	**  @param str $chatId
+	**  	
+	**
+	**  @return array[array] 
+	*/
+/*
+	public function ​​getAdmins(
+		$chatId
+	) {
+	
+		$response = $this->call("/chats/getAdmins", [
+			'chatId' => $chatId
+		]);	
+			
+if ($response['ok']) {
+		return $response['admins'];
+}else return false;
+
+	}
+
+
+*/
+
 } 
 ?>
