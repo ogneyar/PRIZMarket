@@ -16,7 +16,7 @@ if ($text == 'сенд') {
 	$bot_icq->sendText($chatId, $админы[0]['chatId']);
 	
 }elseif ($text == 'экшн') {		
-	$bot_icq->sendActions($chatId, "typing");
+	$bot_icq->sendActions($chatId, ["typing"]);
 
 	$bot_icq->sendText($chatId, "typing");
 	
