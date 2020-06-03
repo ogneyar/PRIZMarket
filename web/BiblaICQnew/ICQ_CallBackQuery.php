@@ -1,14 +1,12 @@
 ﻿<?
 
-$bot_icq->sendText($userId, "ээээй, люююююдииииии");
-
-$bot_icq->sendText($userId, $queryId);
-
 if ($callbackData == "BBB") {
 	
-	$bot_icq->sendText($userId, $queryId);
+	$bot_icq->sendText($userId, "queryId: ".$queryId);
 	
-	$bot_icq->answerCallbackQuery($queryId, "Вот такой вот тут текст", true);
+	$результат = $bot_icq->answerCallbackQuery($queryId, "Вот такой вот тут текст");
+	
+	if ($результат['ok'] == false) $bot_icq->sendText($userId, "Ошибка: {$результат['description ']}");
 	
 }
 
