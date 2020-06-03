@@ -214,8 +214,6 @@ class ICQnew
 		$forwardMsgId = null
 	) {
 
-$response = false;
-
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 		
 		if (strpos($file, "://")!==false) {
@@ -228,6 +226,10 @@ $response = false;
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
+			
+			if ($response['ok']) {
+				$response = true;
+			}else $response = false;
 			
 		}else {
 
@@ -245,10 +247,9 @@ $response = false;
 				$response = $response['msgId'];
 			}else $response = false;
 			
-		} 
+		}
 
-
-return $response;
+		return $response;
 
 	}
 
@@ -276,8 +277,6 @@ return $response;
 		$forwardMsgId = null
 	) {
 
-$response = false;
-
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 		
 		if (strpos($file, "://")!==false) {
@@ -289,6 +288,10 @@ $response = false;
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
+			
+			if ($response['ok']) {
+				$response = true;
+			}else $response = false;
 			
 		}else {
 
@@ -307,9 +310,7 @@ $response = false;
 			
 		} 
 
-
-return $response;
-
+		return $response;
 	}
 
 
@@ -318,7 +319,7 @@ return $response;
 	**  функция редактирования сообщения 
 	**
 	**  @param str $chatId
-**  @param int $msgId
+	**  @param int $msgId
 	**  @param str $text
 	**  @param array $inlineKeyboardMarkup
 	**  	
@@ -328,7 +329,7 @@ return $response;
 
 	public function editText(
 		$chatId, 
-$msgId,
+		$msgId,
 		$text,
 		$inlineKeyboardMarkup = null
 	) {
@@ -337,7 +338,7 @@ $msgId,
 			
 		$response = $this->call("/messages/editText", [
 			'chatId' => $chatId,
-	'msgId' => $msgId,		
+			'msgId' => $msgId,		
 			'text' => $text,	
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 		]);	
@@ -348,14 +349,13 @@ $msgId,
 			
 		return $response;
 	}
-		
 
 
-/*
+	/*
 	**  функция удаления сообщения 
 	**
 	**  @param str $chatId
-**  @param int $msgId
+	**  @param int $msgId
 	**  	
 	**
 	**  @return bool
@@ -363,12 +363,12 @@ $msgId,
 
 	public function ​deleteMessages(
 		$chatId, 
-$msgId
+		$msgId
 	) {
 	
 		$response = $this->call("/messages/deleteMessages", [
 			'chatId' => $chatId,
-	'msgId' => $msgId
+			'msgId' => $msgId
 		]);	
 			
 		if ($response['ok']) {
@@ -381,13 +381,13 @@ $msgId
 
 
 
-/*
+	/*
 	**  функция ответа на событие callbackQuery 
 	**
 	**  @param str $queryId
-**  @param str $text
-**  @param bool $showAlert
-**  @param str $url
+	**  @param str $text
+	**  @param bool $showAlert
+	**  @param str $url
 	**  	
 	**
 	**  @return bool
@@ -395,16 +395,16 @@ $msgId
 
 	public function ​answerCallbackQuery(
 		$queryId, 
-$text = null, 
-$showAlert = false, 
-$url = null
+		$text = null, 
+		$showAlert = false, 
+		$url = null
 	) {
 	
 		$response = $this->call("/messages/answerCallbackQuery", [
 			'queryId' => $queryId,
-	'text' => $text, 
-	'showAlert' => $showAlert, 
-	'url' => $url
+			'text' => $text, 
+			'showAlert' => $showAlert, 
+			'url' => $url
 		]);	
 			
 		if ($response['ok']) {
@@ -417,11 +417,11 @@ $url = null
 
 
 ​
-/*
+	/*
 	**  функция 
 	**
 	**  @param str $chatId
-**  @param arr[str] $actions
+	**  @param arr[str] $actions
 	**  	
 	**
 	**  @return bool
@@ -429,12 +429,12 @@ $url = null
 
 	public function ​sendActions(
 		$chatId, 
-$actions
+		$actions
 	) {
 	
 		$response = $this->call("/chats​/sendActions", [
 			'chatId' => $chatId,
-	'actions' => $actions
+			'actions' => $actions
 		]);	
 			
 		if ($response['ok']) {
@@ -447,7 +447,7 @@ $actions
 
 
 
-/*
+	/*
 	**  функция возвращает информацию о чате
 	**
 	**  @param str $chatId
@@ -456,22 +456,20 @@ $actions
 	**  @return array
 	*/
 
-	public function ​​getInfo(
-		$chatId
-	) {
+	public function ​​getInfo($chatId) {
 	
 		$response = $this->call("/chats​/getInfo", [
 			'chatId' => $chatId
 		]);	
 			
-if ($response['ok']) {
-		return $response;
-}else return false;
+		if ($response['ok']) {
+			return $response;
+		}else return false;
 	}
 
 
 
-/*
+	/*
 	**  функция возвращает информацию об админах в чате
 	**
 	**  @param str $chatId
@@ -480,17 +478,15 @@ if ($response['ok']) {
 	**  @return array[array] 
 	*/
 
-	public function ​​getAdmins(
-		$chatId
-	) {
+	public function ​​getAdmins($chatId) {
 	
 		$response = $this->call("/chats​/getAdmins", [
 			'chatId' => $chatId
 		]);	
 			
-if ($response['ok']) {
-		return $response['admins'];
-}else return false;
+		if ($response['ok']) {
+			return $response['admins'];
+		}else return false;
 
 	}
 
