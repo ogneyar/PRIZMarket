@@ -10,30 +10,17 @@ if ($text == 'сенд') {
 }elseif ($text == 'дай айди') {		
 	$bot_icq->sendText($chatId, "Вот - {$chatId}\nтип чата - {$chatType}");
 	
-}elseif ($text == 'админы') {		
-	
+}elseif ($text == 'админы') {
 	$bot_icq->sendText($chatId, "ищу...");
-	
 	$админы = $bot_icq->getAdmins($ICQ_channel_market);
-
-	$bot_icq->sendText($chatId, $админы[0]['chatId']);
-	
-}elseif ($text == 'экшн') {		
-	
+	$bot_icq->sendText($chatId, $админы[0]['userId']);
+}elseif ($text == 'экшн') {
 	$bot_icq->sendText($chatId, "typing");
-	
-	$bot_icq->sendActions($chatId, ["typing"]);	
-	
-}elseif ($text == 'гетинфо') {		
-	
+	$bot_icq->sendActions($chatId, ["typing"]);
+}elseif ($text == 'гетинфо') {
 	$bot_icq->sendText($chatId, "сейчас");
-	
 	$инфо = $bot_icq->getInfo($chatId);
-	
 	$bot_icq->sendText($chatId, $инфо["firstName"]);
-
-	
-	
 }elseif ($text == 'сендФ') {
 
 	//$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
