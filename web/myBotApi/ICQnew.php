@@ -469,7 +469,7 @@ class ICQnew
 	public function ​​getAdmins($chatId) {
 		$response = $this->call("/chats/getAdmins", [ 'chatId' => $chatId ]);
 		if ($response['ok']) {
-			return $response['admins'];
+			return $response['admins'][0];
 		}else return false;
 	}
 } 
