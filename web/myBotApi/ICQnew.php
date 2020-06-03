@@ -417,10 +417,6 @@ $url = null
 			
 		return $response;
 	}
-
-
-
-​
 /*
 	**  функция 
 	**
@@ -429,8 +425,7 @@ $url = null
 	**  	
 	**
 	**  @return bool
-	*/
-
+	*//*
 	public function ​sendActions(
 		$chatId, 
 $actions
@@ -447,19 +442,14 @@ $actions
 			
 		return $response;
 	}
-
-
-
-
-/*
+*//*
 	**  функция возвращает информацию о чате
 	**
 	**  @param str $chatId
 	**  	
 	**
 	**  @return array
-	*/
-/*
+	*//*
 	public function ​​getInfo(
 		$chatId
 	) {
@@ -472,18 +462,14 @@ if ($response['ok']) {
 		return $response;
 }else return false;
 	}
-*/
-
-
-/*
+*//*
 	**  функция возвращает информацию об админах в чате
 	**
 	**  @param str $chatId
 	**  	
 	**
 	**  @return array[array] 
-	*/
-/*
+	*//*
 	public function ​​getAdmins(
 		$chatId
 	) {
@@ -497,9 +483,6 @@ if ($response['ok']) {
 }else return false;
 
 	}
-
-
 */
-
 } 
 ?>
