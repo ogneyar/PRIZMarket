@@ -1,6 +1,6 @@
 ﻿<?
 
-$bot_icq->sendText($chatId, "ээээй, люююююдииииии");
+$bot_icq->sendText($userId, "ээээй, люююююдииииии");
 
 $bot_icq->sendText($chatId, $queryId);
 
