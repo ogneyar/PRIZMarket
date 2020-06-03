@@ -18,6 +18,8 @@ if (!$eventId) {
 	_событие($eventId);
 }
 
+echo "ok";
+
 //$bot_icq->sendText("@Ogneyar_", "Начало положено.");
 
 if ($секунда >= 40) {
