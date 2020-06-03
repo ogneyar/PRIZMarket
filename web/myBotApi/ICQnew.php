@@ -398,24 +398,20 @@ class ICQnew
 	**  @return bool
 	*/
 
-	public function ​answerCallbackQuery(
+	public function answerCallbackQuery(
 		$queryId, 
-		$text = null, 
-		$showAlert = false, 
+		$text = null,
+		$showAlert = false,
 		$url = null
 	) {
 	
 		$response = $this->call("/messages/answerCallbackQuery", [
 			'queryId' => $queryId,
-			'text' => $text, 
-			'showAlert' => $showAlert, 
+			'text' => $text,
+			'showAlert' => $showAlert,			
 			'url' => $url
 		]);	
-			
-		if ($response['ok']) {
-			$response = true;
-		}else $response = false;
-			
+		
 		return $response;
 		
 	}
@@ -435,9 +431,9 @@ class ICQnew
 			'chatId' => $chatId,
 			'actions' => $actions
 		]);
-		if ($response['ok']) {
+		/*if ($response['ok']) {
 			$response = true;
-		}else $response = false;
+		}else $response = false;*/
 		return $response;
 	}
 
