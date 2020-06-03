@@ -22,7 +22,15 @@ if ($text == 'сенд') {
 	
 	$bot_icq->sendText($chatId, "typing");
 	
-	$bot_icq->sendActions($chatId, ["typing"]);
+	$bot_icq->sendActions($chatId, ["typing"]);	
+	
+}elseif ($text == 'гетинфо') {		
+	
+	$bot_icq->sendText($chatId, "сейчас");
+	
+	$инфо = $bot_icq->getInfo($chatId);
+	
+	$bot_icq->sendText($chatId, $инфо["firstName"]);
 
 	
 	
