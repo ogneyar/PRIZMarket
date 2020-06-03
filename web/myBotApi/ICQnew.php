@@ -430,23 +430,15 @@ class ICQnew
 	**
 	**  @return bool
 	*/
-
-	public function ​sendActions(
-		$chatId, 
-		$actions
-	) {
-	
+	public function ​sendActions($chatId, $actions) {
 		$response = $this->call("/chats/sendActions", [
 			'chatId' => $chatId,
 			'actions' => $actions
-		]);	
-			
+		]);
 		if ($response['ok']) {
 			$response = true;
 		}else $response = false;
-			
 		return $response;
-		
 	}
 
 
@@ -458,19 +450,11 @@ class ICQnew
 	**
 	**  @return array
 	*/
-
-	public function ​​getInfo(
-		$chatId
-	) {
-	
-		$response = $this->call("/chats​/getInfo", [
-			'chatId' => $chatId
-		]);	
-			
+	public function ​​getInfo($chatId) {
+		$response = $this->call("/chats​/getInfo", [ 'chatId' => $chatId ]);
 		if ($response['ok']) {
-				return $response;
+			return $response;
 		}else return false;
-		
 	}
 
 
@@ -482,22 +466,11 @@ class ICQnew
 	**
 	**  @return array[array] 
 	*/
-
-	public function ​​getAdmins(
-		$chatId
-	) {
-	
-		$response = $this->call("/chats/getAdmins", [
-			'chatId' => $chatId
-		]);	
-			
+	public function ​​getAdmins($chatId) {
+		$response = $this->call("/chats/getAdmins", [ 'chatId' => $chatId ]);
 		if ($response['ok']) {
-				return $response['admins'];
+			return $response['admins'];
 		}else return false;
-		
 	}
-
-
-
 } 
 ?>
