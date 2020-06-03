@@ -6,7 +6,7 @@ if ($callbackData == "BBB") {
 	
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Вот такой вот тут текст");
 	
-	if ($результат['ok'] == false) $bot_icq->sendText($userId, "Ошибка: {$результат['description ']}");
+	if ($результат['ok'] == false) $bot_icq->sendText($userId, "Ошибка: {$результат['description']}");
 	
 }
 
