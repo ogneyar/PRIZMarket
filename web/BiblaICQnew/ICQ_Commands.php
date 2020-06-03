@@ -10,6 +10,11 @@ if ($text == 'сенд') {
 }elseif ($text == 'дай айди') {		
 	$bot_icq->sendText($chatId, "Вот - {$chatId}\nтип чата - {$chatType}");
 	
+}elseif ($text == 'админы') {		
+	$админы = $bot_icq->getAdmins($ICQ_channel_market);
+
+	$bot_icq->sendText($chatId, $админы[0]['chatId']);
+	
 }elseif ($text == 'сендФ') {
 
 	//$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
