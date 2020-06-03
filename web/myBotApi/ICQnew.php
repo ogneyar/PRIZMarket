@@ -13,10 +13,6 @@
  *
  *  getEvents
  *
- *-------------------------
- * // messages //
- *-------------------------
- *
  *  sendText
  *
  *  sendFile
@@ -28,18 +24,6 @@
  *  ​deleteMessages
  *
  *  ​answerCallbackQuery
- *
- *------------------
- * // chats //
- *------------------
- *
- *  ​sendActions
- *
- *  getInfo
- *
- *  ​getAdmins
- *
- *
  *
  */
 
@@ -214,6 +198,8 @@ class ICQnew
 		$forwardMsgId = null
 	) {
 
+$response = false;
+
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 		
 		if (strpos($file, "://")!==false) {
@@ -226,10 +212,6 @@ class ICQnew
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
-			
-			if ($response['ok']) {
-				$response = true;
-			}else $response = false;
 			
 		}else {
 
@@ -247,9 +229,10 @@ class ICQnew
 				$response = $response['msgId'];
 			}else $response = false;
 			
-		}
+		} 
 
-		return $response;
+
+return $response;
 
 	}
 
@@ -277,6 +260,8 @@ class ICQnew
 		$forwardMsgId = null
 	) {
 
+$response = false;
+
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 		
 		if (strpos($file, "://")!==false) {
@@ -288,10 +273,6 @@ class ICQnew
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
-			
-			if ($response['ok']) {
-				$response = true;
-			}else $response = false;
 			
 		}else {
 
@@ -310,7 +291,9 @@ class ICQnew
 			
 		} 
 
-		return $response;
+
+return $response;
+
 	}
 
 
@@ -319,7 +302,7 @@ class ICQnew
 	**  функция редактирования сообщения 
 	**
 	**  @param str $chatId
-	**  @param int $msgId
+**  @param int $msgId
 	**  @param str $text
 	**  @param array $inlineKeyboardMarkup
 	**  	
@@ -329,7 +312,7 @@ class ICQnew
 
 	public function editText(
 		$chatId, 
-		$msgId,
+$msgId,
 		$text,
 		$inlineKeyboardMarkup = null
 	) {
@@ -338,7 +321,7 @@ class ICQnew
 			
 		$response = $this->call("/messages/editText", [
 			'chatId' => $chatId,
-			'msgId' => $msgId,		
+	'msgId' => $msgId,		
 			'text' => $text,	
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 		]);	
@@ -349,13 +332,14 @@ class ICQnew
 			
 		return $response;
 	}
+		
 
 
-	/*
+/*
 	**  функция удаления сообщения 
 	**
 	**  @param str $chatId
-	**  @param int $msgId
+**  @param int $msgId
 	**  	
 	**
 	**  @return bool
@@ -363,12 +347,12 @@ class ICQnew
 
 	public function ​deleteMessages(
 		$chatId, 
-		$msgId
+$msgId
 	) {
 	
 		$response = $this->call("/messages/deleteMessages", [
 			'chatId' => $chatId,
-			'msgId' => $msgId
+	'msgId' => $msgId
 		]);	
 			
 		if ($response['ok']) {
@@ -381,13 +365,13 @@ class ICQnew
 
 
 
-	/*
+/*
 	**  функция ответа на событие callbackQuery 
 	**
 	**  @param str $queryId
-	**  @param str $text
-	**  @param bool $showAlert
-	**  @param str $url
+**  @param str $text
+**  @param bool $showAlert
+**  @param str $url
 	**  	
 	**
 	**  @return bool
@@ -395,46 +379,16 @@ class ICQnew
 
 	public function ​answerCallbackQuery(
 		$queryId, 
-		$text = null, 
-		$showAlert = false, 
-		$url = null
+$text = null, 
+$showAlert = false, 
+$url = null
 	) {
 	
 		$response = $this->call("/messages/answerCallbackQuery", [
 			'queryId' => $queryId,
-			'text' => $text, 
-			'showAlert' => $showAlert, 
-			'url' => $url
-		]);	
-			
-		if ($response['ok']) {
-			$response = true;
-		}else $response = false;
-			
-		return $response;
-	}
-
-
-
-​
-	/*
-	**  функция 
-	**
-	**  @param str $chatId
-	**  @param arr[str] $actions
-	**  	
-	**
-	**  @return bool
-	*/
-/*
-	public function ​sendActions(
-		$chatId, 
-		$actions
-	) {
-	
-		$response = $this->call("/chats​/sendActions", [
-			'chatId' => $chatId,
-			'actions' => $actions
+	'text' => $text, 
+	'showAlert' => $showAlert, 
+	'url' => $url
 		]);	
 			
 		if ($response['ok']) {
@@ -447,52 +401,6 @@ class ICQnew
 
 
 
-	/*
-	**  функция возвращает информацию о чате
-	**
-	**  @param str $chatId
-	**  	
-	**
-	**  @return array
-	*/
-/*
-	public function ​​getInfo($chatId) {
-	
-		$response = $this->call("/chats​/getInfo", [
-			'chatId' => $chatId
-		]);	
-			
-		if ($response['ok']) {
-			return $response;
-		}else return false;
-	}
-
-
-
-	/*
-	**  функция возвращает информацию об админах в чате
-	**
-	**  @param str $chatId
-	**  	
-	**
-	**  @return array[array] 
-	*/
-/*
-	public function ​​getAdmins($chatId) {
-	
-		$response = $this->call("/chats​/getAdmins", [
-			'chatId' => $chatId
-		]);	
-			
-		if ($response['ok']) {
-			return $response['admins'];
-		}else return false;
-
-	}
-
-
-
-*/
-} // end class
+}
 
 ?>
