@@ -1,5 +1,7 @@
 ﻿<?
 
+$bot_icq->sendText($userId, "ээээй, люююююдииииии");
+
 $bot_icq->sendText($userId, $queryId);
 
 if ($callbackData == "BBB") {
