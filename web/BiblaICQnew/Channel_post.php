@@ -53,13 +53,13 @@ if ($события != []) {
 			$timestamp = $payload['timestamp'];
 		$type = $event['type'];
 	}	
-	
+/*	
 	if ($callbackData) $bot_icq->sendText($chatId, "есть callbackData"); //: {$queryId}
 	else $bot_icq->sendText($chatId, "нет callbackData");
 	
 	if ($queryId) $bot_icq->sendText($chatId, "есть queryId"); //: {$queryId}
 	else $bot_icq->sendText($chatId, "нет queryId");
-	
+*/	
 	include_once 'ICQ_Functions.php';
 	if ($type == "newMessage"){					
 		$number = stripos($text, '%');					
@@ -70,7 +70,7 @@ if ($события != []) {
 			}else include_once 'ICQ_Message.php';
 		}else include_once 'ICQ_Message.php';
 	}elseif ($type == "callbackQuery"){
-		include_once 'ICQ_CallBackQuery.php.php';
+		include_once 'ICQ_CallBackQuery.php';
 	}
 	
 	_событие($eventId);
