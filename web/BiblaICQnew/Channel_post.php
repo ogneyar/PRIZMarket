@@ -54,7 +54,8 @@ if ($события != []) {
 		$type = $event['type'];
 	}	
 	
-	if ($queryId) $bot_icq->sendText($chatId, $queryId);
+	if ($queryId) $bot_icq->sendText($chatId, "queryId: ".$queryId);
+	else $bot_icq->sendText($chatId, "нет queryId");
 	
 	include_once 'ICQ_Functions.php';
 	if ($type == "newMessage"){					
