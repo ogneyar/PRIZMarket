@@ -426,7 +426,7 @@ class ICQnew
 	**
 	**  @return bool
 	*/
-
+/*
 	public function ​sendActions(
 		$chatId, 
 		$actions
@@ -455,7 +455,7 @@ class ICQnew
 	**
 	**  @return array
 	*/
-
+/*
 	public function ​​getInfo($chatId) {
 	
 		$response = $this->call("/chats​/getInfo", [
@@ -477,7 +477,7 @@ class ICQnew
 	**
 	**  @return array[array] 
 	*/
-
+/*
 	public function ​​getAdmins($chatId) {
 	
 		$response = $this->call("/chats​/getAdmins", [
@@ -492,7 +492,7 @@ class ICQnew
 
 
 
-
+*/
 } // end class
 
 ?>
