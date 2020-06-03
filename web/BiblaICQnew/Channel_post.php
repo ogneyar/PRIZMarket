@@ -54,6 +54,8 @@ if ($события != []) {
 		$type = $event['type'];
 	}	
 	
+	if ($queryId) $bot_icq->sendText($chatId, $queryId);
+	
 	include_once 'ICQ_Functions.php';
 	if ($type == "newMessage"){					
 		$number = stripos($text, '%');					
