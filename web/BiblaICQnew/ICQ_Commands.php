@@ -15,6 +15,11 @@ if ($text == 'сенд') {
 
 	$bot_icq->sendText($chatId, $админы[0]['chatId']);
 	
+}elseif ($text == 'экшн') {		
+	$bot_icq->sendActions($chatId, "typing");
+
+	$bot_icq->sendText($chatId, "typing");
+	
 }elseif ($text == 'сендФ') {
 
 	//$файл = "https://i.ibb.co/YZVdQrH/file-108.jpg";
