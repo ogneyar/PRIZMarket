@@ -468,9 +468,10 @@ class ICQnew
 	*/
 	public function ​​getAdmins($chatId) {
 		$response = $this->call("/chats/getAdmins", [ 'chatId' => $chatId ]);
-		if ($response['ok']) {
+		/*if ($response['ok']) {
 			return $response['admins'];
-		}else return false;
+		}else return false;*/
+		return $response;
 	}
 } 
 ?>
