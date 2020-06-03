@@ -8,4 +8,6 @@ if ($callbackData == "BBB") {
 	
 }
 
+$bot_icq->sendText($chatId, $queryId);
+
 ?>
