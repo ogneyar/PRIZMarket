@@ -214,8 +214,6 @@ class ICQnew
 		$forwardMsgId = null
 	) {
 
-$response = false;
-
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 		
 		if (strpos($file, "://")!==false) {
@@ -279,8 +277,6 @@ return $response;
 		$forwardChatId = null,
 		$forwardMsgId = null
 	) {
-
-$response = false;
 
 		if ($inlineKeyboardMarkup) $inlineKeyboardMarkup = json_encode($inlineKeyboardMarkup);
 		
@@ -463,7 +459,7 @@ $actions
 	**
 	**  @return array
 	*/
-/*
+
 	public function ​​getInfo(
 		$chatId
 	) {
