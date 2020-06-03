@@ -54,12 +54,6 @@ if ($события != []) {
 		$type = $event['type'];
 	}	
 
-	if ($callbackData) $bot_icq->sendText($chatId, "есть callbackData"); //: {$queryId}
-	else $bot_icq->sendText($chatId, "нет callbackData");
-	
-	if ($queryId) $bot_icq->sendText($chatId, "есть queryId"); //: {$queryId}
-	else $bot_icq->sendText($chatId, "нет queryId");
-
 	include_once 'ICQ_Functions.php';
 	if ($type == "newMessage"){					
 		$number = stripos($text, '%');					
