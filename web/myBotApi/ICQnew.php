@@ -455,14 +455,14 @@ class ICQnew
 	public function answerCallbackQuery(
 		$queryId, 
 		$text = null,
-		$showAlert = false,
+		(bool) $showAlert = false,
 		$url = null
 	) {
 	
 		$query = "?token=". $this->token;
 		$query .= "&queryId=". $queryId;
 		if ($text) $query .= "&". http_build_query(['text' => $text]);
-		if ($showAlert) $query .= "&showAlert=" .(bool) $showAlert;
+		if ($showAlert) $query .= "&showAlert=" .$showAlert;
 		if ($url) $query .= "&url=". $url;
 
 
