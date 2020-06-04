@@ -87,13 +87,13 @@ class ICQnew
 			curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 			$result = curl_exec($ch);
 			curl_close($ch);
-
+/*
 $url = $this->apiUrl . $method . "?" . http_build_query($data);
 if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText", [
 'chatId' => "752067062", 
 'text' => $url
 ] );
-
+*/
 
 		}else {
 
@@ -117,6 +117,42 @@ if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText"
 			curl_close($ch);
 
 		} 
+
+		$response = json_decode($result, true);
+
+		return $response;
+		
+	}
+
+
+
+	/* 
+	** Отправляем запрос в ICQ методом GET
+	**
+	** @param str $method
+	** @param array $data    
+	**
+	** @return mixed
+	*/
+
+	public function callGET(
+		$method, 
+		$query
+	) {
+		$result = null;
+/*
+$query = "?token=". $this->token;
+$query .= "&queryId=". data['queryId'];
+if (data['text']) $query .= "&text=". data['text'];
+if (data['showAlert']) $query .= "&showAlert=true";
+if (data['url']) $query .= "&url=". data['url'];
+$url = $this->apiUrl . $method . $query;
+*/
+			$ch = curl_init();
+			curl_setopt ($ch, CURLOPT_URL, $url);
+			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
+			$result = curl_exec($ch);
+			curl_close($ch);
 
 		$response = json_decode($result, true);
 
@@ -412,13 +448,17 @@ if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText"
 		$url = null
 	) {
 	
-		$response = $this->call("/messages/answerCallbackQuery", [
-			'queryId' => $queryId,
-			'text' => $text
-		]);	
-		
-      //'showAlert' => $showAlert,			
-		//'url' => $url
+$query = "?token=". $this->token;
+$query .= "&queryId=". $queryId;
+if ($text) $query .= "&text=". $text;
+if ($showAlert) $query .= "&showAlert=true";
+if ($url) $query .= "&url=". $url;
+
+
+		$response = $this->callGET(
+"/messages/answerCallbackQuery", 
+$query
+);
 
 		return $response;
 		
