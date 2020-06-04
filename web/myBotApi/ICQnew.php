@@ -138,18 +138,19 @@ class ICQnew
 
 	public function callGET(
 		$method, 
-		$query
+		$data
 	) {
-		$result = null;
+		$result = null;		
 		
-		/*
 		$query = "?token=". $this->token;
-		$query .= "&queryId=". data['queryId'];
-		if (data['text']) $query .= "&text=". data['text'];
-		if (data['showAlert']) $query .= "&showAlert=true";
-		if (data['url']) $query .= "&url=". data['url'];
-		*/
-
+		
+		foreach ($data as $key => $value) {
+			if ($value) {
+				if (is_bool($value)) $query .= "&{$key}=true";
+				else $query .= "&" . http_build_query([$key => $value]); 
+			}
+		}
+		
 		$url = $this->apiUrl . $method . $query;
 
 		$ch = curl_init();
@@ -458,7 +459,7 @@ class ICQnew
 		$showAlert = false,
 		$url = null
 	) {
-	
+		/*
 		$query = "?token=". $this->token;
 		$query .= "&queryId=". $queryId;
 		if ($text) $query .= "&". http_build_query(['text' => $text]);
@@ -467,12 +468,14 @@ class ICQnew
 			else $query .= "&showAlert=" .$showAlert;
 		}
 		if ($url) $query .= "&url=". $url;
+		*/
 
-
-		$response = $this->callGET(
-			"/messages/answerCallbackQuery", 
-			$query
-		);
+		$response = $this->callGET("/messages/answerCallbackQuery", [
+			'queryId' => $queryId,
+			'text' => $text,
+			'showAlert' => $showAlert,
+			'url' => $url
+		]);
 
 		return $response;
 		
