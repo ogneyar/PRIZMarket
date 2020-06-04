@@ -457,7 +457,7 @@ $this->call("/messages/sendText", [
 	
 $query = "?token=". $this->token;
 $query .= "&queryId=". $queryId;
-if ($text) $query .= "&text=". http_build_query($text);
+if ($text) $query .= "&". http_build_query(['text' => $text]);
 if ($showAlert) $query .= "&showAlert=true";
 if ($url) $query .= "&url=". $url;
 
