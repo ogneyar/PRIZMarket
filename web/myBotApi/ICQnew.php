@@ -455,17 +455,17 @@ $this->call("/messages/sendText", [
 		$url = null
 	) {
 	
-$query = "?token=". $this->token;
-$query .= "&queryId=". $queryId;
-if ($text) $query .= "&". http_build_query(['text' => $text]);
-if ($showAlert) $query .= "&showAlert=true";
-if ($url) $query .= "&url=". $url;
+		$query = "?token=". $this->token;
+		$query .= "&queryId=". $queryId;
+		if ($text) $query .= "&". http_build_query(['text' => $text]);
+		if ($showAlert) $query .= "&showAlert=" . $showAlert;
+		if ($url) $query .= "&url=". $url;
 
 
 		$response = $this->callGET(
-"/messages/answerCallbackQuery", 
-$query
-);
+			"/messages/answerCallbackQuery", 
+			$query
+		);
 
 		return $response;
 		
