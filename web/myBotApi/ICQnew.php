@@ -146,8 +146,10 @@ $query .= "&queryId=". data['queryId'];
 if (data['text']) $query .= "&text=". data['text'];
 if (data['showAlert']) $query .= "&showAlert=true";
 if (data['url']) $query .= "&url=". data['url'];
-$url = $this->apiUrl . $method . $query;
 */
+
+$url = $this->apiUrl . $method . $query;
+
 			$ch = curl_init();
 			curl_setopt ($ch, CURLOPT_URL, $url);
 			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
