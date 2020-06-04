@@ -16,7 +16,7 @@ if ($text=='/start') {
 	$реплика = "Таких слов нельзя даже мыслить";
 	$bot_icq->sendText($chatId, $реплика);
 	
-	$bot_icq->​deleteMessages($chatId, [$msgId]);
+	$результат = $bot_icq->​deleteMessages($chatId, [$msgId]);
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 }elseif ($text=='/privet' || $text=='привет' || $text=='Привет') {
