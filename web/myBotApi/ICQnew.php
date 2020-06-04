@@ -427,7 +427,7 @@ class ICQnew
 	
 		$response = $this->call("/messages/deleteMessages", [
 			'chatId' => $chatId,
-			'msgId' => [ $msgId ]
+			'msgId' => $msgId
 		]);	
 		
 		return $response;
