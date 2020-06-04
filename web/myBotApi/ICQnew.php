@@ -414,11 +414,12 @@ if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText"
 	
 		$response = $this->call("/messages/answerCallbackQuery", [
 			'queryId' => $queryId,
-			'text' => $text,
-			'showAlert' => "{$showAlert}",			
-			'url' => $url
+			'text' => $text
 		]);	
 		
+      //'showAlert' => $showAlert,			
+		//'url' => $url
+
 		return $response;
 		
 	}
