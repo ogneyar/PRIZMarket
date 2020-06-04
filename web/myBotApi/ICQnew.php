@@ -87,13 +87,14 @@ class ICQnew
 			curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 			$result = curl_exec($ch);
 			curl_close($ch);
-/*
-$url = $this->apiUrl . $method . "?" . http_build_query($data);
-if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText", [
-'chatId' => "752067062", 
-'text' => $url
-] );
-*/
+			
+			/*
+			$url = $this->apiUrl . $method . "?" . http_build_query($data);
+			if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText", [
+			'chatId' => "752067062", 
+			'text' => $url
+			] );
+			*/
 
 		}else {
 
@@ -140,27 +141,30 @@ if ($method == "/messages/answerCallbackQuery") $this->call("/messages/sendText"
 		$query
 	) {
 		$result = null;
-/*
-$query = "?token=". $this->token;
-$query .= "&queryId=". data['queryId'];
-if (data['text']) $query .= "&text=". data['text'];
-if (data['showAlert']) $query .= "&showAlert=true";
-if (data['url']) $query .= "&url=". data['url'];
-*/
+		
+		/*
+		$query = "?token=". $this->token;
+		$query .= "&queryId=". data['queryId'];
+		if (data['text']) $query .= "&text=". data['text'];
+		if (data['showAlert']) $query .= "&showAlert=true";
+		if (data['url']) $query .= "&url=". data['url'];
+		*/
 
-$url = $this->apiUrl . $method . $query;
+		$url = $this->apiUrl . $method . $query;
 
-			$ch = curl_init();
-			curl_setopt ($ch, CURLOPT_URL, $url);
-			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
-			$result = curl_exec($ch);
-			curl_close($ch);
-/*
-$this->call("/messages/sendText", [
-'chatId' => "752067062", 
-'text' => $url
-] );
-*/
+		$ch = curl_init();
+		curl_setopt ($ch, CURLOPT_URL, $url);
+		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
+		$result = curl_exec($ch);
+		curl_close($ch);
+		
+		/*
+		$this->call("/messages/sendText", [
+		'chatId' => "752067062", 
+		'text' => $url
+		] );
+		*/
+		
 		$response = json_decode($result, true);
 
 		return $response;
@@ -458,7 +462,7 @@ $this->call("/messages/sendText", [
 		$query = "?token=". $this->token;
 		$query .= "&queryId=". $queryId;
 		if ($text) $query .= "&". http_build_query(['text' => $text]);
-		if ($showAlert) $query .= "&showAlert=" . $showAlert;
+		if ($showAlert) $query .= "&showAlert=" .(bool) $showAlert;
 		if ($url) $query .= "&url=". $url;
 
 
