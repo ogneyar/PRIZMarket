@@ -68,7 +68,7 @@ if (mysqli_connect_errno()) {
 				}					
 			}				
 			//-----------------------------						
-			include_once 'BiblaICQnew/Message.php';						
+			//include_once 'BiblaICQnew/Message.php';						
 		}
 	}	
 	if ($inline_query) {	
