@@ -422,7 +422,7 @@ class ICQnew
 		
 		$array['chatId'] = $chatId;		
 		foreach($msgId as $msg) {			
-			$array['msgId'] => $msg;			
+			$array['msgId'] = $msg;			
 		}		
 		$response = $this->call("/messages/deleteMessages", $array);	
 		
