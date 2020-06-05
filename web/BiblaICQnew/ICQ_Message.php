@@ -15,9 +15,20 @@ if ($text=='/start') {
 }elseif ($text=='матюк') {
 	$реплика = "Таких слов нельзя даже мыслить";
 	$bot_icq->sendText($chatId, $реплика);
+	$реплика = "Таких слов нельзя даже мыслить";
+	$msgId1 = $bot_icq->sendText($chatId, $реплика);
+	$реплика = "Таких слов нельзя даже мыслить";
+	$bot_icq->sendText($chatId, $реплика);
+	$реплика = "Таких слов нельзя даже мыслить";
+	$msgId2 = $bot_icq->sendText($chatId, $реплика);
+	$реплика = "Таких слов нельзя даже мыслить";
+	$bot_icq->sendText($chatId, $реплика);
+	$реплика = "Таких слов нельзя даже мыслить";
+	$msgId3 = $bot_icq->sendText($chatId, $реплика);
+	$реплика = "Таких слов нельзя даже мыслить";
+	$bot_icq->sendText($chatId, $реплика);
 	
-	$LLLLLL[0] = (int)$msgId;
-	$результат = $bot_icq->​deleteMessages($chatId, $LLLLLL);
+	$результат = $bot_icq->​deleteMessages($chatId, [$msgId1, $msgId2, $msgId3]);
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 }elseif ($text=='шаг') {
