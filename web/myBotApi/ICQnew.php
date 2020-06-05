@@ -414,7 +414,7 @@ class ICQnew
 	**  функция удаления сообщения 
 	**
 	**  @param str $chatId
-	**  @param int $msgId
+	**  @param arr[int] $msgId
 	**  	
 	**
 	**  @return bool
@@ -424,7 +424,9 @@ class ICQnew
 		$chatId, 
 		$msgId
 	) {
-	
+		
+		$msgId = json_encode($msgId);
+		
 		$response = $this->call("/messages/deleteMessages", [
 			'chatId' => $chatId,
 			'msgId' => $msgId
