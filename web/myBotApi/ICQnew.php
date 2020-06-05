@@ -419,7 +419,7 @@ class ICQnew
 		$chatId, 
 		$msgId
 	) {
-		
+		if (!is_array($msgId)) $msgId = [$msgId];
 		$array['chatId'] = $chatId;		
 		foreach($msgId as $msg) {
 			if ($array['msgId']) {
