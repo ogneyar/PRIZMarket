@@ -16,21 +16,24 @@ $parts = $message['parts'];
 	$parts_type = $parts[0]['type'];
 $text = $message['text'];
 $timestamp = $message['timestamp'];
-
+*/
 if ($callbackData == "najmimenya") {
+	$chat = $message['chat'];
+	$chatId = $chat['chatId'];
+	$msgId = $message['msgId'];
+	$text = $message['text'];
 	
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Ай молодец)))");	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
-*/	/*
-	$событие = json_encode($event);
-	$bot_icq->sendText($chatId, $событие);
-	*/
-/*	if ($text == "Нажми кнопку!") $реплика = "Хорошо, а ещё?";
+	
+	if ($text == "Нажми кнопку!") $реплика = "Хорошо, а ещё?";
 	else $реплика = "Нажми кнопку!";
 	
 	$bot_icq->editText($chatId, $msgId, $реплика, $кнопа);	
 	
-}elseif ($callbackData == "ili") {
+}
+/*
+elseif ($callbackData == "ili") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Или ничего)", true);	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
