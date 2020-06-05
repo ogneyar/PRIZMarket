@@ -1,6 +1,6 @@
 ﻿<?
-
-if ($chatType == 'private' || $text=='/kurs' || $text=='курс' || $text=='Курс') {
+//$chatType == 'private' || 
+if ($text=='/kurs' || $text=='курс' || $text=='Курс') {
 //------------------------------------------
 
 if ($text=='/start') {
@@ -12,6 +12,13 @@ if ($text=='/start') {
 	$курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$bot_icq->sendText($chatId, $курс);
 
+}elseif ($text=='мат') {
+	$реплика = "мат не дозволителен";
+	$bot_icq->sendText($chatId, $реплика);
+	
+	$результат = $bot_icq->​deleteMessages($chatId, [$msgId]);
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
 }elseif ($text=='матюк') {
 	$реплика = "Таких слов нельзя даже мыслить";
 	$bot_icq->sendText($chatId, $реплика);
