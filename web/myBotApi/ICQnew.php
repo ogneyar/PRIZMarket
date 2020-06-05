@@ -146,7 +146,11 @@ class ICQnew
 		foreach ($data as $key => $value) {
 			if ($value) {
 				if (is_bool($value)) $query .= "&{$key}=true";
-				else $query .= "&" . http_build_query([$key => $value]); 
+				elseif ($key == "msgId") {
+					$query .= "&{$key}=".$value;
+				}else {
+					$query .= "&" . http_build_query([$key => $value]); 
+				}
 			}
 		}
 		
@@ -426,7 +430,7 @@ class ICQnew
 				$array['msgId'] .= "&msgId=".$msg;
 			}else $array['msgId'] = $msg;
 		}
-		$response = $this->call("/messages/deleteMessages", $array);	
+		$response = $this->callGET("/messages/deleteMessages", $array);	
 		
 		return $response;
 		
