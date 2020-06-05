@@ -1,6 +1,6 @@
 ﻿<?
-//$chatType == 'private' || 
-if ($text=='/kurs' || $text=='курс' || $text=='Курс') {
+//
+if ($chatType == 'private' || $text=='/kurs' || $text=='курс' || $text=='Курс' || $chatType == 'group') {
 //------------------------------------------
 
 if ($text=='/start') {
