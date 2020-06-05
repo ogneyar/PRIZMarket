@@ -5,8 +5,21 @@ if ($chatType == 'private' || $text=='/kurs' || $text=='курс' || $text=='К�
 
 if ($text=='/start') {
 	_старт();
-}elseif ($text=='/help') {
-		
+	
+}elseif ($text=='тест' || $text=='Тест') {
+	$реплика = "Нажми кнопку!";
+	
+	$кнопа = [
+		[			
+			[
+				"text" => "Нажми меня",
+				"callbackData" => "najmimenya"
+			]
+		]
+	];
+	
+	$bot_icq->sendText($chatId, $реплика, $кнопа);
+	
 }elseif ($text=='/kurs' || $text=='курс' || $text=='Курс') {
 	$курс = _kurs_PZM();
 	$курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
@@ -58,7 +71,7 @@ if ($text=='/start') {
 	$реплика = "Дааа норм чо, #сам_чо_как?";
 	$bot_icq->sendText($chatId, $реплика);
 	
-}elseif ($text=='/eee' || $text=='Еее' || $text=='еее' || $text=='Eee' || $text=='eee') {
+}elseif ($text=='/eee' || $text=='Еее' || $text=='еее' || $text=='Eee' || $text=='eee' || $text=='Ееее' || $text=='ееее' || $text=='Eeee' || $text=='eeee') {
 	$реплика = "Так держать хозяин!";
 	$bot_icq->sendText($chatId, $реплика);
 	
