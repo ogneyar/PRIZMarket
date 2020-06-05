@@ -90,7 +90,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/messages/deleteMessages") {				
+			if ($method == "/messages/editText") {				
 				// || $method == "/messages/sendText"  || $method == "/messages/editText"				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
