@@ -1,4 +1,8 @@
 ﻿<?
+
+$событие = json_encode($event);
+$bot_icq->sendText($userId, $событие);
+
 $chat = $message['chat'];
 	$chatId = $chat['chatId'];
 	$type = $chat['type'];
@@ -33,7 +37,7 @@ if ($callbackData == "najmimenya") {
 	
 }elseif ($callbackData == "udalimenya") {
 
-	$результат = $bot_icq->answerCallbackQuery($queryId, "Ой, ну и ладно(");	
+	$результат = $bot_icq->answerCallbackQuery($queryId, "Ой ну и ладно(");	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 	​//$bot_icq->deleteMessages($chatId, $msgId);	
