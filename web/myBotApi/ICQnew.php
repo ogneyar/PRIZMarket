@@ -417,10 +417,10 @@ class ICQnew
 
 	public function ​deleteMessages(
 		$chatId, 
-		$msgId = []
+		$msgId
 	) {
 	
-		if (!is_array($msgId)) $msgId = [$msgId];
+		//if (!is_array($msgId)) $msgId = [$msgId];
 		$array['chatId'] = $chatId;		
 		foreach($msgId as $msg) {
 			if ($array['msgId']) {
