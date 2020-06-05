@@ -22,27 +22,32 @@ if ($text=='/start') {
 }elseif ($text=='матюк') {
 	$реплика = "Таких слов нельзя даже мыслить";
 	$bot_icq->sendText($chatId, $реплика);
-	$реплика = "Таких слов нельзя даже мыслить";
 	$msgId1 = $bot_icq->sendText($chatId, $реплика);
-	$реплика = "Таких слов нельзя даже мыслить";
 	$bot_icq->sendText($chatId, $реплика);
-	$реплика = "Таких слов нельзя даже мыслить";
 	$msgId2 = $bot_icq->sendText($chatId, $реплика);
-	$реплика = "Таких слов нельзя даже мыслить";
 	$bot_icq->sendText($chatId, $реплика);
-	$реплика = "Таких слов нельзя даже мыслить";
 	$msgId3 = $bot_icq->sendText($chatId, $реплика);
-	$реплика = "Таких слов нельзя даже мыслить";
 	$bot_icq->sendText($chatId, $реплика);
 	
 	$результат = $bot_icq->​deleteMessages($chatId, [$msgId1, $msgId2, $msgId3]);
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 }elseif ($text=='шаг') {
-	$реплика = "мат";
+	$реплика = "шаг";
 	$bot_icq->sendText($chatId, $реплика);
-	$реплика = "и";
-	$результат = $bot_icq->editText($chatId, $msgId, $реплика);
+	$msgId1 = $bot_icq->sendText($chatId, $реплика);
+	$bot_icq->sendText($chatId, $реплика);
+	$msgId2 = $bot_icq->sendText($chatId, $реплика);
+	$bot_icq->sendText($chatId, $реплика);
+	$msgId3 = $bot_icq->sendText($chatId, $реплика);
+	$bot_icq->sendText($chatId, $реплика);
+	
+	$реплика = "и мат";	
+	$результат = $bot_icq->editText($chatId, $msgId1, $реплика);
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	$результат = $bot_icq->editText($chatId, $msgId2, $реплика);
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	$результат = $bot_icq->editText($chatId, $msgId3, $реплика);
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 }elseif ($text=='/privet' || $text=='привет' || $text=='Привет') {
