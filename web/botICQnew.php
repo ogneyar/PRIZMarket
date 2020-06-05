@@ -25,6 +25,10 @@ if (mysqli_connect_errno()) {
 	include 'BiblaICQnew/Functions.php';			
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 	include 'myBotApi/Variables.php';		
+	
+	// подключение дополнительных переменных
+	include 'BiblaICQnew/Variables.php';	
+	
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
 	// Если пришла ссылка типа t.me//..?start=123456789	
