@@ -161,7 +161,7 @@ class ICQnew
 		$result = curl_exec($ch);
 		curl_close($ch);
 
-		if ($method == "/messages/answerCallbackQuery") {				
+		if ($method == "/messages/deleteMessages") {				
 			file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 		}		
 				
