@@ -2,7 +2,7 @@
 
 $событие = json_encode($event);
 $bot_icq->sendText($userId, $событие);
-
+/*
 $chat = $message['chat'];
 	$chatId = $chat['chatId'];
 	$type = $chat['type'];
@@ -21,11 +21,11 @@ if ($callbackData == "najmimenya") {
 	
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Ай молодец)))");	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
-	/*
+*/	/*
 	$событие = json_encode($event);
 	$bot_icq->sendText($chatId, $событие);
 	*/
-	if ($text == "Нажми кнопку!") $реплика = "Хорошо, а ещё?";
+/*	if ($text == "Нажми кнопку!") $реплика = "Хорошо, а ещё?";
 	else $реплика = "Нажми кнопку!";
 	
 	$bot_icq->editText($chatId, $msgId, $реплика, $кнопа);	
@@ -49,5 +49,5 @@ if ($callbackData == "najmimenya") {
 	
 }
 
-
+*/
 ?>
