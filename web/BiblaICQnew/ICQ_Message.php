@@ -8,28 +8,7 @@ if ($text=='/start') {
 	
 }elseif ($text=='тест' || $text=='Тест') {
 	$реплика = "Нажми кнопку!";
-	
-	$кнопа = [
-		[			
-			[
-				"text" => "Нажми меня",
-				"callbackData" => "najmimenya"
-			]
-		],
-		[			
-			[
-				"text" => "или",
-				"callbackData" => "ili"
-			]
-		],
-		[			
-			[
-				"text" => "Удали меня",
-				"callbackData" => "udalimenya"
-			]
-		]
-	];
-	
+		
 	$bot_icq->sendText($chatId, $реплика, $кнопа);
 	
 }elseif ($text=='/kurs' || $text=='курс' || $text=='Курс') {
