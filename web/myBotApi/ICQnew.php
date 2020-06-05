@@ -420,11 +420,9 @@ class ICQnew
 		$msgId
 	) {
 		
-		$array['chatId'] = $chatId;		
-		foreach($msgId as $msg) {			
-			$array['msgId'] = $msg;			
-		}		
-		$response = $this->call("/messages/deleteMessages", $array);	
+		$arr['chatId'] = $chatId;		
+		foreach($msgId as $msg) $arr['msgId'] = $msg;
+		$response = $this->call("/messages/deleteMessages", $arr);	
 		
 		return $response;
 		
