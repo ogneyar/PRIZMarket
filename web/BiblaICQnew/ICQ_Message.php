@@ -66,7 +66,7 @@ if ($text=='/start') {
 	$реплика = "Эт ты на каком языке? Уууфь, нет такой буквы в алфавите!";
 	$bot_icq->sendText($chatId, $реплика);
 	
-}elseif ($text) $bot_icq->sendText($chatId, "я не понимаю(");
+}elseif ($text && $chatType == 'private') $bot_icq->sendText($chatId, "я не понимаю(");
 
 //------------------------------------------
 }
