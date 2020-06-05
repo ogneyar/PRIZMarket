@@ -51,8 +51,10 @@ if ($callbackData == "najmimenya") {
 	
 }elseif ($callbackData == "udalimenya") {
 
-	$результат = $bot_icq->answerCallbackQuery($queryId, "Ещё ничего тут нет");	
+	$результат = $bot_icq->answerCallbackQuery($queryId, "Ой, ну и ладно(");	
 	if ($результат['ok'] == false) $bot_icq->sendText($message['chat']['chatId'], "Ошибка: {$результат['description']}");
+	
+	​$bot_icq->deleteMessages($message['chat']['chatId'], $message['msgId']);	
 	
 }elseif ($callbackData == "BBB") {
 
