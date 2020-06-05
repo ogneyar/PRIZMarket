@@ -20,6 +20,12 @@ if ($text=='/start') {
 	$результат = $bot_icq->​deleteMessages($chatId, $LLLLLL);
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
+}elseif ($text=='шаг') {
+	$реплика = "мат";
+	$bot_icq->sendText($chatId, $реплика);
+	$реплика = "и";
+	$bot_icq->editText($chatId, $msgId, $реплика);
+	
 }elseif ($text=='/privet' || $text=='привет' || $text=='Привет') {
 	$реплика = "Сам ты привет. И брат твой привет. И сестра твоя привет.";
 	$bot_icq->sendText($chatId, $реплика);
