@@ -6,7 +6,11 @@ if ($callbackData == "najmimenya") {
 	if ($результат['ok'] == false) $bot_icq->sendText($userId, "Ошибка: {$результат['description']}");
 	
 	$msg = $message['payload']['msgId'];
+	$bot_icq->sendText($userId, $msg);
+	
 	$txt = $message['payload']['text'];
+	$bot_icq->sendText($userId, $txt);
+	
 	if ($txt == "Нажми кнопку!") $реплика = "Хорошо, а ещё?";
 	else $реплика = "Нажми кнопку!";
 	
