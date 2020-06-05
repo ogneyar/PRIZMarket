@@ -32,14 +32,10 @@ if ($callbackData == "najmimenya") {
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Или ничего)", true);	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
-}/*elseif ($callbackData == "udalimenya") {
-
+}elseif ($callbackData == "udalimenya") {
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Ой ну и ладно(");	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
-	
-	​//$bot_icq->deleteMessages($chatId, $msgId);	
-	
-}*/elseif ($callbackData == "BBB") {
+}elseif ($callbackData == "BBB") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Вот такой вот тут текст", true);	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
