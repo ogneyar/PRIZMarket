@@ -10,7 +10,7 @@ if ($callbackData == "najmimenya") {
 	if ($txt == "Нажми кнопку!") $реплика = "Хорошо, а ещё?";
 	else $реплика = "Нажми кнопку!";
 	
-	$bot_icq->editText($userId, $msgId, $реплика);	
+	$bot_icq->editText($userId, $msg, $реплика);	
 	
 }elseif ($callbackData == "BBB") {
 
