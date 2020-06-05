@@ -34,10 +34,7 @@ if ($callbackData == "najmimenya") {
 	if ($результат['ok'] == false) $bot_icq->sendText($message['chat']['chatId'], "Ошибка: {$результат['description']}");
 	
 	$msg = $message['msgId'];
-	$bot_icq->sendText($message['chat']['chatId'], $msg);
-	
 	$txt = $message['text'];
-	$bot_icq->sendText($message['chat']['chatId'], $txt);
 	/*
 	$событие = json_encode($event);
 	$bot_icq->sendText($message['chat']['chatId'], $событие);
@@ -45,7 +42,7 @@ if ($callbackData == "najmimenya") {
 	if ($txt == "Нажми кнопку!") $реплика = "Хорошо, а ещё?";
 	else $реплика = "Нажми кнопку!";
 	
-	$bot_icq->editText($message['chat']['chatId'], $msg, $реплика);	
+	$bot_icq->editText($message['chat']['chatId'], $msg, $реплика, $кнопа);	
 	
 }elseif ($callbackData == "ili") {
 
