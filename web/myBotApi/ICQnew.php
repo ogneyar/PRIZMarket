@@ -503,7 +503,7 @@ class ICQnew
 	
 	public function ​​getInfo($chatId) {
 	
-		$response = $this->call("/chats​/getInfo", [ 'chatId' => $chatId ]);
+		$response = $this->callGET("/chats​/getInfo", [ 'chatId' => $chatId ]);
 		
 		return $response;
 		
