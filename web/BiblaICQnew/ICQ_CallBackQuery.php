@@ -65,11 +65,11 @@ if ($callbackData == "redaktor") {
 
 	$результат = $bot_icq->getAdmins($chatId);
 	if ($результат['ok']) {
-		$реплика = "";
+		$реплика = "Список администраторов чата:\n\n";
 		foreach($результат['admins'] as $admins) {
 			if ($admins['creator']) {
-				$реплика .= "Создателя №: ".$admins['userId']."\n";
-			}else $реплика .= "Раймина №: ".$admins['userId']."\n";
+				$реплика .= "Создатель: ".$admins['userId']."\n";
+			}else $реплика .= "Раймин: ".$admins['userId']."\n";
 		}
 		
 		$bot_icq->sendText($chatId, $реплика);
@@ -82,13 +82,13 @@ if ($callbackData == "redaktor") {
 
 	$результат = $bot_icq->getMembers($chatId);
 	if ($результат['ok']) {
-		$реплика = "";
+		$реплика = "Список членов чата:\n\n";
 		foreach($результат['members'] as $members) {
 			if ($members['creator']) {
-				$реплика .= "Создателя №: ".$members['userId']."\n";
+				$реплика .= "Создатель: ".$members['userId']."\n";
 			}elseif ($members['admin']) {
-				$реплика .= "Раймина №: ".$members['userId']."\n";
-			}else $реплика .= "Пользователя №: ".$members['userId']."\n";
+				$реплика .= "Раймин: ".$members['userId']."\n";
+			}else $реплика .= "Пользователь: ".$members['userId']."\n";
 		}
 	
 		$bot_icq->sendText($chatId, $реплика);
@@ -102,9 +102,9 @@ if ($callbackData == "redaktor") {
 	$результат = $bot_icq->getBlockedUsers($chatId);
 	if ($результат['ok']) {
 		if ($результат['users']) {
-			$реплика = "";
+			$реплика = "Список заблокированных пользователей:\n\n";
 			foreach($результат['users'] as $users) {
-				$реплика .= "Пользователя №: ".$users['userId']."\n";
+				$реплика .= "Пользователь: ".$users['userId']."\n";
 			}
 			$bot_icq->sendText($chatId, $реплика);
 		}else $bot_icq->answerCallbackQuery($queryId, "Список пуст");
