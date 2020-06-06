@@ -132,7 +132,7 @@ if ($callbackData == "redaktor") {
 	}
 	
 }elseif ($callbackData == "prinyat_ojidajuschih") {
-	
+		
 	$результат = $bot_icq->getPendingUsers($chatId);
 	if ($результат['ok']) {
 		if ($результат['users']) {	
@@ -148,6 +148,8 @@ if ($callbackData == "redaktor") {
 	}elseif ($chatType == 'private') {
 		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
 	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
+	$bot_icq->resolvePending($chatId, true, null, true);
 	
 	
 }elseif ($callbackData == "blokirovat") {
