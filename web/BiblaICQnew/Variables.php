@@ -39,6 +39,12 @@ $кнопа = [
 		],
 		[			
 			[
+				"text" => "Список заблокированных",
+				"callbackData" => "zadlokirovanni"
+			]
+		],
+		[			
+			[
 				"text" => "Удаление сообщения",
 				"callbackData" => "udalenie"
 			]

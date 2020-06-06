@@ -20,8 +20,13 @@ if ($text == 'сенд') {
 	$результат = $bot_icq->getBlockedUsers($chatId);
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	else {
-		$событие = json_encode($результат);
-		$bot_icq->sendText($chatId, $событие);
+		if ($результат['users']) {
+			$реплика = "";
+			foreach($результат['users'] as $users) {
+				$реплика .= "Пользователя №: ".$users['userId']."\n";
+			}
+			$bot_icq->sendText($chatId, $реплика);
+		}else $bot_icq->sendText($chatId, "Список пуст");
 	}
 	
 }elseif ($text == 'члены') {

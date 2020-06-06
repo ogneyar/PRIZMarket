@@ -97,6 +97,23 @@ if ($callbackData == "redaktor") {
 		$bot_icq->sendText($chatId, "Тут только Ты и Я");
 	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
 	
+}elseif ($callbackData == "zadlokirovanni") {
+
+	$результат = $bot_icq->getBlockedUsers($chatId);
+	if ($результат['ok']) {
+		if ($результат['users']) {
+			$реплика = "";
+			foreach($результат['users'] as $users) {
+				$реплика .= "Пользователя №: ".$users['userId']."\n";
+			}
+			$bot_icq->sendText($chatId, $реплика);
+		}else $bot_icq->answerCallbackQuery($queryId, "Список пуст");
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+	}else {
+		$bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	}
+	
 }elseif ($callbackData == "udalenie") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "До новых встреч!");	
