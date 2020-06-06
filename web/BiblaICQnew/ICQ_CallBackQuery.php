@@ -54,7 +54,7 @@ if ($callbackData == "redaktor") {
 			
 			$bot_icq->sendText($chatId, $реплика);
 		}else {
-			$реплика = "Название: ".$результат["title"]."\nОписание: ".$результат["about"]."\nСсылка: ".$результат["inviteLink"];
+			$реплика = "Название: ".$результат["title"]."\nОписание: ".$результат["about"]."\nПравила: ".$результат["rules"]."\nСсылка: ".$результат["inviteLink"];
 			
 			$bot_icq->sendText($chatId, $реплика);
 		}
