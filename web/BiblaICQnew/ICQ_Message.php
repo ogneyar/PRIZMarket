@@ -26,7 +26,7 @@ if ($text=='/start') {
 	$реплика = "мат не дозволителен";
 	$bot_icq->sendText($chatId, $реплика);
 	
-	$результат = $bot_icq->​deleteMessages($chatId, [$msgId]);
+	$результат = $bot_icq->​deleteMessages($chatId, $msgId);
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 }elseif ($text=='матюк') {
