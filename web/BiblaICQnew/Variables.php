@@ -45,6 +45,12 @@ $кнопа = [
 		],
 		[			
 			[
+				"text" => "Ожидающие добавления в чат",
+				"callbackData" => "ojidajuschie"
+			]
+		],
+		[			
+			[
 				"text" => "Удаление сообщения",
 				"callbackData" => "udalenie"
 			]

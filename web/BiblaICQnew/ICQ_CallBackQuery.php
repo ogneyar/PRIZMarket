@@ -114,6 +114,23 @@ if ($callbackData == "redaktor") {
 		$bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	}
 	
+}elseif ($callbackData == "ojidajuschie") {
+
+	$результат = $bot_icq->getPendingUsers($chatId);
+	if ($результат['ok']) {
+		if ($результат['users']) {
+			$реплика = "Список ожидающих вступление в чат:\n\n";
+			foreach($результат['users'] as $users) {
+				$реплика .= "Пользователь: ".$users['userId']."\n";
+			}
+			$bot_icq->sendText($chatId, $реплика);
+		}else $bot_icq->sendText($chatId, "Список ожидающих пуст");				
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+	}else {
+		$bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	}
+	
 }elseif ($callbackData == "udalenie") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "До новых встреч!");	
