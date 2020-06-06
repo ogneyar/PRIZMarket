@@ -90,7 +90,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/getInfo") {				
+			if ($method == "/chats/getAdmins") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
 
@@ -518,12 +518,14 @@ class ICQnew
 	**
 	**  @return array[array] 
 	*/
-	public function ​​getAdmins($chatId) {
+	public function getAdmins($chatId) {
+	
 		$response = $this->call("/chats/getAdmins", [ 'chatId' => $chatId ]);
-		/*if ($response['ok']) {
-			return $response['admins'];
-		}else return false;*/
+		
 		return $response;
 	}
+	
+	
+	
 } 
 ?>
