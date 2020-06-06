@@ -91,7 +91,7 @@ if ($callbackData == "redaktor") {
 			}else $реплика .= "Пользователя №: ".$members['userId']."\n";
 		}
 	
-		$bot_icq->sendText($chatId, "Члена №: ".$реплика);
+		$bot_icq->sendText($chatId, $реплика);
 		
 	}elseif ($chatType == 'private') {
 		$bot_icq->sendText($chatId, "Тут только Ты и Я");
