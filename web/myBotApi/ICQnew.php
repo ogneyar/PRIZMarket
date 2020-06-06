@@ -428,9 +428,13 @@ class ICQnew
 		$msgId
 	) {
 	
-		//if (!is_array($msgId)) $msgId = [$msgId];
+		$data = [];
+		
+		if (!is_array($msgId)) $data = [$msgId];
+		else $data = $msgId;
+		
 		$array['chatId'] = $chatId;		
-		foreach($msgId as $msg) {
+		foreach($data as $msg) {
 			if ($array['msgId']) {
 				$array['msgId'] .= "&msgId=".$msg;
 			}else $array['msgId'] = $msg;
