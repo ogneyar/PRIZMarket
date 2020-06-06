@@ -27,6 +27,12 @@ $кнопа = [
 		],
 		[			
 			[
+				"text" => "Админы чата",
+				"callbackData" => "admini_chata"
+			]
+		],
+		[			
+			[
 				"text" => "Удаление сообщения",
 				"callbackData" => "udalenie"
 			]

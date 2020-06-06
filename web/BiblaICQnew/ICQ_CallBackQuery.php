@@ -61,6 +61,23 @@ if ($callbackData == "redaktor") {
 	}
 	
 	
+}elseif ($callbackData == "admini_chata") {
+
+	$результат = $bot_icq->getAdmins($chatId);
+	if ($результат['ok']) {
+		$реплика = "";
+		foreach($результат['admins'] as $admins) {
+			if ($admins['creator']) {
+				$реплика .= "Создателя №: ".$admins['userId']."\n";
+			}else $реплика .= "Раймина №: ".$admins['userId']."\n";
+		}
+		
+		$bot_icq->sendText($chatId, $реплика);
+	}elseif ($chatType == "ptivate") {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
+	
+	
 }elseif ($callbackData == "udalenie") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "До новых встреч!");	

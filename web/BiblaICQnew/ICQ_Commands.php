@@ -20,6 +20,8 @@ if ($text == 'сенд') {
 	$результат = $bot_icq->getAdmins($chatId);
 	if ($результат['ok']) {
 		$bot_icq->sendText($chatId, $результат['admins'][0]['userId']);
+	}elseif ($chatType == "ptivate") {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
 	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
 	
 	
