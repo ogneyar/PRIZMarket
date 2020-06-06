@@ -51,6 +51,12 @@ $кнопа = [
 		],
 		[			
 			[
+				"text" => "Принять всех ожидающих",
+				"callbackData" => "prinyat_ojidajuschih"
+			]
+		],
+		[			
+			[
 				"text" => "Блокировать Отърада",
 				"callbackData" => "blokirovat"
 			]
@@ -59,6 +65,24 @@ $кнопа = [
 			[
 				"text" => "Разблокировать Отърада",
 				"callbackData" => "razblokirovat"
+			]
+		],		
+		[			
+			[
+				"text" => "Переименовать чат",
+				"callbackData" => "rename_title"
+			]
+		],
+		[			
+			[
+				"text" => "Изменить описание чата",
+				"callbackData" => "rename_about"
+			]
+		],		
+		[			
+			[
+				"text" => "Изменить правила чата",
+				"callbackData" => "rename_rules"
 			]
 		],
 		[			

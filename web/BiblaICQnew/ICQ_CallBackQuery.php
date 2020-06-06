@@ -74,7 +74,7 @@ if ($callbackData == "redaktor") {
 		
 		$bot_icq->sendText($chatId, $реплика);
 	}elseif ($chatType == 'private') {
-		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
 	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
 	
 	
@@ -94,7 +94,7 @@ if ($callbackData == "redaktor") {
 		$bot_icq->sendText($chatId, $реплика);
 		
 	}elseif ($chatType == 'private') {
-		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
 	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
 	
 }elseif ($callbackData == "zadlokirovanni") {
@@ -109,7 +109,7 @@ if ($callbackData == "redaktor") {
 			$bot_icq->sendText($chatId, $реплика);
 		}else $bot_icq->answerCallbackQuery($queryId, "Список пуст");
 	}elseif ($chatType == 'private') {
-		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
 	}else {
 		$bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	}
@@ -126,10 +126,29 @@ if ($callbackData == "redaktor") {
 			$bot_icq->sendText($chatId, $реплика);
 		}else $bot_icq->sendText($chatId, "Список ожидающих пуст");				
 	}elseif ($chatType == 'private') {
-		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
 	}else {
 		$bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	}
+	
+}elseif ($callbackData == "prinyat_ojidajuschih") {
+	
+	$результат = $bot_icq->getPendingUsers($chatId);
+	if ($результат['ok']) {
+		if ($результат['users']) {	
+		
+			$результат = $bot_icq->resolvePending($chatId, true, null, true);
+			if ($результат['ok']) {
+				$bot_icq->answerCallbackQuery($queryId, "Все ожидающие добавлены!");	
+			}elseif ($chatType == 'private') {
+				$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
+			}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+		}else $bot_icq->answerCallbackQuery($queryId, "Нет ожидающих!");
+		
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
+	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
 	
 }elseif ($callbackData == "blokirovat") {
 
@@ -137,7 +156,7 @@ if ($callbackData == "redaktor") {
 	if ($результат['ok']) {
 		$bot_icq->answerCallbackQuery($queryId, "Он заблокирован!");	
 	}elseif ($chatType == 'private') {
-		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
 	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 	
@@ -147,9 +166,65 @@ if ($callbackData == "redaktor") {
 	if ($результат['ok']) {
 		$bot_icq->answerCallbackQuery($queryId, "Он разблокирован!");	
 	}elseif ($chatType == 'private') {
-		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
 	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
+	
+}elseif ($callbackData == "rename_title") {
+
+	if (strpos($chatTitle, "Тестер")===0) {
+		$newTitle = substr(strrchr($chatTitle, "Тестер"), 6);
+	}else $newTitle = "Тестер".$chatTitle;
+	
+	$результат = $bot_icq->setTitle($chatId, $newTitle);
+	if ($результат['ok']) {
+		$bot_icq->answerCallbackQuery($queryId, "Сменил название!");	
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
+	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
+	
+}elseif ($callbackData == "rename_about") {
+
+	$результат = $bot_icq->getInfo($chatId);
+	if ($результат['ok']) {
+	
+		if (strpos($результат['about'], "Тестер")===0) {
+			$newAbout = substr(strrchr($результат['about'], "Тестер"), 6);
+		}else $newAbout = "Тестер".$результат['about'];
+		
+		$результат = $bot_icq->setAbout($chatId, $newAbout);
+		if ($результат['ok']) {
+			$bot_icq->answerCallbackQuery($queryId, "Сменил описание!");	
+		}elseif ($chatType == 'private') {
+			$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
+		}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+		
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
+	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+
+	
+}elseif ($callbackData == "rename_rules") {
+
+	$результат = $bot_icq->getInfo($chatId);
+	if ($результат['ok']) {
+	
+		if (strpos($результат['rules'], "Тестер")===0) {
+			$newRules = substr(strrchr($результат['rules'], "Тестер"), 6);
+		}else $newRules = "Тестер".$результат['rules'];
+		
+		$результат = $bot_icq->setRules($chatId, $newRules);
+		if ($результат['ok']) {
+			$bot_icq->answerCallbackQuery($queryId, "Сменил правила!");	
+		}elseif ($chatType == 'private') {
+			$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
+		}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+		
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
+	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+
 	
 }elseif ($callbackData == "udalenie") {
 
