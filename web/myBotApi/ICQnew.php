@@ -90,7 +90,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/sendActions") {				
+			if ($method == "/chats/getInfo") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
 
@@ -471,7 +471,7 @@ class ICQnew
 	**  функция 
 	**
 	**  @param str $chatId
-	**  @param arr[str] $actions
+	**  @param str $actions
 	**  	
 	**
 	**  @return bool
@@ -500,11 +500,13 @@ class ICQnew
 	**
 	**  @return array
 	*/
+	
 	public function ​​getInfo($chatId) {
+	
 		$response = $this->call("/chats​/getInfo", [ 'chatId' => $chatId ]);
-		if ($response['ok']) {
-			return $response;
-		}else return false;
+		
+		return $response;
+		
 	}
 
 
