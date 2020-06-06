@@ -15,12 +15,26 @@ if ($text == 'сенд') {
 	$bot_icq->sendText($chatId, "Вот - {$chatId}\nтип чата - {$chatType}");
 	
 	
+}elseif ($text == 'члены') {
+
+	$результат = $bot_icq->getMembers($chatId);
+	if ($результат['ok']) {
+		//$bot_icq->sendText($chatId, $результат['members'][0]['userId']);
+		
+		$событие = json_encode($результат);
+		$bot_icq->sendText($chatId, $событие);
+		
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
+	
+	
 }elseif ($text == 'админы') {
 
 	$результат = $bot_icq->getAdmins($chatId);
 	if ($результат['ok']) {
 		$bot_icq->sendText($chatId, $результат['admins'][0]['userId']);
-	}elseif ($chatType == "ptivate") {
+	}elseif ($chatType == 'private') {
 		$bot_icq->sendText($chatId, "Тут только Ты и Я");
 	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
 	
