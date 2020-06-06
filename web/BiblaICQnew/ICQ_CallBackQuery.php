@@ -232,6 +232,26 @@ if ($callbackData == "redaktor") {
 	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 
 	
+}elseif ($callbackData == "zakrepit") {
+
+	$результат = $bot_icq->pinMessage($chatId, $msgId);
+	if ($результат['ok']) {
+		$bot_icq->answerCallbackQuery($queryId, "Закрепил сообщение!");	
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
+	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
+	
+}elseif ($callbackData == "otkrepit") {
+
+	$результат = $bot_icq->unpinMessage($chatId, $msgId);
+	if ($результат['ok']) {
+		$bot_icq->answerCallbackQuery($queryId, "Открепил сообщение!");	
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
+	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
+	
 }elseif ($callbackData == "udalenie") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "До новых встреч!");	

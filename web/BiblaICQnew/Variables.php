@@ -17,9 +17,7 @@ $кнопа = [
 			[
 				"text" => "Действие в чате",
 				"callbackData" => "dejstvie"
-			]
-		],
-		[			
+			],
 			[
 				"text" => "Инфа о чате",
 				"callbackData" => "info_chata"
@@ -29,9 +27,7 @@ $кнопа = [
 			[
 				"text" => "Админы чата",
 				"callbackData" => "admini_chata"
-			]
-		],
-		[			
+			],
 			[
 				"text" => "Члены чата",
 				"callbackData" => "chleni_chata"
@@ -57,16 +53,14 @@ $кнопа = [
 		],
 		[			
 			[
-				"text" => "Блокировать Отърада",
+				"text" => "Блок Отърада",
 				"callbackData" => "blokirovat"
-			]
-		],
-		[			
+			],
 			[
-				"text" => "Разблокировать Отърада",
+				"text" => "Разблок Отърада",
 				"callbackData" => "razblokirovat"
 			]
-		],		
+		],
 		[			
 			[
 				"text" => "Переименовать чат",
@@ -83,6 +77,18 @@ $кнопа = [
 			[
 				"text" => "Изменить правила чата",
 				"callbackData" => "rename_rules"
+			]
+		],
+		[			
+			[
+				"text" => "Закрепить сообщение",
+				"callbackData" => "zakrepit"
+			]
+		],		
+		[			
+			[
+				"text" => "Открепить сообщение",
+				"callbackData" => "otkrepit"
 			]
 		],
 		[			
