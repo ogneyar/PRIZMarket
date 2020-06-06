@@ -428,10 +428,8 @@ class ICQnew
 		$msgId
 	) {
 	
-		$data = [];
-		
-		if (!is_array($msgId)) $data = [$msgId];
-		else $data = $msgId;
+		if (is_array($msgId)) $data = $msgId;
+		else $data = [$msgId];
 		
 		$array['chatId'] = $chatId;		
 		foreach($data as $msg) {
@@ -480,7 +478,7 @@ class ICQnew
 
 
 	/*
-	**  функция 
+	**  функция выводит действия бота (Например: "печатает..")
 	**
 	**  @param str $chatId
 	**  @param str $actions
@@ -541,7 +539,7 @@ class ICQnew
 	
 	
 	/*
-	**  функция возвращает информацию об админах в чате
+	**  функция возвращает информацию о членах чата
 	**
 	**  @param str $chatId
 	**  @param str $cursor
@@ -563,7 +561,22 @@ class ICQnew
 		return $response;
 	}
 	
+		
+	/*
+	**  функция возвращает информацию об админах в чате
+	**
+	**  @param str $chatId
+	**  	
+	**
+	**  @return array[array] 
+	*/
 	
+	public function getBlockedUsers($chatId) {
+	
+		$response = $this->call("/chats/getBlockedUsers", [ 'chatId' => $chatId	]);
+		
+		return $response;
+	}
 	
 	
 } 
