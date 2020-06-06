@@ -32,6 +32,9 @@ if ($callbackData == "najmimenya") {
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Или ничего)", true);	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
+	$результат = $bot_icq->​sendActions($chatId, "typing");
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
 }elseif ($callbackData == "udalimenya") {
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Ой ну и ладно(");	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
