@@ -176,7 +176,7 @@ if ($callbackData == "redaktor") {
 }elseif ($callbackData == "rename_title") {
 
 	if (strpos($chatTitle, "Тестер")===0) {
-		$newTitle = substr(strstr($chatTitle, "р"), 1);
+		$newTitle = str_replace("Тестер", "", $chatTitle);
 		if ($newTitle == "") $newTitle = "null";
 	}else $newTitle = "Тестер".$chatTitle;
 	
@@ -194,7 +194,7 @@ if ($callbackData == "redaktor") {
 	if ($результат['ok']) {
 	
 		if (strpos($результат['about'], "Тестер")===0) {
-			$newAbout = substr(strstr($результат['about'], "р"), 1);
+			$newAbout = str_replace("Тестер", "", $результат['about']);
 			if ($newAbout == "") $newAbout = "null";
 		}else $newAbout = "Тестер".$результат['about'];
 		
@@ -216,7 +216,7 @@ if ($callbackData == "redaktor") {
 	if ($результат['ok']) {
 	
 		if (strpos($результат['rules'], "Тестер")===0) {
-			$newAbout = substr(strstr($результат['rules'], "р"), 1);
+			$newAbout = str_replace("Тестер", "", $результат['rules']);
 			if ($newAbout == "") $newAbout = "null";
 		}else $newRules = "Тестер".$результат['rules'];
 		
