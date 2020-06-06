@@ -17,7 +17,8 @@ $parts = $message['parts'];
 $text = $message['text'];
 $timestamp = $message['timestamp'];
 
-if ($callbackData == "najmimenya") {
+
+if ($callbackData == "redaktor") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Ай молодец)))");	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
@@ -27,20 +28,48 @@ if ($callbackData == "najmimenya") {
 	
 	$bot_icq->editText($chatId, $msgId, $реплика, $кнопа);	
 	
-}elseif ($callbackData == "ili") {
+	
+}elseif ($callbackData == "obratnij_zapros") {
 
-	$результат = $bot_icq->answerCallbackQuery($queryId, "Или ничего)", true);	
+	$результат = $bot_icq->answerCallbackQuery($queryId, "Вот так он выглядит!", true);	
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
+	
+}elseif ($callbackData == "dejstvie") {
+
+	$результат = $bot_icq->answerCallbackQuery($queryId, "Он типа печатает))");	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 	$результат = $bot_icq->​sendActions($chatId, "typing");
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
-}elseif ($callbackData == "udalimenya") {
-	$результат = $bot_icq->answerCallbackQuery($queryId, "Ой ну и ладно(");	
+	
+}elseif ($callbackData == "info_chata") {
+
+	$результат = $bot_icq->getInfo($chatId);	
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	else {
+		if ($результат["type"] == 'private') {
+			$реплика = "Имя: ".$результат["firstName"]."\nНик: ".$результат["nick"]."\nФото: ".$результат["photo"][0]['url'];
+			
+			$bot_icq->sendText($chatId, $реплика);
+		}else {
+			$реплика = "Название: ".$результат["title"]."\nОписание: ".$результат["about"]."\nСсылка: ".$результат["inviteLink"];
+			
+			$bot_icq->sendText($chatId, $реплика);
+		}
+	}
+	
+	
+}elseif ($callbackData == "udalenie") {
+
+	$результат = $bot_icq->answerCallbackQuery($queryId, "До новых встреч!");	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 	$результат = $bot_icq->​deleteMessages($chatId, [$msgId]);
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
+	
 	
 }elseif ($callbackData == "BBB") {
 

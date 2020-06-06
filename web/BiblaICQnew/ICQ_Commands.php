@@ -29,9 +29,10 @@ if ($text == 'сенд') {
 		if ($результат["type"] == 'private') $bot_icq->sendText($chatId, $результат["firstName"]);
 		else $bot_icq->sendText($chatId, $результат["title"]);		
 	}
-	
+	/*
 	$событие = json_encode($результат);
 	$bot_icq->sendText($chatId, $событие);
+	*/
 	
 }elseif ($text == 'сендФ') {
 

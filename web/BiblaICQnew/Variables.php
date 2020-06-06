@@ -3,20 +3,32 @@
 $кнопа = [
 		[			
 			[
-				"text" => "Нажми меня",
-				"callbackData" => "najmimenya"
+				"text" => "Редактор текста",
+				"callbackData" => "redaktor"
 			]
 		],
 		[			
 			[
-				"text" => "или",
-				"callbackData" => "ili"
+				"text" => "Ответ на обратный запрос",
+				"callbackData" => "obratnij_zapros"
 			]
 		],
 		[			
 			[
-				"text" => "Удали меня",
-				"callbackData" => "udalimenya"
+				"text" => "Действие в чате",
+				"callbackData" => "dejstvie"
+			]
+		],
+		[			
+			[
+				"text" => "Инфа о чате",
+				"callbackData" => "info_chata"
+			]
+		],
+		[			
+			[
+				"text" => "Удаление сообщения",
+				"callbackData" => "udalenie"
 			]
 		]
 	];
