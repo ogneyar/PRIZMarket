@@ -5,7 +5,7 @@ $bot_icq->sendText($userId, $событие);
 */
 $chat = $message['chat'];
 	$chatId = $chat['chatId'];
-	$type = $chat['type'];
+	$chatType = $chat['type'];
 $from = $message['from'];
 	$firstName = $from['firstName'];
 	$nick = $from['nick'];
@@ -73,7 +73,7 @@ if ($callbackData == "redaktor") {
 		}
 		
 		$bot_icq->sendText($chatId, $реплика);
-	}elseif ($chatType == "ptivate") {
+	}elseif ($chatType == 'private') {
 		$bot_icq->sendText($chatId, "Тут только Ты и Я");
 	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
 	
