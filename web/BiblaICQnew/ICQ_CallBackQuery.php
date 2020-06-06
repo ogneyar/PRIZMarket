@@ -19,7 +19,34 @@ $text = $message['text'];
 $timestamp = $message['timestamp'];
 
 
-if ($callbackData == "redaktor") {
+if ($callbackData == "infa_o_bote") {
+	
+	$результат = $bot_icq->get();
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	else {
+		$реплика = "Бота номер: ".$результат["userId"]."\nНик: ".$результат["nick"]."\nИмя: ".$результат["firstName"]."\nОписание: ".$результат["about"]."\nФото: ".$результат["photo"][0]['url'];
+			
+		$bot_icq->sendText($chatId, $реплика);
+	}
+	
+	
+}elseif ($callbackData == "zagruzka_foto") {
+	
+	$фото = "http://f0430377.xsph.ru/test/Photo.jpg";
+	$результат = $bot_icq->sendFile($chatId, $фото);
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	else $bot_icq->sendText($chatId, "Номер загруженого файла: ".$результат['fileId']);
+	
+	
+}elseif ($callbackData == "zagruzka_zvuka") {
+	
+	$Голос = "http://f0430377.xsph.ru/test/Golos.ogg";
+	$результат = $bot_icq->sendVoice($chatId, $Голос);
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	else $bot_icq->sendText($chatId, "Номер загруженого файла: ".$результат['fileId']);
+	
+	
+}elseif ($callbackData == "redaktor") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "Ай молодец)))");	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");

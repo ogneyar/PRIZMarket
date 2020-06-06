@@ -3,6 +3,22 @@
 $кнопа = [
 		[			
 			[
+				"text" => "Инвормация о боте",
+				"callbackData" => "infa_o_bote"
+			]
+		],
+		[			
+			[
+				"text" => "Загрузка фото",
+				"callbackData" => "zagruzka_foto"
+			],
+			[
+				"text" => "Загрузка звука",
+				"callbackData" => "zagruzka_zvuka"
+			]
+		],
+		[			
+			[
 				"text" => "Редактор текста",
 				"callbackData" => "redaktor"
 			]
