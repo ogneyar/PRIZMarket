@@ -216,8 +216,8 @@ if ($callbackData == "redaktor") {
 	if ($результат['ok']) {
 	
 		if (strpos($результат['rules'], "Тестер")===0) {
-			$newAbout = str_replace("Тестер", "", $результат['rules']);
-			if ($newAbout == "") $newAbout = "null";
+			$newRules = str_replace("Тестер", "", $результат['rules']);
+			if ($newRules == "") $newRules = "null";
 		}else $newRules = "Тестер".$результат['rules'];
 		
 		$результат = $bot_icq->setRules($chatId, $newRules);
