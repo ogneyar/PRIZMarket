@@ -101,6 +101,12 @@ $кнопа = [
 		],
 		[			
 			[
+				"text" => "Инфо о файле",
+				"callbackData" => "info_fajla"
+			]
+		],
+		[			
+			[
 				"text" => "Удаление сообщения",
 				"callbackData" => "udalenie"
 			]

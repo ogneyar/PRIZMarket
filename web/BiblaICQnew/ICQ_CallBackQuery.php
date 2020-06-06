@@ -291,6 +291,18 @@ if ($callbackData == "infa_o_bote") {
 	}else $bot_icq->answerCallbackQuery($queryId, "Нет закреплённого сообщения!");	
 	
 	
+}elseif ($callbackData == "info_fajla") {
+
+	$fileId = "0kEbC000VOxlEYmqNY3Kku5edbd1051ae";
+	$результат = $bot_icq->getInfoFile($fileId);
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	else {
+		$реплика = "Номер ранее загруженого файла: 0kEbC000VOxlEYmqNY3Kku5edbd1051ae\n\nТип файла: ".$результат["type"]."\nРазмер: ".$результат["size"]."\nИмя файла: ".$результат["filename"]."\nСсылка: ".$результат["url"];
+			
+		$bot_icq->sendText($chatId, $реплика);
+	}
+	
+	
 }elseif ($callbackData == "udalenie") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "До новых встреч!");	
