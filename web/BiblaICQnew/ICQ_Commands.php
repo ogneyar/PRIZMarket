@@ -18,8 +18,7 @@ if ($text == 'сенд') {
 	}else $bot_icq->sendText($chatId, $response['description']);
 	
 }elseif ($text == 'экшн') {
-	$bot_icq->sendText($chatId, "typing");
-	$результат = $bot_icq->​sendActions($chatId, "typing");
+	$результат = $bot_icq->​sendActions($chatId, "looking"); // typing - печатает..
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 }elseif ($text == 'гетинфо') {
