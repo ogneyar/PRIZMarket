@@ -43,7 +43,7 @@
  *
  *  getBlockedUsers
  *  
- *  
+ *  getPendingUsers
  *  
  *  
  *  
@@ -98,7 +98,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/getBlockedUsers") {				
+			if ($method == "/chats/getPendingUsers") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
 
@@ -563,7 +563,7 @@ class ICQnew
 	
 		
 	/*
-	**  функция возвращает информацию об админах в чате
+	**  функция возвращает информацию о заблокированных пользователях в чате
 	**
 	**  @param str $chatId
 	**  	
@@ -577,6 +577,28 @@ class ICQnew
 		
 		return $response;
 	}
+	
+	
+	
+	/*
+	**  функция возвращает информацию об ожидающих вступления в чат
+	**
+	**  @param str $chatId
+	**  	
+	**
+	**  @return array[array] 
+	*/
+	
+	public function getPendingUsers($chatId) {
+	
+		$response = $this->call("/chats/getPendingUsers", [ 'chatId' => $chatId	]);
+		
+		return $response;
+	}
+	
+	
+	
+	
 	
 	
 } 
