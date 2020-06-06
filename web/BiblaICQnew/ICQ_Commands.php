@@ -15,25 +15,45 @@ if ($text == 'сенд') {
 	$bot_icq->sendText($chatId, "Вот - {$chatId}\nтип чата - {$chatType}");
 	
 	
-}elseif ($text == 'блок') {	
+}elseif ($text == 'ожидают') {	
 	
-	$результат = $bot_icq->getBlockedUsers($chatId);
-	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
-	else {
+	$результат = $bot_icq->getPendingUsers($chatId);
+	if ($результат['ok']) {
 		if ($результат['users']) {
 			$реплика = "";
 			foreach($результат['users'] as $users) {
-				$реплика .= "Пользователя №: ".$users['userId']."\n";
+				$реплика .= "Пользователь: ".$users['userId']."\n";
 			}
 			$bot_icq->sendText($chatId, $реплика);
-		}else $bot_icq->sendText($chatId, "Список пуст");
+		}else $bot_icq->sendText($chatId, "Список ожидающих пуст");				
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+	}else {
+		$bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	}
+	
+}elseif ($text == 'блок') {	
+	
+	$результат = $bot_icq->getBlockedUsers($chatId);
+	if ($результат['ok']) {
+		if ($результат['users']) {
+			$реплика = "";
+			foreach($результат['users'] as $users) {
+				$реплика .= "Пользователь: ".$users['userId']."\n";
+			}
+			$bot_icq->sendText($chatId, $реплика);
+		}else $bot_icq->sendText($chatId, "Список заблокированных пуст");				
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+	}else {
+		$bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	}
 	
 }elseif ($text == 'члены') {
 
 	$результат = $bot_icq->getMembers($chatId);
 	if ($результат['ok']) {
-		$bot_icq->sendText($chatId, "Члена №: ".$результат['members'][0]['userId']);
+		$bot_icq->sendText($chatId, "Член: ".$результат['members'][0]['userId']);
 		/*
 		$событие = json_encode($результат);
 		$bot_icq->sendText($chatId, $событие);
