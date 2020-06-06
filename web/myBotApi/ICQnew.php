@@ -49,13 +49,13 @@
  *  
  *  unblockUser
  *  
+ *  resolvePending
  *  
+ *  setTitle
  *  
+ *  setAbout
  *  
- *  
- *  
- *  
- *  
+ *  setRules
  *  
  *
  */
@@ -107,10 +107,11 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/blockUser") {				
+			if ($method == "/chats/setTitle" || $method == "/chats/setAbout" || $method == "/chats/setRules") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
-
+			
+			
 		}else {
 
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
@@ -178,7 +179,7 @@ class ICQnew
 		$result = curl_exec($ch);
 		curl_close($ch);
 		
-		if ($method == "/chats/blockUser" || $method == "/chats/unblockUser") {				
+		if ($method == "/chats/resolvePending") {				
 			file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 		}		
 			
@@ -615,7 +616,7 @@ class ICQnew
 	**  @param bool $delLastMessages
 	**  	
 	**
-	**  @return array[array] 
+	**  @return array 
 	*/
 	
 	public function blockUser(
@@ -641,7 +642,7 @@ class ICQnew
 	**  @param str $userId
 	**  	
 	**
-	**  @return array[array] 
+	**  @return array
 	*/
 	
 	public function unblockUser(
@@ -656,6 +657,118 @@ class ICQnew
 		
 		return $response;
 	}
+	
+	
+	
+	/*
+	**  функция принятия решения об ожидающих добавления в чат
+	**
+	**  @param str $chatId
+	**  @param bool $approve
+	**  @param str $userId
+	**  @param bool $everyone
+	**  	
+	**
+	**  @return array
+	*/
+	
+	public function resolvePending(
+		$chatId,
+		$approve,
+		$userId = null,
+		$everyone = false
+	) {
+	
+		$response = $this->callGet("/chats/resolvePending", [ 
+			'chatId' => $chatId,
+			'approve' => $approve,
+			'userId' => $userId,
+			'everyone' => $everyone
+		]);
+		
+		return $response;
+	}
+	
+	
+	
+	/*
+	**  функция меняет название чата
+	**
+	**  @param str $chatId
+	**  @param str $title
+	**  	
+	**
+	**  @return array
+	*/
+	
+	public function setTitle(
+		$chatId,
+		$title
+	) {
+	
+		$response = $this->call("/chats/setTitle", [ 
+			'chatId' => $chatId,
+			'title' => $title
+		]);
+		
+		return $response;
+	}
+	
+	
+	
+	/*
+	**  функция меняет описание чата
+	**
+	**  @param str $chatId
+	**  @param str $about
+	**  	
+	**
+	**  @return array
+	*/
+	
+	public function setAbout(
+		$chatId,
+		$about
+	) {
+	
+		$response = $this->call("/chats/setAbout", [ 
+			'chatId' => $chatId,
+			'about' => $about
+		]);
+		
+		return $response;
+	}
+	
+	
+	
+	/*
+	**  функция меняет правила чата
+	**
+	**  @param str $chatId
+	**  @param str $rules
+	**  	
+	**
+	**  @return array
+	*/
+	
+	public function setRules(
+		$chatId,
+		$rules
+	) {
+	
+		$response = $this->call("/chats/setRules", [ 
+			'chatId' => $chatId,
+			'rules' => $rules
+		]);
+		
+		return $response;
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 } 
