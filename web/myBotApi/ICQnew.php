@@ -45,6 +45,15 @@
  *  
  *  getPendingUsers
  *  
+ *  blockUser
+ *  
+ *  unblockUser
+ *  
+ *  
+ *  
+ *  
+ *  
+ *  
  *  
  *  
  *  
@@ -98,7 +107,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/getPendingUsers") {				
+			if ($method == "/chats/blockUser") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
 
@@ -168,11 +177,11 @@ class ICQnew
 		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
 		$result = curl_exec($ch);
 		curl_close($ch);
-		/*
-		if ($method == "/messages/deleteMessages") {				
+		
+		if ($method == "/chats/blockUser" || $method == "/chats/unblockUser") {				
 			file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 		}		
-		*/	
+			
 		$response = json_decode($result, true);
 
 		return $response;
@@ -598,7 +607,55 @@ class ICQnew
 	
 	
 	
+	/*
+	**  функция блокирует пользователя в чате
+	**
+	**  @param str $chatId
+	**  @param str $userId
+	**  @param bool $delLastMessages
+	**  	
+	**
+	**  @return array[array] 
+	*/
 	
+	public function blockUser(
+		$chatId,
+		$userId,
+		$delLastMessages = false
+	) {
+	
+		$response = $this->callGet("/chats/blockUser", [ 
+			'chatId' => $chatId,
+			'userId' => $userId,
+			'delLastMessages' => $delLastMessages
+		]);
+		
+		return $response;
+	}
+	
+	
+	/*
+	**  функция разблокирует пользователя в чате
+	**
+	**  @param str $chatId
+	**  @param str $userId
+	**  	
+	**
+	**  @return array[array] 
+	*/
+	
+	public function unblockUser(
+		$chatId,
+		$userId
+	) {
+	
+		$response = $this->callGet("/chats/unblockUser", [ 
+			'chatId' => $chatId,
+			'userId' => $userId
+		]);
+		
+		return $response;
+	}
 	
 	
 } 
