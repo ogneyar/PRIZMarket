@@ -56,6 +56,11 @@
  *  setAbout
  *  
  *  setRules
+ *
+ *  pinMessage
+ *
+ *  unpinMessage
+ *
  *  
  *
  */
@@ -105,12 +110,12 @@ class ICQnew
 			$result = curl_exec($ch);
 			curl_close($ch);
 			
-			/*
+			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/chats/setTitle" || $method == "/chats/setAbout" || $method == "/chats/setRules") {				
+			if ($method == "/chats/pinMessage" || $method == "/chats/unpinMessage") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
-			*/
+			
 			
 		}else {
 
@@ -766,7 +771,53 @@ class ICQnew
 	
 	
 	
+	/*
+	**  функция закрепляет сообщения в чате
+	**
+	**  @param str $chatId
+	**  @param int $msgId
+	**  	
+	**
+	**  @return array
+	*/
 	
+	public function pinMessage(
+		$chatId,
+		$msgId
+	) {
+	
+		$response = $this->call("/chats/pinMessage", [ 
+			'chatId' => $chatId,
+			'msgId' => $msgId
+		]);
+		
+		return $response;
+	}
+	
+	
+	
+	/*
+	**  функция открепляет сообщения в чате
+	**
+	**  @param str $chatId
+	**  @param int $msgId
+	**  	
+	**
+	**  @return array
+	*/
+	
+	public function unpinMessage(
+		$chatId,
+		$msgId
+	) {
+	
+		$response = $this->call("/chats/unpinMessage", [ 
+			'chatId' => $chatId,
+			'msgId' => $msgId
+		]);
+		
+		return $response;
+	}
 	
 	
 	
