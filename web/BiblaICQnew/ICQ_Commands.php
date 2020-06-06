@@ -17,7 +17,7 @@ if ($text == 'сенд') {
 	
 }elseif ($text == 'админы') {
 
-	$результат = $bot_icq->getAdmins($ICQ_channel_market);
+	$результат = $bot_icq->getAdmins($chatId);
 	if ($результат['ok']) {
 		$bot_icq->sendText($chatId, $результат['admins'][0]['userId']);
 	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
