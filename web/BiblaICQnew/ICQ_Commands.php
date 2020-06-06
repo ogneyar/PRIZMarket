@@ -25,9 +25,13 @@ if ($text == 'сенд') {
 
 	$результат = $bot_icq->getInfo($chatId);	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
-	else $bot_icq->sendText($chatId, $результат["firstName"]);
+	else {
+		if ($результат["type"] == 'private') $bot_icq->sendText($chatId, $результат["firstName"]);
+		else $bot_icq->sendText($chatId, $результат["title"]);		
+	}
 	
-	$bot_icq->sendText($chatId, "ну как?");
+	$событие = json_encode($результат);
+	$bot_icq->sendText($chatId, $событие);
 	
 }elseif ($text == 'сендФ') {
 
