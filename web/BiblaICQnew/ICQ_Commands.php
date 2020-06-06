@@ -4,22 +4,29 @@ if (strpos($text, ":")!==false) {
 	$id = substr(strrchr($text, ":"), 1);	
 	$text = $komanda;
 }
+
 if ($text == 'сенд') {	
+
 	$bot_icq->sendText($ICQ_channel_market, "Здравствуйте дорогие товарищи!");
 	
-}elseif ($text == 'дай айди') {		
+	
+}elseif ($text == 'дай айди') {	
+	
 	$bot_icq->sendText($chatId, "Вот - {$chatId}\nтип чата - {$chatType}");
 	
+	
 }elseif ($text == 'админы') {
-	$bot_icq->sendText($chatId, "ищу...");
-	$админы = $bot_icq->getAdmins($ICQ_channel_market);
-	if ($response['ok']) {
-		$bot_icq->sendText($chatId, $админы[0]['userId']);
-	}else $bot_icq->sendText($chatId, $response['description']);
+
+	$результат = $bot_icq->getAdmins($ICQ_channel_market);
+	if ($результат['ok']) {
+		$bot_icq->sendText($chatId, $результат['admins'][0]['userId']);
+	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
+	
 	
 }elseif ($text == 'экшн') {
 	$результат = $bot_icq->​sendActions($chatId, "typing"); // typing - печатает..  // looking - не сработал(
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
 	
 }elseif ($text == 'гетинфо') {
 
@@ -33,6 +40,7 @@ if ($text == 'сенд') {
 	$событие = json_encode($результат);
 	$bot_icq->sendText($chatId, $событие);
 	*/
+	
 	
 }elseif ($text == 'сендФ') {
 
