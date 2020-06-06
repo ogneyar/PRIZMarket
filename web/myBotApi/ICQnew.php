@@ -105,12 +105,12 @@ class ICQnew
 			$result = curl_exec($ch);
 			curl_close($ch);
 			
-			
+			/*
 			$url = $this->apiUrl . $method . "?" . http_build_query($data);
 			if ($method == "/chats/setTitle" || $method == "/chats/setAbout" || $method == "/chats/setRules") {				
 				file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 			}			
-			
+			*/
 			
 		}else {
 
@@ -178,11 +178,11 @@ class ICQnew
 		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);	           
 		$result = curl_exec($ch);
 		curl_close($ch);
-		
+		/*
 		if ($method == "/chats/resolvePending") {				
 			file_get_contents($this->apiUrl . "/messages/sendText?".http_build_query(['token' => $this->token, 'chatId' => '752067062', 'text' => $url]));				
 		}		
-			
+		*/
 		$response = json_decode($result, true);
 
 		return $response;
