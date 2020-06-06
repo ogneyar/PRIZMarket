@@ -78,6 +78,25 @@ if ($callbackData == "redaktor") {
 	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
 	
 	
+}elseif ($callbackData == "chleni_chata") {
+
+	$результат = $bot_icq->getMembers($chatId);
+	if ($результат['ok']) {
+		$реплика = "";
+		foreach($результат['members'] as $members) {
+			if ($members['creator']) {
+				$реплика .= "Создателя №: ".$members['userId']."\n";
+			}elseif ($members['admin']) {
+				$реплика .= "Раймина №: ".$members['userId']."\n";
+			}else $реплика .= "Пользователя №: ".$members['userId']."\n";
+		}
+	
+		$bot_icq->sendText($chatId, "Члена №: ".$реплика);
+		
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+	}else $bot_icq->sendText($chatId, "Ошибка: ".$результат['description']);
+	
 }elseif ($callbackData == "udalenie") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "До новых встреч!");	

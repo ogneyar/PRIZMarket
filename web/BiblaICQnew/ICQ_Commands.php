@@ -15,6 +15,15 @@ if ($text == 'сенд') {
 	$bot_icq->sendText($chatId, "Вот - {$chatId}\nтип чата - {$chatType}");
 	
 	
+}elseif ($text == 'блок') {	
+	
+	$результат = $bot_icq->getBlockedUsers($chatId);
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	else {
+		$событие = json_encode($результат);
+		$bot_icq->sendText($chatId, $событие);
+	}
+	
 }elseif ($text == 'члены') {
 
 	$результат = $bot_icq->getMembers($chatId);

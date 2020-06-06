@@ -33,6 +33,12 @@ $кнопа = [
 		],
 		[			
 			[
+				"text" => "Члены чата",
+				"callbackData" => "chleni_chata"
+			]
+		],
+		[			
+			[
 				"text" => "Удаление сообщения",
 				"callbackData" => "udalenie"
 			]
