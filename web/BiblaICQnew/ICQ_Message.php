@@ -8,7 +8,7 @@ if ($text=='/start') {
 	
 }elseif ($text=='тест' || $text=='Тест') {
 	
-	if ($chatType == 'channel') {
+	if ($chatType != 'private') {
 		$результат = $bot_icq->​deleteMessages($chatId, [$msgId]);
 		if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	}
@@ -23,11 +23,17 @@ if ($text=='/start') {
 	$bot_icq->sendText($chatId, $курс);
 
 }elseif ($text=='мат') {
-	$реплика = "мат не дозволителен";
-	$bot_icq->sendText($chatId, $реплика);
-	
-	$результат = $bot_icq->​deleteMessages($chatId, $msgId);
-	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+		
+	if ($chatType != 'private') {		
+		$реплика = "мат не дозволителен";
+		$bot_icq->sendText($chatId, $реплика);
+		
+		$результат = $bot_icq->​deleteMessages($chatId, $msgId);
+		if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	}else {
+		$реплика = "Зачем материшься";
+		$bot_icq->sendText($chatId, $реплика);
+	}
 	
 }elseif ($text=='матюк') {
 	$реплика = "Таких слов нельзя даже мыслить";
