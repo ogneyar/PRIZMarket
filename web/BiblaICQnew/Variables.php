@@ -51,6 +51,18 @@ $кнопа = [
 		],
 		[			
 			[
+				"text" => "Блокировать Отърада",
+				"callbackData" => "blokirovat"
+			]
+		],
+		[			
+			[
+				"text" => "Разблокировать Отърада",
+				"callbackData" => "razblokirovat"
+			]
+		],
+		[			
+			[
 				"text" => "Удаление сообщения",
 				"callbackData" => "udalenie"
 			]

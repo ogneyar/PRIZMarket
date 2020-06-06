@@ -131,6 +131,26 @@ if ($callbackData == "redaktor") {
 		$bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	}
 	
+}elseif ($callbackData == "blokirovat") {
+
+	$результат = $bot_icq->blockUser($chatId, "751967319");
+	if ($результат['ok']) {
+		$bot_icq->answerCallbackQuery($queryId, "Он заблокирован!");	
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
+	
+}elseif ($callbackData == "razblokirovat") {
+
+	$результат = $bot_icq->unblockUser($chatId, "751967319");
+	if ($результат['ok']) {
+		$bot_icq->answerCallbackQuery($queryId, "Он разблокирован!");	
+	}elseif ($chatType == 'private') {
+		$bot_icq->sendText($chatId, "Тут только Ты и Я");
+	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	
+	
 }elseif ($callbackData == "udalenie") {
 
 	$результат = $bot_icq->answerCallbackQuery($queryId, "До новых встреч!");	
