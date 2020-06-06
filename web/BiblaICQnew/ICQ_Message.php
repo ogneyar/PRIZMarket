@@ -1,12 +1,18 @@
 ﻿<?
 //
-if ($chatType == 'private' || $text=='/kurs' || $text=='курс' || $text=='Курс' || $chatType == 'group') {
+//if ($chatType == 'private' || $text=='/kurs' || $text=='курс' || $text=='Курс' || $chatType == 'group') {
 //------------------------------------------
 
 if ($text=='/start') {
 	_старт();
 	
 }elseif ($text=='тест' || $text=='Тест') {
+	
+	if ($chatType == 'channel') {
+		$результат = $bot_icq->​deleteMessages($chatId, [$msgId]);
+		if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	}
+	
 	$реплика = "Нажми кнопку!";
 		
 	$bot_icq->sendText($chatId, $реплика, $кнопа);
@@ -73,5 +79,5 @@ if ($text=='/start') {
 }elseif ($text && $chatType == 'private') $bot_icq->sendText($chatId, "я не понимаю(");
 
 //------------------------------------------
-}
+//}
 ?>
