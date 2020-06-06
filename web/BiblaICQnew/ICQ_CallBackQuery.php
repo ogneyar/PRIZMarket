@@ -175,7 +175,8 @@ if ($callbackData == "redaktor") {
 }elseif ($callbackData == "rename_title") {
 
 	if (strpos($chatTitle, "Тестер")===0) {
-		$newTitle = substr(strrchr($chatTitle, "Тестер"), 6);
+		$newTitle = substr(strstr($chatTitle, "р"), 1);
+		if ($newTitle == "") $newTitle = "null";
 	}else $newTitle = "Тестер".$chatTitle;
 	
 	$результат = $bot_icq->setTitle($chatId, $newTitle);
@@ -192,7 +193,8 @@ if ($callbackData == "redaktor") {
 	if ($результат['ok']) {
 	
 		if (strpos($результат['about'], "Тестер")===0) {
-			$newAbout = substr(strrchr($результат['about'], "Тестер"), 6);
+			$newAbout = substr(strstr($результат['about'], "р"), 1);
+			if ($newAbout == "") $newAbout = "null";
 		}else $newAbout = "Тестер".$результат['about'];
 		
 		$результат = $bot_icq->setAbout($chatId, $newAbout);
@@ -213,7 +215,8 @@ if ($callbackData == "redaktor") {
 	if ($результат['ok']) {
 	
 		if (strpos($результат['rules'], "Тестер")===0) {
-			$newRules = substr(strrchr($результат['rules'], "Тестер"), 6);
+			$newAbout = substr(strstr($результат['rules'], "р"), 1);
+			if ($newAbout == "") $newAbout = "null";
 		}else $newRules = "Тестер".$результат['rules'];
 		
 		$результат = $bot_icq->setRules($chatId, $newRules);
