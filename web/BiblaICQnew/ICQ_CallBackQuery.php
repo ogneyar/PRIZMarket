@@ -22,6 +22,10 @@ $timestamp = $message['timestamp'];
 if ($callbackData == "infa_o_bote") {
 	
 	$результат = $bot_icq->get();
+	
+	$событие = json_encode($результат);
+	$bot_icq->sendText($chatId, $событие);
+	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	else {
 		$реплика = "Бота номер: ".$результат["userId"]."\nНик: ".$результат["nick"]."\nИмя: ".$результат["firstName"]."\nОписание: ".$результат["about"]."\nФото: ".$результат["photo"][0]['url'];
@@ -34,6 +38,10 @@ if ($callbackData == "infa_o_bote") {
 	
 	$фото = "http://f0430377.xsph.ru/test/Photo.jpg";
 	$результат = $bot_icq->sendFile($chatId, $фото);
+	
+	$событие = json_encode($результат);
+	$bot_icq->sendText($chatId, $событие);
+	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	else $bot_icq->sendText($chatId, "Номер загруженого файла: ".$результат['fileId']);
 	
@@ -42,6 +50,10 @@ if ($callbackData == "infa_o_bote") {
 	
 	$Голос = "http://f0430377.xsph.ru/test/Golos.ogg";
 	$результат = $bot_icq->sendVoice($chatId, $Голос);
+	
+	$событие = json_encode($результат);
+	$bot_icq->sendText($chatId, $событие);
+	
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	else $bot_icq->sendText($chatId, "Номер загруженого файла: ".$результат['fileId']);
 	

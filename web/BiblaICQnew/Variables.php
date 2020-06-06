@@ -3,7 +3,7 @@
 $кнопа = [
 		[			
 			[
-				"text" => "Инвормация о боте",
+				"text" => "Информация о боте",
 				"callbackData" => "infa_o_bote"
 			]
 		],
@@ -21,11 +21,9 @@ $кнопа = [
 			[
 				"text" => "Редактор текста",
 				"callbackData" => "redaktor"
-			]
-		],
-		[			
+			],
 			[
-				"text" => "Ответ на обратный запрос",
+				"text" => "CallBack запрос",
 				"callbackData" => "obratnij_zapros"
 			]
 		],
@@ -57,13 +55,11 @@ $кнопа = [
 		],
 		[			
 			[
-				"text" => "Ожидающие добавления в чат",
+				"text" => "Ожидающие добавления",
 				"callbackData" => "ojidajuschie"
-			]
-		],
-		[			
+			],
 			[
-				"text" => "Принять всех ожидающих",
+				"text" => "Принять ожидающих",
 				"callbackData" => "prinyat_ojidajuschih"
 			]
 		],
@@ -85,13 +81,11 @@ $кнопа = [
 		],
 		[			
 			[
-				"text" => "Изменить описание чата",
+				"text" => "Изменить описание",
 				"callbackData" => "rename_about"
-			]
-		],		
-		[			
+			],
 			[
-				"text" => "Изменить правила чата",
+				"text" => "Изменить правила",
 				"callbackData" => "rename_rules"
 			]
 		],
@@ -99,9 +93,7 @@ $кнопа = [
 			[
 				"text" => "Закрепить сообщение",
 				"callbackData" => "zakrepit"
-			]
-		],		
-		[			
+			],
 			[
 				"text" => "Открепить сообщение",
 				"callbackData" => "otkrepit"
