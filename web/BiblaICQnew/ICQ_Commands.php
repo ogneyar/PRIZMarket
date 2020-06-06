@@ -22,9 +22,15 @@ if ($text == 'сенд') {
 	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
 	
 }elseif ($text == 'гетинфо') {
+
+	$событие = json_encode($event);
+	$bot_icq->sendText($chatId, $событие);
+
 	$bot_icq->sendText($chatId, "сейчас");
-	$инфо = $bot_icq->getInfo($chatId);
-	$bot_icq->sendText($chatId, $инфо["firstName"]);
+	$результат = $bot_icq->getInfo($chatId);
+	
+	if ($результат['ok'] == false) $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	else $bot_icq->sendText($chatId, $результат["firstName"]);
 	
 	
 }elseif ($text == 'сендФ') {
