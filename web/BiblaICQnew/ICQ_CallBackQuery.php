@@ -249,7 +249,7 @@ if ($callbackData == "redaktor") {
 		$bot_icq->answerCallbackQuery($queryId, "Открепил сообщение!");	
 	}elseif ($chatType == 'private') {
 		$bot_icq->sendText($chatId, "Тут только Ты и Я это не чат");
-	}else $bot_icq->sendText($chatId, "Ошибка: {$результат['description']}");
+	}else $bot_icq->answerCallbackQuery($queryId, "Нет закреплённого сообщения!");	
 	
 	
 }elseif ($callbackData == "udalenie") {
