@@ -6,6 +6,7 @@ $bot_icq->sendText($userId, $событие);
 $chat = $message['chat'];
 	$chatId = $chat['chatId'];
 	$chatType = $chat['type'];
+	$chatTitle = $chat['title'];
 $from = $message['from'];
 	$firstName = $from['firstName'];
 	$nick = $from['nick'];
