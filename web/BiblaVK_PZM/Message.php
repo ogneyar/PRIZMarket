@@ -1,4 +1,5 @@
 <?
+$text = str_replace("[club190150616|@pzmarket] ", "", $text);
 
 if ($text == "Прива") {	
 	$random_id = time();	
@@ -16,10 +17,33 @@ if ($text == "Прива") {
     $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$vk->messagesSend($peer_id, $курс);
 
-}elseif ($text == "кнопы" || $text == "Кнопы") {	
+}elseif ($text == "тест" || $text == "Тест") {	
 	
+	$action1 = [ 'type' => 'text', 'label' => 'Прива', 'payload' => [ 
+		'button' => '1' ] ];
+	$action2 = [ 'type' => 'text', 'label' => 'Закрепи', 'payload' => [ 
+		'button' => '2' ] ];
+	$action3 = [ 'type' => 'text', 'label' => 'Открепи', 'payload' => [ 
+		'button' => '3' ] ];
+	$action4 = [ 'type' => 'text', 'label' => 'Измени', 'payload' => [ 
+		'button' => '4' ] ];
+	$кнопки = [
+	[	[ 	'action' => $action1,
+			'color' => 'primary' ],
+		[	'action' => $action2,
+			'color' => 'secondary' ]
+	],[	[	'action' => $action3,
+			'color' => 'negative' ],
+		[	'action' => $action4,
+			'color' => 'positive' ]
+	] ];
+	$клавиатура_в_сообщении = [
+		'one_time' => false,
+		'buttons' => $кнопки,
+		'inline' => true
+	];	
 	$клавиатура = json_encode($клавиатура_в_сообщении);	
-	$результат = $vk->messagesSend($peer_id, $group_id, null, null, null, $клавиатура);
+	$результат = $vk->messagesSend($peer_id, "Нажми на кнопку!", null, null, null, $клавиатура);
 	$результJSON = json_encode($результат);
 	$vk->messagesSend($peer_id, $результJSON);
 	
@@ -45,10 +69,8 @@ if ($text == "Прива") {
 	sleep(1);
 	$message_id = $vk->messagesSend($peer_id, $текст);
 	sleep(1);
-	$vk->messagesSend($peer_id, $текст);
-	sleep(1);
 		
-	$результат = $vk->messagesEdit($peer_id, $message_id, "Зачем?");
+	$vk->messagesEdit($peer_id, $message_id, "Зачем?");
 		
 	
 }elseif ($text == "загрузи") {		
