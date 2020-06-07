@@ -17,8 +17,11 @@ if ($text == "Прива") {
 	$vk->messagesSend($peer_id, $курс);
 
 }elseif ($text == "закрепи" || $text == "Закрепи") {	
-
-	$результат = $vk->messagesPin($peer_id, $conversation_message_id);
+	
+	$текст = "Текст для закрепа";	
+	$message_id = $vk->messagesSend($peer_id, $текст);
+	
+	$результат = $vk->messagesPin($peer_id, $message_id);
 	$результJSON = json_encode($результат);
 	$vk->messagesSend($peer_id, $результJSON);
 	
@@ -32,17 +35,9 @@ if ($text == "Прива") {
 	sleep(1);
 	$vk->messagesSend($peer_id, $текст);
 	sleep(1);
-	$vk->messagesSend($peer_id, $текст);
-	sleep(1);
-	$vk->messagesSend($peer_id, $текст);
-	sleep(1);
-	//$результJSON = json_encode($результат);
-	//$vk->messagesSend($peer_id, $результJSON);
-	
+		
 	$результат = $vk->messagesEdit($peer_id, $message_id, "Зачем?");
-	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, $результJSON);
-	
+		
 	
 }elseif ($text == "загрузи") {		
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
