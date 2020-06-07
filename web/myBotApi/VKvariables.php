@@ -109,10 +109,11 @@ $object = $data['object'];
 		$peer_id = $message['peer_id'];
 		$text = $message['text'];
 		$conversation_message_id = $message['conversation_message_id'];
-		$fwd_messages = $message['fwd_messages'];
+		$fwd_messages = $message['fwd_messages']; // массив
 		$important = $message['important'];
 		$random_id = $message['random_id'];
-		$attachments = $message['attachments'];
+		$attachments = $message['attachments']; // массив
+		$payload = $message['payload']; // массив
 		$is_hidden = $message['is_hidden'];		
 	$client_info = $object['client_info'];		
 		$button_actions = $client_info['button_actions'];		
@@ -123,6 +124,8 @@ $group_id = $data['group_id'];
 $event_id = $data['event_id'];
 $secret =  $data['secret'];
 //}
+
+
 
 $action1 = [
 	'type' => 'text',

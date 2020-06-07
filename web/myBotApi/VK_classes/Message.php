@@ -21,6 +21,7 @@ class Message
 	public $important = false;
     public $random_id = null;
 	public $attachments = [];
+	public $payload = [];
     public $is_hidden = false;
 
 
@@ -43,6 +44,7 @@ class Message
 		$this->random_id = $message->random_id;
 		
 		$this->attachments = json_decode($message->attachments, true);
+		$this->payload = json_decode($message->payload, true);
 		
 		$this->is_hidden = $message->is_hidden;
     }    
@@ -174,7 +176,7 @@ class Message
 	}
 	
 	
-	/*???????????????????????????????????
+	/*
 	**  функция возвращает fwd_messages
 	**
 	**  @return array 
@@ -184,7 +186,7 @@ class Message
 	}
 	
 	
-	/*???????????????????????????????????
+	/*
 	**  функция записывает fwd_messages
 	*/
     public function setFwdMessages($fwd_messages) {
@@ -228,7 +230,7 @@ class Message
 	}
 	
 	
-	/*??????????????????????????????????
+	/*
 	**  функция возвращает attachments
 	**
 	**  @return array 
@@ -238,11 +240,29 @@ class Message
 	}
 	
 	
-	/*??????????????????????????????????
+	/*
 	**  функция записывает attachments
 	*/
     public function setAttachments($attachments) {
 		$this->attachments = $attachments;
+	}
+	
+	
+	/*
+	**  функция возвращает payload
+	**
+	**  @return array 
+	*/
+    public function getPayload() {
+		return $this->payload;
+	}
+	
+	
+	/*
+	**  функция записывает payload
+	*/
+    public function setPayload($payload) {
+		$this->payload = $payload;
 	}
 	
 	
