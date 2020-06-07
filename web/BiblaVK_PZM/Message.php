@@ -3,9 +3,9 @@ $text = str_replace("[club190150616|@pzmarket] ", "", $text);
 
 $text = str_replace("[club190150616|TesterPRIZMarket] ", "", $text);
 
-$text = str_replace("[club190150616|@prizmarket_vk] ", "", $text);
+$text = str_replace("[club188536519|@prizmarket_vk] ", "", $text);
 
-$text = str_replace("[club190150616|Покупки на PRIZMarket] ", "", $text);
+$text = str_replace("[club188536519|Покупки на PRIZMarket] ", "", $text);
 
 if ($text == "Прива") {	
 	$random_id = time();	
