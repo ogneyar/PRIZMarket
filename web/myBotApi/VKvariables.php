@@ -126,31 +126,55 @@ $secret =  $data['secret'];
 
 $action1 = [
 	'type' => 'text',
-	'label' => 'А ну нажми!',
-	'payload' => null
+	'label' => 'primary',
+	'payload' => [ 'button' => '1' ]
 ];
 
 $action2 = [
 	'type' => 'text',
-	'label' => 'Эту не нажми!',
-	'payload' => null
+	'label' => 'secondary',
+	'payload' => [ 'button' => '2' ]
+];
+
+$action3 = [
+	'type' => 'text',
+	'label' => 'negative',
+	'payload' => [ 'button' => '3' ]
+];
+
+$action4 = [
+	'type' => 'text',
+	'label' => 'positive',
+	'payload' => [ 'button' => '4' ]
 ];
 
 $кнопки = [
 	[
-		'action' => $action1,
-		'color' => 'primary'
+		[
+			'action' => $action1,
+			'color' => 'primary'
+		],
+		[
+			'action' => $action2,
+			'color' => 'secondary'
+		]
 	],
 	[
-		'action' => $action2,
-		'color' => 'secondary'
+		[
+			'action' => $action3,
+			'color' => 'negative'
+		],
+		[
+			'action' => $action4,
+			'color' => 'positive'
+		]
 	]
 ];
 
 $клавиатура_в_сообщении = [
-	'bool' => false,
+	'one_time' => false,
 	'buttons' => $кнопки,
-	'inline' => true,
+	'inline' => true
 ];
 
 ?>
