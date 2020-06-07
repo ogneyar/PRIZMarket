@@ -16,6 +16,11 @@ if ($text == "Прива") {
     $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$vk->messagesSend($peer_id, $курс);
 
+}elseif ($text == "кнопы" || $text == "Кнопы") {	
+		
+	$vk->messagesSend($peer_id, $group_id, null, null, null, $клавиатура_в_сообщении);
+	
+	
 }elseif ($text == "закрепи" || $text == "Закрепи") {	
 	
 	$текст = "Текст для закрепа";	
