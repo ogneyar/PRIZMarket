@@ -13,9 +13,13 @@
  * uploadAndGetUrl
  *
  *
- *-------------------
- *  Список методов:
- *-------------------
+ * +-------------------+
+ * |  Список методов:  |
+ * +-------------------+
+ *
+ *------------
+ *  messages  
+ *------------
  *
  * messagesSend
  *
@@ -25,11 +29,25 @@
  *
  * messagesUnpin
  *
+ * messagesDelete
+ *
+ *
+ *----------
+ *  photos  
+ *----------
+ *
  * photosGetUploadServer
  *
  * photosSave
  * 
+ *
+ *-------- 
+ *  wall  
+ *--------
+ *
  * wallPost
+ *
+ *
  *
  */
 
@@ -186,6 +204,10 @@ class VK
 //------------  МЕТОДЫ  ----------------
 //--------------------------------------
     
+	
+/*-------------------------------*/
+/*			  messages			 */
+/*-------------------------------*/		
 	
     /*
 	**  функция отправки сообщения 
@@ -355,6 +377,41 @@ class VK
 		return $response;
 	}
 	
+	
+	/*
+	**  функция удаления сообщения
+	**
+	**  @param int,int,int... $message_ids
+	**  @param int $group_id
+	**  @param bool $delete_for_all
+ 	**  @param bool $spam  
+	**  
+	**  @return bool 
+	*/
+    public function messagesDelete(
+		$message_ids, 
+		$group_id,
+		$delete_for_all = false, 
+		$spam = false
+	) {				
+	
+		$response = $this->call("messages.delete", [
+			'message_ids' => $message_ids,
+			'spam' => $spam,
+			'group_id' => $group_id,
+			'delete_for_all' => $delete_for_all
+		]);	
+	
+		return $response;
+	}
+	
+	
+	
+	
+	
+/*-------------------------------*/
+/*			  photos			 */
+/*-------------------------------*/	
 	
 	/*
 	**  функция получения URL сервера для загрузки фото
