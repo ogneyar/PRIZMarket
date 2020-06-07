@@ -19,6 +19,8 @@
  *
  * messagesSend
  *
+ * messagesEdit
+ *
  * messagesPin
  *
  * photosGetUploadServer
@@ -253,6 +255,53 @@ class VK
 			'dont_parse_links' => $dont_parse_links,
 			'disable_mentions' => $disable_mentions,
 			'intent' => $intent
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  функция редактирования сообщения
+	**
+	**  @param int $peer_id
+	**  @param int $message_id
+ 	**  @param str $message
+ 	**  @param str $attachment
+	**  @param boolean $keep_forward_messages
+ 	**  @param boolean $keep_snippets
+	**  @param int $group_id
+ 	**  @param boolean $dont_parse_links
+ 	**  @param real $lat
+	**  @param real $long
+	**  
+	**  
+	**  @return array 
+	*/
+    public function messagesEdit(
+		$peer_id,
+		$message_id,
+		$message = null,
+		$attachment = null,
+		$keep_forward_messages = false, 
+		$keep_snippets = false,
+		$group_id = null, 
+		$dont_parse_links = false,
+		$lat = null,
+		$long = null
+	) {				
+	
+		$response = $this->call("messages.edit", [
+			'peer_id' => $peer_id,
+			'message' => $message,
+			'message_id' => $message_id,
+			'lat' => $lat,
+			'long' => $long,
+			'attachment' => $attachment,
+			'keep_forward_messages' => $keep_forward_messages,
+			'keep_snippets' => $keep_snippets,
+			'group_id' => $group_id,
+			'dont_parse_links' => $dont_parse_links
 		]);	
 	
 		return $response;
