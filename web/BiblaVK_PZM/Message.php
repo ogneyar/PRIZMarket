@@ -3,6 +3,10 @@ $text = str_replace("[club190150616|@pzmarket] ", "", $text);
 
 $text = str_replace("[club190150616|TesterPRIZMarket] ", "", $text);
 
+$text = str_replace("[club190150616|@prizmarket_vk] ", "", $text);
+
+$text = str_replace("[club190150616|Покупки на PRIZMarket] ", "", $text);
+
 if ($text == "Прива") {	
 	$random_id = time();	
 	$массив = [
@@ -88,8 +92,7 @@ if ($text == "Прива") {
 	sleep(1);
 	
 	$результат = $vk->messagesDelete([$message_id], $group_id, true);
-	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, $результJSON);
+	
 	
 }elseif ($text == "загрузи") {		
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
