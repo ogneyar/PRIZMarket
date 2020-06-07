@@ -27,13 +27,8 @@ if ($text == "Прива") {
 	
 	
 }elseif ($text == "открепи" || $text == "Открепи") {	
-	
-	$текст = "Текст для закрепа";	
-	$message_id = $vk->messagesSend($peer_id, $текст);
-	
-	$результат = $vk->messagesPin($peer_id, $message_id);
-	//$результJSON = json_encode($результат);
-	//$vk->messagesSend($peer_id, $результJSON);
+		
+	$vk->messagesUnpin($peer_id, $group_id);
 	
 	
 }elseif ($text == "измени" || $text == "Измени") {	
