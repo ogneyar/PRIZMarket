@@ -23,6 +23,8 @@
  *
  * messagesPin
  *
+ * messagesUnpin
+ *
  * photosGetUploadServer
  *
  * photosSave
@@ -208,7 +210,7 @@ class VK
 	**  @param bool $disable_mentions
 	**  @param str $intent
 	**  
-	**  @return array 
+	**  @return integer (message_id) 
 	*/
 
     public function messagesSend(
@@ -315,7 +317,7 @@ class VK
  	**  @param int $message_id
 	**  
 	**  
-	**  @return array 
+	**  @return bool 
 	*/
     public function messagesPin(
 		$peer_id, 
@@ -330,6 +332,28 @@ class VK
 		return $response;
 	}
 	
+	
+	/*
+	**  функция открепления сообщения
+	**
+	**  @param int $peer_id
+ 	**  @param int $group_id
+	**  
+	**  
+	**  @return bool 
+	*/
+    public function messagesUnpin(
+		$peer_id, 
+		$group_id
+	) {				
+	
+		$response = $this->call("messages.unpin", [
+			'peer_id' => $peer_id,
+			'group_id' => $group_id
+		]);	
+	
+		return $response;
+	}
 	
 	
 	/*
