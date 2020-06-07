@@ -23,6 +23,13 @@ if ($text == "Прива") {
 	$vk->messagesSend($peer_id, $результJSON);
 	
 	
+}elseif ($text == "измени" || $text == "Измени") {	
+
+	$результат = $vk->messagesEdit($peer_id, $conversation_message_id, "Зачем?");
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
+	
+	
 }elseif ($text == "загрузи") {		
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
 	if ($результат['error_msg']) {		
