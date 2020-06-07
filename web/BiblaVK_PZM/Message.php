@@ -1,6 +1,7 @@
 <?
 $text = str_replace("[club190150616|@pzmarket] ", "", $text);
 
+$text = str_replace("TesterPRIZMarket ", "", $text);
 if ($text == "Прива") {	
 	$random_id = time();	
 	$массив = [
