@@ -25,7 +25,7 @@ if ($text == "Прива") {
 	
 }elseif ($text == "измени" || $text == "Измени") {	
 
-	$результат = $vk->messagesEdit($peer_id, $conversation_message_id, "Зачем?");
+	$результат = $vk2->messagesEdit($peer_id, $conversation_message_id, "Зачем?");
 	$результJSON = json_encode($результат);
 	$vk->messagesSend($peer_id, $результJSON);
 	
