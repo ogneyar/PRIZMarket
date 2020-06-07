@@ -124,5 +124,33 @@ $event_id = $data['event_id'];
 $secret =  $data['secret'];
 //}
 
+$action1 = [
+	'type' => 'text',
+	'label' => 'А ну нажми!',
+	'payload' => null
+];
+
+$action2 = [
+	'type' => 'text',
+	'label' => 'Эту не нажми!',
+	'payload' => null
+];
+
+$кнопки = [
+	[
+		'action' => $action1,
+		'color' => 'primary'
+	],
+	[
+		'action' => $action2,
+		'color' => 'secondary'
+	]
+];
+
+$клавиатура_в_сообщении = [
+	'bool' => false,
+	'buttons' => $кнопки,
+	'inline' => true,
+];
 
 ?>
