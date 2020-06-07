@@ -24,10 +24,20 @@ if ($text == "Прива") {
 	
 	
 }elseif ($text == "измени" || $text == "Измени") {	
-
-	$результат = $vk2->messagesEdit($peer_id, $conversation_message_id, "Зачем?");
+	
+	$текст = "А";
+	$результат = $vk->messagesSend($peer_id, $текст);
+	$vk->messagesSend($peer_id, $текст);
+	$vk->messagesSend($peer_id, $текст);
+	$vk->messagesSend($peer_id, $текст);
+	$vk->messagesSend($peer_id, $текст);
+	
 	$результJSON = json_encode($результат);
 	$vk->messagesSend($peer_id, $результJSON);
+	
+	//$результат = $vk->messagesEdit($peer_id, $conversation_message_id, "Зачем?");
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
 	
 	
 }elseif ($text == "загрузи") {		
