@@ -27,6 +27,8 @@ if ($text == "Прива") {
 		'button' => '3' ] ];
 	$action4 = [ 'type' => 'text', 'label' => 'Измени', 'payload' => [ 
 		'button' => '4' ] ];
+	$action5 = [ 'type' => 'text', 'label' => 'Удали', 'payload' => [ 
+		'button' => '5' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1,
 			'color' => 'primary' ],
@@ -36,6 +38,8 @@ if ($text == "Прива") {
 			'color' => 'negative' ],
 		[	'action' => $action4,
 			'color' => 'positive' ]
+	],[	[	'action' => $action5,
+			'color' => 'secondary' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -70,6 +74,18 @@ if ($text == "Прива") {
 	sleep(1);
 		
 	$vk->messagesEdit($peer_id, $message_id, "Зачем?");
+		
+	
+}elseif ($text == "удали" || $text == "Удали") {	
+		
+	$vk->messagesSend($peer_id, "А");
+	sleep(1);
+	$message_id = $vk->messagesSend($peer_id, "Б");
+	sleep(1);
+	$vk->messagesSend($peer_id, "А");
+	sleep(1);
+		
+	$vk->messagesDelete($message_id, $group_id);
 		
 	
 }elseif ($text == "загрузи") {		
