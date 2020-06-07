@@ -18,8 +18,9 @@ if ($text == "Прива") {
 
 }elseif ($text == "закрепи" || $text == "Закрепи") {	
 
-	$vk->messagesPin($peer_id, $id);	 
-	$vk->messagesSend($peer_id, "Закрепил");
+	$результат = $vk->messagesPin($peer_id, $conversation_message_id);
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
 	
 	
 }elseif ($text == "загрузи") {		
