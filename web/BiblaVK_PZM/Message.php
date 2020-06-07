@@ -84,8 +84,8 @@ if ($text == "Прива") {
 	sleep(1);
 	$vk->messagesSend($peer_id, "А");
 	sleep(1);
-		
-	$результат = $vk->messagesDelete($message_id, $group_id);
+	
+	$результат = $vk->messagesDelete([$message_id], $group_id, true);
 	$результJSON = json_encode($результат);
 	$vk->messagesSend($peer_id, $результJSON);
 	
