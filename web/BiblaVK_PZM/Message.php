@@ -73,7 +73,7 @@ if ($text == "Прива") {
 	$message_id = $vk->messagesSend($peer_id, $текст);
 	sleep(1);
 		
-	$vk->messagesEdit($peer_id, $message_id, "Зачем?");
+	$результат = $vk->messagesEdit($peer_id, $message_id, "Зачем?");
 		
 	
 }elseif ($text == "удали" || $text == "Удали") {	
@@ -85,8 +85,9 @@ if ($text == "Прива") {
 	$vk->messagesSend($peer_id, "А");
 	sleep(1);
 		
-	$vk->messagesDelete($message_id, $group_id);
-		
+	$результат = $vk->messagesDelete($message_id, $group_id);
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
 	
 }elseif ($text == "загрузи") {		
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
