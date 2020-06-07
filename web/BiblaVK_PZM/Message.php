@@ -18,10 +18,10 @@ if ($text == "Прива") {
 
 }elseif ($text == "кнопы" || $text == "Кнопы") {	
 	
-	$клавиатура = json_encode($клавиатура_в_сообщении);
-	
-	$vk->messagesSend($peer_id, $group_id, null, null, null, $клавиатура);
-	
+	$клавиатура = json_encode($клавиатура_в_сообщении);	
+	$результат = $vk->messagesSend($peer_id, $group_id, null, null, null, $клавиатура);
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
 	
 }elseif ($text == "закрепи" || $text == "Закрепи") {	
 	
