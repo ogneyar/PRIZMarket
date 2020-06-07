@@ -1,9 +1,7 @@
 <?
 
-if ($text == "Прива") {
-	
-	$random_id = time();
-	
+if ($text == "Прива") {	
+	$random_id = time();	
 	$массив = [
 		"access_token" => $vk_token, 
 		"random_id" => $random_id, 
@@ -11,15 +9,19 @@ if ($text == "Прива") {
 		"message" => "Ну да, здравствуй)", 
 		"v" => $vk_api_version
 	];
-
 	file_get_contents("https://api.vk.com/method/". "messages.send?". http_build_query($массив));
-
 
 }elseif ($text=='курс' || $text=='Курс') {
     $курс = _kurs_PZM();
     $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$vk->messagesSend($peer_id, $курс);
 
+}elseif ($text == "закрепи" || $text == "Закрепи") {	
+
+	$vk->messagesPin($peer_id, $id);	 
+	$vk->messagesSend($peer_id, "Закрепил");
+	
+	
 }elseif ($text == "загрузи") {		
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
 	if ($результат['error_msg']) {		
