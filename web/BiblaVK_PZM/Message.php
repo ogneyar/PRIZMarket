@@ -44,8 +44,7 @@ if ($text == "Прива") {
 	];	
 	$клавиатура = json_encode($клавиатура_в_сообщении);	
 	$результат = $vk->messagesSend($peer_id, "Нажми на кнопку!", null, null, null, $клавиатура);
-	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, $результJSON);
+	
 	
 }elseif ($text == "закрепи" || $text == "Закрепи") {	
 	
@@ -107,6 +106,14 @@ if ($text == "Прива") {
 }elseif ($text == "Пост") {	
 	$vk2->wallPost(-$vk_group_id, "#куплю\n\n#еду за PRIZM\n\n#дорого", "photo-188536519_457239037");	 
 	$vk->messagesSend($peer_id, "Отправил");
+	
+	
+}elseif ($text == "еее" || $text == "Еее" || $text == "eee" || $text == "Eee" || $text == "ееее" || $text == "Ееее" || $text == "eeee" || $text == "Eeee") {	
+	
+	$текст = "Так держать, Мастер!";	
+	$message_id = $vk->messagesSend($peer_id, $текст);
+	
+	
 }
 
 /*else {
