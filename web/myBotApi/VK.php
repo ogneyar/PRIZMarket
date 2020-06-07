@@ -19,6 +19,8 @@
  *
  * messagesSend
  *
+ * messagesPin
+ *
  * photosGetUploadServer
  *
  * photosSave
@@ -257,13 +259,35 @@ class VK
 	}
 	
 	
+	/*
+	**  функция закрепления сообщения
+	**
+	**  @param int $peer_id
+ 	**  @param int $message_id
+	**  
+	**  
+	**  @return array 
+	*/
+    public function messagesPin(
+		$peer_id, 
+		$message_id
+	) {				
+	
+		$response = $this->call("messages.pin", [
+			'peer_id' => $peer_id,
+			'message_id' => $message_id
+		]);	
+	
+		return $response;
+	}
+	
+	
 	
 	/*
 	**  функция получения URL сервера для загрузки фото
 	**
 	**  @param int $album_id
  	**  @param int $group_id
-	**  @param str $version
 	**  
 	**  
 	**  @return array 
@@ -296,7 +320,6 @@ class VK
 	**  @param int $latitude
 	**  @param int $longitude
 	**  @param str $caption
-	**  @param str $version
 	**  
 	**  
 	**  @return array 
