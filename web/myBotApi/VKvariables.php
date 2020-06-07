@@ -16,47 +16,8 @@ $data = $vk->init('php://input');
 			"url": "https://sun9-46.userapi.com/c855636/v855636344/21bf5b/9c2UMQP1x48.jpg",
 			"type": "m",
 			"width": 130
-		},{
-			"height": 98,
-			"url": "https://sun9-7.userapi.com/c855636/v855636344/21bf5f/0w7ogBY5RRQ.jpg",
-			"type": "o",
-			"width": 130
-		},{
-			"height": 150,
-			"url": "https://sun9-37.userapi.com/c855636/v855636344/21bf60/OlF2bF0RkcA.jpg",
-			"type": "p",
-			"width": 200
-		},{
-			"height": 240,
-			"url": "https://sun9-65.userapi.com/c855636/v855636344/21bf61/FkErFlNE_w0.jpg",
-			"type": "q",
-			"width": 320
-		},{
-			"height": 383,
-			"url": "https://sun9-25.userapi.com/c855636/v855636344/21bf62/YfVwkG1dnbE.jpg",
-			"type": "r",
-			"width": 510
-		},{
-			"height": 56,
-			"url": "https://sun9-26.userapi.com/c855636/v855636344/21bf5a/kRHzKKJRqJ8.jpg",
-			"type": "s",
-			"width": 75
-		},{
-			"height": 453,
-			"url": "https://sun9-31.userapi.com/c855636/v855636344/21bf5c/gMUuCcRJWmQ.jpg",
-			"type": "x",
-			"width": 604
-		},{
-			"height": 605,
-			"url": "https://sun9-65.userapi.com/c855636/v855636344/21bf5d/7ZX1TqKaesw.jpg",
-			"type": "y",
-			"width": 807
-		},{
-			"height": 960,
-			"url": "https://sun9-72.userapi.com/c855636/v855636344/21bf5e/Qe6I57kYqcc.jpg",
-			"type": "z",
-			"width": 1280
-		}],
+		} их тут было 9 штук
+		],
 		"text": ""
 	}
 },
@@ -86,6 +47,53 @@ $data = $vk->init('php://input');
 	"peer_id": 2000000016,
 	"id": 7913
 }];
+
+{
+	"type": "wall_post_new",
+    "object": {
+        "id": 35,
+        "from_id": -190150616,
+        "owner_id": -190150616,
+        "date": 1591516534,
+        "marked_as_ads": 0,
+        "post_type": "post",
+        "text": "патптапртапрапрт",
+        "can_edit": 1,
+        "created_by": 119909267,
+        "can_delete": 1,
+        "comments": {
+            "count": 0
+        },
+        "is_favorite": false
+    },
+    "group_id": 190150616,
+    "event_id": "c8f954253277a3615d21290e7e8626d8128057fa",
+    "secret": "aaQdvgg43sdGgvFs2"
+}
+
+{
+    "type": "photo_new",
+    "object": {
+        "album_id": 270858085,
+        "date": 1591516678,
+        "id": 457239050,
+        "owner_id": -190150616,
+        "has_tags": false,
+        "sizes": [
+            {
+                "height": 70,
+                "url": "https://sun9-40.userapi.com/c854416/v854416282/23c36d/_JcNqzk_LJA.jpg",
+                "type": "s",
+                "width": 75
+            } их тут было 7 штук
+        ],
+        "text": "",
+        "user_id": 100
+    },
+    "group_id": 190150616,
+    "event_id": "fa6df0fc0fa933d11b12c82b1cefe03115287f5d",
+    "secret": "aaQdvgg43sdGgvFs2"
+}
 
 */
 
