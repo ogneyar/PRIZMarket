@@ -34,9 +34,9 @@ if ($text == "Прива") {
 		'button' => '5' ] ];
 	$action6 = [ 'type' => 'text', 'label' => 'Н.Беседа', 'payload' => [ 
 		'button' => '6' ] ];
-	$action7 = [ 'type' => 'text', 'label' => 'Удали', 'payload' => [ 
+	$action7 = [ 'type' => 'text', 'label' => 'Пост', 'payload' => [ 
 		'button' => '7' ] ];
-	$action8 = [ 'type' => 'text', 'label' => 'Н.Беседа', 'payload' => [ 
+	$action8 = [ 'type' => 'text', 'label' => 'удалиПост', 'payload' => [ 
 		'button' => '8' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1,
