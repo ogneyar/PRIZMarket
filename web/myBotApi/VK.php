@@ -31,6 +31,9 @@
  *
  * messagesDelete
  *
+ * messagesCreateChat
+ *
+ *
  *
  *----------
  *  photos  
@@ -406,7 +409,29 @@ class VK
 	}
 	
 	
+	/*
+	**  Создаёт беседу с несколькими участниками 
+	**
+	**  @param int,int,int... $user_ids
+ 	**  @param str $title
+	**  @param int $group_id
+	**  
+	**  @return bool 
+	*/
+    public function messagesCreateChat(
+		$user_ids,
+		$title, 
+		$group_id
+	) {				
 	
+		$response = $this->call("messages.createChat", [
+			'user_ids' => $user_ids,
+			'title' => $title,
+			'group_id' => $group_id
+		]);	
+	
+		return $response;
+	}
 	
 	
 /*-------------------------------*/
