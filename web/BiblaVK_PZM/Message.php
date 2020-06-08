@@ -36,8 +36,10 @@ if ($text == "Прива") {
 		'button' => '6' ] ];
 	$action7 = [ 'type' => 'text', 'label' => 'Пост', 'payload' => [ 
 		'button' => '7' ] ];
-	$action8 = [ 'type' => 'text', 'label' => 'удалиПост', 'payload' => [ 
+	$action8 = [ 'type' => 'text', 'label' => 'УдалиПост', 'payload' => [ 
 		'button' => '8' ] ];
+	$action9 = [ 'type' => 'text', 'label' => 'ИзмениПост', 'payload' => [ 
+		'button' => '9' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1,
 			'color' => 'primary' ],
@@ -55,6 +57,8 @@ if ($text == "Прива") {
 			'color' => 'positive' ],
 		[	'action' => $action8,
 			'color' => 'negative' ]
+	],[	[	'action' => $action9,
+			'color' => 'primary' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -116,17 +120,27 @@ if ($text == "Прива") {
 	
 }elseif ($text == "Пост") {	
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый текст");	 
-	$vk->messagesSend($peer_id, "Отправил");
+	$vk->messagesSend($peer_id, "Опубликовал пост.");
 	//$результJSON = json_encode($результат);
 	//$vk->messagesSend($peer_id, $результJSON);
 	
-}elseif ($text == "удалиПост") {	
+}elseif ($text == "УдалиПост") {	
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый текст");	 
-	$vk->messagesSend($peer_id, "Отправил");
+	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды удалится пост!");
 	sleep(3);
 	$результат = $vk2->wallDelete(-$vk_group_id, $результат['post_id']);	 
-	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, $результJSON);
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
+	if ($результат) $vk->messagesSend($peer_id, "Удалил.");
+	
+}elseif ($text == "ИзмениПост") {	
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый текст для редактирования!");	 
+	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды изменится пост!");
+	sleep(3);
+	$результат = $vk2->wallEdit(-$vk_group_id, $результат['post_id'], "А теперь тут этот текст!");	 
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
+	if ($результат) $vk->messagesSend($peer_id, "Изменил.");
 	
 }elseif ($text == "загрузи") {		
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
