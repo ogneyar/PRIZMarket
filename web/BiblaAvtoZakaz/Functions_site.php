@@ -411,7 +411,7 @@ function _вывод_списка_лотов_клиента($таблица, $и
 	
 	if ($имя_клиента) {
 		$query = "SELECT * FROM {$таблица} WHERE username='{$имя_клиента}' AND id_client='7'";
-	}else $query = "SELECT * FROM {$таблица} AND id_client='7'";
+	}else $query = "SELECT * FROM {$таблица} WHERE id_client='7'";
 		
 	if ($result = $mysqli->query($query)) {		
 		$reply="Таблица {$таблица}:\n";			
