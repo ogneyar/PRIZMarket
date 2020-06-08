@@ -1,10 +1,7 @@
 <?
 $text = str_replace("[club190150616|@pzmarket] ", "", $text);
-
 $text = str_replace("[club190150616|TesterPRIZMarket] ", "", $text);
-
 $text = str_replace("[club188536519|@prizmarket_vk] ", "", $text);
-
 $text = str_replace("[club188536519|Покупки на PRIZMarket] ", "", $text);
 
 if ($text == "Прива") {	
@@ -35,6 +32,8 @@ if ($text == "Прива") {
 		'button' => '4' ] ];
 	$action5 = [ 'type' => 'text', 'label' => 'Удали', 'payload' => [ 
 		'button' => '5' ] ];
+	$action6 = [ 'type' => 'text', 'label' => 'Н.Беседа', 'payload' => [ 
+		'button' => '6' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1,
 			'color' => 'primary' ],
@@ -45,7 +44,9 @@ if ($text == "Прива") {
 		[	'action' => $action4,
 			'color' => 'positive' ]
 	],[	[	'action' => $action5,
-			'color' => 'secondary' ]
+			'color' => 'secondary' ],
+		[	'action' => $action6,
+			'color' => 'primary' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -80,7 +81,9 @@ if ($text == "Прива") {
 	sleep(1);
 		
 	$результат = $vk->messagesEdit($peer_id, $message_id, "Зачем?");
-		
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
+	
 	
 }elseif ($text == "удали" || $text == "Удали") {	
 		
@@ -92,6 +95,15 @@ if ($text == "Прива") {
 	sleep(1);
 	
 	$результат = $vk->messagesDelete([$message_id], $group_id, true);
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
+	
+	
+}elseif ($text == "Н.Беседа") {	
+		
+	$результат = $vk->messagesCreateChat([119909267], "Автоматически созданная беседа", $group_id);
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
 	
 	
 }elseif ($text == "загрузи") {		
