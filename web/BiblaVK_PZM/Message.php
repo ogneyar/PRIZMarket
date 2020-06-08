@@ -117,15 +117,16 @@ if ($text == "Прива") {
 }elseif ($text == "Пост") {	
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый текст");	 
 	$vk->messagesSend($peer_id, "Отправил");
-	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, $результJSON);
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
 	
 }elseif ($text == "удалиПост") {	
-	$vk2->wallPost(-$vk_group_id, "Тестовый текст");	 
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый текст");	 
 	$vk->messagesSend($peer_id, "Отправил");
 	sleep(3);
-	$vk2->wallDelete(-$vk_group_id, $post_id);	 
-	
+	$результат = $vk2->wallDelete(-$vk_group_id, $результат['post_id']);	 
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
 	
 }elseif ($text == "загрузи") {		
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
