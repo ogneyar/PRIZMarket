@@ -57,9 +57,9 @@ if ($text == 'база') {
 	
 }elseif ($text == 'марксайт') {	
 	if ($id) {	
-		$bot->_вывод_списка_лотов_клиента($table_market, $id);	
+		_вывод_списка_лотов_клиента($table_market, $id);	
 	}else {		
-		$bot->_вывод_списка_лотов_клиента($table_market);		
+		_вывод_списка_лотов_клиента($table_market);		
 	}			
 	
 }elseif ($text == 'где') {
