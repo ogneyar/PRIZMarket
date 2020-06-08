@@ -34,6 +34,10 @@ if ($text == "Прива") {
 		'button' => '5' ] ];
 	$action6 = [ 'type' => 'text', 'label' => 'Н.Беседа', 'payload' => [ 
 		'button' => '6' ] ];
+	$action7 = [ 'type' => 'text', 'label' => 'Удали', 'payload' => [ 
+		'button' => '7' ] ];
+	$action8 = [ 'type' => 'text', 'label' => 'Н.Беседа', 'payload' => [ 
+		'button' => '8' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1,
 			'color' => 'primary' ],
@@ -47,6 +51,10 @@ if ($text == "Прива") {
 			'color' => 'secondary' ],
 		[	'action' => $action6,
 			'color' => 'primary' ]
+	],[	[	'action' => $action7,
+			'color' => 'positive' ],
+		[	'action' => $action8,
+			'color' => 'negative' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -104,6 +112,19 @@ if ($text == "Прива") {
 	$результат = $vk->messagesCreateChat([119909267], "Автоматически созданная беседа", $group_id);
 	$результJSON = json_encode($результат);
 	$vk->messagesSend($peer_id, $результJSON);
+	
+	
+}elseif ($text == "Пост") {	
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый текст");	 
+	$vk->messagesSend($peer_id, "Отправил");
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
+	
+}elseif ($text == "удалиПост") {	
+	$vk2->wallPost(-$vk_group_id, "Тестовый текст");	 
+	$vk->messagesSend($peer_id, "Отправил");
+	sleep(3);
+	$vk2->wallDelete(-$vk_group_id, $post_id);	 
 	
 	
 }elseif ($text == "загрузи") {		
