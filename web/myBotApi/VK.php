@@ -50,6 +50,7 @@
  *
  * wallPost
  *
+ * wallDelete
  *
  *
  */
@@ -462,8 +463,6 @@ class VK
 	}
 
 	
-	
-	
 	/*
 	**  функция сохранения фото
 	**
@@ -506,6 +505,10 @@ class VK
 	}
 	
 	
+/*-------------------------------*/
+/*			   wall				 */
+/*-------------------------------*/		
+	
 	/*
 	**  функция сооздания записи на стене
 	**
@@ -534,7 +537,7 @@ class VK
     public function wallPost(
 		$owner_id,
 		$message,
-		$attachments,
+		$attachments = null,
 		$from_group = true,
 		$friends_only = false,
 		$services = null,
@@ -575,6 +578,26 @@ class VK
 	}
 	
 	
+	/*
+	**  Удаляет запись со стены
+	**
+	**  @param int $owner_id
+	**  @param str $post_id
+	**  
+	**  @return bool 
+	*/
+    public function wallDelete(
+		$owner_id,
+		$post_id
+	) {				
+	
+		$response = $this->call("wall.delete", [
+			'owner_id' => $owner_id,
+			'post_id' => $post_id
+		]);	
+	
+		return $response;
+	}
 	
 } 
 
