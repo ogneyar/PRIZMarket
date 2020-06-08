@@ -95,6 +95,23 @@ $data = $vk->init('php://input');
     "secret": "aaQdvgg43sdGgvFs2"
 }
 
+
+{
+    "type": "group_change_settings",
+    "object": {
+        "user_id": 119909267,
+        "changes": {
+            "website": {
+                "old_value": "",
+                "new_value": "https://prizmarket.online/"
+            }
+        }
+    },
+    "group_id": 190150616,
+    "event_id": "faf456d236d4e454ae2a5d0db33d7bf07489c419",
+    "secret": "aaQdvgg43sdGgvFs2"
+}
+
 */
 
 $type = $data['type'];
