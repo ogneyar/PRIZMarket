@@ -55,6 +55,13 @@ if ($text == 'база') {
 		$bot->output_table($table_market);		
 	}			
 	
+}elseif ($text == 'марксайт') {	
+	if ($id) {	
+		$bot->_вывод_списка_лотов_клиента($table_market, $id);	
+	}else {		
+		$bot->_вывод_списка_лотов_клиента($table_market);		
+	}			
+	
 }elseif ($text == 'где') {
 	
 	//$результат = $vk2->uploadAndGetUrl($vk_album_id, $vk_group_id, $ссылка_на_файл);

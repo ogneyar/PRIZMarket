@@ -13,6 +13,8 @@
 ** _отказать_с_сайта
 ** 
 ** _есть_ли_запись
+*
+* _вывод_списка_лотов_клиента
 **
 */
 
@@ -398,5 +400,35 @@ function _есть_ли_запись($логин, $запись) {
 	}
 	return $ответ;
 }
+
+
+/*
+** Вывод заданной таблицы на экран	
+*/
+function _вывод_списка_лотов_клиента($таблица, $имя_клиента = null, $max_kol_s = 4000) { 
+
+	global $chat_id, $mysqli, $master, $bot;
+	
+	if ($имя_клиента) {
+		$query = "SELECT * FROM {$таблица} WHERE username='{$имя_клиента}' AND id_client='7'";
+	}else $query = "SELECT * FROM {$таблица} AND id_client='7'";
+		
+	if ($result = $mysqli->query($query)) {		
+		$reply="Таблица {$таблица}:\n";			
+		if($result->num_rows>0){			
+			$arrayResult = $result->fetch_all();
+			foreach($arrayResult as $row){
+				foreach($row as $stroka) $reply.= "| ".$stroka." ";
+				$reply.="|\n";							
+			}		
+			$bot->output($reply, $max_kol_s);
+		}else $bot->sendMessage($chat_id, "пуста таблица ".
+			" \xF0\x9F\xA4\xB7\xE2\x80\x8D\xE2\x99\x82\xEF\xB8\x8F");
+	}else throw new Exception("Не смог получить записи в таблице {$таблица} (_вывод_списка_лотов_клиента)");
+
+	return true;
+	
+}
+
 
 ?>
