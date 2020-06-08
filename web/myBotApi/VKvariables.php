@@ -112,6 +112,59 @@ $data = $vk->init('php://input');
     "secret": "aaQdvgg43sdGgvFs2"
 }
 
+
+
+
+{
+    "type": "wall_post_new",
+    "object": {
+        "id": 42,
+        "from_id": -190150616,
+        "owner_id": -190150616,
+        "date": 1591627811,
+        "marked_as_ads": 0,
+        "post_type": "post",
+        "text": "#продаю\n\n#услуги\n&#9642;&#65039;Хлеб \n&#9642;&#65039;PZM\n&#9642;&#65039;#Россия\n&#9642;&#65039;https://wa.me/77773333333\n   лот 165   (prizmarket.ru)\n\nпрошла по пенопласту шиной а оно\nпрошла по пенопласту шиной а онопрошла по пенопласту шиной а оно\nпрошла по пенопласту шиной а онопрошла по пенопласту шиной а онопрошла по пенопласту шиной а онопрошла по пенопласту шиной а онопрошла по пенопласту шиной а оно",
+        "can_edit": 1,
+        "created_by": 119909267,
+        "can_delete": 1,
+        "attachments": [
+            {
+                "type": "photo",
+                "photo": {
+                    "album_id": 270858085,
+                    "date": 1591627810,
+                    "id": 457239051,
+                    "owner_id": -190150616,
+                    "has_tags": false,
+                    "access_key": "4231606c203e21a848",
+                    "sizes": [
+                        {
+                            "height": 81,
+                            "url": "https://sun9-41.userapi.com/c858520/v858520029/1b0673/45Jqg4t32Og.jpg",
+                            "type": "m",
+                            "width": 130
+                        }, и ещё много их тут было
+                    ],
+                    "text": "",
+                    "user_id": 100
+                }
+            }
+        ],
+        "comments": {
+            "count": 0
+        },
+        "is_favorite": false
+    },
+    "group_id": 190150616,
+    "event_id": "5e4210e826ab1c7f2b4b8798322614032884d35d",
+    "secret": "aaQdvgg43sdGgvFs2"
+}
+
+
+
+
+
 */
 
 $type = $data['type'];
