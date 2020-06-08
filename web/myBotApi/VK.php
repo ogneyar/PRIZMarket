@@ -52,6 +52,9 @@
  *
  * wallDelete
  *
+ * wallEdit
+ *
+ *
  *
  */
 
@@ -536,7 +539,7 @@ class VK
 
     public function wallPost(
 		$owner_id,
-		$message,
+		$message = null,
 		$attachments = null,
 		$from_group = true,
 		$friends_only = false,
@@ -599,7 +602,77 @@ class VK
 		return $response;
 	}
 	
-} 
+	
+	/*
+	**  Редактирует запись на стене
+	**
+	**  @param int $owner_id
+	**  @param int $post_id
+	**  @param str $message
+	**  @param str $attachments   список слов, разделенных через запятую
+ 	**  @param bool $friends_only
+	**  @param str $services
+	**  @param bool $signed
+	**  @param int $publish_date
+	**  @param real $lat
+	**  @param real $long
+	**  @param int $place_id
+	**  @param bool $mark_as_ads
+	**  @param bool $close_comments
+	**  @param int $poster_bkg_id
+	**  @param int $poster_bkg_owner_id
+	**  @param str $poster_bkg_access_hash
+	**  @param str $copyright
+	**  
+	**  
+	**  @return array 
+	*/
 
-
+    public function wallEdit(
+		$owner_id,
+		$post_id,
+		$message = null,
+		$attachments = null,
+		$friends_only = false,
+		$services = null,
+		$signed = false,
+		$publish_date = null,
+		$lat = null,
+		$long = null,
+		$place_id = null,
+		$mark_as_ads = false,
+		$close_comments = false,
+		$poster_bkg_id = null,
+		$poster_bkg_owner_id = null,
+		$poster_bkg_access_hash = null,
+		$copyright = null
+	) {				
+	
+		$response = $this->call("wall.edit", [
+			'owner_id' => $owner_id,
+			'post_id' => $post_id,
+			'friends_only' => $friends_only,
+			'message' => $message,
+			'attachments' => $attachments,
+			'services' => $services,
+			'signed' => $signed,
+			'publish_date' => $publish_date,
+			'lat' => $lat,
+			'long' => $long,
+			'place_id' => $place_id,
+			'mark_as_ads' => $mark_as_ads,
+			'close_comments' => $close_comments,
+			'poster_bkg_id' => $poster_bkg_id,
+			'poster_bkg_owner_id' => $poster_bkg_owner_id,
+			'poster_bkg_access_hash' => $poster_bkg_access_hash,
+			'copyright' => $copyright
+		]);	
+	
+		return $response;
+	}
+	
+	
+	
+	
+}
 ?>
