@@ -56,6 +56,10 @@
  *
  * wallEdit
  *
+ * wallCloseComments
+ *
+ * wallOpenComments
+ *
  * wallCreateComment
  *
  * wallEditComment
@@ -714,6 +718,50 @@ class VK
 	
 	
 	/*
+	**  Выключает комментирование записи
+	**
+	**  @param int $owner_id
+	**  @param int $post_id
+	**  
+	**  @return bool 
+	*/
+    public function wallCloseComments(
+		$owner_id,
+		$post_id
+	) {				
+	
+		$response = $this->call("wall.closeComments", [
+			'owner_id' => $owner_id,
+			'post_id' => $post_id
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Включает комментирование записи
+	**
+	**  @param int $owner_id
+	**  @param int $post_id
+	**  
+	**  @return bool 
+	*/
+    public function wallOpenComments(
+		$owner_id,
+		$post_id
+	) {				
+	
+		$response = $this->call("wall.openComments", [
+			'owner_id' => $owner_id,
+			'post_id' => $post_id
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
 	**  Добавляет комментарий к записи на стене
 	**
 	**  @param int $owner_id
@@ -727,7 +775,6 @@ class VK
 	**  
 	**  @return array 
 	*/
-
     public function wallCreateComment(
 		$owner_id,
 		$post_id,
