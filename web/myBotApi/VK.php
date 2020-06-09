@@ -48,6 +48,8 @@
  *  wall  
  *--------
  *
+ * wallCheckCopyrightLink
+ *
  * wallPost
  *
  * wallDelete
@@ -69,6 +71,13 @@
  * wallGetComment
  *
  * wallGetComments
+ *
+ * wallGetReposts
+ *
+ *
+ *
+ *
+ *
  *
  *
  */
@@ -526,6 +535,23 @@ class VK
 /*-------------------------------*/
 /*			   wall				 */
 /*-------------------------------*/		
+		
+	/*
+	**  Проверяет ссылку для указания источника
+	**
+	**  @param str $link
+	**  
+	**  @return bool 
+	*/
+    public function wallCheckCopyrightLink($link) {				
+	
+		$response = $this->call("wall.checkCopyrightLink", [			
+			'link' => $link
+		]);	
+	
+		return $response;
+	}
+	
 	
 	/*
 	**  функция сооздания записи на стене
@@ -965,6 +991,35 @@ class VK
 	
 		return $response;
 	}
+	
+	
+	/*
+	**  Позволяет получать список репостов заданной записи (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $post_id
+ 	**  @param int $offset 
+	**  @param int $count // не более 1000
+	**  
+	**  @return array 
+	*/
+    public function wallGetReposts(
+		$owner_id,
+		$post_id,
+		$offset = null,
+		$count = 20
+	) {				
+	
+		$response = $this->call("wall.getReposts", [
+			'owner_id' => $owner_id,
+			'post_id' => $post_id,
+			'offset' => $offset,
+			'count' => $count
+		]);	
+	
+		return $response;
+	}
+	
 	
 	
 	
