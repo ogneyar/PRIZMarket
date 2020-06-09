@@ -222,8 +222,9 @@ if ($text == "Прива") {
 }elseif ($text == "СписокПостов") {	
 	
 	$результат = $vk2->wallGet(-$vk_group_id, null, null, 1);
-	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, $результJSON);
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
+	$vk->messagesSend($peer_id, print_r($результат));
 	
 	
 }elseif ($text == "Пусто") {	
