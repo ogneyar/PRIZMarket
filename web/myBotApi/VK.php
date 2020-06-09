@@ -66,7 +66,9 @@
  *
  * wallSearch
  *
+ * wallGetComment
  *
+ * wallGetComments
  *
  *
  */
@@ -852,7 +854,7 @@ class VK
 	**  @param str $domain
 	**  @param str $query
 	**  @param bool $owners_only
- 	**  @param int $count - не более 100
+ 	**  @param int $count // не более 100
 	**  @param int $offset
 	**  @param bool $extended
 	**  @param str,str $fields
@@ -883,6 +885,87 @@ class VK
 	
 		return $response;
 	}
+	
+	
+	/*
+	**  Получает информацию о комментарии на стене (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $comment_id
+	**  @param bool $extended
+	**  @param str,str $fields
+	**  
+	**  @return array 
+	*/
+    public function wallGetComment(
+		$owner_id,
+		$comment_id = null,
+		$extended = false,
+		$fields = null
+	) {				
+	
+		$response = $this->call("wall.getComment", [
+			'owner_id' => $owner_id,
+			'comment_id' => $comment_id,
+			'extended' => $extended,
+			'fields' => $fields
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Возвращает список комментариев к записи на стене (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $post_id
+	**  @param bool $need_likes
+	**  @param int $start_comment_id
+ 	**  @param int $offset 
+	**  @param int $count // не более 100
+	**  @param str $sort
+	**  @param int $preview_length
+	**  @param bool $extended
+	**  @param str,str $fields
+	**  @param int $comment_id
+	**  @param int $thread_items_count // не более 10
+	**  
+	**  @return array 
+	*/
+    public function wallGetComments(
+		$owner_id,
+		$post_id,
+		$need_likes = false,
+		$start_comment_id = null,
+		$offset = null,
+		$count = 10,
+		$sort = null,
+		$preview_length = null,
+		$extended = false,
+		$fields = null,
+		$comment_id = null,
+		$thread_items_count = 0
+	) {				
+	
+		$response = $this->call("wall.getComments", [
+			'owner_id' => $owner_id,
+			'post_id' => $post_id,
+			'need_likes' => $need_likes,
+			'start_comment_id' => $start_comment_id,
+			'offset' => $offset,
+			'count' => $count,
+			'sort' => $sort,
+			'preview_length' => $preview_length,
+			'extended' => $extended,
+			'fields' => $fields,
+			'comment_id' => $comment_id,
+			'thread_items_count' => $thread_items_count
+		]);	
+	
+		return $response;
+	}
+	
 	
 	
 	
