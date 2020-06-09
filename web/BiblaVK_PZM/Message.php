@@ -285,10 +285,8 @@ if ($text == "Прива") {
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для wall.getComments! (s - на конце)");	 
 	$номер_поста = $результат['post_id'];
 	$результат = $vk2->wallCreateComment(-$vk_group_id, $номер_поста, "Вот такой тут коммент для wall.getComments! (s - на конце)");	
-	$номер_коммента1 = $результат['comment_id'];
-	$результат = $vk2->wallCreateComment(-$vk_group_id, $номер_поста, "Второй такой тут коммент для wall.getComments! (s - на конце)");
-	$номер_коммента2 = $результат['comment_id'];
-	$vk->messagesSend($peer_id, "Опубликовал пост и добавил два комментария. Номер поста: {$номер_поста}");
+	$номер_коммента = $результат['comment_id'];
+	$vk->messagesSend($peer_id, "Опубликовал пост и добавил комментарий. Номер поста: {$номер_поста}");
 	
 	$результат = $vk2->wallGetComments(-$vk_group_id, $номер_поста);
 	$результJSON = json_encode($результат);
