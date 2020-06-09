@@ -52,41 +52,61 @@ if ($text == "Прива") {
 		'button' => '14' ] ];
 	$action15 = [ 'type' => 'text', 'label' => 'ПоискПоста', 'payload' => [ 
 		'button' => '15' ] ];
-	$action16 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action16 = [ 'type' => 'text', 'label' => 'НомерКоммента', 'payload' => [ 
 		'button' => '16' ] ];
+	$action17 = [ 'type' => 'text', 'label' => 'ВсеКомменты', 'payload' => [ 
+		'button' => '17' ] ];
+	$action18 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '18' ] ];
+	$action19 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '19' ] ];
+	$action20 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '20' ] ];
+	$action21 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '21' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1,
 			'color' => 'secondary' ],
 		[	'action' => $action2,
-			'color' => 'primary' ],
+			'color' => 'positive' ],
 		[	'action' => $action3,
 			'color' => 'negative' ]
 	],[	[	'action' => $action4,
-			'color' => 'positive' ],
+			'color' => 'primary' ],
 		[	'action' => $action5,
 			'color' => 'secondary' ],
 		[	'action' => $action6,
-			'color' => 'primary' ]
+			'color' => 'positive' ]
 	],[	[	'action' => $action7,
 			'color' => 'negative' ],
 		[	'action' => $action8,
-			'color' => 'positive' ],
+			'color' => 'primary' ],
 		[	'action' => $action9,
 			'color' => 'secondary' ]
 	],[	[	'action' => $action10,
-			'color' => 'primary' ],
+			'color' => 'positive' ],
 		[	'action' => $action11,
 			'color' => 'negative' ],
 		[	'action' => $action12,
-			'color' => 'positive' ]
+			'color' => 'primary' ]
 	],[	[	'action' => $action13,
 			'color' => 'secondary' ],
 		[	'action' => $action14,
-			'color' => 'primary' ],
+			'color' => 'positive' ],
 		[	'action' => $action15,
 			'color' => 'negative' ]
 	],[	[	'action' => $action16,
+			'color' => 'primary' ],
+		[	'action' => $action17,
+			'color' => 'secondary' ],
+		[	'action' => $action18,
 			'color' => 'positive' ]
+	],[	[	'action' => $action19,
+			'color' => 'negative' ],
+		[	'action' => $action20,
+			'color' => 'primary' ],
+		[	'action' => $action21,
+			'color' => 'secondary' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -223,18 +243,18 @@ if ($text == "Прива") {
 	
 	$результат = $vk2->wallGet(-$vk_group_id, null, null, 1);
 	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, "Метод wallGet\n\n".$результJSON);
+	$vk->messagesSend($peer_id, "Метод wall.get\n\n".$результJSON);
 	//$vk->messagesSend($peer_id, print_r($результат, true));
 	
 	
 }elseif ($text == "НомерПоста") {	
 	
-	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост! (wallGetById)");	 
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост! (wall.getById)");	 
 	$vk->messagesSend($peer_id, "Опубликовал пост. Его номер: ".$результат['post_id']);
 	
 	$результат = $vk2->wallGetById(-$vk_group_id."_".$результат['post_id']);
 	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, "Метод wallGetById\n\n".$результJSON);
+	$vk->messagesSend($peer_id, "Метод wall.getById\n\n".$результJSON);
 	//$vk->messagesSend($peer_id, print_r($результат, true));
 	
 	
@@ -244,7 +264,33 @@ if ($text == "Прива") {
 		
 	$результат = $vk2->wallSearch(-$vk_group_id, null, "Закрепи");
 	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, "Метод wallSearch\n\n".$результJSON);
+	$vk->messagesSend($peer_id, "Метод wall.search\n\n".$результJSON);
+	
+	
+}elseif ($text == "НомерКоммента") {	
+		
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для wall.getComment!");	 
+	$номер_поста = $результат['post_id'];
+	$результат = $vk2->wallCreateComment(-$vk_group_id, $номер_поста, "Вот такой тут коммент для wall.getComment!");	
+	$номер_коммента = $результат['comment_id'];
+	$vk->messagesSend($peer_id, "Опубликовал пост и добавил комментарий. Номер коммента: {$номер_коммента}");
+	
+	$результат = $vk2->wallGetComment(-$vk_group_id, $номер_коммента);
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, "Метод wall.getComment\n\n".$результJSON);
+	
+	
+}elseif ($text == "ВсеКомменты") {	
+		
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для wall.getComments! (s - на конце)");	 
+	$номер_поста = $результат['post_id'];
+	$результат = $vk2->wallCreateComment(-$vk_group_id, $номер_поста, "Вот такой тут коммент для wall.getComments! (s - на конце)");	
+	$номер_коммента = $результат['comment_id'];
+	$vk->messagesSend($peer_id, "Опубликовал пост и добавил комментарий. Номер поста: {$номер_поста}");
+	
+	$результат = $vk2->wallGetComments(-$vk_group_id, $номер_поста);
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, "Метод wall.getComments (s - на конце)\n\n".$результJSON);
 	
 	
 }elseif ($text == "Пусто") {	
