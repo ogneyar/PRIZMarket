@@ -75,7 +75,7 @@ if ($text == "Прива") {
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
 		'buttons' => $кнопки,
-		'inline' => true
+		'inline' => false
 	];	
 	$клавиатура = json_encode($клавиатура_в_сообщении);	
 	$результат = $vk->messagesSend($peer_id, "Нажми на кнопку!", null, null, null, $клавиатура);
