@@ -54,7 +54,11 @@
  *
  * wallEdit
  *
+ * wallCreateComment
  *
+ * wallEditComment
+ *
+ * wallDeleteComment
  *
  */
 
@@ -670,6 +674,101 @@ class VK
 	
 		return $response;
 	}
+	
+	
+	/*
+	**  Добавляет комментарий к записи на стене
+	**
+	**  @param int $owner_id
+	**  @param int $post_id
+	**  @param str $message
+	**  @param str,str $attachments
+ 	**  @param int $from_group
+	**  @param int $reply_to_comment
+	**  @param int $sticker_id
+	**  @param str $guid
+	**  
+	**  @return array 
+	*/
+
+    public function wallCreateComment(
+		$owner_id,
+		$post_id,
+		$message = null,
+		$attachments = null,
+		$from_group = null,
+		$reply_to_comment = null,
+		$sticker_id = null,
+		$guid = null
+	) {				
+	
+		$response = $this->call("wall.createComment", [
+			'owner_id' => $owner_id,
+			'post_id' => $post_id,
+			'from_group' => $from_group,
+			'message' => $message,
+			'reply_to_comment' => $reply_to_comment,
+			'attachments' => $attachments,
+			'sticker_id' => $sticker_id,
+			'guid' => $guid
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Редактирует комментарий на стене (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $comment_id
+	**  @param str $message
+	**  @param str $attachments
+	**  
+	**  @return array 
+	*/
+
+    public function wallEditComment(
+		$owner_id,
+		$comment_id,
+		$message = null,
+		$attachments = null
+	) {				
+	
+		$response = $this->call("wall.editComment", [
+			'owner_id' => $owner_id,
+			'comment_id' => $comment_id,
+			'message' => $message,
+			'attachments' => $attachments
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Удаляет комментарий к записи на стене (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $comment_id
+	**  
+	**  @return array 
+	*/
+
+    public function wallDeleteComment(
+		$owner_id,
+		$comment_id
+	) {				
+	
+		$response = $this->call("wall.deleteComment", [
+			'owner_id' => $owner_id,
+			'comment_id' => $comment_id
+		]);	
+	
+		return $response;
+	}
+	
+	
 	
 	
 	
