@@ -60,6 +60,13 @@
  *
  * wallDeleteComment
  *
+ * wallGet
+ *
+ *
+ *
+ *
+ *
+ *
  */
 
 class VK
@@ -763,6 +770,44 @@ class VK
 		$response = $this->call("wall.deleteComment", [
 			'owner_id' => $owner_id,
 			'comment_id' => $comment_id
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Возвращает список записей со стены пользователя или сообщества
+	**
+	**  @param int $owner_id
+	**  @param str $domain
+	**  @param int $offset
+	**  @param int $count
+ 	**  @param str $filter
+	**  @param bool $extended
+	**  @param str,str $fields
+	**  
+	**  @return array 
+	*/
+
+    public function wallGet(
+		$owner_id,
+		$domain = null,
+		$offset = null,
+		$count = null,
+		$filter = null,
+		$extended = false,
+		$fields = null
+	) {				
+	
+		$response = $this->call("wall.get", [
+			'owner_id' => $owner_id,
+			'domain' => $domain,
+			'offset' => $offset,
+			'count' => $count,
+			'filter' => $filter,
+			'extended' => $extended,
+			'fields' => $fields
 		]);	
 	
 		return $response;

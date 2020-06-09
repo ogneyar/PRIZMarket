@@ -1,175 +1,13 @@
 <?
 // Обрабатываем пришедшие данные
 $data = $vk->init('php://input');
-/*
-"attachments": [{
-	"type": "photo",
-	"photo": {
-		"album_id": -7,
-		"date": 1585572784,
-		"id": 457239365,
-		"owner_id": 119909267,
-		"has_tags": false,
-		"access_key": "880e4cf1ea128a79a2",
-		"sizes": [{
-			"height": 97,
-			"url": "https://sun9-46.userapi.com/c855636/v855636344/21bf5b/9c2UMQP1x48.jpg",
-			"type": "m",
-			"width": 130
-		} их тут было 9 штук
-		],
-		"text": ""
-	}
-},
-{
-	"type": "audio",
-	"audio": {
-		"artist": "ПБ",
-		"id": 456239024,
-		"owner_id": 119909267,
-		"title": "11.Война",
-		"duration": 96,
-		"track_code": "eaf14c7fa8jGJFN-amcPN5Yl-sDxiqMJqA",
-		"url": "https://psv4.vkuseraudio.net/c4234/u5489898/audios/bdedd3aa38dd.mp3?extra=bkcMZUg95oEwXSO4MRILbqH9lNa92OYUeNxYaHU99f1O1f1ZJE8j1DFHDBEimY55uxdE6HgXyze2xGUi4Wt9-ldfE5dtzf5Wd1z-nlzkPjDhQXDfEop0fnUSBg6JVNuHKiPKVKs",
-		"date": 1538561779,
-		"genre_id": 18
-	}
-}];
-
-
-
-"fwd_messages": [{
-	"date": 1591032009,
-	"from_id": 119909267,
-	"text": "Курс",
-	"attachments": [],
-	"conversation_message_id": 31,
-	"peer_id": 2000000016,
-	"id": 7913
-}];
-
-{
-	"type": "wall_post_new",
-    "object": {
-        "id": 35,
-        "from_id": -190150616,
-        "owner_id": -190150616,
-        "date": 1591516534,
-        "marked_as_ads": 0,
-        "post_type": "post",
-        "text": "патптапртапрапрт",
-        "can_edit": 1,
-        "created_by": 119909267,
-        "can_delete": 1,
-        "comments": {
-            "count": 0
-        },
-        "is_favorite": false
-    },
-    "group_id": 190150616,
-    "event_id": "c8f954253277a3615d21290e7e8626d8128057fa",
-    "secret": "aaQdvgg43sdGgvFs2"
-}
-
-{
-    "type": "photo_new",
-    "object": {
-        "album_id": 270858085,
-        "date": 1591516678,
-        "id": 457239050,
-        "owner_id": -190150616,
-        "has_tags": false,
-        "sizes": [
-            {
-                "height": 70,
-                "url": "https://sun9-40.userapi.com/c854416/v854416282/23c36d/_JcNqzk_LJA.jpg",
-                "type": "s",
-                "width": 75
-            } их тут было 7 штук
-        ],
-        "text": "",
-        "user_id": 100
-    },
-    "group_id": 190150616,
-    "event_id": "fa6df0fc0fa933d11b12c82b1cefe03115287f5d",
-    "secret": "aaQdvgg43sdGgvFs2"
-}
-
-
-{
-    "type": "group_change_settings",
-    "object": {
-        "user_id": 119909267,
-        "changes": {
-            "website": {
-                "old_value": "",
-                "new_value": "https://prizmarket.online/"
-            }
-        }
-    },
-    "group_id": 190150616,
-    "event_id": "faf456d236d4e454ae2a5d0db33d7bf07489c419",
-    "secret": "aaQdvgg43sdGgvFs2"
-}
-
-
-
-
-{
-    "type": "wall_post_new",
-    "object": {
-        "id": 42,
-        "from_id": -190150616,
-        "owner_id": -190150616,
-        "date": 1591627811,
-        "marked_as_ads": 0,
-        "post_type": "post",
-        "text": "#продаю\n\n#услуги\n&#9642;&#65039;Хлеб \n&#9642;&#65039;PZM\n&#9642;&#65039;#Россия\n&#9642;&#65039;https://wa.me/77773333333\n   лот 165   (prizmarket.ru)\n\nпрошла по пенопласту шиной а оно\nпрошла по пенопласту шиной а онопрошла по пенопласту шиной а оно\nпрошла по пенопласту шиной а онопрошла по пенопласту шиной а онопрошла по пенопласту шиной а онопрошла по пенопласту шиной а онопрошла по пенопласту шиной а оно",
-        "can_edit": 1,
-        "created_by": 119909267,
-        "can_delete": 1,
-        "attachments": [
-            {
-                "type": "photo",
-                "photo": {
-                    "album_id": 270858085,
-                    "date": 1591627810,
-                    "id": 457239051,
-                    "owner_id": -190150616,
-                    "has_tags": false,
-                    "access_key": "4231606c203e21a848",
-                    "sizes": [
-                        {
-                            "height": 81,
-                            "url": "https://sun9-41.userapi.com/c858520/v858520029/1b0673/45Jqg4t32Og.jpg",
-                            "type": "m",
-                            "width": 130
-                        }, и ещё много их тут было
-                    ],
-                    "text": "",
-                    "user_id": 100
-                }
-            }
-        ],
-        "comments": {
-            "count": 0
-        },
-        "is_favorite": false
-    },
-    "group_id": 190150616,
-    "event_id": "5e4210e826ab1c7f2b4b8798322614032884d35d",
-    "secret": "aaQdvgg43sdGgvFs2"
-}
-
-
-
-
-
-*/
 
 $type = $data['type'];
 
-//if ($type == 'message_new') {
+/*
+message_new
+*/
+if ($type == 'message_new') {
 $object = $data['object'];
 	$message = $object['message'];	
 		$date = $message['date'];
@@ -180,9 +18,43 @@ $object = $data['object'];
 		$text = $message['text'];
 		$conversation_message_id = $message['conversation_message_id'];
 		$fwd_messages = $message['fwd_messages']; // массив
+			$fwd_date = $fwd_messages['date'];
+			$fwd_from_id = $fwd_messages['from_id'];
+			$fwd_text = $fwd_messages['text'];
+			$fwd_attachments = $fwd_messages['attachments']; // массив
+			$fwd_conversation_message_id = $fwd_messages['conversation_message_id'];
+			$fwd_peer_id = $fwd_messages['peer_id'];
+			$fwd_id = $fwd_messages['id'];
 		$important = $message['important'];
 		$random_id = $message['random_id'];
 		$attachments = $message['attachments']; // массив
+		if ($attachments) {
+			foreach($attachments as $attach) {
+				$attach_type = $attach['type'];
+				if ($attach_type == 'photo') {
+					$photo = $attach['photo'];
+						$photo_album_id = $photo['album_id'];
+						$photo_date = $photo['date'];
+						$photo_id = $photo['id'];
+						$photo_owner_id = $photo['owner_id'];
+						$photo_has_tags = $photo['has_tags'];
+						$photo_access_key = $photo['access_key'];
+						$photo_sizes = $photo['sizes']; // тоже через цикл надо прогнать
+						$photo_text = $photo['text'];
+				}elseif ($attach_type == 'audio') {
+					$audio = $attach['audio'];
+						$audio_artist = $audio['artist'];
+						$audio_id = $audio['id'];
+						$audio_owner_id = $audio['owner_id'];
+						$audio_title = $audio['title'];
+						$audio_duration = $audio['duration'];
+						$audio_track_code = $audio['track_code'];
+						$audio_url = $audio['url'];
+						$audio_date = $audio['date'];
+						$audio_genre_id = $audio['genre_id'];
+				}
+			}
+		}
 		$payload = $message['payload']; // массив
 		$is_hidden = $message['is_hidden'];		
 	$client_info = $object['client_info'];		
@@ -193,7 +65,108 @@ $object = $data['object'];
 $group_id = $data['group_id'];
 $event_id = $data['event_id'];
 $secret =  $data['secret'];
-//}
+}
+
+
+/*
+wall_post_new
+*/
+if ($type == 'wall_post_new') {
+$object = $data['object'];
+	$id = $object['id'];
+	$from_id = $object['from_id'];
+	$owner_id = $object['owner_id'];
+	$date = $object['date'];
+	$marked_as_ads = $object['marked_as_ads'];
+	$post_type = $object['post_type'];
+	$text = $object['text'];
+	$can_edit = $object['can_edit'];
+	$created_by = $object['created_by'];
+	$can_delete = $object['can_delete'];
+	$attachments = $object['attachments']; // массив
+	if ($attachments) {
+		foreach($attachments as $attach) {
+			$attach_type = $attach['type'];
+			if ($attach_type == 'photo') {
+				$photo = $attach['photo'];
+					$photo_album_id = $photo['album_id'];
+					$photo_date = $photo['date'];
+					$photo_id = $photo['id'];
+					$photo_owner_id = $photo['owner_id'];
+					$photo_has_tags = $photo['has_tags'];
+					$photo_access_key = $photo['access_key'];
+					$photo_sizes = $photo['sizes']; // тоже через цикл надо прогнать
+					$photo_text = $photo['text'];
+					$photo_user_id = $photo['user_id'];
+			}elseif ($attach_type == 'audio') {
+				$audio = $attach['audio'];
+					$audio_artist = $audio['artist'];
+					$audio_id = $audio['id'];
+					$audio_owner_id = $audio['owner_id'];
+					$audio_title = $audio['title'];
+					$audio_duration = $audio['duration'];
+					$audio_track_code = $audio['track_code'];
+					$audio_url = $audio['url'];
+					$audio_date = $audio['date'];
+					$audio_genre_id = $audio['genre_id'];
+			}
+		}
+	}
+	$comments = $object['comments']; // массив
+	$is_favorite = $object['is_favorite'];
+$group_id = $data['group_id'];
+$event_id = $data['event_id'];
+$secret =  $data['secret'];
+}
+
+/*
+photo_new
+*/
+if ($type == 'photo_new') {
+$object = $data['object'];
+	$album_id = $object['album_id'];
+	$date = $object['date'];
+	$id = $object['id'];
+	$owner_id = $object['owner_id'];
+	$has_tags = $object['has_tags'];
+	$access_key = $object['access_key'];
+	$sizes = $object['sizes']; // тоже через цикл надо прогнать
+	if ($sizes) {
+		$номер = -1;
+		foreach($sizes as $size) {
+			$номер++;
+			$height[$номер] = $size['height'];
+			$url[$номер] = $size['url'];
+			$type[$номер] = $size['type'];
+			$width[$номер] = $size['width'];
+		}
+	}
+	$text = $object['text'];
+	$user_id = $object['user_id'];
+$group_id = $data['group_id'];
+$event_id = $data['event_id'];
+$secret =  $data['secret'];
+}
+
+
+/*
+group_change_settings
+*/
+if ($type == 'group_change_settings') {
+$object = $data['object'];
+	$user_id = $object['user_id'];
+	$changes = $object['changes']; // массив
+	if ($changes['website']) {
+		$website = $changes['website'];
+			$old_value = $website['old_value'];
+			$new_value = $website['new_value'];
+	}
+$group_id = $data['group_id'];
+$event_id = $data['event_id'];
+$secret =  $data['secret'];
+}
+
+
 
 
 
