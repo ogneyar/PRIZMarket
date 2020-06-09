@@ -48,45 +48,45 @@ if ($text == "Прива") {
 		'button' => '12' ] ];
 	$action13 = [ 'type' => 'text', 'label' => 'СписокПостов', 'payload' => [ 
 		'button' => '13' ] ];
-	$action14 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action14 = [ 'type' => 'text', 'label' => 'НомерПоста', 'payload' => [ 
 		'button' => '14' ] ];
-	$action15 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action15 = [ 'type' => 'text', 'label' => 'ПоискПоста', 'payload' => [ 
 		'button' => '15' ] ];
 	$action16 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
 		'button' => '16' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1,
-			'color' => 'primary' ],
-		[	'action' => $action2,
 			'color' => 'secondary' ],
+		[	'action' => $action2,
+			'color' => 'primary' ],
 		[	'action' => $action3,
-			'color' => 'negative' ],
-		[	'action' => $action4,
-			'color' => 'positive' ]
-	],[	[	'action' => $action5,
+			'color' => 'negative' ]
+	],[	[	'action' => $action4,
+			'color' => 'positive' ],
+		[	'action' => $action5,
 			'color' => 'secondary' ],
 		[	'action' => $action6,
-			'color' => 'primary' ],
-		[	'action' => $action7,
-			'color' => 'positive' ],
-		[	'action' => $action8,
-			'color' => 'negative' ]
-	],[	[	'action' => $action9,
-			'color' => 'negative' ],
-		[	'action' => $action10,
-			'color' => 'positive' ],
-		[	'action' => $action11,
-			'color' => 'primary' ],
-		[	'action' => $action12,
-			'color' => 'secondary' ]
-	],[	[	'action' => $action13,
-			'color' => 'positive' ],
-		[	'action' => $action14,
-			'color' => 'negative' ],
-		[	'action' => $action15,
-			'color' => 'secondary' ],
-		[	'action' => $action16,
 			'color' => 'primary' ]
+	],[	[	'action' => $action7,
+			'color' => 'negative' ],
+		[	'action' => $action8,
+			'color' => 'positive' ],
+		[	'action' => $action9,
+			'color' => 'secondary' ]
+	],[	[	'action' => $action10,
+			'color' => 'primary' ],
+		[	'action' => $action11,
+			'color' => 'negative' ],
+		[	'action' => $action12,
+			'color' => 'positive' ]
+	],[	[	'action' => $action13,
+			'color' => 'secondary' ],
+		[	'action' => $action14,
+			'color' => 'primary' ],
+		[	'action' => $action15,
+			'color' => 'negative' ]
+	],[	[	'action' => $action16,
+			'color' => 'positive' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -222,9 +222,29 @@ if ($text == "Прива") {
 }elseif ($text == "СписокПостов") {	
 	
 	$результат = $vk2->wallGet(-$vk_group_id, null, null, 1);
-	//$результJSON = json_encode($результат);
-	//$vk->messagesSend($peer_id, $результJSON);
-	$vk->messagesSend($peer_id, print_r($результат, true));
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, "Метод wallGet\n\n".$результJSON);
+	//$vk->messagesSend($peer_id, print_r($результат, true));
+	
+	
+}elseif ($text == "НомерПоста") {	
+	
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост! (wallGetById)");	 
+	$vk->messagesSend($peer_id, "Опубликовал пост. Его номер: ".$результат['post_id']);
+	
+	$результат = $vk2->wallGetById(-$vk_group_id."_".$результат['post_id']);
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, "Метод wallGetById\n\n".$результJSON);
+	//$vk->messagesSend($peer_id, print_r($результат, true));
+	
+	
+}elseif ($text == "ПоискПоста") {	
+		
+	$vk->messagesSend($peer_id, "Поиск поста по слову: Закрепи");
+		
+	$результат = $vk2->wallSearch(-$vk_group_id, null, "Закрепи");
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, "Метод wallSearch\n\n".$результJSON);
 	
 	
 }elseif ($text == "Пусто") {	
