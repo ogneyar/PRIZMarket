@@ -221,7 +221,7 @@ if ($text == "Прива") {
 	
 }elseif ($text == "СписокПостов") {	
 	
-	$результат = $vk2->wallGet(-$vk_group_id);
+	$результат = $vk2->wallGet(-$vk_group_id, "@pzmarket", 0, 10);
 	$результJSON = json_encode($результат);
 	$vk->messagesSend($peer_id, $результJSON);
 	
