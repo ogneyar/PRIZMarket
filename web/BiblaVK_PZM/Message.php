@@ -20,7 +20,7 @@ if ($text == "Прива") {
     $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$vk->messagesSend($peer_id, $курс);
 
-}elseif (($text == "тест" || $text == "Тест")&&($tester)) {	
+}elseif (($text == "тест" || $text == "Тест")&&($tester == 'да')) {	
 	
 	$action1 = [ 'type' => 'text', 'label' => 'Прива', 'payload' => [ 
 		'button' => '1' ] ];
@@ -80,6 +80,12 @@ if ($text == "Прива") {
 	$клавиатура = json_encode($клавиатура_в_сообщении);	
 	$результат = $vk->messagesSend($peer_id, "Нажми на кнопку!", null, null, null, $клавиатура);
 	
+	
+}elseif ($text == "убериКлаву") {	
+	
+	$текст = "Убрал";	
+	$message_id = $vk->messagesSend($peer_id, $текст, null, null, null, []);
+		
 	
 }elseif ($text == "закрепи" || $text == "Закрепи") {	
 	
