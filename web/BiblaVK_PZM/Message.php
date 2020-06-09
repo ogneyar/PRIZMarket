@@ -4,7 +4,7 @@ $text = str_replace("[club190150616|TesterPRIZMarket] ", "", $text);
 $text = str_replace("[club188536519|@prizmarket_vk] ", "", $text);
 $text = str_replace("[club188536519|Покупки на PRIZMarket] ", "", $text);
 
-$это_ссылка = $vk->wallCheckCopyrightLink($text);
+$это_ссылка = $vk2->wallCheckCopyrightLink($text);
 
 if (!$это_ссылка['error_code']) {
 	$vk->messagesSend($peer_id, "Здесь ссылки запрещены!");
@@ -66,9 +66,9 @@ if ($text == "Прива") {
 		'button' => '17' ] ];
 	$action18 = [ 'type' => 'text', 'label' => 'ДайРепосты', 'payload' => [ 
 		'button' => '18' ] ];
-	$action19 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action19 = [ 'type' => 'text', 'label' => 'ЗапретКоммента', 'payload' => [ 
 		'button' => '19' ] ];
-	$action20 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action20 = [ 'type' => 'text', 'label' => 'МожноКомментить', 'payload' => [ 
 		'button' => '20' ] ];
 	$action21 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
 		'button' => '21' ] ];
@@ -258,7 +258,7 @@ if ($text == "Прива") {
 }elseif ($text == "НомерПоста") {	
 	
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост! (wall.getById)");	 
-	$vk->messagesSend($peer_id, "Опубликовал пост для метиода wall.getById. Его номер: ".$результат['post_id']);
+	$vk->messagesSend($peer_id, "Опубликовал пост для метода wall.getById. Его номер: ".$результат['post_id']);
 	
 	$результат = $vk2->wallGetById(-$vk_group_id."_".$результат['post_id']);
 	$результJSON = json_encode($результат);
@@ -309,6 +309,27 @@ if ($text == "Прива") {
 	$результат = $vk2->wallGetReposts(-$vk_group_id, $номер_поста);
 	$результJSON = json_encode($результат);
 	$vk->messagesSend($peer_id, "Метод wall.getReposts\n\n".$результJSON);
+	
+	
+}elseif ($text == "ЗапретКоммента") {	
+		
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для wall.closeComments!");	 
+	$номер_поста = $результат['post_id'];
+	$vk->messagesSend($peer_id, "Пост опубликован. Номер поста: {$номер_поста}.");
+	$результат = $vk2->wallCloseComments(-$vk_group_id, $номер_поста);
+	if ($результат) $vk->messagesSend($peer_id, "Запретил его комментировать!");
+	
+	
+}elseif ($text == "МожноКомментить") {	
+		
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для wall.openComments!");	 
+	$номер_поста = $результат['post_id'];
+	$vk->messagesSend($peer_id, "Пост опубликован. Номер поста: {$номер_поста}.");
+	$результат = $vk2->wallCloseComments(-$vk_group_id, $номер_поста);
+	if ($результат) $vk->messagesSend($peer_id, "Запретил его комментировать! Через 5 секуд разрешу комментировать его!");
+	sleep(5);
+	$результат = $vk2->wallOpenComments(-$vk_group_id, $номер_поста);
+	if ($результат) $vk->messagesSend($peer_id, "Всё, разрешил!");
 	
 	
 }elseif ($text == "Пусто") {	
