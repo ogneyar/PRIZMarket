@@ -84,8 +84,9 @@ if ($text == "Прива") {
 }elseif ($text == "убериКлаву") {	
 	
 	$убрать_клавиатуру = [
-		'one_time' => true,
-		'buttons' => []
+		'one_time' => false,
+		'buttons' => [],
+		'inline' => false
 	];	
 	$клавиатура = json_encode($убрать_клавиатуру);
 	
