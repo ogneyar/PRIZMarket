@@ -83,9 +83,14 @@ if ($text == "Прива") {
 	
 }elseif ($text == "убериКлаву") {	
 	
-	$текст = "Убрал";	
-	$message_id = $vk->messagesSend($peer_id, $текст, null, null, null, []);
-		
+	$убрать_клавиатуру = [
+		'one_time' => true,
+		'buttons' => []
+	];	
+	$клавиатура = json_encode($убрать_клавиатуру);
+	
+	$message_id = $vk->messagesSend($peer_id, "Убрал", null, null, null, $клавиатура);
+	
 	
 }elseif ($text == "закрепи" || $text == "Закрепи") {	
 	
