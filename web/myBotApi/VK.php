@@ -62,7 +62,9 @@
  *
  * wallGet
  *
+ * wallGetById
  *
+ * wallSearch
  *
  *
  *
@@ -777,7 +779,8 @@ class VK
 	
 	
 	/*
-	**  Возвращает список записей со стены пользователя или сообщества
+	**  Возвращает список записей со стены пользователя или сообщества 
+	**  (только в Standalone-приложении)
 	**
 	**  @param int $owner_id
 	**  @param str $domain
@@ -789,7 +792,6 @@ class VK
 	**  
 	**  @return array 
 	*/
-
     public function wallGet(
 		$owner_id,
 		$domain = null,
@@ -813,6 +815,74 @@ class VK
 		return $response;
 	}
 	
+	
+	/*
+	**  Возвращает список записей со стен пользователей или сообществ по их идентификаторам 
+	**  (только в Standalone-приложении)
+	**
+	**  @param str,str $posts
+	**  @param bool $extended
+	**  @param int $copy_history_depth
+	**  @param str,str $fields
+	**  
+	**  @return array 
+	*/
+    public function wallGetById(
+		$posts,
+		$extended = false,
+		$copy_history_depth = 2,
+		$fields = null
+	) {				
+	
+		$response = $this->call("wall.getById", [
+			'posts' => $posts,
+			'extended' => $extended,
+			'copy_history_depth' => $copy_history_depth,
+			'fields' => $fields
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Позволяет искать записи на стене в соответствии с заданными критериями (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param str $domain
+	**  @param str $query
+	**  @param bool $owners_only
+ 	**  @param int $count - не более 100
+	**  @param int $offset
+	**  @param bool $extended
+	**  @param str,str $fields
+	**  
+	**  @return array 
+	*/
+    public function wallSearch(
+		$owner_id,
+		$domain = null,
+		$query = null,
+		$owners_only = null,
+		$count = 20,
+		$offset = null,
+		$extended = false,
+		$fields = null
+	) {				
+	
+		$response = $this->call("wall.search", [
+			'owner_id' => $owner_id,
+			'domain' => $domain,
+			'query' => $query,
+			'owners_only' => $owners_only,
+			'count' => $count,
+			'offset' => $offset,
+			'extended' => $extended,
+			'fields' => $fields
+		]);	
+	
+		return $response;
+	}
 	
 	
 	
