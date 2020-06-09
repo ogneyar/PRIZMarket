@@ -4,7 +4,7 @@ $text = str_replace("[club190150616|TesterPRIZMarket] ", "", $text);
 $text = str_replace("[club188536519|@prizmarket_vk] ", "", $text);
 $text = str_replace("[club188536519|Покупки на PRIZMarket] ", "", $text);
 
-$это_ссылка = wallCheckCopyrightLink($text);
+$это_ссылка = $vk->wallCheckCopyrightLink($text);
 
 if (!$это_ссылка['error_code']) {
 	$vk->messagesSend($peer_id, "Здесь ссылки запрещены!");
@@ -64,7 +64,7 @@ if ($text == "Прива") {
 		'button' => '16' ] ];
 	$action17 = [ 'type' => 'text', 'label' => 'ВсеКомменты', 'payload' => [ 
 		'button' => '17' ] ];
-	$action18 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action18 = [ 'type' => 'text', 'label' => 'ДайРепосты', 'payload' => [ 
 		'button' => '18' ] ];
 	$action19 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
 		'button' => '19' ] ];
@@ -298,6 +298,17 @@ if ($text == "Прива") {
 	$результат = $vk2->wallGetComments(-$vk_group_id, $номер_поста);
 	$результJSON = json_encode($результат);
 	$vk->messagesSend($peer_id, "Метод wall.getComments (s - на конце)\n\n".$результJSON);
+	
+	
+}elseif ($text == "ДайРепосты") {	
+	
+	$номер_поста = 70;
+	
+	$vk->messagesSend($peer_id, "Инфа о репостах записи номер: {$номер_поста}!");
+	
+	$результат = $vk2->wallGetReposts(-$vk_group_id, $номер_поста);
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, "Метод wall.getReposts\n\n".$результJSON);
 	
 	
 }elseif ($text == "Пусто") {	
