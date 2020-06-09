@@ -4,6 +4,14 @@ $text = str_replace("[club190150616|TesterPRIZMarket] ", "", $text);
 $text = str_replace("[club188536519|@prizmarket_vk] ", "", $text);
 $text = str_replace("[club188536519|Покупки на PRIZMarket] ", "", $text);
 
+$это_ссылка = wallCheckCopyrightLink($text);
+
+if (!$это_ссылка['error_code']) {
+	$vk->messagesSend($peer_id, "Здесь ссылки запрещены!");
+	echo "Ошибка!";
+	exit;
+}
+
 if ($text == "Прива") {	
 	$random_id = time();	
 	$массив = [
@@ -250,12 +258,11 @@ if ($text == "Прива") {
 }elseif ($text == "НомерПоста") {	
 	
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост! (wall.getById)");	 
-	$vk->messagesSend($peer_id, "Опубликовал пост. Его номер: ".$результат['post_id']);
+	$vk->messagesSend($peer_id, "Опубликовал пост для метиода wall.getById. Его номер: ".$результат['post_id']);
 	
 	$результат = $vk2->wallGetById(-$vk_group_id."_".$результат['post_id']);
 	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, "Метод wall.getById\n\n".$результJSON);
-	//$vk->messagesSend($peer_id, print_r($результат, true));
+	$vk->messagesSend($peer_id, $результJSON); // "Метод wall.getById\n\n".
 	
 	
 }elseif ($text == "ПоискПоста") {	
