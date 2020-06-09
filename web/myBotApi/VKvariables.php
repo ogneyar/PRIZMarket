@@ -167,6 +167,38 @@ $secret =  $data['secret'];
 }
 
 
+/*{
+    "type": "wall_reply_edit",
+    "object": {
+        "id": 56,
+        "from_id": 119909267,
+        "post_id": 55,
+        "owner_id": -190150616,
+        "parents_stack": [],
+        "date": 1591686599,
+        "text": "Вот такой теперь тут коммент.",
+        "thread": {
+            "count": 0
+        },
+        "post_owner_id": -190150616
+    },
+    "group_id": 190150616,
+    "event_id": "08d423b0fd75e8846b146a3a34ecb74cf9c34041",
+    "secret": "aaQdvgg43sdGgvFs2"
+}*/
+
+/*{
+    "type": "wall_reply_delete",
+    "object": {
+        "owner_id": -190150616,
+        "id": 52,
+        "deleter_id": 119909267,
+        "post_id": 51
+    },
+    "group_id": 190150616,
+    "event_id": "e23f733085c088e39565824fbc29f9fbd3c55ab3",
+    "secret": "aaQdvgg43sdGgvFs2"
+}*/
 
 
 
