@@ -302,7 +302,7 @@ if ($text == "Прива") {
 		
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для wall.closeComments!");	 
 	$номер_поста = $результат['post_id'];
-	$vk->messagesSend($peer_id, "Пост опубликован. Номер поста: {$номер_поста}.");
+	$vk->messagesSend($peer_id, "Опубликовал пост для метода wall.closeComments. Номер поста: {$номер_поста}.");
 	$результат = $vk2->wallCloseComments(-$vk_group_id, $номер_поста);
 	if ($результат) $vk->messagesSend($peer_id, "Запретил его комментировать!");
 	
@@ -311,7 +311,7 @@ if ($text == "Прива") {
 		
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для wall.openComments!");	 
 	$номер_поста = $результат['post_id'];
-	$vk->messagesSend($peer_id, "Пост опубликован. Номер поста: {$номер_поста}.");
+	$vk->messagesSend($peer_id, "Опубликовал пост для метода wall.openComments. Номер поста: {$номер_поста}.");
 	$результат = $vk2->wallCloseComments(-$vk_group_id, $номер_поста);
 	if ($результат) $vk->messagesSend($peer_id, "Запретил его комментировать! Через 5 секуд разрешу комментировать его!");
 	sleep(5);
