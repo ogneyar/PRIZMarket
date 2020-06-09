@@ -20,7 +20,7 @@ if ($text == "Прива") {
     $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$vk->messagesSend($peer_id, $курс);
 
-}elseif ($text == "тест" || $text == "Тест") {	
+}elseif (($text == "тест" || $text == "Тест")&&($tester)) {	
 	
 	$action1 = [ 'type' => 'text', 'label' => 'Прива', 'payload' => [ 
 		'button' => '1' ] ];
@@ -174,8 +174,8 @@ if ($text == "Прива") {
 	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды удалится комментарий!");
 	sleep(3);
 	$результат = $vk2->wallDeleteComment(-$vk_group_id, $результат['comment_id']);	 
-	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, $результJSON);
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
 	if ($результат) $vk->messagesSend($peer_id, "Удалил комментарий.");
 	
 	
@@ -186,8 +186,8 @@ if ($text == "Прива") {
 	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды изменится комментарий!");
 	sleep(3);
 	$результат = $vk2->wallEditComment(-$vk_group_id, $результат['comment_id'], "Вот такой теперь тут коммент.");	 
-	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, $результJSON);
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
 	if ($результат) $vk->messagesSend($peer_id, "Изменил комментарий.");
 	
 	
