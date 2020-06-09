@@ -146,6 +146,7 @@ if ($text == "Прива") {
 	if ($результат) $vk->messagesSend($peer_id, "Удалил.");
 	
 }elseif ($text == "ИзмениПост") {	
+
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый текст для редактирования!");	 
 	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды изменится пост!");
 	sleep(3);
@@ -154,32 +155,41 @@ if ($text == "Прива") {
 	//$vk->messagesSend($peer_id, $результJSON);
 	if ($результат) $vk->messagesSend($peer_id, "Изменил.");
 	
+	
 }elseif ($text == "КоментПоста") {	
+
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для коментирования!");	 
 	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды добавится комментарий!");
 	sleep(3);
 	$результат = $vk2->wallCreateComment(-$vk_group_id, $результат['post_id'], "Вот такой тут коммент!");	 
-	$результJSON = json_encode($результат);
-	$vk->messagesSend($peer_id, $результJSON);
-	if ($результат) $vk->messagesSend($peer_id, "Добавил комментарий.");
+	//$результJSON = json_encode($результат);
+	//$vk->messagesSend($peer_id, $результJSON);
+	if ($результат['comment_id']) $vk->messagesSend($peer_id, "Добавил комментарий.");
+	
 	
 }elseif ($text == "УдалиКомент") {	
+
 	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для удаления комментария!");	 
-	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды изменится пост!");
+	$результат = $vk2->wallCreateComment(-$vk_group_id, $результат['post_id'], "Комментарий для удаления!");	
+	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды удалится комментарий!");
 	sleep(3);
-	$результат = $vk2->wallEdit(-$vk_group_id, $результат['post_id'], "А теперь тут этот текст!");	 
-	//$результJSON = json_encode($результат);
-	//$vk->messagesSend($peer_id, $результJSON);
-	if ($результат) $vk->messagesSend($peer_id, "Изменил.");
+	$результат = $vk2->wallDeleteComment(-$vk_group_id, $результат['comment_id']);	 
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
+	if ($результат) $vk->messagesSend($peer_id, "Удалил комментарий.");
+	
 	
 }elseif ($text == "ИзмениКомент") {	
-	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый текст для редактирования!");	 
-	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды изменится пост!");
+	
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для редактирования комментария!");	 
+	$результат = $vk2->wallCreateComment(-$vk_group_id, $результат['post_id'], "Комментарий для редактирования!");	
+	$vk->messagesSend($peer_id, "Опубликовал, смотри. Через три секунды изменится комментарий!");
 	sleep(3);
-	$результат = $vk2->wallEdit(-$vk_group_id, $результат['post_id'], "А теперь тут этот текст!");	 
-	//$результJSON = json_encode($результат);
-	//$vk->messagesSend($peer_id, $результJSON);
-	if ($результат) $vk->messagesSend($peer_id, "Изменил.");
+	$результат = $vk2->wallEditComment(-$vk_group_id, $результат['comment_id'], "Вот такой теперь тут коммент.");	 
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
+	if ($результат) $vk->messagesSend($peer_id, "Изменил комментарий.");
+	
 	
 }elseif ($text == "загрузи") {		
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
