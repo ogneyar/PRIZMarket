@@ -46,31 +46,47 @@ if ($text == "Прива") {
 		'button' => '11' ] ];
 	$action12 = [ 'type' => 'text', 'label' => 'ИзмениКомент', 'payload' => [ 
 		'button' => '12' ] ];
+	$action13 = [ 'type' => 'text', 'label' => 'СписокПостов', 'payload' => [ 
+		'button' => '13' ] ];
+	$action14 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '14' ] ];
+	$action15 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '15' ] ];
+	$action16 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '16' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1,
 			'color' => 'primary' ],
 		[	'action' => $action2,
-			'color' => 'secondary' ]
-	],[	[	'action' => $action3,
+			'color' => 'secondary' ],
+		[	'action' => $action3,
 			'color' => 'negative' ],
 		[	'action' => $action4,
 			'color' => 'positive' ]
 	],[	[	'action' => $action5,
 			'color' => 'secondary' ],
 		[	'action' => $action6,
-			'color' => 'primary' ]
-	],[	[	'action' => $action7,
+			'color' => 'primary' ],
+		[	'action' => $action7,
 			'color' => 'positive' ],
 		[	'action' => $action8,
 			'color' => 'negative' ]
 	],[	[	'action' => $action9,
-			'color' => 'primary' ],
-		[	'action' => $action10,
-			'color' => 'secondary' ]
-	],[	[	'action' => $action11,
 			'color' => 'negative' ],
+		[	'action' => $action10,
+			'color' => 'positive' ],
+		[	'action' => $action11,
+			'color' => 'primary' ],
 		[	'action' => $action12,
-			'color' => 'positive' ]
+			'color' => 'secondary' ]
+	],[	[	'action' => $action13,
+			'color' => 'positive' ],
+		[	'action' => $action14,
+			'color' => 'negative' ],
+		[	'action' => $action15,
+			'color' => 'secondary' ],
+		[	'action' => $action16,
+			'color' => 'primary' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -203,7 +219,31 @@ if ($text == "Прива") {
 	if ($результат) $vk->messagesSend($peer_id, "Изменил комментарий.");
 	
 	
+}elseif ($text == "СписокПостов") {	
+	
+	$результат = $vk2->wallGet(-$vk_group_id);
+	$результJSON = json_encode($результат);
+	$vk->messagesSend($peer_id, $результJSON);
+	
+	
+}elseif ($text == "Пусто") {	
+		
+	$vk->messagesSend($peer_id, "Да, ещё пока тут пусто!");
+	
+	
+}elseif ($text == "Пост") {	
+
+	$vk2->wallPost(-$vk_group_id, "#куплю\n\n#еду за PRIZM\n\n#дорого", "photo-188536519_457239037");	 
+	$vk->messagesSend($peer_id, "Отправил");
+	
+	
+	
+	
+	
+	
+	
 }elseif ($text == "загрузи") {		
+
 	$результат = $vk2->photosGetUploadServer($vk_album_id, $vk_group_id);	
 	if ($результат['error_msg']) {		
 		$vk->messagesSend($peer_id, "Ошибка: ".$результат['error_msg']);
@@ -233,11 +273,6 @@ if ($text == "Прива") {
 	}		
 	//https://sun9-52.userapi.com/c857324/v857324167/19ed96/BiXlvgG5oNw.jpg
 	$vk->messagesSend($peer_id, $ссылка_на_фото);
-	
-}elseif ($text == "Пост") {	
-	$vk2->wallPost(-$vk_group_id, "#куплю\n\n#еду за PRIZM\n\n#дорого", "photo-188536519_457239037");	 
-	$vk->messagesSend($peer_id, "Отправил");
-	
 	
 }elseif ($text == "еее" || $text == "Еее" || $text == "eee" || $text == "Eee" || $text == "ееее" || $text == "Ееее" || $text == "eeee" || $text == "Eeee") {	
 	
