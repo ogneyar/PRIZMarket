@@ -72,49 +72,37 @@ if ($text == "Прива") {
 		'button' => '20' ] ];
 	$action21 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
 		'button' => '21' ] ];
+	$action22 = [ 'type' => 'text', 'label' => 'ЗакрепПоста', 'payload' => [ 
+		'button' => '22' ] ];
+	$action23 = [ 'type' => 'text', 'label' => 'ОткрепПоста', 'payload' => [ 
+		'button' => '23' ] ];
+	$action24 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '24' ] ];
 	$кнопки = [
-	[	[ 	'action' => $action1,
-			'color' => 'secondary' ],
-		[	'action' => $action2,
-			'color' => 'positive' ],
-		[	'action' => $action3,
-			'color' => 'negative' ]
-	],[	[	'action' => $action4,
-			'color' => 'primary' ],
-		[	'action' => $action5,
-			'color' => 'secondary' ],
-		[	'action' => $action6,
-			'color' => 'positive' ]
-	],[	[	'action' => $action7,
-			'color' => 'negative' ],
-		[	'action' => $action8,
-			'color' => 'primary' ],
-		[	'action' => $action9,
-			'color' => 'secondary' ]
-	],[	[	'action' => $action10,
-			'color' => 'positive' ],
-		[	'action' => $action11,
-			'color' => 'negative' ],
-		[	'action' => $action12,
-			'color' => 'primary' ]
-	],[	[	'action' => $action13,
-			'color' => 'secondary' ],
-		[	'action' => $action14,
-			'color' => 'positive' ],
-		[	'action' => $action15,
-			'color' => 'negative' ]
-	],[	[	'action' => $action16,
-			'color' => 'primary' ],
-		[	'action' => $action17,
-			'color' => 'secondary' ],
-		[	'action' => $action18,
-			'color' => 'positive' ]
-	],[	[	'action' => $action19,
-			'color' => 'negative' ],
-		[	'action' => $action20,
-			'color' => 'primary' ],
-		[	'action' => $action21,
-			'color' => 'secondary' ]
+	[	[ 	'action' => $action1, 'color' => 'secondary' ],
+		[	'action' => $action2, 'color' => 'positive' ],
+		[	'action' => $action3, 'color' => 'negative' ]
+	],[	[	'action' => $action4, 'color' => 'primary' ],
+		[	'action' => $action5, 'color' => 'secondary' ],
+		[	'action' => $action6, 'color' => 'positive' ]
+	],[	[	'action' => $action7, 'color' => 'negative' ],
+		[	'action' => $action8, 'color' => 'primary' ],
+		[	'action' => $action9, 'color' => 'secondary' ]
+	],[	[	'action' => $action10, 'color' => 'positive' ],
+		[	'action' => $action11, 'color' => 'negative' ],
+		[	'action' => $action12, 'color' => 'primary' ]
+	],[	[	'action' => $action13, 'color' => 'secondary' ],
+		[	'action' => $action14, 'color' => 'positive' ],
+		[	'action' => $action15, 'color' => 'negative' ]
+	],[	[	'action' => $action16, 'color' => 'primary' ],
+		[	'action' => $action17, 'color' => 'secondary' ],
+		[	'action' => $action18, 'color' => 'positive' ]
+	],[	[	'action' => $action19, 'color' => 'negative' ],
+		[	'action' => $action20, 'color' => 'primary' ],
+		[	'action' => $action21, 'color' => 'secondary' ]
+	],[	[	'action' => $action22, 'color' => 'positive' ],
+		[	'action' => $action23, 'color' => 'negative' ],
+		[	'action' => $action24, 'color' => 'primary' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -317,6 +305,29 @@ if ($text == "Прива") {
 	sleep(5);
 	$результат = $vk2->wallOpenComments(-$vk_group_id, $номер_поста);
 	if ($результат) $vk->messagesSend($peer_id, "Всё, разрешил!");
+	
+	
+}elseif ($text == "ЗакрепПоста") {	
+		
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для wall.pin!");	 
+	$номер_поста = $результат['post_id'];
+	$vk->messagesSend($peer_id, "Опубликовал пост для метода wall.pin. Номер поста: {$номер_поста}.");
+	
+	$результат = $vk2->wallPin(-$vk_group_id, $номер_поста);
+	if ($результат) $vk->messagesSend($peer_id, "Закрепил пост!");
+	
+}elseif ($text == "ОткрепПоста") {	
+		
+	$результат = $vk2->wallPost(-$vk_group_id, "Тестовый пост для wall.unpin!");	 
+	$номер_поста = $результат['post_id'];
+	$vk->messagesSend($peer_id, "Опубликовал пост для метода wall.unpin. Номер поста: {$номер_поста}.");
+	
+	$результат = $vk2->wallPin(-$vk_group_id, $номер_поста);
+	if ($результат) $vk->messagesSend($peer_id, "Закрепил пост! Через 5 секунд его откреплю!");
+	sleep(5);
+	
+	$результат = $vk2->wallUnpin(-$vk_group_id, $номер_поста);
+	if ($результат) $vk->messagesSend($peer_id, "Открепил пост!");
 	
 	
 }elseif ($text == "Пусто") {	
