@@ -70,7 +70,7 @@ if ($text == "Прива") {
 		'button' => '19' ] ];
 	$action20 = [ 'type' => 'text', 'label' => 'МожноКомментить', 'payload' => [ 
 		'button' => '20' ] ];
-	$action21 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action21 = [ 'type' => 'text', 'label' => 'Репост', 'payload' => [ 
 		'button' => '21' ] ];
 	$action22 = [ 'type' => 'text', 'label' => 'ЗакрепПоста', 'payload' => [ 
 		'button' => '22' ] ];
@@ -328,6 +328,13 @@ if ($text == "Прива") {
 	
 	$результат = $vk2->wallUnpin(-$vk_group_id, $номер_поста);
 	if ($результат) $vk->messagesSend($peer_id, "Открепил пост!");
+	
+	
+}elseif ($text == "Репост") {	
+	
+	$объект_поста = "wall{$vk_master}_1950"; // Пост о кето диете
+	$результат = $vk2->wallRepost(-$vk_group_id, "Тестирование метода wall.repost", $объект_поста);
+	if ($результат['success']) $vk->messagesSend($peer_id, "Всё, репостнул Огнеяра пост, смотри! (wall.repost)");
 	
 	
 }elseif ($text == "Пусто") {	
