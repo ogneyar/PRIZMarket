@@ -82,7 +82,7 @@
  *
  * wallUnpin
  *
- *
+ * wallRepost
  *
  */
 
@@ -1112,7 +1112,35 @@ class VK
 	}
 	
 	
+	/*
+	**  Копирует объект на стену пользователя или сообщества (только в Standalone-приложении)
+	**
+	**  @param int $object
+	**  @param int $message
+	**  @param int $group_id
+	**  @param int $mark_as_ads
+	**  @param int $mute_notifications
+	**  
+	**  @return array 
+	*/
+    public function wallRepost(
+		$object,
+		$message,
+		$group_id,
+		$mark_as_ads,
+		$mute_notifications
+	) {				
 	
+		$response = $this->call("wall.repost", [
+			'object' => $object,
+			'message' => $message,
+			'group_id' => $group_id,
+			'mark_as_ads' => $mark_as_ads,
+			'mute_notifications' => $mute_notifications
+		]);	
+	
+		return $response;
+	}
 	
 }
 ?>
