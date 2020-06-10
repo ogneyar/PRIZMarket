@@ -78,9 +78,9 @@
  *
  * wallGetReposts
  *
+ * wallPin
  *
- *
- *
+ * wallUnpin
  *
  *
  *
@@ -1068,7 +1068,48 @@ class VK
 	}
 	
 	
+	/*
+	**  Закрепляет запись на стене (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $post_id
+	**  
+	**  @return bool 
+	*/
+    public function wallPin(
+		$owner_id,
+		$post_id
+	) {				
 	
+		$response = $this->call("wall.pin", [
+			'owner_id' => $owner_id,
+			'post_id' => $post_id
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Отменяет закрепление записи на стене (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $post_id
+	**  
+	**  @return bool 
+	*/
+    public function wallUnpin(
+		$owner_id,
+		$post_id
+	) {				
+	
+		$response = $this->call("wall.unpin", [
+			'owner_id' => $owner_id,
+			'post_id' => $post_id
+		]);	
+	
+		return $response;
+	}
 	
 	
 	
