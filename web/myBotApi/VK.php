@@ -1115,20 +1115,20 @@ class VK
 	/*
 	**  Копирует объект на стену пользователя или сообщества (только в Standalone-приложении)
 	**
-	**  @param int $object
-	**  @param int $message
+	**  @param str $object
+	**  @param str $message
 	**  @param int $group_id
-	**  @param int $mark_as_ads
-	**  @param int $mute_notifications
+	**  @param bool $mark_as_ads
+	**  @param bool $mute_notifications
 	**  
 	**  @return array 
 	*/
     public function wallRepost(
 		$object,
-		$message,
-		$group_id,
-		$mark_as_ads,
-		$mute_notifications
+		$message = null,
+		$group_id = null,
+		$mark_as_ads = false,
+		$mute_notifications = false
 	) {				
 	
 		$response = $this->call("wall.repost", [
