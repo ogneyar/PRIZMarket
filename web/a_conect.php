@@ -59,5 +59,6 @@
 	$vk_api_response = getenv('VK_API_RESPONSE');
 	$vk_group_id = getenv('VK_GROUP_ID');
 	$vk_album_id = getenv('VK_ALBUM_ID');
+	$vk_master = getenv('VK_MASTER');
 	
 ?>
