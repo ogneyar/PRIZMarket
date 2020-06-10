@@ -333,9 +333,9 @@ if ($text == "Прива") {
 }elseif ($text == "Репост") {	
 	
 	$объект_поста = "wall{$vk_master}_1950"; // Пост о кето диете
-	$результат = $vk2->wallRepost(-$vk_group_id, "Тестирование метода wall.repost", $объект_поста);
+	$результат = $vk2->wallRepost($объект_поста, "Тестирование метода wall.repost", $vk_group_id);
 	if ($результат['success']) $vk->messagesSend($peer_id, "Всё, репостнул Огнеяра пост, смотри! (wall.repost)");
-	
+	else $vk->messagesSend($peer_id, "Ошибка! {$результат['error_msg']} (wall.repost)");
 	
 }elseif ($text == "Пусто") {	
 		
