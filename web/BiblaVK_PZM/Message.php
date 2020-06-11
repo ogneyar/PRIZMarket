@@ -501,8 +501,8 @@ if ($text == "Прива") {
 	$ссылка_на_файл = "http://f0430377.xsph.ru/image/test5eccceaecbdc4.jpg";
 	$результат = $vk2->uploadAndGetUrl($vk_album_id, $vk_group_id, $ссылка_на_файл);
 	if ($результат['id']) {
-		$vk->messagesSend($peer_id, "Загрузил тестовое фото, через 5 секунд удалю!");
-		sleep(5);
+		$vk->messagesSend($peer_id, "Загрузил тестовое фото, его номер: {$результат['id']}. Через 7 секунд удалю!");
+		sleep(7);
 	
 		$результат = $vk2->photosDelete($vk_group_id, $результат['id']);
 		if ($результат) $vk->messagesSend($peer_id, "Удалил!");
@@ -531,8 +531,8 @@ if ($text == "Прива") {
 		
 	$результат = $vk2->photosCreateComment(-$vk_group_id, 457239046, "Тестовый комментарий для метода photos.deleteComment");
 	if ($результат) {
-		$vk->messagesSend($peer_id, "Откомментировал фото ложек, через 5 секунд удалю комментарий!");
-		sleep(5);
+		$vk->messagesSend($peer_id, "Откомментировал фото ложек, через 7 секунд удалю комментарий!");
+		sleep(7);
 	
 		$результат = $vk2->photosDeleteComment(-$vk_group_id, $результат);
 		if ($результат) $vk->messagesSend($peer_id, "Удалил!");
