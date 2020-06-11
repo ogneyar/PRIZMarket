@@ -30,7 +30,7 @@ if ($text == "Прива") {
 
 }elseif (($text == "тест" || $text == "Тест")&&($tester == 'да')) {	
 	
-	$action1 = [ 'type' => 'text', 'label' => 'Прива', 'payload' => [ 
+	$action1 = [ 'type' => 'text', 'label' => 'убериКлаву', 'payload' => [ 
 		'button' => '1' ] ];
 	$action2 = [ 'type' => 'text', 'label' => 'Закрепи', 'payload' => [ 
 		'button' => '2' ] ];
