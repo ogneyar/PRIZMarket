@@ -30,7 +30,7 @@ if ($text == "Прива") {
 
 }elseif (($text == "тест" || $text == "Тест")&&($tester == 'да')) {	
 	
-	$action1 = [ 'type' => 'text', 'label' => 'убериКлаву', 'payload' => [ 
+	$action1 = [ 'type' => 'text', 'label' => 'Прива', 'payload' => [ 
 		'button' => '1' ] ];
 	$action2 = [ 'type' => 'text', 'label' => 'Закрепи', 'payload' => [ 
 		'button' => '2' ] ];
@@ -122,9 +122,6 @@ if ($text == "Прива") {
 	],[	[	'action' => $action28, 'color' => 'primary' ],
 		[	'action' => $action29, 'color' => 'secondary' ],
 		[	'action' => $action30, 'color' => 'positive' ]
-	],[	[	'action' => $action31, 'color' => 'negative' ],
-		[	'action' => $action32, 'color' => 'primary' ],
-		[	'action' => $action33, 'color' => 'secondary' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
