@@ -582,9 +582,9 @@ class VK
 	**  Редактирует данные альбома для фотографий (только в Standalone-приложении)
 	**
  	**  @param int $album_id
+ 	**  @param int $owner_id
 	**  @param str $title
 	**  @param str $description
- 	**  @param int $owner_id
  	**  @param arr(str,str) $privacy_view
  	**  @param arr(str,str) $privacy_comment
  	**  @param bool $upload_by_admins_only
@@ -593,10 +593,10 @@ class VK
 	**  @return bool 
 	*/
     public function photosEditAlbum( 
-		$album_id,
+		$album_id,  
+		$owner_id,
 		$title = null,
-		$description = null,  
-		$owner_id = null,
+		$description = null,
 		$privacy_view = null,
 		$privacy_comment = null, 
 		$upload_by_admins_only = false,
