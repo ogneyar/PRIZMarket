@@ -43,11 +43,19 @@
  *
  * photosSave
  *
+ * photosDelete
+ *
  * photosCreateAlbum
  *
  * photosEditAlbum
  *
  * photosDeleteAlbum
+ *
+ * photosCreateComment
+ *
+ * photosEditComment
+ *
+ * photosDeleteComment
  *
  *
  *-------- 
@@ -542,6 +550,28 @@ class VK
 	
 	
 	/*
+	**  Удаление фотографии на сайте (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+ 	**  @param int $photo_id
+	**  
+	**  @return bool 
+	*/
+    public function photosDelete(
+		$owner_id, 
+		$photo_id
+	) {				
+	
+		$response = $this->call("photos.delete", [
+			'owner_id' => $owner_id,
+			'photo_id' => $photo_id
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
 	**  Создает пустой альбом для фотографий (только в Standalone-приложении)
 	**
 	**  @param str $title
@@ -641,6 +671,98 @@ class VK
 	}
 	
 	
+	/*
+	**  Создает новый комментарий к фотографии (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $photo_id
+	**  @param str $message
+	**  @param str,str $attachments
+ 	**  @param int $from_group
+	**  @param int $reply_to_comment
+	**  @param int $sticker_id
+	**  @param str $access_key
+	**  @param str $guid
+	**  
+	**  @return array 
+	*/
+    public function photosCreateComment(
+		$owner_id,
+		$photo_id,
+		$message = null,
+		$attachments = null,
+		$from_group = false,
+		$reply_to_comment = null,
+		$sticker_id = null,
+		$access_key = null,
+		$guid = null
+	) {				
+	
+		$response = $this->call("photos.createComment", [
+			'owner_id' => $owner_id,
+			'photo_id' => $photo_id,
+			'from_group' => $from_group,
+			'message' => $message,
+			'reply_to_comment' => $reply_to_comment,
+			'attachments' => $attachments,
+			'sticker_id' => $sticker_id,
+			'access_key' => $access_key,
+			'guid' => $guid
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Изменяет текст комментария к фотографии (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $comment_id
+	**  @param str $message
+	**  @param str,str $attachments
+	**  
+	**  @return bool 
+	*/
+    public function photosEditComment(
+		$owner_id,
+		$comment_id,
+		$message = null,
+		$attachments = null
+	) {				
+	
+		$response = $this->call("photos.editComment", [
+			'owner_id' => $owner_id,
+			'comment_id' => $comment_id,
+			'message' => $message,
+			'attachments' => $attachments
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Изменяет текст комментария к фотографии (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $comment_id
+	**  
+	**  @return bool 
+	*/
+    public function photosDeleteComment(
+		$owner_id,
+		$comment_id
+	) {				
+	
+		$response = $this->call("photos.deleteComment", [
+			'owner_id' => $owner_id,
+			'comment_id' => $comment_id
+		]);	
+	
+		return $response;
+	}
+	
 
 /*-------------------------------*/
 /*			   wall				 */
@@ -660,6 +782,7 @@ class VK
 		]);	
 	
 		return $response;
+		
 	}
 	
 	
@@ -687,7 +810,6 @@ class VK
 	**  
 	**  @return array 
 	*/
-
     public function wallPost(
 		$owner_id,
 		$message = null,
@@ -729,6 +851,7 @@ class VK
 		]);	
 	
 		return $response;
+		
 	}
 	
 	
@@ -751,6 +874,7 @@ class VK
 		]);	
 	
 		return $response;
+		
 	}
 	
 	
