@@ -30,7 +30,7 @@ if ($text == "Прива") {
 
 }elseif (($text == "тест" || $text == "Тест")&&($tester == 'да')) {	
 	
-	$action1 = [ 'type' => 'text', 'label' => 'Прива', 'payload' => [ 
+	$action1 = [ 'type' => 'text', 'label' => 'убериКлаву', 'payload' => [ 
 		'button' => '1' ] ];
 	$action2 = [ 'type' => 'text', 'label' => 'Закрепи', 'payload' => [ 
 		'button' => '2' ] ];
@@ -90,12 +90,7 @@ if ($text == "Прива") {
 		'button' => '29' ] ];
 	$action30 = [ 'type' => 'text', 'label' => 'УдалиКоментФото', 'payload' => [ 
 		'button' => '30' ] ];
-	$action31 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
-		'button' => '31' ] ];
-	$action32 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
-		'button' => '32' ] ];
-	$action33 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
-		'button' => '33' ] ];
+	
 	$кнопки = [
 	[	[ 	'action' => $action1, 'color' => 'secondary' ],
 		[	'action' => $action2, 'color' => 'positive' ],
@@ -140,7 +135,111 @@ if ($text == "Прива") {
 	$результат = $vk->messagesSend($peer_id, "Нажми на кнопку!", null, null, null, $клавиатура);
 	
 	
-}elseif ($text == "убериКлаву") {	
+}elseif (($text == "тест2" || $text == "Тест2")&&($tester == 'да')) {	
+	
+	$action1 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '1' ] ];
+	$action2 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '2' ] ];
+	$action3 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '3' ] ];
+	$action4 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '4' ] ];
+	$action5 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '5' ] ];
+	$action6 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '6' ] ];
+	$action7 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '7' ] ];
+	$action8 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '8' ] ];
+	$action9 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '9' ] ];
+	$action10 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '10' ] ];
+	$action11 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '11' ] ];
+	$action12 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '12' ] ];
+	$action13 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '13' ] ];
+	$action14 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '14' ] ];
+	$action15 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '15' ] ];
+	$action16 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '16' ] ];
+	$action17 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '17' ] ];
+	$action18 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '18' ] ];
+	$action19 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '19' ] ];
+	$action20 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '20' ] ];
+	$action21 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '21' ] ];
+	$action22 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '22' ] ];
+	$action23 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '23' ] ];
+	$action24 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '24' ] ];
+	$action25 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '25' ] ];
+	$action26 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '26' ] ];
+	$action27 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '27' ] ];
+	$action28 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '28' ] ];
+	$action29 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '29' ] ];
+	$action30 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '30' ] ];
+	
+	$кнопки = [
+	[	[ 	'action' => $action1, 'color' => 'secondary' ],
+		[	'action' => $action2, 'color' => 'positive' ],
+		[	'action' => $action3, 'color' => 'negative' ]
+	],[	[	'action' => $action4, 'color' => 'primary' ],
+		[	'action' => $action5, 'color' => 'secondary' ],
+		[	'action' => $action6, 'color' => 'positive' ]
+	],[	[	'action' => $action7, 'color' => 'negative' ],
+		[	'action' => $action8, 'color' => 'primary' ],
+		[	'action' => $action9, 'color' => 'secondary' ]
+	],[	[	'action' => $action10, 'color' => 'positive' ],
+		[	'action' => $action11, 'color' => 'negative' ],
+		[	'action' => $action12, 'color' => 'primary' ]
+	],[	[	'action' => $action13, 'color' => 'secondary' ],
+		[	'action' => $action14, 'color' => 'positive' ],
+		[	'action' => $action15, 'color' => 'negative' ]
+	],[	[	'action' => $action16, 'color' => 'primary' ],
+		[	'action' => $action17, 'color' => 'secondary' ],
+		[	'action' => $action18, 'color' => 'positive' ]
+	],[	[	'action' => $action19, 'color' => 'negative' ],
+		[	'action' => $action20, 'color' => 'primary' ],
+		[	'action' => $action21, 'color' => 'secondary' ]
+	],[	[	'action' => $action22, 'color' => 'positive' ],
+		[	'action' => $action23, 'color' => 'negative' ],
+		[	'action' => $action24, 'color' => 'primary' ]
+	],[	[	'action' => $action25, 'color' => 'secondary' ],
+		[	'action' => $action26, 'color' => 'positive' ],
+		[	'action' => $action27, 'color' => 'negative' ]
+	],[	[	'action' => $action28, 'color' => 'primary' ],
+		[	'action' => $action29, 'color' => 'secondary' ],
+		[	'action' => $action30, 'color' => 'positive' ]
+	] ];
+	$клавиатура_в_сообщении = [
+		'one_time' => false,
+		'buttons' => $кнопки,
+		'inline' => false
+	];	
+	$клавиатура = json_encode($клавиатура_в_сообщении);	
+	$результат = $vk->messagesSend($peer_id, "Нажми на кнопку!", null, null, null, $клавиатура);
+	
+	
+}elseif ($text == "убериКлаву") {		
 	
 	$убрать_клавиатуру = [
 		'one_time' => false,
