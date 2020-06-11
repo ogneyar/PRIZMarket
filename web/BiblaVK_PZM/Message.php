@@ -76,8 +76,14 @@ if ($text == "Прива") {
 		'button' => '22' ] ];
 	$action23 = [ 'type' => 'text', 'label' => 'ОткрепПоста', 'payload' => [ 
 		'button' => '23' ] ];
-	$action24 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action24 = [ 'type' => 'text', 'label' => 'СоздатьАльбом', 'payload' => [ 
 		'button' => '24' ] ];
+	$action25 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '25' ] ];
+	$action26 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '26' ] ];
+	$action27 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '27' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1, 'color' => 'secondary' ],
 		[	'action' => $action2, 'color' => 'positive' ],
@@ -103,6 +109,9 @@ if ($text == "Прива") {
 	],[	[	'action' => $action22, 'color' => 'positive' ],
 		[	'action' => $action23, 'color' => 'negative' ],
 		[	'action' => $action24, 'color' => 'primary' ]
+	],[	[	'action' => $action25, 'color' => 'secondary' ],
+		[	'action' => $action26, 'color' => 'positive' ],
+		[	'action' => $action27, 'color' => 'negative' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -336,6 +345,14 @@ if ($text == "Прива") {
 	$результат = $vk2->wallRepost($объект_поста, "Тестирование метода wall.repost", $vk_group_id);
 	if ($результат['success']) $vk->messagesSend($peer_id, "Всё, репостнул Огнеяра пост, смотри! (wall.repost)");
 	else $vk->messagesSend($peer_id, "Ошибка! {$результат['error_msg']} (wall.repost)");
+	
+	
+}elseif ($text == "СоздатьАльбом") {	
+		
+	$результат = $vk2->photosCreateAlbum("Тестовый альбом для метода photos.createAlbum", $vk_group_id);
+	if ($результат['id']) $vk->messagesSend($peer_id, "Создан тестовый фото-альбом! Его номер: {$результат['id']} (wall.createAlbum)");
+	else $vk->messagesSend($peer_id, "Ошибка! {$результат['error_msg']} (wall.createAlbum)");
+	
 	
 }elseif ($text == "Пусто") {	
 		
