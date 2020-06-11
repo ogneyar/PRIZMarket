@@ -82,8 +82,20 @@ if ($text == "Прива") {
 		'button' => '25' ] ];
 	$action26 = [ 'type' => 'text', 'label' => 'УдалиАльбом', 'payload' => [ 
 		'button' => '26' ] ];
-	$action27 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action27 = [ 'type' => 'text', 'label' => 'УдалиФото', 'payload' => [ 
 		'button' => '27' ] ];
+	$action28 = [ 'type' => 'text', 'label' => 'КоментФото', 'payload' => [ 
+		'button' => '28' ] ];
+	$action29 = [ 'type' => 'text', 'label' => 'ИзмениКоментФото', 'payload' => [ 
+		'button' => '29' ] ];
+	$action30 = [ 'type' => 'text', 'label' => 'УдалиКоментФото', 'payload' => [ 
+		'button' => '30' ] ];
+	$action31 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '31' ] ];
+	$action32 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '32' ] ];
+	$action33 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+		'button' => '33' ] ];
 	$кнопки = [
 	[	[ 	'action' => $action1, 'color' => 'secondary' ],
 		[	'action' => $action2, 'color' => 'positive' ],
@@ -112,6 +124,12 @@ if ($text == "Прива") {
 	],[	[	'action' => $action25, 'color' => 'secondary' ],
 		[	'action' => $action26, 'color' => 'positive' ],
 		[	'action' => $action27, 'color' => 'negative' ]
+	],[	[	'action' => $action28, 'color' => 'primary' ],
+		[	'action' => $action29, 'color' => 'secondary' ],
+		[	'action' => $action30, 'color' => 'positive' ]
+	],[	[	'action' => $action31, 'color' => 'negative' ],
+		[	'action' => $action32, 'color' => 'primary' ],
+		[	'action' => $action33, 'color' => 'secondary' ]
 	] ];
 	$клавиатура_в_сообщении = [
 		'one_time' => false,
@@ -380,6 +398,49 @@ if ($text == "Прива") {
 		else $vk->messagesSend($peer_id, "Не смог удалить! Ошибка! {$результат['error_msg']} (wall.deleteAlbum)");
 		
 	}else $vk->messagesSend($peer_id, "Ошибка! {$результат['error_msg']} (wall.deleteAlbum)");
+	
+	
+}elseif ($text == "УдалиФото") {	
+	
+	$ссылка_на_файл = "http://f0430377.xsph.ru/image/test5eccceaecbdc4.jpg";
+	$результат = $vk2->uploadAndGetUrl($vk_album_id, $vk_group_id, $ссылка_на_файл);
+	if ($результат['id']) {
+		$vk->messagesSend($peer_id, "Загрузил тестовое фото, через 5 секунд удалю!");
+		sleep(5);
+	
+		$результат = $vk2->photosDelete($vk_group_id, $результат['id']);
+		if ($результат) $vk->messagesSend($peer_id, "Удалил!");
+	}
+	
+	
+}elseif ($text == "КоментФото") {	
+		
+	$результат = $vk2->photosCreateComment(-$vk_group_id, 457239046, "Тестовый комментарий для метода photos.createComment");
+	if ($результат) $vk->messagesSend($peer_id, "Откомментировал фото ложек!");
+	
+	
+}elseif ($text == "ИзмениКоментФото") {	
+		
+	$результат = $vk2->photosCreateComment(-$vk_group_id, 457239046, "Тестовый комментарий для метода photos.editComment");
+	if ($результат) {
+		$vk->messagesSend($peer_id, "Откомментировал фото ложек, через 5 секунд изменю комментарий!");
+		sleep(5);
+	
+		$результат = $vk2->photosEditComment(-$vk_group_id, $результат, "Новый текст комментария для метода photos.editComment");
+		if ($результат) $vk->messagesSend($peer_id, "Изменил!");
+	}
+	
+	
+}elseif ($text == "УдалиКоментФото") {	
+		
+	$результат = $vk2->photosCreateComment(-$vk_group_id, 457239046, "Тестовый комментарий для метода photos.deleteComment");
+	if ($результат) {
+		$vk->messagesSend($peer_id, "Откомментировал фото ложек, через 5 секунд удалю комментарий!");
+		sleep(5);
+	
+		$результат = $vk2->photosDeleteComment(-$vk_group_id, $результат);
+		if ($результат) $vk->messagesSend($peer_id, "Удалил!");
+	}
 	
 	
 }elseif ($text == "Пусто") {	
