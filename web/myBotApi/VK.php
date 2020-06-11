@@ -37,14 +37,18 @@
  *
  *----------
  *  photos  
- *----------
- *
- * photosCreateAlbum
+ *---------- 
  *
  * photosGetUploadServer
  *
  * photosSave
- * 
+ *
+ * photosCreateAlbum
+ *
+ * photosEditAlbum
+ *
+ * photosDeleteAlbum
+ *
  *
  *-------- 
  *  wall  
@@ -471,44 +475,7 @@ class VK
 /*-------------------------------*/
 /*			  photos			 */
 /*-------------------------------*/	
-
-	/*
-	**  Создает пустой альбом для фотографий (только в Standalone-приложении)
-	**
-	**  @param str $title
- 	**  @param int $group_id
-	**  @param str $description
- 	**  @param arr(str,str) $privacy_view
- 	**  @param arr(str,str) $privacy_comment
- 	**  @param bool $upload_by_admins_only
- 	**  @param bool $comments_disabled
-	**  
-	**  @return array 
-	*/
-    public function photosCreateAlbum(
-		$title, 
-		$group_id = null,
-		$description = null, 
-		$privacy_view = null,
-		$privacy_comment = null, 
-		$upload_by_admins_only = false,
-		$comments_disabled = false
-	) {				
 	
-		$response = $this->call("photos.createAlbum", [
-			'title' => $title,
-			'group_id' => $group_id,
-			'description' => $description,
-			'privacy_view' => $privacy_view,
-			'privacy_comment' => $privacy_comment,
-			'upload_by_admins_only' => $upload_by_admins_only,
-			'comments_disabled' => $comments_disabled
-		]);	
-	
-		return $response;
-	}
-
-
 	/*
 	**  функция получения URL сервера для загрузки фото (только в Standalone-приложении)
 	**
@@ -574,10 +541,111 @@ class VK
 	}
 	
 	
+	/*
+	**  Создает пустой альбом для фотографий (только в Standalone-приложении)
+	**
+	**  @param str $title
+ 	**  @param int $group_id
+	**  @param str $description
+ 	**  @param arr(str,str) $privacy_view
+ 	**  @param arr(str,str) $privacy_comment
+ 	**  @param bool $upload_by_admins_only
+ 	**  @param bool $comments_disabled
+	**  
+	**  @return array 
+	*/
+    public function photosCreateAlbum(
+		$title, 
+		$group_id = null,
+		$description = null, 
+		$privacy_view = null,
+		$privacy_comment = null, 
+		$upload_by_admins_only = false,
+		$comments_disabled = false
+	) {				
+	
+		$response = $this->call("photos.createAlbum", [
+			'title' => $title,
+			'group_id' => $group_id,
+			'description' => $description,
+			'privacy_view' => $privacy_view,
+			'privacy_comment' => $privacy_comment,
+			'upload_by_admins_only' => $upload_by_admins_only,
+			'comments_disabled' => $comments_disabled
+		]);	
+	
+		return $response;
+	}
+
+	
+	/*
+	**  Редактирует данные альбома для фотографий (только в Standalone-приложении)
+	**
+ 	**  @param int $album_id
+	**  @param str $title
+	**  @param str $description
+ 	**  @param int $owner_id
+ 	**  @param arr(str,str) $privacy_view
+ 	**  @param arr(str,str) $privacy_comment
+ 	**  @param bool $upload_by_admins_only
+ 	**  @param bool $comments_disabled
+	**  
+	**  @return bool 
+	*/
+    public function photosEditAlbum( 
+		$album_id,
+		$title = null,
+		$description = null,  
+		$owner_id = null,
+		$privacy_view = null,
+		$privacy_comment = null, 
+		$upload_by_admins_only = false,
+		$comments_disabled = false
+	) {				
+	
+		$response = $this->call("photos.editAlbum", [
+			'album_id' => $album_id,
+			'title' => $title,
+			'description' => $description,
+			'owner_id' => $owner_id,
+			'privacy_view' => $privacy_view,
+			'privacy_comment' => $privacy_comment,
+			'upload_by_admins_only' => $upload_by_admins_only,
+			'comments_disabled' => $comments_disabled
+		]);	
+	
+		return $response;
+	}
+		
+	
+	/*
+	**  Удаляет указанный альбом для фотографий у текущего пользователя 
+	**  (только в Standalone-приложении)
+	**
+	**  @param int $album_id
+ 	**  @param int $group_id
+	**  
+	**  @return bool 
+	*/
+    public function photosDeleteAlbum(
+		$album_id, 
+		$group_id = null
+	) {				
+	
+		$response = $this->call("photos.deleteAlbum", [
+			'album_id' => $album_id,
+			'group_id' => $group_id
+		]);	
+	
+		return $response;
+	}
+	
+	
+
 /*-------------------------------*/
 /*			   wall				 */
 /*-------------------------------*/		
-		
+	
 	/*
 	**  Проверяет ссылку для указания источника
 	**
