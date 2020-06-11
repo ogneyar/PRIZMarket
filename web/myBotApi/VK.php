@@ -39,8 +39,8 @@
  *  photos  
  *----------
  *
-* photosCreateAlbum
-*
+ * photosCreateAlbum
+ *
  * photosGetUploadServer
  *
  * photosSave
@@ -477,7 +477,7 @@ class VK
 	**
 	**  @param str $title
  	**  @param int $group_id
-   **  @param str $description
+	**  @param str $description
  	**  @param arr(str,str) $privacy_view
  	**  @param arr(str,str) $privacy_comment
  	**  @param bool $upload_by_admins_only
@@ -488,11 +488,11 @@ class VK
     public function photosCreateAlbum(
 		$title, 
 		$group_id = null,
-$description = null, 
+		$description = null, 
 		$privacy_view = null,
-$privacy_comment = null, 
+		$privacy_comment = null, 
 		$upload_by_admins_only = false,
-$comments_disabled = false
+		$comments_disabled = false
 	) {				
 	
 		$response = $this->call("photos.createAlbum", [
