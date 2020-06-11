@@ -39,6 +39,8 @@
  *  photos  
  *----------
  *
+* photosCreateAlbum
+*
  * photosGetUploadServer
  *
  * photosSave
@@ -469,9 +471,46 @@ class VK
 /*-------------------------------*/
 /*			  photos			 */
 /*-------------------------------*/	
-	
+
 	/*
-	**  функция получения URL сервера для загрузки фото
+	**  Создает пустой альбом для фотографий (только в Standalone-приложении)
+	**
+	**  @param str $title
+ 	**  @param int $group_id
+   **  @param str $description
+ 	**  @param arr(str,str) $privacy_view
+ 	**  @param arr(str,str) $privacy_comment
+ 	**  @param bool $upload_by_admins_only
+ 	**  @param bool $comments_disabled
+	**  
+	**  @return array 
+	*/
+    public function photosCreateAlbum(
+		$title, 
+		$group_id = null,
+$description = null, 
+		$privacy_view = null,
+$privacy_comment = null, 
+		$upload_by_admins_only = false,
+$comments_disabled = false
+	) {				
+	
+		$response = $this->call("photos.createAlbum", [
+			'title' => $title,
+			'group_id' => $group_id,
+			'description' => $description,
+			'privacy_view' => $privacy_view,
+			'privacy_comment' => $privacy_comment,
+			'upload_by_admins_only' => $upload_by_admins_only,
+			'comments_disabled' => $comments_disabled
+		]);	
+	
+		return $response;
+	}
+
+
+	/*
+	**  функция получения URL сервера для загрузки фото (только в Standalone-приложении)
 	**
 	**  @param int $album_id
  	**  @param int $group_id
@@ -495,7 +534,7 @@ class VK
 
 	
 	/*
-	**  функция сохранения фото
+	**  функция сохранения фото (только в Standalone-приложении)
 	**
 	**  @param int $album_id
  	**  @param int $group_id
@@ -509,7 +548,6 @@ class VK
 	**  
 	**  @return array 
 	*/
-
     public function photosSave(
 		$album_id, 
 		$group_id,		
