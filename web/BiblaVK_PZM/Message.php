@@ -361,7 +361,7 @@ if ($text == "Прива") {
 		$vk->messagesSend($peer_id, "Создан тестовый фото-альбом для метода photos.editAlbum. Сморти, через 5 секунд название будет изменено!");		
 		sleep(5);
 		
-		$результат = $vk2->photosEditAlbum($результат['id'], "Тестовый альбом для метода photos.editAlbum");	
+		$результат = $vk2->photosEditAlbum($результат['id'], -$vk_group_id, "Тестовый альбом для метода photos.editAlbum");	
 		if ($результат) $vk->messagesSend($peer_id, "Изменил!");
 		else $vk->messagesSend($peer_id, "Не смог изменить! Ошибка! {$результат['error_msg']} (wall.editAlbum)");
 		
