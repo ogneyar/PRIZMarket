@@ -78,9 +78,9 @@ if ($text == "Прива") {
 		'button' => '23' ] ];
 	$action24 = [ 'type' => 'text', 'label' => 'СоздатьАльбом', 'payload' => [ 
 		'button' => '24' ] ];
-	$action25 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action25 = [ 'type' => 'text', 'label' => 'ИзмениАльбом', 'payload' => [ 
 		'button' => '25' ] ];
-	$action26 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
+	$action26 = [ 'type' => 'text', 'label' => 'УдалиАльбом', 'payload' => [ 
 		'button' => '26' ] ];
 	$action27 = [ 'type' => 'text', 'label' => 'Пусто', 'payload' => [ 
 		'button' => '27' ] ];
@@ -352,6 +352,34 @@ if ($text == "Прива") {
 	$результат = $vk2->photosCreateAlbum("Тестовый альбом для метода photos.createAlbum", $vk_group_id);
 	if ($результат['id']) $vk->messagesSend($peer_id, "Создан тестовый фото-альбом! Его номер: {$результат['id']} (wall.createAlbum)");
 	else $vk->messagesSend($peer_id, "Ошибка! {$результат['error_msg']} (wall.createAlbum)");
+	
+	
+}elseif ($text == "ИзмениАльбом") {	
+		
+	$результат = $vk2->photosCreateAlbum("Просто тестовый альбом.", $vk_group_id);
+	if ($результат['id']) {
+		$vk->messagesSend($peer_id, "Создан тестовый фото-альбом для метода photos.editAlbum. Сморти, через 5 секунд название будет изменено!");		
+		sleep(5);
+		
+		$результат = $vk2->photosEditAlbum($результат['id'], "Тестовый альбом для метода photos.editAlbum");	
+		if ($результат) $vk->messagesSend($peer_id, "Изменил!");
+		else $vk->messagesSend($peer_id, "Не смог изменить! Ошибка! {$результат['error_msg']} (wall.editAlbum)");
+		
+	}else $vk->messagesSend($peer_id, "Ошибка! {$результат['error_msg']} (wall.editAlbum)");
+		
+	
+}elseif ($text == "УдалиАльбом") {	
+		
+	$результат = $vk2->photosCreateAlbum("Тестовый альбом для метода photos.deleteAlbum.", $vk_group_id);
+	if ($результат['id']) {
+		$vk->messagesSend($peer_id, "Создан тестовый фото-альбом для метода photos.deleteAlbum. Сморти, через 5 секунд он будет удалён!");		
+		sleep(5);
+		
+		$результат = $vk2->photosDeleteAlbum($результат['id'], $vk_group_id);	
+		if ($результат) $vk->messagesSend($peer_id, "Удалил!");
+		else $vk->messagesSend($peer_id, "Не смог удалить! Ошибка! {$результат['error_msg']} (wall.deleteAlbum)");
+		
+	}else $vk->messagesSend($peer_id, "Ошибка! {$результат['error_msg']} (wall.deleteAlbum)");
 	
 	
 }elseif ($text == "Пусто") {	
