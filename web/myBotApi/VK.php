@@ -242,6 +242,7 @@ class VK
 		$response['url_vk'] = $url_vk;
 		$response['vk_file'] = $vk_file;
 		$response['url'] = $url;	
+		$response['id'] = $result[0]['id'];
 		
 		return $response;
 	}
