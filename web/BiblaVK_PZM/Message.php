@@ -504,7 +504,7 @@ if ($text == "Прива") {
 		$vk->messagesSend($peer_id, "Загрузил тестовое фото, его номер: {$результат['id']}. Через 7 секунд удалю!");
 		sleep(7);
 	
-		$результат = $vk2->photosDelete($vk_group_id, $результат['id']);
+		$результат = $vk2->photosDelete(-$vk_group_id, $результат['id']);
 		if ($результат) $vk->messagesSend($peer_id, "Удалил!");
 	}
 	
