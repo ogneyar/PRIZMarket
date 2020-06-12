@@ -43,6 +43,8 @@
  *
  * photosSave
  *
+ * photosEdit
+ *
  * photosDelete
  *
  * photosCreateAlbum
@@ -50,6 +52,12 @@
  * photosEditAlbum
  *
  * photosDeleteAlbum
+ *
+ * photosGet
+ *
+ * photosGetAll
+ *
+ * photosGetAlbumsCount
  *
  * photosCreateComment
  *
@@ -491,7 +499,6 @@ class VK
 	**  @param int $album_id
  	**  @param int $group_id
 	**  
-	**  
 	**  @return array 
 	*/
 
@@ -517,10 +524,9 @@ class VK
 	**  @param int $server
 	**  @param JSON $photos_list
 	**  @param str $hash
-	**  @param int $latitude
-	**  @param int $longitude
+	**  @param real $latitude
+	**  @param real $longitude
 	**  @param str $caption
-	**  
 	**  
 	**  @return array 
 	*/
@@ -544,6 +550,46 @@ class VK
 			'latitude' => $latitude,
 			'longitude' => $longitude,
 			'caption' => $caption
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Редактирует описание или геометку у фотографии (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+ 	**  @param int $photo_id
+	**  @param str $caption
+	**  @param real $latitude
+	**  @param real $longitude
+	**  @param str $place_str
+	**  @param str $foursquare_id
+	**  @param bool $delete_place
+	**  
+	**  @return bool 
+	*/
+    public function photosEdit(
+		$owner_id, 
+		$photo_id,
+		$caption = null,
+		$latitude = 0,
+		$longitude = 0,
+		$place_str = null,
+		$foursquare_id = null,
+		$delete_place = false
+	) {				
+	
+		$response = $this->call("photos.edit", [
+			'owner_id' => $owner_id,
+			'photo_id' => $photo_id, 
+			'caption' => $caption,
+			'latitude' => $latitude,
+			'longitude' => $longitude,
+			'place_str' => $place_str,
+			'foursquare_id' => $foursquare_id,
+			'delete_place' => $delete_place
 		]);	
 	
 		return $response;
@@ -665,6 +711,116 @@ class VK
 	
 		$response = $this->call("photos.deleteAlbum", [
 			'album_id' => $album_id,
+			'group_id' => $group_id
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Возвращает список фотографий в альбоме (только в Standalone-приложении)
+	**
+ 	**  @param int $owner_id
+ 	**  @param str $album_id
+	**  @param str,str $photo_ids
+	**  @param bool $rev
+ 	**  @param bool $extended
+ 	**  @param str $feed_type
+ 	**  @param int $feed
+ 	**  @param bool $photo_sizes
+	**  @param int $offset
+ 	**  @param int $count // max 1000
+	**  
+	**  @return bool 
+	*/
+    public function photosGet(  
+		$owner_id,
+		$album_id, 
+		$photo_ids = null,
+		$rev = false,
+		$extended = false,
+		$feed_type = null, 
+		$feed = null,
+		$photo_sizes = false, 
+		$offset = null,
+		$count = 50
+	) {				
+	
+		$response = $this->call("photos.get", [
+			'owner_id' => $owner_id,
+			'album_id' => $album_id,
+			'photo_ids' => $photo_ids,
+			'rev' => $rev,
+			'extended' => $extended,
+			'feed_type' => $feed_type,
+			'feed' => $feed,
+			'photo_sizes' => $photo_sizes,
+			'offset' => $offset,
+			'count' => $count
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Возвращает все фотографии пользователя или сообщества в антихронологическом порядке 
+	**  (только в Standalone-приложении)
+	**
+ 	**  @param int $owner_id
+ 	**  @param bool $extended
+	**  @param int $offset
+ 	**  @param int $count // max 200
+ 	**  @param bool $photo_sizes
+ 	**  @param bool $no_service_albums
+	**  @param bool $need_hidden
+	**  @param bool $skip_hidden
+	**  
+	**  @return bool 
+	*/
+    public function photosGetAll(  
+		$owner_id,
+		$extended = false,
+		$offset = null,
+		$count = 20,
+		$photo_sizes = false, 
+		$no_service_albums = false, 
+		$need_hidden = false,
+		$skip_hidden = false
+	) {				
+	
+		$response = $this->call("photos.getAll", [
+			'owner_id' => $owner_id,
+			'extended' => $extended,
+			'offset' => $offset,
+			'count' => $count,
+			'photo_sizes' => $photo_sizes,
+			'no_service_albums' => $no_service_albums,
+			'need_hidden' => $need_hidden,
+			'skip_hidden' => $skip_hidden
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Возвращает количество доступных альбомов пользователя или сообщества
+	**  (только в Standalone-приложении)
+	**
+ 	**  @param int $user_id
+ 	**  @param int $group_id
+	**  
+	**  @return bool 
+	*/
+    public function photosGetAlbumsCount(  
+		$user_id,
+		$group_id
+	) {				
+	
+		$response = $this->call("photos.getAlbumsCount", [
+			'user_id' => $user_id,
 			'group_id' => $group_id
 		]);	
 	
