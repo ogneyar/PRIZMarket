@@ -3,12 +3,15 @@
 $data = $vk->init('php://input');
 
 $type = $data['type'];
+$object = $data['object'];
+$group_id = $data['group_id'];
+$event_id = $data['event_id'];
+$secret =  $data['secret'];
 
 /*
 message_new
 */
 if ($type == 'message_new') {
-$object = $data['object'];
 	$message = $object['message'];	
 		$date = $message['date'];
 		$from_id = $message['from_id'];
@@ -61,10 +64,7 @@ $object = $data['object'];
 		$button_actions = $client_info['button_actions'];		
 		$keyboard = $client_info['keyboard'];
 		$inline_keyboard = $client_info['inline_keyboard'];
-		$lang_id = $client_info['lang_id'];		
-$group_id = $data['group_id'];
-$event_id = $data['event_id'];
-$secret =  $data['secret'];
+		$lang_id = $client_info['lang_id'];
 }
 
 
@@ -72,7 +72,6 @@ $secret =  $data['secret'];
 wall_post_new
 */
 if ($type == 'wall_post_new') {
-$object = $data['object'];
 	$id = $object['id'];
 	$from_id = $object['from_id'];
 	$owner_id = $object['owner_id'];
@@ -114,16 +113,12 @@ $object = $data['object'];
 	}
 	$comments = $object['comments']; // массив
 	$is_favorite = $object['is_favorite'];
-$group_id = $data['group_id'];
-$event_id = $data['event_id'];
-$secret =  $data['secret'];
 }
 
 /*
 photo_new
 */
 if ($type == 'photo_new') {
-$object = $data['object'];
 	$album_id = $object['album_id'];
 	$date = $object['date'];
 	$id = $object['id'];
@@ -143,9 +138,6 @@ $object = $data['object'];
 	}
 	$text = $object['text'];
 	$user_id = $object['user_id'];
-$group_id = $data['group_id'];
-$event_id = $data['event_id'];
-$secret =  $data['secret'];
 }
 
 
@@ -153,7 +145,6 @@ $secret =  $data['secret'];
 group_change_settings
 */
 if ($type == 'group_change_settings') {
-$object = $data['object'];
 	$user_id = $object['user_id'];
 	$changes = $object['changes']; // массив
 	if ($changes['website']) {
@@ -161,92 +152,76 @@ $object = $data['object'];
 			$old_value = $website['old_value'];
 			$new_value = $website['new_value'];
 	}
-$group_id = $data['group_id'];
-$event_id = $data['event_id'];
-$secret =  $data['secret'];
 }
 
 
-/*{
-    "type": "wall_reply_edit",
-    "object": {
-        "id": 56,
-        "from_id": 119909267,
-        "post_id": 55,
-        "owner_id": -190150616,
-        "parents_stack": [],
-        "date": 1591686599,
-        "text": "Вот такой теперь тут коммент.",
-        "thread": {
-            "count": 0
-        },
-        "post_owner_id": -190150616
-    },
-    "group_id": 190150616,
-    "event_id": "08d423b0fd75e8846b146a3a34ecb74cf9c34041",
-    "secret": "aaQdvgg43sdGgvFs2"
-}*/
+/*
+wall_reply_edit
+*/
+if ($type == 'wall_reply_edit') {
+	$id = $object['id'];
+	$from_id = $object['from_id'];
+	$post_id = $object['post_id'];
+	$owner_id = $object['owner_id'];
+	$parents_stack = $object['parents_stack']; // массив
+	$date = $object['date'];
+	$text = $object['text'];
+	$thread = $object['thread'];
+		$count = $thread['count'];
+	$post_owner_id = $object['post_owner_id'];
+}
 
-/*{
-    "type": "wall_reply_delete",
-    "object": {
-        "owner_id": -190150616,
-        "id": 52,
-        "deleter_id": 119909267,
-        "post_id": 51
-    },
-    "group_id": 190150616,
-    "event_id": "e23f733085c088e39565824fbc29f9fbd3c55ab3",
-    "secret": "aaQdvgg43sdGgvFs2"
-}*/
 
-/*{
-    "type": "like_add",
-    "object": {
-        "liker_id": 119909267,
-        "object_type": "photo_comment",
-        "object_owner_id": -190150616,
-        "object_id": 5,
-        "thread_reply_id": 0,
-        "post_id": 0
-    },
-    "group_id": 190150616,
-    "event_id": "bbc629b8915cc33a4f3c2c40c88e766829843168",
-    "secret": "aaQdvgg43sdGgvFs2"
-}*/
+/*
+wall_reply_delete
+*/
+if ($type == 'wall_reply_delete') {
+	$owner_id = $object['owner_id'];
+	$id = $object['id'];
+	$deleter_id = $object['deleter_id'];
+	$post_id = $object['post_id'];
+}
 
-/*{
-    "type": "photo_comment_new",
-    "object": {
-        "id": 5,
-        "from_id": 119909267,
-        "parents_stack": [],
-        "date": 1591891406,
-        "text": "Тестовый комментарий для метода photos.deleteComment",
-        "thread": {
-            "count": 0
-        },
-        "photo_owner_id": -190150616,
-        "photo_id": 457239046
-    },
-    "group_id": 190150616,
-    "event_id": "7d56bf46da6e2b1d114548eb2a27da5eb717dc60",
-    "secret": "aaQdvgg43sdGgvFs2"
-}*/
 
-/*{
-    "type": "photo_comment_delete",
-    "object": {
-        "owner_id": -190150616,
-        "id": 5,
-        "deleter_id": 119909267,
-        "photo_id": 457239046,
-        "user_id": 119909267
-    },
-    "group_id": 190150616,
-    "event_id": "55b01f6f6eebf1fbf033ab1b4d3c90bb926574d5",
-    "secret": "aaQdvgg43sdGgvFs2"
-}*/
+/*
+like_add
+*/
+if ($type == 'like_add') {
+	$liker_id = $object['liker_id'];
+	$object_type = $object['object_type'];
+	$object_owner_id = $object['object_owner_id'];
+	$object_id = $object['object_id'];
+	$thread_reply_id = $object['thread_reply_id'];
+	$post_id = $object['post_id'];
+}
+
+
+/*
+photo_comment_new
+*/
+if ($type == 'photo_comment_new') {
+	$id = $object['id'];
+	$from_id = $object['from_id'];
+	$parents_stack = $object['parents_stack']; // массив
+	$date = $object['date'];
+	$text = $object['text'];
+	$thread = $object['thread'];
+		$count = $thread['count'];
+	$post_owner_id = $object['post_owner_id'];
+	$photo_id = $object['photo_id'];
+}
+
+
+/*
+photo_comment_delete
+*/
+if ($type == 'photo_comment_delete') {
+	$owner_id = $object['owner_id'];
+	$id = $object['id'];
+	$deleter_id = $object['deleter_id'];
+	$photo_id = $object['photo_id'];
+	$user_id = $object['user_id'];
+}
 
 
 
