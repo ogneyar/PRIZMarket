@@ -200,6 +200,57 @@ $secret =  $data['secret'];
     "secret": "aaQdvgg43sdGgvFs2"
 }*/
 
+/*{
+    "type": "like_add",
+    "object": {
+        "liker_id": 119909267,
+        "object_type": "photo_comment",
+        "object_owner_id": -190150616,
+        "object_id": 5,
+        "thread_reply_id": 0,
+        "post_id": 0
+    },
+    "group_id": 190150616,
+    "event_id": "bbc629b8915cc33a4f3c2c40c88e766829843168",
+    "secret": "aaQdvgg43sdGgvFs2"
+}*/
+
+/*{
+    "type": "photo_comment_new",
+    "object": {
+        "id": 5,
+        "from_id": 119909267,
+        "parents_stack": [],
+        "date": 1591891406,
+        "text": "Тестовый комментарий для метода photos.deleteComment",
+        "thread": {
+            "count": 0
+        },
+        "photo_owner_id": -190150616,
+        "photo_id": 457239046
+    },
+    "group_id": 190150616,
+    "event_id": "7d56bf46da6e2b1d114548eb2a27da5eb717dc60",
+    "secret": "aaQdvgg43sdGgvFs2"
+}*/
+
+/*{
+    "type": "photo_comment_delete",
+    "object": {
+        "owner_id": -190150616,
+        "id": 5,
+        "deleter_id": 119909267,
+        "photo_id": 457239046,
+        "user_id": 119909267
+    },
+    "group_id": 190150616,
+    "event_id": "55b01f6f6eebf1fbf033ab1b4d3c90bb926574d5",
+    "secret": "aaQdvgg43sdGgvFs2"
+}*/
+
+
+
+
 
 
 $action1 = [
