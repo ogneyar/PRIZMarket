@@ -19,10 +19,8 @@ if ($text=='/start') {
 	
 }elseif ($text=='/kurs' || $text=='курс' || $text=='Курс') {
 	
-	$курс = null;
-	while (!$курс) {
-		$курс = _kurs_PZM();
-	}
+	$курс = _kurs_PZM();
+	
 	$курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$bot_icq->sendText($chatId, $курс);
 	
