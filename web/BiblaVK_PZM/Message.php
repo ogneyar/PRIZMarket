@@ -24,9 +24,14 @@ if ($text == "Прива") {
 	file_get_contents("https://api.vk.com/method/". "messages.send?". http_build_query($массив));
 
 }elseif ($text=='курс' || $text=='Курс') {
-    $курс = _kurs_PZM();
+    
+	$курс = null;
+	while (!$курс) {
+		$курс = _kurs_PZM();
+	}
     $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$vk->messagesSend($peer_id, $курс);
+	
 
 }elseif (($text == "тест" || $text == "Тест")&&($tester == 'да')) {	
 	
