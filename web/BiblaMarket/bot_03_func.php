@@ -161,70 +161,80 @@ function _PricePZM_in_Monet($symbol){
 }	
 
 
-function _kurs_PZM(){	
+function _kurs_PZM($количество_повторов = 3){	
 	
 	$время = time();
 	
 	$reply = null;
 	
-	$время_записи = _время_записи_курса();
+	$количество = 0;
 	
-	if ($время_записи) $разница = $время - $время_записи;
+	while (!$reply&&($количество < $количество_повторов)) {
 	
-	if ($время_записи&&$разница < 600) {
+		$время_записи = _время_записи_курса();
 		
-		$reply = _дай_курс_PZM();
+		if ($время_записи) $разница = $время - $время_записи;
+		
+		if ($время_записи&&$разница < 600) {
+			
+			$reply = _дай_курс_PZM();
+			
+		}
+		
+		if (!$reply) {
+			
+				$arrayCMC_RUB=json_decode(_CoinMarketCap('2806'), true); 	//  RUB
+				$PriceRUB_in_USD=$arrayCMC_RUB['data']['2806']['quote']['USD']['price'];	
+				$PriceUSD_in_RUB=1/$PriceRUB_in_USD;	
+
+				$arrayCMC_PZM=json_decode(_CoinMarketCap('1681'), true); // PRIZM
+				$PricePZM_in_USD=$arrayCMC_PZM['data']['1681']['quote']['USD']['price'];
+				$PricePZM_in_RUB=$PriceUSD_in_RUB*$PricePZM_in_USD;
+				
+		/*	
+				$arrayCMC_ETH=json_decode(_CoinMarketCap('2'), true); // ETH
+				$PriceETH_in_USD=$arrayCMC_ETH['data']['2']['quote']['USD']['price'];
+				$PriceUSD_in_ETH=1/$PriceETH_in_USD;	
+				$PricePZM_in_ETH=$PricePZM_in_USD*$PriceUSD_in_ETH;
+			
+				$arrayCMC_BTC=json_decode(_CoinMarketCap('1'), true); // BTC
+				$PriceBTC_in_USD=$arrayCMC_BTC['data']['1']['quote']['USD']['price'];
+				$PriceUSD_in_BTC=1/$PriceBTC_in_USD;	
+				$PricePZM_in_BTC=$PricePZM_in_USD*$PriceUSD_in_BTC;
+		*/
+		//		$Date_PricePZM=$arrayCMC_PZM['data']['1681']['quote']['USD']['last_updated'];
+			
+		//		$unixDate=strtotime($Date_PricePZM);	
+		//		$Date_PricePZM = gmdate('d.m.Y H:i:s', $unixDate + 3*3600);
+		
+				$Date_PricePZM = gmdate('d.m.Y H:i', $время + 3*3600);
+		
+				$Round_PricePZM_in_USD=round($PricePZM_in_USD, 4);
+				$Round_PricePZM_in_RUB=round($PricePZM_in_RUB, 2);
+		//		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
+		//		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
+				
+				if (($PricePZM_in_USD)&&($PricePZM_in_RUB)) {
+				
+					_запись_переменной_курса('курс PZM', $Round_PricePZM_in_USD, 'USD', $время);
+					
+					_запись_переменной_курса('курс PZM', $Round_PricePZM_in_RUB, 'RUB', $время);
+							
+					$reply="Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n\n\t\t1PZM = ".
+						$Round_PricePZM_in_USD." $\n\t\t1PZM = ".$Round_PricePZM_in_RUB.
+						" \xE2\x82\xBD\n\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
+					$reply.="на ".$Date_PricePZM." МСК";			
+					
+				}else sleep(1);
+				
+		}
+	
+		$количество++;
 		
 	}
 	
-	if (!$reply) {
-		
-			$arrayCMC_RUB=json_decode(_CoinMarketCap('2806'), true); 	//  RUB
-			$PriceRUB_in_USD=$arrayCMC_RUB['data']['2806']['quote']['USD']['price'];	
-			$PriceUSD_in_RUB=1/$PriceRUB_in_USD;	
-
-			$arrayCMC_PZM=json_decode(_CoinMarketCap('1681'), true); // PRIZM
-			$PricePZM_in_USD=$arrayCMC_PZM['data']['1681']['quote']['USD']['price'];
-			$PricePZM_in_RUB=$PriceUSD_in_RUB*$PricePZM_in_USD;
-			
-	/*	
-			$arrayCMC_ETH=json_decode(_CoinMarketCap('2'), true); // ETH
-			$PriceETH_in_USD=$arrayCMC_ETH['data']['2']['quote']['USD']['price'];
-			$PriceUSD_in_ETH=1/$PriceETH_in_USD;	
-			$PricePZM_in_ETH=$PricePZM_in_USD*$PriceUSD_in_ETH;
-		
-			$arrayCMC_BTC=json_decode(_CoinMarketCap('1'), true); // BTC
-			$PriceBTC_in_USD=$arrayCMC_BTC['data']['1']['quote']['USD']['price'];
-			$PriceUSD_in_BTC=1/$PriceBTC_in_USD;	
-			$PricePZM_in_BTC=$PricePZM_in_USD*$PriceUSD_in_BTC;
-	*/
-	//		$Date_PricePZM=$arrayCMC_PZM['data']['1681']['quote']['USD']['last_updated'];
-		
-	//		$unixDate=strtotime($Date_PricePZM);	
-	//		$Date_PricePZM = gmdate('d.m.Y H:i:s', $unixDate + 3*3600);
+	if (!$reply) $reply = "Нет информации. \n\nОбратитесь в тех. поддержку @Prizm_market_supportbot";
 	
-			$Date_PricePZM = gmdate('d.m.Y H:i', $время + 3*3600);
-	
-			$Round_PricePZM_in_USD=round($PricePZM_in_USD, 4);
-			$Round_PricePZM_in_RUB=round($PricePZM_in_RUB, 2);
-	//		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
-	//		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
-			
-			if (($PricePZM_in_USD)&&($PricePZM_in_RUB)) {
-			
-				_запись_переменной_курса('курс PZM', $Round_PricePZM_in_USD, 'USD', $время);
-				
-				_запись_переменной_курса('курс PZM', $Round_PricePZM_in_RUB, 'RUB', $время);
-						
-				$reply="Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n\n\t\t1PZM = ".
-					$Round_PricePZM_in_USD." $\n\t\t1PZM = ".$Round_PricePZM_in_RUB.
-					" \xE2\x82\xBD\n\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
-				$reply.="на ".$Date_PricePZM." МСК";			
-				
-			}else sleep(1);
-			
-	}
-
 	return $reply;
 
 }
