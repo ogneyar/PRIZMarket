@@ -114,7 +114,7 @@ function _kurs_PZM($количество_повторов = 3){
 		
 	}
 	
-	if (!$reply) $reply = "Нет информации. \n\nОбратитесь в тех. поддержку https://teleg.link/Prizm_market_supportbot";
+	if (!$reply) $reply = "Нет информации.\n\nПовторите запрос, если ошибка появится снова обратитесь в тех.поддержку.\n\nТех. поддержка - https://teleg.link/Prizm_market_supportbot";
 	
 	return $reply;
 
