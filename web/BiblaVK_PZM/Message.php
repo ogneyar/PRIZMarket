@@ -25,10 +25,8 @@ if ($text == "Прива") {
 
 }elseif ($text=='курс' || $text=='Курс') {
     
-	$курс = null;
-	while (!$курс) {
-		$курс = _kurs_PZM();
-	}
+	$курс = _kurs_PZM();
+	
     $курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
 	$vk->messagesSend($peer_id, $курс);
 	
