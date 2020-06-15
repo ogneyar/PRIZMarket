@@ -75,6 +75,12 @@
  *
  * photosGetChatUploadServer
  *
+ * photosGetMessagesUploadServer
+ *
+ * photosSaveMessagesPhoto
+ *
+ *
+ *
  *
  *-------- 
  *  wall  
@@ -1097,6 +1103,51 @@ class VK
 			'crop_x' => $crop_x,
 			'crop_y' => $crop_y,
 			'crop_width' => $crop_width
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Возвращает адрес сервера для загрузки фотографии в личное сообщение
+	**
+	**  @param int $peer_id
+	**  
+	**  @return array (upload_url, album_id, group_id) 
+	*/
+    public function photosGetMessagesUploadServer(
+		$peer_id
+	) {				
+	
+		$response = $this->call("photos.getMessagesUploadServer", [
+			'peer_id' => $peer_id
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Сохраняет фотографию после успешной загрузки на URI,
+	** 	полученный методом photos.getMessagesUploadServer
+	**
+	**  @param int $photo
+	**  @param int $server
+	**  @param int $hash
+	**  
+	**  @return array
+	*/
+    public function photosSaveMessagesPhoto(
+		$photo,
+		$server,
+		$hash
+	) {				
+	
+		$response = $this->call("photos.saveMessagesPhoto", [
+			'photo' => $photo,
+			'server' => $server,
+			'hash' => $hash
 		]);	
 	
 		return $response;
