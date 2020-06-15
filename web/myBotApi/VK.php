@@ -56,14 +56,24 @@
  * photosGet
  *
  * photosGetAll
+ * 
+ * photosGetAlbums
  *
  * photosGetAlbumsCount
+ *
+ * photosGetAllComments
+ *
+ * photosGetById
+ *
+ * photosGetComments
  *
  * photosCreateComment
  *
  * photosEditComment
  *
  * photosDeleteComment
+ *
+ * photosGetChatUploadServer
  *
  *
  *-------- 
@@ -806,6 +816,44 @@ class VK
 	
 	
 	/*
+	**  Возвращает список фотоальбомов пользователя или сообщества 
+	**  (только в Standalone-приложении)
+	**
+ 	**  @param int $owner_id
+ 	**  @param int,int $album_ids
+	**  @param int $offset
+ 	**  @param int $count
+	**  @param bool $need_system
+	**  @param bool $need_covers
+ 	**  @param bool $photo_sizes
+	**  
+	**  @return array 
+	*/
+    public function photosGetAlbums(  
+		$owner_id,
+		$album_ids = null,
+		$offset = null,
+		$count = null, 
+		$need_system = false,
+		$need_covers = false,
+		$photo_sizes = false
+	) {				
+	
+		$response = $this->call("photos.getAlbums", [
+			'owner_id' => $owner_id,
+			'album_ids' => $album_ids,
+			'offset' => $offset,
+			'count' => $count,
+			'need_system' => $need_system,
+			'need_covers' => $need_covers,
+			'photo_sizes' => $photo_sizes
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
 	**  Возвращает количество доступных альбомов пользователя или сообщества
 	**  (только в Standalone-приложении)
 	**
@@ -822,6 +870,111 @@ class VK
 		$response = $this->call("photos.getAlbumsCount", [
 			'user_id' => $user_id,
 			'group_id' => $group_id
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Возвращает отсортированный в антихронологическом порядке список всех
+	**  комментариев к конкретному альбому или ко всем альбомам пользователя
+	**  (только в Standalone-приложении)
+	**
+ 	**  @param int $owner_id
+ 	**  @param int $album_id
+	**  @param bool $need_likes
+	**  @param int $offset
+ 	**  @param int $count
+	**  
+	**  @return array 
+	*/
+    public function photosGetAllComments(  
+		$owner_id,
+		$album_id = null,		
+		$need_likes = false,
+		$offset = null,
+		$count = null
+	) {				
+	
+		$response = $this->call("photos.getAllComments", [
+			'owner_id' => $owner_id,
+			'album_id' => $album_id,
+			'need_likes' => $need_likes,
+			'offset' => $offset,
+			'count' => $count
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Возвращает информацию о фотографиях по их идентификаторам 
+	**  (только в Standalone-приложении)
+	**
+ 	**  @param str,str $photos
+ 	**  @param bool $extended
+ 	**  @param bool $photo_sizes
+	**  
+	**  @return array 
+	*/
+    public function photosGetById(  
+		$photos,
+		$extended = false,
+		$photo_sizes = false
+	) {				
+	
+		$response = $this->call("photos.getById", [
+			'photos' => $photos,
+			'extended' => $extended,
+			'photo_sizes' => $photo_sizes
+		]);	
+	
+		return $response;
+	}
+	
+	
+	/*
+	**  Возвращает список комментариев к фотографии (только в Standalone-приложении)
+	**
+	**  @param int $owner_id
+	**  @param int $photo_id
+	**  @param bool $need_likes
+	**  @param int $start_comment_id
+ 	**  @param int $offset
+	**  @param int $count
+	**  @param str $sort
+	**  @param str $access_key
+	**  @param bool $extended
+	**  @param str,str $fields
+	**  
+	**  @return array 
+	*/
+    public function photosGetComments(
+		$owner_id,
+		$photo_id,
+		$need_likes = false,
+		$start_comment_id = null,
+		$offset = null,
+		$count = null,
+		$sort = null,
+		$access_key = null,
+		$extended = false,
+		$fields = null
+	) {				
+	
+		$response = $this->call("photos.getComments", [
+			'owner_id' => $owner_id,
+			'photo_id' => $photo_id,
+			'need_likes' => $need_likes,
+			'start_comment_id' => $start_comment_id,
+			'offset' => $offset,
+			'count' => $count,
+			'sort' => $sort,
+			'access_key' => $access_key,
+			'extended' => $extended,
+			'fields' => $fields
 		]);	
 	
 		return $response;
@@ -919,6 +1072,36 @@ class VK
 	
 		return $response;
 	}
+	
+	
+	/*
+	**  Позволяет получить адрес для загрузки обложки чата 
+	**  (только в Standalone-приложении)
+	**
+	**  @param int $chat_id
+	**  @param int $crop_x
+	**  @param int $crop_y
+	**  @param int $crop_width
+	**  
+	**  @return array (upload_url) 
+	*/
+    public function photosGetChatUploadServer(
+		$chat_id,
+		$crop_x,
+		$crop_y,
+		$crop_width
+	) {				
+	
+		$response = $this->call("photos.getChatUploadServer", [
+			'chat_id' => $chat_id,
+			'crop_x' => $crop_x,
+			'crop_y' => $crop_y,
+			'crop_width' => $crop_width
+		]);	
+	
+		return $response;
+	}
+	
 	
 
 /*-------------------------------*/
