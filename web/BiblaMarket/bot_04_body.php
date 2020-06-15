@@ -45,8 +45,11 @@ if ($est!==false){
 		
 			
 }elseif ($text == $knopa03||($id_bota != '1066944801'&&$id_bota != '1037491432'&&($text == "курс"||$text == "Курс"||$text == "rehc"||$text == "Rehc"||$text == "цена"||$text == "Цена"))) {  // Курс PRIZM
-			
-	$kurs_PZM = _kurs_PZM();
+	
+	$kurs_PZM = null;
+	while (!$kurs_PZM) {
+		$kurs_PZM = _kurs_PZM();
+	}
 	if (($chat_id==$Макса_группа)||($chat_id==$admin_group)) {
 		$курс_РКАЦ = _курс_РКАЦ();	
 		$reply = $курс_РКАЦ . $kurs_PZM;

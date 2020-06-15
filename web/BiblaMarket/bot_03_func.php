@@ -165,15 +165,19 @@ function _kurs_PZM(){
 	
 	$время = time();
 	
+	$reply = null;
+	
 	$время_записи = _время_записи_курса();
 	
 	if ($время_записи) $разница = $время - $время_записи;
 	
 	if ($время_записи&&$разница < 600) {
 		
-			$reply = _дай_курс_PZM();
-			
-	}else {
+		$reply = _дай_курс_PZM();
+		
+	}
+	
+	if (!$reply) {
 		
 			$arrayCMC_RUB=json_decode(_CoinMarketCap('2806'), true); 	//  RUB
 			$PriceRUB_in_USD=$arrayCMC_RUB['data']['2806']['quote']['USD']['price'];	
@@ -205,15 +209,19 @@ function _kurs_PZM(){
 			$Round_PricePZM_in_RUB=round($PricePZM_in_RUB, 2);
 	//		$Round_PricePZM_in_ETH=round($PricePZM_in_ETH, 6);
 	//		$Round_PricePZM_in_BTC=number_format($PricePZM_in_BTC, 8, ".", "");
-						
-			_запись_переменной_курса('курс PZM', $Round_PricePZM_in_USD, 'USD', $время);
 			
-			_запись_переменной_курса('курс PZM', $Round_PricePZM_in_RUB, 'RUB', $время);
-					
-			$reply="Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n\n\t\t1PZM = ".
-				$Round_PricePZM_in_USD." $\n\t\t1PZM = ".$Round_PricePZM_in_RUB.
-				" \xE2\x82\xBD\n\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
-			$reply.="на ".$Date_PricePZM." МСК";			
+			if (($PricePZM_in_USD)&&($PricePZM_in_RUB)) {
+			
+				_запись_переменной_курса('курс PZM', $Round_PricePZM_in_USD, 'USD', $время);
+				
+				_запись_переменной_курса('курс PZM', $Round_PricePZM_in_RUB, 'RUB', $время);
+						
+				$reply="Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n\n\t\t1PZM = ".
+					$Round_PricePZM_in_USD." $\n\t\t1PZM = ".$Round_PricePZM_in_RUB.
+					" \xE2\x82\xBD\n\n";  //1PZM = ".$Round_PricePZM_in_ETH." ETH\n1PZM = ".$Round_PricePZM_in_BTC." BTC
+				$reply.="на ".$Date_PricePZM." МСК";			
+				
+			}else sleep(1);
 			
 	}
 
@@ -227,7 +235,7 @@ function _дай_курс_PZM(){
 	
 	global $mysqli, $id_bota, $таблица_переменных;
 	
-	$ответ = false;
+	$ответ = null;
 	
 	$запрос = "SELECT * FROM {$таблица_переменных} WHERE id_bota='{$id_bota}' AND nazvanie='курс PZM'";
 	 
@@ -255,8 +263,10 @@ function _дай_курс_PZM(){
 
                 $Date_PricePZM = gmdate('d.m.Y H:i', $время + 3*3600);
 		
-		$ответ = "Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n\n\t\t1PZM = ".
-		$курсPZM_USD." $\n\t\t1PZM = ".$курсPZM_RUB." \xE2\x82\xBD\n\nна ".$Date_PricePZM." МСК";	
+		if (($курсPZM_USD)&&($курсPZM_RUB)) {
+			$ответ = "Курс PRIZM на [CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)\n\n\t\t1PZM = ".
+			$курсPZM_USD." $\n\t\t1PZM = ".$курсPZM_RUB." \xE2\x82\xBD\n\nна ".$Date_PricePZM." МСК";	
+		}
 		
 	}	
 
