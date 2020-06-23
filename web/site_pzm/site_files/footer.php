@@ -3,6 +3,11 @@
 </div>
 <div id="social">	
 	<article>
+		<a href="https://t.me/prizm_market" title="Телеграм канал" target="_blank">
+			<img src="/site_pzm/img/social/tg.png" alt="Телеграм канал" />
+		</a>
+	</article>
+	<article>
 		<a href="https://vk.com/prizmarket_vk" title="Группа Вконтакте" target="_blank">
 			<img src="/site_pzm/img/social/vkontakte.png" alt="Вконтакте PRIZMarket" />
 		</a>
