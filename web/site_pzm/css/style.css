@@ -623,8 +623,8 @@ body {
 
 @media (min-width: 700px) {
 #wrapper #leftCol {
-	width: 67%;
-	margin-right: 5%;
+	width: 69%;
+	margin-right: 3%;
 	float: left;
 }}
 
@@ -738,7 +738,7 @@ body {
 
 @media (min-width: 700px) {
 #wrapper #rightCol {
-	width: 27%;
+	width: 28%;
 	float: left;
 }}
 
