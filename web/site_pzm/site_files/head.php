@@ -17,7 +17,7 @@
 	
 	<meta http-equiv="Cache-Control" content="no-cache">
 	
-	<link rel="stylesheet" href="/site_pzm/css/style8.css">
+	<link rel="stylesheet" href="/site_pzm/css/style.css">
 	
 	<link rel="stylesheet" href="/site_pzm/font-awesome/css/font-awesome.min.css">
 	
