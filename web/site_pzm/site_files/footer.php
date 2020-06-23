@@ -17,9 +17,9 @@
 			<img src="/site_pzm/img/social/instagram.png" alt="Инстаграм PRIZMarket" />
 		</a>
 	</article>
-<!--	<article>
+	<article>
 		<a href="https://t.me/prizm_market" title="Телеграм канал" target="_blank">
 			<img src="/site_pzm/img/social/tg.png" alt="Телеграм канал" />
 		</a>
-	</article> -->
+	</article>
 </div>
