@@ -434,7 +434,10 @@ function _отправить_на_повтор($номер_лота) {
 					
 		$сообщение = "{$юзер_неим}  лот {$номер_лота}\nПовтор публикации в {$время_публикации} мск";
 		$результат = $bot->sendMessage($callback_from_id, $сообщение);		
-		if ($результат) $bot->sendMessage($admin_group, $сообщение);			
+		if ($результат) {
+$bot->sendMessage($admin_group, $сообщение);
+$bot->sendMessage($channel_info, "?старт");
+} 		
 	}else {		
 		$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);		
 		exit('ok');
