@@ -17,6 +17,7 @@ if ($давно) {
 	$bot = new Bot($tokenSite);
 	$сообщение = "{$логин} (сайт) лот {$номер_лота}\nПовтор публикации в {$время_публикации} мск";
 	$bot->sendMessage($admin_group_AvtoZakaz, $сообщение);		
+   $bot->sendMessage($channel_info, "?старт");
 	
 }else {?>
 	<label><?=$логин;?>, после последней публикации прошло менее суток.<br></label>	
