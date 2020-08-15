@@ -206,7 +206,7 @@ function _запись_в_маркет_с_сайта($имя_клиента = nu
 function _вывод_на_каналы_с_сайта($команда) {
 	global $table_market, $bot, $callback_query_id, $s3, $aws_bucket, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
 	global $таблица_медиагруппа, $channel_media_market, $master, $tester, $message_id, $admin_group, $три_часа;
-	global $smtp_server, $smtp_port, $smtp_login, $smtp_pass;	
+	global $smtp_server, $smtp_port, $smtp_login, $smtp_pass, $channel_info;	
 	_очистка_таблицы_ожидание();
 	
 	$bot->answerCallbackQuery($callback_query_id, "Ожидайте! Идёт загрузка фото, отправка письма на email и ещё несколько разных операций, это длительный процесс..", true);
@@ -326,7 +326,8 @@ function _вывод_на_каналы_с_сайта($команда) {
 				// ОТПРАВИТЬ
 				include 'phpmailer.php';			
 				$сообщение_райминам = "{$имя_клиента} (сайт) лот {$id_zakaz}\nПубликация в {$время_публикации} мск";	
-				$bot->sendMessage($chat_id, $сообщение_райминам);				
+				$bot->sendMessage($chat_id, $сообщение_райминам);	
+            $bot->sendMessage($channel_info, "?старт");
 			}else throw new Exception("Не отправился лот на канал Подробности.. (_вывод_на_каналы_с_сайта)");	
 		}else throw new Exception("Или нет заказа или больше одного.. (_вывод_на_каналы_с_сайта)");				
 	}else throw new Exception("Нет такого заказа.. (_вывод_на_каналы_с_сайта)");	

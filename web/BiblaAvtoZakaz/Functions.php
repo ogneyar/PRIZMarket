@@ -421,9 +421,9 @@ function _повтор($номер_лота) {
 	}	
 }
 
-// функция вывода АДМИНАМ на экран лота, с просьбой о необходимости повторить
+// функция постановки лота в очередь на повтор
 function _отправить_на_повтор($номер_лота) {	
-	global $admin_group, $bot, $mysqli, $callback_from_id, $callback_query_id, $table_market;	
+	global $admin_group, $bot, $mysqli, $callback_from_id, $callback_query_id, $table_market, $channel_info;	
 	$давно = _последняя_публикация();	
 	if ($давно) {	
 		$bot->answerCallbackQuery($callback_query_id, "Ожидайте!");	
@@ -435,9 +435,9 @@ function _отправить_на_повтор($номер_лота) {
 		$сообщение = "{$юзер_неим}  лот {$номер_лота}\nПовтор публикации в {$время_публикации} мск";
 		$результат = $bot->sendMessage($callback_from_id, $сообщение);		
 		if ($результат) {
-$bot->sendMessage($admin_group, $сообщение);
-$bot->sendMessage($channel_info, "?старт");
-} 		
+           $bot->sendMessage($admin_group, $сообщение);
+           $bot->sendMessage($channel_info, "?старт");
+      }
 	}else {		
 		$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);		
 		exit('ok');
@@ -475,7 +475,7 @@ function _удалить_выбранный_лот($номер_лота) {
 
 // вывод на канал подробности уже готового лота (кнопка у админов ОПУБЛИКОВАТЬ)
 function _вывод_лота_на_каналы($id_client, $номер_лота = '') {
-	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
+	global $table_market, $bot, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market, $channel_info;
 	global $таблица_медиагруппа, $channel_media_market, $master, $message_id, $admin_group, $три_часа;
 	_очистка_таблицы_ожидание();	
 	$запрос = "SELECT * FROM {$table_market} WHERE id_client={$id_client} AND id_zakaz='{$номер_лота}'";	
@@ -590,7 +590,10 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 				$время_публикации = date("H:i", $время);
 				$сообщение = "{$юзера_имя}  лот {$id_zakaz}\nПубликация в {$время_публикации} мск";
 				$результат = $bot->sendMessage($id_client, $сообщение);		
-				if ($результат) $bot->sendMessage($chat_id, $сообщение);	
+				if ($результат) {
+                 $bot->sendMessage($chat_id, $сообщение);	
+                 $bot->sendMessage($channel_info, "?старт");
+            } 
 			}else throw new Exception("Не отправился лот на канал Подробности.. (_вывод_лота_на_каналы)");		
 		}else throw new Exception("Или нет заказа или больше одного.. (_вывод_лота_на_каналы)");				
 	}else throw new Exception("Нет такого заказа.. (_вывод_лота_на_каналы)");	
