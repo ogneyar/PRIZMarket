@@ -327,7 +327,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 				include 'phpmailer.php';			
 				$сообщение_райминам = "{$имя_клиента} (сайт) лот {$id_zakaz}\nПубликация в {$время_публикации} мск";	
 				$bot->sendMessage($chat_id, $сообщение_райминам);	
-            $bot->sendMessage($channel_info, "?старт");
+                                $bot->sendMessage($channel_info, "?");
 			}else throw new Exception("Не отправился лот на канал Подробности.. (_вывод_на_каналы_с_сайта)");	
 		}else throw new Exception("Или нет заказа или больше одного.. (_вывод_на_каналы_с_сайта)");				
 	}else throw new Exception("Нет такого заказа.. (_вывод_на_каналы_с_сайта)");	
