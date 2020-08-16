@@ -436,7 +436,7 @@ function _отправить_на_повтор($номер_лота) {
 		$результат = $bot->sendMessage($callback_from_id, $сообщение);		
 		if ($результат) {
            $bot->sendMessage($admin_group, $сообщение);
-           $bot->sendMessage($channel_info, "?старт");
+           $bot->sendMessage($channel_info, "?");
       }
 	}else {		
 		$bot->answerCallbackQuery($callback_query_id, "Безоплатно можно публиковать только раз в сутки один лот!", true);		
@@ -592,7 +592,7 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 				$результат = $bot->sendMessage($id_client, $сообщение);		
 				if ($результат) {
                  $bot->sendMessage($chat_id, $сообщение);	
-                 $bot->sendMessage($channel_info, "?старт");
+                 $bot->sendMessage($channel_info, "?");
             } 
 			}else throw new Exception("Не отправился лот на канал Подробности.. (_вывод_лота_на_каналы)");		
 		}else throw new Exception("Или нет заказа или больше одного.. (_вывод_лота_на_каналы)");				
