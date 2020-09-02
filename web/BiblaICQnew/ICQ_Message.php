@@ -22,7 +22,17 @@ if ($text=='/start') {
 	$курс = _kurs_PZM();
 	
 	$курс = str_replace("[CoinMarketCap](https://coinmarketcap.com/ru/currencies/prizm/)", "CoinMarketCap.com", $курс);
-	$bot_icq->sendText($chatId, $курс);
+	
+	$кнопа = [
+		[
+			[
+				"text" => "Сайт PRIZMarket",
+				"url" => "https://prizmarket.ru"
+			]
+		]
+	];
+	
+	$bot_icq->sendText($chatId, $курс, $кнопа);
 	
 
 }elseif ($text=='мат') {
