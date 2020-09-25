@@ -169,6 +169,7 @@ header a#logo {
 .lk_submenu {	
 	display: none;
 	background: rgba(230,230,230);
+	border: 1px solid #8c8c8c;
 }
 .lk_topmenu li:hover .lk_submenu {
 	display: block;
