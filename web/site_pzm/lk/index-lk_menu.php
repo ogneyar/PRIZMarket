@@ -25,7 +25,7 @@ $login_json = json_encode($вывод);
 </span>
 
 <ul class="lk_topmenu">
-	<li id="lk_mini-menu">
+	<li class="lk_topmenu_li">
 		<a href="#"><label id="client"></label></a>
 			
 		<ul class="lk_submenu">	
