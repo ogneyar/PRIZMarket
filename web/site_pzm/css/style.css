@@ -83,7 +83,7 @@ header a#logo {
 	margin: -10px 15% 5px 10px;
 }
 .lk_topmenu_li {
-	margin: -10px 15% 0px 10px;
+	margin: -10px 15% 5px 10px;
 }}
 @media (max-width: 1299px) {
 header a#logo {
@@ -94,7 +94,7 @@ header a#logo {
 	margin: -10px 7% 5px 10px;
 }
 .lk_topmenu_li {
-	margin: -10px 7% 0px 10px;
+	margin: -10px 7% 5px 10px;
 }}
 
 #lk_menu span#contact a {
