@@ -6,7 +6,7 @@
 <a href="/site_pzm/o_prizmarket/index.php">О нас</a>
 </div>
 <ul class="topmenu">
-	<li id="mini-menu"><a href="#"><i class="fa fa-bars fa-lg" aria-hidden="true"></i><!-- Меню--></a>
+	<li class="topmenu_li"><a href="#"><i class="fa fa-bars fa-lg" aria-hidden="true"></i><!-- Меню--></a>
 		<ul class="submenu">	
 			<li><a href="/">Главная</a></li>
 			<li><a href="/site_pzm/podrobnosti/index.php?podrobnosti=st">Подробно</a></li>

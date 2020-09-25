@@ -1,4 +1,7 @@
-﻿	<!-- имя автора документа -->
+﻿	
+	<link rel="stylesheet" href="/site_pzm/css/style1.css">
+	
+	<!-- имя автора документа -->
 	<meta name="author" content="Огънеяръ" />
 	<!-- управление роботами -->
 	<meta name="robots" content="all,index,follow" />
@@ -15,17 +18,10 @@
 	<!-- редирект -->
 	<!-- <meta http-equiv="refresh" content="5; URL=https://www.PRIZMarket.ru"> -->
 	
-	<meta http-equiv="Cache-Control" content="no-cache">
-	
-	<link rel="stylesheet" href="/site_pzm/css/style.css">
+	<meta http-equiv="Cache-Control" content="no-cache">	
 	
 	<link rel="stylesheet" href="/site_pzm/font-awesome/css/font-awesome.min.css">
-	
-	<!--<link rel="shortcut icon" href="/site_pzm/img/favicon.png" type="image/png">-->
-	
-	<!--<link rel="shortcut icon" href="/site_pzm/favicon/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="/site_pzm/favicon/favicon.ico" type="image/x-icon">-->
-	
+		
 	<link rel="apple-touch-icon" sizes="180x180" href="/site_pzm/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/site_pzm/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/site_pzm/favicon/favicon-16x16.png">
@@ -54,8 +50,4 @@
 		}
 	</script>	
 	
-	<!--<style>	
-	.tooltip input {
-		width: 90%;
-	}	
-	</style>-->
+	
