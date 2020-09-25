@@ -136,6 +136,7 @@ header a#logo {
 	display: inline-block;
 	float: right;
 	position: relative;
+	padding: 0;
 }
 .lk_topmenu a {
 	display: block;
