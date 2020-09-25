@@ -268,9 +268,9 @@ nav a:hover, nav#fixed a:hover {
 	margin-top: -20px;
 }
 .topmenu ul {
-  list-style: none; 
-  margin: 0;
-  padding: 0;
+  list-style: none;   
+  margin: 20px;
+  padding: 20px;
 }
 .topmenu  li {
 	display: inline-block;
