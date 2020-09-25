@@ -308,6 +308,7 @@ nav a:hover, nav#fixed a:hover {
 .submenu {
 	display: none;
 	background: white;
+	border: 1px solid #8c8c8c;
 }
 .topmenu li:hover .submenu {
   display: block;
