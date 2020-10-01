@@ -263,18 +263,20 @@ nav a:hover, nav#fixed a:hover {
 .topmenu {
 	display: none;
 }}
-
+/*
 .line-menu {
 	margin-top: -20px;
 }
+*/
 .line-menu a {
 	width: calc(90% / 5);
 	text-align: center;
 }
-
+/*
 .topmenu {
 	margin-top: -20px;
 }
+*/
 .submenu {
 	list-style: none;   
 	margin: 0;
