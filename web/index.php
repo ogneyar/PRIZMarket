@@ -2,6 +2,12 @@
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
 
+if ($_SERVER['HTTPS']) {
+    echo "HTTPS: ".$_SERVER['HTTPS'];
+} else {
+    echo "HTTP";
+} 
+
 $количество_лотов = 10;
 
 include_once 'site_pzm/pzmarket.php';
