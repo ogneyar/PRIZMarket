@@ -1,9 +1,9 @@
 <?php
-	if (isset($_SERVER['HTTPS'])) {
+	/*if (isset($_SERVER['HTTPS'])) {
 		if ($_SERVER['HTTPS'] != 'on') {		
 			header('Location: https://'.$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF']); 		
 		}
-	}
+	}*/
 	$OtladkaBota = getenv('OTLADKA');
 
 	$aws_key_id = getenv('AWS_ACCESS_KEY_ID');
