@@ -42,14 +42,15 @@ if (mysqli_connect_errno()) {
 		exit;
 	}		
 ?>
-<?if ($tester == 'да') {?>
-	<form action="https://beget.prizmarket.online/saveimage.php" method="post" enctype="multipart/form-data">
+<?if ($tester == 'да') {//https://beget.prizmarket.online/saveimage.php
+?>
+	<form action="http://f0430377.xsph.ru/saveimage.php" method="post" enctype="multipart/form-data">
 		<input type='hidden' name='tester' value='да'>
 <?}else {?>
-	<form action="https://beget.prizmarket.ru/saveimage.php" method="post" enctype="multipart/form-data">
+	<form action="http://f0430377.xsph.ru/saveimage.php" method="post" enctype="multipart/form-data">
 <?}?>
 		<input type='hidden' name='login' value='<?=$логин;?>'>
-		<input type='hidden' name='render_to_beget' value='yes'>
+		<!--<input type='hidden' name='render_to_beget' value='yes'>-->
 			
 		<label>Загрузите фото: <font color="red">*</font><br></label>
 		<input type="file" name="file" id="file" accept=".jpeg, .jpg, .png">	
