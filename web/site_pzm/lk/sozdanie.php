@@ -8,7 +8,7 @@ include_once "../site_files/functions.php";
 // Открыл базу данных, в конце обязательно надо закрыть
 include_once '../../a_mysqli.php';
 
-if (!isset($_GET['url'])) {	
+if (!isset($_GET['url']) && !isset($_POST['url'])) {	
 	// сходятся ли логин и токен
 	$всё_норм = _сравни_токен_и_логин($логин, $токен);	
 	
@@ -16,7 +16,11 @@ if (!isset($_GET['url'])) {
 	if ($подтверждён) $давно = _последняя_публикация_на_сайте($логин);
 	else $давно = false;
 	
-}elseif (isset($_GET['login'])) $всё_норм = _сравни_токен_и_логин($_GET['login'], $токен);
+}elseif (isset($_GET['login']) {
+	$всё_норм = _сравни_токен_и_логин($_GET['login'], $токен);
+}elseif (isset($_POST['login'])) {
+	$всё_норм = _сравни_токен_и_логин($_POST['login'], $токен);
+}
 
 if (!$всё_норм) include_once 'exit.php';
 ?>
@@ -119,6 +123,8 @@ $(document).ready (function (){
 		<?
 		if (isset($_GET['url'])) {
 			include_once 'sozdanie-save_photo.php';
+		}elseif (isset($_POST['render_to_beget'])) {
+			include_once 'sozdanie-render_to_beget.php';
 		}else {
 			if ($подтверждён) {					
 				if ($давно) { 
