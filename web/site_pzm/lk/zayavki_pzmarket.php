@@ -11,7 +11,7 @@ set_exception_handler('exception_handler');
 
 $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazonaws.com/";
 
-$запрос = "SELECT * FROM avtozakaz_pzmarket WHERE username='{$логин}' AND id_client='7' AND status='одобрен'"; 
+$запрос = "SELECT * FROM avtozakaz_pzmarket WHERE username='{$логин}' AND id_client='7' AND status='одобрен' ORDER BY id_zakaz DESC"; 
 $результат = $mysqli->query($запрос);
 if ($результат)	{
 	$количество = $результат->num_rows;
