@@ -1,6 +1,4 @@
-﻿<?php	
-//include_once '../../a_conect.php';
-//$mysqli = new mysqli($host, $username, $password, $dbname);
+﻿<?php
 
 // проверка подключения 
 if (mysqli_connect_errno()) {
@@ -22,21 +20,17 @@ if ($результат)	{
 if($количество > 0) {
 	$результМассив = $результат->fetch_all(MYSQLI_ASSOC);
 	$номер = 0;
-	//$лот = [];	
 	foreach ($результМассив as $строка) {
 		$id_lota = $строка['id_zakaz'];			
-		
+		/*
 		$запрос = "SELECT nazvanie FROM pzmarkt WHERE id='{$id_lota}'"; 
 		$результат = $mysqli->query($запрос);
 		if ($результат)	{
 			$количество = $результат->num_rows;
 			if ($количество == 0) break;
 		}
-		
-		$название = $строка['nazvanie'];
-		//$куплю_или_продам = $строка['kuplu_prodam'];						
-		//$валюта = $строка['valuta'];				
-		//$хештеги_города = $строка['gorod'];			
+		*/
+		$название = $строка['nazvanie'];	
 		$категория = $строка['otdel'];			
 		$юникс_дата_публикации = $строка['date'] + 10800;
 		$дата_публикации = date("d.m.Y H:i", $юникс_дата_публикации);
@@ -61,14 +55,6 @@ if($количество > 0) {
 
 // закрываем подключение 
 $mysqli->close();
-
-// при возникновении исключения вызывается эта функция
-/*function exception_handler($exception) {
-	global $mysqli;
-	echo "Ошибка! ".$exception->getCode()." ".$exception->getMessage();	  
-	$mysqli->close();		
-	exit('ok');  	
-}*/
 
 $ссыль_на_канал_подробности = "https://teleg.link/podrobno_s_PZP";
 $ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
