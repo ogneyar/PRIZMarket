@@ -1,4 +1,4 @@
-<?
+<?// НЕ РАБОТАЕТ!!!
 if (isset($_FILES['file'])) {
 	$url = "https://beget.prizmarket.online/saveimage.php";
 			

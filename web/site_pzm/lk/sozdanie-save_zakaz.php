@@ -42,12 +42,11 @@ if (mysqli_connect_errno()) {
 		exit;
 	}		
 ?>
-<?if ($tester == 'да') {
-	//action="https://beget.prizmarket.online/saveimage.php"?>
-	<form method="post" enctype="multipart/form-data">
+<?if ($tester == 'да') {?>
+	<form action="https://beget.prizmarket.online/saveimage.php" method="post" enctype="multipart/form-data">
 		<input type='hidden' name='tester' value='да'>
 <?}else {?>
-	<form method="post" enctype="multipart/form-data">
+	<form action="https://beget.prizmarket.ru/saveimage.php" method="post" enctype="multipart/form-data">
 <?}?>
 		<input type='hidden' name='login' value='<?=$логин;?>'>
 		<input type='hidden' name='render_to_beget' value='yes'>
