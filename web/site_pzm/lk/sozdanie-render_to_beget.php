@@ -8,12 +8,12 @@ if (isset($_FILES['file'])) {
 				
 	$dataFile = ['file' => $curl_file];*/
 	
-	$dataFile = ['file' => $_FILES['file']['tmp_name']];
+	//$dataFile = ['file' => $_FILES['file']['tmp_name']];
 	
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $dataFile);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $_FILES['file']);//$dataFile);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
