@@ -24,7 +24,7 @@ if (empty($_GET['url'])) {
 		
 	}else {
 	
-		$bot->sendMessage($master, "Файл {$_GET['url']} загружен на SprintHost");		
+		$bot->sendMessage($master, "Файл {$_GET['url']} загружен на Beget.com");		
 		
 		_запись_в_маркет_с_сайта($логин, 'url_tgraph', $_GET['url']);
 		
