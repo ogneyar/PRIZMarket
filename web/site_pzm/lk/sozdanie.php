@@ -8,7 +8,7 @@ include_once "../site_files/functions.php";
 // Открыл базу данных, в конце обязательно надо закрыть
 include_once '../../a_mysqli.php';
 
-if (!isset($_GET['url']) && !isset($_POST['url'])) {	
+if (!isset($_GET['url'])) {	
 	// сходятся ли логин и токен
 	$всё_норм = _сравни_токен_и_логин($логин, $токен);	
 	
