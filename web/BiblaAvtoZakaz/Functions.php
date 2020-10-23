@@ -183,7 +183,7 @@ function _выбор_валюты() {
 		[	[ 'text' => '₽', 'callback_data' => 'рубль' ],
 			[ 'text' => '$', 'callback_data' => 'доллар' ],
 			[ 'text' => '€', 'callback_data' => 'евро' ] ],
-		[	[ 'text' => '¥', 'callback_data' => 'юань' ],
+		[	[ 'text' => '¥', 'callback_data' => 'йена' ],
 			[ 'text' => '₴', 'callback_data' => 'гривна' ],
 			[ 'text' => '£', 'callback_data' => 'фунт' ] ],
 		[ 	[ 'text' => 'Только PRIZM!', 'callback_data' => 'призм' ] ] 
@@ -333,6 +333,8 @@ function _отправка_лота_админам($номер_лота = null) 
 					]);						
 				}else $название_для_подробностей = str_replace('_', '\_', $название);	
 				$кнопки = array_merge($кнопки, [
+					[ [ 'text' => 'Редактировать валюту',
+						'callback_data' => 'редактировать_валюту:'.$id ] ],
 					[ [ 'text' => 'Редактировать хештеги',
 						'callback_data' => 'редактировать_хештеги:'.$id ] ],
 					[ [ 'text' => 'Редактировать подробности',
@@ -482,7 +484,13 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 	$результат = $mysqli->query($запрос);	
 	if ($результат) {		
 		if ($результат->num_rows == 1) {		
-			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);			
+			$результМассив = $результат->fetch_all(MYSQLI_ASSOC);	
+
+			$inLine = [ 'inline_keyboard' => [
+				[ [ 'text' => 'Опубликован', 'url' => 'https://t.me/podrobno_s_PZP' ] ]
+			] ];	
+			$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
+			
 			foreach ($результМассив as $строка) {			
 				$файлАйди = $строка['file_id'];		
 				$формат_файла = $строка['format_file'];				
@@ -597,10 +605,12 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 			}else throw new Exception("Не отправился лот на канал Подробности.. (_вывод_лота_на_каналы)");		
 		}else throw new Exception("Или нет заказа или больше одного.. (_вывод_лота_на_каналы)");				
 	}else throw new Exception("Нет такого заказа.. (_вывод_лота_на_каналы)");	
+	/*
 	$inLine = [ 'inline_keyboard' => [
 		[ [ 'text' => 'Опубликованно в подробностях', 'url' => $ссыль_на_подробности ] ]
 	] ];	
 	$bot->editMessageReplyMarkup($chat_id, $message_id, null, $inLine);
+	*/
 }
 
 // публикация альбома с фотографиями на отдельном канале

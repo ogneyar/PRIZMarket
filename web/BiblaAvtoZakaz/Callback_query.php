@@ -41,7 +41,7 @@ if ($callback_data=='создать'){
 }elseif ($callback_data=='евро') {	
 	_когда_валюта_выбрана('€');
 	
-}elseif ($callback_data=='юань') {	
+}elseif ($callback_data=='йена') {	
 	_когда_валюта_выбрана('¥');
 	
 }elseif ($callback_data=='гривна') {	
@@ -107,6 +107,10 @@ if ($callback_data=='создать'){
 }elseif ($callback_data=='редактировать_название') {
 	_ожидание_ввода('замена_названия', $id);
 	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с названием.");	
+		
+}elseif ($callback_data=='редактировать_валюту') {	
+	_ожидание_ввода('замена_валюты', $id);	
+	$bot->answerCallbackQuery($callback_query_id, "Пришли мне новый текст с валютами.");	
 	
 }elseif ($callback_data=='редактировать_ссылку') {	
 	_ожидание_ввода('замена_ссылки', $id);	
