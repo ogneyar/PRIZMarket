@@ -46,6 +46,7 @@
 				<option value="Йена / PZM">Йена</option>
 				<option value="Гривна / PZM">Гривна</option>
 				<option value="Фунт / PZM">Фунт</option>
+				<option value="Любая валюта">Любая валюта</option>
 			</select>		
 			
 		<br><br>
