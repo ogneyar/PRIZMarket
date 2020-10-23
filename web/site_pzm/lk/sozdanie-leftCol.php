@@ -35,8 +35,19 @@
 		<!--	<input type="text" placeholder="Категория" name="hesh_kateg" id="hesh_kateg" size="15" maxlength="50"> -->
 			
 		<br><br>
-			<label>Валюта, помимо PRIZM:<br></label>
-			<input type="text" placeholder="Напр: Рубль, Доллар" name="currency" id="currency" size="20" maxlength="100">
+			<label>Валюта с которой работаете:<br></label>
+			<!--<input type="text" placeholder="Напр: Рубль, Доллар" name="currency" id="currency" size="20" maxlength="100">-->
+			
+			<select name="currency" id="currency">			
+				<option value="PRIZM" selected>Только PRIZM</option>
+				<option value="Рубль / PZM">Рубль</option>
+				<option value="Доллар / PZM">Доллар</option>
+				<option value="Евро / PZM">Евро</option>
+				<option value="Йена / PZM">Йена</option>
+				<option value="Гривна / PZM">Гривна</option>
+				<option value="Фунт / PZM">Фунт</option>
+			</select>		
+			
 		<br><br>
 			<label>Хештеги местонахождения: <font color="red">*</font><br></label>
 			<input type="text" placeholder="Напр: #Россия #ВесьМир" name="hesh_city" id="hesh_city" size="20" maxlength="100">
