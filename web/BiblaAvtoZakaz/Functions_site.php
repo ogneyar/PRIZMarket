@@ -211,7 +211,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 	global $smtp_server, $smtp_port, $smtp_login, $smtp_pass, $channel_info;	
 	_очистка_таблицы_ожидание();
 	
-	$bot->answerCallbackQuery($callback_query_id, "Ожидайте! Идёт загрузка фото, отправка письма на email и ещё несколько разных операций, это длительный процесс..", true);
+	$bot->answerCallbackQuery($callback_query_id, "Ожидайте! Идёт загрузка фото, отправка письма на email и ещё несколько разных операций, это длительный процесс..");
 	
 	$дата_токен = substr(strrchr($команда, "."), 1);
 	$имя_клиента = _дай_имя($дата_токен);	
