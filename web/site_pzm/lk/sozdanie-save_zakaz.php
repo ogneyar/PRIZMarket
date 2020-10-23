@@ -16,8 +16,9 @@ if (mysqli_connect_errno()) {
 	
 	$связь = _дай_связь_сайт($логин);
 		
-	if ($_POST['currency']) $валюта = $_POST['currency']." / PZM";
-	else $валюта = "PZM";
+	/*if ($_POST['currency']) $валюта = $_POST['currency']." / PZM";
+	else $валюта = "PZM";*/
+	$валюта = $_POST['currency'];
 		
 	$hesh_city = $_POST['hesh_city'];
 	$hesh_city = str_replace(' ', '', $hesh_city);
