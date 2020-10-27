@@ -17,13 +17,13 @@ if ($давно) {
 	$bot = new Bot($tokenSite);
 	$сообщение = "{$логин} (сайт) лот {$номер_лота}\nПовтор публикации в {$время_публикации} мск";
 	$bot->sendMessage($admin_group_AvtoZakaz, $сообщение);		
-        $bot->sendMessage($channel_info, "?");
+	$bot->sendMessage($channel_info, "?");
 	
-}else {?>
-	<label><?=$логин;?>, после последней публикации прошло менее суток.<br></label>	
-	<label>При особом желании Вы можете публиковать чаще, для этого напишите нам в <a href="https://teleg.link/zakazLOTbot" target="_blank">телеграм</a>.<br></label>
-	<label>БезОплатно публиковать можно раз в сутки.<br></label>
-<?
+}else {
+	echo '<label>'.$логин.', после последней публикации прошло менее суток.<br></label>'.
+		'<label>При особом желании Вы можете публиковать чаще, для этого напишите нам в '.
+		'<a href="https://teleg.link/zakazLOTbot" target="_blank">телеграм</a>.<br></label>'.
+		'<label>БезОплатно публиковать можно раз в сутки.<br></label>';
 }
 ?>
 </h4>
