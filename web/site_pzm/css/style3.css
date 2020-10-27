@@ -138,6 +138,7 @@ header a#logo {
 	border-radius: 5px;	
 }
 .lk_topmenu_li {
+	float: right;
 	display: inline-block;
 	position: relative;
 	padding: 0;

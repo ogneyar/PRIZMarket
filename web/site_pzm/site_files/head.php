@@ -1,5 +1,5 @@
 ﻿	
-	<link rel="stylesheet" href="/site_pzm/css/style2.css">
+	<link rel="stylesheet" href="/site_pzm/css/style3.css">
 	
 	<!-- имя автора документа -->
 	<meta name="author" content="Огънеяръ" />
