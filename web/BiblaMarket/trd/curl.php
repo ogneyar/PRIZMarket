@@ -57,7 +57,7 @@ function curl_get($url, array $get = NULL, array $options = array())
 
 
 
-public function calll($method, array $data = null)
+function calll($method, array $data = null)
 {   
 	$options = $this->proxySettings + [
             CURLOPT_URL => $this->getUrl().'/'.$method,
