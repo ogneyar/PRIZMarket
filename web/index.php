@@ -17,6 +17,9 @@ include_once 'site_pzm/pzmarket.php';
 	<title>PRIZMarket!</title>
 	<meta name="description" content="Сайт для рекламы товаров/услуг за криптовалюту PRIZM" />
 	<meta name="keywords" content="PRIZM, криптовалюта, товары, услуги, куплю, продам, безоплатно, бесплатно" />
+
+	<meta name="yandex-verification" content="ecfd40d0765ac403" />
+
 	<?include_once 'site_pzm/site_files/head.php';?>
 	<style type="text/css">
 		@media (min-width: 700px) {
