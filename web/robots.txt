@@ -4,4 +4,5 @@ Allow: *.js
 Disallow: /test
 
 User-agent: Yandex
+Allow: /*
 Disallow: /test
