@@ -1,4 +1,4 @@
-﻿	
+
 	<link rel="stylesheet" href="/site_pzm/css/style3.css">
 	
 	<!-- имя автора документа -->
@@ -36,7 +36,7 @@
 	<!-- <script type="text/javascript" src="/site_pzm/site_files/jquery-3.3.1.min.js"></script> -->
 	
 	<script type="text/javascript">
-		if(screen.width > 800) { // Animate navigation
+		if(screen.width > 300) { // Animate navigation
 			$(document).ready(function() {
 			// функцию скролла привязать к окну браузера
 				$(window).scroll(function(){
