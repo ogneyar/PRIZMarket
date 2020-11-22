@@ -39,6 +39,19 @@ textarea {
 	padding: 5px;
 }
 
+.button {
+	padding: 10px 15px;
+	background-color: #4a0dad;
+	color: white;
+	border: 2px solid #2b0b5d;
+	border-radius: 8px;
+}
+.button:hover {
+	background-color: #6517e4;
+  	cursor: pointer;
+}
+
+
 /* -------------------------------
 Выделение текста
 ----------------------------------*/
@@ -525,6 +538,7 @@ body {
 	-webkit-flex-direction: column;
 	flex-direction: column;
 }
+
 #wrapper {
 	flex-grow: 1;
 }
@@ -754,25 +768,6 @@ body {
 	color: red;
 }
 
-.button {
-	/* padding: 3px 10px 3px 10px;
-	background-color: #ffe; 
-	color: #930;  */
-
-	padding: 3px 10px 3px 10px;
-	background-color: #4a0dad;
-	color: white;
-	border: 2px solid #2b0b5d;
-}
-.button:hover {
-	/* background-color: grey; 
-    color: white; 
-	border: 2px solid #f8d881;
-	cursor: pointer; */
-
-	background-color: #6517e4;
-  	cursor: pointer;
-}
 
 #leftCol article h4 {
 	text-align: center;

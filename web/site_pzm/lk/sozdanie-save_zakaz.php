@@ -59,11 +59,13 @@ if (mysqli_connect_errno()) {
 <?php 
 }
 ?>
-		<input type='hidden' name='login' value='<?=$логин;?>'>
+		<input type='hidden' name='login' value='<?=$логин;?>'>		
 			
 		<label>Загрузите фото: <font color="red">*</font><br></label>
 		<input type="file" name="file" id="file" accept=".jpeg, .jpg, .png">	
-		<br><br>
+		<br>
+		<label id="fail_text"></label>
+		<br>
 		<input type="submit" class="button" name="dalee" id="dalee" value="Далее">
 	</form>
 <?php
@@ -72,14 +74,21 @@ if (mysqli_connect_errno()) {
 
 <script>
 	$(document).ready (function (){
-		$("#dalee").click (function ( event ){
-			event.stopPropagation(); // остановка всех текущих JS событий
-			event.preventDefault();  // остановка дефолтного события
-
+		$("#dalee").click (function (){
+			if ($('#file').val() == "") {
+				$('#fail_text').css('color', 'red');
+				$('#fail_text').html("Необходимо выбрать файл");
+				$('#fail_text').show();
+				return false;
+			}			
+			$('#fail_text').html("");
+			$('#fail_text').show();
+			// console.log("нажал");
 			$('#fon_load').css({
 				'opacity':'0.6',
 				'visibility':'visible'
 			});
+			// console.log($('#file').val());			
 		});
 	});
 </script>

@@ -43,10 +43,9 @@
 				<li><a href="/site_pzm/o_prizmarket/index.php">О нас</a></li>
 			</ul>
 		</div>
-
-		<div id="fon_load"></div>
-
 	</div> 
+	
+	<div id="fon_load"></div>
 
 
 	<script type="text/javascript">
@@ -60,19 +59,6 @@
 				else //if ($(window).scrollTop() < distanceTop)
 					$ ('nav').attr ("id", "menu");
 			});
-
-
-			$("#fon").click (function (){
-				console.log("нажал");
-				// $("#fon").visibility = 'hidden';
-				// $("#fon").background = '#000';
-
-				// $("#fon").toggle();
-			});
-
-			// .topmenu
-
-
 		});
 	
 	</script>
