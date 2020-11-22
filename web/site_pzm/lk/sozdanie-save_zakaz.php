@@ -69,3 +69,15 @@ if (mysqli_connect_errno()) {
 <?php
 } // конец
 ?>
+
+<script>
+	$(document).ready (function (){
+		$("#dalee").click (function ( event ){
+			event.stopPropagation(); // остановка всех текущих JS событий
+			event.preventDefault();  // остановка дефолтного события
+
+			$('.fon').css('opacity', '0.6');
+			$('.fon').css('visibility', 'visible');
+		}
+	});
+</script>

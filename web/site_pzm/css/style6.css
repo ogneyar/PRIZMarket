@@ -489,7 +489,7 @@ nav a:hover, nav#fixed a:hover {
 }
 
 
-/* .fon {
+.fon {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -499,7 +499,7 @@ nav a:hover, nav#fixed a:hover {
 	visibility: hidden;
 	background: grey;
 	z-index: 3;
-} */
+}
 
 /* -------------------------------
 		Основная часть сайта
