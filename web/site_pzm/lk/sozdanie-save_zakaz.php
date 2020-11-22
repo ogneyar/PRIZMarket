@@ -83,12 +83,17 @@ if (mysqli_connect_errno()) {
 			}			
 			$('#fail_text').html("");
 			$('#fail_text').show();
+
 			// console.log("нажал");
-			$('#fon_load').css({
-				'opacity':'0.6',
-				'visibility':'visible'
-			});
-			// console.log($('#file').val());			
+
+			// $('#fon_load').css({
+			// 	'opacity':'0.6',
+			// 	'visibility':'visible'
+			// });
+
+			// console.log($('#file').val());		
+
+			$('#section').css('display','block');
 		});
 	});
 </script>
