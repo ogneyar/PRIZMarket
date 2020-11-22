@@ -80,6 +80,6 @@ if (mysqli_connect_errno()) {
 				'opacity':'0.6',
 				'visibility':'visible'
 			});
-		}
+		});
 	});
 </script>
