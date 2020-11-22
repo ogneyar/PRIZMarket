@@ -1,4 +1,4 @@
-﻿<article id="kategory">
+﻿<article id="kategory"> 
 <h4><br>
 	<form action="/site_pzm/kategory/index.php" method="post" id="nedvij"></form>
 	<form action="/site_pzm/kategory/index.php" method="post" id="rabota"></form>

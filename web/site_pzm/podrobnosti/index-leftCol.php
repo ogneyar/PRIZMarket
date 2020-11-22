@@ -1,14 +1,14 @@
-﻿<?
+﻿<?php 
 if ($категория) {
 	
 	// здесь открывается mysqli и подключаются переменные
 	include_once '../site_files/functions.php';
 	
-	if ($_POST['last_lot']) $сколь_уже_показано = $_POST['last_lot'];
-	if ($_GET['last_lot']) $сколь_уже_показано = $_GET['last_lot'];
+	if (isset($_POST['last_lot'])) $сколь_уже_показано = $_POST['last_lot'];
+	if (isset($_GET['last_lot'])) $сколь_уже_показано = $_GET['last_lot'];
 
-        if ($_POST['podrobnosti']) $подробности = $_POST['podrobnosti'];
-	if ($_GET['podrobnosti']) $подробности = $_GET['podrobnosti'];
+        if (isset($_POST['podrobnosti'])) $подробности = $_POST['podrobnosti'];
+	if (isset($_GET['podrobnosti'])) $подробности = $_GET['podrobnosti'];
 	
 	$лот = _вывод_лотов_по_категории($категория, $сколь_уже_показано, $подробности, $количество_лотов);
 	
@@ -21,7 +21,7 @@ if ($категория) {
 	
 }else {
 
-        include_once '../pzmarket.php';
+	include_once '../pzmarket.php';
 		
 	if ($показ_одного_лота) {
 		echo $показ_одного_лота;

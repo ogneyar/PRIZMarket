@@ -1,5 +1,5 @@
-﻿<?
-include_once '../../a_mysqli.php';
+﻿<?php
+include_once '../../a_mysqli.php'; 
 
 /*
 ** 	Функции для работы сайта

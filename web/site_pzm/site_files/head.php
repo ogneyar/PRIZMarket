@@ -1,5 +1,5 @@
 
-	<link rel="stylesheet" href="/site_pzm/css/style4.css">
+	<link rel="stylesheet" href="/site_pzm/css/style5.css">
 	
 	<!-- имя автора документа -->
 	<meta name="author" content="Огънеяръ" />
@@ -34,20 +34,9 @@
 	<!-- Here we add libs for jQuery, Ajax... -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
 	<!-- <script type="text/javascript" src="/site_pzm/site_files/jquery-3.3.1.min.js"></script> -->
+
+	<!-- Font 'Nunito' -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 	
-	<script type="text/javascript">
-		if(screen.width > 300) { // Animate navigation
-			$(document).ready(function() {
-			// функцию скролла привязать к окну браузера
-				$(window).scroll(function(){
-					var distanceTop = $('#slideMenu').offset().top;
-					if ($(window).scrollTop() >= distanceTop)
-						$ ('nav').attr ("id", "fixed");
-					else //if ($(window).scrollTop() < distanceTop)
-						$ ('nav').attr ("id", "nav");
-				});
-			});
-		}
-	</script>	
 	
 	

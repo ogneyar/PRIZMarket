@@ -1,6 +1,7 @@
 ﻿<?php	
 // Подключаем библиотеку с классом Bot
 include_once '../myBotApi/Bot.php';
+
 include_once '../a_conect.php';
 //exit('ok');
 $id_bota = strstr($tokenMARKET, ':', true);	
@@ -21,7 +22,7 @@ $ссылка_на_амазон = "https://{$aws_bucket}.s3.{$aws_region}.amazon
 $показ_одного_лота = '';
 
 $запрос = "SELECT * FROM pzmarkt"; 
-if ($_GET['podrobnosti']) {
+if (isset($_GET['podrobnosti'])) {
 	$подробно = $_GET['podrobnosti'];
 	if ($подробно != 'st') $запрос = "SELECT * FROM pzmarkt WHERE id='{$подробно}'"; 
 }
@@ -105,7 +106,7 @@ while ($a < $количество_лотов){
 				
 			$ссыль_на_фото[$a] = $ссылка_на_амазон . $id_lota . ".jpg";		
 			
-			if ($_GET['podrobnosti']) {
+			if (isset($_GET['podrobnosti'])) {
 				$запрос = "SELECT podrobno FROM `avtozakaz_pzmarket` WHERE id_zakaz='{$id_lota}'"; 
 				$результат = $mysqli->query($запрос);
 				if ($результат)	{
@@ -127,7 +128,7 @@ while ($a < $количество_лотов){
 				</h3>
 			</article>";
 				
-			if ($_GET['podrobnosti'] == $id_lota) {$показ_одного_лота = $лот[$a]; $a++; $a++; break;} 
+			if (isset($_GET['podrobnosti']) && ($_GET['podrobnosti'] == $id_lota)) {$показ_одного_лота = $лот[$a]; $a++; $a++; break;} 
 			
 		}
 		
@@ -204,7 +205,7 @@ if ($лот[0] == "") {
 		$тип_кн_назад = 'hidden';		
 	}else $тип_кн_назад = 'submit';
 	
-	if ($_GET['podrobnosti'] == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+	if (isset($_GET['podrobnosti']) && ($_GET['podrobnosti'] == 'st')) $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
 	else $action = '/';
 	
 	$лот[$a] = "<article>

@@ -11,7 +11,8 @@ include_once 'site_pzm/pzmarket.php';
 
 ?>
 <!DOCTYPE html>
-<html xmlns="https://www.w3.org/1999/xhtml">
+<!-- <html xmlns="https://www.w3.org/1999/xhtml"> -->
+<html lang="ru">
 <head>
 	<meta charset="utf-8" />
 	<title>PRIZMarket!</title>
@@ -20,38 +21,38 @@ include_once 'site_pzm/pzmarket.php';
 
 	<meta name="yandex-verification" content="ecfd40d0765ac403" />
 
-	<?include_once 'site_pzm/site_files/head.php';?>
+	<?php include_once 'site_pzm/site_files/head.php';?>
 	<style type="text/css">
 		@media (min-width: 700px) {
 		nav a:first-child, nav#fixed a:first-child {
-			border-top: 5px solid rgba(255,235,59);
+			border-bottom: 5px solid rgb(255,235,59);
 		}} 
 	</style>
 </head>
 <body>
 	<header>
-		<?include_once 'site_pzm/site_files/header.php';?>
+		<?php include_once 'site_pzm/site_files/header.php';?>
 	</header>
 	<div id="lk_menu">
-		<?include_once 'site_pzm/lk/index-lk_menu.php';?>		
+		<?php include_once 'site_pzm/lk/index-lk_menu.php';?>		
 	</div>
 	<nav>
-		<?include_once 'site_pzm/site_files/nav.php';?>
+		<?php include_once 'site_pzm/site_files/nav.php';?>
 	</nav>
 	<div id="slideMenu">Моё)</div>
 	<div id="wrapper">
 		<div id="TopCol">		
-			<?include_once 'site_pzm/site_files/wrapper-topCol.php';?>
+			<?php include_once 'site_pzm/site_files/wrapper-topCol.php';?>
 		</div>
 		<div id="leftCol">		
-			<?include_once 'site_pzm/site_files/wrapper-leftCol.php';?>
+			<?php include_once 'site_pzm/site_files/wrapper-leftCol.php';?>
 		</div>
 		<div id="rightCol">
-			<?include_once 'site_pzm/site_files/wrapper-rightCol.php';?>
+			<?php include_once 'site_pzm/site_files/wrapper-rightCol.php';?>
 		</div>
 	</div>
 	<footer>
-		<?include_once 'site_pzm/site_files/footer.php';?>
+		<?php include_once 'site_pzm/site_files/footer.php';?>
 	</footer>
 </body>
 </html>
