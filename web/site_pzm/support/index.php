@@ -42,6 +42,6 @@ include_once '../../a_conect.php';
 	</div>
 	<footer>
 		<?php include_once '../site_files/footer.php';?>
-	</footer>
+	</footer>	
 </body>
 </html>

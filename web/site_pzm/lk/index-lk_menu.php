@@ -1,4 +1,5 @@
-﻿<?php
+﻿<?php 
+//if ($tester == 'да')
 $вывод = "";
 if (isset($_COOKIE['login'])) $вывод = $_COOKIE['login'];
 
@@ -22,7 +23,7 @@ $login_json = json_encode($вывод);
 	<a href="/site_pzm/registraciya/index.php?st=zero">Регистрация</a>
 </span>
 
-<ul class="lk_topmenu">
+<ul class="lk_topmenu"> 
 	<li class="lk_topmenu_li">
 		<a href="#"><label id="client"></label></a>
 			

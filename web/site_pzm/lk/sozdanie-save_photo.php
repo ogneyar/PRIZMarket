@@ -1,6 +1,6 @@
 <article id="lk">
 <h4><br>
-<?
+<?php
 include_once '../../myBotApi/Bot.php';
 include_once '../../BiblaAvtoZakaz/Functions_site.php';
 //exit('ok');

@@ -1,5 +1,6 @@
 <article id="repeat_delete">
 <h4><br>
+
 <?php
 $номер_лота = $_POST['id_lota'];
 
@@ -26,5 +27,6 @@ if ($давно) {
 		'<label>БезОплатно публиковать можно раз в сутки.<br></label>';
 }
 ?>
+
 </h4>
 </article>

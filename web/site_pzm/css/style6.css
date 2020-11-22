@@ -21,7 +21,7 @@ a, *:hover {
 	-moz-transition: all.6s ease;
 	-o-transition: all.6s ease;
 	-ms-transition: all.6s ease;
-	transition: all.6s ease;
+	transition: all 0.6s linear;
 }
 
 body {	
@@ -64,25 +64,30 @@ header #logo {
 	width: 25%;
 	padding-top: 10px;
 }
+
 #lk_menu span#contact a, .lk_topmenu {
 	margin: -10px 0px 5px 10px;
 }
+
 @media (min-width: 1300px) {
-header a#logo {
-	font-size: 2.5em;
-	margin: 8px 10px 7px 15%;
+	header a#logo {
+		font-size: 2.5em;
+		margin: 8px 10px 7px 15%;
+	}
+	#lk_menu span#contact a, .lk_topmenu {	
+		margin-right: 15%;
+	}
 }
-#lk_menu span#contact a, .lk_topmenu {	
-	margin-right: 15%;
-}}
 @media (max-width: 1299px) {
-header a#logo {
-	font-size: 2em;
-	margin: 8px 10px 7px 7%;
+	header a#logo {
+		font-size: 2em;
+		margin: 8px 10px 7px 7%;
+	}
+	#lk_menu span#contact a, .lk_topmenu {	
+		margin-right: 7%;
+	}
 }
-#lk_menu span#contact a, .lk_topmenu {	
-	margin-right: 7%;
-}}
+
 #lk_menu span#contact a {
 	text-shadow: 1px 1px 2px #e0e0e0, 0 0 2em white;
 	color: rgb(76,0,164);
@@ -103,16 +108,20 @@ header a#logo {
 }
 .lk_submenu {
 	margin: 0;
-	padding: 10px 20px;	
+	padding: 20px 20px;	
 	position: absolute;
 	top: 100%;
 	right: 0;
-	z-index: 10;
+	z-index: 2;
 	-webkit-transition: 0.5s ease-in-out;
 	-moz-transition: 0.5s ease-in-out;
 	-o-transition: 0.5s ease-in-out;
 	transition: 0.5s ease-in-out;	
-	display: none;
+
+	/* display: none; */
+	visibility: hidden;
+	opacity: 0;
+
 	background: rgb(230,230,230);
 	border: 1px solid #8c8c8c;		
 	border-radius: 5px;	
@@ -130,9 +139,9 @@ header a#logo {
 	transition: 0.5s linear;	
 }
 .lk_submenu li a {
-	border: 1px solid green;
+	border: 1px solid rgb(230,230,230);
 	border-radius: 5px;	
-	color: green;
+	color: rgb(20,17,45);
 	margin: 7px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -142,11 +151,16 @@ header a#logo {
 }
 .lk_submenu li a:hover {
 	text-shadow: 1px 1px 3px white, -1px 1px 3px white, 1px -1px 3px white, -1px -1px 3px white;
-	color: red;
+	color: red;	
+	border: 1px solid red;
 }
 .lk_topmenu li:hover .lk_submenu {
-	display: block;
+	/* display: block; */
+	visibility: visible;
+	opacity: 1;
+	/* transition: all 0.6s linear; */
 }
+
 #client {
 	float: right;
 	color: white;	
@@ -378,6 +392,7 @@ nav a:hover, nav#fixed a:hover {
 	height: 100%;
 	background: #14112d;
 	transition: all 0.5s ease;
+	z-index: 4;
   }
   
   .sidebar header {
@@ -408,7 +423,7 @@ nav a:hover, nav#fixed a:hover {
   }
   
   .sidebar ul li:hover a {
-	padding-left: 50px;
+	padding-left: 50px; 
   }
   
   #check {
@@ -426,7 +441,7 @@ nav a:hover, nav#fixed a:hover {
 	cursor: pointer;
 	background: #e6e6e6;
 	border-radius: 3px;
-	z-index: 10;
+	z-index: 5;
 	left: -195px;
 	top: 17px;
 	font-size: 30px;
@@ -444,9 +459,23 @@ nav a:hover, nav#fixed a:hover {
 	position: fixed;
   }
   
+  label #fon {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	visibility: hidden;
+	background: grey;
+	z-index: 3;
+}
+#check:checked ~ label #fon {
+	opacity: 0.6;
+	visibility: visible;
+}
 
-
-
+  
 
 #slideMenu {
 	float: left;
@@ -458,6 +487,19 @@ nav a:hover, nav#fixed a:hover {
     -ms-user-select: none;
     user-select: none;
 }
+
+
+/* .fon {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	visibility: hidden;
+	background: grey;
+	z-index: 3;
+} */
 
 /* -------------------------------
 		Основная часть сайта
@@ -713,15 +755,23 @@ body {
 }
 
 .button {
-	padding: 3px 10px 3px 10px;
+	/* padding: 3px 10px 3px 10px;
 	background-color: #ffe; 
-    color: #930; 
+	color: #930;  */
+
+	padding: 3px 10px 3px 10px;
+	background-color: #4a0dad;
+	color: white;
+	border: 2px solid #2b0b5d;
 }
 .button:hover {
-	background-color: grey; 
+	/* background-color: grey; 
     color: white; 
 	border: 2px solid #f8d881;
-	cursor: pointer;
+	cursor: pointer; */
+
+	background-color: #6517e4;
+  	cursor: pointer;
 }
 
 #leftCol article h4 {

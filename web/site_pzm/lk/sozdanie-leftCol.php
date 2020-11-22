@@ -16,7 +16,7 @@
 			<label>Ссылка вшитая в названии:<br></label>
 			<input type="text" placeholder="Введите, если нужна" name="link_name" id="link_name" size="20" maxlength="200">
 		<br><br>		
-			<label>Категория товара/услуги:</font><br></label>
+			<label>Категория товара/услуги:<br></label>
 			<select name="hesh_kateg" id="hesh_kateg">			
 				<option value="#недвижимость">#недвижимость</option>
 				<option value="#работа">#работа</option>
@@ -31,13 +31,10 @@
 				<option value="#продукты_питания">#продукты_питания</option>
 				<option value="#красота_и_здоровье">#красота_и_здоровье</option>
 			</select>
-			
-		<!--	<input type="text" placeholder="Категория" name="hesh_kateg" id="hesh_kateg" size="15" maxlength="50"> -->
-			
+		
 		<br><br>
 			<label>Валюта с которой работаете:<br></label>
-			<!--<input type="text" placeholder="Напр: Рубль, Доллар" name="currency" id="currency" size="20" maxlength="100">-->
-			
+		
 			<select name="currency" id="currency">			
 				<option value="PRIZM" selected>Только PRIZM</option>
 				<option value="Рубль / PZM">Рубль</option>
@@ -53,18 +50,10 @@
 			<label>Хештеги местонахождения: <font color="red">*</font><br></label>
 			<input type="text" placeholder="Напр: #Россия #ВесьМир" name="hesh_city" id="hesh_city" size="20" maxlength="100">
 		<br><br>
-		
-		<!--
-			<label>Загрузите фото: <font color="red">*</font><br></label>
-			<input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">	
-		<br><br> 
-		-->
-		
+				
 			<label>Введите описание: <font color="red">*</font><br></label>
 			<textarea placeholder="Опишите подробно Ваш товар/услугу" name="opisanie" id="opisanie" maxlength="1500" rows="10" cols="30" wrap="soft"></textarea>
 		<br><br>
-		
-		<!--<input type="file" id="files" name="files" multiple accept="image/*"> ДОП ФОТО-->
 		
 			<label id="warning"><br></label>
 			<input type="submit" class="button" name="done" id="done" value="Применить">

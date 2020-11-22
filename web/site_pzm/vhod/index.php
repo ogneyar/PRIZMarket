@@ -1,16 +1,14 @@
-<?php
-//include_once '../../../vendor/autoload.php';	
+<?php 
 include_once '../../a_conect.php';
 // Подключаем библиотеку с классом Bot
 include_once '../../myBotApi/Bot.php';
 //exit('ok');
-$token = $tokenSite;
-// Создаем объект бота
-$bot = new Bot($token);
-$id_bota = strstr($token, ':', true);	
-// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
-include '../../myBotApi/Variables.php';
-$admin_group = $admin_group_Site;
+
+// $token = $tokenSite;
+// $bot = new Bot($token);
+// $id_bota = strstr($token, ':', true);	
+// include '../../myBotApi/Variables.php';
+// $admin_group = $admin_group_Site;
 
 $mysqli = new mysqli($host, $username, $password, $dbname);
 // проверка подключения 
@@ -38,20 +36,47 @@ $mysqli->close();
 
 // при возникновении исключения вызывается эта функция
 function exception_handler($exception) {
-	global $mysqli, $bot, $admin_group;
-	$bot->sendMessage($admin_group, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
-	$mysqli->close();		
+	// global $mysqli, $bot, $admin_group;
+	// $bot->sendMessage($admin_group, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
+	// $mysqli->close();		
 	exit('ok');  	
 }
 
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
+ <html lang="ru">
 <head>
 	<meta charset="utf-8" />	
 	<title>Вход в PRIZMarket!</title>
-	<?include_once '../site_files/head.php';?>
-	<style type="text/css"></style>
+	<?php include_once '../site_files/head.php';?>	
+</head>
+<body>
+	<header>
+		<?php include_once '../site_files/header.php';?>
+	</header>
+	<div id="lk_menu">
+		<?php include_once '../lk/index-lk_menu.php';?>		
+	</div>
+	<nav>
+		<?php include_once '../site_files/nav.php';?>
+	</nav>
+	<div id="slideMenu">Моё детище, а не просто сайт!</div>
+	<div id="wrapper">
+		<div id="TopCol">		
+			<?php include_once '../site_files/wrapper-topCol.php';?>
+		</div>
+		<div id="leftCol">		
+			<?php include_once 'index-leftCol.php';?>
+		</div>
+		<div id="rightCol">
+			<?php include_once '../site_files/wrapper-rightCol.php';?>
+		</div>
+	</div>
+	<footer>
+		<?php include_once '../site_files/footer.php';?>
+	</footer>
+
 	
 	<script>
 		$(document).ready (function (){			
@@ -116,32 +141,7 @@ function exception_handler($exception) {
 			});
 		});
 	</script>
-	
-</head>
-<body>
-	<header>
-		<?include_once '../site_files/header.php';?>
-	</header>
-	<div id="lk_menu">
-		<?include_once '../lk/index-lk_menu.php';?>		
-	</div>
-	<nav>
-		<?include_once '../site_files/nav.php';?>
-	</nav>
-	<div id="slideMenu">Моё детище, а не просто сайт!</div>
-	<div id="wrapper">
-		<div id="TopCol">		
-			<?include_once '../site_files/wrapper-topCol.php';?>
-		</div>
-		<div id="leftCol">		
-			<?include_once 'index-leftCol.php';?>
-		</div>
-		<div id="rightCol">
-			<?include_once '../site_files/wrapper-rightCol.php';?>
-		</div>
-	</div>
-	<footer>
-		<?include_once '../site_files/footer.php';?>
-	</footer>
+
+
 </body>
 </html>

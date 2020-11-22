@@ -1,6 +1,6 @@
 <?php
-if (!$_COOKIE['login']) header('Location: /site_pzm/vhod/index.php');
-if (!$_COOKIE['token']) header('Location: /site_pzm/vhod/index.php');
+if (!isset($_COOKIE['login'])) header('Location: /site_pzm/vhod/index.php');
+if (!isset($_COOKIE['token'])) header('Location: /site_pzm/vhod/index.php');
 $логин = $_COOKIE['login'];
 $токен = $_COOKIE['token'];
 
@@ -18,21 +18,58 @@ if (!isset($_GET['url'])) {
 	
 }elseif (isset($_GET['login'])) {
 	$всё_норм = _сравни_токен_и_логин($_GET['login'], $токен);
-}/*elseif (isset($_POST['login'])) {
-	$всё_норм = _сравни_токен_и_логин($_POST['login'], $токен);
-}*/
+}
 
 if (!$всё_норм) include_once 'exit.php';
 ?>
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
+<html lang="ru">
 <head>
 	<meta charset="utf-8" />
 	<title>Ваши заявки на PRIZMarket!</title>
-	<?include_once '../site_files/head.php';?>		
-	
-	<!-- <script type="text/javascript" src="sozdanie.js"></script>	-->
+	<?php include_once '../site_files/head.php';?>
+</head>
+<body>
+	<header>
+		<?php include_once '../site_files/header.php';?>
+	</header>
+	<div id="lk_menu">
+		<?php include_once 'index-lk_menu.php';?>
+	</div>
+	<nav>
+		<?php include_once '../site_files/nav.php';?>
+	</nav>
+	<div id="slideMenu">Моё детище, а не просто сайт!</div>
+	<div id="wrapper">
+		<div id="TopCol">
+			<?php include_once '../site_files/wrapper-topCol.php';?>
+		</div>
+		<div id="leftCol">
+		<?php 
+		if (isset($_GET['url'])) {
+			include_once 'sozdanie-save_photo.php';
+		}else {
+			if ($подтверждён) {					
+				if ($давно) { 
+					include_once 'sozdanie-leftCol.php';	
+				}else include_once 'sozdanie-net-leftCol.php';	
+			}else {
+				include_once 'sozdanie-nepodtv-leftCol.php';
+			}
+		}
+		?>
+		</div>
+		<div id="rightCol">
+			<?php include_once '../site_files/wrapper-rightCol.php';?>
+		</div>
+	</div>
+	<footer>
+		<?php include_once '../site_files/footer.php';?>
+	</footer>	
 
+	
 <script>
 
 $(document).ready (function (){
@@ -102,51 +139,10 @@ $(document).ready (function (){
 
 </script>
 
-	
-</head>
-<body>
-	<header>
-		<?include_once '../site_files/header.php';?>
-	</header>
-	<div id="lk_menu">
-		<?include_once 'index-lk_menu.php';?>
-	</div>
-	<nav>
-		<?include_once '../site_files/nav.php';?>
-	</nav>
-	<div id="slideMenu">Моё детище, а не просто сайт!</div>
-	<div id="wrapper">
-		<div id="TopCol">
-			<?include_once '../site_files/wrapper-topCol.php';?>
-		</div>
-		<div id="leftCol">
-		<?
-		if (isset($_GET['url'])) {
-			include_once 'sozdanie-save_photo.php';
-		}else {
-			if ($подтверждён) {					
-				if ($давно) { 
-					include_once 'sozdanie-leftCol.php';	
-				}else include_once 'sozdanie-net-leftCol.php';	
-			}else {
-				include_once 'sozdanie-nepodtv-leftCol.php';
-			}
-		}
-		/*elseif (isset($_POST['render_to_beget'])) {
-			include_once 'sozdanie-render_to_beget.php';
-		}*/
-		?>
-		</div>
-		<div id="rightCol">
-			<?include_once '../site_files/wrapper-rightCol.php';?>
-		</div>
-	</div>
-	<footer>
-		<?include_once '../site_files/footer.php';?>
-	</footer>	
+
 </body>
 </html>
-<?
+<?php 
 // закрываем подключение 
 $mysqli->close();
 ?>

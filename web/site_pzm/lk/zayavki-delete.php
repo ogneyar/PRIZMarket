@@ -1,5 +1,6 @@
 <article id="repeat_delete">
 <h4><br>
+
 <?php
 include_once "../site_files/functions.php";
 // Открыл базу данных, в конце обязательно надо закрыть
@@ -15,5 +16,6 @@ if ($всё_норм) {
 }else echo "<label>Несоответствие Вашего логина с номером заявки.<br><br>Обратитесь в <a href='https://teleg.link/Prizm_market_supportbot' target='_blank'>тех.поддержку</a></label>";
 
 ?>
+
 </h4>
 </article>
