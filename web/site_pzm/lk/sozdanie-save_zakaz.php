@@ -76,8 +76,10 @@ if (mysqli_connect_errno()) {
 			event.stopPropagation(); // остановка всех текущих JS событий
 			event.preventDefault();  // остановка дефолтного события
 
-			$('.fon').css('opacity', '0.6');
-			$('.fon').css('visibility', 'visible');
+			$('#fon_load').css({
+				'opacity':'0.6',
+				'visibility':'visible'
+			});
 		}
 	});
 </script>

@@ -489,7 +489,7 @@ nav a:hover, nav#fixed a:hover {
 }
 
 
-.fon {
+#fon_load {
 	position: fixed;
 	top: 0;
 	left: 0;

@@ -44,7 +44,7 @@
 			</ul>
 		</div>
 
-		<div class="fon"></div>
+		<div id="fon_load"></div>
 
 	</div> 
 
