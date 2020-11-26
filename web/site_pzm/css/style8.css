@@ -533,7 +533,7 @@ nav a:hover, nav#fixed a:hover {
 		filter: hue-rotate(0deg);
 	}
 	100% {
-		filter: hue-rotate(35deg);
+		filter: hue-rotate(360deg);
 	}
 }
 #section .box {
