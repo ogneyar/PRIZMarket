@@ -1,5 +1,17 @@
-﻿<article>
-	<a href='' title=''>
+﻿
+<article>
+	<a href='https://hutoryanin.ru'>
+		<img src="/site_pzm/img/art/Yera.png" />
+	</a>
+	<center>
+	<h3 style="padding:5px;"><span>Дарю подарки на сайте <a href="https://hutoryanin.ru">ХуторянинЪ</a>!</span></h3>
+	</center>
+	<br>
+</article>
+
+
+<article>
+	<a href='#'>
 		<img src="/site_pzm/img/art/PRIZM.png" />
 	</a>
 	<center>
