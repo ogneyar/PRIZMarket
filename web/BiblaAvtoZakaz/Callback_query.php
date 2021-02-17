@@ -50,6 +50,9 @@ if ($callback_data=='создать'){
 }elseif ($callback_data=='фунт') {	
 	_когда_валюта_выбрана('£');
 	
+}elseif ($callback_data=='уми') {	
+	_когда_валюта_выбрана('UMI');
+	
 }elseif ($callback_data=='призм') {	
 	_когда_валюта_выбрана();
 	

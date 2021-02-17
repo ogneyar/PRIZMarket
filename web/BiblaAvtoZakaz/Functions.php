@@ -186,6 +186,7 @@ function _выбор_валюты() {
 		[	[ 'text' => '¥', 'callback_data' => 'йена' ],
 			[ 'text' => '₴', 'callback_data' => 'гривна' ],
 			[ 'text' => '£', 'callback_data' => 'фунт' ] ],
+		[ 	[ 'text' => 'PRIZM и UMI', 'callback_data' => 'уми' ] ],
 		[ 	[ 'text' => 'Только PRIZM!', 'callback_data' => 'призм' ] ] 
 	] ];	
 	$reply = "|\n|\n|\n|\n|\n|\n|\n|\nВыберите валюту, с которой Вы работаете, помимо PRIZM.";	
