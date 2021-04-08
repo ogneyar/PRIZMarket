@@ -1,1 +1,1 @@
-# f0430377
+#media.prizmarket.ru
