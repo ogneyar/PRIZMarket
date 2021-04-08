@@ -1,7 +1,7 @@
 ﻿<article id="repeat_delete">
 	<form action='/site_pzm/lk/zayavki.php' method='post'>		
 		<input type='hidden' name='id_lota' id='id_lota' value='<?php echo $_POST['id_lota'];?>'>
-		<input type='hidden' name='url' id='url' value='<?php echo $_POST['url'];?>'>
+		<input type='hidden' name='file' id='file' value='<?php echo $_POST['file'];?>'>
 
 		<h4><br>
 		<label>Вы уверены что хотите удалить лот <?php echo $_POST['id_lota'];?>?</label><br><br>
@@ -24,7 +24,7 @@ $(document).ready (function (){
 			type: 'POST',
 			cache: false,
 			data: {
-				'file': $("#url")
+				'file': $("#file")
 			},
 			dataType: 'html',
 			success: function (data) {

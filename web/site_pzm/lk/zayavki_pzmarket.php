@@ -33,12 +33,14 @@ if($количество > 0) {
 		
 		$ссыль_на_фото = str_replace("http://f0430377.xsph.ru", "https://media.pzmarket.ru", $ссыль_на_фото);
 
+		$ссыль_на_файл = str_replace("https://media.pzmarket.ru/image/", "", $ссыль_на_фото);
+
 		$лот[$номер] = "<article id='zayavki'><br><hr><br>
 				<a href=''><img src='{$ссыль_на_фото}' alt='' title=''/></a>
 				{$текст_лота}
 				<form action='/site_pzm/lk/zayavki.php' method='post'>					
 					<input type='hidden' name='id_lota' value='{$id_lota}'>
-					<input type='hidden' name='url' value='{$ссыль_на_фото}'>		
+					<input type='hidden' name='file' value='{$ссыль_на_файл}'>		
 
 					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>
 					
