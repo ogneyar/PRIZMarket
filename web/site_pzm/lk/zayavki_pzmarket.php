@@ -31,7 +31,7 @@ if($количество > 0) {
 			<h4>{$кнопка_подробнее}</h4>";		
 		$ссыль_на_фото = $строка['url_tgraph'];	
 		
-		
+		$ссыль_на_фото = str_replace("http://f0430377.xsph.ru", "https://media.pzmarket.ru", $ссыль_на_фото);
 
 		$лот[$номер] = "<article id='zayavki'><br><hr><br>
 				<a href=''><img src='{$ссыль_на_фото}' alt='' title=''/></a>
