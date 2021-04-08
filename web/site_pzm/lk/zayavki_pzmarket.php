@@ -42,11 +42,11 @@ if($количество > 0) {
 					<input type='hidden' name='id_lota' value='{$id_lota}'>
 					<input type='hidden' name='file' value='{$ссыль_на_файл}'>		
 
-					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>
+					<h4><input type='submit' class='button' name='repeat_delete' value='Повторить'></h4>
 					
 					<h4>Лот {$id_lota}</h4>
 
-					<h4><input type='submit' class='button' name='repeat_delete' id='delete'  value='Удалить'></h4>
+					<h4><input type='submit' class='button' name='repeat_delete' value='Удалить'></h4>
 				</form>
 				
 			</article>";		

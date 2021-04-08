@@ -15,32 +15,32 @@
 	
 <script>
 
-$(document).ready (function (){
-	$("#done1").click (function ( event ){
-		event.stopPropagation(); // остановка всех текущих JS событий
-		event.preventDefault();  // остановка дефолтного события
+// $(document).ready (function (){
+// 	$("#done1").click (function ( event ){
+// 		event.stopPropagation(); // остановка всех текущих JS событий
+// 		event.preventDefault();  // остановка дефолтного события
 
-		let file = document.getElementById("file")
-		console.log(file)
+// 		let file = document.getElementById("file")
+// 		console.log(file)
 				
-		$.ajax ({
-			url: 'https://media.pzmarket.ru/deleteimage.php',
-			type: 'POST',
-			cache: false,
-			data: {
-				'file': file.value
-			},
-			dataType: 'html',
-			success: function (data) {
-				$('#lk').html ("<br><h4>" + data + "</h4>");
-				$('#lk').show ();
-				// if (data == "Удалил") location.replace("https://pzmarket.ru");
-			}
-		});
+// 		$.ajax ({
+// 			url: 'https://media.pzmarket.ru/deleteimage.php',
+// 			type: 'POST',
+// 			cache: false,
+// 			data: {
+// 				'file': file.value
+// 			},
+// 			dataType: 'html',
+// 			success: function (data) {
+// 				$('#lk').html ("<br><h4>" + data + "</h4>");
+// 				$('#lk').show ();
+// 				// if (data == "Удалил") location.replace("https://pzmarket.ru");
+// 			}
+// 		});
 
 		
-	});
-});	
+// 	});
+// });	
 
 
 </script>
