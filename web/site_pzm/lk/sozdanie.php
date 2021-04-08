@@ -106,7 +106,7 @@ $(document).ready (function (){
 			
 		if (fail != "") {
 			$('#warning').html (fail  + "<br>");
-			$('#warning').show ();										
+			$('#warning').show ();
 			return false;
 		}else {					
 			$('#lk').html ("<br><h4>Ожидайте..</h4>");
@@ -129,7 +129,7 @@ $(document).ready (function (){
 			dataType: 'html',
 			success: function (data) {
 				$('#lk').html ("<br><h4>" + data + "</h4>");
-				$('#lk').show ();						
+				$('#lk').show ();
 			}
 		});
 		

@@ -37,7 +37,8 @@ if($количество > 0) {
 				<a href=''><img src='{$ссыль_на_фото}' alt='' title=''/></a>
 				{$текст_лота}
 				<form action='/site_pzm/lk/zayavki.php' method='post'>					
-					<input type='hidden' name='id_lota' value='{$id_lota}'>		
+					<input type='hidden' name='id_lota' value='{$id_lota}'>
+					<input type='hidden' name='url' value='{$ссыль_на_фото}'>		
 
 					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>
 					
@@ -55,7 +56,7 @@ if($количество > 0) {
 // закрываем подключение 
 $mysqli->close();
 
-$ссыль_на_канал_подробности = "https://teleg.link/podrobno_s_PZP";
-$ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
+$ссыль_на_канал_подробности = "https://t.me/podrobno_s_PZP";
+$ссыль_на_саппорт_бота = "https://t.me/Prizm_market_supportbot";
 
 ?>		
