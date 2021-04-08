@@ -9,6 +9,7 @@
 		<input type='submit' class='button' name='done' id='none2' value='Нет'>
 		</h4> 
 	</form>
+	<div id="lk"></div>
 </article>
 
 	
@@ -28,9 +29,13 @@ $(document).ready (function (){
 			},
 			dataType: 'html',
 			success: function (data) {
-				// $('#lk').html ("<br><h4>" + data + "</h4>");
-				// $('#lk').show ();
-				if (data == "Удалил") redirect();
+				$('#lk').html ("<br><h4>" + data + "</h4>");
+				$('#lk').show ();
+				// if (data == "Удалил") redirect();
+			},
+			error: function (data) {
+				$('#lk').html ("<br><h4>" + data + "</h4>");
+				$('#lk').show ();
 			}
 		});
 
