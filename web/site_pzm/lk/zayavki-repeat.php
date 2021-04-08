@@ -23,7 +23,7 @@ if ($давно) {
 }else {
 	echo '<label>'.$логин.', после последней публикации прошло менее суток.<br></label>'.
 		'<label>При особом желании Вы можете публиковать чаще, для этого напишите нам в '.
-		'<a href="https://teleg.link/zakazLOTbot" target="_blank">телеграм</a>.<br></label>'.
+		'<a href="https://t.me/zakazLOTbot" target="_blank">телеграм</a>.<br></label>'.
 		'<label>БезОплатно публиковать можно раз в сутки.<br></label>';
 }
 ?>

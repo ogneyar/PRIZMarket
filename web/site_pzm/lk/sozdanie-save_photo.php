@@ -37,7 +37,7 @@ if (empty($_GET['url'])) {
 	
 	echo "Заявка отправлена РАЙминистрации.<br><br>";
 	echo "Сообщение о решении будет отправленно Вам на email.<br><br>";
-	echo "Все вопросы в <a href='https://teleg.link/Prizm_market_supportbot'>тех.поддержку.</a>";
+	echo "Все вопросы в <a href='https://t.me/Prizm_market_supportbot'>тех.поддержку.</a>";
 	
 }
 

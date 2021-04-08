@@ -50,12 +50,12 @@ if (mysqli_connect_errno()) {
 
  	if ($tester == 'да') {
 ?>
-	<form action="http://f0430377.xsph.ru/saveimage.php" method="post" enctype="multipart/form-data">
+	<form action="https://media.pzmarket.ru/saveimage.php" method="post" enctype="multipart/form-data">
 		<input type='hidden' name='tester' value='да'>
 <?php 
 	}else {
 ?>
-	<form action="http://f0430377.xsph.ru/saveimage.php" method="post" enctype="multipart/form-data">
+	<form action="https://media.pzmarket.ru/saveimage.php" method="post" enctype="multipart/form-data">
 <?php 
 }
 ?>
@@ -83,15 +83,6 @@ if (mysqli_connect_errno()) {
 			}			
 			$('#fail_text').html("");
 			$('#fail_text').show();
-
-			// console.log("нажал");
-
-			// $('#fon_load').css({
-			// 	'opacity':'0.6',
-			// 	'visibility':'visible'
-			// });
-
-			// console.log($('#file').val());		
 
 			$('#section').css('display','block');
 		});

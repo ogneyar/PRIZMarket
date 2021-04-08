@@ -29,18 +29,21 @@ if($количество > 0) {
 		$кнопка_подробнее = "<a href='/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}'>Подробности</a>";
 		$текст_лота = "<h4>{$название}</h4>
 			<h4>{$кнопка_подробнее}</h4>";		
-		$ссыль_на_фото = $строка['url_tgraph'];		
+		$ссыль_на_фото = $строка['url_tgraph'];	
+		
+		
+
 		$лот[$номер] = "<article id='zayavki'><br><hr><br>
 				<a href=''><img src='{$ссыль_на_фото}' alt='' title=''/></a>
 				{$текст_лота}
 				<form action='/site_pzm/lk/zayavki.php' method='post'>					
 					<input type='hidden' name='id_lota' value='{$id_lota}'>		
 
-					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>					
+					<h4><input type='submit' class='button' name='repeat_delete' id='repeat'  value='Повторить'></h4>
 					
 					<h4>Лот {$id_lota}</h4>
 
-					<h4><input type='submit' class='button' name='repeat_delete' id='delete'  value='Удалить'></h4>					
+					<h4><input type='submit' class='button' name='repeat_delete' id='delete'  value='Удалить'></h4>
 				</form>
 				
 			</article>";		

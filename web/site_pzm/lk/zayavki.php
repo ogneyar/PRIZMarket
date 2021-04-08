@@ -12,7 +12,6 @@ if (!$всё_норм) include_once 'exit.php';
 ?>
 
 <!DOCTYPE html>
-<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
 <html lang="ru">
 <head>
 	<meta charset="utf-8" />
