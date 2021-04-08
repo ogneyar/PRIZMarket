@@ -19,13 +19,16 @@ $(document).ready (function (){
 	$("#done1").click (function ( event ){
 		event.stopPropagation(); // остановка всех текущих JS событий
 		event.preventDefault();  // остановка дефолтного события
+
+		let file = document.getElementById("file")
+		console.log(file)
 				
 		$.ajax ({
 			url: 'https://media.pzmarket.ru/deleteimage.php',
 			type: 'POST',
 			cache: false,
 			data: {
-				'file': document.getElementById("file").value
+				'file': file.value
 			},
 			dataType: 'html',
 			success: function (data) {
