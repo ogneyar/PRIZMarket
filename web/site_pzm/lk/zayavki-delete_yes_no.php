@@ -17,14 +17,14 @@
 $(document).ready (function (){
 	$("#done1").click (function ( event ){
 		// event.stopPropagation(); // остановка всех текущих JS событий
-		// event.preventDefault();  // остановка дефолтного события
+		event.preventDefault();  // остановка дефолтного события
 				
 		$.ajax ({
 			url: 'https://media.pzmarket.ru/deleteimage.php',
 			type: 'POST',
 			cache: false,
 			data: {
-				'file': <?php echo $_POST['file'];?>
+				'file': $("#file")
 			},
 			dataType: 'html',
 			success: function (data) {
