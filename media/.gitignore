@@ -1,2 +1,5 @@
-vendor/
-.env
+madeline.phar
+madeline.phar.version
+MadelineProto.log
+session.madeline
+session.madeline.lock
