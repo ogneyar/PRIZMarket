@@ -302,20 +302,25 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$id_zakaz = $КаналИнфо['message_id'];				
 				_запись_в_маркет_с_сайта($имя_клиента, 'id_zakaz', $id_zakaz);
 								
-				$array = [ 'id_zakaz' => $id_zakaz, 'file' => $ссылка_на_фото ];		
-				// инфа о том с какого сайта (тестового или оригинала) идёт посылка
-				if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);		
+				// $array = [ 'id_zakaz' => $id_zakaz, 'file' => $ссылка_на_фото ];		
+				// // инфа о том с какого сайта (тестового или оригинала) идёт посылка
+				// if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);		
 
-				// отправка madeLine фото для публикации её в телеге
-				$ch = curl_init($media_url."?".http_build_query($array));
+				// // отправка madeLine фото для публикации её в телеге
+				// $ch = curl_init($media_url."?".http_build_query($array));
+				// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				// curl_setopt($ch, CURLOPT_HEADER, false);
+				// $html = curl_exec($ch);
+				// curl_close($ch);	
 
-				//curl_setopt($ch, CURLOPT_POST, 1);
-				//curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($array)); 
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-				curl_setopt($ch, CURLOPT_HEADER, false);
-				$html = curl_exec($ch);
-				curl_close($ch);	
+
+				if ($tester == 'да') {
+					$канал_таймерботов = "https://t.me/tester_pzmarket";
+				}else {
+					$канал_таймерботов = "https://t.me/joinchat/AAAAAEXiPca9AK_HDjSg5Q";
+				}
+				$bot->sendPhoto($канал_таймерботов, $ссылка_на_фото, "Лот:{$id_zakaz}");	
 							
 				
 				$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";			

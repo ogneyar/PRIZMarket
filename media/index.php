@@ -31,7 +31,7 @@ $MadelineProto->loop(function () use ($MadelineProto) {
 			$номер_заказа = $_POST['id_zakaz'];			
 		}elseif (isset($_GET['id_zakaz'])) {
 			$номер_заказа = $_GET['id_zakaz'];			
-		}//else $номер_заказа = "неизвестен";
+		}else $номер_заказа = "неизвестен";
 		
 		if ($фото&&$номер_заказа) {
 		
