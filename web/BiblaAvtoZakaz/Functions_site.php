@@ -329,7 +329,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 
 			       		if ($ответ['ok']) {
 
-    						$photo = $data['result']['photo'];
+    						$photo = $ответ['result']['photo'];
 		
 						if ($photo[2]){
 							$file_id = $photo[2]['file_id'];
