@@ -50,12 +50,12 @@ if (mysqli_connect_errno()) {
 
  	if ($tester == 'да') {
 ?>
-	<form action="{$media_url}/saveimage.php" method="post" enctype="multipart/form-data">
+	<form action="<?php echo $media_url;?>/saveimage.php" method="post" enctype="multipart/form-data">
 		<input type='hidden' name='tester' value='да'>
 <?php 
 	}else {
 ?>
-	<form action="{$media_url}/saveimage.php" method="post" enctype="multipart/form-data">
+	<form action="<?php echo $media_url;?>/saveimage.php" method="post" enctype="multipart/form-data">
 <?php 
 }
 ?>
