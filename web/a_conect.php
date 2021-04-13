@@ -49,8 +49,7 @@ if (isset($_SERVER['HTTPS'])) {
 	$channel_podrobno = getenv('CHANEL_PODROBNO');
 	$channel_media_market = getenv('CHANNEL_MEDIA_MARKET');
 
-	// $media_url = "http://f0430377.xsph.ru";
-	$media_url = "https://media.pzmarket.ru";
+	$media_url = "https://media.prizmarket.ru";
 	
 	$smtp_login = getenv("SMTP_LOGIN");
 	$smtp_pass = getenv("SMTP_PASSWORD");
