@@ -315,12 +315,14 @@ function _вывод_на_каналы_с_сайта($команда) {
 				// curl_close($ch);	
 
 
-				if ($tester == 'да') {
-					$канал_таймерботов = "https://t.me/tester_pzmarket";
-				}else {
-					$канал_таймерботов = "https://t.me/joinchat/AAAAAEXiPca9AK_HDjSg5Q";
-				}
-				$bot->sendPhoto($канал_таймерботов, $ссылка_на_фото, "Лот:{$id_zakaz}");	
+				//if ($tester == 'да') {
+				//	$канал_таймерботов = "@tester_pzmarket";
+				//}else {
+				//	$канал_таймерботов = "https://t.me/joinchat/AAAAAEXiPca9AK_HDjSg5Q";
+				//}
+
+
+				$bot->sendPhoto($channel_info, $ссылка_на_фото, "Лот:{$id_zakaz}");	
 							
 				
 				$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";			
