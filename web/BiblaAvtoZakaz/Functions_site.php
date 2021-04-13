@@ -327,9 +327,9 @@ function _вывод_на_каналы_с_сайта($команда) {
 
 					$ответ = json_decode($ответ);
 
-			       		if ($ответ['ok']) {
+			       		if ($ответ) {
 
-    						$photo = $ответ['result']['photo'];
+    						$photo = $ответ['photo'];
 		
 						if ($photo[2]){
 							$file_id = $photo[2]['file_id'];
