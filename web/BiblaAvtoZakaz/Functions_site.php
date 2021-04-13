@@ -322,9 +322,27 @@ function _вывод_на_каналы_с_сайта($команда) {
 				//}
 
 
-				$bot->sendPhoto($channel_info, $ссылка_на_фото, "Лот:{$id_zakaz}");	
-							
-				
+				if ($формат_файла == "photo") {
+					$ответ = $bot->sendPhoto($channel_info, $ссылка_на_фото);	
+
+					$ответ = json_decode($ответ);
+
+			       		if ($ответ['ok']) {
+
+    						$photo = $data['result']['photo'];
+		
+						if ($photo[2]){
+							$file_id = $photo[2]['file_id'];
+						}elseif ($photo[1]){
+							$file_id = $photo[1]['file_id'];	
+						}else {
+							$file_id = $photo[0]['file_id'];	
+						}	
+
+						_запись_в_маркет_с_сайта($имя_клиента, 'file_id', $file_id);
+
+                               		}
+				} 
 				$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";			
 				_запись_в_маркет_с_сайта($имя_клиента, 'url_podrobno', $ссыль_на_подробности);
 				
