@@ -328,12 +328,8 @@ function _вывод_на_каналы_с_сайта($команда) {
 
 					$ответ = $bot->sendPhoto($channel_info, $ссылка_на_фото);	
 					
-					$bot->sendMessage($master, json_encode($ответ));
-
-					//$ответ = json_decode($ответ);
-
-					//$bot->sendMessage($master, $ответ);
-
+					// $bot->sendMessage($master, json_encode($ответ));
+					
 			       		if ($ответ) {
 
     						$photo = $ответ['photo'];
