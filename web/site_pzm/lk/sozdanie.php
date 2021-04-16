@@ -130,6 +130,7 @@ $(document).ready (function (){
 			success: function (data) {
 				$('#lk').html ("<br><h4>" + data + "</h4>");
 				$('#lk').show ();
+$('html').scrollTop(0);
 			}
 		});
 		
