@@ -12,6 +12,16 @@ if ($text == 'база') {
 		$bot->output_table($table_users);		
 	}	
 	
+}elseif ($text == 'ЗамениСвязи') {
+	
+	if ($id) {	
+		$query = "UPDATE {$table_users} SET svyazi='{$id}' WHERE login='PersonalGuide'";
+
+		if ($result = $mysqli->query($query)) $bot->sendMessage($chat_id, "Заменил.");
+		else  $bot->sendMessage($chat_id, "Не смог заменить.");
+
+	}else  $bot->sendMessage($chat_id, "Не получается, отсутствует необходимый параметр.");
+
 }elseif ($text == 'заявки') {
 	$заявки = _проверка_заявок();
 	if ($заявки) $bot->sendMessage($chat_id, $bot->PrintArray($заявки));

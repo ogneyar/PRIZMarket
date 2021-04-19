@@ -45,7 +45,7 @@ $ссылка_подтверждения = $путь_сервера . "?login={$
 
 $время = time();
 
-$запрос = "INSERT INTO `site_users` (
+$запрос = "INSERT INTO `site_users` ( 
 		  `login`,
 		  `password`,
 		  `email`,
