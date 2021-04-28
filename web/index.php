@@ -2,7 +2,7 @@
 if ($_SERVER['HTTP_HOST']=='www.prizmarket.ru') header('Location: https://prizmarket.ru');
 if ($_SERVER['HTTP_HOST']=='www.prizmarket.online') header('Location: https://prizmarket.online');
 
-$имя_сервера = $_SERVER['SERVER_NAME'];
+$имя_сервера = 'https://' . $_SERVER['SERVER_NAME'];
 	
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
