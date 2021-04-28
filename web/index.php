@@ -45,7 +45,7 @@ include_once 'site_pzm/pzmarket.php';
 	
 	<div id="wrapper">
 		<div id="TopCol">		
-			<?php echo $имя_сервера; include_once 'site_pzm/site_files/wrapper-topCol.php'; ?>
+			<?php include_once 'site_pzm/site_files/wrapper-topCol.php'; ?>
 		</div>
 		<div id="leftCol">		
 			<?php include_once 'site_pzm/site_files/wrapper-leftCol.php';?>
