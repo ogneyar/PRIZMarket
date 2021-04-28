@@ -76,7 +76,7 @@ while ($a < $количество_лотов){
 			$id_lota=$arrS[$i][0];	
 			$otdel=$arrS[$i][1];
 			$url=$arrS[$i][4];
-			$url = str_replace("t.me", "teleg.link", $url);
+			// $url = str_replace("t.me", "teleg.link", $url);
 			$куплю_продам=$arrS[$i][5];
 			$название=$arrS[$i][6];
 			$валюта=$arrS[$i][7];
@@ -91,7 +91,7 @@ while ($a < $количество_лотов){
 			
 			if (strpos($юзера_имя, "@") !== false) {
 				$имя = str_replace("@", "", $юзера_имя);
-				$связь = "https://teleg.link/{$имя}";		
+				$связь = "https://t.me/{$имя}";		
 			}else {
 				$связь = _дай_связь($юзера_имя);
 			}
@@ -118,12 +118,12 @@ while ($a < $количество_лотов){
 				}else $подробности = "Нет информации..";						
 				$кнопка_подробнее = "<p>{$подробности}<span>{$дата_публикации[$a]}</span></p>";
 			}else {
-				$кнопка_подробнее = "<p><a href='/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";				
+				$кнопка_подробнее = "<p><a href='https://<?= $имя_сервера;?>/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";				
 			}
 			
 			$лот[$a] = "<article>
 				<h3>
-					<a href='' title=''><img src='{$ссыль_на_фото[$a]}' alt='' title=''/></a>{$текст_лота[$a]}		
+					<a href='#'><img src='{$ссыль_на_фото[$a]}' alt='фото лота'/></a>{$текст_лота[$a]}		
 					{$кнопка_подробнее}
 				</h3>
 			</article>";
@@ -164,8 +164,8 @@ function _дай_связь($имя_клиента) {
 			if ($связь == 'Telegram') {
 				if (strpos($данные, "@")!==false) {		
 					$ник = substr(strrchr($данные, "@"), 1);
-					$ответ = "https://teleg.link/{$ник}";
-				}else $ответ = "https://teleg.link/{$данные}";
+					$ответ = "https://t.me/{$ник}";
+				}else $ответ = "https://t.me/{$данные}";
 			}elseif ($связь == 'WhatsApp') {
 				if (strpos($данные, "+")!==false) {		
 					$ник = substr(strrchr($данные, "+"), 1);
@@ -182,9 +182,9 @@ function _дай_связь($имя_клиента) {
 	return $ответ;
 }
 
-$ссыль_на_канал_подробности = "https://teleg.link/podrobno_s_PZP";
+$ссыль_на_канал_подробности = "https://t.me/podrobno_s_PZP";
 
-$ссыль_на_саппорт_бота = "https://teleg.link/Prizm_market_supportbot";
+$ссыль_на_саппорт_бота = "https://t.me/Prizm_market_supportbot";
 
 
 // ---------------------------------------
@@ -205,18 +205,18 @@ if ($лот[0] == "") {
 		$тип_кн_назад = 'hidden';		
 	}else $тип_кн_назад = 'submit';
 	
-	if (isset($_GET['podrobnosti']) && ($_GET['podrobnosti'] == 'st')) $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
-	else $action = '/';
+	if (isset($_GET['podrobnosti']) && ($_GET['podrobnosti'] == 'st')) $action = 'https://' . $имя_сервера . '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+	else $action = 'https://' . $имя_сервера .  '/';
 	
 	$лот[$a] = "<article>
 		<h3><br>
 		<form action='{$action}' method='post' id='form_nazad'></form>
 		<form action='{$action}' method='post' id='form_dalee'></form>
 		<center>			
-				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}' form='form_nazad'>
+				<input type='hidden' name='last_lot' id='last_lot1' value='{$последний_лот}' form='form_nazad'>
 				<input type='{$тип_кн_назад}' class='button' name='nazad' id='nazad' value='&lt&lt Назад' form='form_nazad'>
 			
-				<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}' form='form_dalee'>				
+				<input type='hidden' name='last_lot' id='last_lot2' value='{$последний_лот}' form='form_dalee'>				
 				<input type='submit' class='button' name='dalee' id='dalee'  value='Вперёд &gt&gt' form='form_dalee'>
 		</center>
 		</h3>
@@ -224,14 +224,14 @@ if ($лот[0] == "") {
 		
 }else {
 	if ($последний_лот) {	
-		if ($_GET['podrobnosti'] == 'st') $action = '/site_pzm/podrobnosti/index.php?podrobnosti=st';
-		else $action = '/';
+		if ($_GET['podrobnosti'] == 'st') $action = 'https://' . $имя_сервера .  '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+		else $action = 'https://' . $имя_сервера . '/';
 			
 		$лот[$a] = "<article>
 			<h3><br>
 			<center>		
 				<form action='{$action}' method='post'>
-					<input type='hidden' name='last_lot' id='last_lot' value='{$последний_лот}'>
+					<input type='hidden' name='last_lot' id='last_lot0' value='{$последний_лот}'>
 					<input type='submit' class='button' name='nazad' id='nazad' value='&lt&lt Назад'>					
 				</form>
 			</center>
