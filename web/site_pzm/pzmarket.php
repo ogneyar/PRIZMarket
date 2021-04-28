@@ -118,7 +118,7 @@ while ($a < $количество_лотов){
 				}else $подробности = "Нет информации..";						
 				$кнопка_подробнее = "<p>{$подробности}<span>{$дата_публикации[$a]}</span></p>";
 			}else {
-				$кнопка_подробнее = "<p><a href='https://{$имя_сервера}/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";				
+				$кнопка_подробнее = "<p><a href='{$имя_сервера}/site_pzm/podrobnosti/index.php?podrobnosti={$id_lota}' title=''>Подробности</a><span>{$дата_публикации[$a]}</span></p>";				
 			}
 			
 			$лот[$a] = "<article>
@@ -205,8 +205,8 @@ if ($лот[0] == "") {
 		$тип_кн_назад = 'hidden';		
 	}else $тип_кн_назад = 'submit';
 	
-	if (isset($_GET['podrobnosti']) && ($_GET['podrobnosti'] == 'st')) $action = 'https://' . $имя_сервера . '/site_pzm/podrobnosti/index.php?podrobnosti=st';
-	else $action = 'https://' . $имя_сервера .  '/';
+	if (isset($_GET['podrobnosti']) && ($_GET['podrobnosti'] == 'st')) $action = $имя_сервера . '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+	else $action = $имя_сервера . '/';
 	
 	$лот[$a] = "<article>
 		<h3><br>
@@ -224,8 +224,8 @@ if ($лот[0] == "") {
 		
 }else {
 	if ($последний_лот) {	
-		if ($_GET['podrobnosti'] == 'st') $action = 'https://' . $имя_сервера .  '/site_pzm/podrobnosti/index.php?podrobnosti=st';
-		else $action = 'https://' . $имя_сервера . '/';
+		if ($_GET['podrobnosti'] == 'st') $action = $имя_сервера . '/site_pzm/podrobnosti/index.php?podrobnosti=st';
+		else $action = $имя_сервера . '/';
 			
 		$лот[$a] = "<article>
 			<h3><br>
