@@ -114,7 +114,7 @@ $(document).ready (function (){
 		}		
 		
 		$.ajax ({
-			url: '/site_pzm/lk/sozdanie-save_zakaz.php',
+			url: '/site_pzm/lk/sozdanie-save_zakaz.php#',
 			type: 'POST',
 			cache: false,
 			data: {
@@ -130,6 +130,7 @@ $(document).ready (function (){
 			success: function (data) {
 				$('#lk').html ("<br><h4>" + data + "</h4>");
 				$('#lk').show ();
+$('html').scrollTop(0);
 			}
 		});
 		

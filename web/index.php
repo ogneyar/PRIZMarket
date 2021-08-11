@@ -2,6 +2,8 @@
 if ($_SERVER['HTTP_HOST']=='www.prizmarket.ru') header('Location: https://prizmarket.ru');
 if ($_SERVER['HTTP_HOST']=='www.prizmarket.online') header('Location: https://prizmarket.online');
 
+$имя_сервера = 'https://' . $_SERVER['SERVER_NAME'];
+	
 include_once '../vendor/autoload.php';	
 include_once 'a_conect.php';
 
@@ -11,7 +13,7 @@ include_once 'site_pzm/pzmarket.php';
 
 ?>
 <!DOCTYPE html>
-<!-- <html xmlns="https://www.w3.org/1999/xhtml"> -->
+
 <html lang="ru">
 <head>
 	<meta charset="utf-8" />
@@ -40,9 +42,10 @@ include_once 'site_pzm/pzmarket.php';
 		<?php include_once 'site_pzm/site_files/nav.php';?>
 	</nav>
 	<div id="slideMenu">Моё)</div>
+	
 	<div id="wrapper">
 		<div id="TopCol">		
-			<?php include_once 'site_pzm/site_files/wrapper-topCol.php';?>
+			<?php include_once 'site_pzm/site_files/wrapper-topCol.php'; ?>
 		</div>
 		<div id="leftCol">		
 			<?php include_once 'site_pzm/site_files/wrapper-leftCol.php';?>

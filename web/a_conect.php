@@ -48,6 +48,8 @@ if (isset($_SERVER['HTTPS'])) {
 	$channel_info = getenv('CHANNEL_INFO');
 	$channel_podrobno = getenv('CHANEL_PODROBNO');
 	$channel_media_market = getenv('CHANNEL_MEDIA_MARKET');
+
+	$media_url = "https://media.prizmarket.ru";
 	
 	$smtp_login = getenv("SMTP_LOGIN");
 	$smtp_pass = getenv("SMTP_PASSWORD");

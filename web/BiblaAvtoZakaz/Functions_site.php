@@ -208,7 +208,7 @@ function _запись_в_маркет_с_сайта($имя_клиента = nu
 function _вывод_на_каналы_с_сайта($команда) {
 	global $table_market, $bot, $callback_query_id, $s3, $aws_bucket, $chat_id, $mysqli, $imgBB, $channel_podrobno, $channel_market;
 	global $таблица_медиагруппа, $channel_media_market, $master, $tester, $message_id, $admin_group, $три_часа;
-	global $smtp_server, $smtp_port, $smtp_login, $smtp_pass, $channel_info;	
+	global $smtp_server, $smtp_port, $smtp_login, $smtp_pass, $channel_info, $media_url;	
 	_очистка_таблицы_ожидание();
 	
 	$bot->answerCallbackQuery($callback_query_id, "Ожидайте! Идёт загрузка фото, отправка письма на email и ещё несколько разных операций, это длительный процесс..");
@@ -257,15 +257,13 @@ function _вывод_на_каналы_с_сайта($команда) {
 				}							
 				$текст .= "\n\n{$подробности}"; 								
 				$текст = "{$хештеги}{$название_для_подробностей}{$текст}";	
-				
-				//$uniqid = $строка['id_zakaz'];	
-				
-				$ссылка_на_фото = $строка['url_tgraph'];
 								
-				if ($ссылка_на_фото) {
+				$ссылка_на_фото_или_видео = $строка['url_tgraph'];
+								
+				if ($формат_файла == "фото") {
 					if ($tester == 'да') {
-						$реплика = "Эта заявка с - www.prizmarket.online\n[_________]({$ссылка_на_фото})\n{$текст}";
-					}else $реплика = "Эта заявка с - www.prizmarket.ru\n[_________]({$ссылка_на_фото})\n{$текст}";
+						$реплика = "Эта заявка с - www.prizmarket.online\n[_________]({$ссылка_на_фото_или_видео})\n{$текст}";
+					}else $реплика = "Эта заявка с - www.prizmarket.ru\n[_________]({$ссылка_на_фото_или_видео})\n{$текст}";
 				}else $реплика = $текст;	
 				
 				$кнопки = [
@@ -302,20 +300,41 @@ function _вывод_на_каналы_с_сайта($команда) {
 				$id_zakaz = $КаналИнфо['message_id'];				
 				_запись_в_маркет_с_сайта($имя_клиента, 'id_zakaz', $id_zakaz);
 								
-				$array = [ 'id_zakaz' => $id_zakaz, 'file' => $ссылка_на_фото ];		
-				// инфа о том с какого сайта (тестового или оригинала) идёт посылка
-				if ($tester == 'да') $array = array_merge($array, [ 'tester' => $tester ]);		
-				// отправка madeLine фото для публикации её в телеге
-				$ch = curl_init("http://f0430377.xsph.ru"."?".http_build_query($array));
-				//curl_setopt($ch, CURLOPT_POST, 1);
-				//curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($array)); 
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-				curl_setopt($ch, CURLOPT_HEADER, false);
-				$html = curl_exec($ch);
-				curl_close($ch);	
-							
-				
+				$ответ = null;
+
+				if ($формат_файла == "фото") {
+
+					$ответ = $bot->sendPhoto($channel_info, $ссылка_на_фото_или_видео);	
+					
+			       	if ($ответ) {
+
+    					$photo = $ответ['photo'];
+		
+						if ($photo[2]){
+							$file_id = $photo[2]['file_id'];
+						}elseif ($photo[1]){
+							$file_id = $photo[1]['file_id'];	
+						}else {
+							$file_id = $photo[0]['file_id'];	
+						}	
+
+						_запись_в_маркет_с_сайта($имя_клиента, 'file_id', $file_id);
+
+                    }
+					
+				}elseif ($формат_файла == "видео") {
+
+					$ответ = $bot->sendVideo($channel_info, $ссылка_на_фото_или_видео);	
+					
+			       	if ($ответ) {
+		
+						$file_id = $ответ['video']['file_id'];
+
+						_запись_в_маркет_с_сайта($имя_клиента, 'file_id', $file_id);
+
+                    }
+				}
+
 				$ссыль_на_подробности = "https://t.me/{$КаналИнфо['chat']['username']}/{$id_zakaz}";			
 				_запись_в_маркет_с_сайта($имя_клиента, 'url_podrobno', $ссыль_на_подробности);
 				
@@ -335,7 +354,8 @@ function _вывод_на_каналы_с_сайта($команда) {
 				include 'phpmailer.php';			
 				$сообщение_райминам = "{$имя_клиента} (сайт) лот {$id_zakaz}\nПубликация в {$время_публикации} мск";	
 				$bot->sendMessage($chat_id, $сообщение_райминам);	
-                                $bot->sendMessage($channel_info, "?");
+                $bot->sendMessage($channel_info, "?");
+
 			}else throw new Exception("Не отправился лот на канал Подробности.. (_вывод_на_каналы_с_сайта)");	
 		}else throw new Exception("Или нет заказа или больше одного.. (_вывод_на_каналы_с_сайта)");				
 	}else throw new Exception("Нет такого заказа.. (_вывод_на_каналы_с_сайта)");	

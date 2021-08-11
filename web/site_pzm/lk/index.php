@@ -4,7 +4,6 @@ include_once '../../a_conect.php';
 if (!isset($_COOKIE['login'])) header('Location: /site_pzm/vhod/index.php');
 ?>
 <!DOCTYPE html>
-<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
 <html lang="ru">
 <head>
 	<meta charset="utf-8" />

@@ -48,7 +48,7 @@ if (isset($_FILES['file'])) {
 
 				header("Location: https://naherokubot.herokuapp.com/site_pzm/lk/sozdanie.php?".http_build_query($данные));
 				
-			}else header("Location: https://pzmarket.ru/site_pzm/lk/sozdanie.php?".http_build_query($данные));
+			}else header("Location: https://prizmarket.ru/site_pzm/lk/sozdanie.php?".http_build_query($данные));
 			
 			
 		}

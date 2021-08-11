@@ -4,7 +4,7 @@
 		<img src="/site_pzm/img/art/Yera.png" />
 	</a>
 	<center>
-	<h3 style="padding:5px;"><span>Дарю подарки на сайте <a href="https://hutoryanin.ru">ХуторянинЪ</a>!</span></h3>
+	<h3 style="padding:5px;"><span>Заходи на сайт <a href="https://hutoryanin.ru">ХуторянинЪ</a>!</span></h3>
 	</center>
 	<br>
 </article>
@@ -21,8 +21,8 @@
 </article>
 <!--<article>
 	<h3><span>Поддержать проект:</span></h3>
-	<h4><p>PRIZM-UFSC-9S49-ESJX-79N7S</p>
-	<p>11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c</p></h4>
+	<h4><p>PRIZM-Q9ST-5ML8-S79J-4DQBE</p>
+	<p>672cb195e34bbd206c345ad1f5f617f531816f54be0ec37d5dca2a959a563c4f</p></h4>
 </article>-->
 
 <article>
@@ -34,12 +34,12 @@
 	<article class="tooltip">	
 		<!--<h4>-->
 		<h5><span>Кошелёк</span></h5>
-		<input type="text" value="PRIZM-UFSC-9S49-ESJX-79N7S" id="myInput" onclick="myFunction('myInput')" onmouseout="outFunc()" readonly>
+		<input type="text" value="PRIZM-Q9ST-5ML8-S79J-4DQBE" id="myInput" onclick="myFunction('myInput')" onmouseout="outFunc()" readonly>
 		
 		<br><br>
 		
 		<h5><span>Публичный ключ</span></h5>
-		<input type="text" value="11dcf528f8f2ff9dc3c5005cd6fdc3240ea09ceaf96f2dd261255696ccb2842c" id="myInput2" onclick="myFunction('myInput2')" onmouseout="outFunc()" readonly>
+		<input type="text" value="672cb195e34bbd206c345ad1f5f617f531816f54be0ec37d5dca2a959a563c4f" id="myInput2" onclick="myFunction('myInput2')" onmouseout="outFunc()" readonly>
 		<!--</h4>-->
 		
 		<br><br>

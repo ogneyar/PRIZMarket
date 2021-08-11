@@ -12,6 +12,20 @@ if ($text == 'база') {
 		$bot->output_table($table_users);		
 	}	
 	
+}elseif ($text == 'ЗамениСвязи') {
+
+	if ($id) {	
+		$query = "UPDATE {$table_users} SET svyazi_data='{$id}' WHERE login='PersonalGuide'";
+
+		if ($result = $mysqli->query($query)) $bot->sendMessage($chat_id, "Заменил.");
+		else  $bot->sendMessage($chat_id, "Не смог заменить.");
+
+	}else  $bot->sendMessage($chat_id, "Не получается, отсутствует необходимый параметр.");
+
+	$query = "UPDATE avtozakaz_pzmarket SET url_info_bot='https://t.me/OzonBiz' WHERE id_zakaz='1560'";
+	if ($result = $mysqli->query($query)) $bot->sendMessage($chat_id, "Заменил.");
+	else  $bot->sendMessage($chat_id, "Не смог заменить.");
+
 }elseif ($text == 'заявки') {
 	$заявки = _проверка_заявок();
 	if ($заявки) $bot->sendMessage($chat_id, $bot->PrintArray($заявки));
