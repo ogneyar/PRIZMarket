@@ -23,7 +23,7 @@ if ($arr['inline_query']) {
 	$title = "Курс PRIZM.";
 	
 	$chast_stroki = strstr($reply, 10, true);
-	$kol = strlen($chast_stroki)+'1';
+	$kol = strlen($chast_stroki) + 1;
 	$textClick = substr($reply, $kol);	
 	
 	// КНОПКА Репост
