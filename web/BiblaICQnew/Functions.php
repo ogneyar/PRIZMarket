@@ -1,8 +1,9 @@
 ﻿<?
 // реакция бота на команду старт
 function _старт_АйСиКюБота() {	
-	global $bot, $chat_id;	
+	global $bot, $chat_id;	 
 	$bot->sendMessage($chat_id, "Прива!");	
+	exit('ok');
 }
 // запись в таблицу информации о последнем событии (Event)
 function _событие($событие = null) {	
