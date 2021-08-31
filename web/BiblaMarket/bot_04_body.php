@@ -13,7 +13,7 @@ if ($est!==false){
 		"Вам надо заявку подать, тогда ссыль кидать надо в [ЗаказБот]".
 		"(t.me/Zakaz_prizm_bot) \xF0\x9F\x91\x88 с пометкой 'В БОТ'";	
 	if ($chat_type=='private'||$callbackChat_type=='private'){
-		$tg->sendMessage($chat_id, $reply, markdown);
+		$tg->sendMessage($chat_id, $reply, "markdown");
 	}
 	
 	
@@ -27,21 +27,21 @@ if ($est!==false){
 		$tg->sendMessage($chat_id, "Принял.");
 	}
 		
-    //    $tg->sendMessage($chat_id, $reply, markdown, false);	
+    //    $tg->sendMessage($chat_id, $reply, "markdown", false);	
 		
 			
 }elseif ($text == $knopa01) {  
 		
         $reply = "✅ *PRIZMarket*❗️ {$PZMarket} \n\n{$zakaz}\n\nПосетите наш сайт www.prizmarket.ru {$tehPodderjka}";
 		
-        $tg->sendMessage($chat_id, $reply, markdown, true);	
+        $tg->sendMessage($chat_id, $reply, "markdown", true);	
 		
 			
 }elseif ($text == "Посетите наш сайт") {  
 		
         $reply = "✅ *PRIZMarket*❗️ \n\nПосетите наш сайт www.prizmarket.ru\nПосетите наш сайт www.prizmarket.ru\nПосетите наш сайт www.prizmarket.ru\nПосетите наш сайт www.prizmarket.ru\nПосетите наш сайт www.prizmarket.ru\n ";
 		
-        $tg->sendMessage($chat_id, $reply, markdown, false);	
+        $tg->sendMessage($chat_id, $reply, "markdown", false);	
 		
 			
 }elseif ($text == $knopa03||($id_bota != '1066944801'&&$id_bota != '1037491432'&&($text == "курс"||$text == "Курс"||$text == "rehc"||$text == "Rehc"||$text == "цена"||$text == "Цена"))) {  // Курс PRIZM
@@ -96,7 +96,7 @@ if ($est!==false){
 		//$file_id='CgADAgAD2gMAArKrUEtmCqiq0qoR0hYE';		
 		//$tg->sendVideo($chat_id, $file_id, 1, $reply);
         
-		$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyInLine_VES);
+		$tg->sendMessage($chat_id, $reply, "markdown", true, null, $keyInLine_VES);
 		
 			
 }elseif ($text == $knopa07) {  //  Разместить объявление в *Категориях*
@@ -108,7 +108,7 @@ if ($est!==false){
 			"\n{$PZMarket}".
 			"\n\n{$zakaz} \n\nЕсли сделали, жмите \xF0\x9F\x91\x89  Следующий шаг.\n{$tehPodderjka}";
                 
-		$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyboardStep1);
+		$tg->sendMessage($chat_id, $reply, "markdown", true, null, $keyboardStep1);
 		
 			
 }elseif ($text == $knopaStep01) {  //Следующий шаг
@@ -116,7 +116,7 @@ if ($est!==false){
 	$reply = "\x32\xE2\x83\xA3 После публикации Вашего поста на канале \n{$PZMarket}".
 			"\n\nОн автоматически окажется в одной из категорий, \xF0\x9F\x91\x87 проверьте.".
 			"\n{$tehPodderjka}";
-	$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyboard_Kategorii);					
+	$tg->sendMessage($chat_id, $reply, "markdown", true, null, $keyboard_Kategorii);					
 			
 }elseif ($text == $GlavnoeMenu) {  //ГЛАВНОЕ МЕНЮ
 
@@ -133,7 +133,7 @@ if ($est!==false){
 	        
 	$reply = "\x32\xE2\x83\xA3 Скопировать ссылку вашего поста с канала \n{$PZMarket}\n\nи отправить в \xF0\x9F\x91\x89 [ЗаказБот](https://t.me/Zakaz_prizm_bot?start=) \n\nс пометкой *в бот* указав  категорию (просто напишите название) где должен отображаться ваш пост.\n{$tehPodderjka}";
         		
-	$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyboardStep2);					
+	$tg->sendMessage($chat_id, $reply, "markdown", true, null, $keyboardStep2);					
 			
 }elseif ($text == $knopaStep2_01) {  //подключение видео...	
 
@@ -144,7 +144,7 @@ if ($est!==false){
 
 	$tg->sendMediaGroup($chat_id, $media);		
 		
-	$tg->sendMessage($chat_id, $tehPodderjka, markdown, true, null, $keyboardStep3);
+	$tg->sendMessage($chat_id, $tehPodderjka, "markdown", true, null, $keyboardStep3);
 
 /* ------------------------------
 **
@@ -171,12 +171,12 @@ if ($est!==false){
 				$inLine = [[["text"=>"Далее","callback_data"=>$text.":".++$limit]]];
 				$inLineKeyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine);
 					
-				$tg->sendMessage($chat_id, "Что бы посмотреть ещё, жмите далее...".$tehPodderjka, markdown, true, null, $inLineKeyboard);						
+				$tg->sendMessage($chat_id, "Что бы посмотреть ещё, жмите далее...".$tehPodderjka, "markdown", true, null, $inLineKeyboard);						
 				
 				
 			}else {
 				_pechat_lotov($chat_id, $arrStrok, 0, --$kol);
-				$tg->sendMessage($chat_id, $tehPodderjka, markdown);
+				$tg->sendMessage($chat_id, $tehPodderjka, "markdown");
 			}
 			
 			
@@ -185,7 +185,7 @@ if ($est!==false){
 			" *стать первым*, для этого напишите нам в \xF0\x9F\x91\x89 [Тех.поддержку]".
 			"(https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88";        
 			
-			$tg->sendMessage($chat_id, $reply, markdown);		
+			$tg->sendMessage($chat_id, $reply, "markdown");		
 		}					
 		
 	}else throw new Exception("Не получилось подключиться к таблице {$table5}");		
