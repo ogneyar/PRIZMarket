@@ -8,6 +8,10 @@ $token = $tokenTimer;
 // Создаем объект бота
 $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
+
+// $bot->sendMessage(1038937592, "Прива!");	
+$bot->sendMessage($master, "Прива!");	
+
 // Подключение БД
 $mysqli = new mysqli($host, $username, $password, $dbname);
 // проверка подключения 
@@ -25,8 +29,7 @@ if (mysqli_connect_errno()) {
 	if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);	
 	if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {			
 		if ($chat_type=='private') {				
-			// _старт_ТаймерБота();
-			$bot->sendMessage($chat_id, "Прива!");	
+			_старт_ТаймерБота();
 		}				
 	}
 	if ($chat_type == 'private' || $chat_id == $channel_info) {			
