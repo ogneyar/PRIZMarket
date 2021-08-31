@@ -40,28 +40,20 @@ if ($arr['inline_query']) {
 	$inLine10_str1=[$inLine10_but1];
 	// $inLine10_str1=[$inlineButton];
 	$inLine10_keyb=[$inLine10_str1];
-	$keyInLine10 = new TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
+	$keyInLine10 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
 		
-	$inputText = new TelegramBot\Api\Types\Inline\InputMessageContent\Text($reply);	
+	$inputText = new \TelegramBot\Api\Types\Inline\InputMessageContent\Text($reply);	
 
-	$queryArticle = new TelegramBot\Api\Types\Inline\QueryResult\Article($inline_query_from_id,
+	$queryArticle = new \TelegramBot\Api\Types\Inline\QueryResult\Article($inline_query_from_id,
 	$title, $textClick, null,null,null, $inputText, $keyInLine10);		
 	$res=[$queryArticle];
 	
-	// $inputText2 = ["message_text"=>$reply];		
-	// $inputText2 = ["message_text"=>"text"];		
-	// $title2 = "kurs";
-	// $queryArticle2=["type"=>"article","id"=>$inline_query_from_id,"title"=>$title2,"input_message_content"=>$inputText2];
-	// $res2=[$queryArticle2];
+	$res2=[["type"=>"article","id"=>$inline_query_from_id,"title"=>"kurs","input_message_content"=>["message_text"=>"text"]]];
 
-	$tg->sendMessage($master, json_encode($res));
-	// $tg->sendMessage($master, json_encode($queryArticle->getDescription()));
+	$tg->sendMessage($master, json_encode($res2));
 
-	// $tg->sendMessage($master, json_encode($res2));
-	// $tg->sendMessage($master, $inline_query_id);
-
-	$tg->answerInlineQuery($inline_query_id, $res, null, null, null, "в бот", "s");			
-	// $tg->answerInlineQuery($inline_query_id, $res2);			
+	// $tg->answerInlineQuery($inline_query_id, $res, null, null, null, "в бот", "s");		
+	$tg->answerInlineQuery($inline_query_id, $res2, null, null, null, "в бот", "s");		
 	
 	exit('ok');
 }
