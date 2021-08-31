@@ -32,8 +32,8 @@ if (mysqli_connect_errno()) {
 	if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {			
 		if ($chat_type=='private') {				
 			// _старт_ТаймерБота();
-			$bot->sendMessage($master, "Прива!!!");
 		}				
+		$bot->sendMessage($master, "Прива!!!");
 	}
 	if ($chat_type == 'private' || $chat_id == $channel_info) {			
 		if ($data['callback_query']) {			
