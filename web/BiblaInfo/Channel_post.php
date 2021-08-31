@@ -29,7 +29,7 @@ if ($number == false || $number != '0') {
 				"last name: ".$result['last_name']."\n".
 				"username: ".$result['username'];
 			
-			$bot->sendMessage($chat_id, $reply, markdown);		
+			$bot->sendMessage($chat_id, $reply, "markdown");		
 			
 		}
 		

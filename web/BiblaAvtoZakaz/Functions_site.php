@@ -180,7 +180,7 @@ function _отправка_лота_админам_с_сайта() {
 				}else $текст = "{$хештеги}{$название_для_подробностей}{$текст}";
 				
 				$реплика = "[_________]({$фото_с_амазон}) Лот с сайта https://PRIZMarket.ru\n{$текст}";
-				$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);			
+				$КаналИнфо = $bot->sendMessage($admin_group, $реплика, "markdown", $inLine);			
 				
 				if (!$КаналИнфо) {
 					echo "Ошибка! Не смог опубликовать лот в РАЙминке";
@@ -294,7 +294,7 @@ function _вывод_на_каналы_с_сайта($команда) {
 					]
 				]);				
 				$inLine = ['inline_keyboard' => $кнопки];						
-				$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown, $inLine);				
+				$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, "markdown", $inLine);				
 			}			
 			if ($КаналИнфо) {
 				$id_zakaz = $КаналИнфо['message_id'];				

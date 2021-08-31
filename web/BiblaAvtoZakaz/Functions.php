@@ -65,9 +65,9 @@ function _старт_АвтоЗаказБота() {
 			'resize_keyboard' => true,
 			'selective' => true,
 		];	
-		$bot->sendMessage($chat_id, "Здравствуй МАСТЕР *".$callback_from_first_name."*!", markdown, $ReplyKey);	
+		$bot->sendMessage($chat_id, "Здравствуй МАСТЕР *".$callback_from_first_name."*!", "markdown", $ReplyKey);	
 	}else {	
-		$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", markdown, $HideKeyboard);		
+		$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", "markdown", $HideKeyboard);		
 	}
     _инфо_автоЗаказБота();		
 	exit('ok');	
@@ -102,7 +102,7 @@ function _инфо_автоЗаказБота() {
 		"(https://t.me/prizm_market)\n\nДля подачи заявки на публикацию пошагово пройдите".
 		" по всем пунктам. Для начала изучите 'Правила', а затем нажмите кнопку ".
 		"'Создать заявку'. После создания заявки появится возможность повтора публикации.{$тех_поддержка}";
-	$bot->sendMessage($chat_id, $reply, markdown, $inLine, null, true);
+	$bot->sendMessage($chat_id, $reply, "markdown", $inLine, null, true);
 }
 
 //------------------------------------------
@@ -382,7 +382,7 @@ function _отправка_лота_админам($номер_лота = null) 
 				if ($формат_файла == 'фото') {	
 					if ($номер_лота) {
 						$реплика = "[_________]({$строка['url_tgraph']})\n{$текст}";
-						$КаналИнфо = $bot->sendMessage($callback_from_id, $реплика, markdown, $inLine);
+						$КаналИнфо = $bot->sendMessage($callback_from_id, $реплика, "markdown", $inLine);
 					}else {
 						$Объект_файла = $bot->getFile($файлАйди);				
 						$ссыль_на_файл = $bot->fileUrl . $bot->token;
@@ -393,10 +393,10 @@ function _отправка_лота_админам($номер_лота = null) 
 							_запись_в_таблицу_маркет($callback_from_id, 'url_tgraph', $imgBB_url);				
 						}else throw new Exception("Не смог выложить пост..");
 						$реплика = "[_________]({$imgBB_url})\n{$текст}";
-						$КаналИнфо = $bot->sendMessage($admin_group, $реплика, markdown, $inLine);
+						$КаналИнфо = $bot->sendMessage($admin_group, $реплика, "markdown", $inLine);
 					}
 					
-				}else $КаналИнфо = $bot->sendMessage($admin_group, $текст, markdown, $inLine);				
+				}else $КаналИнфо = $bot->sendMessage($admin_group, $текст, "markdown", $inLine);				
 				if (!$КаналИнфо) throw new Exception("Не смог опубликовать лот..");				
 			}					
 		}else throw new Exception("Или нет заказа или больше одного.. (_отправка_лота_админам)");	
@@ -560,7 +560,7 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 					]
 				]);				
 				$inLine = ['inline_keyboard' => $кнопки];						
-				$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, markdown, $inLine);				
+				$КаналИнфо = $bot->sendMessage($channel_podrobno, $реплика, "markdown", $inLine);				
 			}			
 			if ($КаналИнфо) {									
 				$id_zakaz = $КаналИнфо['message_id'];				
@@ -586,9 +586,9 @@ function _вывод_лота_на_каналы($id_client, $номер_лота
 				else $текст .= "\n   лот {$id_zakaz}";
 				$текст = "{$хештеги}[{$название}]({$ссыль_в_названии}){$текст}";					
 				if ($формат_файла == 'фото') {					
-					$публикация = $bot->sendPhoto($admin_group, $файлАйди, $текст, markdown, $inLine);		
+					$публикация = $bot->sendPhoto($admin_group, $файлАйди, $текст, "markdown", $inLine);		
 				}elseif ($формат_файла == 'видео') {					
-					$публикация = $bot->sendVideo($admin_group, $файлАйди, $текст, markdown, $inLine);		
+					$публикация = $bot->sendVideo($admin_group, $файлАйди, $текст, "markdown", $inLine);		
 				}					
 				if ($публикация) {										
 					_запись_в_таблицу_маркет($id_client, 'status', "одобрен");	
@@ -767,7 +767,7 @@ function _редакт_лота_на_канале_подробности($ном
 				]);				
 				$inLine = ['inline_keyboard' => $кнопки];		
 				try {
-					$изменил = $bot->editMessageText($channel_podrobno, $номер_лота, $реплика, null, markdown, false, $inLine);						
+					$изменил = $bot->editMessageText($channel_podrobno, $номер_лота, $реплика, null, "markdown", false, $inLine);						
 				}catch(Exception $e) {
 					$изменил = false;
 				}

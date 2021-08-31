@@ -23,7 +23,7 @@ function _старт_СайтБота() {
 	
 	if (!$callback_from_first_name) $callback_from_first_name = $from_first_name;
 	
-	$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", markdown, $HideKeyboard);	
+	$bot->sendMessage($chat_id, "Добро пожаловать, *".$callback_from_first_name."*!", "markdown", $HideKeyboard);	
 	exit('ok');	
 }
 // функция проверки заявок клиентов на сайте
@@ -105,7 +105,7 @@ function _отправка_лота_админам() {
 				}else $текст = "{$хештеги}{$название_для_подробностей}{$текст}";
 				
 				$реплика = "[_________]({$фото_с_амазон}) Лот из сайта https://PRIZMarket.ru\n{$текст}";
-				$КаналИнфо = $bot->sendMessage($admin_group_AvtoZakaz, $реплика, markdown, $inLine);			
+				$КаналИнфо = $bot->sendMessage($admin_group_AvtoZakaz, $реплика, "markdown", $inLine);			
 				
 				if (!$КаналИнфо) echo "<br><br>Не смог опубликовать лот в админке";				
 			}					

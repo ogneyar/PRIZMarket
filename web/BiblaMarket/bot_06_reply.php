@@ -15,7 +15,7 @@ if ($simbol=='b') {  // b - выбор БАНКА
 	$str.= "." . $tehPodderjka . "Превосходно, теперь выберите с какими банками ".
 		"Вы сотрудничаете? \xF0\x9F\x91\x87 Выбрать можно несколько, ".
 		"или ввести название банка которого нет в списке. По окончанию жмите *ДАЛЕЕ!*";
-	$tg->sendMessage($chat_id, $str, markdown, true, null, $keyInLine6);
+	$tg->sendMessage($chat_id, $str, "markdown", true, null, $keyInLine6);
 	$tg->deleteMessage($chat_id, $message_id);
 	$tg->deleteMessage($chat_id, $reply_message_id);
 	
@@ -26,7 +26,7 @@ if ($simbol=='b') {  // b - выбор БАНКА
 	$str.= "\xF0\x9F\x91\xA8\xE2\x80\x8D\xE2\x9A\x96\xEF\xB8\x8F";
 	$str.= " Гарант: " . $text . "\n." . $tehPodderjka . "Чудесно! Всё, заявка готова!".
 		" Для отправки её администратору *Безопасных сделок* нажмите *Готово!* \xF0\x9F\x91\x87";
-	$tg->sendMessage($chat_id, $str, markdown, true, null, $keyInLine8);
+	$tg->sendMessage($chat_id, $str, "markdown", true, null, $keyInLine8);
 	$tg->deleteMessage($chat_id, $message_id);
 	$tg->deleteMessage($chat_id, $reply_message_id);
 

@@ -38,7 +38,7 @@ if ($callbackQuery=="nachalo") {
 		$sms = "Что бы вы хотели сделать, *продать* имеющиеся у Вас монеты *PZM* или *приобрести?*" . $tehPodderjka . 
 			"Выберите позицию! \xF0\x9F\x91\x87";
 	
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine1);
+		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine1);
 	}		
 	
 	
@@ -54,7 +54,7 @@ if ($callbackQuery=="nachalo") {
 			"Перед тем как начать, прочитайте \xF0\x9F\x91\x89 [ПРАВИЛА.]".
 			"(https://t.me/Secure_deal_PZM/5)\n\nОЗНАКОМИЛИСЬ?! Жмите \xF0\x9F\x91\x87 *ПОДАТЬ ЗАЯВКУ!*";
 		
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine0);
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine0);
 
 
 
@@ -62,11 +62,11 @@ if ($callbackQuery=="nachalo") {
 //УСТАРЕВШАЯ КНОПКА С ПЕРЕХОДОМ НА ВЫБОР КРИПТОВАЛЮТ
 }elseif ($callbackQuery=="teg1") {
 	$sms = "\xF0\x9F\x97\xA3 #продам\n." . $tehPodderjka . "Хорошо, выберите валюту, которую хотите продать \xF0\x9F\x91\x87";			
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine2);				
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine2);				
 }elseif ($callbackQuery=="teg2") { //УСТАРЕВШАЯ КНОПКА С ПЕРЕХОДОМ НА ВЫБОР КРИПТОВАЛЮТ	
 		$sms = "\xF0\x9F\x97\xA3 #куплю\n." . $tehPodderjka . "Хорошо, ".
 			"выберите валюту, которую хотите купить \xF0\x9F\x91\x87";				
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine2);				
+		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine2);				
 //УСТАРЕВШАЯ КНОПКА С ПЕРЕХОДОМ НА ВЫБОР КРИПТОВАЛЮТ	
 
 
@@ -92,7 +92,7 @@ if ($callbackQuery=="nachalo") {
 		"(https://t.me/Secure_deal_PZM/5)\n\nОЗНАКОМИЛИСЬ?! ".
 		"Жмите \xF0\x9F\x91\x87 *ПОДАТЬ ЗАЯВКУ!*";
 	
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine0);	
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine0);	
 	
 	
 		
@@ -101,7 +101,7 @@ if ($callbackQuery=="nachalo") {
 }elseif ($callbackQuery=="nal1") {
 		$sms.= "PZM\n." . $tehPodderjka . "Отлично, теперь *введите КОЛИЧЕСТВО*, огромная просьба \xF0\x9F\x99\x8F".
 			" делайте это не спеша, а после нажмите \xE2\x9C\x85";
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine3);		
+		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine3);		
 }elseif ($callbackQuery=="nal2"||$callbackQuery=="nal3") {
 		$sms = "\xE2\x9D\x97 Нет ещё возможности выбрать эту позицию.";
 		$tg->answerCallbackQuery($callbackQueryId, $sms);				
@@ -177,7 +177,7 @@ if ($callbackQuery=="nachalo") {
 	$sms.= "\n\xF0\x9F\x92\xB0 " . $summa . " PZM";
 			
 	$sms.= "\n." . $tehPodderjka . "Замечательно, а сейчас выберите *валюту* \xF0\x9F\x91\x87";
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine5);
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine5);
 
 
 
@@ -191,7 +191,7 @@ if ($callbackQuery=="nachalo") {
 	$kolich=$len_str-$number_str;
 	$sms = substr($str, 0, -$kolich);	
 	$sms.= "\n." . $tehPodderjka . "Хорошо, выберите валюту \xF0\x9F\x91\x87";	
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine2);			
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine2);			
 //СЕЙЧАС ТАМ ПЕРЕХОД В НАЧАЛО
 
 		
@@ -225,7 +225,7 @@ if ($callbackQuery=="nachalo") {
 	$kolich=$len_str-$number_str;
 	$sms = substr($str, 0, -$kolich);	
 	$sms.= "\n." . $tehPodderjka . "Хорошо, выберите валюту \xF0\x9F\x91\x87";	
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine2);	
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine2);	
 */
 	udalenie_starih_zapisey($table2);
 	
@@ -235,7 +235,7 @@ if ($callbackQuery=="nachalo") {
 	$sms = substr($str,0,-$kol);
 	$sms.="PZM\n." . $tehPodderjka . "Отлично, теперь *введите КОЛИЧЕСТВО монет*,".
 		" огромная просьба \xF0\x9F\x99\x8F делайте это не спеша, а после нажмите \xE2\x9C\x85";			
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine3);	
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine3);	
 	
 	
 	
@@ -332,7 +332,7 @@ if ($callbackQuery=="nachalo") {
 	$str.= "\n." . $tehPodderjka . "Превосходно, теперь выберите с какими банками/эл.кошельками Вы сотрудничаете?".
 			" \xF0\x9F\x91\x87 Выбрать можно несколько, или ввести название банка которого нет в ".
 			"списке. По окончанию жмите *ДАЛЕЕ!*";
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $str, markdown, true, $keyInLine6);
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $str, "markdown", true, $keyInLine6);
 	
 			
 
@@ -355,7 +355,7 @@ if ($callbackQuery=="nachalo") {
 	$sms = $Pervaya_Stroka . "\n" . $Vtoraya_Stroka . "\n." . $tehPodderjka . "Замечательно, ".
 		"а сейчас выберите *валюту* \xF0\x9F\x91\x87";				
 		
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine5);	
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine5);	
 
 	
 	
@@ -409,7 +409,7 @@ if ($callbackQuery=="nachalo") {
 	
 	$sms.= "." . $tehPodderjka . "Выберайте любое количество банков/эл.кошельков \xF0\x9F\x91\x87 Когда закончите".
 			" выбирать \xF0\x9F\x91\x89 нажмите *Готово*.";
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine_bank);	
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine_bank);	
 			
 		
 }elseif ($callbackQuery=="vvod_banka") {
@@ -419,7 +419,7 @@ if ($callbackQuery=="nachalo") {
 		
 		$sms.= "b." . $tehPodderjka . "Жду ввода названия \xF0\x9F\x91\x87 (в ответ на это сообщение)";		
 		
-		$tg->sendMessage($callbackChatId, $sms, markdown, true, null, $forceRep);
+		$tg->sendMessage($callbackChatId, $sms, "markdown", true, null, $forceRep);
 		$tg->deleteMessage($callbackChatId, $callbackMessageId);		
 	
 	
@@ -434,7 +434,7 @@ if ($callbackQuery=="nachalo") {
 		$sms.= "." . $tehPodderjka . "Превосходно, теперь выберите с какими банками Вы сотрудничаете?".
 			" \xF0\x9F\x91\x87 Выбрать можно несколько, или ввести название банка которого нет в ".
 			"списке. По окончанию жмите *ДАЛЕЕ!*";
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine6);	
+		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine6);	
 	}				
 		
 }elseif ($callbackQuery=="nazad_iz_banka") { 			
@@ -461,7 +461,7 @@ if ($callbackQuery=="nachalo") {
 	$sms.= "\n.\n[{$price}](https://coinmarketcap.com/ru/currencies/prizm/)" . $tehPodderjka . "Отлично, теперь *введите ".$cenaText."*, огромная просьба".
 		" \xF0\x9F\x99\x8F делайте это не спеша, а после нажмите \xE2\x9C\x85";	
 		
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine4);			
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine4);			
 		
 		
 }elseif ($callbackQuery=="dalee_iz_banka") {
@@ -486,7 +486,7 @@ if ($callbackQuery=="nachalo") {
 		$sms.= "\n." . $tehPodderjka . "Великолепно, осталось 'дело за малым'!\n".
 			"Если Вы ознакомились с [Правилами](https://t.me/Secure_deal_PZM/5)\xF0\x9F\x91\x88 и ".
 			"согласны с указанными в них условиями *PRIZMarket-Гарант*, жмите \xF0\x9F\x91\x87 *Согласен(на)*";
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine7);	
+		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine7);	
 			
 	}else {
 			
@@ -505,7 +505,7 @@ if ($callbackQuery=="nachalo") {
 		$str = "\xE2\x9D\x97 В -ответном сообщении- введите -@username- гаранта \xE2\x9D\x97";
 		$tg->answerCallbackQuery($callbackQueryId, $str);										
 		$sms.= "g." . $tehPodderjka . "Жду ввода -@username- \xF0\x9F\x91\x87 (в ответ на это сообщение)";			
-		$tg->sendMessage($callbackChatId, $sms, markdown, true, null, $forceRep);
+		$tg->sendMessage($callbackChatId, $sms, "markdown", true, null, $forceRep);
 		$tg->deleteMessage($callbackChatId, $callbackMessageId);		
 }elseif ($callbackQuery=="bez_garanta") {			
 		$str = "\xE2\x9D\x97 Без гаранта не работаем \xE2\x9D\x97";
@@ -513,7 +513,7 @@ if ($callbackQuery=="nachalo") {
 }elseif ($callbackQuery=="garant_privet") {			
 		$sms.= "\xF0\x9F\x91\xA8\xE2\x80\x8D\xE2\x9A\x96\xEF\xB8\x8F Гарант \xF0\x9F\xA4\x9D\n." . $tehPodderjka . 		"Чудесно! Всё, заявка готова! Для отправки её администратору".
 			" *Безопасных сделок* нажмите *Готово!* \xF0\x9F\x91\x87";
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine8);	
+		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine8);	
 }elseif ($callbackQuery=="nazad_garant") {		
 	$str = substr($sms,0,-1);
 	$last = substr(strrchr($str, 10), 1);
@@ -521,7 +521,7 @@ if ($callbackQuery=="nachalo") {
 	$sms = substr($str,0,-$kol);			
 	$sms.= "." . $tehPodderjka . "Превосходно, теперь выберите с какими банками Вы сотрудничаете? \xF0\x9F\x91\x87 ".
 		"Выбрать можно несколько, или ввести название банка которого нет в списке. По окончанию жмите *ДАЛЕЕ!*";
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine6);	
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine6);	
 //------------------------------------------------------
 //УСТАРЕВШИЕ КНОПКИ ------------------------------------					
 		
@@ -534,7 +534,7 @@ if ($callbackQuery=="nachalo") {
 		
 	$sms.= "." . $tehPodderjka . "Чудесно! Всё, заявка готова! Для отправки её администратору".
 			" *Безопасных сделок* нажмите *Готово!* \xF0\x9F\x91\x87";
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine8);			
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine8);			
 		
 }elseif ($callbackQuery=="otpravka") {
 	
@@ -544,7 +544,7 @@ if ($callbackQuery=="nachalo") {
 		$sms = "Извините, не могу принять заявку, т.к. у Вас отсутствует @username, введите его в профиле".
 			" своего аккаунта." . $tehPodderjka . "Обязательно ознакомьтесь с [ПРАВИЛАМИ.]".
 			"(https://t.me/Secure_deal_PZM/5) \xF0\x9F\x91\x87";
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine0);
+		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine0);
 	}else {
 		
 	
@@ -594,10 +594,10 @@ if ($callbackQuery=="nachalo") {
 				}				
 		
 				$sms.= "\xF0\x9F\x91\xA4 ```@" . $callback_user_name . "```\n\n{$price}\n" . $callback_from_id . "." . $callbackMessageId;
-				$tg->sendMessage($admin_group, $sms, markdown, true, null, $keyInLine9);
+				$tg->sendMessage($admin_group, $sms, "markdown", true, null, $keyInLine9);
 				
 				$str = "Ваша заказ отправлен Администратору, ожидайте ответа..." . $tehPodderjka ;
-				$tg->editMessageText($callbackChatId, $callbackMessageId, $str, markdown);		
+				$tg->editMessageText($callbackChatId, $callbackMessageId, $str, "markdown");		
 			
 			}else $tg->sendMessage($admin_group, "Не получается обновить флаг клиента". $callback_from_id);		 		
 		}else $tg->answerCallbackQuery($callbackQueryId, "Ожидайте!!!");			
@@ -615,7 +615,7 @@ if ($callbackQuery=="nachalo") {
 	$sms.= "." . $tehPodderjka . "Великолепно, осталось 'дело за мылым'!\n".
 			"Если Вы ознакомились с [Правилами](https://t.me/Secure_deal_PZM/5)\xF0\x9F\x91\x88 и ".
 			"согласны с указанными в них условиями *PRIZMarket-Гарант*, жмите \xF0\x9F\x91\x87 *Согласен(на)*";
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine7);				
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine7);				
 //ЭТУ КНОПКУ ТОЖЕ ОТКЛЮЧИЛ ЗАВ НЕНАДОБНОСТЬЮ	
 		
 			
@@ -647,11 +647,11 @@ if ($callbackQuery=="nachalo") {
 				$inLine = [[["text"=>"Далее","callback_data"=>$callbackQuery.":".++$max]]];
 				$inLineKeyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine);
 					
-				$tg->sendMessage($callbackChatId, "Что бы посмотреть ещё, жмите далее...".$tehPodderjka, markdown, true, null, $inLineKeyboard);						
+				$tg->sendMessage($callbackChatId, "Что бы посмотреть ещё, жмите далее...".$tehPodderjka, "markdown", true, null, $inLineKeyboard);						
 
 			}else {
 				_pechat_lotov($callbackChatId, $arrStrok, $id, --$kol);
-				$tg->sendMessage($callbackChatId, $tehPodderjka, markdown);
+				$tg->sendMessage($callbackChatId, $tehPodderjka, "markdown");
 			}			
 			
 		}else {
@@ -659,7 +659,7 @@ if ($callbackQuery=="nachalo") {
 			" *стать первым*, для этого напишите нам в \xF0\x9F\x91\x89 [Тех.поддержку]".
 			"(https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88";        
 			
-			$tg->sendMessage($callbackChatId, $reply, markdown);		
+			$tg->sendMessage($callbackChatId, $reply, "markdown");		
 		}					
 		
 	}else throw new Exception("Не получилось подключиться к таблице {$table5}");		
@@ -682,7 +682,7 @@ else { // если какая либо кнопка не подошла, мож�
 		"(https://t.me/Secure_deal_PZM/5)\n\nОЗНАКОМИЛИСЬ?! ".
 		"Жмите \xF0\x9F\x91\x87 *ПОДАТЬ ЗАЯВКУ!*";
 	
-	$tg->sendMessage($callbackChatId, $sms, markdown, true, null, $keyInLine0);	
+	$tg->sendMessage($callbackChatId, $sms, "markdown", true, null, $keyInLine0);	
 	$tg->deleteMessage($callbackChatId, $callbackMessageId);				
 }
 */

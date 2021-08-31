@@ -330,7 +330,7 @@ if ($text){
 		$inLineKeyb=[$inLineStr1];
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKeyb);
 	
-		$tg->sendPhoto($chat_id, $photo_id, $caption, null, $keyInLine, false, markdown); 
+		$tg->sendPhoto($chat_id, $photo_id, $caption, null, $keyInLine, false, "markdown"); 
 	
 	
 	}elseif ($text == "Полная таблица лотов"||$text == "пзм") {		
@@ -554,7 +554,7 @@ if ($text){
 		
 	}elseif ($text == "ДЛЯ АДМИНИСТРАЦИИ"||$text == "админка") {  
 		
-		$tg->sendMessage($chat_id, "Бдя Будь Бдительней", markdown, true, null, $keyboard_Admin);
+		$tg->sendMessage($chat_id, "Бдя Будь Бдительней", "markdown", true, null, $keyboard_Admin);
 		
 		
 			

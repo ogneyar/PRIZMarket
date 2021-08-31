@@ -301,7 +301,7 @@ if ($text == 'база') {
 	
 	$реплика = "[абырвалг]({$результат['image_url']})\n\nглаврыба\n\nабырвалг";	
 	
-	$bot->sendMessage($channel_info, $реплика, markdown);
+	$bot->sendMessage($channel_info, $реплика, "markdown");
 		
 		
 }elseif ($text == "имг") {		
@@ -328,7 +328,7 @@ if ($text == 'база') {
 	
 	$реплика = "[ ]({$imgBB_url})абырвалг - главрыба\n\nабырвалг - главрыба";	
 	
-	$bot->sendMessage($channel_podrobno, $реплика, markdown);
+	$bot->sendMessage($channel_podrobno, $реплика, "markdown");
 		
 }elseif ($text == 'рассылка') {
 	

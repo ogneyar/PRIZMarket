@@ -22,7 +22,7 @@ if ($message_forward) {
 		"last name: ".$forward_last_name."\n".
 		"username: ".$forward_username;
 		
-	$bot->sendMessage($chat_id, $reply, markdown);	
+	$bot->sendMessage($chat_id, $reply, "markdown");	
 	
 		
 		
@@ -84,7 +84,7 @@ if ($message_forward) {
 			"last name: ".$result['last_name']."\n".
 			"username: ".$result['username'];
 		
-		$bot->sendMessage($chat_id, $reply, markdown);				
+		$bot->sendMessage($chat_id, $reply, "markdown");				
 		
 	}
 		

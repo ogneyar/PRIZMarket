@@ -74,7 +74,7 @@ if (mysqli_connect_errno()) {
 	if (!$from_username && $chat_type == 'private') {
  
 		$bot->sendMessage($chat_id, "Мы не работаем с клиентами без @username!\n\n".
-			"Возвращайтесь когда поставите себе @username..\n\n\n[Как установить юзернейм?](https://t.me/podrobno_s_PZP/924)", markdown);
+			"Возвращайтесь когда поставите себе @username..\n\n\n[Как установить юзернейм?](https://t.me/podrobno_s_PZP/924)", "markdown");
 		exit('ok');		
 			
 	}

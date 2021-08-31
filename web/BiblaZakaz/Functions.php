@@ -7,7 +7,7 @@ function _start_Zakaz_bota() {
 	
 	//$bot->add_to_database($table_users);
 	
-	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", markdown, $HideKeyboard);
+	$bot->sendMessage($chat_id, "Добро пожаловать, *".$from_first_name."*!", "markdown", $HideKeyboard);
 
     _info_Zakaz_bota();	
 	
@@ -32,7 +32,7 @@ function _info_Zakaz_bota() {
 	
 	$reply = "Это Бот для подачи заявки на публикацию вашего лота на канале [Покупки на PRIZMarket](https://t.me/prizm_market)\n\nПеред тем как начать писать сообщения внимательно ознакомьтесь с тем, как и в какой последовательности, это необходимо сделать, и с какими условиями. Внимательно ознакомьтесть нажав на кнопку ниже.";
 
-	$bot->sendMessage($chat_id, $reply, markdown, $inLineInfo_ZakazBota, null, true);
+	$bot->sendMessage($chat_id, $reply, "markdown", $inLineInfo_ZakazBota, null, true);
 
 }
 
@@ -120,7 +120,7 @@ function _info_oznakomlenie() {
 
         //$reply = str_replace('_', '\_', $reply);
 
-	$bot->sendMessage($chat_id, $reply, markdown);
+	$bot->sendMessage($chat_id, $reply, "markdown");
 
 }
 
@@ -164,7 +164,7 @@ function _info_otvetnoe($add = false) {
 	
 	//$reply = str_replace('_', '\_', $reply);
 
-	$bot->sendMessage($chat_id, $reply, markdown, null, $message_id, true);
+	$bot->sendMessage($chat_id, $reply, "markdown", null, $message_id, true);
 	
 }
 
