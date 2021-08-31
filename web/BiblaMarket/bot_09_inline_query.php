@@ -55,7 +55,8 @@ if ($arr['inline_query']) {
 	$tg->sendMessage($master, json_encode($resp));
 	// $tg->sendMessage($master, $inline_query_from_id);
 
-	$tg->answerInlineQuery($inline_query_id, json_decode($resp), null, null, null, "в бот", "s");			
+	// $tg->answerInlineQuery($inline_query_id, $resp, null, null, null, "в бот", "s");			
+	$tg->answerInlineQuery($inline_query_id, [$resp]);			
 	
 	exit('ok');
 }
