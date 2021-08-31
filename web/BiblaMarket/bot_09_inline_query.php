@@ -57,7 +57,7 @@ if ($arr['inline_query']) {
 			"title"=>$title,
 			"description"=>"desc",
 			"input_message_content"=>["message_text"=>$kurs_PZM],
-			"reply_markup"=>$keyInLine10
+			// "reply_markup"=>$keyInLine10
 		]
 	];
 
