@@ -27,7 +27,7 @@ if ($arr['inline_query']) {
 	$textClick = substr($reply, $kol);	
 	
 	// КНОПКА Репост
-	$inLine10_but1=["text"=>"Репост","switch_inline_query"=>"курс"];
+	// $inLine10_but1=["text"=>"Репост","switch_inline_query"=>"курс"];
 
 	class InlineButton{
 		public $text = "Репост";
@@ -35,7 +35,7 @@ if ($arr['inline_query']) {
 	}
 	$inlineButton = new InlineButton();
 
-	$tg->sendMessage($master, $inLine10_but1->text);
+	// $tg->sendMessage($master, $inlineButton->text);
 
 	// $inLine10_str1=[$inLine10_but1];
 	$inLine10_str1=[$inlineButton];
