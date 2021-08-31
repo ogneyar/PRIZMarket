@@ -4,13 +4,14 @@
 function exception_handler($exception) {
 	global $bot, $master;	
 	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
-	exit('ok');  	
+	exit('ok');
 }
 
 // реакция бота на команду старт
 function _старт_ТаймерБота() {	
 	global $bot, $chat_id;	
 	$bot->sendMessage($chat_id, "Прива!");	
+	exit('ok');
 }
 // запись в таблицу информации о страрте или остановке таймера
 function _запуск_таймера($команда = null) {	
