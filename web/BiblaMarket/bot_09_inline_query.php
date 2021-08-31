@@ -52,12 +52,12 @@ if ($arr['inline_query']) {
 	// $res2=[["type"=>"article","id"=>$inline_query_from_id,"title"=>"kurs","description"=>"desc","input_message_content"=>["message_text"=>"text"]]];
 	$res2=[["type"=>"article","id"=>$inline_query_from_id,"title"=>$title,"description"=>"desc","input_message_content"=>["message_text"=>$kurs_PZM],$keyInLine10]];
 
+	$tg->sendMessage($master, "ghg".$textClick);
 	
 	include_once 'myBotApi/Bot.php';
 	$bot = new Bot($tokenMARKET);
 	$bot->answerInlineQuery($inline_query_id, $res2); 
 
-	$bot->sendMessage($master, $textClick);
 
 
 	// $tg->answerInlineQuery($inline_query_id, $res, null, null, null, "в бот", "s");		
