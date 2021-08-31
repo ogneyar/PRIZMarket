@@ -33,13 +33,12 @@ if ($arr['inline_query']) {
 		public $text = "Репост";
 		public $switch_inline_query = "курс";
 	}
-
 	$inlineButton = new InlineButton();
 
-	$tg->sendMessage($master, $inlineButton->text);
+	$tg->sendMessage($master, $inLine10_but1->text);
 
-
-	$inLine10_str1=[$inLine10_but1];
+	// $inLine10_str1=[$inLine10_but1];
+	$inLine10_str1=[$inlineButton];
 	$inLine10_keyb=[$inLine10_str1];
 	$keyInLine10 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
 		
