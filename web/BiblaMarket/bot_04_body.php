@@ -70,7 +70,7 @@ if ($est!==false){
 	$tg->call('sendMessage', [
         'chat_id' => $chat_id,
         'text' => $reply,
-        'parse_mode' => markdown,
+        'parse_mode' => "markdown",
         'disable_web_page_preview' => true,
         'reply_to_message_id' => null,
         'reply_markup' => $keyInLine10->toJson(),
