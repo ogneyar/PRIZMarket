@@ -27,18 +27,18 @@ if ($arr['inline_query']) {
 	$textClick = substr($reply, $kol);	
 	
 	// КНОПКА Репост
-	// $inLine10_but1=["text"=>"Репост","switch_inline_query"=>"курс"];
+	$inLine10_but1=["text"=>"Репост","switch_inline_query"=>"курс"];
 
-	class InlineButton{
-		public $text = "Репост";
-		public $switch_inline_query = "курс";
-	}
-	$inlineButton = new InlineButton();
+	// class InlineButton{
+	// 	public $text = "Репост";
+	// 	public $switch_inline_query = "курс";
+	// }
+	// $inlineButton = new InlineButton();
 
 	// $tg->sendMessage($master, $inlineButton->text);
 
-	// $inLine10_str1=[$inLine10_but1];
-	$inLine10_str1=[$inlineButton];
+	$inLine10_str1=[$inLine10_but1];
+	// $inLine10_str1=[$inlineButton];
 	$inLine10_keyb=[$inLine10_str1];
 	$keyInLine10 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
 		
@@ -47,7 +47,10 @@ if ($arr['inline_query']) {
 	$queryArticle = new \TelegramBot\Api\Types\Inline\QueryResult\Article($inline_query_from_id,
 		$title, $textClick, null,null,null, $inputText, $keyInLine10);		
 	$res=[$queryArticle];				
-	$tg->answerInlineQuery($inline_query_id, json_decode($res), null, null, null, "в бот", "s");			
+
+	$tg->sendMessage($master, json_encode($res));
+
+	$tg->answerInlineQuery($inline_query_id, $res, null, null, null, "в бот", "s");			
 	
 	exit('ok');
 }
