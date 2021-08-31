@@ -49,7 +49,7 @@ if ($arr['inline_query']) {
 	$res=[$queryArticle];
 	
 	// $res2=[["type"=>"article","id"=>$inline_query_from_id,"title"=>"kurs","description"=>"desc","input_message_content"=>["message_text"=>"text"]]];
-	$res2=[["type"=>"article","id"=>$inline_query_from_id,"title"=>$title,"description"=>$textClick,"input_message_content"=>["message_text"=>$inputText]]];
+	$res2=[["type"=>"article","id"=>$inline_query_from_id,"title"=>$title,"description"=>$textClick,"input_message_content"=>["message_text"=>$reply]]];
 
 	include_once 'myBotApi/Bot.php';
 	$bot = new Bot($tokenMARKET);
