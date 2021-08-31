@@ -53,7 +53,7 @@ if ($arr['inline_query']) {
 	$queryArticle2=["type"=>"article","id"=>$inline_query_from_id,"title"=>$title,"input_message_content"=>$inputText2];
 	$res2=[$queryArticle2];
 	$tg->sendMessage($master, json_encode($res2));
-	// $tg->sendMessage($master, $inline_query_from_id);
+	$tg->sendMessage($master, $inline_query_id);
 
 	// $tg->answerInlineQuery($inline_query_id, $resp, null, null, null, "в бот", "s");			
 	$tg->answerInlineQuery($inline_query_id, $res2);			
