@@ -50,10 +50,13 @@ if ($arr['inline_query']) {
 	
 	$res2=json_encode([["type"=>"article","id"=>$inline_query_from_id,"title"=>"kurs","input_message_content"=>["message_text"=>"text"]]]);
 
-	$tg->sendMessage($master, $res2);
+	$bot = new Bot($tokenMARKET);
+	$bot->answerInlineQuery($inline_query_id, $res2);
+
+	// $tg->sendMessage($master, $res2);
 
 	// $tg->answerInlineQuery($inline_query_id, $res, null, null, null, "в бот", "s");		
-	$tg->answerInlineQuery($inline_query_id, json_decode($res2), null, null, null, "в бот", "s");		
+	// $tg->answerInlineQuery($inline_query_id, json_decode($res2), null, null, null, "в бот", "s");		
 	
 	exit('ok');
 }
