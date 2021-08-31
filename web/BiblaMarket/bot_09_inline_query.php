@@ -47,7 +47,7 @@ if ($arr['inline_query']) {
 	$queryArticle = new \TelegramBot\Api\Types\Inline\QueryResult\Article($inline_query_from_id,
 		$title, $textClick, null,null,null, $inputText, $keyInLine10);		
 	$res=[$queryArticle];				
-	$tg->answerInlineQuery($inline_query_id, $res, null, null, null, "в бот", "s");			
+	$tg->answerInlineQuery($inline_query_id, json_encode($res), null, null, null, "в бот", "s");			
 	
 	exit('ok');
 }
