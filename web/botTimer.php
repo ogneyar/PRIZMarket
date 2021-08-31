@@ -10,7 +10,7 @@ $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
 
 // $bot->sendMessage(1038937592, "Прива!");	
-$bot->sendMessage($master, "Прива!");	
+$bot->sendMessage($chat_id, "Прива!");	
 
 // Подключение БД
 $mysqli = new mysqli($host, $username, $password, $dbname);
