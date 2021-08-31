@@ -27,6 +27,8 @@ if (mysqli_connect_errno()) {
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 	include 'myBotApi/Variables.php';		
 	
+	// $bot->sendMessage($master, 'eee');	
+	// exit('ok');
 	
 	// подключение дополнительных переменных
 	include 'BiblaICQnew/Variables.php';	
@@ -38,9 +40,7 @@ if (mysqli_connect_errno()) {
 	if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);	
 	if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {			
 		if ($chat_type=='private') {				
-			$bot->sendMessage($master, 'eee');	
-			exit('ok');
-			_старт_АйСиКюБота();  							
+			_старт_АйСиКюБота();
 		}				
 	}
 	if ($chat_type == 'private' || $chat_id == $channel_info) {			
