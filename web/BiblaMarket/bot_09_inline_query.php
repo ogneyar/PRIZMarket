@@ -54,7 +54,9 @@ if ($arr['inline_query']) {
 	// $queryArticle2=["type"=>"article","id"=>$inline_query_from_id,"title"=>$title2,"input_message_content"=>$inputText2];
 	// $res2=[$queryArticle2];
 
-	$tg->sendMessage($master, json_encode($queryArticle));
+	// $tg->sendMessage($master, json_encode($queryArticle));
+	$tg->sendMessage($master, $queryArticle->getDescription());
+
 	// $tg->sendMessage($master, json_encode($res2));
 	// $tg->sendMessage($master, $inline_query_id);
 
