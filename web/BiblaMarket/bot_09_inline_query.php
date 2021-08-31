@@ -49,7 +49,8 @@ if ($arr['inline_query']) {
 	$res=[$queryArticle];
 	
 	$res2=json_encode([["type"=>"article","id"=>$inline_query_from_id,"title"=>"kurs","input_message_content"=>["message_text"=>"text"]]]);
-
+	
+	include_once 'myBotApi/Bot.php';
 	$bot = new Bot($tokenMARKET);
 	$bot->answerInlineQuery($inline_query_id, $res2);
 
