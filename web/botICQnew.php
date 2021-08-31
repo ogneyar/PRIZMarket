@@ -31,8 +31,6 @@ if (mysqli_connect_errno()) {
 	// подключение дополнительных переменных
 	include 'BiblaICQnew/Variables.php';	
 	
-	$bot->sendMessage($master, 'eee');	
-	exit('ok');
 	
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
@@ -40,6 +38,8 @@ if (mysqli_connect_errno()) {
 	if (strpos($text, "/start ")!==false) $text = str_replace ("/start ", "", $text);	
 	if ($text == "/start"||$text == "s"||$text == "S"||$text == "с"||$text == "С"||$text == "c"||$text == "C"||$text == "Старт"||$text == "старт") {			
 		if ($chat_type=='private') {				
+			$bot->sendMessage($master, 'eee');	
+			exit('ok');
 			_старт_АйСиКюБота();  							
 		}				
 	}
