@@ -48,7 +48,7 @@ if ($arr['inline_query']) {
 		$title, $textClick, null,null,null, $inputText, $keyInLine10);		
 	$res=[$queryArticle];				
 
-	$tg->sendMessage($master, json_encode($res));
+	$tg->sendMessage($master, json_decode($res));
 
 	$tg->answerInlineQuery($inline_query_id, $res, null, null, null, "в бот", "s");			
 	
