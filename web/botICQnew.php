@@ -27,11 +27,12 @@ if (mysqli_connect_errno()) {
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 	include 'myBotApi/Variables.php';		
 	
-	$bot->sendMessage($master, 'eee');	
-	exit('ok');
-
+	
 	// подключение дополнительных переменных
 	include 'BiblaICQnew/Variables.php';	
+	
+	$bot->sendMessage($master, 'eee');	
+	exit('ok');
 	
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
