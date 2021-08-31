@@ -600,7 +600,7 @@ function num_keybord($number, $_insert, $_keybord) { // функция клав�
 		break;
 	}
 	
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $str, markdown, true, $_keybord);
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $str, "markdown", true, $_keybord);
 }
 
 
@@ -632,7 +632,7 @@ function kuplu_prodam_vibor($vibor) { // функция выбора кплю/п
 	
 	$sms = "\xF0\x9F\x97\xA3 #".$vibor."\nPZM\n." . $tehPodderjka . "Отлично, теперь *введите КОЛИЧЕСТВО монет*,".
 		" огромная просьба \xF0\x9F\x99\x8F делайте это не спеша, а после нажмите \xE2\x9C\x85";			
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine3);		
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine3);		
 }
 
 
@@ -652,7 +652,7 @@ function vibor_valut($valuta) { // функция выбора кплю/прод
 	$sms.= $valuta."\n." . $tehPodderjka . "Отлично, теперь *введите ".$cenaText."*, огромная просьба".
 		" \xF0\x9F\x99\x8F делайте это не спеша, а после нажмите \xE2\x9C\x85";
 
-	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine4);
+	$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine4);
 }
 
 
@@ -671,12 +671,12 @@ function vibor_banka($bank=null) { // функция выбора банка
 		}		
 		$sms.= "." . $tehPodderjka . "Выберайте любое количество банков/эл.кошельков \xF0\x9F\x91\x87 Когда ".
 			"закончите выбирать \xF0\x9F\x91\x89 нажмите *Готово*.";
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine_bank);		
+		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine_bank);		
 	}else {
 		$sms.= "." . $tehPodderjka . "Превосходно, теперь выберите с".
 			" какими банками/эл.кошельками Вы сотрудничаете? \xF0\x9F\x91\x87 Выбрать можно несколько,".
 			" или ввести название банка которого нет в списке. По окончанию жмите *ДАЛЕЕ!*";
-		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, markdown, true, $keyInLine6);		
+		$tg->editMessageText($callbackChatId, $callbackMessageId, $sms, "markdown", true, $keyInLine6);		
 	}	
 }
 
@@ -730,13 +730,13 @@ function _start_PZMgarant_bota($this_admin=false) {		// функция стар�
 	
 		$reply = "Здравствуйте *". $first_name . "*! \xE2\x9C\x8B Добро пожаловать в ".
 			"*БЕЗОПАСНЫЕ СДЕЛКИ!*";
-		$tg->sendMessage($chat_id, $reply, markdown, true, null, $key_one_Admin);
+		$tg->sendMessage($chat_id, $reply, "markdown", true, null, $key_one_Admin);
 		
 		$reply = "Этот бот поможет Вам подать заявку на покупку или продажу *PRIZM.*" . $tehPodderjka .
 			"Перед тем как начать, прочитайте \xF0\x9F\x91\x89 [ПРАВИЛА.]".
 			"(https://t.me/Secure_deal_PZM/5)\n\nОЗНАКОМИЛИСЬ?! Жмите \xF0\x9F\x91\x87 *ПОДАТЬ ЗАЯВКУ!*";
 		
-		$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyInLine0);		
+		$tg->sendMessage($chat_id, $reply, "markdown", true, null, $keyInLine0);		
 		
 		exit('ok');
 	}
@@ -758,7 +758,7 @@ function _start_PZMgarant_bota($this_admin=false) {		// функция стар�
 			"Перед тем как начать, прочитайте \xF0\x9F\x91\x89 [ПРАВИЛА.]".
 			"(https://t.me/Secure_deal_PZM/5)\n\nОЗНАКОМИЛИСЬ?! Жмите \xF0\x9F\x91\x87 *ПОДАТЬ ЗАЯВКУ!*";
 		
-		$tg->sendMessage($chat_id, $reply, markdown, true, null, $keyInLine0);		
+		$tg->sendMessage($chat_id, $reply, "markdown", true, null, $keyInLine0);		
 	}
 	
 }
@@ -929,9 +929,9 @@ function _pechat_lotov($chatId, $arrS, $kol, $max) { // функция выво�
 		$keyInLine = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLineKeyb);
 try{					
 		if ($format=='photo'){
-			$tg->sendPhoto($chatId, $file_id, $caption, null, $keyInLine, false, markdown); 
+			$tg->sendPhoto($chatId, $file_id, $caption, null, $keyInLine, false, "markdown"); 
 		}elseif ($format=='video') {
-			$tg->sendVideo($chatId, $file_id, null, $caption, null, $keyInLine, false, false, markdown); 
+			$tg->sendVideo($chatId, $file_id, null, $caption, null, $keyInLine, false, false, "markdown"); 
 		}
 }catch (Exception $e) {
 	$tg->sendMessage($master, 'вот одна ошибка '.$podrobno_url);
@@ -949,7 +949,7 @@ function _проверка_БАНа() {
 	if ($result = $mysqli->query($query)) {	
 		if ($result->num_rows > 0) {
 			$tehPodderjka = "[тех.поддержку](https://t.me/Prizm_market_supportbot?start=) \xF0\x9F\x91\x88";
-			$tg->sendMessage($chat_id, "Ваш аккаунт попал в БАН!\n\nДля того чтобы узнать причину обратитесь в {$tehPodderjka}", markdown);					
+			$tg->sendMessage($chat_id, "Ваш аккаунт попал в БАН!\n\nДля того чтобы узнать причину обратитесь в {$tehPodderjka}", "markdown");					
 			exit('ok');
 		}			
 	}else throw new Exception("Не смог проверить БАН лист (_проверка_БАНа)");	
