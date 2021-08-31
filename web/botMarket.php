@@ -1,10 +1,13 @@
 ﻿<?php 
 include_once '../vendor/autoload.php';	
+include_once 'myBotApi/Bot.php';
 include_once 'a_conect.php';
 //exit('ok');
 
 $token = $tokenMARKET;
-$tg = new \TelegramBot\Api\BotApi($token);
+$tg = new \TelegramBot\Api\BotApi($token); // чужая библиотека telegram-bot-api
+	
+$bot = new Bot($token); // моя библиотека
 
 $id_bota = strstr($token, ':', true);	
 
