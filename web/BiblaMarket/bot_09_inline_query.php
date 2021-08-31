@@ -52,7 +52,7 @@ if ($arr['inline_query']) {
 
 	include_once 'myBotApi/Bot.php';
 	$bot = new Bot($tokenMARKET);
-	$bot->answerInlineQuery($inline_query_id, $res2);
+	$bot->answerInlineQuery($inline_query_id, $res);
 
 	// $tg->sendMessage($master, json_encode($res2));
 
