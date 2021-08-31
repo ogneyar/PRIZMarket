@@ -43,7 +43,7 @@ if ($arr['inline_query']) {
 	$keyInLine10 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
 		
 	$inputText = new \TelegramBot\Api\Types\Inline\InputMessageContent\Text($reply);	
-	
+
 	$queryArticle = new \TelegramBot\Api\Types\Inline\QueryResult\Article($inline_query_from_id,
 	$title, $textClick, null,null,null, $inputText, $keyInLine10);		
 	$res=[$queryArticle];
@@ -54,7 +54,7 @@ if ($arr['inline_query']) {
 	// $queryArticle2=["type"=>"article","id"=>$inline_query_from_id,"title"=>$title2,"input_message_content"=>$inputText2];
 	// $res2=[$queryArticle2];
 
-	$tg->sendMessage($master, json_encode($res));
+	$tg->sendMessage($master, json_encode($queryArticle));
 	// $tg->sendMessage($master, json_encode($res2));
 	// $tg->sendMessage($master, $inline_query_id);
 
