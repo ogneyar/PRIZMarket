@@ -15,7 +15,7 @@ if ($OtladkaBota == 'да') {
 	$tg->sendMessage($test_group, $reply); 
 }
 
-// при вызове команды настроек ГарантБота подключается файл..
+// при вызове команды настроек Бота подключается файл..
 if ($text=='/setting'){
 	if ($id_bota =='1037491432'||$id_bota =='1066944801') include_once 'bot_11_setting.php';
 	exit('ok');
@@ -23,7 +23,7 @@ if ($text=='/setting'){
 
 //if($new_chat_part_id) $tg->sendMessage($master, $new_chat_part_id);
 
-// при добавлении ГарантБота в группу подключается файл..
+// при добавлении Бота в группу подключается файл..
 if ($new_chat_part_id=='1037491432'||$new_chat_part_id=='1066944801') {
 	$reply = "Меня добавили в чат:\nchat_id: {$chat_id}\nchat_title: {$chat_title}\nchat_type: {$chat_type}";
 	$tg->sendMessage($admin_group, $reply); 
@@ -72,7 +72,7 @@ if ($arrayChannelOrMessage['reply_markup']['inline_keyboard'][0][0]['text']=='П
 			"Вам надо заявку подать, тогда ссыль на лот надо кидать в [ЗаказБот]".
 			"(t.me/Zakaz_prizm_bot) \xF0\x9F\x91\x88 с пометкой 'В БОТ'";		
 		if ($chat_type=='private'||$callbackChat_type=='private'){
-			$tg->sendMessage($chat_id, $reply, markdown);
+			$tg->sendMessage($chat_id, $reply, "markdown");
 		}
 	}		
 }elseif ($arrayChannelOrMessage['reply_markup']['inline_keyboard']) {
