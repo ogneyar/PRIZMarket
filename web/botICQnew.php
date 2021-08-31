@@ -2,7 +2,8 @@
 include_once 'myBotApi/Bot.php';
 include_once 'myBotApi/ICQnew.php';
 include_once 'a_conect.php';
-//exit('ok');
+exit('ok');
+
 $token = $tokenICQnew;
 // Создаем объект бота
 $bot = new Bot($token);

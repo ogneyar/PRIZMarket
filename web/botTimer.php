@@ -3,7 +3,8 @@
 include_once 'myBotApi/Bot.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
-// exit('ok');
+exit('ok');
+
 $token = $tokenTimer;
 // Создаем объект бота
 $bot = new Bot($token);
@@ -34,6 +35,8 @@ if (mysqli_connect_errno()) {
 			// _старт_ТаймерБота();
 		}				
 		$bot->sendMessage($master, "Прива!!!");
+		exit('ok');
+
 	}
 	if ($chat_type == 'private' || $chat_id == $channel_info) {			
 		if ($data['callback_query']) {			
