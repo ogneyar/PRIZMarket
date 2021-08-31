@@ -28,6 +28,17 @@ if ($arr['inline_query']) {
 	
 	// КНОПКА Репост
 	$inLine10_but1=["text"=>"Репост","switch_inline_query"=>"курс"];
+
+	class InlineButton{
+		public $text = "Репост";
+		public $switch_inline_query = "курс";
+	}
+
+	$inlineButton = new InlineButton();
+
+	$tg->sendMessage($master, $inlineButton->text);
+
+
 	$inLine10_str1=[$inLine10_but1];
 	$inLine10_keyb=[$inLine10_str1];
 	$keyInLine10 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
