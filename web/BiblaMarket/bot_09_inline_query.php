@@ -63,9 +63,9 @@ if ($arr['inline_query']) {
 
 	$tg->sendMessage($master, "ghg");
 	
-	include_once 'myBotApi/Bot.php';
-	$bot = new Bot($tokenMARKET);
-	$bot->answerInlineQuery($inline_query_id, $res2); 
+	// include_once 'myBotApi/Bot.php';
+	// $bot = new Bot($tokenMARKET);
+	// $bot->answerInlineQuery($inline_query_id, $res2); 
 	
 	$tg->sendMessage($master, $textClick);
 
