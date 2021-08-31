@@ -9,8 +9,7 @@ $token = $tokenTimer;
 $bot = new Bot($token);
 $id_bota = strstr($token, ':', true);	
 
-// $bot->sendMessage(1038937592, "Прива!");	
-$bot->sendMessage($chat_id, "Прива!");	
+// $bot->sendMessage($master, "Прива!");	
 
 // Подключение БД
 $mysqli = new mysqli($host, $username, $password, $dbname);
@@ -23,6 +22,9 @@ if (mysqli_connect_errno()) {
 	include 'BiblaTimer/Functions.php';			
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 	include 'myBotApi/Variables.php';		
+
+	$bot->sendMessage($chat_id, "Прива!");
+	
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
 	// Если пришла ссылка типа t.me//..?start=123456789	
