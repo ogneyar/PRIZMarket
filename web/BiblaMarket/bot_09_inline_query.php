@@ -40,7 +40,8 @@ if ($arr['inline_query']) {
 	$inLine10_str1=[$inLine10_but1];
 	// $inLine10_str1=[$inlineButton];
 	$inLine10_keyb=[$inLine10_str1];
-	$keyInLine10 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
+	// $keyInLine10 = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($inLine10_keyb);
+	$keyInLine10 = [$inLine10_keyb];
 		
 	$inputText = new \TelegramBot\Api\Types\Inline\InputMessageContent\Text($reply);	
 
@@ -49,13 +50,14 @@ if ($arr['inline_query']) {
 	$res=[$queryArticle];
 	
 	// $res2=[["type"=>"article","id"=>$inline_query_from_id,"title"=>"kurs","description"=>"desc","input_message_content"=>["message_text"=>"text"]]];
-	$res2=[["type"=>"article","id"=>$inline_query_from_id,"title"=>$title,"description"=>"desc","input_message_content"=>["message_text"=>$kurs_PZM]]];
+	$res2=[["type"=>"article","id"=>$inline_query_from_id,"title"=>$title,"description"=>"desc","input_message_content"=>["message_text"=>$kurs_PZM],$keyInLine10]];
 
-	$tg->sendMessage($master, $textClick);
-
+	
 	include_once 'myBotApi/Bot.php';
 	$bot = new Bot($tokenMARKET);
 	$bot->answerInlineQuery($inline_query_id, $res2); 
+
+	$bot->sendMessage($master, $textClick);
 
 
 	// $tg->answerInlineQuery($inline_query_id, $res, null, null, null, "в бот", "s");		
