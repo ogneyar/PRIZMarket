@@ -1,4 +1,12 @@
 ﻿<?
+
+// при возникновении исключения вызывается эта функция
+function exception_handler($exception) {
+	global $bot, $master;	
+	$bot->sendMessage($master, "Ошибка! ".$exception->getCode()." ".$exception->getMessage());	  
+	exit('ok');  	
+}
+
 // реакция бота на команду старт
 function _старт_АйСиКюБота() {	
 	global $bot, $chat_id;	 
