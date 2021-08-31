@@ -3,7 +3,7 @@
 include_once 'myBotApi/Bot.php';
 // Подключаем библиотеку с глобальными переменными
 include_once 'a_conect.php';
-//exit('ok');
+exit('ok');
 $token = $tokenTimer;
 // Создаем объект бота
 $bot = new Bot($token);
@@ -23,8 +23,8 @@ if (mysqli_connect_errno()) {
 	// ПОДКЛЮЧЕНИЕ ВСЕХ ОСНОВНЫХ ПЕРЕМЕННЫХ
 	include 'myBotApi/Variables.php';		
 
-	$bot->sendMessage($chat_id, "Прива!");
-	
+	// $bot->sendMessage($chat_id, "Прива!");
+
 	// Обработчик исключений
 	set_exception_handler('exception_handler');
 	// Если пришла ссылка типа t.me//..?start=123456789	
