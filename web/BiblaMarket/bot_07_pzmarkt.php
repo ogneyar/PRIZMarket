@@ -68,7 +68,10 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	$kol=strlen($kuplu_prodam)+1;			
 	$caption = substr($caption, $kol);	
 	
-	if ($kuplu_prodam=='') exit('ok');
+	if ($kuplu_prodam=='') {
+		$tg->sendMessage($admin_group, "Отсутствует хештег куплю - продам");
+		exit('ok');
+	}
 	
 	$лишняя_строка = strstr($caption, '\n', true);	
 	$kol=strlen($лишняя_строка)+1;	
@@ -91,21 +94,39 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	$kol=strlen($nazvanie)+1;			
 	$caption = substr($caption, $kol);	
 	
-	if ($nazvanie=='') exit('ok');
+	if ($nazvanie=='') {
+		$reply = "Отсутствует название";
+		if ($chat_type=='private'||$callbackChat_type=='private'){
+			$tg->sendMessage($chat_id, $reply); 
+		}else $tg->sendMessage($admin_group, $reply); 		
+		exit('ok');
+	}
 	$nazvanie = str_replace("▪️", "", $nazvanie);
 
 	$valuta = strstr($caption, '\n', true);
 	$kol=strlen($valuta)+1;			
 	$caption = substr($caption, $kol);	
 	
-	if ($valuta=='') exit('ok');
+	if ($valuta=='') {
+		$reply = "Отсутствует валюта";
+		if ($chat_type=='private'||$callbackChat_type=='private'){
+			$tg->sendMessage($chat_id, $reply); 
+		}else $tg->sendMessage($admin_group, $reply); 		
+		exit('ok');
+	}
 	$valuta = str_replace("▪️", "", $valuta);
 	
 	$gorod = strstr($caption, '\n', true);
 	$kol=strlen($gorod)+1;			
 	$caption = substr($caption, $kol);	
 	
-	if ($gorod=='') exit('ok');
+	if ($gorod=='') {
+		$reply = "Отсутствуют хештеги города";
+		if ($chat_type=='private'||$callbackChat_type=='private'){
+			$tg->sendMessage($chat_id, $reply); 
+		}else $tg->sendMessage($admin_group, $reply); 		
+		exit('ok');
+	}
 	$gorod = str_replace("▪️", "", $gorod);	
 	
 	
@@ -145,7 +166,14 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 			$arrStrok = $result->fetch_all();
 			foreach($arrStrok as $stroka) if ($id==$stroka[0]) $est_li_v_base=true;					
 		}				
-	}else throw new Exception("Не получилось получить запрос от ".$table5);
+	}else {		
+		$reply = "Не получилось получить запрос от ".$table5;
+		if ($chat_type=='private'||$callbackChat_type=='private'){
+			$tg->sendMessage($chat_id, $reply); 
+		}else $tg->sendMessage($admin_group, $reply); 		
+		exit('ok');
+		// throw new Exception("Не получилось получить запрос от ".$table5);
+	}
 	
 	if ($est_li_v_base==true) {		
 		$flag_delete = '0';
@@ -186,7 +214,7 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 		$kol = $result->num_rows;
 		if($kol>0){
 	
-			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
+			$arrayResult = $result->fetch_all("MYSQLI_ASSOC");
 			$schetchik = 0;
 			foreach($arrayResult as $stroka){
 			
@@ -234,7 +262,14 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 			}
 			
 		}
-	}else throw new Exception("Не смог проверить таблицу ".$table5." на наличие старых лотов.");
+	}else {
+		$reply = "Не смог проверить таблицу ".$table5." на наличие старых лотов.";
+		if ($chat_type=='private'||$callbackChat_type=='private'){
+			$tg->sendMessage($chat_id, $reply); 
+		}else $tg->sendMessage($admin_group, $reply); 		
+		exit('ok');
+		// throw new Exception("Не смог проверить таблицу ".$table5." на наличие старых лотов.");
+	}
 	//------------------------------------------------------------------------------------------
 	
 	
