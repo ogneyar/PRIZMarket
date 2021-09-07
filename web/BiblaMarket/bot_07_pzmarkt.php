@@ -64,12 +64,15 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	
 	$caption = str_replace("'", "\'", $caption);
 
-	$kuplu_prodam = strstr($caption, '\n', true);
+	$kuplu_prodam = strstr($caption, chr(10), true);
 	$kol=strlen($kuplu_prodam)+1;			
 	$caption = substr($caption, $kol);	
 	
 	if ($kuplu_prodam=='') {
-		$tg->sendMessage($admin_group, "Отсутствует хештег куплю - продам");
+		$reply = "Отсутствует хештег куплю - продам";
+		if ($chat_type=='private'||$callbackChat_type=='private'){
+			$tg->sendMessage($chat_id, $reply); 
+		}else $tg->sendMessage($admin_group, $reply); 		
 		exit('ok');
 	}
 	
