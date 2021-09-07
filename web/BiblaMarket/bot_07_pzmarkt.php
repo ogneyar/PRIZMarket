@@ -80,7 +80,7 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	
 	$pos = strpos($otdel, '#');
 	if ($pos === false) {
-		$reply = "Лот №{$id} не подойдёт, он видимо ещё старого образца, без хештега. ({$otdel})";
+		$reply = "Лот №{$id} не подойдёт, он видимо ещё старого образца, без хештега. ({$caption})";
 		if ($chat_type=='private'||$callbackChat_type=='private'){
 			$tg->sendMessage($chat_id, $reply); 
 		}else $tg->sendMessage($admin_group, $reply); 		
