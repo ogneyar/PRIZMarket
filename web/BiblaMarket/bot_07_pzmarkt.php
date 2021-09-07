@@ -217,7 +217,7 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 		$kol = $result->num_rows;
 		if($kol>0){
 	
-			$arrayResult = $result->fetch_all("MYSQLI_ASSOC");
+			$arrayResult = $result->fetch_all(MYSQLI_ASSOC);
 			$schetchik = 0;
 			foreach($arrayResult as $stroka){
 			
