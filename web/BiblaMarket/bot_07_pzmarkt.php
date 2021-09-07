@@ -76,11 +76,11 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 		exit('ok');
 	}
 	
-	$лишняя_строка = strstr($caption, '\n', true);	
+	$лишняя_строка = strstr($caption, chr(10), true);	
 	$kol=strlen($лишняя_строка)+1;	
 	$caption = substr($caption, $kol);	
 	
-	$otdel = strstr($caption, '\n', true);
+	$otdel = strstr($caption, chr(10), true);
 	$kol=strlen($otdel)+1;			
 	$caption = substr($caption, $kol);	
 	
@@ -93,7 +93,7 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 		exit('ok');
 	}
 
-	$nazvanie = strstr($caption, '\n', true);
+	$nazvanie = strstr($caption, chr(10), true);
 	$kol=strlen($nazvanie)+1;			
 	$caption = substr($caption, $kol);	
 	
@@ -106,7 +106,7 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	}
 	$nazvanie = str_replace("▪️", "", $nazvanie);
 
-	$valuta = strstr($caption, '\n', true);
+	$valuta = strstr($caption, chr(10), true);
 	$kol=strlen($valuta)+1;			
 	$caption = substr($caption, $kol);	
 	
@@ -119,7 +119,7 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	}
 	$valuta = str_replace("▪️", "", $valuta);
 	
-	$gorod = strstr($caption, '\n', true);
+	$gorod = strstr($caption, chr(10), true);
 	$kol=strlen($gorod)+1;			
 	$caption = substr($caption, $kol);	
 	
@@ -133,23 +133,23 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	$gorod = str_replace("▪️", "", $gorod);	
 	
 	
-	$pos = strpos($caption, '\n');
+	$pos = strpos($caption, chr(10));
 	
 	if ($pos === false) {
 		$username = $caption;		
 		$doverie = '0';
 	}else {	
-		$username = strstr($caption, '\n', true);
+		$username = strstr($caption, chr(10), true);
 		$kol=strlen($username)+1;			
 		$caption = substr($caption, $kol);		
 		
-		$pos = strpos($caption, '\n');
+		$pos = strpos($caption, chr(10));
 	
 		if ($pos === false) {
 			$номер_лота = $caption;			
 			$doverie = '0';
 		} else {		
-			$номер_лота = strstr($caption, '\n', true);
+			$номер_лота = strstr($caption, chr(10), true);
 			$kol=strlen($номер_лота)+1;			
 			$doverie = substr($caption, $kol);	
 		
