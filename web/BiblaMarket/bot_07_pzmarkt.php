@@ -64,44 +64,44 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	
 	$caption = str_replace("'", "\'", $caption);
 
-	$kuplu_prodam = strstr($caption, 10, true);
+	$kuplu_prodam = strstr($caption, '\n', true);
 	$kol=strlen($kuplu_prodam)+1;			
 	$caption = substr($caption, $kol);	
 	
 	if ($kuplu_prodam=='') exit('ok');
 	
-	$лишняя_строка = strstr($caption, 10, true);	
+	$лишняя_строка = strstr($caption, '\n', true);	
 	$kol=strlen($лишняя_строка)+1;	
 	$caption = substr($caption, $kol);	
 	
-	$otdel = strstr($caption, 10, true);
+	$otdel = strstr($caption, '\n', true);
 	$kol=strlen($otdel)+1;			
 	$caption = substr($caption, $kol);	
 	
 	$pos = strpos($otdel, '#');
 	if ($pos === false) {
-		$reply = "Лот №{$id} не подойдёт, он видимо ещё старого образца, без хештега. ({$caption})";
+		$reply = "Лот №{$id} не подойдёт, он видимо ещё старого образца, без хештега.";
 		if ($chat_type=='private'||$callbackChat_type=='private'){
 			$tg->sendMessage($chat_id, $reply); 
 		}else $tg->sendMessage($admin_group, $reply); 		
 		exit('ok');
 	}
 
-	$nazvanie = strstr($caption, 10, true);
+	$nazvanie = strstr($caption, '\n', true);
 	$kol=strlen($nazvanie)+1;			
 	$caption = substr($caption, $kol);	
 	
 	if ($nazvanie=='') exit('ok');
 	$nazvanie = str_replace("▪️", "", $nazvanie);
 
-	$valuta = strstr($caption, 10, true);
+	$valuta = strstr($caption, '\n', true);
 	$kol=strlen($valuta)+1;			
 	$caption = substr($caption, $kol);	
 	
 	if ($valuta=='') exit('ok');
 	$valuta = str_replace("▪️", "", $valuta);
 	
-	$gorod = strstr($caption, 10, true);
+	$gorod = strstr($caption, '\n', true);
 	$kol=strlen($gorod)+1;			
 	$caption = substr($caption, $kol);	
 	
@@ -109,23 +109,23 @@ if(!$upload) throw new Exception("Не смог отправить файл на
 	$gorod = str_replace("▪️", "", $gorod);	
 	
 	
-	$pos = strpos($caption, 10);
+	$pos = strpos($caption, '\n');
 	
 	if ($pos === false) {
 		$username = $caption;		
 		$doverie = '0';
 	}else {	
-		$username = strstr($caption, 10, true);
+		$username = strstr($caption, '\n', true);
 		$kol=strlen($username)+1;			
 		$caption = substr($caption, $kol);		
 		
-		$pos = strpos($caption, 10);
+		$pos = strpos($caption, '\n');
 	
 		if ($pos === false) {
 			$номер_лота = $caption;			
 			$doverie = '0';
 		} else {		
-			$номер_лота = strstr($caption, 10, true);
+			$номер_лота = strstr($caption, '\n', true);
 			$kol=strlen($номер_лота)+1;			
 			$doverie = substr($caption, $kol);	
 		
