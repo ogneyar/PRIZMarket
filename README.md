@@ -1,8 +1,8 @@
 # PRIZMarket
 
-## https://prizmarket.ru
+## origin site - https://prizmarket.ru
 
-### test site - https://naherokubot.herokuapp.com
+### test site - https://prizmarket-test.herokuapp.com
 
 
 Сейчас уже работают шесть ботов, один двойной (таймерБот) работает
